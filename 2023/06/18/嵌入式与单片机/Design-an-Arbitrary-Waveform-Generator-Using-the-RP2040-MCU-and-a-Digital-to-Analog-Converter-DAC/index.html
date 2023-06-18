@@ -20,19 +20,19 @@
     var CONFIG = {"hostname":"alwaysmy.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="标题是AI写的，本来我想写的是用RP2040实现AWG ，AI说我这个标题不够专业，给我改了一大串，我感觉确实挺🐂🍺，就直接贴上来了。 为什么要写这个网上有一堆RP2040实现的AWG的设计，其中有一个传播比较广泛的是一个用python写的配合一个10bit R2R DAC实现的AWG设计。然而，我认为它有错误:基本上所有的帖子认为连续的DMA传输直接使用例程中给出的控制传输的方法就可">
+  <meta name="description" content="标题是AI写的，本来我想写的是用RP2040实现AWG ，AI说我这个标题不够专业，给我改了一大串，我感觉确实挺🐂🍺，就直接贴上来了。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Design an Arbitrary Waveform Generator Using the RP2040 MCU and a Digital-to-Analog Converter">
 <meta property="og:url" content="https://alwaysmy.github.io/2023/06/18/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/Design-an-Arbitrary-Waveform-Generator-Using-the-RP2040-MCU-and-a-Digital-to-Analog-Converter-DAC/index.html">
 <meta property="og:site_name" content="加载中...">
-<meta property="og:description" content="标题是AI写的，本来我想写的是用RP2040实现AWG ，AI说我这个标题不够专业，给我改了一大串，我感觉确实挺🐂🍺，就直接贴上来了。 为什么要写这个网上有一堆RP2040实现的AWG的设计，其中有一个传播比较广泛的是一个用python写的配合一个10bit R2R DAC实现的AWG设计。然而，我认为它有错误:基本上所有的帖子认为连续的DMA传输直接使用例程中给出的控制传输的方法就可">
+<meta property="og:description" content="标题是AI写的，本来我想写的是用RP2040实现AWG ，AI说我这个标题不够专业，给我改了一大串，我感觉确实挺🐂🍺，就直接贴上来了。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-06-18T14:39:53.000Z">
-<meta property="article:modified_time" content="2023-06-18T15:16:01.549Z">
+<meta property="article:modified_time" content="2023-06-18T15:18:45.425Z">
 <meta property="article:author" content="Always L">
+<meta property="article:tag" content="模电">
 <meta property="article:tag" content="rp2040">
 <meta property="article:tag" content="ARM">
-<meta property="article:tag" content="模拟">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://alwaysmy.github.io/2023/06/18/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/Design-an-Arbitrary-Waveform-Generator-Using-the-RP2040-MCU-and-a-Digital-to-Analog-Converter-DAC/">
@@ -123,7 +123,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">18</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">17</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -188,7 +188,16 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-06-18 22:39:53 / 修改时间：23:16:01" itemprop="dateCreated datePublished" datetime="2023-06-18T22:39:53+08:00">2023-06-18</time>
+              <time title="创建时间：2023-06-18 22:39:53 / 修改时间：23:18:45" itemprop="dateCreated datePublished" datetime="2023-06-18T22:39:53+08:00">2023-06-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">嵌入式与单片机</span></a>
+                </span>
             </span>
 
           
@@ -203,8 +212,9 @@
 
       
         <p>    标题是AI写的，本来我想写的是<code>用RP2040实现AWG</code> ，AI说我这个标题不够专业，给我改了一大串，我感觉确实挺🐂🍺，就直接贴上来了。</p>
+<span id="more"></span>
+
 <h1 id="为什么要写这个"><a href="#为什么要写这个" class="headerlink" title="为什么要写这个"></a>为什么要写这个</h1><p>网上有一堆RP2040实现的AWG的设计，其中有一个传播比较广泛的是一个用python写的<a target="_blank" rel="noopener" href="https://www.instructables.com/Poor-Mans-Waveform-Generator-Based-on-RP2040-Raspb/">配合一个10bit R2R DAC实现的AWG设计</a>。然而，我认为它有错误:基本上所有的帖子认为连续的DMA传输直接使用例程中给出的控制传输的方法就可以了，然而这种传输方法会损失一个时钟周期用来搬运DMA配置。这意味着信号周期没有被严格控制。对于主频轻轻松松就可以达到270MHz的RP2040来说这个Bug很难看出来，但是如果生成信号波形周期较短就可以看到。B站有一个对于原开源项目的<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Xq4y1Y7eF">复刻</a>，在输出高频的时候就能看出来了。</p>
-<p>    </p>
 <p>    不知道为什么RP2040作为树莓派一个很不错的产品，有相当多的讨论和开源环境，但是有些教程却始终是抄来抄去，甚至英文环境也是，可能确实是没啥人用这个做产品就是这样吧。。。包括下载配置，有更好的方法，但是容易找到的教程都是最开始的。</p>
 <p>一个原因是手册上没有直接给出DMA乒乓传输的例子和说明，而是通过一个称作“控制传输（2.5.6.2. DMA Control Blocks .RP2040-Datasheet）” 来说明如何连续传输数据到外设或者指定地址。我在反复怀疑自己了几天之后，决定直接写代码验证一下。</p>
 <blockquote>
@@ -227,9 +237,9 @@
 
       <footer class="post-footer">
           <div class="post-tags">
+              <a href="/tags/%E6%A8%A1%E7%94%B5/" rel="tag"># 模电</a>
               <a href="/tags/rp2040/" rel="tag"># rp2040</a>
               <a href="/tags/ARM/" rel="tag"># ARM</a>
-              <a href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag"># 模拟</a>
           </div>
 
         
@@ -327,7 +337,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

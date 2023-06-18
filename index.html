@@ -118,7 +118,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">18</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">17</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -183,7 +183,16 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-06-18 22:39:53 / 修改时间：23:16:01" itemprop="dateCreated datePublished" datetime="2023-06-18T22:39:53+08:00">2023-06-18</time>
+              <time title="创建时间：2023-06-18 22:39:53 / 修改时间：23:18:45" itemprop="dateCreated datePublished" datetime="2023-06-18T22:39:53+08:00">2023-06-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">嵌入式与单片机</span></a>
+                </span>
             </span>
 
           
@@ -198,22 +207,14 @@
 
       
           <p>    标题是AI写的，本来我想写的是<code>用RP2040实现AWG</code> ，AI说我这个标题不够专业，给我改了一大串，我感觉确实挺🐂🍺，就直接贴上来了。</p>
-<h1 id="为什么要写这个"><a href="#为什么要写这个" class="headerlink" title="为什么要写这个"></a>为什么要写这个</h1><p>网上有一堆RP2040实现的AWG的设计，其中有一个传播比较广泛的是一个用python写的<a target="_blank" rel="noopener" href="https://www.instructables.com/Poor-Mans-Waveform-Generator-Based-on-RP2040-Raspb/">配合一个10bit R2R DAC实现的AWG设计</a>。然而，我认为它有错误:基本上所有的帖子认为连续的DMA传输直接使用例程中给出的控制传输的方法就可以了，然而这种传输方法会损失一个时钟周期用来搬运DMA配置。这意味着信号周期没有被严格控制。对于主频轻轻松松就可以达到270MHz的RP2040来说这个Bug很难看出来，但是如果生成信号波形周期较短就可以看到。B站有一个对于原开源项目的<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Xq4y1Y7eF">复刻</a>，在输出高频的时候就能看出来了。</p>
-<p>    </p>
-<p>    不知道为什么RP2040作为树莓派一个很不错的产品，有相当多的讨论和开源环境，但是有些教程却始终是抄来抄去，甚至英文环境也是，可能确实是没啥人用这个做产品就是这样吧。。。包括下载配置，有更好的方法，但是容易找到的教程都是最开始的。</p>
-<p>一个原因是手册上没有直接给出DMA乒乓传输的例子和说明，而是通过一个称作“控制传输（2.5.6.2. DMA Control Blocks .RP2040-Datasheet）” 来说明如何连续传输数据到外设或者指定地址。我在反复怀疑自己了几天之后，决定直接写代码验证一下。</p>
-<blockquote>
-<p>Talk is cheap. Show me the code</p>
-</blockquote>
-<p>    我最开始不甚了解乒乓传输这个概念，说来惭愧，写了几年单片机，就用过一次DMA, 最后还因为操作逻辑不好处理舍弃了，其他时候要么是用垃圾单片机压根没有DMA，要么是没这需求。这里还是第一次正儿八经看看DMA怎么做。</p>
-<p>代码验证想法是正确的，分别验证了原来的控制传输确实会出错，测试了信号波形，以及验证了使用PingPong传输能得到想要的结果。下面正文里面详细说设计和测试。</p>
-<p>    手册中给出的例子确实实现了连续传输不需要CPU介入，但是它从来没说过时序是严格的，单独为DMA循环传输做了功能的有STM32,配置循环就会自动从地址段环回取数据。RP2040的DMA IP核似乎是买的公版IP，不过用下来还是比较好用的。</p>
-<h1 id="RP2040-DMA"><a href="#RP2040-DMA" class="headerlink" title="RP2040 DMA"></a>RP2040 DMA</h1><p>DMA的概念这里不再重复</p>
-<p>有一个触发其他通道的概念比较有意思，可以配置为每个通道传输结束后会自动触发另外一个DMA通道启动，很明显，这样就可以实现一个PingPong传输了，甚至可以多个通道接力最后转回来。遗憾的是它并不能自己触发自己，所以实现连续传输至少需要两个DMA通道.</p>
-<p>由于没有自动的循环模式，想要严格控制传输时序，就需要DMA通道在下一次传输前准备好，  </p>
-<p>由于DMA通道配置的传输地址并不会自己回到最初的地址，因此每次传输结束后至少要重新配置传输起始地址才能在下一次传输中传输正确的数据。因此，这种方法保证了时间间隔的严格，但是作为牺牲是CPU必然要耗费一定时间参与传输任务。这可能对于其他任务是有影响的。</p>
-<p>    然而RP2040是双核的，实在优化不出来完全可以仍到另一个核心（</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/06/18/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/Design-an-Arbitrary-Waveform-Generator-Using-the-RP2040-MCU-and-a-Digital-to-Analog-Converter-DAC/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1623,7 +1624,7 @@ target remote 192.168.31.16:3333
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
