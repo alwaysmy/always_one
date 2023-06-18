@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"alwaysmy.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="1 新建工程最开始本来是打算调用pyocd 的python api的，但是一个是内嵌包一直安装出问题，一个是考虑到本地pack不想重复安装和管理，于是就转做pyocd的前端了，也就是直接调用pyocd，根据返回数据解析，然后执行要做的命令。 所以新建一个普通工程就可以。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用aardio写一个基于pyocd的单片机下载器">
+<meta property="og:url" content="https://alwaysmy.github.io/2023/04/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E4%BD%BF%E7%94%A8aardio%E5%86%99%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8Epyocd%E7%9A%84%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%8B%E8%BD%BD%E5%99%A8/index.html">
+<meta property="og:site_name" content="加载中...">
+<meta property="og:description" content="1 新建工程最开始本来是打算调用pyocd 的python api的，但是一个是内嵌包一直安装出问题，一个是考虑到本地pack不想重复安装和管理，于是就转做pyocd的前端了，也就是直接调用pyocd，根据返回数据解析，然后执行要做的命令。 所以新建一个普通工程就可以。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/1426b60440534a8c8c8c296d82f0e7b4.png">
+<meta property="article:published_time" content="2023-04-27T09:02:19.000Z">
+<meta property="article:modified_time" content="2023-06-15T07:31:54.344Z">
+<meta property="article:author" content="Always L">
+<meta property="article:tag" content="ARM">
+<meta property="article:tag" content="DAP-Link">
+<meta property="article:tag" content="pyocd">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/1426b60440534a8c8c8c296d82f0e7b4.png">
+
+<link rel="canonical" href="https://alwaysmy.github.io/2023/04/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E4%BD%BF%E7%94%A8aardio%E5%86%99%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8Epyocd%E7%9A%84%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%8B%E8%BD%BD%E5%99%A8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>使用aardio写一个基于pyocd的单片机下载器 | 加载中...</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">加载中...</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">无声无息</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">17</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">16</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://alwaysmy.github.io/2023/04/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E4%BD%BF%E7%94%A8aardio%E5%86%99%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8Epyocd%E7%9A%84%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%8B%E8%BD%BD%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Always L">
+      <meta itemprop="description" content="硬件，杂项，爱好">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="加载中...">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          使用aardio写一个基于pyocd的单片机下载器
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-04-27 17:02:19" itemprop="dateCreated datePublished" datetime="2023-04-27T17:02:19+08:00">2023-04-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-06-15 15:31:54" itemprop="dateModified" datetime="2023-06-15T15:31:54+08:00">2023-06-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">嵌入式与单片机</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="1-新建工程"><a href="#1-新建工程" class="headerlink" title="1 新建工程"></a>1 新建工程</h1><p>最开始本来是打算调用pyocd 的python api的，但是一个是内嵌包一直安装出问题，一个是考虑到本地pack不想重复安装和管理，于是就转做pyocd的前端了，也就是直接调用pyocd，根据返回数据解析，然后执行要做的命令。</p>
+<p>所以新建一个普通工程就可以。</p>
+<span id="more"></span>
+
+<h1 id="2-基本功能"><a href="#2-基本功能" class="headerlink" title="2 基本功能"></a>2 基本功能</h1><p>下载 擦除 复位，主要是这几个常用的，<br>然后要能选择对应的仿真器和单片机型号，能支持的列表，就要用一下pyocd list和pyocd list -t命令查询，根据返回的结果解析。<br>p.s 其实直接用pyocd json 命令返回json会很容易，但是我一开始没看到这个命令，就算了，正好生成命令pyocd list的执行结果也可以给人看。<br>其中pyocd list会返回仿真器的列表，我是通过head也就是第一行的标题的位置来得到下面每行内容的分割位置，得到正确的结果。这里发现是每隔一行为一个仿真器信息。<br>而pyocd list -t 返回可用器件型号，分割方法类似，不过这里不是每隔一行而是连续的每行都是对应结果，一开始这里没看到导致少了一半。<br>另外这里在使用aardio遇到一个bug就是结构体的值发生了变换（aardio实际上没有结构体而是表），不知道为什么，类似的方法直接赋值给数组就不会出问题。</p>
+<h1 id="3-基本实现"><a href="#3-基本实现" class="headerlink" title="3 基本实现"></a>3 基本实现</h1><p><img src="https://img-blog.csdnimg.cn/1426b60440534a8c8c8c296d82f0e7b4.png" alt="基本界面"></p>
+<p>除了基本界面，调整了一下布局，让他能缩放合适，内嵌了字体（软件凭空大了1M多，本来只有几百kb），主要是好不容易调整好了不想改。<br>把一些生成命令的语句例如pyocd gdbserver收纳到了菜单栏。<br>基本就这样。</p>
+<p>这里有我上传的：<br><a target="_blank" rel="noopener" href="http://www.51hei.com/bbs/forum.php?mod=viewthread&tid=228512">分享一个基于pyocd的单片机GUI下载器 - Cortex M3 M0 M4开发 (51hei.com)</a></p>
+<h1 id="4-总结"><a href="#4-总结" class="headerlink" title="4 总结"></a>4 总结</h1><p>aardio确实挺好用的，很能缝合，布局上也是自动缩放，要求不高的话很容易调整到还不错的效果。写起来很快，高分屏的问题也自动处理了，第一次用观感不错。不过有部分问题横竖找不到根源，倒是能换个方法解决。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ARM/" rel="tag"># ARM</a>
+              <a href="/tags/DAP-Link/" rel="tag"># DAP-Link</a>
+              <a href="/tags/pyocd/" rel="tag"># pyocd</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/03/13/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/1%E3%80%81%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA/" rel="prev" title="1、静态博客的搭建">
+      <i class="fa fa-chevron-left"></i> 1、静态博客的搭建
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/06/13/%E7%94%9F%E6%B4%BB%E6%B8%B8%E7%8E%A9/%E9%95%BF%E7%99%BD%E5%B1%B1%E8%A1%8C%E7%AE%80%E8%AE%B0/" rel="next" title="长白山行简记">
+      长白山行简记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E6%96%B0%E5%BB%BA%E5%B7%A5%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">1 新建工程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD"><span class="nav-number">2.</span> <span class="nav-text">2 基本功能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E5%9F%BA%E6%9C%AC%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.</span> <span class="nav-text">3 基本实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">4 总结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Always L</p>
+  <div class="site-description" itemprop="description">硬件，杂项，爱好</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/alwaysmy" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;alwaysmy" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:always_one@foxmail.com" title="E-Mail → mailto:always_one@foxmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Always L</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

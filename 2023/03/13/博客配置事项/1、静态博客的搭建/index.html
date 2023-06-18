@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"alwaysmy.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="博客框架的选择出于方便的目的，加上可以维护自己的MD文档，这里当然是选择一个框架来构建自己的博客。框架有Hexo、WordPress、VuePress、Hugo、Solo、Halo 、Jekyll,但是Gitee pages 支持的服务有Jekyll、Hugo、Hexo。（或者github的）其中Hexo使用比较多，教程也比较多，据说基于Go的Hugo的构建速度比较快，不过目前教程不多，因此这里还">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1、静态博客的搭建">
+<meta property="og:url" content="https://alwaysmy.github.io/2023/03/13/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/1%E3%80%81%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:site_name" content="加载中...">
+<meta property="og:description" content="博客框架的选择出于方便的目的，加上可以维护自己的MD文档，这里当然是选择一个框架来构建自己的博客。框架有Hexo、WordPress、VuePress、Hugo、Solo、Halo 、Jekyll,但是Gitee pages 支持的服务有Jekyll、Hugo、Hexo。（或者github的）其中Hexo使用比较多，教程也比较多，据说基于Go的Hugo的构建速度比较快，不过目前教程不多，因此这里还">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-03-13T09:43:31.000Z">
+<meta property="article:modified_time" content="2023-06-15T08:12:39.685Z">
+<meta property="article:author" content="Always L">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="博客">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://alwaysmy.github.io/2023/03/13/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/1%E3%80%81%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>1、静态博客的搭建 | 加载中...</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">加载中...</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">无声无息</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">17</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">16</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://alwaysmy.github.io/2023/03/13/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/1%E3%80%81%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Always L">
+      <meta itemprop="description" content="硬件，杂项，爱好">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="加载中...">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          1、静态博客的搭建
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-03-13 17:43:31" itemprop="dateCreated datePublished" datetime="2023-03-13T17:43:31+08:00">2023-03-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-06-15 16:12:39" itemprop="dateModified" datetime="2023-06-15T16:12:39+08:00">2023-06-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" itemprop="url" rel="index"><span itemprop="name">博客搭建</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="博客框架的选择"><a href="#博客框架的选择" class="headerlink" title="博客框架的选择"></a>博客框架的选择</h2><p>出于方便的目的，加上可以维护自己的MD文档，这里当然是选择一个框架来构建自己的博客。<br>框架有<strong>Hexo、WordPress、VuePress、Hugo、Solo、Halo 、Jekyll</strong>,<br>但是Gitee pages 支持的服务有Jekyll、Hugo、Hexo。（或者github的）<br>其中Hexo使用比较多，教程也比较多，据说基于Go的Hugo的构建速度比较快，不过目前教程不多，因此这里还是选择了基于node.js的hexo。</p>
+<span id="more"></span>
+<h2 id="Hexo框架的初始化"><a href="#Hexo框架的初始化" class="headerlink" title="Hexo框架的初始化"></a>Hexo框架的初始化</h2><h3 id="1、安装node-js"><a href="#1、安装node-js" class="headerlink" title="1、安装node.js"></a>1、安装node.js</h3><p>Windows 直接用安装包安装就行，选LTS版本,里面的npm工具要安装上。<br>linux下 就比较简单，直接install nodejs和install npm.</p>
+<h3 id="2、安装hexo"><a href="#2、安装hexo" class="headerlink" title="2、安装hexo"></a>2、安装hexo</h3><p>在需要存放自己博客文件的文件夹下面打开命令行(not powershell,可以安装但是不能执行)，</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>然后试试执行命令<code>hexo -v</code>看看安装成功没有。</p>
+<p>然后初始化hexo：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<p>也可以新建一个文件夹的方式</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init myblog</span><br><span class="line"><span class="built_in">cd</span> myblog</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<p>这时候这个文件夹下面有：</p>
+<ul>
+<li>node_modules: 依赖包</li>
+<li>public：存放生成的页面</li>
+<li>scaffolds：生成文章的一些模板</li>
+<li>source：用来存放你的文章</li>
+<li>themes：主题</li>
+<li><strong>_config.yml: 博客的配置文件</strong></li>
+</ul>
+<p>测试一下功能正常</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p>然后点开生成的本地服务 localhost:4000可以看到一个自带的页面。</p>
+<h3 id="3-连接Github仓库"><a href="#3-连接Github仓库" class="headerlink" title="3 连接Github仓库"></a>3 连接Github仓库</h3><p>新建一个仓库名为   用户名.github.io  ，这样pages的根目录就是这个仓库名，否则是 用户名.github.io&#x2F;仓库名，也不是不能用但是一来不好看，而来后面还要加配置。<br>如果使用Gitee,这里需要新建一个名为用户名的仓库，达到和Github 一样的效果。</p>
+<p>然后就是配置Git的那一套，用户名，SSH,这都是全局配置，配过了就不用再配置了。见[[GIT的初始使用方法]]。</p>
+<p>在博客文件夹下有配置文件，里面包含了deploy这个项目<br>在文件内文本配置自己的仓库链接：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># repo: https://gitee.com/always_one/always_one.git</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:alwaysmy/alwaysmy.github.io.git</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p> 注意了，这里GitHub不要使用https链接了，现在不支持，gitee倒是没注意过，要用git链接。<br> 同时<br> 还有配置博客对应的根目录</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="string">url:</span> <span class="string">https://alwaysmy.github.io</span></span><br><span class="line"></span><br><span class="line"><span class="string">root:</span> <span class="string">/</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p> 安装deploy-git，通过hexo命令来部署到Github.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>然后再hexo所在的文件夹下面执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean&amp;&amp; hexo g&amp;&amp;hexo d</span><br></pre></td></tr></table></figure>
+
+<p>分别是清空，生成和部署。有时候直接生成部署就行，如果修改了Hexo主题相关的东西需要清空。</p>
+<p>这时候你直接在生成的.deploy_git文件夹内使用git push当然也可以，但是那样搞复杂了。</p>
+<h2 id="配置Hexo"><a href="#配置Hexo" class="headerlink" title="配置Hexo"></a>配置Hexo</h2><h3 id="配置主题"><a href="#配置主题" class="headerlink" title="配置主题"></a>配置主题</h3><p>主题的配置需要在主题下对应主题内的_config.yml下修改<br>更换hexo NEXT的主题配置之后必须要先hexo clean才能生成对应的主题</p>
+<h3 id="图片的URL问题"><a href="#图片的URL问题" class="headerlink" title="图片的URL问题"></a>图片的URL问题</h3><p>前面已经配置好了,所以我不记得了,下面说点小问题.<br>如果图片在本地预览正确,但是hexo生成的带了绝对路径,那么大概是图片的路径前面多了个&#x2F;,虽然在(Windows)本地&#x2F;不影响这个图片的路径的查找,但是hexo为图片不会生成一个带日期的路径,</p>
+<ol>
+<li><p>安装插件 asset-image 但是这个插件好像需要一点修改</p>
+</li>
+<li><p>npm install <a target="_blank" rel="noopener" href="https://github.com/CodeFalling/hexo-asset-image">https://github.com/CodeFalling/hexo-asset-image</a></p>
+</li>
+<li><p>设置图片为相对路径</p>
+</li>
+<li><p>hexo clean &amp;&amp; hexo generate &amp;&amp; hexo s 运行查看<br>hexo配置需要启用post_asset_folder: true<br>关闭动画<br><strong>motion</strong> 修改为false</p>
+<h1 id="拓展问题"><a href="#拓展问题" class="headerlink" title="拓展问题"></a>拓展问题</h1><h2 id="评论区如何解决"><a href="#评论区如何解决" class="headerlink" title="评论区如何解决"></a>评论区如何解决</h2><p>博客有评论的功能是最好不过的,不能老让人家发邮件,也不方便整理.</p>
+<h2 id="迁移博客到别的平台"><a href="#迁移博客到别的平台" class="headerlink" title="迁移博客到别的平台"></a>迁移博客到别的平台</h2><p>这里需要从gitee迁移到github.<br>首先可以在github中<a target="_blank" rel="noopener" href="https://github.com/new/import">Import a Repository (github.com)</a>  复制原来仓库链接进行迁移.<br>修改.deploy_git 下.git中的config文件内包含的远程仓库的地址.或者用命令修改.</p>
+</li>
+</ol>
+<p>本地重新安装node后安装npm,然后这里是hexo博客,就</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>然后这里不需要hexo init了,直接在原来的博客文件夹下,我这里是myweb,hexo s测试一下结果.<br>使用hexo n “博客标题”来创建博客文章</p>
+<p>github相比gitee的pages,仓库名需要alwaysmy.github.io加上后面的github.io才行</p>
+<p>修改hexo中_config.yml下的url为github page给出的url,仓库改成git协议的仓库</p>
+<p>文章中开头的描述后面需要有空格</p>
+<h1 id="添加附加信息"><a href="#添加附加信息" class="headerlink" title="添加附加信息"></a>添加附加信息</h1><h2 id="添加github和邮箱"><a href="#添加github和邮箱" class="headerlink" title="添加github和邮箱"></a>添加github和邮箱</h2><p>打开 <code>~\themes\next\_config.yml</code> 文件，找到 <code>social</code> 相关的设置，取消掉需要的菜单项的注释。</p>
+<p>打赏<br>reward:</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/hexo/" rel="tag"># hexo</a>
+              <a href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag"># 博客</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/03/13/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/%E5%B7%B2%E6%9C%89%E5%8D%9A%E5%AE%A2%E4%BB%93%E5%BA%93%E7%9A%84%E9%87%8D%E5%BB%BA%E5%92%8C%E9%85%8D%E7%BD%AE/" rel="prev" title="已有博客仓库的重建和配置">
+      <i class="fa fa-chevron-left"></i> 已有博客仓库的重建和配置
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/04/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E4%BD%BF%E7%94%A8aardio%E5%86%99%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8Epyocd%E7%9A%84%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%8B%E8%BD%BD%E5%99%A8/" rel="next" title="使用aardio写一个基于pyocd的单片机下载器">
+      使用aardio写一个基于pyocd的单片机下载器 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6%E7%9A%84%E9%80%89%E6%8B%A9"><span class="nav-number">1.</span> <span class="nav-text">博客框架的选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hexo%E6%A1%86%E6%9E%B6%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">2.</span> <span class="nav-text">Hexo框架的初始化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E5%AE%89%E8%A3%85node-js"><span class="nav-number">2.1.</span> <span class="nav-text">1、安装node.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E5%AE%89%E8%A3%85hexo"><span class="nav-number">2.2.</span> <span class="nav-text">2、安装hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%BF%9E%E6%8E%A5Github%E4%BB%93%E5%BA%93"><span class="nav-number">2.3.</span> <span class="nav-text">3 连接Github仓库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEHexo"><span class="nav-number">3.</span> <span class="nav-text">配置Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E4%B8%BB%E9%A2%98"><span class="nav-number">3.1.</span> <span class="nav-text">配置主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E7%89%87%E7%9A%84URL%E9%97%AE%E9%A2%98"><span class="nav-number">3.2.</span> <span class="nav-text">图片的URL问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8B%93%E5%B1%95%E9%97%AE%E9%A2%98"><span class="nav-number"></span> <span class="nav-text">拓展问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%84%E8%AE%BA%E5%8C%BA%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3"><span class="nav-number">1.</span> <span class="nav-text">评论区如何解决</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%81%E7%A7%BB%E5%8D%9A%E5%AE%A2%E5%88%B0%E5%88%AB%E7%9A%84%E5%B9%B3%E5%8F%B0"><span class="nav-number">2.</span> <span class="nav-text">迁移博客到别的平台</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E9%99%84%E5%8A%A0%E4%BF%A1%E6%81%AF"><span class="nav-number"></span> <span class="nav-text">添加附加信息</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0github%E5%92%8C%E9%82%AE%E7%AE%B1"><span class="nav-number">1.</span> <span class="nav-text">添加github和邮箱</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Always L</p>
+  <div class="site-description" itemprop="description">硬件，杂项，爱好</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/alwaysmy" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;alwaysmy" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:always_one@foxmail.com" title="E-Mail → mailto:always_one@foxmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Always L</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
