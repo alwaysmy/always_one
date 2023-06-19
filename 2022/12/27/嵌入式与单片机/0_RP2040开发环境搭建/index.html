@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 6.3.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-con-sand.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon32.ico">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
 <link rel="stylesheet" href="/css/main.css">
@@ -17,21 +17,20 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"alwaysmy.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"alwaysmy.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="树莓派 RP2040 开发环境配置骨灰版(Raspberry Pico)前置说明RP2040作为一款树莓派的单片机，一开始我以为会有很成熟的开发方案，结果发现网上的配置方法大多数是照着官方给的方法一抄，完全没有解释里面各个部分需要做什么的原因以及有什么过程需要了解学习，甚至没有说这个配置方案就是官方文档给出的【1】">
 <meta property="og:type" content="article">
-<meta property="og:title" content="树莓派 RP2040 开发环境配置骨灰版(Raspberry Pico)">
+<meta property="og:title" content="树莓派RP2040 开发环境配置骨灰版(Raspberry Pico)">
 <meta property="og:url" content="https://alwaysmy.github.io/2022/12/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/0_RP2040%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/index.html">
 <meta property="og:site_name" content="加载中...">
 <meta property="og:description" content="树莓派 RP2040 开发环境配置骨灰版(Raspberry Pico)前置说明RP2040作为一款树莓派的单片机，一开始我以为会有很成熟的开发方案，结果发现网上的配置方法大多数是照着官方给的方法一抄，完全没有解释里面各个部分需要做什么的原因以及有什么过程需要了解学习，甚至没有说这个配置方案就是官方文档给出的【1】">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://alwaysmy.github.io/2022/12/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/0_RP2040%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/MyProjects/4_MyOutputs/%E5%AD%A6%E4%B9%A0%E5%86%85%E5%AE%B9%E7%9A%84%E8%BE%93%E5%87%BA/%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E9%85%8D%E7%BD%AE/RP2040%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/0_RP2040%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/arduino%E6%A1%86%E6%9E%B6%E5%8F%AF%E4%BB%A5%E8%B0%83%E8%AF%95%E5%8F%8C%E6%A0%B8-wchLink.png">
 <meta property="og:image" content="https://alwaysmy.github.io/.%5C0_RP2040%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%5Cpico-project-generator1.png">
-<meta property="og:image" content="https://alwaysmy.github.io/0_RP2040%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%5C%E5%BA%95%E8%BE%B9%E6%A0%8F%E9%80%89%E6%8B%A9%E5%B7%A5%E5%85%B7%E7%AE%B1.png?msec=1670169712467">
 <meta property="article:published_time" content="2022-12-27T11:26:30.000Z">
-<meta property="article:modified_time" content="2023-06-18T16:41:21.640Z">
+<meta property="article:modified_time" content="2023-06-19T06:26:38.446Z">
 <meta property="article:author" content="Always L">
 <meta property="article:tag" content="rp2040">
 <meta property="article:tag" content="ARM">
@@ -51,7 +50,7 @@
   };
 </script>
 
-  <title>树莓派 RP2040 开发环境配置骨灰版(Raspberry Pico) | 加载中...</title>
+  <title>树莓派RP2040 开发环境配置骨灰版(Raspberry Pico) | 加载中...</title>
   
 
 
@@ -85,7 +84,7 @@
 <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.8}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container">
+  <div class="container use-motion">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -110,6 +109,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -139,11 +139,38 @@
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">17</span></a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -170,7 +197,7 @@
     <link itemprop="mainEntityOfPage" href="https://alwaysmy.github.io/2022/12/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/0_RP2040%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/misterchief.png">
       <meta itemprop="name" content="Always L">
       <meta itemprop="description" content="硬件，杂项，爱好">
     </span>
@@ -180,7 +207,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          树莓派 RP2040 开发环境配置骨灰版(Raspberry Pico)
+          树莓派RP2040 开发环境配置骨灰版(Raspberry Pico)
         </h1>
 
         <div class="post-meta">
@@ -197,7 +224,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-06-19 00:41:21" itemprop="dateModified" datetime="2023-06-19T00:41:21+08:00">2023-06-19</time>
+                <time title="修改时间：2023-06-19 14:26:38" itemprop="dateModified" datetime="2023-06-19T14:26:38+08:00">2023-06-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -209,7 +236,21 @@
                 </span>
             </span>
 
-          
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>13k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>30 分钟</span>
+            </span>
 
         </div>
       </header>
@@ -242,7 +283,7 @@
 <p>2、下载<a target="_blank" rel="noopener" href="https://thonny.org/">Thonny IDE</a>, 打开Thonny，右上角点击切换至一般模式，然后点击视图，勾选上这三个：Shell、变量、文件，当然还有别的，这几个最常用。</p>
 <p>3、Thonny：工具-设置-解释器-选择Raspberry Pi Pico的解释器，然后选择串口端口，这个端口可以看刚刚设备管理器多出来的那个端口就是的。也可另外用别的工具直接连板子上的串口，波特率是115200。</p>
 <p>4、进入shell直接依次执行python语句测试</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> machine <span class="keyword">import</span> Pin</span><br><span class="line">led = Pin(<span class="number">25</span>, Pin.OUT)</span><br><span class="line">led.value(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> machine <span class="keyword">import</span> Pin</span><br><span class="line">led = Pin(<span class="number">25</span>, Pin.OUT)</span><br><span class="line">led.value(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
 
 <p>5、写python文件</p>
 <p>在Thonny里面编辑文本后保存的时候选择保存到pico就行了，开机默认自动运行main.py .</p>
@@ -261,7 +302,7 @@
 <p>也支持在arduino框架下直接使用pico-sdk的函数，看文档应该是支持pio，支持多核，因为本身就是基于C-SDK的。</p>
 <p><strong>下载调试：</strong></p>
 <p>这个框架一般会自动选择调试工具，如果要更改就在工程下的ini文件里面添加两行，例如：</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">upload_protocol</span> = picotool</span><br><span class="line"><span class="attr">debug_tool</span> = cmsis-dap</span><br></pre></td></tr></table></figure>
+<figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="attr">upload_protocol</span> = picotool</span><br><span class="line"><span class="attr">debug_tool</span> = cmsis-dap</span><br></pre></td></tr></table></figure>
 
 <p>上面的上传和debug参数可以分别改成</p>
 <ul>
@@ -296,7 +337,7 @@
 <p><strong>下载调试：</strong></p>
 <p>下载默认是uf2下载，需要rp2040先手工进入BOOT模式，稍微有点麻烦，可以参考后面的调试方法里面的一键进入BOOT.</p>
 <p>如果要调试，在<code>platformio.ini</code>  里面添加对应的方式，比如</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">upload_protocol</span> = picoprobe</span><br><span class="line"><span class="attr">debug_tool</span> = picoprobe</span><br></pre></td></tr></table></figure>
+<figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="attr">upload_protocol</span> = picoprobe</span><br><span class="line"><span class="attr">debug_tool</span> = picoprobe</span><br></pre></td></tr></table></figure>
 
 <p>上面的值可以改成：cmsis-dap，picoprobe, uf2</p>
 <p>不过我测试的时候感觉我的wch-link就没被调用过，，可能实际上这个框架里面估计也就picoprobe好使，不清楚是不是我的问题。</p>
@@ -324,7 +365,7 @@
 <p>然后编译，debug。</p>
 <p>默认没有生成uf2文件。</p>
 <p>工程配置可以修改C&#x2F;C++的包含路径，工程本身包含了部分pico-sdk的include路径，但是没有完全包含—-不知道具体原因是为啥—-没有被默认配置到包含路径的的包括hardware_xxx下的外设的库，这个路径对应</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">....\SEGGER Embedded Studio\v3\packagesRP2040_Pico_BSP\pico-sdk\src\rp2_common</span><br></pre></td></tr></table></figure>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">....\SEGGER Embedded Studio\v3\packagesRP2040_Pico_BSP\pico-sdk\src\rp2_common</span><br></pre></td></tr></table></figure>
 
 <p>而且这个pico-sdk是不包含第三方库的。应该是可以自己加上去的，没有仔细试过（不知道会不会出现stdlib不兼容的情况，因为pico的c-sdk里面自己定义了个stdlib.h)<br>不过按照和前面的Cmakelist的路径添加，应该是可以做到这个工程和官方方法的工程代码兼容的方法的）</p>
 <h4 id="仿真下载调试"><a href="#仿真下载调试" class="headerlink" title="仿真下载调试"></a>仿真下载调试</h4><h5 id="J-link"><a href="#J-link" class="headerlink" title="J-link"></a>J-link</h5><p>不支持V10以下的Jlink。。。也有的说能支持，但是反正我的Jlink Lite V9显示不支持multi-drop，也有人说需要Jlink v11才行。</p>
@@ -336,7 +377,7 @@
 </ul>
 <p>合着来卖配件了，5块钱的单片机配不上这个尊贵的JLink.</p>
 <h5 id="Daplink（Openocd）"><a href="#Daplink（Openocd）" class="headerlink" title="Daplink（Openocd）"></a>Daplink（Openocd）</h5><p>1、在Shell或命令行里面开一个openocd server等待连接，如：(这一步实际上可选)</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openocd -f board/pico-debug.cfg</span><br></pre></td></tr></table></figure>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">openocd -f board/pico-debug.cfg</span><br></pre></td></tr></table></figure>
 
 <p>这里这个配置文件是openocd自带的，其配置实际上调试的是rp2040的core0，也就是调试的是单个核心。</p>
 <p>2、配置工程调试选项</p>
@@ -345,12 +386,12 @@
 <p>实际上第一步手动开一个openocd等待的过程可以省掉：</p>
 <p>可以勾选工程选项里面debug下面的 <code>GDB Server-auto start gdb server</code> 为yes 。</p>
 <p>然后填写<code>Debug &gt; GDB Server &gt; GDB Server Command Line</code>：</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openocd.exe -f board/pico-debug.cfg</span><br></pre></td></tr></table></figure>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">openocd.exe -f board/pico-debug.cfg</span><br></pre></td></tr></table></figure>
 
 <p>这个openocd要加入环境变量，或者使用绝对路径。</p>
 <p>实测中，单核使用自调试固件的单核配置（也就是pico-debug.cfg这个配置），多核使用WCH-link使用标准的配置，都可以正常调试、查看变量寄存器。</p>
 <p>如果想调试多核，标准多核的配置为：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openocd -f interface/cmsis-dap.cfg -f target/rp2040.cfg</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">openocd -f interface/cmsis-dap.cfg -f target/rp2040.cfg</span><br></pre></td></tr></table></figure>
 
 <p>只是如果使用单核的配置的情况下使用外部daplink的时候就不要让它自己启动openocd,不然连接不上(不知道为啥)。</p>
 <p>在Embedded Studio中，默认调试支持半主机模式（semihosting），也就是支持printf输出到主机的debug窗口。</p>
@@ -390,7 +431,7 @@ git submodule update --init
 </li>
 <li><p><input disabled type="checkbox"> 
 <strong>下载例程、SDK、模板生成工具</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/raspberrypi/pico-project-generator.git</span><br><span class="line">git clone -b master https://github.com/raspberrypi/pico-sdk.git</span><br><span class="line">cd pico-sdk/</span><br><span class="line">git submodule update --init</span><br><span class="line">cd ..</span><br><span class="line">git clone -b master https://github.com/raspberrypi/pico-examples.git</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/raspberrypi/pico-project-generator.git</span><br><span class="line">git clone -b master https://github.com/raspberrypi/pico-sdk.git</span><br><span class="line">cd pico-sdk/</span><br><span class="line">git submodule update --init</span><br><span class="line">cd ..</span><br><span class="line">git clone -b master https://github.com/raspberrypi/pico-examples.git</span><br></pre></td></tr></table></figure></li>
 </ul>
 <p>这里配置更新子模块的时候如果报错，就更新到最新的SDK，大概是之前写的有问题。找不到子模块什么的。</p>
 <ul>
@@ -433,56 +474,56 @@ git submodule update --init
 <p>c. 其实别的工具也可以ninja或者其他的gcc替代品，不复杂介绍了，</p>
 <h4 id="4-2-2-配置路径SDK"><a href="#4-2-2-配置路径SDK" class="headerlink" title="4.2.2 配置路径SDK"></a>4.2.2 配置路径SDK</h4><p>上一步中，下好了pico-sdk,examples,还有generator，把pico-sdk放到自己指定的位置，然后把其目录加到环境变量里面，名称是PICO_SDK_PATH. 这个环境变量的路径是给配置出来的CMakelist引用的，还有后面的模板生成器也需要配置这个环境变量，配置方法如下：</p>
 <p>a.可以使用使用powershell</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setx PICO_SDK_PATH <span class="string">&quot;youpath\pico-sdk&quot;</span> </span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">setx PICO_SDK_PATH <span class="string">&quot;youpath\pico-sdk&quot;</span> </span><br></pre></td></tr></table></figure>
 
 <p>b.或者Windows下面直接搜path，就能找到编辑系统环境变量的选项。</p>
 <p>(其实这里没加也没关系，有别的方法，但是最好加上，因为generator默认用的是环境变量配置)。</p>
 <p>c.当然也可以临时配置环境变量，但是没必要这样做, 不然每次都要重新导入环境变量：</p>
 <p>在powershell内执行</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$env:PICO_SDK_PATH</span>=pico<span class="literal">-sdk</span>的路径</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="variable">$env:PICO_SDK_PATH</span>=pico<span class="literal">-sdk</span>的路径</span><br></pre></td></tr></table></figure>
 
 <h4 id="4-2-3-编译例程测试"><a href="#4-2-3-编译例程测试" class="headerlink" title="4.2.3 编译例程测试"></a>4.2.3 编译例程测试</h4><p>其实这个步骤不是必须的，但是最好测试一次，同时也演示了不配置IDE怎么编译。</p>
 <h5 id="a-如配置的是visual-studio的编译器"><a href="#a-如配置的是visual-studio的编译器" class="headerlink" title="a. 如配置的是visual studio的编译器"></a>a. 如配置的是visual studio的编译器</h5><p>也就是官方手册指出的方法，那么打开Visual Studio 2022 Developer Command Prompt：</p>
 <p>使用快捷方式或者WindowsTerminal打开（Windows Terminal点加号旁边的下拉，里面有选项），打开之后会提示</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">**********************************************************************</span><br><span class="line">** Visual Studio <span class="number">2019</span> Developer Command Prompt v16.<span class="number">7</span>.<span class="number">2</span></span><br><span class="line">** Copyright (c) <span class="number">2020</span> Microsoft Corporation</span><br><span class="line">**********************************************************************</span><br><span class="line">[vcvarsall.bat] Environment initialized <span class="keyword">for</span>: &#x27;x86_x64&#x27;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">**********************************************************************</span><br><span class="line">** Visual Studio <span class="number">2019</span> Developer Command Prompt v16.<span class="number">7</span>.<span class="number">2</span></span><br><span class="line">** Copyright (c) <span class="number">2020</span> Microsoft Corporation</span><br><span class="line">**********************************************************************</span><br><span class="line">[vcvarsall.bat] Environment initialized <span class="keyword">for</span>: &#x27;x86_x64&#x27;</span><br></pre></td></tr></table></figure>
 
 <p>类似于上面这样表示加载了vs的环境，实际上也可以直接打开命令行之后通过执行<code>vcvars64.bat</code>这个文件来加载环境，也会给出一样的提示。</p>
 <p>从刚刚打开的命令行或者powershell，进入<code>pico-example</code>目录：</p>
 <p><em>（上一步可以选使用cmd还是powershell，如果用cmd，工程切换到别的盘先要换盘符，然后cd进去；</em></p>
 <p><em>powershell可以直接进去）</em></p>
 <p>然后，在build目录里面执行 <code>cmake .. </code>，表示取上层目录的cmakelist.txt，这里需要添加参数<code>-G &quot;NMake Makefiles&quot;</code>,表示生成的是Nmake对应的makefile。</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir build</span><br><span class="line"><span class="built_in">cd</span> build</span><br><span class="line">cmake .. <span class="literal">-G</span> <span class="string">&quot;NMake Makefiles&quot;</span> </span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">mkdir build</span><br><span class="line"><span class="built_in">cd</span> build</span><br><span class="line">cmake .. <span class="literal">-G</span> <span class="string">&quot;NMake Makefiles&quot;</span> </span><br></pre></td></tr></table></figure>
 
 <p>如果这里能正常找到对应sdk、toolchain的路径，就不会报错。(就是前面都配置好PICO-SDK和arm-none-eabi-gcc.exe的环境变量了)</p>
 <p>继续编译一个例程，比如blink这个程序，可以继续cd到pico-examples&#x2F;build目录下的blink(随着上面的步骤做完了，目前shell下的未知已经在build文件夹里面了)，</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd blink</span><br><span class="line">nmake</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd blink</span><br><span class="line">nmake</span><br></pre></td></tr></table></figure>
 
 <p>这时候看编译信息，可以看到正常生成的信息。</p>
 <p>进入build&#x2F;blink，右键xxx.uf2, 选择发送到RPI-RP2这个驱动器，发送完会自动运行。</p>
 <p>对于pico-example，也可以进入example下的build目录后执行make（对应nmake或者mingw32-make）后直接编译全部例程，但是这样耗时比较长，没有必要这样做。</p>
 <h5 id="b-如果配置的是MinGW"><a href="#b-如果配置的是MinGW" class="headerlink" title="b. 如果配置的是MinGW"></a>b. 如果配置的是MinGW</h5><p>直接在build目录打开shell，指定生成格式的makefile（不需要从那个VS的环境进）</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmake .. -G &quot;MinGW32 Makefiles&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cmake .. -G &quot;MinGW32 Makefiles&quot;</span><br></pre></td></tr></table></figure>
 
 <p>然后执行<code>mingw32-make</code>就可以编译了,其他的步骤和上面一样。只需要替换nmake命令为现在使用的mingw的mingw32-make。</p>
 <p><strong>p.s.</strong> </p>
 <p>如果在工程中先使用nmake的参数生成了makefile，再想要换成mingw32-make，这时候直接使用 <code>cmake -G &quot;MinGW32 Makefiles&quot;</code>生成makefile的话，会报错之前使用的不符合现在的配置，与之前的cmake generator不符，需要将build下的cmakecache文件删掉，再指定MinGW Makefiles.(也可以使用cmake-gui.exe直接手动切换)。不过实际操作用generator生成模板的时候可能有好几个cmakecache.txt都要删除，不然还是会报错。所以建议一开始就搞好。</p>
 <h5 id="解释一下上面的语句"><a href="#解释一下上面的语句" class="headerlink" title="解释一下上面的语句"></a>解释一下上面的语句</h5><p>这里cmake是生成make工具对应的makefile。-G后面的参数用来指定工具，也可以用来生成IDE对应的工程文件。</p>
 <p>使用<code>cmake --help</code>可以看到很多指令参数，里面有各种generator的名称，注意大小写,例如：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Borland Makefiles            = Generates Borland makefiles.</span><br><span class="line">NMake Makefiles              = Generates NMake makefiles.</span><br><span class="line">NMake Makefiles JOM          = Generates JOM makefiles.</span><br><span class="line">MSYS Makefiles               = Generates MSYS makefiles.</span><br><span class="line">MinGW Makefiles              = Generates a make file for use with</span><br><span class="line">                               mingw32-make.</span><br><span class="line">Green Hills MULTI            = Generates Green Hills MULTI files</span><br><span class="line">                               (experimental, work-in-progress).</span><br><span class="line">Unix Makefiles               = Generates standard UNIX makefiles.</span><br><span class="line">Ninja                        = Generates build.ninja files.</span><br><span class="line">Ninja Multi-Config           = Generates build-&lt;Config&gt;.ninja files.</span><br><span class="line">Watcom WMake                 = Generates Watcom WMake makefiles.</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Borland Makefiles            = Generates Borland makefiles.</span><br><span class="line">NMake Makefiles              = Generates NMake makefiles.</span><br><span class="line">NMake Makefiles JOM          = Generates JOM makefiles.</span><br><span class="line">MSYS Makefiles               = Generates MSYS makefiles.</span><br><span class="line">MinGW Makefiles              = Generates a make file for use with</span><br><span class="line">                               mingw32-make.</span><br><span class="line">Green Hills MULTI            = Generates Green Hills MULTI files</span><br><span class="line">                               (experimental, work-in-progress).</span><br><span class="line">Unix Makefiles               = Generates standard UNIX makefiles.</span><br><span class="line">Ninja                        = Generates build.ninja files.</span><br><span class="line">Ninja Multi-Config           = Generates build-&lt;Config&gt;.ninja files.</span><br><span class="line">Watcom WMake                 = Generates Watcom WMake makefiles.</span><br></pre></td></tr></table></figure>
 
 <p>比如也有人用Ninja，但是那需要ninja的构建文件，同mingw步骤。</p>
 <p>以上就是标准的例程配置方法。</p>
 <h4 id="4-2-4-生成自己的工程并编译烧录"><a href="#4-2-4-生成自己的工程并编译烧录" class="headerlink" title="4.2.4 生成自己的工程并编译烧录"></a>4.2.4 生成自己的工程并编译烧录</h4><p> 这一步就是使用pico-project-generator生成工程，下文中把pico-project-generator称作生成器。</p>
 <p>**p.s.**（这里提前说一下，如果生成器启动有问题，首先更新pico-project-generator到最新的python文件；与有的早期教程不同，现在生成器在windows下面没有问题，能正常使用，不需要改动python的源码等步骤（是新版的python没有这个问题，3.10））)</p>
 <p>进入pico-project-generator目录下，右键打开shell，运行：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python ./pico_project.py --gui</span><br><span class="line"><span class="comment">#或者</span></span><br><span class="line">python ./pico_project.py -g</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">python ./pico_project.py --gui</span><br><span class="line"><span class="comment">#或者</span></span><br><span class="line">python ./pico_project.py -g</span><br></pre></td></tr></table></figure>
 
 <p>这里建议找到pico_project.py 647行的self.locationName.set(os.path.abspath(os.getcwd()),改成：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self.locationName.<span class="built_in">set</span>(os.path.abspath(os.path.join(os.getcwd(), <span class="string">&quot;..&quot;</span>)))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">self.locationName.<span class="built_in">set</span>(os.path.abspath(os.path.join(os.getcwd(), <span class="string">&quot;..&quot;</span>)))</span><br></pre></td></tr></table></figure>
 
 <p>这样默认路径是pico_project.py的上层目录而不是与生成器的python文件在同级目录。</p>
 <p>然后建议去掉开头那个logo，，，因为屏幕太小了话不合适的缩放会导致最后点不到确定按钮。，就是下面这两行。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">self.logo = tk.PhotoImage(file=GetFilePath(<span class="string">&quot;logo_alpha.gif&quot;</span>))</span><br><span class="line">logowidget = ttk.Label(mainFrame, image=self.logo, borderwidth=<span class="number">0</span>, relief=<span class="string">&quot;solid&quot;</span>).grid(row=<span class="number">0</span>,column=<span class="number">0</span>, columnspan=<span class="number">5</span>, pady=<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">self.logo = tk.PhotoImage(file=GetFilePath(<span class="string">&quot;logo_alpha.gif&quot;</span>))</span><br><span class="line">logowidget = ttk.Label(mainFrame, image=self.logo, borderwidth=<span class="number">0</span>, relief=<span class="string">&quot;solid&quot;</span>).grid(row=<span class="number">0</span>,column=<span class="number">0</span>, columnspan=<span class="number">5</span>, pady=<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
 
 <p>这样就打开了生成器，然后按照需要勾选内容, 如下：</p>
 <p><img src="/.%5C0_RP2040%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%5Cpico-project-generator1.png"></p>
@@ -551,7 +592,7 @@ git submodule update --init
 <p>找到Configure Environment, 添加上面最开始说的两个环境变量，如果已经有配置好的系统环境变量就可以不用配置。</p>
 <p>找到CMake Tools Configuration - Generator，设置为NMake Makefiles或者MinGW Makefiles. 前者是对应使用VS的编译器，后者是对应使用mingw的编译器。</p>
 <p>打开项目文件夹，第一次打开的时候会提示选择工具包，点一下选择有arm-none-eabi的这一项。选错过了也没关系，就在最下面的底边栏。</p>
-<p><img src="/./0_RP2040%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%5C%E5%BA%95%E8%BE%B9%E6%A0%8F%E9%80%89%E6%8B%A9%E5%B7%A5%E5%85%B7%E7%AE%B1.png?msec=1670169712467"></p>
+<p></p>
 <p><strong>b. 安装插件：cortex-Debug</strong></p>
 <p>打开文件夹之后，按F7是Cmake的build，F5是cortex-debug的调试，当然具体快捷键是什么得看自己vscode的配置，这两种都能编译，后者会编译后启动openocd进行调试。</p>
 <p><strong>c. 创建工程</strong></p>
@@ -577,7 +618,7 @@ code
 <p>然后configFiles的内容根据自己用的仿真器修改。</p>
 <p>setting.json：</p>
 <p>全局设置已经配置好的话，这里可以不修改，也可以把之前的插件设置的全局设置挪到这里来变成工程设置，比如：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  &quot;cortex-debug.armToolchainPath&quot;: &quot;&quot;,</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//  &quot;cortex-debug.openocdPath.windows&quot;: &quot;D:\\MyPrograms\\1_DevelopTools\\MCU_Tools\\openocd-04887d3b6-i686-w64-mingw32\\bin\\openocd.exe&quot;,</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//  &quot;cortex-debug.openocdPath&quot;: &quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// &quot;cmake.generator&quot;: &quot;MinGW Makefiles&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// &quot;cmake.generator&quot;: &quot;NMake Makefiles&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  &quot;cortex-debug.armToolchainPath&quot;: &quot;&quot;,</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//  &quot;cortex-debug.openocdPath.windows&quot;: &quot;D:\\MyPrograms\\1_DevelopTools\\MCU_Tools\\openocd-04887d3b6-i686-w64-mingw32\\bin\\openocd.exe&quot;,</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//  &quot;cortex-debug.openocdPath&quot;: &quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// &quot;cmake.generator&quot;: &quot;MinGW Makefiles&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// &quot;cmake.generator&quot;: &quot;NMake Makefiles&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>同时cmaketool的几个按钮它默认候隐藏了，实际上确实没啥用，可以单独把Build按钮显示出来方便单独编译，就是改成default。</p>
 <p>extensions.json：</p>
@@ -593,7 +634,7 @@ code
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/360721924">树莓派学习笔记4-pico的vscode c&#x2F;c++工程配置 - 知乎 (zhihu.com)</a></p>
 <p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/tianizimark/article/details/122708534">(104条消息) Raspberry-Pi-PICO系列–第一篇 初识RP2040_coder.mark的博客-CSDN博客_rp2040</a></p>
 <h4 id="4-3-3-其他IDE配置"><a href="#4-3-3-其他IDE配置" class="headerlink" title="4.3.3  其他IDE配置"></a>4.3.3  其他IDE配置</h4><p>下面的配置都不太好用我觉得。。</p>
-<h4 id="Eclipse"><a href="#Eclipse" class="headerlink" title="Eclipse"></a>Eclipse</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmake -G &quot;Eclipse CDT4 - MinGW Makefiles&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="Eclipse"><a href="#Eclipse" class="headerlink" title="Eclipse"></a>Eclipse</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cmake -G &quot;Eclipse CDT4 - MinGW Makefiles&quot;</span><br></pre></td></tr></table></figure>
 
 <p>参考官方教程，很详细。如果不想单独下个eclipse的话，看看电脑上哪个基于eclipse的IDE不是阉割的可以直接拿来用,不过我没找到。。</p>
 <h4 id="Kdevelop："><a href="#Kdevelop：" class="headerlink" title="Kdevelop："></a>Kdevelop：</h4><p><a target="_blank" rel="noopener" href="https://www.kdevelop.org/download">Download | KDevelop</a></p>
@@ -664,7 +705,7 @@ target remote localhost:3333
 <p>还有需要的cmake make git armgcc：</p>
 <p>sudo apt install cmake gcc-arm-none-eabi libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib make</p>
 <p>然后配置环境变量</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> pico-sdk</span><br><span class="line"><span class="built_in">export</span> PICO_SDK_PATH=`<span class="built_in">pwd</span>` </span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> pico-sdk</span><br><span class="line"><span class="built_in">export</span> PICO_SDK_PATH=`<span class="built_in">pwd</span>` </span><br></pre></td></tr></table></figure>
 
 <h4 id="下载例程编译例程"><a href="#下载例程编译例程" class="headerlink" title="下载例程编译例程"></a>下载例程编译例程</h4><p>和windows的步骤类似，简单点</p>
 <p>下面是废弃步骤做个记录：</p>
@@ -684,7 +725,7 @@ target remote localhost:3333
 <p>正确步骤：</p>
 <p>找到正确的源。。。</p>
 <p><strong>编译例程</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/raspberrypi/pico-examples.git</span><br><span class="line"><span class="built_in">cd</span> pico-examples</span><br><span class="line"><span class="built_in">mkdir</span> -p build</span><br><span class="line"><span class="built_in">cd</span> build</span><br><span class="line">cmake ..</span><br><span class="line">make</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/raspberrypi/pico-examples.git</span><br><span class="line"><span class="built_in">cd</span> pico-examples</span><br><span class="line"><span class="built_in">mkdir</span> -p build</span><br><span class="line"><span class="built_in">cd</span> build</span><br><span class="line">cmake ..</span><br><span class="line">make</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>到相应目录下找到 <code>*.uf2</code> 文件，将其复制到 RPI-RP2 的移动硬盘 即可完成下载。</p>
 <h4 id="使用pico-project-generator生成自己的工程"><a href="#使用pico-project-generator生成自己的工程" class="headerlink" title="使用pico-project-generator生成自己的工程"></a>使用pico-project-generator生成自己的工程</h4><p>和Windows下类似，只不过如果是WSL下需要先需要手工安装tkinter（一般不需要）</p>
@@ -730,19 +771,19 @@ target remote localhost:3333
 <pre><code>openocd -f board/pico-debug.cfg
 </code></pre>
 <p>回显会提示：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Warn : rp2040-core0.cfg configuration file is deprecated and will be removed <span class="keyword">in</span> the next release. Use following parameters instead: -c <span class="string">&#x27;set USE_CORE 0&#x27;</span> -f target/rp2040.cfg</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Warn : rp2040-core0.cfg configuration file is deprecated and will be removed <span class="keyword">in</span> the next release. Use following parameters instead: -c <span class="string">&#x27;set USE_CORE 0&#x27;</span> -f target/rp2040.cfg</span><br></pre></td></tr></table></figure>
 
 <p>这个pico-debug.cfg实际上就是</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">source [<span class="built_in">find</span> interface/cmsis-dap.cfg]</span><br><span class="line"></span><br><span class="line">adapter speed 4000</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> CHIPNAME rp2040</span><br><span class="line"></span><br><span class="line">source [<span class="built_in">find</span> target/rp2040-core0.cfg]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">source [find interface/cmsis-dap.cfg]</span><br><span class="line"></span><br><span class="line">adapter speed 4000</span><br><span class="line"></span><br><span class="line">set CHIPNAME rp2040</span><br><span class="line"></span><br><span class="line">source [find target/rp2040-core0.cfg]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>等效于</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openocd -f interface/cmsis-dap.cfg -f target/rp2040-core0.cfg -c  <span class="string">&#x27;adapter speed 4000&#x27;</span> -c <span class="string">&#x27;set CHIPNAME rp2040&#x27;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openocd -f interface/cmsis-dap.cfg -f target/rp2040-core0.cfg -c  <span class="string">&#x27;adapter speed 4000&#x27;</span> -c <span class="string">&#x27;set CHIPNAME rp2040&#x27;</span></span><br></pre></td></tr></table></figure>
 
 <p>按照提示,下面的方法一样（<code>set USE_CORE 0</code>要放中间）：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openocd -f interface/cmsis-dap.cfg -c  <span class="string">&#x27;set USE_CORE 0&#x27;</span>-f target/rp2040.cfg  -c <span class="string">&#x27;adapter speed 4000&#x27;</span> -c <span class="string">&#x27;set CHIPNAME rp2040&#x27;</span> </span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openocd -f interface/cmsis-dap.cfg -c  <span class="string">&#x27;set USE_CORE 0&#x27;</span>-f target/rp2040.cfg  -c <span class="string">&#x27;adapter speed 4000&#x27;</span> -c <span class="string">&#x27;set CHIPNAME rp2040&#x27;</span> </span><br></pre></td></tr></table></figure>
 
 <h5 id="GDB调试"><a href="#GDB调试" class="headerlink" title="GDB调试"></a>GDB调试</h5><p>上面那个会保持等待连接，然后另外开一个terminal， attach gdb to openocd</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">linux下输入：</span></span><br><span class="line">gdb-multiarch picoboard_blinky.elf</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">在Windows下输入：</span></span><br><span class="line">arm-none-eabi-gdb.exe picoboard_blinky.elf</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">linux下输入：</span></span><br><span class="line">gdb-multiarch picoboard_blinky.elf</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">在Windows下输入：</span></span><br><span class="line">arm-none-eabi-gdb.exe picoboard_blinky.elf</span><br></pre></td></tr></table></figure>
 
 <p>然后连接gdb上去：</p>
 <pre><code>(gdb) target remote localhost:3333 或者
@@ -770,13 +811,13 @@ target remote 192.168.31.16:3333
 <h4 id="基于VSCode的自调试"><a href="#基于VSCode的自调试" class="headerlink" title="基于VSCode的自调试"></a>基于VSCode的自调试</h4><p>前面打开工程的方法还是一样：</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/tianizimark/article/details/123060724">Raspberry-Pi-PICO系列–第四篇 开发环境搭建-Windows系统 + Visual Studio Code开发_coder.mark的博客-CSDN博客_树莓派pico开发环境</a></p>
 <p>前面的配置步骤还是一样，就是哪些使用picoprobe的程序配置，后面只需要更改launch.json文件里面的：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">configuration<span class="punctuation">:</span></span><br><span class="line"></span><br><span class="line">                <span class="attr">&quot;configFiles&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                    <span class="string">&quot;/interface/picoprobe.cfg&quot;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="string">&quot;/target/rp2040.cfg&quot;</span></span><br><span class="line">                <span class="punctuation">]</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">configuration<span class="punctuation">:</span></span><br><span class="line"></span><br><span class="line">                <span class="attr">&quot;configFiles&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                    <span class="string">&quot;/interface/picoprobe.cfg&quot;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="string">&quot;/target/rp2040.cfg&quot;</span></span><br><span class="line">                <span class="punctuation">]</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
 
 <p>替换为</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;configFiles&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;interface/cmsis-dap.cfg&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;target/rp2040-core0.cfg&quot;</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;openOCDLaunchCommands&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;transport select swd&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;adapter speed 4000&quot;</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;configFiles&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;interface/cmsis-dap.cfg&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;target/rp2040-core0.cfg&quot;</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;openOCDLaunchCommands&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;transport select swd&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;adapter speed 4000&quot;</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
 
 <p>或者替换为：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;configFiles&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;interface/cmsis-dap.cfg&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;target/rp2040.cfg&quot;</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;openOCDLaunchCommands&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">   <span class="string">&quot;set USE_CORE 0&quot;</span></span><br><span class="line">    <span class="string">&quot;transport select swd&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;adapter speed 4000&quot;</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;configFiles&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;interface/cmsis-dap.cfg&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;target/rp2040.cfg&quot;</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;openOCDLaunchCommands&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">   <span class="string">&quot;set USE_CORE 0&quot;</span></span><br><span class="line">    <span class="string">&quot;transport select swd&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;adapter speed 4000&quot;</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
 
 <p>然后，把configurations下面的花括号以及其内容复制一份，加个逗号后加在后面做一些修改，用来增加一份配置方便切换。目的是方便在单核自调试和外部仿真器调试多核中切换。</p>
 <p>同样的方法可以添加一份linux的配置。用来方便跨平台。</p>
@@ -805,7 +846,7 @@ target remote 192.168.31.16:3333
 <p>[rp2040.cpu] Could not find MEM-AP to control the core</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/Marus/cortex-debug/blob/master/debug_attributes.md">cortex-debug&#x2F;debug_attributes.md at master · Marus&#x2F;cortex-debug (github.com)</a></p>
 <p>正常的时候多核和单核的连接：</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">PS</span> C:\Users\AlwaysTS&gt; openocd <span class="operator">-f</span> interface/cmsis<span class="literal">-dap</span>.cfg  <span class="operator">-f</span> target/rp2040.cfg  <span class="literal">-c</span> <span class="string">&#x27;adapter speed 4000&#x27;</span> <span class="literal">-c</span> <span class="string">&#x27;set CHIPNAME rp2040&#x27;</span></span><br><span class="line">Open On<span class="literal">-Chip</span> Debugger <span class="number">0.12</span>.<span class="number">0</span><span class="literal">-rc2</span>+dev<span class="literal">-00988-g04887d3b6</span> (<span class="number">2022</span><span class="literal">-12-03-09</span>:<span class="number">30</span>)</span><br><span class="line">Licensed under GNU GPL v2</span><br><span class="line"><span class="keyword">For</span> bug reports, read</span><br><span class="line">        http://openocd.org/doc/doxygen/bugs.html</span><br><span class="line">adapter speed: <span class="number">4000</span> kHz</span><br><span class="line"></span><br><span class="line">rp2040</span><br><span class="line">Info : Listening on port <span class="number">6666</span> <span class="keyword">for</span> tcl connections</span><br><span class="line">Info : Listening on port <span class="number">4444</span> <span class="keyword">for</span> telnet connections</span><br><span class="line">Info : CMSIS<span class="literal">-DAP</span>: SWD supported</span><br><span class="line">Info : CMSIS<span class="literal">-DAP</span>: <span class="built_in">FW</span> Version = <span class="number">2.0</span>.<span class="number">0</span></span><br><span class="line">Info : CMSIS<span class="literal">-DAP</span>: Interface Initialised (SWD)</span><br><span class="line">Info : SWCLK/TCK = <span class="number">1</span> SWDIO/TMS = <span class="number">1</span> TDI = <span class="number">0</span> TDO = <span class="number">0</span> nTRST = <span class="number">0</span> nRESET = <span class="number">1</span></span><br><span class="line">Info : CMSIS<span class="literal">-DAP</span>: Interface ready</span><br><span class="line">Info : clock speed <span class="number">4000</span> kHz</span><br><span class="line">Info : SWD DPIDR <span class="number">0</span>x0bc12477, DLPIDR <span class="number">0</span>x00000001</span><br><span class="line">Info : SWD DPIDR <span class="number">0</span>x0bc12477, DLPIDR <span class="number">0</span>x10000001</span><br><span class="line">Info : [<span class="type">rp2040.core0</span>] Cortex<span class="literal">-M0</span>+ r0p1 processor detected</span><br><span class="line">Info : [<span class="type">rp2040.core0</span>] target has <span class="number">4</span> breakpoints, <span class="number">2</span> watchpoints</span><br><span class="line">Info : [<span class="type">rp2040.core1</span>] Cortex<span class="literal">-M0</span>+ r0p1 processor detected</span><br><span class="line">Info : [<span class="type">rp2040.core1</span>] target has <span class="number">4</span> breakpoints, <span class="number">2</span> watchpoints</span><br><span class="line">Info : starting gdb server <span class="keyword">for</span> rp2040.core0 on <span class="number">3333</span></span><br><span class="line">Info : Listening on port <span class="number">3333</span> <span class="keyword">for</span> gdb connections</span><br><span class="line">Info : starting gdb server <span class="keyword">for</span> rp2040.core1 on <span class="number">3334</span></span><br><span class="line">Info : Listening on port <span class="number">3334</span> <span class="keyword">for</span> gdb connections</span><br><span class="line">shutdown command invoked</span><br><span class="line"><span class="built_in">PS</span> C:\Users\AlwaysTS&gt; openocd <span class="operator">-f</span> interface/cmsis<span class="literal">-dap</span>.cfg <span class="literal">-c</span>  <span class="string">&#x27;set USE_CORE 0&#x27;</span> <span class="operator">-f</span> target/rp2040.cfg  <span class="literal">-c</span> <span class="string">&#x27;adapter speed 4000&#x27;</span> <span class="literal">-c</span> <span class="string">&#x27;set CHIPNAME rp2040&#x27;</span></span><br><span class="line">Open On<span class="literal">-Chip</span> Debugger <span class="number">0.12</span>.<span class="number">0</span><span class="literal">-rc2</span>+dev<span class="literal">-00988-g04887d3b6</span> (<span class="number">2022</span><span class="literal">-12-03-09</span>:<span class="number">30</span>)</span><br><span class="line">Licensed under GNU GPL v2</span><br><span class="line"><span class="keyword">For</span> bug reports, read</span><br><span class="line">        http://openocd.org/doc/doxygen/bugs.html</span><br><span class="line"><span class="number">0</span></span><br><span class="line">adapter speed: <span class="number">4000</span> kHz</span><br><span class="line"></span><br><span class="line">rp2040</span><br><span class="line">Info : Listening on port <span class="number">6666</span> <span class="keyword">for</span> tcl connections</span><br><span class="line">Info : Listening on port <span class="number">4444</span> <span class="keyword">for</span> telnet connections</span><br><span class="line">Info : CMSIS<span class="literal">-DAP</span>: SWD supported</span><br><span class="line">Info : CMSIS<span class="literal">-DAP</span>: <span class="built_in">FW</span> Version = <span class="number">2.0</span>.<span class="number">0</span></span><br><span class="line">Info : CMSIS<span class="literal">-DAP</span>: Interface Initialised (SWD)</span><br><span class="line">Info : SWCLK/TCK = <span class="number">1</span> SWDIO/TMS = <span class="number">1</span> TDI = <span class="number">0</span> TDO = <span class="number">0</span> nTRST = <span class="number">0</span> nRESET = <span class="number">1</span></span><br><span class="line">Info : CMSIS<span class="literal">-DAP</span>: Interface ready</span><br><span class="line">Info : clock speed <span class="number">4000</span> kHz</span><br><span class="line">Info : SWD DPIDR <span class="number">0</span>x0bc12477, DLPIDR <span class="number">0</span>x00000001</span><br><span class="line">Info : [<span class="type">rp2040.core0</span>] Cortex<span class="literal">-M0</span>+ r0p1 processor detected</span><br><span class="line">Info : [<span class="type">rp2040.core0</span>] target has <span class="number">4</span> breakpoints, <span class="number">2</span> watchpoints</span><br><span class="line">Info : starting gdb server <span class="keyword">for</span> rp2040.core0 on <span class="number">3333</span></span><br><span class="line">Info : Listening on port <span class="number">3333</span> <span class="keyword">for</span> gdb connections</span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">PS</span> C:\Users\AlwaysTS&gt; openocd <span class="operator">-f</span> interface/cmsis<span class="literal">-dap</span>.cfg  <span class="operator">-f</span> target/rp2040.cfg  <span class="literal">-c</span> <span class="string">&#x27;adapter speed 4000&#x27;</span> <span class="literal">-c</span> <span class="string">&#x27;set CHIPNAME rp2040&#x27;</span></span><br><span class="line">Open On<span class="literal">-Chip</span> Debugger <span class="number">0.12</span>.<span class="number">0</span><span class="literal">-rc2</span>+dev<span class="literal">-00988-g04887d3b6</span> (<span class="number">2022</span><span class="literal">-12-03-09</span>:<span class="number">30</span>)</span><br><span class="line">Licensed under GNU GPL v2</span><br><span class="line"><span class="keyword">For</span> bug reports, read</span><br><span class="line">        http://openocd.org/doc/doxygen/bugs.html</span><br><span class="line">adapter speed: <span class="number">4000</span> kHz</span><br><span class="line"></span><br><span class="line">rp2040</span><br><span class="line">Info : Listening on port <span class="number">6666</span> <span class="keyword">for</span> tcl connections</span><br><span class="line">Info : Listening on port <span class="number">4444</span> <span class="keyword">for</span> telnet connections</span><br><span class="line">Info : CMSIS<span class="literal">-DAP</span>: SWD supported</span><br><span class="line">Info : CMSIS<span class="literal">-DAP</span>: <span class="built_in">FW</span> Version = <span class="number">2.0</span>.<span class="number">0</span></span><br><span class="line">Info : CMSIS<span class="literal">-DAP</span>: Interface Initialised (SWD)</span><br><span class="line">Info : SWCLK/TCK = <span class="number">1</span> SWDIO/TMS = <span class="number">1</span> TDI = <span class="number">0</span> TDO = <span class="number">0</span> nTRST = <span class="number">0</span> nRESET = <span class="number">1</span></span><br><span class="line">Info : CMSIS<span class="literal">-DAP</span>: Interface ready</span><br><span class="line">Info : clock speed <span class="number">4000</span> kHz</span><br><span class="line">Info : SWD DPIDR <span class="number">0</span>x0bc12477, DLPIDR <span class="number">0</span>x00000001</span><br><span class="line">Info : SWD DPIDR <span class="number">0</span>x0bc12477, DLPIDR <span class="number">0</span>x10000001</span><br><span class="line">Info : [<span class="type">rp2040.core0</span>] Cortex<span class="literal">-M0</span>+ r0p1 processor detected</span><br><span class="line">Info : [<span class="type">rp2040.core0</span>] target has <span class="number">4</span> breakpoints, <span class="number">2</span> watchpoints</span><br><span class="line">Info : [<span class="type">rp2040.core1</span>] Cortex<span class="literal">-M0</span>+ r0p1 processor detected</span><br><span class="line">Info : [<span class="type">rp2040.core1</span>] target has <span class="number">4</span> breakpoints, <span class="number">2</span> watchpoints</span><br><span class="line">Info : starting gdb server <span class="keyword">for</span> rp2040.core0 on <span class="number">3333</span></span><br><span class="line">Info : Listening on port <span class="number">3333</span> <span class="keyword">for</span> gdb connections</span><br><span class="line">Info : starting gdb server <span class="keyword">for</span> rp2040.core1 on <span class="number">3334</span></span><br><span class="line">Info : Listening on port <span class="number">3334</span> <span class="keyword">for</span> gdb connections</span><br><span class="line">shutdown command invoked</span><br><span class="line"><span class="built_in">PS</span> C:\Users\AlwaysTS&gt; openocd <span class="operator">-f</span> interface/cmsis<span class="literal">-dap</span>.cfg <span class="literal">-c</span>  <span class="string">&#x27;set USE_CORE 0&#x27;</span> <span class="operator">-f</span> target/rp2040.cfg  <span class="literal">-c</span> <span class="string">&#x27;adapter speed 4000&#x27;</span> <span class="literal">-c</span> <span class="string">&#x27;set CHIPNAME rp2040&#x27;</span></span><br><span class="line">Open On<span class="literal">-Chip</span> Debugger <span class="number">0.12</span>.<span class="number">0</span><span class="literal">-rc2</span>+dev<span class="literal">-00988-g04887d3b6</span> (<span class="number">2022</span><span class="literal">-12-03-09</span>:<span class="number">30</span>)</span><br><span class="line">Licensed under GNU GPL v2</span><br><span class="line"><span class="keyword">For</span> bug reports, read</span><br><span class="line">        http://openocd.org/doc/doxygen/bugs.html</span><br><span class="line"><span class="number">0</span></span><br><span class="line">adapter speed: <span class="number">4000</span> kHz</span><br><span class="line"></span><br><span class="line">rp2040</span><br><span class="line">Info : Listening on port <span class="number">6666</span> <span class="keyword">for</span> tcl connections</span><br><span class="line">Info : Listening on port <span class="number">4444</span> <span class="keyword">for</span> telnet connections</span><br><span class="line">Info : CMSIS<span class="literal">-DAP</span>: SWD supported</span><br><span class="line">Info : CMSIS<span class="literal">-DAP</span>: <span class="built_in">FW</span> Version = <span class="number">2.0</span>.<span class="number">0</span></span><br><span class="line">Info : CMSIS<span class="literal">-DAP</span>: Interface Initialised (SWD)</span><br><span class="line">Info : SWCLK/TCK = <span class="number">1</span> SWDIO/TMS = <span class="number">1</span> TDI = <span class="number">0</span> TDO = <span class="number">0</span> nTRST = <span class="number">0</span> nRESET = <span class="number">1</span></span><br><span class="line">Info : CMSIS<span class="literal">-DAP</span>: Interface ready</span><br><span class="line">Info : clock speed <span class="number">4000</span> kHz</span><br><span class="line">Info : SWD DPIDR <span class="number">0</span>x0bc12477, DLPIDR <span class="number">0</span>x00000001</span><br><span class="line">Info : [<span class="type">rp2040.core0</span>] Cortex<span class="literal">-M0</span>+ r0p1 processor detected</span><br><span class="line">Info : [<span class="type">rp2040.core0</span>] target has <span class="number">4</span> breakpoints, <span class="number">2</span> watchpoints</span><br><span class="line">Info : starting gdb server <span class="keyword">for</span> rp2040.core0 on <span class="number">3333</span></span><br><span class="line">Info : Listening on port <span class="number">3333</span> <span class="keyword">for</span> gdb connections</span><br></pre></td></tr></table></figure>
 
 <p><a target="_blank" rel="noopener" href="https://lonesometraveler.github.io/2020/03/27/debug.html">Cortex-Debug for Visual Studio Code | Alone on a Mountaintop (lonesometraveler.github.io)</a></p>
 
@@ -817,8 +858,8 @@ target remote 192.168.31.16:3333
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/rp2040/" rel="tag"># rp2040</a>
-              <a href="/tags/ARM/" rel="tag"># ARM</a>
+              <a href="/tags/rp2040/" rel="tag"><i class="fa fa-tag"></i> rp2040</a>
+              <a href="/tags/ARM/" rel="tag"><i class="fa fa-tag"></i> ARM</a>
           </div>
 
         
@@ -831,8 +872,8 @@ target remote 192.168.31.16:3333
       <i class="fa fa-chevron-left"></i> SSD修复
     </a></div>
       <div class="post-nav-item">
-    <a href="/2023/02/01/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/0%E3%80%81%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E7%9A%84%E7%AE%A1%E7%90%86/" rel="next" title="0、个人博客文章的管理">
-      0、个人博客文章的管理 <i class="fa fa-chevron-right"></i>
+    <a href="/2023/02/01/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/0%E3%80%81%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E7%9A%84%E7%AE%A1%E7%90%86/" rel="next" title="个人博客文章的管理">
+      个人博客文章的管理 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -898,6 +939,8 @@ target remote 192.168.31.16:3333
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Always L"
+      src="/images/misterchief.png">
   <p class="site-author-name" itemprop="name">Always L</p>
   <div class="site-description" itemprop="description">硬件，杂项，爱好</div>
 </div>
@@ -959,6 +1002,16 @@ target remote 192.168.31.16:3333
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Always L</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">32k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:11</span>
 </div>
 
         
@@ -976,8 +1029,12 @@ target remote 192.168.31.16:3333
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
 
 <script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
 
 
 <script src="/js/schemes/pisces.js"></script>
@@ -991,6 +1048,10 @@ target remote 192.168.31.16:3333
   
 
 
+
+
+  
+<script src="/js/local-search.js"></script>
 
 
 
