@@ -1272,7 +1272,7 @@ target remote 192.168.31.16:3333
     <url>/2023/04/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E4%BD%BF%E7%94%A8aardio%E5%86%99%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8Epyocd%E7%9A%84%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%8B%E8%BD%BD%E5%99%A8/</url>
     <content><![CDATA[<p>为了方便使用pyocd进行下载操作，于是写了一个下载器GUI，开发工具选择了aardio，因此只支持Windows平台。</p>
 <span id="more"></span>
-<h1 id="1-新建工程"><a href="#1-新建工程" class="headerlink" title="1 新建工程"></a>1 新建工程</h1><p>最开始本来是打算调用pyocd 的python api的，但是一个是内嵌包一直安装出问题，一个是考虑到本地pack不想重复安装和管理，于是就转做pyocd的前端了，也就是直接调用pyocd，根据返回数据解析，然后执行要做的命令。</p>
+<h1 id="1-新建工程"><a href="#1-新建工程" class="headerlink" title="1 新建工程"></a>1 新建工程</h1><p>最开始本来是打算调用pyocd 的python api的，但是一方面是内嵌包一直安装出问题，另一方面是考虑到本地pack不想重复安装和管理，于是就转做pyocd的前端了，也就是直接调用pyocd，根据返回数据解析，然后执行要做的命令。</p>
 <p>所以新建一个普通工程就可以。</p>
 <h1 id="2-基本功能"><a href="#2-基本功能" class="headerlink" title="2 基本功能"></a>2 基本功能</h1><p>下载 擦除 复位，主要是这几个常用的，<br>然后要能选择对应的仿真器和单片机型号，能支持的列表，就要用一下pyocd list和pyocd list -t命令查询，根据返回的结果解析。<br>p.s 其实直接用pyocd json 命令返回json会很容易，但是我一开始没看到这个命令，就算了，正好生成命令pyocd list的执行结果也可以给人看。<br>其中pyocd list会返回仿真器的列表，我是通过head也就是第一行的标题的位置来得到下面每行内容的分割位置，得到正确的结果。这里发现是每隔一行为一个仿真器信息。<br>而pyocd list -t 返回可用器件型号，分割方法类似，不过这里不是每隔一行而是连续的每行都是对应结果，一开始这里没看到导致少了一半。<br>另外这里在使用aardio遇到一个bug就是结构体的值发生了变换（aardio实际上没有结构体而是表），不知道为什么，类似的方法直接赋值给数组就不会出问题。</p>
 <h1 id="3-基本实现"><a href="#3-基本实现" class="headerlink" title="3 基本实现"></a>3 基本实现</h1><p><img src="https://img-blog.csdnimg.cn/1426b60440534a8c8c8c296d82f0e7b4.png" alt="基本界面"></p>
