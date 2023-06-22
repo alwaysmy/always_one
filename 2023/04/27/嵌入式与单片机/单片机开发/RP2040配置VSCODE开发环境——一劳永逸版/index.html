@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-con-sand.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon32.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"alwaysmy.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="上一篇文章：树莓派RP2040开发环境配置集合版(基于Raspberry Pico)。前面的环境搭建基本上介绍了所有的开发环境配置，也对比了各个环境的优劣。如果是非商业开发的话，个人可能Segger Embedded Studio是最好的IDE，但是我不太习惯他的使用方式，这个会另外开一篇谈。而通吃的方案则是使用VSCODE+ARMGCC+GCC，PlatformIO也是不错的，但是我个人不太习惯">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RP2040配置VSCODE开发环境 —— 一劳永逸版">
+<meta property="og:url" content="https://alwaysmy.github.io/2023/04/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91/RP2040%E9%85%8D%E7%BD%AEVSCODE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E2%80%94%E2%80%94%E4%B8%80%E5%8A%B3%E6%B0%B8%E9%80%B8%E7%89%88/index.html">
+<meta property="og:site_name" content="加载中...">
+<meta property="og:description" content="上一篇文章：树莓派RP2040开发环境配置集合版(基于Raspberry Pico)。前面的环境搭建基本上介绍了所有的开发环境配置，也对比了各个环境的优劣。如果是非商业开发的话，个人可能Segger Embedded Studio是最好的IDE，但是我不太习惯他的使用方式，这个会另外开一篇谈。而通吃的方案则是使用VSCODE+ARMGCC+GCC，PlatformIO也是不错的，但是我个人不太习惯">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-04-27T11:26:30.000Z">
+<meta property="article:modified_time" content="2023-06-22T06:18:16.944Z">
+<meta property="article:author" content="Always L">
+<meta property="article:tag" content="rp2040">
+<meta property="article:tag" content="ARM">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://alwaysmy.github.io/2023/04/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91/RP2040%E9%85%8D%E7%BD%AEVSCODE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E2%80%94%E2%80%94%E4%B8%80%E5%8A%B3%E6%B0%B8%E9%80%B8%E7%89%88/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>RP2040配置VSCODE开发环境 —— 一劳永逸版 | 加载中...</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.8}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">加载中...</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">博客记录</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">20</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">22</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://alwaysmy.github.io/2023/04/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91/RP2040%E9%85%8D%E7%BD%AEVSCODE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E2%80%94%E2%80%94%E4%B8%80%E5%8A%B3%E6%B0%B8%E9%80%B8%E7%89%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/misterchief.png">
+      <meta itemprop="name" content="Always L">
+      <meta itemprop="description" content="硬件，杂项，爱好">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="加载中...">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          RP2040配置VSCODE开发环境 —— 一劳永逸版
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-04-27 19:26:30" itemprop="dateCreated datePublished" datetime="2023-04-27T19:26:30+08:00">2023-04-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-06-22 14:18:16" itemprop="dateModified" datetime="2023-06-22T14:18:16+08:00">2023-06-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">嵌入式与单片机</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>7 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>上一篇文章：树莓派RP2040开发环境配置集合版(基于Raspberry Pico)。<br>前面的环境搭建基本上介绍了所有的开发环境配置，也对比了各个环境的优劣。如果是非商业开发的话，个人可能Segger Embedded Studio是最好的IDE，但是我不太习惯他的使用方式，这个会另外开一篇谈。<br>而通吃的方案则是使用VSCODE+ARMGCC+GCC，PlatformIO也是不错的，但是我个人不太习惯后者，而且经常出错。</p>
+<p>因此最后仍然选择了VSCODE作为开发工具。</p>
+<span id="more"></span>
+
+<p>由于重装了系统，所以决定找一个尽量不依赖环境变量的方法，比如有些软件可以不安装运行，重装后不需要重新安装，可以直接使用，也懒得追加环境变量。另外尽可能减少手工操作。所谓一劳永逸不是装好不管，而是下次崩坏还能迅速重建。<br>其实官方的工程生成器已经尽可能减少手工操作了，但是那个是针对Linux的，本身安装也十分简单。所以这里要做一点修改，这里的教程也是按照Windows来做。<br>再一个就是官方的方法有些方法并不好，这里也做出一些改进。</p>
+<h1 id="安装软件和免安装软件配置"><a href="#安装软件和免安装软件配置" class="headerlink" title="安装软件和免安装软件配置"></a>安装软件和免安装软件配置</h1><p>这一步是我尽量避免的，但是之前有些软件装在C盘，重装后直接没了，所以还是得走这一步，所以这一步我也没有验证如果直接使用之前下载好的可执行文件需要添加什么。</p>
+<h2 id="gcc-arm-none-eabi"><a href="#gcc-arm-none-eabi" class="headerlink" title="gcc arm none eabi"></a>gcc arm none eabi</h2><p>点安装包直接安装就好了。<br>我的安装目录改到 <code>D:\MyPrograms\InstalledProgram\10 2021.10</code><br>这里就安装的时候先把环境变量加进去，毕竟只需要打个钩。<br>然后这个就不用管了，同时他有个选项是注册这个编译器，我不知道如果不用安装包的话这一步的影响是什么。</p>
+<h2 id="CMake"><a href="#CMake" class="headerlink" title="CMake"></a>CMake</h2><p>这个不用自己加路径，所以直接重装。</p>
+<h2 id="pyocd"><a href="#pyocd" class="headerlink" title="pyocd"></a>pyocd</h2><p>由于是python安装的所以重新安装一次就行。</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line">pip install –U pyocd</span><br></pre></td></tr></table></figure>
+<p>其实这个和openocd工具二选一即可，推荐用这个。</p>
+<pre><code>pyocd这个工具配置安装极为简单，一个软件支持rp2040的所有仿真器，而且连接稍微快一点点，（同一个工程openocd 15s ,pyocd 14s，真就一点点), 自带gdb配置，不知道为啥网上很少再rp2040的教程中提到。一次只能连接一个核心。
+</code></pre>
+<h2 id="免安装软件配置"><a href="#免安装软件配置" class="headerlink" title="免安装软件配置"></a>免安装软件配置</h2><h3 id="mingw-w64"><a href="#mingw-w64" class="headerlink" title="mingw-w64"></a>mingw-w64</h3><p>之前下好的，直接找到之前部署的路径，我这里是：<br><code>D:\MyProgramData\Toolchain\mingw-w64\mingw64\bin </code><br>对应的<code>mingw32-make</code> 路径位于：<br><code>D:\MyProgramData\Toolchain\mingw-w64\mingw64\bin\mingw32-make.exe</code></p>
+<h3 id="openocd-（可选）"><a href="#openocd-（可选）" class="headerlink" title="openocd （可选）"></a>openocd （可选）</h3><p>直接添加到环境里面。虽然可以配置到cortex-debug的路径里面，但是这个工具比较有用（不如pyocd），可能有时候会在命令行里面用一用。</p>
+<h2 id="工程部署"><a href="#工程部署" class="headerlink" title="工程部署"></a>工程部署</h2><p>利用树莓派官方提供的生成工程脚本还需要提供 PICO_SDK_PATH 这个环境变量用于生成cmakelists.txt, 这里需要在环境变量中添加这个名称即可；<br>同样，用于编译生成工具的make工具链也需要增加到环境变量。<br>这里为了方便操作，直接做了一个BAT批处理来执行这个事情。</p>
+<pre><code>实际上完全可以在启动器的python脚本内部完成这个事情，但是我不太想改那个庞大的代码加上参数什么的，于是就把这些简单的东西分离出来。
+</code></pre>
+<p>由于这个生成器本身就要加上–gui参数来启动图形界面，所以一起集成到了BAT文件里面：</p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="comment">@REM &quot;设置文字编码UTF8(不然这里中文是UFT8,在命令行中会默认不是UTF8会出现斤拷棍,但是还是可能有问题建议不要用)&quot;</span></span><br><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">chcp</span> <span class="number">65001</span>&gt;<span class="built_in">nul</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">@REM &quot;下面是要自己指定的部分(=左右不要空格)，后面都是set来设定临时环境变量，如果希望直接设置好，改成setx就行，写了检测，不会重复&quot;</span></span><br><span class="line"><span class="built_in">set</span> picosdkpath_temp=D:\MyProgramData\MCU_SDK\pico-sdk</span><br><span class="line"><span class="comment">@REM mingw32-make.exe</span></span><br><span class="line"><span class="built_in">set</span> &quot;make_bin_path=D:\MyProgramData\Toolchain\mingw-w64\mingw64\bin&quot;</span><br><span class="line"><span class="built_in">set</span> make_exe_name=mingw32-make.exe</span><br><span class="line"><span class="comment">@REM 初始化一下环境变量,获取系统的环境变量</span></span><br><span class="line"><span class="built_in">set</span> &quot;env_path=<span class="variable">%PATH%</span>&quot;</span><br><span class="line"><span class="comment">  </span></span><br><span class="line"><span class="comment">@REM &quot;起手就问工程名称，免得还要写一次,不要写空格&quot;</span></span><br><span class="line"><span class="built_in">set</span> /p projectname=your projectname:</span><br><span class="line"><span class="built_in">echo</span> your projectname is <span class="variable">%projectname%</span> </span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">@REM 检测PICO_SDK，如果不存在就添加</span></span><br><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> <span class="keyword">defined</span> PICO_SDK_PATH (</span><br><span class="line">    <span class="built_in">echo</span> Environment variable PICO_SDK_PATH is <span class="keyword">not</span> <span class="built_in">set</span></span><br><span class="line">    <span class="built_in">echo</span> now, <span class="built_in">set</span> it to <span class="variable">%picosdkpath_temp%</span></span><br><span class="line">    <span class="built_in">set</span> PICO_SDK_PATH=<span class="variable">%picosdkpath_temp%</span></span><br><span class="line">) <span class="keyword">else</span> (</span><br><span class="line">    <span class="built_in">echo</span> Environment variable PICO_SDK_PATH is <span class="built_in">set</span> to <span class="variable">%PICO_SDK_PATH%</span></span><br><span class="line">)</span><br><span class="line"><span class="comment">  </span></span><br><span class="line"><span class="comment">@REM &quot;检测PICO_SDK，如果不存在就添加（用if not exist mingw32-make.exe会一直显示不存在，只能查找字符串。或者findstr /C:%make_bin_path%&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> &quot;<span class="variable">%path%</span>&quot; | <span class="built_in">find</span> /i &quot;<span class="variable">%make_bin_path%</span>&quot; &gt;<span class="built_in">nul</span>  </span><br><span class="line"><span class="keyword">if</span> <span class="variable">%errorlevel%</span> <span class="keyword">equ</span> <span class="number">0</span> (</span><br><span class="line"><span class="comment">    @REM &quot;存在就显示一下好了&quot;</span></span><br><span class="line">    <span class="built_in">echo</span> mingw toolchain has been <span class="built_in">set</span> to <span class="variable">%make_bin_path%</span></span><br><span class="line">) <span class="keyword">else</span> (</span><br><span class="line"><span class="comment">    @REM &quot;不存在就添加一下&quot;</span></span><br><span class="line">    <span class="built_in">echo</span> mingw toolchain is <span class="keyword">not</span> <span class="built_in">set</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    @REM &quot;追加变量&quot;</span></span><br><span class="line">    @<span class="built_in">set</span> &quot;<span class="built_in">path</span>=<span class="variable">%env_path%</span>;<span class="variable">%make_bin_path%</span>&quot;</span><br><span class="line">    <span class="built_in">echo</span> mingw toolchain is <span class="built_in">set</span> to <span class="variable">%make_bin_path%</span></span><br><span class="line">)</span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">@REM &quot;调用tsv文件，虽然默认也是这个，设置名称，默认打开vscode&quot;</span></span><br><span class="line">python pico_project.py  <span class="variable">%projectname%</span>  -t pico_configs.tsv -p vscode --gui</span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">@REM &quot;完事打开code&quot;</span></span><br><span class="line">code ../<span class="variable">%projectname%</span></span><br></pre></td></tr></table></figure>
+
+<p>这里没有配置用户环境变量，因为担心出错，但是写成文件足够记住步骤了。如果要一次配置好，就把里面的 <code>set</code> 命令改成<code>setx</code>，就可以把环境变量添加到用户变量了(系统变量需要提权，没必要）。</p>
+<p>其中，调用<strong>pico_project.py</strong> 文件的时候，添加了几个参数，一个是在启动BAT文件的时候要求输入工程名称，因为我觉得这种方式最方便，没必要像原来那样：打开之后，点击名称位置，删掉原来的默认名称后修改自己的。<br>另一个是添加默认勾选配置vscode，使用配置文件从tsv文件加载预设值(用excel打开)，虽然默认也是这个，但是记下来方便修改。<br>我尝试给他添加默认特性，例如PIO,但是似乎在图形界面里面不生效，没注意看原因。</p>
+<pre><code>这个--feature 我实在是没看明白,试了一下它没啥用，写进去什么参数都不报错。。
+</code></pre>
+<p>然后就可以启动生成器了，启动之后接着用这个环境启动vscode打开工程文件夹。但是这还不够，下面是工程生成器的修改。</p>
+<h2 id="生成器修改点"><a href="#生成器修改点" class="headerlink" title="生成器修改点"></a>生成器修改点</h2><p>先说槽点：<br>1、LOGO图片太大<br>2、工程生成路径和python文件在同一层。<br>3、daplink只配置了自己的Link<br>4、vscode配置文件只配置了linux下自己的Link的配置。<br>下面一个一个修改。</p>
+<h3 id="去掉LOGO和修改显示设置"><a href="#去掉LOGO和修改显示设置" class="headerlink" title="去掉LOGO和修改显示设置"></a>去掉LOGO和修改显示设置</h3><p>不记得在哪里了，反正就是找那个图案的路径。然后是勾选python.exe，兼容性-&gt;勾选高DPI-&gt;改成应用程序，不然打开很模糊。 </p>
+<pre><code>显示设置每次换电脑或者更换python版本都要做一次，这个没办法，Windows的问题。
+</code></pre>
+<h3 id="1、工程路径修改到当前生成器的上一层"><a href="#1、工程路径修改到当前生成器的上一层" class="headerlink" title="1、工程路径修改到当前生成器的上一层"></a>1、工程路径修改到当前生成器的上一层</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">        self.locationName.<span class="built_in">set</span>(os.path.abspath(os.path.join(os.getcwd(), <span class="string">&quot;..&quot;</span>)))</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、添加daplink-debugger选项"><a href="#2、添加daplink-debugger选项" class="headerlink" title="2、添加daplink debugger选项"></a>2、添加daplink debugger选项</h3><p>默认是第一个，所以直接加到第一个，对应配置文件是cmsis-dap.cfg</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">debugger_list = [<span class="string">&quot;DapLink&quot;</span>,<span class="string">&quot;SWD&quot;</span>, <span class="string">&quot;PicoProbe&quot;</span>]</span><br><span class="line"></span><br><span class="line">debugger_config_list = [<span class="string">&quot;cmsis-dap.cfg&quot;</span>,<span class="string">&quot;raspberrypi-swd.cfg&quot;</span>, <span class="string">&quot;picoprobe.cfg&quot;</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、vscode生成-vscode文件部分"><a href="#3、vscode生成-vscode文件部分" class="headerlink" title="3、vscode生成.vscode文件部分"></a>3、vscode生成.vscode文件部分</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">generateProjectFiles</span>(<span class="params">projectPath, projectName, sdkPath, projects, debugger</span>):</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>它这里是直接一行一行写在python文件里面每一行都带个单引号，修改起来真是脑溢血，但是我当时改的时候脑抽了，所以最后都是按照他那个格式写的。</p>
+<h4 id="3-1-生成启动文件部分"><a href="#3-1-生成启动文件部分" class="headerlink" title="3.1 生成启动文件部分"></a>3.1 生成启动文件部分</h4><ul>
+<li>启动文件为<code>launch.json</code><br>首先，修改第一个配置为Pyocd的配置，因为pyocd兼容性最好，配置也最简单。<br>然后，添加多个Openocd的选项，分别为：<br>指定pico-debug固件作为debugger的仿真Core0;<br>另外一个据说不会过时的指定core0的命令方法;<br>以及理论上是同时连接双核的调试方法，但是实际上cortex-debug的双核调试还在路上。<br>其中Pyocd的配置如下：<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;rp2040_core0 Debug with PyOcd&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;cwd&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;workspaceFolder&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;executable&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;command:cmake.launchTargetPath&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;request&quot;</span><span class="punctuation">:</span> <span class="string">&quot;launch&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cortex-debug&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;servertype&quot;</span><span class="punctuation">:</span> <span class="string">&quot;pyocd&quot;</span><span class="punctuation">,</span></span><br><span class="line">       <span class="comment">//可以修改为rp2040_core1  </span></span><br><span class="line">      <span class="attr">&quot;targetId&quot;</span><span class="punctuation">:</span> <span class="string">&quot;rp2040_core0&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;showDevDebugOutput&quot;</span><span class="punctuation">:</span> <span class="string">&quot;none&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;svdFile&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;env:PICO_SDK_PATH&#125;/src/rp2040/hardware_regs/rp2040.svd&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;runToEntryPoint&quot;</span><span class="punctuation">:</span> <span class="string">&quot;main&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="comment">// Give restart the same functionality as runToEntryPoint - main</span></span><br><span class="line">      <span class="attr">&quot;postRestartCommands&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">          <span class="string">&quot;break main&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="string">&quot;continue&quot;</span></span><br><span class="line">      <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+具体Pyocd的配置和cortex-debug的联合使用见我另外写的PyOCD配置。（我还没写）</li>
+</ul>
+<p>TODO: ARM也出了一个调试插件，但是要装好几个插件，而且对应rp2040还有点问题，文档太少了，我就没折腾出来，不知道这个会不会更好，以后没问题了再加上去。</p>
+<ul>
+<li><p>同时，写入文件添加指定编码utf-8,以便使用vscode默认utf-8编辑之后输出支持中文。</p>
+<p>  吐槽,他这个东西写的好挫.</p>
+</li>
+<li><p>添加自动判断对应系统应该用什么gdb server的名字</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">    <span class="keyword">if</span> isWindows:</span><br><span class="line">        gdb_path = <span class="string">&#x27;arm-none-eabi-gdb&#x27;</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        gdb_path = <span class="string">&#x27;gdb-multiarch&#x27;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改设置,默认显示build按钮</p>
+</li>
+<li><p>推荐扩展文件添加一个<code> twxs.cmake</code></p>
+</li>
+</ul>
+<p>最后，c_cpp_properites.json 中它写的也不对，只有linux的配置，而且如果是Windows写入的路径也没有转换。但是这个配置打开vscode的时候点配置会被替换掉，也不影响使用，所以无所谓，就先不改了。</p>
+<ul>
+<li>预计其他增加（以后有精力再说）<br>task.json 来实现只烧录 参考arm的Arm Embedded Debugger的方式，当然也可以用pyocd来做。<br>使用PICO TOOL，就是前面说过的PICO USB那个东西，可以实现烧录和简单的启动停止。<br>推荐扩展增加Arm Embedded Debugger以及Arm Device Manager，如果可用的话。</li>
+</ul>
+<p>完成这些之后，直接点击前面的启动脚本，就可以直接生成可用的工程并打开vscode了，总算有点IDE的样子了。</p>
+<h2 id="vscode配置点（踩坑点）"><a href="#vscode配置点（踩坑点）" class="headerlink" title="vscode配置点（踩坑点）"></a>vscode配置点（踩坑点）</h2><p>如果是从头配置起来的基本上没这些问题。</p>
+<h3 id="cmake-tools"><a href="#cmake-tools" class="headerlink" title="cmake tools"></a>cmake tools</h3><p>插件如果是之前备份的到新电脑的，需要重新安装，否则插件加载不出来。</p>
+<p>Cmake编译的时候会报错：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CMake Error: CMake was unable to find a build program corresponding to &quot;MinGW Makefiles&quot;.  CMAKE_MAKE_PROGRAM is not set.  You probably need to select a different build tool.</span><br></pre></td></tr></table></figure>
+
+<p>似乎可以通过添加 CMAKE_MAKE_PROGRAM 来解决，但是由于没有环境变量，这还需要指定编译器位置，虽然可以通过cmake tools的脚本解决，但是那还需要额外添加一个文件。设置里面的设置cmake 环境变量似乎并不能给命令用。</p>
+<p>所以最简单的办法就是<strong>添加mingw32的目录到环境变量</strong>。</p>
+<p>如果追求极致不要修改环境变量，那么就在启动vscode的时候添加临时环境变量，这个文件放在工程文件夹下面。</p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">...  前面就和启动生成器里面添加环境变量的脚本一样</span><br><span class="line">code ../</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.codenong.com/6141608/">关于Makefile：找不到CMAKE_MAKE_PROGRAM | 码农家园 (codenong.com)</a><br>上面这个老哥说了，很多方法都不如加个环境变量。<br>但是这个mingw32-make确实很常用，就加到系统里面去吧。</p>
+<h3 id="cortex-debugger"><a href="#cortex-debugger" class="headerlink" title="cortex-debugger"></a>cortex-debugger</h3><p>之前备份的会启动不了。。。重新安装也不行。只好全部移除了vs配置文件。</p>
+<h3 id="Arm-Embedded-Debugger"><a href="#Arm-Embedded-Debugger" class="headerlink" title="Arm Embedded Debugger"></a>Arm Embedded Debugger</h3><p>vscode上除了cortex-debugger<br>Arm Embedded Debugger 似乎也可以：<br><a target="_blank" rel="noopener" href="https://github.com/ARM-software/vscode-embedded-debug">ARM-software&#x2F;vscode-embedded-debug: Extension support for VS Code Embedded Debug Extension (github.com)</a><br>但是官方文档还不全，给的方法也有问题。。。。我试了一下还是连不上, 报错RDDI-ERROR 13 但是工具本身应该没问题。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$&#123;command:device-manager.getSerialNumber&#125;</span><br></pre></td></tr></table></figure>
+<p>上面这句命令要安装一个arm device manager扩展才行，但是还是会报错没有连接的设备，指定串号之后可以连接上（串号可以用keil中的配置看到或者使用”pyocd list”命令找到设备的uid），用的是wch-link, 自调试固件不行，不知道是不是被复位了。但是即使连接上了会进入断点进不了主程序，不知道缺什么。<br>所以暂时不搞了，估计效果不会超过pyocd。</p>
+<h3 id="由于armgcc工具链移动路径导致的原来cmakelist失效的问题需要迁移原工程"><a href="#由于armgcc工具链移动路径导致的原来cmakelist失效的问题需要迁移原工程" class="headerlink" title="由于armgcc工具链移动路径导致的原来cmakelist失效的问题需要迁移原工程"></a>由于armgcc工具链移动路径导致的原来cmakelist失效的问题需要迁移原工程</h3><p>直接编译或者选择对应的kit都会会报错找不到正确的工具链吧啦吧啦。<br>所以我的建议是不要移动工具链的位置，保持原来的路径。。。。。这样可以套用上次的设置。<br>不过迁移很简单：<br>在cmake插件的选择kit的按钮上，点选unspecified ，然后编译一下，再选对应的arm gcc就可以了。当然，不选回去也行，能用就算成功。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>通过这些配置，就可以做到同步到另一台电脑上也可以直接使用，只需要修改脚本中的环境变量的路径，如果工具本身被同步了，不用修改也可以直接使用。<br>同时ARM GCC是被自动查找的，所以路径不影响，只要之前安装过就行。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/rp2040/" rel="tag"><i class="fa fa-tag"></i> rp2040</a>
+              <a href="/tags/ARM/" rel="tag"><i class="fa fa-tag"></i> ARM</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/04/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/%E4%BD%BF%E7%94%A8aardio%E5%86%99%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8Epyocd%E7%9A%84%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%8B%E8%BD%BD%E5%99%A8/" rel="prev" title="使用aardio写一个基于pyocd的单片机下载器">
+      <i class="fa fa-chevron-left"></i> 使用aardio写一个基于pyocd的单片机下载器
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/06/13/%E7%94%9F%E6%B4%BB%E6%B8%B8%E7%8E%A9/%E9%95%BF%E7%99%BD%E5%B1%B1%E8%A1%8C%E7%AE%80%E8%AE%B0/" rel="next" title="长白山行简记">
+      长白山行简记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%E5%92%8C%E5%85%8D%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">安装软件和免安装软件配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#gcc-arm-none-eabi"><span class="nav-number">1.1.</span> <span class="nav-text">gcc arm none eabi</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CMake"><span class="nav-number">1.2.</span> <span class="nav-text">CMake</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pyocd"><span class="nav-number">1.3.</span> <span class="nav-text">pyocd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%8D%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="nav-number">1.4.</span> <span class="nav-text">免安装软件配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mingw-w64"><span class="nav-number">1.4.1.</span> <span class="nav-text">mingw-w64</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#openocd-%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="nav-number">1.4.2.</span> <span class="nav-text">openocd （可选）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E7%A8%8B%E9%83%A8%E7%BD%B2"><span class="nav-number">1.5.</span> <span class="nav-text">工程部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%99%A8%E4%BF%AE%E6%94%B9%E7%82%B9"><span class="nav-number">1.6.</span> <span class="nav-text">生成器修改点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%BB%E6%8E%89LOGO%E5%92%8C%E4%BF%AE%E6%94%B9%E6%98%BE%E7%A4%BA%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.6.1.</span> <span class="nav-text">去掉LOGO和修改显示设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E5%B7%A5%E7%A8%8B%E8%B7%AF%E5%BE%84%E4%BF%AE%E6%94%B9%E5%88%B0%E5%BD%93%E5%89%8D%E7%94%9F%E6%88%90%E5%99%A8%E7%9A%84%E4%B8%8A%E4%B8%80%E5%B1%82"><span class="nav-number">1.6.2.</span> <span class="nav-text">1、工程路径修改到当前生成器的上一层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E6%B7%BB%E5%8A%A0daplink-debugger%E9%80%89%E9%A1%B9"><span class="nav-number">1.6.3.</span> <span class="nav-text">2、添加daplink debugger选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81vscode%E7%94%9F%E6%88%90-vscode%E6%96%87%E4%BB%B6%E9%83%A8%E5%88%86"><span class="nav-number">1.6.4.</span> <span class="nav-text">3、vscode生成.vscode文件部分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-%E7%94%9F%E6%88%90%E5%90%AF%E5%8A%A8%E6%96%87%E4%BB%B6%E9%83%A8%E5%88%86"><span class="nav-number">1.6.4.1.</span> <span class="nav-text">3.1 生成启动文件部分</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vscode%E9%85%8D%E7%BD%AE%E7%82%B9%EF%BC%88%E8%B8%A9%E5%9D%91%E7%82%B9%EF%BC%89"><span class="nav-number">1.7.</span> <span class="nav-text">vscode配置点（踩坑点）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cmake-tools"><span class="nav-number">1.7.1.</span> <span class="nav-text">cmake tools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cortex-debugger"><span class="nav-number">1.7.2.</span> <span class="nav-text">cortex-debugger</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Arm-Embedded-Debugger"><span class="nav-number">1.7.3.</span> <span class="nav-text">Arm Embedded Debugger</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%B1%E4%BA%8Earmgcc%E5%B7%A5%E5%85%B7%E9%93%BE%E7%A7%BB%E5%8A%A8%E8%B7%AF%E5%BE%84%E5%AF%BC%E8%87%B4%E7%9A%84%E5%8E%9F%E6%9D%A5cmakelist%E5%A4%B1%E6%95%88%E7%9A%84%E9%97%AE%E9%A2%98%E9%9C%80%E8%A6%81%E8%BF%81%E7%A7%BB%E5%8E%9F%E5%B7%A5%E7%A8%8B"><span class="nav-number">1.7.4.</span> <span class="nav-text">由于armgcc工具链移动路径导致的原来cmakelist失效的问题需要迁移原工程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Always L"
+      src="/images/misterchief.png">
+  <p class="site-author-name" itemprop="name">Always L</p>
+  <div class="site-description" itemprop="description">硬件，杂项，爱好</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/alwaysmy" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;alwaysmy" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:always_one@foxmail.com" title="E-Mail → mailto:always_one@foxmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Always L</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="本站总字数">60k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:14</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+<script src="https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '48px',
+  right: 'unset',
+  left: '48px',
+  time: '0.3s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+
+    </div>
+</body>
+</html>
