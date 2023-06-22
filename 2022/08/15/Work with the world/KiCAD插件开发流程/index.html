@@ -12,29 +12,29 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"alwaysmy.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"alwaysmy.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="当时JLC还没限定只有LCEDA免费打板，我决定使用KiCad完成后续大部分工程。一个痛点是我找了很久想要一个边框生成的插件也没找到，只有倒角插件，不知道外国人思路怎么这么怪。于是痛定思痛决定自己开发。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="KiCAD插件开发流程">
-<meta property="og:url" content="https://alwaysmy.github.io/2022/09/25/Work%20with%20the%20world/KiCAD%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/index.html">
+<meta property="og:url" content="https://alwaysmy.github.io/2022/08/15/Work%20with%20the%20world/KiCAD%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/index.html">
 <meta property="og:site_name" content="加载中...">
 <meta property="og:description" content="当时JLC还没限定只有LCEDA免费打板，我决定使用KiCad完成后续大部分工程。一个痛点是我找了很久想要一个边框生成的插件也没找到，只有倒角插件，不知道外国人思路怎么这么怪。于是痛定思痛决定自己开发。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-09-25T03:40:36.000Z">
-<meta property="article:modified_time" content="2023-06-20T09:59:31.859Z">
+<meta property="article:published_time" content="2022-08-15T03:40:36.000Z">
+<meta property="article:modified_time" content="2023-06-21T12:39:39.806Z">
 <meta property="article:author" content="Always L">
 <meta property="article:tag" content="KiCad">
 <meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://alwaysmy.github.io/2022/09/25/Work%20with%20the%20world/KiCAD%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/">
+<link rel="canonical" href="https://alwaysmy.github.io/2022/08/15/Work%20with%20the%20world/KiCAD%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/">
 
 
 <script id="page-configurations">
@@ -101,7 +101,7 @@
       <h1 class="site-title">加载中...</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
-      <p class="site-subtitle" itemprop="description">无声无息</p>
+      <p class="site-subtitle" itemprop="description">博客记录</p>
   </div>
 
   <div class="site-nav-right">
@@ -191,7 +191,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://alwaysmy.github.io/2022/09/25/Work%20with%20the%20world/KiCAD%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/">
+    <link itemprop="mainEntityOfPage" href="https://alwaysmy.github.io/2022/08/15/Work%20with%20the%20world/KiCAD%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/misterchief.png">
@@ -214,14 +214,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-09-25 11:40:36" itemprop="dateCreated datePublished" datetime="2022-09-25T11:40:36+08:00">2022-09-25</time>
+              <time title="创建时间：2022-08-15 11:40:36" itemprop="dateCreated datePublished" datetime="2022-08-15T11:40:36+08:00">2022-08-15</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-06-20 17:59:31" itemprop="dateModified" datetime="2023-06-20T17:59:31+08:00">2023-06-20</time>
+                <time title="修改时间：2023-06-21 20:39:39" itemprop="dateModified" datetime="2023-06-21T20:39:39+08:00">2023-06-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -239,7 +239,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>4.5k</span>
+              <span>4.7k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -262,7 +262,10 @@
 <span id="more"></span>
 
 <p>python本来就不咋样的我，现在基本忘光光了，而KiCad插件开发的文档基本没有，根据我对其他插件的代码审阅，我觉得他们基本也是猜的，所以这里记下流程备用。</p>
-<p>TODO: 整理后文。</p>
+<h1 id="参考内容"><a href="#参考内容" class="headerlink" title="参考内容"></a>参考内容</h1><p>这里有一点要注意，虽然插件目录叫做plugins，插件叫做action plugins但是在官方文档中通常称之Scripting（脚本），搜索资料的时候可以考虑更换关键词</p>
+<h2 id="官方资源"><a href="#官方资源" class="headerlink" title="官方资源"></a>官方资源</h2><p>1、官方文档：<br><a target="_blank" rel="noopener" href="https://dev-docs.kicad.org/zh-cn/python/pcbnew/">PcbNew 插件 | 开发者文档 | KiCad</a><br>2、pcbnew python api手册<br><a target="_blank" rel="noopener" href="https://docs.kicad.org/doxygen-python-6.0/namespaces.html">KiCad Pcbnew Python Scripting: Namespace List</a><br><a target="_blank" rel="noopener" href="https://docs.kicad.org/doxygen-python-6.0/namespacepcbnew.html">KiCad Pcbnew Python Scripting: pcbnew Namespace Reference</a></p>
+<p>然而这些手册没啥鸟用，都是注释生成的，注释写的也很简约，有的api根本看不出来作用是什么，后面会说怎么办。</p>
+<p>3、官方例程<br>安装目录下，例如我的安装目录：<br><code>C:\Program Files\KiCad\7.0\share\kicad\scripting</code><br>这里面是官方用python实现的功能</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_47452807/article/details/122971529">(5条消息) 如何使用wxPython GUI平台插件，快速实现开发python简单Application桌面应用程序_唤醒手腕的博客-CSDN博客_wxpython 镜像</a></p>
 <p>安装wxFormBuilder，用来辅助GUI设计，不然手搓太累了 。他支持导出python和c++等语言。<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/711886d75aa0">可视化wxPython GUI构建工具wxFormBuilder介绍 - 简书 (jianshu.com)</a></p>
 <p>        （还有一个辅助工具wxglade，没试过，上次更新两年前了。<a target="_blank" rel="noopener" href="https://blog.csdn.net/soslinken/article/details/78967918">(5条消息) wxPython GUI 编辑器 - wxglade_迦蓝叶的博客-CSDN博客_wxglade</a></p>
@@ -272,8 +275,7 @@
 <p>然后layout添加一个sizer</p>
 <p>F8调试</p>
 <p>layout-wxstaticBoxsizer可以添加一个带线条的框（类似lceda的那个框分块）</p>
-<p>开发环境：</p>
-<p>vscode<br>python 在vscode的解释器选择中添加kicad中的python，这样可以解析对应的包，或者可以从kicad 6.0 command prompt打开命令行，这样就配置了kicad内置python的环境。</p>
+<h1 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h1><p>vscode.<br>python 在vscode的解释器选择中添加kicad中的python，这样可以解析对应的包，或者可以从kicad 6.0 command prompt打开命令行，这样就配置了kicad内置python的环境。</p>
 <h1 id="Kicad下Python脚本的调试"><a href="#Kicad下Python脚本的调试" class="headerlink" title="Kicad下Python脚本的调试"></a>Kicad下Python脚本的调试</h1><p>首先我不知道kicad是怎么启动脚本的，blender调试脚本的方法挺多的，一般都是安装一个调试插件，这里我也不会写这个插件。。但是还是有别的方法可以来完成调试。</p>
 <p>ps.有时候横竖调不出来就是kicad的bug，等他更新wx组件也许就好了。</p>
 <h2 id="1、直接外部调试"><a href="#1、直接外部调试" class="headerlink" title="1、直接外部调试"></a>1、直接外部调试</h2><p>由于插件的功能是提供了一个Dialog供kicad打开，也可以直接写一个tester.py，其中包含：</p>
@@ -433,12 +435,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/09/22/Work%20with%20the%20world/%E4%BD%BF%E7%94%A8KiCad%E5%86%85%E7%BD%AE%E7%9A%84NgSpice%E8%BF%9B%E8%A1%8C%E7%94%B5%E8%B7%AF%E4%BB%BF%E7%9C%9F%EF%BC%880%EF%BC%89/" rel="prev" title="使用KiCad内置的ngSpice进行电路仿真（0）">
-      <i class="fa fa-chevron-left"></i> 使用KiCad内置的ngSpice进行电路仿真（0）
+    <a href="/2021/11/01/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/%E5%8D%9A%E5%AE%A2%E7%9A%84Tags%E5%92%8C%E5%88%86%E7%B1%BB/" rel="prev" title="博客的Tags和分类">
+      <i class="fa fa-chevron-left"></i> 博客的Tags和分类
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/09/25/Work%20with%20the%20world/ADS1263%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/" rel="next" title="ADS1263性能测试">
-      ADS1263性能测试 <i class="fa fa-chevron-right"></i>
+    <a href="/2022/09/22/Work%20with%20the%20world/%E4%BD%BF%E7%94%A8KiCad%E5%86%85%E7%BD%AE%E7%9A%84NgSpice%E8%BF%9B%E8%A1%8C%E7%94%B5%E8%B7%AF%E4%BB%BF%E7%9C%9F%EF%BC%880%EF%BC%89/" rel="next" title="使用KiCad内置的ngSpice进行电路仿真（0）">
+      使用KiCad内置的ngSpice进行电路仿真（0） <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -498,7 +500,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Kicad%E4%B8%8BPython%E8%84%9A%E6%9C%AC%E7%9A%84%E8%B0%83%E8%AF%95"><span class="nav-number">1.</span> <span class="nav-text">Kicad下Python脚本的调试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E7%9B%B4%E6%8E%A5%E5%A4%96%E9%83%A8%E8%B0%83%E8%AF%95"><span class="nav-number">1.1.</span> <span class="nav-text">1、直接外部调试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E4%BD%BF%E7%94%A8Kicad%E5%86%85%E7%BD%AE%E7%9A%84Python%E6%8E%A7%E5%88%B6%E5%8F%B0%E4%BD%BF%E7%94%A8pdb%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC"><span class="nav-number">1.2.</span> <span class="nav-text">2、使用Kicad内置的Python控制台使用pdb运行脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E4%BD%BF%E7%94%A8Kicad-6-0-Command-prompt"><span class="nav-number">1.3.</span> <span class="nav-text">3、使用Kicad 6.0 Command prompt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E3%80%81%E8%B0%83%E8%AF%95%E6%80%BB%E7%BB%93"><span class="nav-number">1.4.</span> <span class="nav-text">4、调试总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8Ewx-Dialog"><span class="nav-number">1.5.</span> <span class="nav-text">关于wx.Dialog</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E8%AE%A9KiCad%E6%8F%92%E4%BB%B6%E8%BF%90%E8%A1%8C%E5%90%8E%E8%BF%98%E8%83%BD%E7%82%B9%E5%87%BB%E5%90%8E%E9%9D%A2"><span class="nav-number">1.6.</span> <span class="nav-text">关于如何让KiCad插件运行后还能点击后面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8Ebug"><span class="nav-number">1.7.</span> <span class="nav-text">关于bug</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B3%E4%BA%8Ekicad-python-api-%E6%8F%92%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">关于kicad python api 插件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#pcbnew%E7%9B%B8%E5%85%B3"><span class="nav-number">2.1.</span> <span class="nav-text">pcbnew相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E7%BF%BB%E8%AF%91%EF%BC%9A"><span class="nav-number">2.2.</span> <span class="nav-text">关于翻译：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8Echatgpt%E6%8F%90%E9%97%AE%EF%BC%9A"><span class="nav-number">2.3.</span> <span class="nav-text">关于chatgpt提问：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9"><span class="nav-number">3.</span> <span class="nav-text">关于版本兼容</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E5%86%85%E5%AE%B9"><span class="nav-number">1.</span> <span class="nav-text">参考内容</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%98%E6%96%B9%E8%B5%84%E6%BA%90"><span class="nav-number">1.1.</span> <span class="nav-text">官方资源</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="nav-number">2.</span> <span class="nav-text">开发环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Kicad%E4%B8%8BPython%E8%84%9A%E6%9C%AC%E7%9A%84%E8%B0%83%E8%AF%95"><span class="nav-number">3.</span> <span class="nav-text">Kicad下Python脚本的调试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E7%9B%B4%E6%8E%A5%E5%A4%96%E9%83%A8%E8%B0%83%E8%AF%95"><span class="nav-number">3.1.</span> <span class="nav-text">1、直接外部调试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E4%BD%BF%E7%94%A8Kicad%E5%86%85%E7%BD%AE%E7%9A%84Python%E6%8E%A7%E5%88%B6%E5%8F%B0%E4%BD%BF%E7%94%A8pdb%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC"><span class="nav-number">3.2.</span> <span class="nav-text">2、使用Kicad内置的Python控制台使用pdb运行脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E4%BD%BF%E7%94%A8Kicad-6-0-Command-prompt"><span class="nav-number">3.3.</span> <span class="nav-text">3、使用Kicad 6.0 Command prompt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E3%80%81%E8%B0%83%E8%AF%95%E6%80%BB%E7%BB%93"><span class="nav-number">3.4.</span> <span class="nav-text">4、调试总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8Ewx-Dialog"><span class="nav-number">3.5.</span> <span class="nav-text">关于wx.Dialog</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E8%AE%A9KiCad%E6%8F%92%E4%BB%B6%E8%BF%90%E8%A1%8C%E5%90%8E%E8%BF%98%E8%83%BD%E7%82%B9%E5%87%BB%E5%90%8E%E9%9D%A2"><span class="nav-number">3.6.</span> <span class="nav-text">关于如何让KiCad插件运行后还能点击后面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8Ebug"><span class="nav-number">3.7.</span> <span class="nav-text">关于bug</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B3%E4%BA%8Ekicad-python-api-%E6%8F%92%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">关于kicad python api 插件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#pcbnew%E7%9B%B8%E5%85%B3"><span class="nav-number">4.1.</span> <span class="nav-text">pcbnew相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E7%BF%BB%E8%AF%91%EF%BC%9A"><span class="nav-number">4.2.</span> <span class="nav-text">关于翻译：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8Echatgpt%E6%8F%90%E9%97%AE%EF%BC%9A"><span class="nav-number">4.3.</span> <span class="nav-text">关于chatgpt提问：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9"><span class="nav-number">5.</span> <span class="nav-text">关于版本兼容</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -571,12 +573,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">42k</span>
+    <span title="本站总字数">44k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:32</span>
+    <span title="站点阅读时长">1:37</span>
 </div>
 
         
@@ -594,6 +596,7 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
@@ -606,6 +609,65 @@
 
 
 <script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
 
 
 
@@ -630,6 +692,7 @@
 
 
 
+    <div id="pjax">
   
 
   
@@ -637,10 +700,10 @@
 
 <script>
 var options = {
-  bottom: '64px',
+  bottom: '48px',
   right: 'unset',
-  left: '32px',
-  time: '0.5s',
+  left: '48px',
+  time: '0.3s',
   mixColor: 'transparent',
   backgroundColor: 'transparent',
   buttonColorDark: '#100f2c',
@@ -654,5 +717,6 @@ window.darkmode = darkmode;
 darkmode.showWidget();
 </script>
 
+    </div>
 </body>
 </html>
