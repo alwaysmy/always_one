@@ -28,7 +28,7 @@
 <meta property="og:description" content="标题是AI写的，本来我想写的是用RP2040实现AWG ，AI说我这个标题不够专业，给我改了一大串，我感觉确实挺🐂🍺，就直接贴上来了。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-06-18T14:39:53.000Z">
-<meta property="article:modified_time" content="2023-06-22T05:51:47.485Z">
+<meta property="article:modified_time" content="2023-06-26T13:40:42.867Z">
 <meta property="article:author" content="Always L">
 <meta property="article:tag" content="模电">
 <meta property="article:tag" content="rp2040">
@@ -124,7 +124,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">20</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">22</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -134,7 +134,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">21</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">24</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -222,7 +222,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-06-22 13:51:47" itemprop="dateModified" datetime="2023-06-22T13:51:47+08:00">2023-06-22</time>
+                <time title="修改时间：2023-06-26 21:40:42" itemprop="dateModified" datetime="2023-06-26T21:40:42+08:00">2023-06-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -240,14 +240,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1k</span>
+              <span>1.2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>3 分钟</span>
             </span>
 
         </div>
@@ -282,6 +282,9 @@
 <p>由于DMA通道配置的传输地址并不会自己回到最初的地址，因此每次传输结束后至少要重新配置传输起始地址才能在下一次传输中传输正确的数据。因此，这种方法保证了时间间隔的严格，但是作为牺牲是CPU必然要耗费一定时间参与传输任务。这可能对于其他任务是有影响的。</p>
 <pre><code>然而RP2040是双核的，实在优化不出来完全可以扔到另一个核心跑（
 </code></pre>
+<h1 id="R2R-DAC"><a href="#R2R-DAC" class="headerlink" title="R2R DAC"></a>R2R DAC</h1><p>为什么使用这个DAC? 由于是电阻结构所以很容易做而且能达到不错的输出速度。当然了很多成品并行DAC也是使用的R2R结构，而且拆机件也不贵，这里首选选用手工使用电阻搭建这个DAC，为了好玩，其后再测试成品集成芯片。</p>
+<p>关于DAC，可以看我这篇博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/always_one/article/details/104560604?spm=1001.2014.3001.5501">(36条消息) 关于DAC的原理_dac工作原理_你要写卓的博客-CSDN博客</a>（TODO:改天找到原文迁移到自己的博客上）</p>
+<h1 id="硬件设计"><a href="#硬件设计" class="headerlink" title="硬件设计"></a>硬件设计</h1><p>其实最开始的测试版本充其量只能叫做硬件连接不能叫做硬件设计，因为测试过程中只是用到了一个开发板连接了一堆电阻而已。</p>
 
     </div>
 
@@ -306,8 +309,8 @@
       <i class="fa fa-chevron-left"></i> 长白山行简记
     </a></div>
       <div class="post-nav-item">
-    <a href="/2023/06/20/%E7%94%9F%E6%B4%BB%E6%B8%B8%E7%8E%A9/%E5%85%B3%E4%BA%8E%E9%9F%B3%E5%93%8D%E4%B8%80%E4%BA%9B%E6%9D%82%E8%B0%88/" rel="next" title="关于音响想到的一些杂谈">
-      关于音响想到的一些杂谈 <i class="fa fa-chevron-right"></i>
+    <a href="/2023/06/20/%E7%94%9F%E6%B4%BB%E6%B8%B8%E7%8E%A9/%E5%85%B3%E4%BA%8E%E9%9F%B3%E5%93%8D%E4%B8%80%E4%BA%9B%E6%9D%82%E8%B0%88/" rel="next" title="关于音响一些杂谈">
+      关于音响一些杂谈 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -367,7 +370,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%86%99%E8%BF%99%E4%B8%AA"><span class="nav-number">1.</span> <span class="nav-text">为什么要写这个</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RP2040-DMA"><span class="nav-number">2.</span> <span class="nav-text">RP2040 DMA</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%86%99%E8%BF%99%E4%B8%AA"><span class="nav-number">1.</span> <span class="nav-text">为什么要写这个</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RP2040-DMA"><span class="nav-number">2.</span> <span class="nav-text">RP2040 DMA</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#R2R-DAC"><span class="nav-number">3.</span> <span class="nav-text">R2R DAC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1"><span class="nav-number">4.</span> <span class="nav-text">硬件设计</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -383,7 +386,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -396,7 +399,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -440,12 +443,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="本站总字数">48k</span>
+    <span title="本站总字数">51k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:47</span>
+    <span title="站点阅读时长">1:54</span>
 </div>
 
         

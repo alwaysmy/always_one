@@ -104,7 +104,7 @@
 </code></pre>
 <p>于是大致理了一下之前出现的问题。</p>
 <p>当时硬件不是我做的，不过我倒是比较清楚问题，因为最后的输出转换结果实在是太拉了，记得好像是有效位数大概只有12bit，按照手册上最高25bit的无噪分辨率来看这实在是差到没边了。</p>
-<p>另外，当时所使用的供电是AMS1117-5.0 ,虽然比直接用开关电源强一点，但是这个1117承担了从外部开关电源转换的重任。。。也就是说很可能对于纹波抑制基本上没啥效果。<br>另外当时还遇到了ADC转换发热较严重的情况，不知道是设计原因还是实际存在。</p>
+<p>另外，当时项目所使用的供电是AMS1117-5.0 ,虽然比直接用开关电源强一点，但是这个1117承担了从外部开关电源转换的重任。。。也就是说很可能对于纹波抑制基本上没啥效果。<br>另外当时还遇到了ADC转换发热较严重的情况，不知道是设计原因还是实际存在。</p>
 <p>最后重新看了一下手册和代码，发现当时的代码寄存器配置能让这个ADC跑起来就是个奇迹。。。。当时使用的祖传代码，还有不知道谁说的这个adc只有俩通道，但是代码里面实际开了三个通道，真的难绷。</p>
 <p>所以基本上需要解决的问题是：<br>1、基准源<br>2、供电<br>3、修（重写）代码</p>
 <pre><code>顺便吐槽一下TI的ADC的寄存器配置，真的难顶，一大堆寄存器，例程也不给，用起来极为麻烦。
@@ -627,6 +627,9 @@
 <p>由于DMA通道配置的传输地址并不会自己回到最初的地址，因此每次传输结束后至少要重新配置传输起始地址才能在下一次传输中传输正确的数据。因此，这种方法保证了时间间隔的严格，但是作为牺牲是CPU必然要耗费一定时间参与传输任务。这可能对于其他任务是有影响的。</p>
 <pre><code>然而RP2040是双核的，实在优化不出来完全可以扔到另一个核心跑（
 </code></pre>
+<h1 id="R2R-DAC"><a href="#R2R-DAC" class="headerlink" title="R2R DAC"></a>R2R DAC</h1><p>为什么使用这个DAC? 由于是电阻结构所以很容易做而且能达到不错的输出速度。当然了很多成品并行DAC也是使用的R2R结构，而且拆机件也不贵，这里首选选用手工使用电阻搭建这个DAC，为了好玩，其后再测试成品集成芯片。</p>
+<p>关于DAC，可以看我这篇博客：<a href="https://blog.csdn.net/always_one/article/details/104560604?spm=1001.2014.3001.5501">(36条消息) 关于DAC的原理_dac工作原理_你要写卓的博客-CSDN博客</a>（TODO:改天找到原文迁移到自己的博客上）</p>
+<h1 id="硬件设计"><a href="#硬件设计" class="headerlink" title="硬件设计"></a>硬件设计</h1><p>其实最开始的测试版本充其量只能叫做硬件连接不能叫做硬件设计，因为测试过程中只是用到了一个开发板连接了一堆电阻而已。</p>
 ]]></content>
       <categories>
         <category>嵌入式与单片机</category>
@@ -648,7 +651,7 @@
       </categories>
   </entry>
   <entry>
-    <title>关于音响想到的一些杂谈</title>
+    <title>关于音响一些杂谈</title>
     <url>/2023/06/20/%E7%94%9F%E6%B4%BB%E6%B8%B8%E7%8E%A9/%E5%85%B3%E4%BA%8E%E9%9F%B3%E5%93%8D%E4%B8%80%E4%BA%9B%E6%9D%82%E8%B0%88/</url>
     <content><![CDATA[<p>我不是一个什么特别有主见的人，所以对于铺天盖地而来的观点往往会首先逼迫自己认同，然后慢慢考虑到底发生了什么。所以，对于音响的营销，我是完全没有抵抗力的，唯一阻碍我购物的就是我的钱包（以及我的购买习惯）。</p>
 <span id="more"></span>
@@ -726,6 +729,7 @@
 <p>人的正确思想是从哪里来的?是从天上掉下来的吗?不是。是自己头脑里固有的吗?不是。人的正确思想，只能从社会实践中来，只能从社会的生产斗争、阶级斗争和科学实验这三项实践中来。 – 《中共中央关于目前农村工作中若干问题的决定（草案）》</p>
 </blockquote>
 <p>不过一个错误认知可能就是，有些时候理解为这种认知只能被动获取，例如只会去买不同的产品，听了之后仍然是主观的，没有考虑过产品是如何生产的，即使退一步，没有考虑如何有效地对比—-拒绝盲测依然有很大地生存空间—-。</p>
+<p>当然我并不是想说各种产品就不是没有区别没有好坏之分的，但是这是一个主观的评估，我觉得更重要的是人的大脑的适应能力是很强的，而且对于音频信息很多之后我们关注的是其中的信息（虽然高保真可能也确实有更多的音乐信息），如果信息内容本身足够吸引人，其实有的东西也没那么重要。</p>
 <h1 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h1><p>这篇文章通篇没有分段，因为想到的太多了害怕搞忘记了。<br>本来我只是想写一下新买的MR4薄纱惠威x3，但是一写开头就离题万里，就想到了《禅与摩托车维修艺术》这本书通篇在疯狂insert自己的想法。</p>
 <pre><code>卡尔萨根的作品都值得一看，《魔鬼出没的世界》这本书有很多非常不错的观点，具体解释了如何反驳非科学的思考方式和观点，可惜当时我看的版本翻译非常烂，硬是把中文翻译出了长难句，阅读观感非常不好，不过某种程度上来说，强行延长阅读时间倒是增强了我对这本书内容的印象。
 </code></pre>
@@ -990,18 +994,18 @@
   <entry>
     <title>树莓派RP2040开发环境配置集合版(基于Raspberry Pico)</title>
     <url>/2022/12/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91/0_RP2040%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
-    <content><![CDATA[<p>这篇文章是一个测试了多种方法并总结的集合，如果只关心一种方法，我推荐阅读：RP2040配置VSCODE开发环境 —— 一劳永逸版。</p>
+    <content><![CDATA[<p>这篇文章是一个测试了多种方法并总结的集合，如果只关心一种方法，我推荐阅读：[RP2040配置VSCODE开发环境 —— 一劳永逸版](<a href="https://alwaysmy.github.io/2023/04/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91/RP2040%E9%85%8D%E7%BD%AEVSCODE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E2%80%94%E2%80%94%E4%B8%80%E5%8A%B3%E6%B0%B8%E9%80%B8%E7%89%88/">RP2040配置VSCODE开发环境 —— 一劳永逸版 | 加载中… (alwaysmy.github.io)</a>)。</p>
 <p>一开始我以为RP2040作为一款树莓派出品的单片机会有很成熟的开发方案，实际发现网上的配置方法大多数是照着官方给的方法一抄，完全没有解释里面各个部分需要做什么的原因，以及有什么过程需要了解学习，甚至没有说这个配置方案就是<a href="https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf">官方入门手册.Chapter 7</a>中给出的方法。</p>
 <span id="more"></span>
+
 <figure class="highlight text"><table><tr><td class="code"><pre><span class="line">（我最开始看的手册还没更新树莓派以外平台的写法，所以蒙圈了好久，以为这些环境配置方法是他们经验丰富才能总结出来的）。</span><br></pre></td></tr></table></figure>
+
 <p>这些网上的博客基本上都是照着文档来配置，好点的会给几个填坑的说明，然后到了调试配置阶段都是直接默认使用官方给出的picoprobe调试器的配置方法，实在是让人看了捉急，难道你们开发单片机都不用开Debug吗？</p>
 <p>    之前我都是喜欢开箱即用的懒人，然而rp2040这个官方给的配置方法（C-SDK）实属不当人。</p>
 <p>因此就有了这篇文章。</p>
 <h1 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h1><p>pico指的是搭载了rp2040单片机的官方出品的PCBA，不过市面上卖的核心开发板基本上兼容官方设计。</p>
 <h2 id="调试使用的Debugger"><a href="#调试使用的Debugger" class="headerlink" title="调试使用的Debugger"></a>调试使用的Debugger</h2><ul>
-<li><p>官方版本<br> 他们做了一个特殊的daplink，叫做picoprobe, 就是直接用pico实现了一个swd的功能，相比ARM开源的DAP更简陋。在大部分博客中以及现在的官方入门文档中，都指出这个picoprobe所使用的openOCD需要raspberry分支下的openocd才能用，同样，配置文件也是专用的。</p>
-<p>  在Windows下如果用picoprobe需要使用Zadig为其安装驱动为libusb-win32。（不知道现在还是不是这样，网上有的教程还提到了需要复制一个dll文件，但是我看现在的openocd.exe目录下已经包含了这个dll）</p>
-</li>
+<li>官方版本<br> 他们做了一个特殊的daplink，叫做picoprobe, 就是直接用pico实现了一个swd的功能，相比ARM开源的DAP更简陋。在大部分博客中以及现在的官方入门文档中，都指出这个picoprobe所使用的openOCD需要raspberry分支下的openocd才能用，同样，配置文件也是专用的。<br>  在Windows下如果用picoprobe需要使用Zadig为其安装驱动为libusb-win32。（不知道现在还是不是这样，网上有的教程还提到了需要复制一个dll文件，但是我看现在的openocd.exe目录下已经包含了这个dll）</li>
 </ul>
 <blockquote>
 <p>这意味这个版本picoprobe的通用性比较差，因此一般来说没有必要使用这个。</p>
@@ -1011,13 +1015,12 @@
 </ul>
 <p>        另外也可以使用pico-debug这个固件加载自调试，这个固件同样移植自ARM开源的CMSIS-DAP.</p>
 <ul>
-<li>Jlink<br>有官方支持，但是需要氪金购买新版。</li>
+<li><p>Jlink<br>有官方支持，但是需要氪金购买新版。
+        </p>
+<h3 id="配合Debugger使用的上位机"><a href="#配合Debugger使用的上位机" class="headerlink" title="配合Debugger使用的上位机"></a>配合Debugger使用的上位机</h3></li>
 </ul>
-<p>        </p>
-<h3 id="配合Debugger使用的上位机"><a href="#配合Debugger使用的上位机" class="headerlink" title="配合Debugger使用的上位机"></a>配合Debugger使用的上位机</h3><p>除了Jlink自身带上位机，PicoProbe和CMSIS-DAP都需要有上位机支持。</p>
-<p>PicoProbe使用的是raspberry官方修改的openocd分支，需要单独下载编译。CMSIS-DAP可以使用通用版OpenOCD，也可以使用Pyocd.</p>
-<pre><code>尽管这是官方文档提到的方法，但是openocd的bug较多，我不推荐使用，如果使用了发现存在bug，最好办法是更新版本，一般问题会解决。目前的0.12 rc1版本存在bug。
-</code></pre>
+<p>除了Jlink自身带上位机，PicoProbe和CMSIS-DAP都需要有上位机支持。</p>
+<p>PicoProbe使用的是raspberry官方修改的openocd分支，需要单独下载编译。CMSIS-DAP可以使用通用版OpenOCD，也可以使用Pyocd.<br>    尽管这是官方文档提到的方法，但是openocd的bug较多，我不推荐使用，如果使用了发现存在bug，最好办法是更新版本，一般问题会解决。目前的0.12 rc1版本存在bug。</p>
 <p>Openocd下载来源两个：</p>
 <ul>
 <li><a href="https://github.com/openocd-org/openocd/releases">Releases · openocd-org&#x2F;openocd (github.com)</a></li>
@@ -1028,9 +1031,7 @@
 
 <p>就这么简单，相比来说pyocd的文档也更全面。具体使用放到后面介绍。</p>
 <h2 id="下载UF2固件的方法"><a href="#下载UF2固件的方法" class="headerlink" title="下载UF2固件的方法"></a>下载UF2固件的方法</h2><p>RP2040内建Bootloader支持插上电脑USB拖入固件烧录。</p>
-<p>在RP2040运行前按住boot按键然后运行就会让rp2040进入Boot模式，最简单的方法是按住按键然后上电就进入boot模式了，然后电脑上就会出现一个叫做RP2-PI的硬盘驱动器，右键UF2文件，点发送到树莓派对应的驱动器。</p>
-<pre><code>（btw.如果是win11强烈建议改成win10右键菜单）。
-</code></pre>
+<p>在RP2040运行前按住boot按键然后运行就会让rp2040进入Boot模式，最简单的方法是按住按键然后上电就进入boot模式了，然后电脑上就会出现一个叫做RP2-PI的硬盘驱动器，右键UF2文件，点发送到树莓派对应的驱动器。<br>    （btw.如果是win11强烈建议改成win10右键菜单）。</p>
 <p>如果不希望重新上电，可以拉低Run引脚后按Boot，然后释放Run引脚。</p>
 <p>除此之外，也可以通过code实现跳转bootrom进入bootloader模式，在文章中解释。除了通过UF2下载固件，还有传统的SWD烧录的方法，将在环境配置介绍之后的第四章介绍。</p>
 <p>UF2（USB Flashing Format (UF2)）格式参考：<br><a href="https://github.com/microsoft/uf2">microsoft&#x2F;uf2: UF2 file format specification (github.com)</a></p>
@@ -1066,9 +1067,7 @@
 <li>至于开发，随便找个帖子吧：<a href="https://zhuanlan.zhihu.com/p/359823300">目前全网最详细的树莓派 Pico入门指南！ - 知乎 (zhihu.com)</a></li>
 </ol>
 <p>还有一个VSCODE插件：<br><a href="https://marketplace.visualstudio.com/items?itemName=paulober.pico-w-go">Pico-W-Go - Visual Studio Marketplace</a></p>
-<h1 id="PlatformIO环境开发"><a href="#PlatformIO环境开发" class="headerlink" title="PlatformIO环境开发"></a>PlatformIO环境开发</h1><p>我感觉这个东西出bug的问题比较大，不过考虑到配置比较简单我还是写一下。</p>
-<pre><code>它经常不显示出来主页，不知道为啥给我的感觉就是有点卡。
-</code></pre>
+<h1 id="PlatformIO环境开发"><a href="#PlatformIO环境开发" class="headerlink" title="PlatformIO环境开发"></a>PlatformIO环境开发</h1><p>我感觉这个东西出bug的问题比较大，不过考虑到配置比较简单我还是写一下。<br>    它经常不显示出来主页，不知道为啥给我的感觉就是有点卡。</p>
 <h2 id="Arduino框架环境"><a href="#Arduino框架环境" class="headerlink" title="Arduino框架环境"></a>Arduino框架环境</h2><p>个人认为，如果不在乎那个arduino框架的资源占用，其实还是这个一个很好的开发平台，对仿真器的支持也还可以。</p>
 <p><strong>安装方式：</strong><br>在PlatformIO的board里面搜rp2040或者rasp，安装对应的平台。<br><strong>文档：</strong><br><a href="https://arduino-pico.readthedocs.io/en/latest/sdk.html">Using the Raspberry Pi Pico SDK (PICO-SDK) — Arduino-Pico 2.6.2 documentation</a><br><strong>功能：</strong><br>支持arudino框架，配置有arduino风格的函数。<br>因为本身就是基于C-SDK的 , 因此也支持在arduino框架下直接使用pico-sdk的函数。</p>
 <p><strong>下载调试方法：</strong><br>这个框架一般会自动选择调试工具，如果要更改就在工程下的ini文件里面添加两行，例如：</p>
@@ -1160,6 +1159,7 @@
 <p>只是如果使用单核的配置的情况下使用外部daplink的时候就不要让它自己启动openocd, 也就是说需要手动启动，不然连接不上，可能是openocd的bug。</p>
 <p>同样，命令可以更换为pyocd的命令，命令更为简单，目前没有遇到bug<br>更换 GDB Server Command Line：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyocd gdbserver -t RP2040 -f 10000k</span><br></pre></td></tr></table></figure>
+
 <p>注意，这里没有指定调试器UID, 因此需要保持电脑上就只插了一个仿真器，否则可能不能正确打开pyocd的gdbserver.</p>
 <blockquote>
 <p>使用pyocd生成调试命令可以参考我写的工具：<a href="https://alwaysmy.github.io/2023/04/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/%E4%BD%BF%E7%94%A8aardio%E5%86%99%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8Epyocd%E7%9A%84%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%8B%E8%BD%BD%E5%99%A8/">使用aardio写一个基于pyocd的单片机下载器 | 加载中… (alwaysmy.github.io)</a></p>
@@ -1180,11 +1180,7 @@
 <p>有人使用picoprobe替换驱动为libusb后用来调试（没看见他发调试成功的图啊）<br>我也没成功过，所以不知道调试行不行。但是考虑到有人用这个写，应该是可以的，但是我实属体验不好。</p>
 <p>参考链接：<a href="https://club.rt-thread.org/ask/article/5b94f05666f693db.html">RT-Thread-在 RT-Thread Studio 中使用树莓派 Pico 开发板RT-Thread问答社区 - RT-Thread</a></p>
 <h2 id="使用Keil-MDK"><a href="#使用Keil-MDK" class="headerlink" title="使用Keil MDK"></a>使用Keil MDK</h2><p><a href="https://github.com/GorgonMeducer/Pico_Template">GorgonMeducer&#x2F;Pico_Template: An MDK template for Raspberry Pi Pico (github.com)</a><br>用这个模板，看起来还行，我就不测试了，不喜欢Keil。</p>
-<p>使用方法：</p>
-<pre><code>git clone https://github.com/GorgonMeducer/Pico_Template .
-
-git submodule update --init
-</code></pre>
+<p>使用方法：<br>    git clone <a href="https://github.com/GorgonMeducer/Pico_Template">https://github.com/GorgonMeducer/Pico_Template</a> .<br>    git submodule update –init</p>
 <h2 id="更多第三方IDE"><a href="#更多第三方IDE" class="headerlink" title="更多第三方IDE"></a>更多第三方IDE</h2><p>基本上就是使用CortexM0+的对应文件并正确包含pico-sdk库的文件就可以了，其实后面CMakelist同理。</p>
 <p>我看还有人用CrossWorks for ARM,很贵，不多说了。上面介绍的方法都是基于工程模板的，下面介绍的就是对应pico官方给出的基于Cmakelist的构建方法。</p>
 <h1 id="基于官方C-SDK的开发环境搭建"><a href="#基于官方C-SDK的开发环境搭建" class="headerlink" title="基于官方C-SDK的开发环境搭建"></a>基于官方C-SDK的开发环境搭建</h1><p>关于CMake和CMakelist这里不再赘述，网上内容很多，先了解一下比较好。</p>
@@ -1194,34 +1190,26 @@ git submodule update --init
 <p>具体过程如下文。</p>
 <h2 id="下载必要软件"><a href="#下载必要软件" class="headerlink" title="下载必要软件"></a>下载必要软件</h2><p>这里主要是Windows上的方法，Linux上同理，但是安装软件要更简单，只在有配置区别的地方单独指出。目前我的环境是Windows11,不过Win10同理了。</p>
 <ul>
-<li><strong>CMAKE</strong></li>
+<li><strong>CMAKE</strong><br>pico-project-generator生成的工程是基于cmake构建的，因此这里选择安装CMAKE。<br>安装的时候要勾选添加环境变量for all users。实际上就是系统环境变量。</li>
 </ul>
-<p> pico-project-generator生成的工程是基于cmake构建的，因此这里选择安装CMAKE。<br> 安装的时候要勾选添加环境变量for all users。实际上就是系统环境变量。</p>
 <ul>
-<li><strong>gcc-arm-none-eabi</strong></li>
-</ul>
-<p> <a href="https://developer.arm.com/Tools%20and%20Software/GNU%20Toolchain">Arm GNU Toolchain</a>  ,用于编译ARM可执行文件。这里没啥特殊要求，可以下最新的。安装完了之后需要手动勾选添加到路径，还要检查一下能不能直接在cmd里面使用arm-none-eabi-gcc命令，否则说明他添加的路径有问题，就需要手工改一下（现在的版本应该直接可用）</p>
-<ul>
-<li><p><strong>python</strong>：<br> pico-project-generator是用python写的，因此需要python。<br> 后面用他的生成器要用。勾选环境变量，解除长路径限制。</p>
+<li><p><strong>gcc-arm-none-eabi</strong><br><a href="https://developer.arm.com/Tools%20and%20Software/GNU%20Toolchain">Arm GNU Toolchain</a>  ,用于编译ARM可执行文件。这里没啥特殊要求，可以下最新的。安装完了之后需要手动勾选添加到路径，还要检查一下能不能直接在cmd里面使用arm-none-eabi-gcc命令，否则说明他添加的路径有问题，就需要手工改一下（现在的版本应该直接可用）</p>
 </li>
-<li><p>Git<br>需要这个工具来下载，虽然不用也可，但是用了更方便。</p>
-<p>上面软件的直接到官网下载最新版安装就行了，不用纠结版本要不要旧一点。</p>
+<li><p><strong>python</strong>：<br>pico-project-generator是用python写的，因此需要python。<br>后面用他的生成器要用。勾选环境变量，解除长路径限制。</p>
+</li>
+<li><p>Git<br>需要这个工具来下载，虽然不用也可，但是用了更方便。<br>上面软件的直接到官网下载最新版安装就行了，不用纠结版本要不要旧一点。</p>
 </li>
 <li><p><strong>编译工具</strong><br>对于windows平台，这里有两种选择，一个是安装visual studio，一个是安装其他的编译器实现比如MinGW。<br>其中，前者的工具为NMake，使用的时候需要先启动vs的工作环境，得到配置的环境变量（或者直接加载环境变量也可以），<br>后者的工具为Mingw32-make，配置更简单，只需要把bin目录加到环境变量就行，至于其他没有对比。可以用mingw的mingw32-make来替代vs的Nmake。</p>
 </li>
 </ul>
-<p>前者从微软安装vs的社区版就好了，如果本来就有vs同时没有mingw又懒得装一个，可以就用VS，不然<font color="#9bbb59">还是建议使用MinGW</font>。</p>
-<pre><code>因为如果使用vs的nmake工具的话，后面的很多操作都需要从Visual Studio 2022 Developer Command Prompt这里打开其他的应用程序，使其具有内置的环境，会出现很多麻烦。官方手册里面提供的方法是VS,就感觉他们很随便.
-</code></pre>
+<p>前者从微软安装vs的社区版就好了，如果本来就有vs同时没有mingw又懒得装一个，可以就用VS，不然<font color="#9bbb59">还是建议使用MinGW</font>。<br>    因为如果使用vs的nmake工具的话，后面的很多操作都需要从Visual Studio 2022 Developer Command Prompt这里打开其他的应用程序，使其具有内置的环境，会出现很多麻烦。官方手册里面提供的方法是VS,就感觉他们很随便.</p>
 <p>VS的安装很简单，勾选C&#x2F;C++工具一路确定就好了，这里不再赘述。</p>
 <p>MinGW的安装如下：</p>
 <ol>
 <li>下载MinGW,</li>
 <li>把其bin目录加入环境变量,需要手工添加，用户变量或者系统变量都行。</li>
 </ol>
-<p>下载来源：<br>目前mingw新的是mingw-w64,下载网址： <a href="https://sourceforge.net/projects/mingw-w64/files/">MinGW-w64 - for 32 and 64 bit Windows - Browse Files at SourceForge.net</a><br>点下面的MinGW-W64 GCC-8.1.0标题下面的包，因为如果用在线安装包压根连不上。</p>
-<pre><code>选择最新版本（8.1.0）的 x86_64-win32-seh 
-</code></pre>
+<p>下载来源：<br>目前mingw新的是mingw-w64,下载网址： <a href="https://sourceforge.net/projects/mingw-w64/files/">MinGW-w64 - for 32 and 64 bit Windows - Browse Files at SourceForge.net</a><br>点下面的MinGW-W64 GCC-8.1.0标题下面的包，因为如果用在线安装包压根连不上。<br>    选择最新版本（8.1.0）的 x86_64-win32-seh</p>
 <p><a href="https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/8.1.0/threads-win32/seh/x86_64-8.1.0-release-win32-seh-rt_v6-rev0.7z">x86_64-win32-seh</a>这个表示64位pc windows系统 seh错误处理的包（具体怎么选可以搜一下mingw-w64的安装)。</p>
 <p>注释：<br>我尝试直接用电脑上安装的devc++自带的mingw64，发现会编译报错，编译的时候可能会出现类似于<code>&#39;C:/Program&#39; 不是内部或外部命令，也不是可运行的程序</code>这样的问题。<br>（mingw32下载链接：<a href="https://osdn.net/projects/mingw/#">https://osdn.net/projects/mingw/#</a> 上面是旧版mingw32，2017年就停更了，可能也能用，没试过，放在这里提示不要下错了）</p>
 <p>这里最终用刚刚下载的mingw-w64，测试OK.</p>
@@ -1244,14 +1232,13 @@ git submodule update --init
 <li>可以使用使用powershell</li>
 </ol>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">setx PICO_SDK_PATH <span class="string">&quot;yourpath\pico-sdk&quot;</span> </span><br></pre></td></tr></table></figure>
+
 <pre><code>yourpath指的是你pico-sdk这个文件夹的路径
 </code></pre>
 <ol start="2">
-<li><p>或者Windows下面直接搜path，就能找到编辑系统环境变量的选项。</p>
-<p> (其实这里没加也没关系，有别的方法，但是最好加上，因为generator默认用的是环境变量配置)。</p>
+<li><p>或者Windows下面直接搜path，就能找到编辑系统环境变量的选项。<br> (其实这里没加也没关系，有别的方法，但是最好加上，因为generator默认用的是环境变量配置)。</p>
 </li>
-<li><p>当然也可以临时配置环境变量，但是没必要这样做, 不然每次都要重新导入环境变量：</p>
-<p> 临时配置的方法：在powershell内执行</p>
+<li><p>当然也可以临时配置环境变量，但是没必要这样做, 不然每次都要重新导入环境变量：<br> 临时配置的方法：在powershell内执行</p>
 </li>
 </ol>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="variable">$env:PICO_SDK_PATH</span>=pico<span class="literal">-sdk</span>的路径</span><br></pre></td></tr></table></figure>
@@ -1261,31 +1248,33 @@ git submodule update --init
 <p><font color="#9bbb59">上面这些步骤配置完了之后就可以找个例程编译测试一下了。</font></p>
 <h2 id="编译例程测试"><a href="#编译例程测试" class="headerlink" title="编译例程测试"></a>编译例程测试</h2><p>其实环境配置好了，例程里面的CMakeLists.txt也是已经写好的，这里简单来说就是两步：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 在上级目录生成makefile</span></span><br><span class="line">cmake ..</span><br><span class="line"><span class="comment"># 对于linux来说执行make即可，Windows则有一点不同</span></span><br><span class="line"><span class="comment"># 执行构建</span></span><br><span class="line">make </span><br></pre></td></tr></table></figure>
-<p>其实这个步骤不是必须的，但是最好测试一次，同时也演示了不配置IDE怎么编译。下面详细说一下。</p>
+
+<p>其实这个步骤不是必须的，但是最好测试一次，同时也演示了不配置IDE怎么编译。下面详细说一下具体步骤和有什么变化。</p>
 <h3 id="使用visual-studio的工具链"><a href="#使用visual-studio的工具链" class="headerlink" title="使用visual studio的工具链"></a>使用visual studio的工具链</h3><p>如果一定坚持使用visual studio 的工具链，也就是官方手册指出的方法，那么具体步骤如下：</p>
 <ol>
-<li>打开Visual Studio 2022 Developer Command Prompt：<br> 搜索快捷方式或者WindowsTerminal打开（Windows Terminal点加号旁边的下拉，里面有选项），打开之后会提示：<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">**********************************************************************</span><br><span class="line">** Visual Studio <span class="number">2019</span> Developer Command Prompt v16.<span class="number">7</span>.<span class="number">2</span></span><br><span class="line">** Copyright (c) <span class="number">2020</span> Microsoft Corporation</span><br><span class="line">**********************************************************************</span><br><span class="line">[vcvarsall.bat] Environment initialized <span class="keyword">for</span>: &#x27;x86_x64&#x27;</span><br></pre></td></tr></table></figure>
-那么这个环境就是正确打开了。✔<br> 这个表示加载了vs的环境，实际上也可以直接打开命令行之后通过执行<code>vcvars64.bat</code>这个文件来加载环境，也会给出一样的提示。</li>
+<li><p>打开Visual Studio 2022 Developer Command Prompt：<br> 搜索快捷方式或者WindowsTerminal打开（Windows Terminal点加号旁边的下拉，里面有选项），打开之后会提示：</p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">   </span><br></pre></td></tr></table></figure></li>
 </ol>
-<p>总而言是，现在打开了一个命令行或者powershell，继续使用这个加载过环境的命令行界面，然后切换到自己下载的pico-example目录。<br>    如果用cmd，工程切换到别的盘先要换盘符，然后cd进去；powershell可以直接cd进去.</p>
-<ol start="2">
-<li>然后执行下面命令：<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">mkdir build</span><br><span class="line"><span class="built_in">cd</span> build</span><br><span class="line">cmake .. <span class="literal">-G</span> <span class="string">&quot;NMake Makefiles&quot;</span> </span><br></pre></td></tr></table></figure>
-这表示：</li>
-</ol>
+<hr>
+<p>** Visual Studio 2019 Developer Command Prompt v16.7.2<br>** Copyright (c) 2020 Microsoft Corporation</p>
+<hr>
+<p>[vcvarsall.bat] Environment initialized for: ‘x86_x64’</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">那么这个环境就是正确打开了。✔</span><br><span class="line">    这个表示加载了vs的环境，实际上也可以直接打开命令行之后通过执行`` vcvars64.bat ``这个文件来加载环境，也会给出一样的提示。</span><br><span class="line"></span><br><span class="line">总而言是，现在打开了一个命令行或者powershell，继续使用这个加载过环境的命令行界面，然后切换到自己下载的pico-example目录。</span><br><span class="line">    如果用cmd，工程切换到别的盘先要换盘符，然后cd进去；powershell可以直接cd进去.</span><br><span class="line"></span><br><span class="line">2. 然后执行下面命令：</span><br><span class="line">```powershell</span><br><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake .. -G &quot;NMake Makefiles&quot; </span><br></pre></td></tr></table></figure>
+
+<p>这表示：</p>
 <ul>
 <li>新建一个build文件夹用于存放等会构建出来的内容。</li>
 <li>在build目录内从pico-example(也就是相对build的上层目录)执行cmake，参数<code>-G &quot;NMake Makefiles&quot;</code>用于生成用于Nmake的makefile.</li>
 </ul>
 <p>这一步，如果前面正确配置了PICO-SDK这个环境变量的名称，并安装了arm-none-eabi-gcc.exe具有正确的环境变量，这一步就能正确执行不会报错。</p>
 <ol start="3">
-<li>上面这一步在build目录中生成了所有工程的makefile，不用全部编译，进入build目录，找到一个例程例如blink 进入目录继续执行（目前命令行执行位置已经在build文件夹下了）：<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd blink</span><br><span class="line">nmake</span><br></pre></td></tr></table></figure></li>
+<li><p>上面这一步在build目录中生成了所有工程的makefile，不用全部编译，进入build目录，找到一个例程例如blink 进入目录继续执行（目前命令行执行位置已经在build文件夹下了）：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd blink</span><br><span class="line">nmake</span><br></pre></td></tr></table></figure></li>
 </ol>
 <p>这时候看编译信息，可以看到正常生成的信息。</p>
-<p>现在进入build&#x2F;blink，可以找到一个blink.uf2的文件，拿出开发板，按住BOOT按键插到电脑的USB上，右键xxx.uf2, 选择发送到RPI-RP2这个驱动器，发送完会自动运行。</p>
-<pre><code>对于pico-example，也可以进入example下的build目录后执行make（对应nmake或者mingw32-make）后直接编译全部例程，但是这样耗时比较长，没有必要这样做。
-</code></pre>
+<p>现在进入build&#x2F;blink，可以找到一个blink.uf2的文件，拿出开发板，按住BOOT按键插到电脑的USB上，右键xxx.uf2, 选择发送到RPI-RP2这个驱动器，发送完会自动运行。<br>    对于pico-example，也可以进入example下的build目录后执行make（对应nmake或者mingw32-make）后直接编译全部例程，但是这样耗时比较长，没有必要这样做。</p>
 <h3 id="使用MinGW工具链"><a href="#使用MinGW工具链" class="headerlink" title="使用MinGW工具链"></a>使用MinGW工具链</h3><p>现在，来到了我推荐的环节，不要管那个什么VS了。直接使用MinGW来编译。<br>现在你打开了pico-example文件夹，在此处打开命令行，然后执行</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake .. -G &quot;MinGW32 Makefiles&quot;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">切到blink生成的目录中</span></span><br><span class="line">cd blink </span><br><span class="line">mingw32-make</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake .. -G &quot;MinGW Makefiles&quot;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">切到blink生成的目录中</span></span><br><span class="line">cd blink </span><br><span class="line">mingw32-make</span><br></pre></td></tr></table></figure>
 
 <p>有没有发现特别简单？我也不用费劲解释为什么VS必须要打开环境才能用了，更何况后面还可能需要用其他的编辑器配合。</p>
 <blockquote>
@@ -1301,6 +1290,7 @@ git submodule update --init
 <p><strong>p.s.</strong>  这里提前说一下，如果生成器启动有问题，首先更新pico-project-generator到最新的python源文件；有的早期教程中指出是python解释器的问题，但是现在生成器在windows下面没有问题，能正常使用，不需要改动python的源码等步骤（是新版的python没有这个问题，3.10）。</p>
 <p>进入pico-project-generator目录下，右键打开shell，运行：</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">python ./pico_project.py --gui</span><br><span class="line"><span class="comment">#或者</span></span><br><span class="line">python ./pico_project.py -g</span><br></pre></td></tr></table></figure>
+
 <p>这样就可以通过图形界面的方式来配置自己的新建工程。</p>
 <p>这里建议找到pico_project.py 647行的self.locationName.set(os.path.abspath(os.getcwd()),改成：</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">self.locationName.<span class="built_in">set</span>(os.path.abspath(os.path.join(os.getcwd(), <span class="string">&quot;..&quot;</span>)))</span><br></pre></td></tr></table></figure>
@@ -1316,7 +1306,7 @@ git submodule update --init
 <p>生成器的作用是复制需要的文件和生成对应的cmakelist，同时自动执行<code>cmake -G &#39;xxxmake Makefile&#39;</code>. （个人认为其实这个没有必要，后面使用ide的时候也会配置cmake的生成参数的，不过生成器没直接提供不执行cmake -G的方法）</p>
 <p>具体可以看<a href="https://github.com/raspberrypi/pico-project-generator">raspberrypi&#x2F;pico-project-generator: Tool to automatically generate a Pico C SDK Project (github.com)</a>项目的readme，或者在命令下加上 –help来查看帮助。生成器本身也可以只在命令环境下执行，看需要自由发挥了。</p>
 <p><strong>p.s.这里得注意</strong>，默认情况下，mingw的优先级高于vs，所以配置了两者都有的话，生成器优先生成基于mingw的工程，当然了，只是cmake -G的参数不同，可以改也可以自己切换。</p>
-<p>注意，**<font color="#953766">在前面配置的编译工具是使用VS的情况下</font> :</p>
+<p>注意，<font color="#953766">在前面配置的编译工具是使用VS的情况下</font> :</p>
 <p>这里如果勾选Run build afer generation，那么打开生成器的步骤变化为：<br>先进入Visual Studio 2022 Developer Command Prompt的环境，然后打开在这个命令行里面打开这个生成器，不然缺环境来执行build。可以选择不勾选这个选项。</p>
 <p>现在你已经得到项目模板了，下一步是编写代码并编译。</p>
 <p>为了简单一点，假设这里只有一个包含main函数的c文件，默认也是生成这个，进入工程目录下，只有一个 <code>工程名.c </code>文件，main函数就在里面。</p>
@@ -1344,7 +1334,7 @@ git submodule update --init
 <li>买一个rp2040当做一个picoprobe</li>
 <li>其他的daplink或者jlink</li>
 </ol>
-<p>前面说过了，picoprobe需要openocd专用配置，不过pyocd似乎可以直接支持，仍然优选后者，实测速度也会更快一点。</p>
+<p>前面说过了，picoprobe需要openocd专用配置，不过pyocd似乎可以直接支持，仍然优选后者，实测速度也会更快一点。在旧版的pico-sdk中我曾经遇到过使用外部调试器的时候出现速度奇慢无比,在sleep_ms更是直接卡死的问题,经过测试新版的pico-sdk似乎修复了这个问题.</p>
 <p>没有什么特殊的，连上线就好了。下面介绍软件使用。</p>
 <h2 id="手工调试方法（GDB使用）"><a href="#手工调试方法（GDB使用）" class="headerlink" title="手工调试方法（GDB使用）"></a>手工调试方法（GDB使用）</h2><pre><code>参考资料：getting-started-with-pico.pdf 5.3章节 第六节
 </code></pre>
@@ -1356,11 +1346,16 @@ git submodule update --init
 <p>其实如果已经有嵌入式开发的经验，这里就很好理解，我们需要一个gdb来调试，而需要有一个工具来启动一个gdbsever.</p>
 <p>好了现在回到了最开头说的，Debugger的上位机，官方教程给出的方法是使用OpenOCD来作为调试上位机，这里也先介绍一下，然后介绍pyocd的方法。</p>
 <h3 id="使用openocd打开GDB-server"><a href="#使用openocd打开GDB-server" class="headerlink" title="使用openocd打开GDB server"></a>使用openocd打开GDB server</h3><ol>
-<li>添加openocd.exe到环境变量</li>
-<li>执行下述命令：<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">openocd -f board/pico-debug.cfg</span><br></pre></td></tr></table></figure>
-这时候回显会提示：</li>
+<li><p>添加openocd.exe到环境变量</p>
+</li>
+<li><p>执行下述命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">openocd -f board/pico-debug.cfg</span><br></pre></td></tr></table></figure>
+
+<p>这时候回显会提示：</p>
+</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Warn : rp2040-core0.cfg configuration file is deprecated and will be removed <span class="keyword">in</span> the next release. Use following parameters instead: -c <span class="string">&#x27;set USE_CORE 0&#x27;</span> -f target/rp2040.cfg</span><br></pre></td></tr></table></figure>
+
 <p>大致解释一下，这个pico-debug.cfg实际上内容就是</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">source [find interface/cmsis-dap.cfg]</span><br><span class="line">adapter speed 4000</span><br><span class="line">set CHIPNAME rp2040</span><br><span class="line">source [find target/rp2040-core0.cfg]</span><br></pre></td></tr></table></figure>
 
@@ -1373,11 +1368,13 @@ git submodule update --init
 <pre><code>不过实际上,openocd可能有bug，上面两个命令可能有时候会出现不一样的结果，一个好用一个不好用。所以继续看下面。
 </code></pre>
 <h3 id="使用pyocd打开GDBserver"><a href="#使用pyocd打开GDBserver" class="headerlink" title="使用pyocd打开GDBserver"></a>使用pyocd打开GDBserver</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pyocd gdbserver -t RP2040 -f 10000k</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">指定目标RP2040 ,指定速度10M,希望能加载快一些。</span></span><br></pre></td></tr></table></figure>
+
 <p>现在已经打开了pyocd内置的gdbserver. 相比使用openocd，这个参数<font color="#9bbb59">超级简单！！！</font>，有更多参数配置，可以参考我写的<a href="https://alwaysmy.github.io/2023/04/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/%E4%BD%BF%E7%94%A8aardio%E5%86%99%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8Epyocd%E7%9A%84%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%8B%E8%BD%BD%E5%99%A8/">使用aardio写一个基于pyocd的单片机下载器 | 加载中… (alwaysmy.github.io)</a> 利用这个工具配置命令。</p>
 <p>好了，现在不管怎么样，都用一个上位机工具打开了调试器连接了目标单片机。下面要进行调试了。</p>
 <h3 id="GDB调试使用例子"><a href="#GDB调试使用例子" class="headerlink" title="GDB调试使用例子"></a>GDB调试使用例子</h3><p>上一步中打开了一个gdbserver, 不要关闭那个命令行界面，它会监听端口等待连接。另外开一个terminal， attach gdb to the server.<br>假设得到了picoboard_blinky.elf这个固件，在固件同级目录下打开终端，然后</p>
 <ol>
-<li>执行<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">linux下输入：</span></span><br><span class="line">gdb-multiarch picoboard_blinky.elf</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">在Windows下输入：</span></span><br><span class="line">arm-none-eabi-gdb.exe picoboard_blinky.elf</span><br></pre></td></tr></table></figure></li>
+<li><p>执行</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">linux下输入：</span></span><br><span class="line">gdb-multiarch picoboard_blinky.elf</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">在Windows下输入：</span></span><br><span class="line">arm-none-eabi-gdb.exe picoboard_blinky.elf</span><br></pre></td></tr></table></figure></li>
 </ol>
 <blockquote>
 <p>吐个槽，manjaro还需要借arch的包安装gdb-multiarch</p>
@@ -1386,14 +1383,22 @@ git submodule update --init
 <ol start="2">
 <li><p>然后连接gdb上去。<br>输入 </p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">target remote localhost:3333 或者  target remote :3333 或者  target extended-remote :3333</span><br></pre></td></tr></table></figure>
+
 <p>同理，也可以远程调试，比如 <code>target remote 192.168.31.16:3333</code> 当然，远程连接的时候要先检测对应端口有没有被防火墙拦。<br>观察到的结果是：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">(gdb) target remote localhost:3333 </span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">3. load picoboard_blinky.elf into flash:</span><br><span class="line"></span><br><span class="line">```shell</span><br><span class="line">(gdb) load</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">(gdb) target remote localhost:3333 </span><br></pre></td></tr></table></figure>
 </li>
+<li><p>load picoboard_blinky.elf into flash:</p>
+</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">(gdb) load</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
 <li><p>执行下面命令开始运行程序：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">(gdb) monitor reset init</span><br><span class="line">(gdb) continue</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>如果需要下断点，就提前下好然后continue，也可以在编译之前时候就下好断点：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">(gdb) monitor reset init</span><br><span class="line">(gdb) b main # 在main函数添加一个断点</span><br><span class="line">(gdb) continue</span><br></pre></td></tr></table></figure>
+
 <p>如果提前配置好了断点，当然那需要其他工具，程序会运行到断点的时候停止，然后执行continue即可。<br>连接的时候会提示这个单片机有多少硬件断点，这个是不能超过这个断点量的，不然会出错。<br>（JLink有自己的软件断点技术，那个另外说）。</p>
 </li>
 <li><p>也可以中途使用 <code>file filename.elf</code> 来更换执行文件，更换后用<code>load</code>加载。Ctrl+c来暂停正在运行的程序。</p>
@@ -1427,11 +1432,9 @@ git submodule update --init
 </ul>
 <p>然而这里先说结论，除了CLion，其他的似乎都没有对嵌入式编程的调试有任何优化，编译很容易，但是调试很难配置，调试起来也麻烦，下面说。</p>
 </li>
-<li><p><strong>其他IDE</strong></p>
-<p>CMake能够生成一些IDE的工程配置文件（如Visual Studio、CodeBlocks、XCode，Kate，CodeLite），比如Eclipse就有MCU的插件（这也是官方文档给出的方法之一），具体生成参数还是使用cmake –help来查询。剩下还有</p>
+<li><p><strong>其他IDE</strong><br>CMake能够生成一些IDE的工程配置文件（如Visual Studio、CodeBlocks、XCode，Kate，CodeLite），比如Eclipse就有MCU的插件（这也是官方文档给出的方法之一），具体生成参数还是使用cmake –help来查询。剩下还有</p>
 </li>
-<li><p>VSCODE这种编辑器</p>
-<p>后面说。</p>
+<li><p>VSCODE这种编辑器<br>后面说。</p>
 </li>
 </ol>
 <p><strong>一般配置方法</strong></p>
@@ -1466,10 +1469,7 @@ git submodule update --init
 <p>输入code打开vscode(vscode安装的时候默认添加到环境变量里面了)，这个实际上是%comspec% &#x2F;k “C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\VsDevCmd.bat”来进入命令，</p>
 <p>说个简单点的启动方法：</p>
 <p>找到电脑上的C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat 如果是32位机器就选后缀32的（现在应该不会了吧）然后打开，然后执行code。</p>
-<p>可以写成脚本：</p>
-<pre><code>call &quot;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat&quot;
-code
-</code></pre>
+<p>可以写成脚本：<br>    call “C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat”<br>    code</p>
 <p>然后直接点击运行就行了。</p>
 <p>developer Command Prompt for VS 2022</p>
 <p>%comspec% &#x2F;k “C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\Common7\Tools\VsDevCmd.bat”</p>
@@ -1509,29 +1509,15 @@ code
 <p>for the target set it to executable and the path to <code>build/your-project-name.elf</code></p>
 <p>Click on the Debug part of the launch configuration and set the debugger executable to <code>/usr/bin/arm-none-eabi-gdb</code></p>
 <p>Set the Run gdb script to the script created in the previous step. Click apply.</p>
-<p>脚本内容：</p>
-<pre><code>target remote localhost:3333
-
-# monitor arm semihosting enable
-mon reset halt
-# openocd must be running in the correct dir for the relative paths to work
-
-# Flash
-mon flash write_image erase unlock build/your-project-name.bin 0x08000000
-mon verify_image build/your-project-name.bin 0x08000000
-mon reset halt
-
-
-# Not sure why but this is needed for KDevelop
+<p>脚本内容：<br>    target remote localhost:3333<br>    # monitor arm semihosting enable<br>    mon reset halt<br>    # openocd must be running in the correct dir for the relative paths to work<br>    # Flash<br>    mon flash write_image erase unlock build&#x2F;your-project-name.bin 0x08000000<br>    mon verify_image build&#x2F;your-project-name.bin 0x08000000<br>    mon reset halt</p>
+<pre><code># Not sure why but this is needed for KDevelop
 file build/your-project-name.elf
 load
 mon reset halt
 disconnect
 target remote localhost:3333
 </code></pre>
-<p>然后：</p>
-<pre><code>openocd -f interface/stlink.cfg -f board/stm32h7x3i_eval.cfg
-</code></pre>
+<p>然后：<br>    openocd -f interface&#x2F;stlink.cfg -f board&#x2F;stm32h7x3i_eval.cfg</p>
 <p>下面是参考资料：</p>
 <p><a href="https://github.com/KDE/kdev-embedded">KDE&#x2F;kdev-embedded: Plugin for KDevelop to support the development of embedded systems (github.com)</a></p>
 <p><a href="https://www.codelv.com/blog/2019/7/use-kdevelop-with-openocd-and-mbed-os">Use KDevelop with OpenOCD and mbed-os - CodeLV</a></p>
@@ -1607,6 +1593,7 @@ target remote localhost:3333
 <p><a href="https://lonesometraveler.github.io/2020/03/27/debug.html">Cortex-Debug for Visual Studio Code | Alone on a Mountaintop (lonesometraveler.github.io)</a></p>
 <h1 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h1><h2 id="Linux环境的配置的补充"><a href="#Linux环境的配置的补充" class="headerlink" title="Linux环境的配置的补充"></a>Linux环境的配置的补充</h2><p>安装软件：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt install cmake gcc-arm-none-eabi libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib make</span><br></pre></td></tr></table></figure>
+
 <p>然后配置环境变量</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> pico-sdk</span><br><span class="line"><span class="built_in">export</span> PICO_SDK_PATH=`<span class="built_in">pwd</span>` </span><br></pre></td></tr></table></figure>
 
@@ -1623,6 +1610,7 @@ target remote localhost:3333
 
 <p>如果使用Pyocd，那么</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pyocd flash --erase chip --target rp2040 blink.elf</span><br></pre></td></tr></table></figure>
+
 <p>我依然推荐我写的GUI工具：<br><a href="https://alwaysmy.github.io/2023/04/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/%E4%BD%BF%E7%94%A8aardio%E5%86%99%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8Epyocd%E7%9A%84%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%8B%E8%BD%BD%E5%99%A8/">使用aardio写一个基于pyocd的单片机下载器 | 加载中… (alwaysmy.github.io)</a></p>
 ]]></content>
       <categories>
@@ -1835,5 +1823,133 @@ target remote localhost:3333
         <tag>MSP430</tag>
         <tag>8051</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>KiCad联合LTspice仿真 KICAD SIMULATION:Export to LTspice</title>
+    <url>/2023/07/11/Work%20with%20the%20world/KiCad%E8%81%94%E5%90%88LTspice%E4%BB%BF%E7%9C%9F/</url>
+    <content><![CDATA[<p>在介绍完KiCad仿真工具后，前文还介绍了如何使用KiCad内置的ngspice进行原理图仿真的案例，但是内置仿真的功能还不够多，而ngspice的界面过于简陋基本等于没有，那么有没有更好的仿真工具可以用呢，答案是，有的。</p>
+<h1 id="LTspice简介"><a href="#LTspice简介" class="headerlink" title="LTspice简介"></a>LTspice简介</h1><p>这是一款免费的仿真工具，而且由ADI鼎力支持。 有这两点介绍就足够了。</p>
+<h1 id="联合LTspice仿真的流程"><a href="#联合LTspice仿真的流程" class="headerlink" title="联合LTspice仿真的流程"></a>联合LTspice仿真的流程</h1><h2 id="打开KiCad工程"><a href="#打开KiCad工程" class="headerlink" title="打开KiCad工程"></a>打开KiCad工程</h2><p>这个没啥好介绍的吧，首先你得有个原理图。</p>
+<h2 id="绘制原理图"><a href="#绘制原理图" class="headerlink" title="绘制原理图"></a>绘制原理图</h2><p>绘制原理图和前文相同，只需要给器件添加正确的仿真模型（或者直接已经写好绝对路径的器件），并且有正确的源设置。</p>
+<p>相比于直接在KiCad中仿真，还需要继续设置一些东西。</p>
+<h2 id="填写仿真语句"><a href="#填写仿真语句" class="headerlink" title="填写仿真语句"></a>填写仿真语句</h2><p>当然，在KiCad中直接仿真先写好仿真语句也是完全可以的。</p>
+<p>如果导出的时候没有事先在原理图中写好仿真语句，那么使用LTspice打开的时候会提示没有可用的仿真类型，你也可以这时候再在LTspice中编辑，但是，提示的弹窗很烦，不是吗？</p>
+<p>需要注意的是，网表导出器只能识别它支持的语句，不支持的也不会被导出。</p>
+<h2 id="设置导出功能"><a href="#设置导出功能" class="headerlink" title="设置导出功能"></a>设置导出功能</h2><p>打开原理图后，点击：</p>
+<p>文件-&gt;导出-&gt;网表-&gt;选择spice这一栏，更换里面的默认命令为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">LTspice.exe -big &quot;%I&quot;</span><br></pre></td></tr></table></figure>
+
+<p>这里要注意，如果LTspice.exe并没有加入环境变量，那么需要填写为绝对路径：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">C:\Users\[用户名]\AppData\Local\Programs\ADI\LTspice\LTspice.exe  -big &quot;%I&quot;</span><br></pre></td></tr></table></figure>
+
+<p>旧版的LTspice的可执行文件不叫这个名字,可以替换为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">D:\Program Files\LTC\LTspiceXVII\XVIIx64.exe -big &quot;%I&quot;</span><br></pre></td></tr></table></figure>
+
+<p><code>-big</code> 参数表示打开的时候最大化窗口，<code>%I</code>则是当前导出网表的路径。</p>
+<p>还可以选择更多的参数，参考LTspice安装目录下的LTspiceHelp文档，<code>Command Line Switches</code>章节。</p>
+<p>然后点击导出网表并运行就可以直接打开LTspice啦。</p>
+<blockquote>
+<p>当然，直接点击导出网表后点击cir文件也可以直接用LTspice打开，但是那麻烦一些，不是吗</p>
+</blockquote>
+<h2 id="额外的功能"><a href="#额外的功能" class="headerlink" title="额外的功能"></a>额外的功能</h2><h3 id="使用LTspice的专用模型"><a href="#使用LTspice的专用模型" class="headerlink" title="使用LTspice的专用模型"></a>使用LTspice的专用模型</h3><p>LTspice的模型大多是专用的，但是除了加密模型，他们也是使用ASCII文本文件储存的，因此，虽然在KiCad的ngspice中虽然可能用不了，但是依然可以设置为器件的spice模型并且导出到LTspice使用。</p>
+<p>这种方法的好处是对于ADI没有直接提供Spice模型的器件, 可以直接借用LTspice的模型。</p>
+<blockquote>
+<p>是借用！读书人的事怎么能叫偷呢？</p>
+</blockquote>
+<p>方法如下：</p>
+<p>使用Everything找到需要器件的asy文件，这是LTspice所使用的原理图符号的文件。</p>
+<blockquote>
+<p>什么？你还没有用上Everything? 赶快下载吧！极速体验就在眼前~</p>
+</blockquote>
+<p>例如LT1009.asy ,使用文本编辑器例如VSCode打开这个文件，找到带有 <code>SpiceModel</code> 字样这一行，这个说明了这个模型在哪个库里面，这里找到的是LTC3.lib 。同时，可以关注一下下面的SpiceOrder,这个表示了spice中引脚排列顺序。这里是：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PINATTR PinName VCC</span><br><span class="line">PINATTR SpiceOrder 1</span><br><span class="line">PIN 0 32 NONE 8</span><br><span class="line">PINATTR PinName VEE</span><br><span class="line">PINATTR SpiceOrder 2</span><br><span class="line">PIN 32 0 NONE 8</span><br><span class="line">PINATTR PinName ADJ</span><br><span class="line">PINATTR SpiceOrder 3</span><br></pre></td></tr></table></figure>
+
+<p>那么在KiCad原理图元器件的仿真设置中就需要设置正确的顺序。</p>
+<p>在KiCad6中是勾选替代节点顺序，用KiCad原理图符号引脚号表示引脚，排成上面需要的顺序。</p>
+<p>在KiCad7中是在引脚分配上手动勾选就好了。（吐槽：似乎还没上面那个好用，引脚多的器件需要一个一个点好累）</p>
+<blockquote>
+<p>TIPS【1】: 可以看到LTC3.lib就包含了很多LTSpice的模型，实际上安装目录下LTspice\lib\sub的.lib文件就是Ltspice所用的spice器件模型，不过大多数模型都用了LTspice所兼容的语法，因此在ngspice可能并不能直接使用。</p>
+<p>TIPS【2】: ngspice可以调整兼容模式，在KiCad中是 检查-&gt;仿真&gt;仿真-&gt;设置 ，不过这不影响导出的网表，而且似乎没啥用。</p>
+</blockquote>
+<h1 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h1><p>1、LTspice在许多电路中更容易收敛，还能用LTspice的模型仿真。</p>
+<p>2、LTspice功能更多。</p>
+<p>3、对于LTspice本来就没有的模型还是手动导入，这里直接从KiCAD导入则干脆省掉了这一步。</p>
+<h1 id="相比直接使用LTspice的缺点"><a href="#相比直接使用LTspice的缺点" class="headerlink" title="相比直接使用LTspice的缺点"></a>相比直接使用LTspice的缺点</h1><p>1、这个方法的缺点是由于只有网表可用，因此LTspice中的部分增强使用体验的功能不能直接使用。</p>
+<p>虽然ltspice所支持的原理图文件（.asc）也是纯文本储存，而且格式非常简单，但是KiCad并没有基于原理图的插件功能，因此我认为目前不值得为其开发一个转换生成Ltspice原理图的功能。</p>
+<blockquote>
+<p>KiCad组织从KiCad5开始说下一代要加入原理图插件功能，python插件示例中也预留了库名称，但是直到KiCad7,他们依然在说下次一定！</p>
+</blockquote>
+<p>2、LTspice部分加密的二进制模型也无法使用。</p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>我尝试过使用别的仿真工具导入网表，但是似乎不太好用。</p>
+<p><del>好了，现在KiCad仿真的系列教程结束了，现在转入LTspice的仿真教程吧！</del></p>
+<p>我忘记我还要说什么了。。。。<br>下面放个视频教程：</p>
+]]></content>
+      <categories>
+        <category>Work with the world</category>
+      </categories>
+      <tags>
+        <tag>Spice</tag>
+        <tag>模电</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>标准I2S接收器的分立逻辑器件实现</title>
+    <url>/2023/06/22/Work%20with%20the%20world/%E6%A0%87%E5%87%86I2S%E6%8E%A5%E6%94%B6%E5%99%A8%E7%9A%84%E5%88%86%E7%AB%8B%E9%80%BB%E8%BE%91%E5%99%A8%E4%BB%B6%E5%AE%9E%E7%8E%B0/</url>
+    <content><![CDATA[<p>这个从想做到做出来拖了两年。其实单纯讲做出来的话没有任何技术难度，就是一直拖。<br>早些年看到一些神奇贩子吹嘘着什么分立R2R DAC,使用解码多么多么动听，然而只要稍微了解一下相关器件，就知道，人家R2R做的好是因为人家做了几十年芯片，而你只是没有任何测试。不过，想到这个东西从数字到模拟还是挺好玩的，就想自己实现一下，讲究一个超低成本，看看听起来感觉怎么样。</p>
+<span id="more"></span>
+
+<p>其实文章名字叫做接收器的实现，既然接受了最后肯定要出效果的，所以后端就是最简单的R2R DAC来得到模拟信号。这个文章也会是整板设计说完整。</p>
+<h1 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h1><p>其实虽然说着简单，但是基本上几年毫无数字逻辑实战设计经验的我一上来是比较懵圈。总体上设计分成两部分。</p>
+<ul>
+<li>I2S信号转并行信号</li>
+<li>R2R DAC本身</li>
+</ul>
+<p>其中，I2S信号飞利浦指定的信号标准，但是实际上有好几种格式都被称之为I2S信号。其中飞利浦标准可以从其标准文档获得。</p>
+<p>实际上文档中已经给了两种可行的设计逻辑图，但是当时我对着这个图不知道怎么选型器件。。。</p>
+<p>TODO:</p>
+<p>参考资料：<br>I2S bus specification.pdf Philips<br>I2S bus specification -UM11732 NXP<br>实际上NXP就是Philip出来的，新文档主要是把Master&#x2F;slave修改成了Controllter&#x2F;Target.<br>(虽然有点政治正确，但是早该改了，以前这种表达是挺离谱的)</p>
+<p>测试之后发现74HC74的CLR和PR没有拉高。。。</p>
+<p>然后发现输出的是补码，，最高位需要取反。<br>然后就发现了这个设计存在问题。</p>
+<h1 id="故障"><a href="#故障" class="headerlink" title="故障"></a>故障</h1><p>在假货宝上义胜买的AMS1117-5V用了没多久就被击穿了，本来一开始3.3V还是正常工作，奈何我没发现。。。切换到5V之后，实际输入12V把逻辑片全部带走了。</p>
+<pre><code>... 太难过了，下次设计这种电源一定要做好保护，也不要抱着侥幸买假货。。
+</code></pre>
+<p>因此就开始改板，加入之前没有考虑进去的部分。</p>
+]]></content>
+      <categories>
+        <category>Work with the world</category>
+      </categories>
+      <tags>
+        <tag>数字逻辑</tag>
+        <tag>DAC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>WinUSB上位机的开发</title>
+    <url>/2023/06/25/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/WinUSB%E4%B8%8A%E4%BD%8D%E6%9C%BA%E7%9A%84%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[<p>这篇文章是对WinUSB上位机开发的一个具体总结日志。详细的其他知识笔记分开来写。</p>
+<span id="more"></span>
+
+<p>起因是当时脑子一热准备给抽奖中的HPI1000重新编程开发，经过一两个月的磨蹭把下位机部分软件写差不多了，需要上位机联调了，同时也准备一同开发HPI1000对应的上位机。</p>
+<p>TivaWare中附带了一个C语言写的命令行的Windows上位机，改一改也能用，但是用起来不是很方便。而且由于QT忘记差不多了，一开始我是不打算使用QT的。</p>
+<h1 id="框架选择"><a href="#框架选择" class="headerlink" title="框架选择"></a>框架选择</h1><p>HPI1000主要是具有一个虚拟示波器，由于之前用QT写虚拟示波器的时候感觉痛苦万分，这次想要舍弃这个框架，而且QT整了不少活儿，开源闭源的问题让人很不爽，所以开始寻找其他的图形框架。</p>
+<p>然后就找到了Godot。这是一个小型游戏引擎，Godot 3.5总共也才三十多M，QT打包之后还真不一定比这个小，因此完全可以考虑。但是编程的时候遇到了问题。<br>作为一个开源软件，Godot发展并不是特别好，所以很多组件是没有的。例如Windows下串口的访问，USB的访问，如果使用它自己的GDscript，这些组件都需要自己使用C&#x2F;C++来实现。</p>
+<p>起初我是不想去用C&#x2F;C++的，因为需要包含WindowsDDK才能继续开发这个驱动，我以为WinUSB有更优雅的访问方式。<br>好在Godot同时也支持使用C#来编程，这样可以任意引入其他.net的包，然而我太天真了。<br>因为虽然.net原生支持串口访问，但是我没想到.NET作为微软的儿子，WinUSB居然没有对应的包，而微软的教程都是需要使用C&#x2F;C++来创建WinUSB应用。<br>不死心的我决定找找有没有第三方包，结果是有，但是不好用。。。比如LIBUSB，然而需要额外安装libusb的驱动。。这就违背了我的初衷：希望设备是免驱的。</p>
+<p>在.net应用中使用C&#x2F;C++方法也不是没有，那就是引入DLL. DLL这不是有现成的嘛，TivaWare中的那个DLL就可以使用。然而这是个大坑，不仅有指针的问题，还有DLL编译的时候和原编译器位数有关的问题，也就是说有可能这个DLL本身我还要重新编译一次。</p>
+<p>那我还不如直接重新写。</p>
+<p>上面的问题我另外写了具体的USB框架的选择，这里不再细说，总之就是当我决心使用C#的时候，发现事情最后都指向了使用C&#x2F;C++老老实实调用WinUSB API来写。</p>
+<pre><code>一开始我以为WinUSB API的调用会很麻烦，资料找起来也费劲，微软的资料看不大明白。。。后来才发现非常简单。
+</code></pre>
+<p>当我打开TivaWare的 lmusbdll 的source code，我发现这似乎就是简单封装了一下WinUSB API….参考别人的QT的winUSB demo,我发现两者好像没有什么区别。。。</p>
+<p>所以最终决定直接使用QT来写。</p>
+<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><p>添加依赖库。<br>在.pro中添加SetupAPI 和winusb，用来给后面调用。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 手动添加库</span><br><span class="line">win32: LIBS += -lSetupAPI </span><br><span class="line">win32: LIBS += -lwinusb</span><br></pre></td></tr></table></figure>
+
+<p>复制粘贴lmusb<br>去掉用不上的部分，把函数全部复制过来，去掉原来的导出的声明，直接改成普通函数。<br>添加一个速度查询的函数。</p>
+<p>添加WinUSBdevice设备类<br>方便承载原来的全局变量。</p>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><p>添加一个线程用来循环读取USB设备，防止主界面卡死。</p>
+]]></content>
+      <categories>
+        <category>嵌入式与单片机</category>
+      </categories>
   </entry>
 </search>

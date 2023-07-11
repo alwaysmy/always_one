@@ -119,7 +119,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">20</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">22</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -129,7 +129,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">21</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">24</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -182,6 +182,327 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://alwaysmy.github.io/2023/07/11/Work%20with%20the%20world/KiCad%E8%81%94%E5%90%88LTspice%E4%BB%BF%E7%9C%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/misterchief.png">
+      <meta itemprop="name" content="Always L">
+      <meta itemprop="description" content="硬件，杂项，爱好">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="加载中...">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/07/11/Work%20with%20the%20world/KiCad%E8%81%94%E5%90%88LTspice%E4%BB%BF%E7%9C%9F/" class="post-title-link" itemprop="url">KiCad联合LTspice仿真 KICAD SIMULATION:Export to LTspice</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-07-11 15:45:53 / 修改时间：17:16:52" itemprop="dateCreated datePublished" datetime="2023-07-11T15:45:53+08:00">2023-07-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Work-with-the-world/" itemprop="url" rel="index"><span itemprop="name">Work with the world</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在介绍完KiCad仿真工具后，前文还介绍了如何使用KiCad内置的ngspice进行原理图仿真的案例，但是内置仿真的功能还不够多，而ngspice的界面过于简陋基本等于没有，那么有没有更好的仿真工具可以用呢，答案是，有的。</p>
+<h1 id="LTspice简介"><a href="#LTspice简介" class="headerlink" title="LTspice简介"></a>LTspice简介</h1><p>这是一款免费的仿真工具，而且由ADI鼎力支持。 有这两点介绍就足够了。</p>
+<h1 id="联合LTspice仿真的流程"><a href="#联合LTspice仿真的流程" class="headerlink" title="联合LTspice仿真的流程"></a>联合LTspice仿真的流程</h1><h2 id="打开KiCad工程"><a href="#打开KiCad工程" class="headerlink" title="打开KiCad工程"></a>打开KiCad工程</h2><p>这个没啥好介绍的吧，首先你得有个原理图。</p>
+<h2 id="绘制原理图"><a href="#绘制原理图" class="headerlink" title="绘制原理图"></a>绘制原理图</h2><p>绘制原理图和前文相同，只需要给器件添加正确的仿真模型（或者直接已经写好绝对路径的器件），并且有正确的源设置。</p>
+<p>相比于直接在KiCad中仿真，还需要继续设置一些东西。</p>
+<h2 id="填写仿真语句"><a href="#填写仿真语句" class="headerlink" title="填写仿真语句"></a>填写仿真语句</h2><p>当然，在KiCad中直接仿真先写好仿真语句也是完全可以的。</p>
+<p>如果导出的时候没有事先在原理图中写好仿真语句，那么使用LTspice打开的时候会提示没有可用的仿真类型，你也可以这时候再在LTspice中编辑，但是，提示的弹窗很烦，不是吗？</p>
+<p>需要注意的是，网表导出器只能识别它支持的语句，不支持的也不会被导出。</p>
+<h2 id="设置导出功能"><a href="#设置导出功能" class="headerlink" title="设置导出功能"></a>设置导出功能</h2><p>打开原理图后，点击：</p>
+<p>文件-&gt;导出-&gt;网表-&gt;选择spice这一栏，更换里面的默认命令为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">LTspice.exe -big &quot;%I&quot;</span><br></pre></td></tr></table></figure>
+
+<p>这里要注意，如果LTspice.exe并没有加入环境变量，那么需要填写为绝对路径：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">C:\Users\[用户名]\AppData\Local\Programs\ADI\LTspice\LTspice.exe  -big &quot;%I&quot;</span><br></pre></td></tr></table></figure>
+
+<p>旧版的LTspice的可执行文件不叫这个名字,可以替换为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">D:\Program Files\LTC\LTspiceXVII\XVIIx64.exe -big &quot;%I&quot;</span><br></pre></td></tr></table></figure>
+
+<p><code>-big</code> 参数表示打开的时候最大化窗口，<code>%I</code>则是当前导出网表的路径。</p>
+<p>还可以选择更多的参数，参考LTspice安装目录下的LTspiceHelp文档，<code>Command Line Switches</code>章节。</p>
+<p>然后点击导出网表并运行就可以直接打开LTspice啦。</p>
+<blockquote>
+<p>当然，直接点击导出网表后点击cir文件也可以直接用LTspice打开，但是那麻烦一些，不是吗</p>
+</blockquote>
+<h2 id="额外的功能"><a href="#额外的功能" class="headerlink" title="额外的功能"></a>额外的功能</h2><h3 id="使用LTspice的专用模型"><a href="#使用LTspice的专用模型" class="headerlink" title="使用LTspice的专用模型"></a>使用LTspice的专用模型</h3><p>LTspice的模型大多是专用的，但是除了加密模型，他们也是使用ASCII文本文件储存的，因此，虽然在KiCad的ngspice中虽然可能用不了，但是依然可以设置为器件的spice模型并且导出到LTspice使用。</p>
+<p>这种方法的好处是对于ADI没有直接提供Spice模型的器件, 可以直接借用LTspice的模型。</p>
+<blockquote>
+<p>是借用！读书人的事怎么能叫偷呢？</p>
+</blockquote>
+<p>方法如下：</p>
+<p>使用Everything找到需要器件的asy文件，这是LTspice所使用的原理图符号的文件。</p>
+<blockquote>
+<p>什么？你还没有用上Everything? 赶快下载吧！极速体验就在眼前~</p>
+</blockquote>
+<p>例如LT1009.asy ,使用文本编辑器例如VSCode打开这个文件，找到带有 <code>SpiceModel</code> 字样这一行，这个说明了这个模型在哪个库里面，这里找到的是LTC3.lib 。同时，可以关注一下下面的SpiceOrder,这个表示了spice中引脚排列顺序。这里是：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PINATTR PinName VCC</span><br><span class="line">PINATTR SpiceOrder 1</span><br><span class="line">PIN 0 32 NONE 8</span><br><span class="line">PINATTR PinName VEE</span><br><span class="line">PINATTR SpiceOrder 2</span><br><span class="line">PIN 32 0 NONE 8</span><br><span class="line">PINATTR PinName ADJ</span><br><span class="line">PINATTR SpiceOrder 3</span><br></pre></td></tr></table></figure>
+
+<p>那么在KiCad原理图元器件的仿真设置中就需要设置正确的顺序。</p>
+<p>在KiCad6中是勾选替代节点顺序，用KiCad原理图符号引脚号表示引脚，排成上面需要的顺序。</p>
+<p>在KiCad7中是在引脚分配上手动勾选就好了。（吐槽：似乎还没上面那个好用，引脚多的器件需要一个一个点好累）</p>
+<blockquote>
+<p>TIPS【1】: 可以看到LTC3.lib就包含了很多LTSpice的模型，实际上安装目录下LTspice\lib\sub的.lib文件就是Ltspice所用的spice器件模型，不过大多数模型都用了LTspice所兼容的语法，因此在ngspice可能并不能直接使用。</p>
+<p>TIPS【2】: ngspice可以调整兼容模式，在KiCad中是 检查-&gt;仿真&gt;仿真-&gt;设置 ，不过这不影响导出的网表，而且似乎没啥用。</p>
+</blockquote>
+<h1 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h1><p>1、LTspice在许多电路中更容易收敛，还能用LTspice的模型仿真。</p>
+<p>2、LTspice功能更多。</p>
+<p>3、对于LTspice本来就没有的模型还是手动导入，这里直接从KiCAD导入则干脆省掉了这一步。</p>
+<h1 id="相比直接使用LTspice的缺点"><a href="#相比直接使用LTspice的缺点" class="headerlink" title="相比直接使用LTspice的缺点"></a>相比直接使用LTspice的缺点</h1><p>1、这个方法的缺点是由于只有网表可用，因此LTspice中的部分增强使用体验的功能不能直接使用。</p>
+<p>虽然ltspice所支持的原理图文件（.asc）也是纯文本储存，而且格式非常简单，但是KiCad并没有基于原理图的插件功能，因此我认为目前不值得为其开发一个转换生成Ltspice原理图的功能。</p>
+<blockquote>
+<p>KiCad组织从KiCad5开始说下一代要加入原理图插件功能，python插件示例中也预留了库名称，但是直到KiCad7,他们依然在说下次一定！</p>
+</blockquote>
+<p>2、LTspice部分加密的二进制模型也无法使用。</p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>我尝试过使用别的仿真工具导入网表，但是似乎不太好用。</p>
+<p><del>好了，现在KiCad仿真的系列教程结束了，现在转入LTspice的仿真教程吧！</del></p>
+<p>我忘记我还要说什么了。。。。<br>下面放个视频教程：</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://alwaysmy.github.io/2023/06/25/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/WinUSB%E4%B8%8A%E4%BD%8D%E6%9C%BA%E7%9A%84%E5%BC%80%E5%8F%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/misterchief.png">
+      <meta itemprop="name" content="Always L">
+      <meta itemprop="description" content="硬件，杂项，爱好">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="加载中...">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/06/25/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/WinUSB%E4%B8%8A%E4%BD%8D%E6%9C%BA%E7%9A%84%E5%BC%80%E5%8F%91/" class="post-title-link" itemprop="url">WinUSB上位机的开发</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-06-25 12:56:01 / 修改时间：19:50:54" itemprop="dateCreated datePublished" datetime="2023-06-25T12:56:01+08:00">2023-06-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">嵌入式与单片机</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>960</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>这篇文章是对WinUSB上位机开发的一个具体总结日志。详细的其他知识笔记分开来写。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/06/25/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/WinUSB%E4%B8%8A%E4%BD%8D%E6%9C%BA%E7%9A%84%E5%BC%80%E5%8F%91/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://alwaysmy.github.io/2023/06/22/Work%20with%20the%20world/%E6%A0%87%E5%87%86I2S%E6%8E%A5%E6%94%B6%E5%99%A8%E7%9A%84%E5%88%86%E7%AB%8B%E9%80%BB%E8%BE%91%E5%99%A8%E4%BB%B6%E5%AE%9E%E7%8E%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/misterchief.png">
+      <meta itemprop="name" content="Always L">
+      <meta itemprop="description" content="硬件，杂项，爱好">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="加载中...">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/06/22/Work%20with%20the%20world/%E6%A0%87%E5%87%86I2S%E6%8E%A5%E6%94%B6%E5%99%A8%E7%9A%84%E5%88%86%E7%AB%8B%E9%80%BB%E8%BE%91%E5%99%A8%E4%BB%B6%E5%AE%9E%E7%8E%B0/" class="post-title-link" itemprop="url">标准I2S接收器的分立逻辑器件实现</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-06-22 19:21:21" itemprop="dateCreated datePublished" datetime="2023-06-22T19:21:21+08:00">2023-06-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-06-24 17:36:38" itemprop="dateModified" datetime="2023-06-24T17:36:38+08:00">2023-06-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Work-with-the-world/" itemprop="url" rel="index"><span itemprop="name">Work with the world</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>592</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>这个从想做到做出来拖了两年。其实单纯讲做出来的话没有任何技术难度，就是一直拖。<br>早些年看到一些神奇贩子吹嘘着什么分立R2R DAC,使用解码多么多么动听，然而只要稍微了解一下相关器件，就知道，人家R2R做的好是因为人家做了几十年芯片，而你只是没有任何测试。不过，想到这个东西从数字到模拟还是挺好玩的，就想自己实现一下，讲究一个超低成本，看看听起来感觉怎么样。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/06/22/Work%20with%20the%20world/%E6%A0%87%E5%87%86I2S%E6%8E%A5%E6%94%B6%E5%99%A8%E7%9A%84%E5%88%86%E7%AB%8B%E9%80%BB%E8%BE%91%E5%99%A8%E4%BB%B6%E5%AE%9E%E7%8E%B0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -295,7 +616,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2023/06/20/%E7%94%9F%E6%B4%BB%E6%B8%B8%E7%8E%A9/%E5%85%B3%E4%BA%8E%E9%9F%B3%E5%93%8D%E4%B8%80%E4%BA%9B%E6%9D%82%E8%B0%88/" class="post-title-link" itemprop="url">关于音响想到的一些杂谈</a>
+            <a href="/2023/06/20/%E7%94%9F%E6%B4%BB%E6%B8%B8%E7%8E%A9/%E5%85%B3%E4%BA%8E%E9%9F%B3%E5%93%8D%E4%B8%80%E4%BA%9B%E6%9D%82%E8%B0%88/" class="post-title-link" itemprop="url">关于音响一些杂谈</a>
         </h2>
 
         <div class="post-meta">
@@ -312,7 +633,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-06-21 19:56:38" itemprop="dateModified" datetime="2023-06-21T19:56:38+08:00">2023-06-21</time>
+                <time title="修改时间：2023-06-27 20:37:03" itemprop="dateModified" datetime="2023-06-27T20:37:03+08:00">2023-06-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -330,14 +651,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>6k</span>
+              <span>6.1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>13 分钟</span>
+              <span>14 分钟</span>
             </span>
 
         </div>
@@ -407,7 +728,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-06-22 13:51:47" itemprop="dateModified" datetime="2023-06-22T13:51:47+08:00">2023-06-22</time>
+                <time title="修改时间：2023-06-26 21:40:42" itemprop="dateModified" datetime="2023-06-26T21:40:42+08:00">2023-06-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -425,14 +746,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1k</span>
+              <span>1.2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>3 分钟</span>
             </span>
 
         </div>
@@ -848,292 +1169,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://alwaysmy.github.io/2023/03/13/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/%E5%B7%B2%E6%9C%89%E5%8D%9A%E5%AE%A2%E4%BB%93%E5%BA%93%E7%9A%84%E9%87%8D%E5%BB%BA%E5%92%8C%E9%85%8D%E7%BD%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/misterchief.png">
-      <meta itemprop="name" content="Always L">
-      <meta itemprop="description" content="硬件，杂项，爱好">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="加载中...">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/03/13/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/%E5%B7%B2%E6%9C%89%E5%8D%9A%E5%AE%A2%E4%BB%93%E5%BA%93%E7%9A%84%E9%87%8D%E5%BB%BA%E5%92%8C%E9%85%8D%E7%BD%AE/" class="post-title-link" itemprop="url">已有博客仓库的重建和配置</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-03-13 17:43:31" itemprop="dateCreated datePublished" datetime="2023-03-13T17:43:31+08:00">2023-03-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-06-20 13:20:51" itemprop="dateModified" datetime="2023-06-20T13:20:51+08:00">2023-06-20</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" itemprop="url" rel="index"><span itemprop="name">博客搭建</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>334</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>每次重装系统什么的，虽然仓库我做了备份，但是还是要重新配置一下环境，为了以后都能无脑配置，这里集中记录一下过程。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/03/13/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/%E5%B7%B2%E6%9C%89%E5%8D%9A%E5%AE%A2%E4%BB%93%E5%BA%93%E7%9A%84%E9%87%8D%E5%BB%BA%E5%92%8C%E9%85%8D%E7%BD%AE/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://alwaysmy.github.io/2023/02/11/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2%E5%8F%91%E5%B8%83%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/misterchief.png">
-      <meta itemprop="name" content="Always L">
-      <meta itemprop="description" content="硬件，杂项，爱好">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="加载中...">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/02/11/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2%E5%8F%91%E5%B8%83%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">关于博客发布插入图片的几种方法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-02-11 14:17:46" itemprop="dateCreated datePublished" datetime="2023-02-11T14:17:46+08:00">2023-02-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-06-19 13:17:01" itemprop="dateModified" datetime="2023-06-19T13:17:01+08:00">2023-06-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" itemprop="url" rel="index"><span itemprop="name">博客搭建</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>506</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>这里说的情况都是markdown的文件。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/02/11/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2%E5%8F%91%E5%B8%83%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://alwaysmy.github.io/2023/02/01/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/0%E3%80%81%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E7%9A%84%E7%AE%A1%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/misterchief.png">
-      <meta itemprop="name" content="Always L">
-      <meta itemprop="description" content="硬件，杂项，爱好">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="加载中...">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/02/01/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/0%E3%80%81%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E7%9A%84%E7%AE%A1%E7%90%86/" class="post-title-link" itemprop="url">个人博客文章的管理</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-02-01 14:17:46" itemprop="dateCreated datePublished" datetime="2023-02-01T14:17:46+08:00">2023-02-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-06-19 15:20:24" itemprop="dateModified" datetime="2023-06-19T15:20:24+08:00">2023-06-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" itemprop="url" rel="index"><span itemprop="name">博客搭建</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>336</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>这篇是一篇随记，其实很简单：</p>
-<p><strong>用OBSIDIAN来管理博客的文章就好了</strong>。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/02/01/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/0%E3%80%81%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E7%9A%84%E7%AE%A1%E7%90%86/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1205,7 +1240,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1218,7 +1253,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1262,12 +1297,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="本站总字数">48k</span>
+    <span title="本站总字数">51k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:47</span>
+    <span title="站点阅读时长">1:54</span>
 </div>
 
         
