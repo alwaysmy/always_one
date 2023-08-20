@@ -1,49 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>佳能EOS350D破解</title>
-    <url>/2021/02/23/Fix%20&amp;%20Crack/%E4%BD%B3%E8%83%BDEOS350D%E7%A0%B4%E8%A7%A3/</url>
-    <content><![CDATA[<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p>1.电池充满电</p>
-<p>2.CF卡</p>
-<p>3.CF卡读卡器（必备，数据线不行）</p>
-<p>4.相机更新到固件1.0.3 <a href="http://web.canon.jp/imaging/eosdigital2/e3kr2_firmware-e.html(%E6%AD%A5%E9%AA%A4%E7%95%A5)">http://web.canon.jp/imaging/eosdigital2/e3kr2_firmware-e.html(步骤略)</a></p>
-<p>5.软件包，包含AUTOEXEC.BIN scanled.fir cardtricks.exe（下图）</p>
-<p>6.HxD软件或者其他二进制磁盘编辑工具如WinHex（可选）</p>
-<img src="/2021/02/23/Fix%20&%20Crack/%E4%BD%B3%E8%83%BDEOS350D%E7%A0%B4%E8%A7%A3/image-20210223155419837.png" class title="image-20210223155419837">
-
-<span id="more"></span>
-
-<h1 id="开始固件更换"><a href="#开始固件更换" class="headerlink" title="开始固件更换"></a>开始固件更换</h1><p>1.格式化CF卡，在电脑上快速格式化即可。</p>
-<p>2.复制软件包内的scanled.fir到CF卡根目录，插入相机后在相机内选择更新固件。</p>
-<p>（Menu-最后一栏-固件版本-确定），会显示下图。</p>
-<img src="/2021/02/23/Fix%20&%20Crack/%E4%BD%B3%E8%83%BDEOS350D%E7%A0%B4%E8%A7%A3/image-20210223155506019.png" class title="image-20210223155506019">
-
-<p>3.这时候应该是蓝色的灯常亮，这时候先拔掉电池，然后拔掉CF卡。</p>
-<h1 id="开始制作可启动CF卡"><a href="#开始制作可启动CF卡" class="headerlink" title="开始制作可启动CF卡"></a>开始制作可启动CF卡</h1><p>破解的方法是从CF卡启动固件，需要修改卡内磁盘数据。</p>
-<p>1.插入CF卡，打开软件包内的CardTricks</p>
-<p>2.按照下图操作</p>
-<img src="/2021/02/23/Fix%20&%20Crack/%E4%BD%B3%E8%83%BDEOS350D%E7%A0%B4%E8%A7%A3/image-20210223155601573.png" class title="image-20210223155601573">
-
-<p>3.会提示结果，实际上这个工具就是自动对于FAT16文件系统在0x24处和0x40处写入对应字符。FAT32文件系统同理。所以用磁盘编辑工具也可以手动修改。</p>
-<img src="/2021/02/23/Fix%20&%20Crack/%E4%BD%B3%E8%83%BDEOS350D%E7%A0%B4%E8%A7%A3/image-20210223155622050.png" class title="image-20210223155622050">
-
-<h1 id="从CF卡启动"><a href="#从CF卡启动" class="headerlink" title="从CF卡启动"></a>从CF卡启动</h1><p>这一步是放入自动执行固件。</p>
-<p>1.拷贝AUTOEXEC.BIN到CF卡根目录。</p>
-<p>2.插卡，插电池，开机看到蓝灯闪一下。</p>
-<h1 id="验证功能"><a href="#验证功能" class="headerlink" title="验证功能"></a>验证功能</h1><p>新功能都在Info键内。</p>
-<p>按一下INFO键，然后按上下键可以翻动条目，按左右键可以修改每一条对应的可选项。（破解前不行）</p>
-<img src="/2021/02/23/Fix%20&%20Crack/%E4%BD%B3%E8%83%BDEOS350D%E7%A0%B4%E8%A7%A3/image-20210223155928781.png" class title="image-20210223155928781">
-
-<p>最后，这个卡不要格式化，不然就要重新破解一次了。</p>
-]]></content>
-      <categories>
-        <category>Fix &amp; Crack</category>
-      </categories>
-      <tags>
-        <tag>修理</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>慧荣SM2246EN主控山寨固态硬盘修复</title>
     <url>/2022/12/17/Fix%20&amp;%20Crack/SSD%E4%BF%AE%E5%A4%8D/</url>
     <content><![CDATA[<p><em>在某鱼收了一个120G的所谓金士顿v300固态硬盘，也是受到了一些颗粒玩家的影响想要收来做个U盘，便有了下文…</em></p>
@@ -123,173 +80,76 @@
       </tags>
   </entry>
   <entry>
-    <title>KiCAD插件开发流程</title>
-    <url>/2022/08/15/Work%20with%20the%20world/KiCAD%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/</url>
-    <content><![CDATA[<p>当时JLC还没限定只有LCEDA免费打板，我决定使用KiCad完成后续大部分工程。一个痛点是我找了很久想要一个边框生成的插件也没找到，只有倒角插件，不知道外国人思路怎么这么怪。于是痛定思痛决定自己开发。</p>
-<span id="more"></span>
+    <title>KiCad联合LTspice仿真 - KiCad Simulation:Export to LTspice</title>
+    <url>/2023/07/11/Work%20with%20the%20world/KiCad%E8%81%94%E5%90%88LTspice%E4%BB%BF%E7%9C%9F/</url>
+    <content><![CDATA[<p>在介绍完KiCad仿真工具后，前文还介绍了如何使用KiCad内置的ngspice进行原理图仿真的案例，但是内置仿真的功能还不够多，而ngspice的界面过于简陋基本等于没有，那么有没有更好的仿真工具可以用呢，答案是，有的。</p>
+<h1 id="LTspice简介"><a href="#LTspice简介" class="headerlink" title="LTspice简介"></a>LTspice简介</h1><p>这是一款免费的仿真工具，而且由ADI鼎力支持。 有这两点介绍就足够了。</p>
+<h1 id="联合LTspice仿真的流程"><a href="#联合LTspice仿真的流程" class="headerlink" title="联合LTspice仿真的流程"></a>联合LTspice仿真的流程</h1><p>下面简单介绍一下整个流程和方法。</p>
+<h2 id="打开KiCad工程"><a href="#打开KiCad工程" class="headerlink" title="打开KiCad工程"></a>打开KiCad工程</h2><p>这个没啥好介绍的吧，首先你得有个原理图。</p>
+<h2 id="绘制原理图"><a href="#绘制原理图" class="headerlink" title="绘制原理图"></a>绘制原理图</h2><p>绘制原理图和前文相同，只需要给器件添加正确的仿真模型（或者直接已经写好绝对路径的器件），并且有正确的源设置。</p>
+<p>相比于直接在KiCad中仿真，还需要继续设置一些东西。</p>
+<h2 id="填写仿真语句"><a href="#填写仿真语句" class="headerlink" title="填写仿真语句"></a>填写仿真语句</h2><p>当然，在KiCad中直接仿真的时候，先写好仿真语句也是完全可以的而且我是比较推荐的。</p>
+<p>如果导出的时候没有事先在原理图中写好仿真语句，那么使用LTspice打开的时候会提示没有可用的仿真类型，你也可以这时候再在LTspice中编辑，但是，提示的弹窗很烦，不是吗？</p>
+<p>需要注意的是，网表导出器只能识别它支持的语句，不支持的也不会被导出。</p>
+<h2 id="设置导出功能"><a href="#设置导出功能" class="headerlink" title="设置导出功能"></a>设置导出功能</h2><p>打开原理图后，点击：</p>
+<p>文件-&gt;导出-&gt;网表-&gt;选择spice这一栏，更换里面的默认命令为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">LTspice.exe -big &quot;%I&quot;</span><br></pre></td></tr></table></figure>
 
-<p>python本来就不咋样的我，现在基本忘光光了，而KiCad插件开发的文档基本没有，根据我对其他插件的代码审阅，我觉得他们基本也是猜的，所以这里记下流程备用。</p>
-<h1 id="参考内容"><a href="#参考内容" class="headerlink" title="参考内容"></a>参考内容</h1><p>这里有一点要注意，虽然插件目录叫做plugins，插件叫做action plugins但是在官方文档中通常称之Scripting（脚本），搜索资料的时候可以考虑更换关键词</p>
-<h2 id="官方资源"><a href="#官方资源" class="headerlink" title="官方资源"></a>官方资源</h2><p>1、官方文档：<br><a href="https://dev-docs.kicad.org/zh-cn/python/pcbnew/">PcbNew 插件 | 开发者文档 | KiCad</a><br>2、pcbnew python api手册<br><a href="https://docs.kicad.org/doxygen-python-6.0/namespaces.html">KiCad Pcbnew Python Scripting: Namespace List</a><br><a href="https://docs.kicad.org/doxygen-python-6.0/namespacepcbnew.html">KiCad Pcbnew Python Scripting: pcbnew Namespace Reference</a></p>
-<p>然而这些手册没啥鸟用，都是注释生成的，注释写的也很简约，有的api根本看不出来作用是什么，后面会说怎么办。</p>
-<p>3、官方例程<br>安装目录下，例如我的安装目录：<br><code>C:\Program Files\KiCad\7.0\share\kicad\scripting</code><br>这里面是官方用python实现的功能</p>
-<p><a href="https://blog.csdn.net/qq_47452807/article/details/122971529">(5条消息) 如何使用wxPython GUI平台插件，快速实现开发python简单Application桌面应用程序_唤醒手腕的博客-CSDN博客_wxpython 镜像</a></p>
-<p>安装wxFormBuilder，用来辅助GUI设计，不然手搓太累了 。他支持导出python和c++等语言。<a href="https://www.jianshu.com/p/711886d75aa0">可视化wxPython GUI构建工具wxFormBuilder介绍 - 简书 (jianshu.com)</a></p>
-<p>        （还有一个辅助工具wxglade，没试过，上次更新两年前了。<a href="https://blog.csdn.net/soslinken/article/details/78967918">(5条消息) wxPython GUI 编辑器 - wxglade_迦蓝叶的博客-CSDN博客_wxglade</a></p>
-<p><a href="https://wxglade.sourceforge.net/">wxGlade: a GUI builder for wxWidgets&#x2F;wxPython (sourceforge.net)</a>）</p>
-<p>还有一个”wxpython可视化编辑器” 看起来挺好用,国内做的.</p>
-<p>先点form添加一个窗体</p>
-<p>然后layout添加一个sizer</p>
-<p>F8调试</p>
-<p>layout-wxstaticBoxsizer可以添加一个带线条的框（类似lceda的那个框分块）</p>
-<h1 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h1><p>vscode.<br>python 在vscode的解释器选择中添加kicad中的python，这样可以解析对应的包，或者可以从kicad 6.0 command prompt打开命令行，这样就配置了kicad内置python的环境。</p>
-<h1 id="Kicad下Python脚本的调试"><a href="#Kicad下Python脚本的调试" class="headerlink" title="Kicad下Python脚本的调试"></a>Kicad下Python脚本的调试</h1><p>首先我不知道kicad是怎么启动脚本的，blender调试脚本的方法挺多的，一般都是安装一个调试插件，这里我也不会写这个插件。。但是还是有别的方法可以来完成调试。</p>
-<p>ps.有时候横竖调不出来就是kicad的bug，等他更新wx组件也许就好了。</p>
-<h2 id="1、直接外部调试"><a href="#1、直接外部调试" class="headerlink" title="1、直接外部调试"></a>1、直接外部调试</h2><p>由于插件的功能是提供了一个Dialog供kicad打开，也可以直接写一个tester.py，其中包含：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> wx</span><br><span class="line"><span class="keyword">import</span> shape_para_set<span class="comment">#这个是我的插件脚本</span></span><br><span class="line"><span class="keyword">import</span> pcbnew</span><br><span class="line">app = wx.App()</span><br><span class="line"><span class="comment"># frame = MyFrame()</span></span><br><span class="line">dialog = shape_para_set.Add_Shapes()<span class="comment">#add shapes是我的脚本的入口函数</span></span><br><span class="line">dialog.Run()</span><br></pre></td></tr></table></figure>
+<p>这里要注意，如果LTspice.exe并没有加入环境变量，那么需要填写为绝对路径：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">C:\Users\[用户名]\AppData\Local\Programs\ADI\LTspice\LTspice.exe  -big &quot;%I&quot;</span><br></pre></td></tr></table></figure>
 
-<p>然后把Kicad的python的bin文件加入环境变量，或者打开kicad 6.0 command prompt打开命令行，然后就可以打开Vsode，选择使用的python环境为kicad 的python，就可以调试了。不过涉及到板子的操作，因为原来的pcbnew.GetBoard()是直接从c++导入的_pcbnew.GetBoard()这个函数。</p>
-<p>所以需要使用pcbnew.LoadBoard这个函数来打开一个pcb文件，这样才能获取到一个对象在编写的启动器中加入下面代码：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">boardobj = pcbnew.GetBoard()被替换为</span><br><span class="line"><span class="comment">#------调试加载板子用------------</span></span><br><span class="line">pcbfile = <span class="string">r&#x27;C:\Users\Always\Desktop\dd\dd.kicad_pcb&#x27;</span><span class="comment">#没有特殊需求可以随便找一个pcb，直接放工程目录下也行</span></span><br><span class="line">boardobj=pcbnew.LoadBoard(pcbfile)</span><br></pre></td></tr></table></figure>
+<p>旧版的LTspice的可执行文件不叫这个名字,可以替换为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">D:\Program Files\LTC\LTspiceXVII\XVIIx64.exe -big &quot;%I&quot;</span><br></pre></td></tr></table></figure>
 
-<p>这样可以在vscode里面调试界面和函数，不用打开Kicad，不用刷新插件来打开新的插件或者使用kicad那个并不好用的命令行。</p>
-<p>可以加入调试信息print().</p>
-<p>具体见tester.py的内容和主函数的todo debug处</p>
-<p>能不能直接传参打开？GetCopperLayerCountGetCopperLayerCount</p>
-<h2 id="2、使用Kicad内置的Python控制台使用pdb运行脚本"><a href="#2、使用Kicad内置的Python控制台使用pdb运行脚本" class="headerlink" title="2、使用Kicad内置的Python控制台使用pdb运行脚本"></a>2、使用Kicad内置的Python控制台使用pdb运行脚本</h2><p>但是涉及到板子操作时候的bug，还是用kicad内置的环境加入断点或者调试信息来看。</p>
-<p>2.1在脚本文件中加入断点。例如：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pcbnew</span><br><span class="line"><span class="keyword">import</span> pdb<span class="comment">#导入断点调试器 pdb类似于c的gdb</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">my_function</span>(<span class="params">board</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;board:&quot;</span>, board)</span><br><span class="line">    <span class="comment"># 设置断点</span></span><br><span class="line">    pdb.set_trace()</span><br><span class="line">    <span class="comment"># 其他代码...</span></span><br></pre></td></tr></table></figure>
-
-<p>2.2 在插件图标左边那个<code> 运行Python脚本控制台</code> ，点击之后会运行内置的Kicad python。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">C:\\Users\\Always\\Documents\\KiCad\\6.0\\3rdparty\\plugins\\KicadShapeEditor</span><br></pre></td></tr></table></figure>
-
-<p>或者：在KiCad中，打开“工具”菜单，选择“Python控制台”，在弹出的Python控制台窗口中输入以下命令：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> pcbnew</span><br><span class="line">sys.path.append(<span class="string">r&quot;C:\Users\Always\Documents\KiCad\6.0\3rdparty\plugins\KicadShapeEditor&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> my_script <span class="comment">#包含插件入口的那个python脚本</span></span><br><span class="line"></span><br><span class="line">board = pcbnew.GetBoard()</span><br><span class="line">my_script.my_function(board)</span><br><span class="line"><span class="comment">#我的应该是</span></span><br><span class="line">shape_para_set.Add_Shapes.Run(pcbnew.ActionPlugin)</span><br><span class="line"><span class="comment">#或者</span></span><br><span class="line">dialog=shape_para_set.Dialog(<span class="literal">None</span>)</span><br><span class="line">dialog.Show()</span><br></pre></td></tr></table></figure>
-
-<p>这几行也可以写成一个脚本保存下来，比如叫做tester.py，不过最好是不要启动dialog为showmodal()，否则会阻塞后面的程序，而是使用上面那样，这样报错信息可以正常输出而不是阻塞后面的语句</p>
-<p>在kipython命令行中输入：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cd C:\\Users\\Always\\Documents\\KiCad\\<span class="number">6.0</span>\\3rdparty\\plugins\\KicadShapeEditor</span><br><span class="line"><span class="built_in">exec</span>(<span class="built_in">open</span>(<span class="string">&#x27;tester.py&#x27;</span>).read())</span><br></pre></td></tr></table></figure>
-
-<p>然后，在Python控制台窗口中，你可以看到运行脚本时，执行到断点时会暂停执行。此时，你可以在Python控制台窗口中输入指令，来查看脚本的执行过程。</p>
-<p>例如，你可以输入<code>n</code>命令，执行下一条语句；你也可以输入<code>s</code>命令，进入函数内部进行操作,这里就是pdb的调试方法。见[[PDB的使用]]。</p>
+<p><code>-big</code> 参数表示打开的时候最大化窗口，<code>%I</code>则是当前导出网表的路径。</p>
+<p>还可以选择更多的参数，参考LTspice安装目录下的LTspiceHelp文档，<code>Command Line Switches</code>章节。</p>
+<p>然后点击导出网表并运行就可以直接打开LTspice啦。</p>
 <blockquote>
-<p>断点相关命令：<br>设置断点： (Pdb) b 8         #断点设置该文件的第8行（b即break的首字母）<br>显示所有断点：(Pdb) b     #b命令，没有参数，显示所有断点<br>删除断点：(Pdb) cl 2         #删除第2个断点 （clear的首字母）</p>
-<p>Step Over：(Pdb) n           #单步执行，next的首字母<br>Step Into：(Pdb) s             #step的首字母<br>Setp Return：(Pdb) r         #return的首字母<br>Resume：(Pdb) c               #continue的首字母<br>Run to Line：(Pdb) j 10     #运行到地10行，jump的首字母</p>
-<p>(Pdb) p param                     #查看当前param变量值<br>(Pdb) l                                 #查看运行到某处代码<br>(Pdb) a                                 #查看全部栈内变量</p>
-<p>(Pdb) h                                 #帮助，help的首字母<br>(Pdb) q                                 #退出，quit的首字母</p>
+<p>当然，直接点击导出网表后点击cir文件也可以直接用LTspice打开，但是那麻烦一些，不是吗</p>
 </blockquote>
-<p>当然，之类也可以像第一步那样写一个启动器然后在kipython下启动调试：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">exec</span>(<span class="built_in">open</span>(<span class="string">&#x27;tester2.py&#x27;</span>).read())</span><br></pre></td></tr></table></figure>
+<h2 id="额外的功能"><a href="#额外的功能" class="headerlink" title="额外的功能"></a>额外的功能</h2><h3 id="使用LTspice的专用模型"><a href="#使用LTspice的专用模型" class="headerlink" title="使用LTspice的专用模型"></a>使用LTspice的专用模型</h3><p>LTspice的模型大多是专用的，但是除了加密模型，他们也是使用ASCII文本文件储存的，因此，虽然在KiCad的ngspice中虽然可能用不了，但是依然可以设置为器件的spice模型并且导出到LTspice使用。</p>
+<p>这种方法的好处是对于ADI没有直接提供Spice模型的器件, 可以直接借用LTspice的模型。</p>
+<blockquote>
+<p>是借用！读书人的事怎么能叫偷呢？</p>
+</blockquote>
+<p>方法如下：</p>
+<p>使用Everything找到需要器件的asy文件，这是LTspice所使用的原理图符号的文件。</p>
+<blockquote>
+<p>什么？你还没有用上Everything? 赶快下载吧！极速体验就在眼前~</p>
+</blockquote>
+<p>例如LT1009.asy ,使用文本编辑器例如VSCode打开这个文件，找到带有 <code>SpiceModel</code> 字样这一行，这个说明了这个模型在哪个库里面，这里找到的是LTC3.lib 。同时，可以关注一下下面的SpiceOrder,这个表示了spice中引脚排列顺序。这里是：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PINATTR PinName VCC</span><br><span class="line">PINATTR SpiceOrder 1</span><br><span class="line">PIN 0 32 NONE 8</span><br><span class="line">PINATTR PinName VEE</span><br><span class="line">PINATTR SpiceOrder 2</span><br><span class="line">PIN 32 0 NONE 8</span><br><span class="line">PINATTR PinName ADJ</span><br><span class="line">PINATTR SpiceOrder 3</span><br></pre></td></tr></table></figure>
 
-<p>不过，在kicad里面调试很容易出bug卡死。。另外更改代码之后要刷新import 自己的插件（使用剪切板的时候win10，稳定卡死）</p>
-<p>2.3</p>
-<p>除此之外如果不想写pdb也可以直接在kipython内用上述方法打开自己的函数，输出错误信息或者print的结果。</p>
-<p>如果一定要用kicad的直接打开来测试，最好给外部插件刷新分配一个快捷键。</p>
-<p>参考信息：</p>
-<p><a href="https://www.cnblogs.com/zhumengke/articles/12291747.html">Linux下使用命令行调试Python程序 - 逐梦客！ - 博客园</a></p>
-<p>还有问ChatGPT：kicad如何调试插件脚本。。。他的回答比我想到的还完善，直接搜网上不容易找到答案。</p>
-<h2 id="3、使用Kicad-6-0-Command-prompt"><a href="#3、使用Kicad-6-0-Command-prompt" class="headerlink" title="3、使用Kicad 6.0 Command prompt"></a>3、使用Kicad 6.0 Command prompt</h2><p>可选：配置这个加入到Windows Terminal，就可以方便的在Windows  Terminal打开</p>
-<p>打开之后，自动进入到kicad 6.0 的python环境，在这个环境下，可以进行如下操作来测试命令或者执行python脚本</p>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">************************************</span><br><span class="line">* KiCad <span class="number">6</span>.<span class="number">0</span> Command Prompt</span><br><span class="line">************************************</span><br><span class="line">You may now invoke python or pip targeting kicad&#x27;s install</span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">C:\<span class="title">Users</span>\<span class="title">AlwaysTS</span>\<span class="title">Documents</span>\<span class="title">KiCad</span>\6.0&gt;<span class="title">python</span></span></span><br><span class="line"><span class="function"><span class="title">Python</span> 3.9.14 (<span class="title">main</span>, <span class="title">Sep</span> 19 2022, 05:11:57) [<span class="title">MSC</span> <span class="title">v</span>.1932 64 <span class="title">bit</span> (<span class="title">AMD64</span>)] <span class="title">on</span> <span class="title">win32</span></span></span><br><span class="line"><span class="function"><span class="title">Type</span> &quot;<span class="title">help</span>&quot;, &quot;<span class="title">copyright</span>&quot;, &quot;<span class="title">credits</span>&quot; <span class="title">or</span> &quot;<span class="title">license</span>&quot; <span class="title">for</span> <span class="title">more</span> <span class="title">information</span>.</span></span><br><span class="line"><span class="function">&gt;&gt;&gt; <span class="title">import</span> <span class="title">pcbnew</span></span></span><br><span class="line"><span class="function">&gt;&gt;&gt; <span class="title">boardfile</span> = <span class="title">r</span>&#x27;<span class="title">D</span>:\<span class="title">MyProjects</span>\2<span class="title">_MyDesigns</span>\<span class="title">SoftwareCodes</span>\1<span class="title">_PluginsCodes</span>\<span class="title">KiCadPlugins</span>\<span class="title">TestKicadPrj</span>\<span class="title">TestKicadPrj.kicad_pcb</span>&#x27;</span></span><br><span class="line"><span class="function">&gt;&gt;&gt; <span class="title">board</span> = <span class="title">pcbnew.LoadBoard</span>(<span class="title">boardfile</span>)</span></span><br></pre></td></tr></table></figure>
-
-<p>这样就可以加载一个板子用来测试功能，也可以在这个命令行里面运行python脚本来直接进行测试。不过这里就没有python的方法的自动补全了。</p>
-<h2 id="4、调试总结"><a href="#4、调试总结" class="headerlink" title="4、调试总结"></a>4、调试总结</h2><p>最好的办法是使用vscode对插件脚本进行调试，把kicad的python加入环境变量或者在kicad prompt里面启动code，就可以方便的使用kicad的python环境调试。</p>
-<p>通过编写一个启动器，可以是另外一个文件也可以是直接放在原来的插件入口脚本内，使用是否处于调试模式（见上面）来区分要不要运行单独的app入口，然后在调试模式里面使用pcbnew.LoadBoard(filename)来替代pcbnew.GetBoard()函数来获取一个板子的对象方便后面调试（如果这里不需要调试操作pcb的逻辑就可以先不改这一部分代码）。这样可以做到不用打开KiCad刷新就能调试，当然了，看效果还是得打开PCB.</p>
-<p>而如果Kicad本身崩溃。。。需要构建debug版的kicad，可能是命令加–debug？</p>
-<p>dd</p>
-<p>python -m <package_name> 作为模块调试是文档说的，不知道怎么用。</package_name></p>
-<h2 id="关于wx-Dialog"><a href="#关于wx-Dialog" class="headerlink" title="关于wx.Dialog"></a>关于wx.Dialog</h2><p><a href="https://blog.csdn.net/qq_45587822/article/details/105205538">(5条消息) 【Python】wx.Dialog详解_猫兮ぃCatci的博客-CSDN博客_wx.dialog</a></p>
-<p>ui设计部分强烈推荐直接使用wxformbuilder生成，不容易掉进坑里（还是有坑，比如下面这个）。</p>
-<p>#–combobox如果加载panel之上的容器里面就会阻塞panel加载。</p>
-<h2 id="关于如何让KiCad插件运行后还能点击后面"><a href="#关于如何让KiCad插件运行后还能点击后面" class="headerlink" title="关于如何让KiCad插件运行后还能点击后面"></a>关于如何让KiCad插件运行后还能点击后面</h2><p>使用模式对话框和无模式对话框来区分：</p>
-<p>模式对话框会阻止其他窗口上的程序流和用户输入，直到被关闭为止，而无模式对话框的行为更像是程序流中的框架，并且仍然可以在其他窗口中输入</p>
-<p> ShowModal 方法，显示模式对话框</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">dialog.ShowModal()<span class="comment">#使用模式显示会导致kicad回显已经删除的边框的bug</span></span><br><span class="line">dialog.Destroy()</span><br></pre></td></tr></table></figure>
-
-<p>无模式地显示对话框，您只需使用 Show，就像使用框架一样。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">dialog.Show() <span class="comment">#不要紧跟着写destroy，不然无模式显示会被关掉的</span></span><br></pre></td></tr></table></figure>
-
-<p>同时，使用无模式对话框修复了Kicad在使用插件添加后的边框删除后会重新显示的bug。</p>
-<p>combobox</p>
-<p><a href="https://blog.csdn.net/qq744746842/article/details/48277433">(5条消息) wxpython comboBox 自动完成提示功能_saii的博客-CSDN博客_wxpython 自动提示</a></p>
-<p><strong>wx. EVT_TEXT</strong>↳</p>
-<p>当组合框的文本发生变化</p>
-<h2 id="关于bug"><a href="#关于bug" class="headerlink" title="关于bug"></a>关于bug</h2><p>之前那个showmodal（）之后回显不正常的bug，在kipython的shell里面调用却不会有bug。</p>
-<p>注释不会自动显示。</p>
-<h1 id="关于kicad-python-api-插件"><a href="#关于kicad-python-api-插件" class="headerlink" title="关于kicad python api 插件"></a>关于kicad python api 插件</h1><p>官方文档：<a href="https://docs.kicad.org/doxygen-python/namespacepcbnew.html">KiCad Pcbnew Python Scripting: pcbnew Namespace Reference</a></p>
-<p>官方文档是用doxgen生成的，啥都没有，就是一坨shit，还不如问chatgpt让他解释作用和参数。</p>
-<h2 id="pcbnew相关"><a href="#pcbnew相关" class="headerlink" title="pcbnew相关"></a>pcbnew相关</h2><p>TRACK只能在铜皮层<br>排序从0-最后分别是F in0—in30 B 然后是其他层，这里层可以直接用pcbnew.F_Cu这样的元素表示。<br>KiCad6的API和KiCAD5的API不一样，走线以外的元素称之为Shape,有对应的操作函数。<br>不同层分别对应的数字是：</p>
-<p>0-59，分别是</p>
-<p><code>F.Cu In1-30.Cu B.Cu B.Adhesive F.Adhesive B.Paste F.Paste B.Silkscreen F.Silkscreen B.Mask F.Mask User.Drawings User.Comments User.Eco1 User.Eco2 Edge.Cuts Margin B.Courtyard F.Courtyard B.Fab F.Fab User.1-9 Rescue</code></p>
-<p>使用pcbnew.LayerName(idnum)来通过数字索引出来层名称或BOARD_GetStandardLayerName</p>
-<p>使用pcbnew.ToLAYER_ID可以得到id？？？但是这个函数输入就是一个int</p>
-<p>共有60层，0-59，可以通过 pcbnew.PCB_LAYER_ID_COUNT 输出层数</p>
-<p>print(pcbnew.PCB_LAYER_ID_COUNT)</p>
-<p>ToLAYER_ID(idnum)切换层</p>
-<p>对不知道的数据的内建函数，可以使用vscode的自动补全，也可以在python环境下dir(对象)，或者直接去问chatgpt。。。kipython里面也有代码提示。</p>
-<p>比如：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">board = pcbnew.GetBoard()</span><br><span class="line"><span class="built_in">dir</span>(board)</span><br><span class="line">[<span class="string">&#x27;Add&#x27;</span>, <span class="string">&#x27;AddArea&#x27;</span>, <span class="string">&#x27;AddListener&#x27;</span>, <span class="string">&#x27;AddNative&#x27;</span>, <span class="string">&#x27;AllConnectedItems&#x27;</span>, <span class="string">&#x27;BuildConnectivity&#x27;</span>, <span class="string">&#x27;BuildListOfNets&#x27;</span>, <span class="string">&#x27;Cast&#x27;</span>, <span class="string">&#x27;ClassOf&#x27;</span>, <span class="string">&#x27;ClearAllNetCodes&#x27;</span>, <span class="string">&#x27;ClearBrightened&#x27;</span>, <span class="string">&#x27;ClearEditFlags&#x27;</span>, <span class="string">&#x27;ClearFlags&#x27;</span>, <span class="string">&#x27;ClearProject&#x27;</span>, <span class="string">&#x27;ClearSelected&#x27;</span>, <span class="string">&#x27;ClearTempFlags&#x27;</span>, <span class="string">&#x27;Clone&#x27;</span>, <span class="string">&#x27;ComputeBoundingBox&#x27;</span>, <span class="string">&#x27;ConvertBrdLayerToPolygonalContours&#x27;</span>, <span class="string">&#x27;ConvertCrossReferencesToKIIDs&#x27;</span>, <span class="string">&#x27;ConvertKIIDsToCrossReferences&#x27;</span>, <span class="string">&#x27;Delete&#x27;</span>, <span class="string">&#x27;DeleteAllFootprints&#x27;</span>, <span class="string">&#x27;DeleteMARKERs&#x27;</span>, <span class="string">&#x27;DeleteNative&#x27;</span>, <span class="string">&#x27;DeleteStructure&#x27;</span>, <span class="string">&#x27;Drawings&#x27;</span>, <span class="string">&#x27;Duplicate&#x27;</span>, <span class="string">&#x27;FillItemMap&#x27;</span>, <span class="string">&#x27;FinalizeBulkAdd&#x27;</span>, <span class="string">&#x27;FinalizeBulkRemove&#x27;</span>, <span class="string">&#x27;FindFootprintByPath&#x27;</span>, <span class="string">&#x27;FindFootprintByReference&#x27;</span>, <span class="string">&#x27;FindNet&#x27;</span>, <span class="string">&#x27;Flip&#x27;</span>, <span class="string">&#x27;Footprints&#x27;</span>, <span class="string">&#x27;GetAllNetClasses&#x27;</span>, <span class="string">&#x27;GetArea&#x27;</span>, <span class="string">&#x27;GetAreaCount&#x27;</span>, <span class="string">&#x27;GetBoard&#x27;</span>, <span class="string">&#x27;GetBoardEdgesBoundingBox&#x27;</span>, <span class="string">&#x27;GetBoardPolygonOutlines&#x27;</span>, <span class="string">&#x27;GetBoardUse&#x27;</span>, <span class="string">&#x27;GetBoundingBox&#x27;</span>, <span class="string">&#x27;GetCenter&#x27;</span>, <span class="string">&#x27;GetClass&#x27;</span>, <span class="string">&#x27;GetConnectivity&#x27;</span>, <span class="string">&#x27;GetCopperLayerCount&#x27;</span>, <span class="string">&#x27;GetCurrentNetClassName&#x27;</span>, <span class="string">&#x27;GetDesignSettings&#x27;</span>, <span class="string">&#x27;GetDrawings&#x27;</span>, <span class="string">&#x27;GetEditFlags&#x27;</span>, <span class="string">&#x27;GetEffectiveShape&#x27;</span>, <span class="string">&#x27;GetEnabledLayers&#x27;</span>, <span class="string">&#x27;GetFileFormatVersionAtLoad&#x27;</span>, <span class="string">&#x27;GetFileName&#x27;</span>, <span class="string">&#x27;GetFirstFootprint&#x27;</span>, <span class="string">&#x27;GetFlags&#x27;</span>, <span class="string">&#x27;GetFocusPosition&#x27;</span>, <span class="string">&#x27;GetFootprint&#x27;</span>, <span class="string">&#x27;GetFootprints&#x27;</span>, <span class="string">&#x27;GetGenerator&#x27;</span>, <span class="string">&#x27;GetHighLightNetCodes&#x27;</span>, <span class="string">&#x27;GetItem&#x27;</span>, <span class="string">&#x27;GetLayer&#x27;</span>, <span class="string">&#x27;GetLayerID&#x27;</span>, <span class="string">&#x27;GetLayerName&#x27;</span>, <span class="string">&#x27;GetLayerSet&#x27;</span>, <span class="string">&#x27;GetLayerType&#x27;</span>, <span class="string">&#x27;GetMenuImage&#x27;</span>, <span class="string">&#x27;GetMsgPanelInfo&#x27;</span>, <span class="string">&#x27;GetNetClassAssignmentCandidates&#x27;</span>, <span class="string">&#x27;GetNetClasses&#x27;</span>, <span class="string">&#x27;GetNetCount&#x27;</span>, <span class="string">&#x27;GetNetInfo&#x27;</span>, <span class="string">&#x27;GetNetcodeFromNetname&#x27;</span>, <span class="string">&#x27;GetNetsByName&#x27;</span>, <span class="string">&#x27;GetNetsByNetcode&#x27;</span>, <span class="string">&#x27;GetNodesCount&#x27;</span>, <span class="string">&#x27;GetPad&#x27;</span>, <span class="string">&#x27;GetPadFast&#x27;</span>, <span class="string">&#x27;GetPads&#x27;</span>, <span class="string">&#x27;GetPageSettings&#x27;</span>, <span class="string">&#x27;GetParent&#x27;</span>, <span class="string">&#x27;GetParentFootprint&#x27;</span>, <span class="string">&#x27;GetParentGroup&#x27;</span>, <span class="string">&#x27;GetPlotOptions&#x27;</span>, <span class="string">&#x27;GetPosition&#x27;</span>, <span class="string">&#x27;GetProject&#x27;</span>, <span class="string">&#x27;GetProperties&#x27;</span>, <span class="string">&#x27;GetSelectMenuText&#x27;</span>, <span class="string">&#x27;GetSortedPadListByXthenYCoord&#x27;</span>, <span class="string">&#x27;GetStandardLayerName&#x27;</span>, <span class="string">&#x27;GetState&#x27;</span>, <span class="string">&#x27;GetStatus&#x27;</span>, <span class="string">&#x27;GetTimeStamp&#x27;</span>, <span class="string">&#x27;GetTitleBlock&#x27;</span>, <span class="string">&#x27;GetTrackLength&#x27;</span>, <span class="string">&#x27;GetTrackWidthList&#x27;</span>, <span class="string">&#x27;GetTracks&#x27;</span>, <span class="string">&#x27;GetUnconnectedNetCount&#x27;</span>, <span class="string">&#x27;GetViasDimensionsList&#x27;</span>, <span class="string">&#x27;GetVisibleElements&#x27;</span>, <span class="string">&#x27;GetVisibleLayers&#x27;</span>, <span class="string">&#x27;GetX&#x27;</span>, <span class="string">&#x27;GetY&#x27;</span>, <span class="string">&#x27;GetZoneList&#x27;</span>, <span class="string">&#x27;GetZoneSettings&#x27;</span>, <span class="string">&#x27;GroupLegalOps&#x27;</span>, <span class="string">&#x27;Groups&#x27;</span>, <span class="string">&#x27;GroupsSanityCheck&#x27;</span>, <span class="string">&#x27;GroupsSanityCheckInternal&#x27;</span>, <span class="string">&#x27;HasFlag&#x27;</span>, <span class="string">&#x27;HighLightOFF&#x27;</span>, <span class="string">&#x27;HighLightON&#x27;</span>, <span class="string">&#x27;HitTest&#x27;</span>, <span class="string">&#x27;IncrementTimeStamp&#x27;</span>, <span class="string">&#x27;IsBrightened&#x27;</span>, <span class="string">&#x27;IsConnected&#x27;</span>, <span class="string">&#x27;IsDragging&#x27;</span>, <span class="string">&#x27;IsElementVisible&#x27;</span>, <span class="string">&#x27;IsEmpty&#x27;</span>, <span class="string">&#x27;IsEntered&#x27;</span>, <span class="string">&#x27;IsFootprintHolder&#x27;</span>, <span class="string">&#x27;IsFootprintLayerVisible&#x27;</span>, <span class="string">&#x27;IsForceVisible&#x27;</span>, <span class="string">&#x27;IsHighLightNetON&#x27;</span>, <span class="string">&#x27;IsLayerEnabled&#x27;</span>, <span class="string">&#x27;IsLayerVisible&#x27;</span>, <span class="string">&#x27;IsLocked&#x27;</span>, <span class="string">&#x27;IsModified&#x27;</span>, <span class="string">&#x27;IsMoving&#x27;</span>, <span class="string">&#x27;IsNew&#x27;</span>, <span class="string">&#x27;IsOnCopperLayer&#x27;</span>, <span class="string">&#x27;IsOnLayer&#x27;</span>, <span class="string">&#x27;IsReplaceable&#x27;</span>, <span class="string">&#x27;IsResized&#x27;</span>, <span class="string">&#x27;IsSelected&#x27;</span>, <span class="string">&#x27;IsTrack&#x27;</span>, <span class="string">&#x27;IsType&#x27;</span>, <span class="string">&#x27;IsWireImage&#x27;</span>, <span class="string">&#x27;MapNets&#x27;</span>, <span class="string">&#x27;Markers&#x27;</span>, <span class="string">&#x27;Matches&#x27;</span>, <span class="string">&#x27;Move&#x27;</span>, <span class="string">&#x27;OnItemChanged&#x27;</span>, <span class="string">&#x27;OnItemsChanged&#x27;</span>, <span class="string">&#x27;PadDelete&#x27;</span>, <span class="string">&#x27;Remove&#x27;</span>, <span class="string">&#x27;RemoveListener&#x27;</span>, <span class="string">&#x27;RemoveNative&#x27;</span>, <span class="string">&#x27;Replace&#x27;</span>, <span class="string">&#x27;ResetNetHighLight&#x27;</span>, <span class="string">&#x27;ResolveDRCExclusions&#x27;</span>, <span class="string">&#x27;ResolveTextVar&#x27;</span>, <span class="string">&#x27;Rotate&#x27;</span>, <span class="string">&#x27;SanitizeNetcodes&#x27;</span>, <span class="string">&#x27;Save&#x27;</span>, <span class="string">&#x27;SetAreasNetCodesFromNetNames&#x27;</span>, <span class="string">&#x27;SetBoardUse&#x27;</span>, <span class="string">&#x27;SetBrightened&#x27;</span>, <span class="string">&#x27;SetCopperLayerCount&#x27;</span>, <span class="string">&#x27;SetElementVisibility&#x27;</span>, <span class="string">&#x27;SetEnabledLayers&#x27;</span>, <span class="string">&#x27;SetFileFormatVersionAtLoad&#x27;</span>, <span class="string">&#x27;SetFileName&#x27;</span>, <span class="string">&#x27;SetFlags&#x27;</span>, <span class="string">&#x27;SetForceVisible&#x27;</span>, <span class="string">&#x27;SetGenerator&#x27;</span>, <span class="string">&#x27;SetHighLightNet&#x27;</span>, <span class="string">&#x27;SetLayer&#x27;</span>, <span class="string">&#x27;SetLayerDescr&#x27;</span>, <span class="string">&#x27;SetLayerName&#x27;</span>, <span class="string">&#x27;SetLayerSet&#x27;</span>, <span class="string">&#x27;SetLayerType&#x27;</span>, <span class="string">&#x27;SetLocked&#x27;</span>, <span class="string">&#x27;SetModified&#x27;</span>, <span class="string">&#x27;SetPageSettings&#x27;</span>, <span class="string">&#x27;SetParent&#x27;</span>, <span class="string">&#x27;SetParentGroup&#x27;</span>, <span class="string">&#x27;SetPlotOptions&#x27;</span>, <span class="string">&#x27;SetPos&#x27;</span>, <span class="string">&#x27;SetPosition&#x27;</span>, <span class="string">&#x27;SetProject&#x27;</span>, <span class="string">&#x27;SetProperties&#x27;</span>, <span class="string">&#x27;SetSelected&#x27;</span>, <span class="string">&#x27;SetStartEnd&#x27;</span>, <span class="string">&#x27;SetState&#x27;</span>, <span class="string">&#x27;SetStatus&#x27;</span>, <span class="string">&#x27;SetTitleBlock&#x27;</span>, <span class="string">&#x27;SetVisibleAlls&#x27;</span>, <span class="string">&#x27;SetVisibleElements&#x27;</span>, <span class="string">&#x27;SetVisibleLayers&#x27;</span>, <span class="string">&#x27;SetWireImage&#x27;</span>, <span class="string">&#x27;SetX&#x27;</span>, <span class="string">&#x27;SetY&#x27;</span>, <span class="string">&#x27;SetZoneSettings&#x27;</span>, <span class="string">&#x27;Sort&#x27;</span>, <span class="string">&#x27;SwapData&#x27;</span>, <span class="string">&#x27;SynchronizeNetsAndNetClasses&#x27;</span>, <span class="string">&#x27;SynchronizeProperties&#x27;</span>, <span class="string">&#x27;TestZoneIntersection&#x27;</span>, <span class="string">&#x27;Tracks&#x27;</span>, <span class="string">&#x27;TracksInNet&#x27;</span>, <span class="string">&#x27;TransformShapeWithClearanceToPolygon&#x27;</span>, <span class="string">&#x27;Type&#x27;</span>, <span class="string">&#x27;ViewBBox&#x27;</span>, <span class="string">&#x27;ViewGetLayers&#x27;</span>, <span class="string">&#x27;Visit&#x27;</span>, <span class="string">&#x27;Zones&#x27;</span>, <span class="string">&#x27;__class__&#x27;</span>, <span class="string">&#x27;__delattr__&#x27;</span>, <span class="string">&#x27;__dict__&#x27;</span>, <span class="string">&#x27;__dir__&#x27;</span>, <span class="string">&#x27;__doc__&#x27;</span>, <span class="string">&#x27;__eq__&#x27;</span>, <span class="string">&#x27;__format__&#x27;</span>, <span class="string">&#x27;__ge__&#x27;</span>, <span class="string">&#x27;__getattribute__&#x27;</span>, <span class="string">&#x27;__gt__&#x27;</span>, <span class="string">&#x27;__hash__&#x27;</span>, <span class="string">&#x27;__init__&#x27;</span>, <span class="string">&#x27;__init_subclass__&#x27;</span>, <span class="string">&#x27;__le__&#x27;</span>, <span class="string">&#x27;__lt__&#x27;</span>, <span class="string">&#x27;__module__&#x27;</span>, <span class="string">&#x27;__ne__&#x27;</span>, <span class="string">&#x27;__new__&#x27;</span>, <span class="string">&#x27;__reduce__&#x27;</span>, <span class="string">&#x27;__reduce_ex__&#x27;</span>, <span class="string">&#x27;__repr__&#x27;</span>, <span class="string">&#x27;__setattr__&#x27;</span>, <span class="string">&#x27;__sizeof__&#x27;</span>, <span class="string">&#x27;__str__&#x27;</span>, <span class="string">&#x27;__subclasshook__&#x27;</span>, <span class="string">&#x27;__swig_destroy__&#x27;</span>, <span class="string">&#x27;__weakref__&#x27;</span>, <span class="string">&#x27;m_InsideBCourtyardCache&#x27;</span>, <span class="string">&#x27;m_InsideFCourtyardCache&#x27;</span>, <span class="string">&#x27;m_LayerExpressionCache&#x27;</span>, <span class="string">&#x27;m_LegacyCopperEdgeClearanceLoaded&#x27;</span>, <span class="string">&#x27;m_LegacyDesignSettingsLoaded&#x27;</span>, <span class="string">&#x27;m_LegacyNetclassesLoaded&#x27;</span>, <span class="string">&#x27;m_LegacyVisibleItems&#x27;</span>, <span class="string">&#x27;m_LegacyVisibleLayers&#x27;</span>, <span class="string">&#x27;m_Uuid&#x27;</span>, <span class="string">&#x27;this&#x27;</span>, <span class="string">&#x27;thisown&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-<p>使用GetLayer可以获取当前layer，使用GetEnabledLayers获取使能的layer集合，类型是LSET,具有如下特性，他不能直接使用迭代特性，所以不能直接使用使用for循环</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">dir</span>(layers1)</span><br><span class="line">[<span class="string">&#x27;AddLayer&#x27;</span>, <span class="string">&#x27;AddLayerSet&#x27;</span>, <span class="string">&#x27;AllBoardTechMask&#x27;</span>, <span class="string">&#x27;AllCuMask&#x27;</span>, <span class="string">&#x27;AllLayersMask&#x27;</span>, <span class="string">&#x27;AllNonCuMask&#x27;</span>, <span class="string">&#x27;AllTechMask&#x27;</span>, <span class="string">&#x27;BackAssembly&#x27;</span>, <span class="string">&#x27;BackBoardTechMask&#x27;</span>, <span class="string">&#x27;BackMask&#x27;</span>, <span class="string">&#x27;BackTechMask&#x27;</span>, <span class="string">&#x27;Contains&#x27;</span>, <span class="string">&#x27;CuStack&#x27;</span>, <span class="string">&#x27;ExternalCuMask&#x27;</span>, <span class="string">&#x27;ExtractLayer&#x27;</span>, <span class="string">&#x27;FmtBin&#x27;</span>, <span class="string">&#x27;FmtHex&#x27;</span>, <span class="string">&#x27;ForbiddenFootprintLayers&#x27;</span>, <span class="string">&#x27;FrontAssembly&#x27;</span>, <span class="string">&#x27;FrontBoardTechMask&#x27;</span>, <span class="string">&#x27;FrontMask&#x27;</span>, <span class="string">&#x27;FrontTechMask&#x27;</span>, <span class="string">&#x27;InternalCuMask&#x27;</span>, <span class="string">&#x27;Name&#x27;</span>, <span class="string">&#x27;ParseHex&#x27;</span>, <span class="string">&#x27;PhysicalLayersMask&#x27;</span>, <span class="string">&#x27;RemoveLayer&#x27;</span>, <span class="string">&#x27;RemoveLayerSet&#x27;</span>, <span class="string">&#x27;Seq&#x27;</span>, <span class="string">&#x27;SeqStackupBottom2Top&#x27;</span>, <span class="string">&#x27;TechAndUserUIOrder&#x27;</span>, <span class="string">&#x27;Technicals&#x27;</span>, <span class="string">&#x27;UIOrder&#x27;</span>, <span class="string">&#x27;UserDefinedLayers&#x27;</span>, <span class="string">&#x27;UserMask&#x27;</span>, <span class="string">&#x27;Users&#x27;</span>, <span class="string">&#x27;__class__&#x27;</span>, <span class="string">&#x27;__delattr__&#x27;</span>, <span class="string">&#x27;__dict__&#x27;</span>, <span class="string">&#x27;__dir__&#x27;</span>, <span class="string">&#x27;__doc__&#x27;</span>, <span class="string">&#x27;__eq__&#x27;</span>, <span class="string">&#x27;__format__&#x27;</span>, <span class="string">&#x27;__ge__&#x27;</span>, <span class="string">&#x27;__getattribute__&#x27;</span>, <span class="string">&#x27;__gt__&#x27;</span>, <span class="string">&#x27;__hash__&#x27;</span>, <span class="string">&#x27;__init__&#x27;</span>, <span class="string">&#x27;__init_subclass__&#x27;</span>, <span class="string">&#x27;__le__&#x27;</span>, <span class="string">&#x27;__lt__&#x27;</span>, <span class="string">&#x27;__module__&#x27;</span>, <span class="string">&#x27;__ne__&#x27;</span>, <span class="string">&#x27;__new__&#x27;</span>, <span class="string">&#x27;__reduce__&#x27;</span>, <span class="string">&#x27;__reduce_ex__&#x27;</span>, <span class="string">&#x27;__repr__&#x27;</span>, <span class="string">&#x27;__setattr__&#x27;</span>, <span class="string">&#x27;__sizeof__&#x27;</span>, <span class="string">&#x27;__str__&#x27;</span>, <span class="string">&#x27;__subclasshook__&#x27;</span>, <span class="string">&#x27;__swig_destroy__&#x27;</span>, <span class="string">&#x27;__weakref__&#x27;</span>, <span class="string">&#x27;addLayer&#x27;</span>, <span class="string">&#x27;addLayerSet&#x27;</span>, <span class="string">&#x27;removeLayer&#x27;</span>, <span class="string">&#x27;removeLayerSet&#x27;</span>, <span class="string">&#x27;this&#x27;</span>, <span class="string">&#x27;thisown&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-<p>然后使用</p>
-<p>enabled_layers &#x3D; layers1.SeqStackupBottom2Top()可以获取一个数组，数组内是整数，通过for迭代pcbnew.LayerName(i)可以得到当前pcb的各层名称。但是要按顺序的话，应该使用Seq(),比如：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">for</span> layer <span class="keyword">in</span> enabled_layers:</span><br><span class="line">    <span class="comment"># Print the layer name</span></span><br><span class="line">    <span class="built_in">print</span>(layer)</span><br><span class="line">得到：</span><br><span class="line"><span class="number">58</span></span><br><span class="line"><span class="number">57</span></span><br><span class="line"><span class="number">56</span></span><br><span class="line"><span class="number">55</span></span><br><span class="line"><span class="number">54</span></span><br><span class="line"><span class="number">53</span></span><br><span class="line"><span class="number">52</span></span><br><span class="line"><span class="number">51</span></span><br><span class="line"><span class="number">50</span></span><br><span class="line"><span class="number">48</span></span><br><span class="line"><span class="number">46</span></span><br><span class="line"><span class="number">32</span></span><br><span class="line"><span class="number">36</span></span><br><span class="line"><span class="number">34</span></span><br><span class="line"><span class="number">38</span></span><br><span class="line"><span class="number">31</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">39</span></span><br><span class="line"><span class="number">35</span></span><br><span class="line"><span class="number">37</span></span><br><span class="line"><span class="number">33</span></span><br><span class="line"><span class="number">47</span></span><br><span class="line"><span class="number">49</span></span><br><span class="line"><span class="number">40</span></span><br><span class="line"><span class="number">41</span></span><br><span class="line"><span class="number">42</span></span><br><span class="line"><span class="number">43</span></span><br><span class="line"><span class="number">45</span></span><br><span class="line"><span class="number">44</span></span><br><span class="line"><span class="keyword">for</span> layer <span class="keyword">in</span> enabled_layers:</span><br><span class="line">    <span class="comment"># Print the layer name</span></span><br><span class="line">    <span class="built_in">print</span>(pcbnew.LayerName(layer))</span><br><span class="line">得到：    </span><br><span class="line">User<span class="number">.9</span></span><br><span class="line">User<span class="number">.8</span></span><br><span class="line">User<span class="number">.7</span></span><br><span class="line">User<span class="number">.6</span></span><br><span class="line">User<span class="number">.5</span></span><br><span class="line">User<span class="number">.4</span></span><br><span class="line">User<span class="number">.3</span></span><br><span class="line">User<span class="number">.2</span></span><br><span class="line">User<span class="number">.1</span></span><br><span class="line">B.Fab</span><br><span class="line">B.Courtyard</span><br><span class="line">B.Adhesive</span><br><span class="line">B.Silkscreen</span><br><span class="line">B.Paste</span><br><span class="line">B.Mask</span><br><span class="line">B.Cu</span><br><span class="line">F.Cu</span><br><span class="line">F.Mask</span><br><span class="line">F.Paste</span><br><span class="line">F.Silkscreen</span><br><span class="line">F.Adhesive</span><br><span class="line">F.Courtyard</span><br><span class="line">F.Fab</span><br><span class="line">User.Drawings</span><br><span class="line">User.Comments</span><br><span class="line">User.Eco1</span><br><span class="line">User.Eco2</span><br><span class="line">Margin</span><br><span class="line">Edge.Cuts</span><br><span class="line"></span><br><span class="line">对于使用</span><br><span class="line">enabled_layers = layers1.Seq()</span><br><span class="line"><span class="keyword">for</span> layer <span class="keyword">in</span> enabled_layers:</span><br><span class="line">    <span class="comment"># Print the layer name</span></span><br><span class="line">    <span class="built_in">print</span>(pcbnew.LayerName(layer))</span><br><span class="line"></span><br><span class="line">F.Cu</span><br><span class="line">B.Cu</span><br><span class="line">B.Adhesive</span><br><span class="line">F.Adhesive</span><br><span class="line">B.Paste</span><br><span class="line">F.Paste</span><br><span class="line">B.Silkscreen</span><br><span class="line">F.Silkscreen</span><br><span class="line">B.Mask</span><br><span class="line">F.Mask</span><br><span class="line">User.Drawings</span><br><span class="line">User.Comments</span><br><span class="line">User.Eco1</span><br><span class="line">User.Eco2</span><br><span class="line">Edge.Cuts</span><br><span class="line">Margin</span><br><span class="line">B.Courtyard</span><br><span class="line">F.Courtyard</span><br><span class="line">B.Fab</span><br><span class="line">F.Fab</span><br><span class="line">User<span class="number">.1</span></span><br><span class="line">User<span class="number">.2</span></span><br><span class="line">User<span class="number">.3</span></span><br><span class="line">User<span class="number">.4</span></span><br><span class="line">User<span class="number">.5</span></span><br><span class="line">User<span class="number">.6</span></span><br><span class="line">User<span class="number">.7</span></span><br><span class="line">User<span class="number">.8</span></span><br><span class="line">User<span class="number">.9</span></span><br></pre></td></tr></table></figure>
-
-<p>而<code>GetLayerSet()</code>是一个在KiCad中定义的函数，它可以用来获取当前画板上使用的层集。在KiCad中，层集表示一组层的集合，可以用来指定在哪些层上放置元件。</p>
-<p>例如，您可以使用<code>GetLayerSet()</code>函数来获取当前画板上使用的层集，然后使用它来指定要在哪些层上放置某个元件：</p>
-<p>Copy code</p>
-<p><code># Import the necessary libraries import pcbnew  # Get the PCB board = pcbnew.GetBoard()  # Get the current layer set layer_set = board.GetLayerSet()  # Add some layers to the layer set layer_set.AddLayer(pcbnew.F_Cu) layer_set.AddLayer(pcbnew.B_Cu)</code></p>
-<p>只是获取了一个板子上的层集合，是可以自己自定义的。</p>
-<p>GetCopperLayerCount可以用来获取板子的铜皮层。</p>
-<p>而wxpoint的坐标和实际mm坐标的转换可以通过pcbnew.ToMM()来转换，当然也可以直接计算10^-6来计算</p>
-<p>        boardobj &#x3D; pcbnew.GetBoard()</p>
-<p>        board_X,board_Y &#x3D; boardobj.GetCenter()</p>
-<p>        xmm &#x3D; pcbnew.ToMM(board_X)</p>
-<p>        ymm &#x3D; pcbnew.ToMM()</p>
-<p>而获取板子上元素的信息不算难。</p>
-<p>修改属性的时候，可以在pcb中绘制一个要生成的东西，按e查看一下有哪些属性就知道缺什么l</p>
-<p>pcb标注为dimension</p>
-<p>  (dimension (type aligned) (layer “Cmts.User”) (tstamp 40db000a-2685-415b-b6e4-eba530284df3)<br>    (pts (xy 111.125 52.07) (xy 111.125 78.74))<br>    (height -25.4)<br>    (gr_text “26.6700 mm” (at 136.525 65.405 90) (layer “Cmts.User”) (tstamp 2c592233-bd69-4594-a2ec-6e3e42bd308e)<br>      (effects (font (size 1 1) (thickness 0.15)))<br>    )<br>    (format (units 3) (units_format 1) (precision 4))<br>    (style (thickness 0.15) (arrow_length 1.27) (text_position_mode 1) (extension_height 0.58642) (extension_offset 0.5) keep_text_aligned)<br>  )</p>
-<p>text_position_mode 1为内联模式，0是外部，2是手动</p>
-<p>SetOverrideTextEnabled()方法用于启用或禁用尺寸线的文本重写，例如：</p>
-<p>dimensionObj.SetOverrideTextEnabled(True)</p>
-<p>在添加尺寸线时，可以使用SetUnits()方法设置尺寸线的单位，例如：</p>
-<p>dimensionObj.SetUnits(pcbnew.EDA_UNITS_MILLIMETRES)</p>
-<p>这样就可以在尺寸线中显示毫米单位了。</p>
-<p><code>SetBrightened</code>是一个用来设置尺寸符号颜色是否变亮的方法。通常来说，当尺寸符号的颜色被设置为变亮时，它们会显得更加突出，便于观察。</p>
-<p>此方法不接受任何参数，它的作用是将尺寸符号的颜色设置为变亮。例如：、</p>
-<p>如果不知道setxxx的参数怎么写，就调用getxxx打印出来看一下。但是基本上可以直接对应pcb文件中的数字来做。</p>
-<p>标注具有的属性：</p>
-<p>dir(dimensionObj)<br>[‘Cast’, ‘ClassOf’, ‘ClearBrightened’, ‘ClearEditFlags’, ‘ClearFlags’, ‘ClearSelected’, ‘ClearTempFlags’, ‘Clone’, ‘DeleteStructure’, ‘Duplicate’, ‘Flip’, ‘GetAngle’, ‘GetArrowLength’, ‘GetBoard’, ‘GetBoundingBox’, ‘GetCenter’, ‘GetClass’, ‘GetCrossbarEnd’, ‘GetCrossbarStart’, ‘GetEditFlags’, ‘GetEffectiveShape’, ‘GetEnd’, ‘GetExtensionHeight’, ‘GetExtensionOffset’, ‘GetFlags’, ‘GetFocusPosition’, ‘GetHeight’, ‘GetKeepTextAligned’, ‘GetLayer’, ‘GetLayerName’, ‘GetLayerSet’, ‘GetLineThickness’, ‘GetMeasuredValue’, ‘GetMenuImage’, ‘GetMsgPanelInfo’, ‘GetOverrideText’, ‘GetOverrideTextEnabled’, ‘GetParent’, ‘GetParentFootprint’, ‘GetParentGroup’, ‘GetPosition’, ‘GetPrecision’, ‘GetPrefix’, ‘GetSelectMenuText’, ‘GetShapes’, ‘GetStart’, ‘GetState’, ‘GetStatus’, ‘GetSuffix’, ‘GetSuppressZeroes’, ‘GetText’, ‘GetTextPositionMode’, ‘GetUnits’, ‘GetUnitsFormat’, ‘GetUnitsMode’, ‘GetValueText’, ‘GetX’, ‘GetY’, ‘HasFlag’, ‘HitTest’, ‘IsBrightened’, ‘IsConnected’, ‘IsDragging’, ‘IsEntered’, ‘IsForceVisible’, ‘IsLocked’, ‘IsModified’, ‘IsMoving’, ‘IsNew’, ‘IsOnCopperLayer’, ‘IsOnLayer’, ‘IsReplaceable’, ‘IsResized’, ‘IsSelected’, ‘IsTrack’, ‘IsType’, ‘IsWireImage’, ‘Matches’, ‘Mirror’, ‘Move’, ‘Replace’, ‘Rotate’, ‘SetArrowLength’, ‘SetAutoUnits’, ‘SetBrightened’, ‘SetEnd’, ‘SetExtensionHeight’, ‘SetExtensionOffset’, ‘SetFlags’, ‘SetForceVisible’, ‘SetHeight’, ‘SetKeepTextAligned’, ‘SetLayer’, ‘SetLayerSet’, ‘SetLineThickness’, ‘SetLocked’, ‘SetMeasuredValue’, ‘SetModified’, ‘SetOverrideText’, ‘SetOverrideTextEnabled’, ‘SetParent’, ‘SetParentGroup’, ‘SetPos’, ‘SetPosition’, ‘SetPrecision’, ‘SetPrefix’, ‘SetSelected’, ‘SetStart’, ‘SetStartEnd’, ‘SetState’, ‘SetStatus’, ‘SetSuffix’, ‘SetSuppressZeroes’, ‘SetText’, ‘SetTextPositionMode’, ‘SetTextSize’, ‘SetUnits’, ‘SetUnitsFormat’, ‘SetUnitsMode’, ‘SetWireImage’, ‘SetX’, ‘SetY’, ‘Sort’, ‘SwapData’, ‘Text’, ‘TransformShapeWithClearanceToPolygon’, ‘Type’, ‘Update’, ‘UpdateHeight’, ‘ViewBBox’, ‘ViewGetLayers’, ‘Visit’, ‘<strong>class</strong>‘, ‘<strong>delattr</strong>‘, ‘<strong>dict</strong>‘, ‘<strong>dir</strong>‘, ‘<strong>doc</strong>‘, ‘<strong>eq</strong>‘, ‘<strong>format</strong>‘, ‘<strong>ge</strong>‘, ‘<strong>getattribute</strong>‘, ‘<strong>gt</strong>‘, ‘<strong>hash</strong>‘, ‘<strong>init</strong>‘, ‘<strong>init_subclass</strong>‘, ‘<strong>le</strong>‘, ‘<strong>lt</strong>‘, ‘<strong>module</strong>‘, ‘<strong>ne</strong>‘, ‘<strong>new</strong>‘, ‘<strong>reduce</strong>‘, ‘<strong>reduce_ex</strong>‘, ‘<strong>repr</strong>‘, ‘<strong>setattr</strong>‘, ‘<strong>sizeof</strong>‘, ‘<strong>str</strong>‘, ‘<strong>subclasshook</strong>‘, ‘<strong>swig_destroy</strong>‘, ‘<strong>weakref</strong>‘, ‘m_Uuid’, ‘this’, ‘thisown’]</p>
-<p>对其中的部分进行解释：</p>
-<p>下面是这些函数的具体作用和输入参数：</p>
-<ul>
-<li>SetArrowLength(self, aLength: int): 该函数的作用是设置dimension对象的箭头长度。输入参数aLength是一个整数，表示箭头的长度。</li>
-<li>SetAutoUnits(self, aAutoUnits: bool): 该函数的作用是设置dimension对象的自动单位。输入参数aAutoUnits是一个布尔值，表示是否使用自动单位。</li>
-<li>SetBrightened(self, aBrightened: bool): 该函数的作用是设置dimension对象的亮度。输入参数aBrightened是一个布尔值，表示是否使用高亮显示。</li>
-<li>SetEnd(self, aEnd: wx.Point): 该函数的作用是设置dimension对象的终点坐标。输入参数aEnd是一个wx.Point对象，表示终</li>
-</ul>
-<p>TransformShapeWithClearanceToPolygon有什么用</p>
-<p>SetSelect有什么用</p>
-<p>dd–</p>
-<h2 id="关于翻译："><a href="#关于翻译：" class="headerlink" title="关于翻译："></a>关于翻译：</h2><p>在 Python 中，可以使用 gettext 模块来实现不同语言的支持。首先，你需要创建一个 .pot 文件，这是一个用来存储语言翻译的模板文件。然后，你可以使用 xgettext 工具将这个文件生成不同语言的 .po 文件，这些文件里面包含了各种语言的翻译。</p>
-<p>接下来，你可以在程序中使用 gettext.install() 方法来加载语言翻译文件，并使用 _() 函数来获取相应语言的翻译。例如：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Import the gettext module</span></span><br><span class="line"><span class="keyword">import</span> gettext</span><br><span class="line"></span><br><span class="line"><span class="comment"># Set the language to use</span></span><br><span class="line">gettext.install(<span class="string">&quot;myprogram&quot;</span>, <span class="string">&quot;locale&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Translate a string</span></span><br><span class="line">translated_string = _(<span class="string">&quot;Hello World&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>gettext是python默认自带的</p>
-<h2 id="关于chatgpt提问："><a href="#关于chatgpt提问：" class="headerlink" title="关于chatgpt提问："></a>关于chatgpt提问：</h2><p>kicad 中 使用python pcbnew获取所有pcb的层</p>
-<p>这样问基本可以得到看起来靠谱但是不一定对的答案,然后指出不对的地方，比如</p>
-<p>GetLayers()在kicad6.0中已经失效</p>
-<h1 id="关于版本兼容"><a href="#关于版本兼容" class="headerlink" title="关于版本兼容"></a>关于版本兼容</h1><p>拖了半年，kicad7来了，这次改动点不算很大，但是还是有些不兼容，原来的坐标使用wxpoint，现在改成了vector，部分功能可以通过修改调用函数来兼容，部分只能单独写判断。（我不明白开发组原来怎么就不写个重载来兼容一下。。）</p>
+<p>那么在KiCad原理图元器件的仿真设置中就需要设置正确的顺序。</p>
+<p>在KiCad6中是勾选替代节点顺序，用KiCad原理图符号引脚号表示引脚，排成上面需要的顺序。</p>
+<p>在KiCad7中是在引脚分配上手动勾选就好了。（吐槽：似乎还没上面那个好用，引脚多的器件需要一个一个点好累）</p>
+<blockquote>
+<p>TIPS【1】: 可以看到LTC3.lib就包含了很多LTSpice的模型，实际上安装目录下LTspice\lib\sub的.lib文件就是Ltspice所用的spice器件模型，不过大多数模型都用了LTspice所兼容的语法，因此在ngspice可能并不能直接使用。</p>
+<p>TIPS【2】: ngspice可以调整兼容模式，在KiCad中是 检查-&gt;仿真&gt;仿真-&gt;设置 ，不过这不影响导出的网表，而且似乎没啥用。</p>
+</blockquote>
+<h1 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h1><p>1、LTspice在许多电路中更容易收敛，还能用LTspice的模型仿真。</p>
+<p>2、LTspice功能更多。</p>
+<p>3、对于LTspice本来就没有的模型还是手动导入，这里直接从KiCAD导入则干脆省掉了这一步。</p>
+<blockquote>
+<p>其实ngspice本身收敛能力不错，但是还是远不如LTspice，很多使用复杂模型的电路都会无法收敛。</p>
+</blockquote>
+<h1 id="相比直接使用LTspice的缺点"><a href="#相比直接使用LTspice的缺点" class="headerlink" title="相比直接使用LTspice的缺点"></a>相比直接使用LTspice的缺点</h1><p>1、这个方法的缺点是由于只有网表可用，因此LTspice中的部分增强使用体验的功能不能直接使用。</p>
+<p>虽然ltspice所支持的原理图文件（.asc）也是纯文本储存，而且格式非常简单，但是KiCad并没有基于原理图的插件功能，因此我认为目前不值得为其开发一个转换生成Ltspice原理图的功能。</p>
+<blockquote>
+<p>KiCad组织从KiCad5开始说下一代要加入原理图插件功能，python插件示例中也预留了库名称，但是直到KiCad7,他们依然在说下次一定！</p>
+</blockquote>
+<p>2、LTspice部分加密的二进制模型也无法使用。</p>
+<h1 id="语法注意点"><a href="#语法注意点" class="headerlink" title="语法注意点"></a>语法注意点</h1><p>有些名称需要按照LTspice的来，例如噪声仿真中，输出噪声的频谱是onoise_spectrum，而LTspice是onoise，例如需要使用.save命令的时候，当然是需要复合当前使用的仿真器。</p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>我尝试过使用别的仿真工具导入网表，但是似乎不太好用。</p>
+<p><del>好了，现在KiCad仿真的系列教程结束了，现在转入LTspice的仿真教程吧！</del></p>
+<p>我忘记我还要说什么了。。。。<br>下面放个视频教程：</p>
 ]]></content>
       <categories>
         <category>Work with the world</category>
       </categories>
       <tags>
-        <tag>KiCad</tag>
-        <tag>Python</tag>
+        <tag>模电</tag>
+        <tag>Spice</tag>
       </tags>
   </entry>
   <entry>
@@ -358,9 +218,9 @@
         <category>Work with the world</category>
       </categories>
       <tags>
+        <tag>Spice</tag>
         <tag>Mulstisim</tag>
         <tag>PCB</tag>
-        <tag>Spice</tag>
       </tags>
   </entry>
   <entry>
@@ -407,8 +267,39 @@
         <category>Work with the world</category>
       </categories>
       <tags>
-        <tag>Spice</tag>
         <tag>模电</tag>
+        <tag>Spice</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>标准I2S接收器的分立逻辑器件实现</title>
+    <url>/2023/06/22/Work%20with%20the%20world/%E6%A0%87%E5%87%86I2S%E6%8E%A5%E6%94%B6%E5%99%A8%E7%9A%84%E5%88%86%E7%AB%8B%E9%80%BB%E8%BE%91%E5%99%A8%E4%BB%B6%E5%AE%9E%E7%8E%B0/</url>
+    <content><![CDATA[<p>这个从想做到做出来拖了两年。其实单纯讲做出来的话没有任何技术难度，就是一直拖。<br>早些年看到一些神奇贩子吹嘘着什么分立R2R DAC,使用解码多么多么动听，然而只要稍微了解一下相关器件，就知道，人家R2R做的好是因为人家做了几十年芯片，而你只是没有任何测试。不过，想到这个东西从数字到模拟还是挺好玩的，就想自己实现一下，讲究一个超低成本，看看听起来感觉怎么样。</p>
+<span id="more"></span>
+
+<p>其实文章名字叫做接收器的实现，既然接受了最后肯定要出效果的，所以后端就是最简单的R2R DAC来得到模拟信号。这个文章也会是整板设计说完整。</p>
+<h1 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h1><p>其实虽然说着简单，但是基本上几年毫无数字逻辑实战设计经验的我一上来是比较懵圈。总体上设计分成两部分。</p>
+<ul>
+<li>I2S信号转并行信号</li>
+<li>R2R DAC本身</li>
+</ul>
+<p>其中，I2S信号飞利浦指定的信号标准，但是实际上有好几种格式都被称之为I2S信号。其中飞利浦标准可以从其标准文档获得。</p>
+<p>实际上文档中已经给了两种可行的设计逻辑图，但是当时我对着这个图不知道怎么选型器件。。。</p>
+<p>TODO:</p>
+<p>参考资料：<br>I2S bus specification.pdf Philips<br>I2S bus specification -UM11732 NXP<br>实际上NXP就是Philip出来的，新文档主要是把Master&#x2F;slave修改成了Controllter&#x2F;Target.<br>(虽然有点政治正确，但是早该改了，以前这种表达是挺离谱的)</p>
+<p>测试之后发现74HC74的CLR和PR没有拉高。。。</p>
+<p>然后发现输出的是补码，，最高位需要取反。<br>然后就发现了这个设计存在问题。</p>
+<h1 id="故障"><a href="#故障" class="headerlink" title="故障"></a>故障</h1><p>在假货宝上义胜买的AMS1117-5V用了没多久就被击穿了，本来一开始3.3V还是正常工作，奈何我没发现。。。切换到5V之后，实际输入12V把逻辑片全部带走了。</p>
+<pre><code>... 太难过了，下次设计这种电源一定要做好保护，也不要抱着侥幸买假货。。
+</code></pre>
+<p>因此就开始改板，加入之前没有考虑进去的部分。</p>
+]]></content>
+      <categories>
+        <category>Work with the world</category>
+      </categories>
+      <tags>
+        <tag>数字逻辑</tag>
+        <tag>DAC</tag>
       </tags>
   </entry>
   <entry>
@@ -427,6 +318,25 @@
       </categories>
       <tags>
         <tag>hexo</tag>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>博客写文提纲</title>
+    <url>/2023/06/20/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/%E5%8D%9A%E5%AE%A2%E5%86%99%E6%96%87%E6%8F%90%E7%BA%B2/</url>
+    <content><![CDATA[<p>1、这里是第一段。不要写标题，因为要留着当作前言，并放在主页预览，写了标题就不好看了。。。</p>
+<span id="more"></span>
+
+<p>2、上面添加一个阅读更多的折叠。</p>
+<p>3、参考链接可以放在最前面，如果很可能是为了提示自己。</p>
+<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><p>一级标题不要和文章标题重合。</p>
+<p>5、正文内容</p>
+<p>后面的就根据正文随意发挥了</p>
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
         <tag>博客</tag>
       </tags>
   </entry>
@@ -541,25 +451,6 @@
       </tags>
   </entry>
   <entry>
-    <title>博客写文提纲</title>
-    <url>/2023/06/20/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/%E5%8D%9A%E5%AE%A2%E5%86%99%E6%96%87%E6%8F%90%E7%BA%B2/</url>
-    <content><![CDATA[<p>1、这里是第一段。不要写标题，因为要留着当作前言，并放在主页预览，写了标题就不好看了。。。</p>
-<span id="more"></span>
-
-<p>2、上面添加一个阅读更多的折叠。</p>
-<p>3、参考链接可以放在最前面，如果很可能是为了提示自己。</p>
-<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><p>一级标题不要和文章标题重合。</p>
-<p>5、正文内容</p>
-<p>后面的就根据正文随意发挥了</p>
-]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>博客的Tags和分类</title>
     <url>/2021/11/01/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/%E5%8D%9A%E5%AE%A2%E7%9A%84Tags%E5%92%8C%E5%88%86%E7%B1%BB/</url>
     <content><![CDATA[<span id="more"></span>
@@ -570,28 +461,6 @@
 <p>这样也可以代表嵌套.</p>
 <h2 id="本地分类管理"><a href="#本地分类管理" class="headerlink" title="本地分类管理"></a>本地分类管理</h2><p>通过该命令 <code>hexo new post -p /后端/test.md</code> 执行后，会在post文件夹下创建子文件夹 “后端”，并创建一篇test.md博文。<br>可以直接在<code>D:\MyWeb\source\_posts</code>下新建需要的文件夹进行分类，hexo可以识别文件夹下的内容。<br>这样就可以直接对接在obsidian里面写的文章。</p>
 <p>参考：<br><a href="https://zhuanlan.zhihu.com/p/50787870#:~:text=Hexo%2BGithub%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B%EF%BC%9A03%E6%B7%BB%E5%8A%A0%E5%88%86%E7%B1%BB%201%201%E3%80%81%E5%88%9B%E5%BB%BA%E2%80%9C%E5%88%86%E7%B1%BB%E2%80%9D%E9%80%89%E9%A1%B9%202%201.1%20%E7%94%9F%E6%88%90%E2%80%9C%E5%88%86%E7%B1%BB%E2%80%9D%E9%A1%B5%E5%B9%B6%E6%B7%BB%E5%8A%A0tpye%E5%B1%9E%E6%80%A7%20%E6%89%93%E5%BC%80%E5%91%BD%E4%BB%A4%E8%A1%8C%EF%BC%8C%E8%BF%9B%E5%85%A5%E5%8D%9A%E5%AE%A2%E6%89%80%E5%9C%A8%E6%96%87%E4%BB%B6%E5%A4%B9%E3%80%82%20%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4,-%20jQuery%20-%20%E8%A1%A8%E6%A0%BC%20-%20%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81%20%E5%B0%B1%E6%98%AF%E8%BF%99%E7%AF%87%E6%96%87%E7%AB%A0%E7%9A%84%E6%A0%87%E7%AD%BE%E4%BA%86%20">Hexo+Github博客教程：03添加分类 - 知乎 (zhihu.com)</a></p>
-]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>已有博客仓库的重建和配置</title>
-    <url>/2023/03/13/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/%E5%B7%B2%E6%9C%89%E5%8D%9A%E5%AE%A2%E4%BB%93%E5%BA%93%E7%9A%84%E9%87%8D%E5%BB%BA%E5%92%8C%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<p>每次重装系统什么的，虽然仓库我做了备份，但是还是要重新配置一下环境，为了以后都能无脑配置，这里集中记录一下过程。</p>
-<span id="more"></span>
-
-<p>···</p>
-<h2 id="博客源文件重新加入备份"><a href="#博客源文件重新加入备份" class="headerlink" title="博客源文件重新加入备份"></a>博客源文件重新加入备份</h2><p>1、从NAS上打开MyWeb的Syncthing同步项目，勾选共享到这台电脑，设置一下路径就行，还有启用排除列表。</p>
-<p>不过上面这一项不是必须的，因为如果之前做好了备份，只需要复制AppData下的文件，Syncthing的配置文件就在里面不用自己去修改了，下次重装的时候设置会保持不变。</p>
-<p>2、重新安装nodejs, 不用勾选安装其他模块，尤其是自己已经安装了python。<br>如果之前备份了appdata，模块应该还在。<br>尝试在博客存放文件夹下面cmd里面执行hexo -v看看能不能用，如果不能就重新安装hexo. (我没试)</p>
-<p>然后后面的步骤就不用操作了，可以直接使用hexo命令了。</p>
-<p>3、由于之前已经修改过git配置了，这里直接使用hexo d，可能会提示git仓库用户不一致，按照提示把git仓库加入安全目录即可发布。</p>
-<p>4、能用就不要尝试更新组件了。</p>
 ]]></content>
       <categories>
         <category>博客搭建</category>
@@ -641,6 +510,28 @@
       </tags>
   </entry>
   <entry>
+    <title>已有博客仓库的重建和配置</title>
+    <url>/2023/03/13/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/%E5%B7%B2%E6%9C%89%E5%8D%9A%E5%AE%A2%E4%BB%93%E5%BA%93%E7%9A%84%E9%87%8D%E5%BB%BA%E5%92%8C%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p>每次重装系统什么的，虽然仓库我做了备份，但是还是要重新配置一下环境，为了以后都能无脑配置，这里集中记录一下过程。</p>
+<span id="more"></span>
+
+<p>···</p>
+<h2 id="博客源文件重新加入备份"><a href="#博客源文件重新加入备份" class="headerlink" title="博客源文件重新加入备份"></a>博客源文件重新加入备份</h2><p>1、从NAS上打开MyWeb的Syncthing同步项目，勾选共享到这台电脑，设置一下路径就行，还有启用排除列表。</p>
+<p>不过上面这一项不是必须的，因为如果之前做好了备份，只需要复制AppData下的文件，Syncthing的配置文件就在里面不用自己去修改了，下次重装的时候设置会保持不变。</p>
+<p>2、重新安装nodejs, 不用勾选安装其他模块，尤其是自己已经安装了python。<br>如果之前备份了appdata，模块应该还在。<br>尝试在博客存放文件夹下面cmd里面执行hexo -v看看能不能用，如果不能就重新安装hexo. (我没试)</p>
+<p>然后后面的步骤就不用操作了，可以直接使用hexo命令了。</p>
+<p>3、由于之前已经修改过git配置了，这里直接使用hexo d，可能会提示git仓库用户不一致，按照提示把git仓库加入安全目录即可发布。</p>
+<p>4、能用就不要尝试更新组件了。</p>
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SD知识树</title>
     <url>/2022/12/17/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/SD%E7%9F%A5%E8%AF%86%E6%A0%91/</url>
     <content><![CDATA[<p>还没想好怎么写因为一直都没用上要写sd卡的东西了。。。</p>
@@ -649,6 +540,281 @@
       <categories>
         <category>嵌入式与单片机</category>
       </categories>
+  </entry>
+  <entry>
+    <title>reMarkable 1 漫游指南</title>
+    <url>/2023/07/19/%E7%94%9F%E6%B4%BB%E6%B8%B8%E7%8E%A9/reMarkable%201%20%E6%BC%AB%E6%B8%B8%E6%8C%87%E5%8D%97/</url>
+    <content><![CDATA[<p>aka 2023 reMarkable 1代配置完全指南：从配置字体到救砖刷机</p>
+<p>reMarkable 1 是于2017年11月21日上市的第一代手写电纸书平板，众筹价379刀，至今官网仍在更新系统，在今年（2023）七月的时候刷淘宝的洋垃圾店看到了这个，简单对比了一下功能和某黄鱼上的价格后下单，到手价738。</p>
+<pre><code>据说之前更便宜，不过不知道是多少了。
+</code></pre>
+<p>其实很早就想买个电纸书了，不过上次买的时候由于疫情管控一个多月没发货消磨了我的冲动最后退掉了。这次看到这个有10inch的屏幕，重量只有350g，而且还配有低延迟的电磁笔，实在让我心动，这次忍不住手欠了。</p>
+<p>到货之后，这个是没有保护套的，淘宝上也买不到，因为这个型号实在是太老了，算起来都有6年了。而且当时这个也不便宜，对国内的支持也不是很好，普及度必然不高。</p>
+<pre><code>时间过得真快，2017年的时候我还在渴望着有一个索尼的DPT-RP1，没想到现在捡的洋垃圾就是当时同台竞争的产品。
+到去年国内的厂商都已经出了墨水屏平板了。然而，reMarkable的系统仍然默认不支持中文。
+但是它在国外的热度确实相当高的，看网上的开源项目就知道了。
+</code></pre>
+<p>首先说说使用体验。</p>
+<h1 id="手感和交互"><a href="#手感和交互" class="headerlink" title="手感和交互"></a>手感和交互</h1><p>整个平板非常轻薄，厚度控制非常好，拿在手上完全不会出现习武之人的情况。背面是金属加上防滑条，屏幕是类似于磨砂的表面，大概能减少一些直接的反光，不过在近光源下仍然需要避开点角度。226ppi的像素密度放在现在仍然不过时。</p>
+<div align="center"><img src="/2023/07/19/%E7%94%9F%E6%B4%BB%E6%B8%B8%E7%8E%A9/reMarkable%201%20%E6%BC%AB%E6%B8%B8%E6%8C%87%E5%8D%97/P1010319.png" width="600"></div>
+
+<pre><code>用自己搓的微距镜头拍了一下，可以看到磨砂处理，字体边缘不是没对焦，是就是这样的。
+</code></pre>
+<p>附带的手写笔的笔头是软的，写字手感非常好，不过也据说比较费笔头，官方送了10个笔头在套装里面，不过考虑到这个东西的笔头仍然很贵，我打算找找替代品。</p>
+<p>由于是使用的wacom的电磁屏技术，我猜测只要是同类的无源笔都可以支持，于是找到了我之前的数位板上的笔，分别是高漫M6，Wacom CTL 472，还有之前捡垃圾的时候顺手买的两块钱一支的祖国版三星note配笔，分别测试了一下，结果如下。</p>
+<ul>
+<li><p>高漫M6 可写，但是灵敏度不匹配，没接触到板面就会写上笔迹。</p>
+</li>
+<li><p>wacom CTL 472，不可用。</p>
+</li>
+<li><p>祖国版<font color="#d83931">三星note配笔，完美支持</font>，就是太小了。</p>
+<p>  反过来说，这个笔和三星笔也可以在数位板上用，就是感应距离比较短。</p>
+</li>
+</ul>
+<div align="center"><img src="/2023/07/19/%E7%94%9F%E6%B4%BB%E6%B8%B8%E7%8E%A9/reMarkable%201%20%E6%BC%AB%E6%B8%B8%E6%8C%87%E5%8D%97/P1010304.png" width="750"></div>
+
+<blockquote>
+<p>我当时买这俩垃圾笔只是看到了一个<u>把note的笔塞进笔杆里当正常尺寸笔用的操作</u>，用在三星Tab上，我寻思也许我会买Tab呢，没想到最后能在这里用上了。</p>
+</blockquote>
+<div align="center"><img src="/2023/07/19/%E7%94%9F%E6%B4%BB%E6%B8%B8%E7%8E%A9/reMarkable%201%20%E6%BC%AB%E6%B8%B8%E6%8C%87%E5%8D%97/P1010323.png" width="750"></div>
+翻书支持使用按键和在屏幕上左右滑动，虽然模式不是很多但是够用。
+
+<p>可能是考虑到是墨水屏，交互点击的时候没有视觉反馈，有时候感觉不到是不是点错了。但是在KOReader里面这个可以设置支持的。</p>
+<h1 id="软件使用"><a href="#软件使用" class="headerlink" title="软件使用"></a>软件使用</h1><p>配置软件的时候可能会需要用到工具，下面会说明。</p>
+<h2 id="前置说明"><a href="#前置说明" class="headerlink" title="前置说明"></a>前置说明</h2><p>连接的时候首先需要连接WIFI或者连接USB后打开USB Web Interface. 前者的IP在设置中Help-Copyright and licenses下可以找到，同时这里能找到SSH密码。</p>
+<pre><code>记住这个密码，防止出现问题仍然可以用这个密码登录SSH.
+</code></pre>
+<p>后者IP则保持为 10.11.99.1 ，如果不想连接WIFI或者为了避免IP变化，可以就用USB界面。配置的时候最好把睡眠关掉，否则会断开连接，无论是WIFI还是USB网络界面。</p>
+<p>需要的电脑上的工具一个是WinSCP，使用WinSCP可以方便地管理文件，而且可以保存密码免输入密码登录，也可以使用命令行窗口来管理，因为命令行工具不是很好用所以需要使用SSH来管理更方便。</p>
+<p>这个工具直接用默认配置就可以，协议选SFTP就可以了，不过需要显示隐藏文件，点击右下角的已隐藏字样点一下，可以显示隐藏文件了。</p>
+<p>另一个是SSH，很多人推荐Putty但是我觉得这个并不方便，可以直接用WindowsTerminal下powershell支持的ssh，使用命令ssh <a href="mailto:&#114;&#111;&#x6f;&#116;&#x40;&#49;&#57;&#50;&#x2e;&#49;&#54;&#x38;&#x2e;&#51;&#x31;&#x2e;&#51;&#57;">&#114;&#111;&#x6f;&#116;&#x40;&#49;&#57;&#50;&#x2e;&#49;&#54;&#x38;&#x2e;&#51;&#x31;&#x2e;&#51;&#57;</a> 即可，注意这个ip需要在机器内查看。</p>
+<p>由于配置一些其他软件的时候经常使用SSH，可以通过生成密钥来免密码登录。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+<p>如果已经生成过了（比如之前用过git必然配置过），就不要生成了。<br>会提示生成文件到 .ssh 目录下了。<br>然后把公钥id_rsa.pub放到reMarkable上的~&#x2F;.ssh下，然后这里注意这里除了用户目录不能对组有权限，.ssh以及以下的文件都不能对组有权限，否则不能登录，会报错<code>Permission denied (publickey,password)</code> 。<br>然后在.ssh目录下执行</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> id_rsa.pub &gt;&gt;authorized_keys</span><br></pre></td></tr></table></figure>
+
+<p>就可以把公钥写进去了，然后id_rsa.pub可以删掉了（因为这是主机的公钥）。</p>
+<h2 id="字体中文支持"><a href="#字体中文支持" class="headerlink" title="字体中文支持"></a>字体中文支持</h2><p>没有。</p>
+<p>需要自己安装中文到字体目录下。系统预装的中文目录位于<code>/usr/share/fonts/ttf</code> 下，可以直接使用WinSCP把字体拖到<code>/usr/share/fonts/</code> 。但是由于系统更新后，根目录并没有调整分区大小，但是内容变多了，于是，如果想使用大一点的字体包，很有可能装不下。</p>
+<pre><code>在ssh中输入df -h即可查看磁盘使用情况。-h 是指用人方便看的方式显示。
+</code></pre>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">root@reMarkable:~<span class="comment"># df -h</span></span><br><span class="line">Filesystem                Size      Used Available Use% Mounted on</span><br><span class="line">/dev/root               230.2M    221.8M         0 100% /</span><br><span class="line">devtmpfs                104.7M         0    104.7M   0% /dev</span><br><span class="line">tmpfs                   233.2M         0    233.2M   0% /dev/shm</span><br><span class="line">tmpfs                   233.2M    612.0K    232.6M   0% /run</span><br><span class="line">tmpfs                   233.2M         0    233.2M   0% /sys/fs/cgroup</span><br><span class="line">tmpfs                   233.2M     12.0K    233.1M   0% /tmp</span><br><span class="line">tmpfs                   233.2M         0    233.2M   0% /var/volatile</span><br><span class="line">/dev/mmcblk1p1           19.0M     11.0M      8.0M  58% /var/lib/uboot</span><br><span class="line">/dev/mmcblk1p7            6.5G    696.5M      5.5G  11% /home</span><br></pre></td></tr></table></figure>
+
+<p>可以看到这里系统空间只剩几个M了，只有超小的字体才能塞进去。<br>网上大多数方法都是复制字体到用户目录下建立软链接，但是实测不好使，而且同样会被系统更新推掉。实际上有更好的方法。<br>实际上本身把字体放到<code>/usr/share/fonts/</code> 下不是一个好办法，因为每次系统更新都会把字体更新掉，需要再次复制，只有放到用户目录下，系统更新才不会乱删。只需要在目录&#x2F;home&#x2F;root&#x2F;.local&#x2F;share&#x2F;下新建一个fonts文件夹，然后把自己的字体放进去就可以了。</p>
+<p>可以通过fc-list命令来检查字体安装情况。</p>
+<p>为什么这样做就可以了？可以找到&#x2F;etc&#x2F;fonts&#x2F;fonts.conf，其中，有一段为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;!-- Font directory list --&gt;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	&lt;dir&gt;/usr/share/fonts&lt;/dir&gt;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">	&lt;dir prefix=&quot;xdg&quot;&gt;fonts&lt;/dir&gt;</span><br><span class="line">	&lt;!-- the following element will be removed in the future --&gt;</span><br><span class="line">	&lt;dir&gt;~/.fonts&lt;/dir&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这里可以看到，官方系统中一开始就包含了&#x2F;usr&#x2F;share&#x2F;fonts 这个目录，现在这个目录已经塞不下了，而下面<code>&lt;dir prefix=&quot;xdg&quot;&gt;fonts&lt;/dir&gt;</code>中的前缀xdg表示这个目录遵循 XDG 标准命名规范。XDG(X Desktop Group)是一组开源标准,用于定义 Linux 桌面环境的基础目录和配置。<br>也就是这个的路径为 <code>~/.local/share/fonts</code> , 因此只需要在用户目录下的<code>.local/share/fonts</code>里面放字体就可以了。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">root@reMarkable:~# pwd</span><br><span class="line">/home/root</span><br><span class="line">root@reMarkable:~# cd .local/share/fonts</span><br></pre></td></tr></table></figure>
+<p>然后用WinSCP复制即可，或者全部用WinSCP操作。然后输入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl restart xochitl</span><br></pre></td></tr></table></figure>
+<p>即可重启官方阅读器，这时候就可以看到中文已经可以正常显示了。</p>
+<pre><code>xochitl就是官方阅读器的名称
+</code></pre>
+<p>同样，在&#x2F;root&#x2F;home&#x2F;下建立文件夹 .fonts , 然后复制字体到里面也可以。虽然提示了要废弃不过这是linux给出的提示，也许下次系统更新依然可用。当然你也可以自己编辑这个配置文件写入一个路径来存放字体，但是显然下次系统更新这个文件大概率被推掉，你写的内容就会没有了。</p>
+<p>使用的字体可以是TrueType（ttf）, 也可以是OpenType（otf）, WOFF2应该也是可以的。直接放到设置的字体文件夹下就可以，也可以使用继续创建文件夹，不影响使用。</p>
+<p>实际上还有更多的字体配置可以自己定义，在&#x2F;etc&#x2F;fonts&#x2F;下还有其他的对应的配置文件，有兴趣折腾可以看一下。<br>不过在官方原来的阅读器中并不是很好配置，这里直接推进去的中文字体只会有一个被这个阅读器选用，因为官方的app只启用了五种字体而且似乎是和官方字体一一对应的，我不知道直接替换字体能不能起到作用，但是不知道这个app是按照系统字体目录来的还是写死了只能用usr目录，如所以就懒得折腾了。</p>
+<p>如果坚持要在 <code>/usr/share/fonts/</code>  下塞入字体，但是空间依然不够，可以尝试使用</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">journalctl --vacuum-size=1M</span><br></pre></td></tr></table></figure>
+<p>–vacuum-size选项可以设置日志文件的最大限制大小,当日志 grows 到这个大小时,会自动删除旧的日志。<br>然后大概可以塞进去一个小一点的字体。</p>
+<p><font color="#9bbb59">还要了解更多可以搜索linux下字体配置或者fontconfig，缩写也就是fc  。</font></p>
+<p>更多提示：<br>&#x2F;usr&#x2F;share&#x2F;fontconfig&#x2F;conf.avail&#x2F;这个路径下有更详细的字体配置<br>&#x2F;etc&#x2F;fonts&#x2F;conf.d</p>
+<h2 id="传输和同步"><a href="#传输和同步" class="headerlink" title="传输和同步"></a>传输和同步</h2><p>官方力推的方案是下载电脑的APP和手机APP, 可以实现“快速”的多端同步，甚至能在平板上画同时APP能显示投屏作为演示工具。<br>然而，然而，然而！它用的是谷歌的服务。这意味着，你必须会一门轻功才能让这个平板跟着你一起越过Block，简单的方法至少有两种，也可以尝试直接给这个平板安装应用程序来完成这个目标，不过似乎网上没有直接适配的，你带自己看一下如何在linux里面使用代理，例如CLASH。毕竟，国外哥们基本都用不着。</p>
+<pre><code>如果你需要使用官方同步服务，只需要在官网[reMarkable • Home](https://my.remarkable.com/)生成pin，填写到reMarkable里面就好了，保持网络畅通。
+</code></pre>
+<p>好在除了这一种方法，官方另外提供了一种方法，通过USB来建立一个局域网来传输。</p>
+<p>也可以在本地电脑使用命令：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">curl --form file=@file.pdf http://10.11.99.1/upload</span><br></pre></td></tr></table></figure>
+<p>代替使用WEB网页传书。 不过这仍然需要开启USB的网络界面服务。<br>但是这个方法有个缺陷，超过70M的PDF文件传输不上去，只能使用官方的同步软件来同步。</p>
+<pre><code>在国内首先要调整系统时间对应才能用，不过我买的时候店家已经弄好了。
+</code></pre>
+<p>之前有个哥们在知乎上发布了一个他自用的工具harecoffee，然而这哥们没开源而且他的网页也失效了，现在就找不到了。。。</p>
+<p>目前找到一个现成的开源软件<a href="http://www.davisr.me/projects/rcu/">reMarkable Connection Utility (RCU) (davisr.me)</a>，可以直接用WIFI或者USB上传转换，支持新系统，走SSH，但是要12刀，买了之后还会给你源码你可以自由分发，似乎这是符合AGPLV3的。。。</p>
+<pre><code>这是一个PyQT写的应用，用PyInstaller打包的。他的导出是直接使用自己取出目录下的文件然后渲染成PDF的，据说相比官方的导出更好。
+</code></pre>
+<p>有个项目参考了它：<br><a href="https://github.com/rschroll/rmrl">rschroll&#x2F;rmrl: Render reMarkable documents to PDF (github.com)</a><br>因此渲染这部分可以参考参考。</p>
+<p>12刀对于我还是太贵了，如果你有兴趣可以发邮件给作者付费。既然是开源软件那么可能有人买了之后发出来，可惜菩萨太少了，只找到一个网站上分发了一份2021年的源代码：<br><a href="https://directory.fsf.org/wiki/ReMarkable_Connection_Utility_(RCU)">ReMarkable Connection Utility (RCU) - Free Software Directory (fsf.org)</a> 实际上还是挂在作者的服务器上的下载来的。由于强迫症我安装了python3.11,而pyside2目前似乎不支持python 3.11，因此没有打包成功，我懒得折腾了。</p>
+<p>还有一些别的项目也做了类似的功能，然而随着系统更新可能已经挂了：<br><a href="https://github.com/bordaigorl/remy">bordaigorl&#x2F;remy: Remy, an online&amp;offline manager for the reMarkable tablet (github.com)</a><br>这个需要作为python模块安装。</p>
+<p>另外还有一些需要在reMarkable上安装软件的方法，我们后面介绍。</p>
+<p>这个工具实测可用：<br><a href="https://github.com/furesoft/Slithin">furesoft&#x2F;Slithin: A management application for the remarkable tablet (github.com)</a><br>可以管理模板，恢复自定义模板和图片设置。可以导入模板，可以导出PDF，可惜不能导入书籍。可以在微软store安装</p>
+<p>不可用：<br><a href="https://github.com/bruot/pyrmexplorer">bruot&#x2F;pyrmexplorer: GUI explorer for Remarkable tablets (github.com)</a><br>太久没更新了必然挂了。</p>
+<h2 id="笔记模板"><a href="#笔记模板" class="headerlink" title="笔记模板"></a>笔记模板</h2><p>由于官方app自带一个笔记功能，所以实际上可以导入笔记模板，它自带了不少网格，个人觉得够用，这里不折腾了，网上教程也很多。</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h2 id="更改睡眠图片"><a href="#更改睡眠图片" class="headerlink" title="更改睡眠图片"></a>更改睡眠图片</h2><p>官方app的睡眠功能是显示一张图片同时停止大部分功能，顺便还能显示你填写的信息。<br>新建dpi为226分辨率为1404x1872的图保存为png就可以替换。<br>这个图片在 <code>/usr/share/remarkable</code>路径下的suspended.png，直接替换即可，保持名称一致。</p>
+<h3 id="睡眠"><a href="#睡眠" class="headerlink" title="睡眠"></a>睡眠</h3><p>实际上这个睡眠只是应用停止运行，而不是linux睡眠，因此依然不耽误其他软件运行，同样，其他软件运行的时候，官方app在20分钟之后仍然会进入睡眠。</p>
+<h2 id="阅读问题解决"><a href="#阅读问题解决" class="headerlink" title="阅读问题解决"></a>阅读问题解决</h2><p>由于官方APP的传书方法实际上是在 &#x2F;home&#x2F;root&#x2F;.local&#x2F;share&#x2F;remarkable&#x2F;xochitl 下生成对应的书籍文件，如果生成失败导致打不开，可以手动删除里面的文件，具体对应是哪个需要找一找。</p>
+<h1 id="这就完了吗"><a href="#这就完了吗" class="headerlink" title="这就完了吗"></a>这就完了吗</h1><p>比较有意思的是，点开设置中的Help下的Copyrights and licenses，官方也贴出了自己的Github链接<a href="https://github.com/remarkable">reMarkable AS (github.com)</a>  他们给出了Linux内核，uboot等开源代码，同时<br>可以直接使用SSH登录，默认账户就是root. 密码则写在了Copyright and licenses页面的最下面。可以说官方是支持用户自己折腾的。</p>
+<pre><code>低情商：官方系统不完善
+</code></pre>
+<p>实际上可以安装第三方阅读器获得更好的支持。甚至是安装更多APP,以及自己开发。</p>
+<h2 id="KOReader"><a href="#KOReader" class="headerlink" title="KOReader"></a>KOReader</h2><blockquote>
+<p>由于KOReader传书方便得多，我建议不需要做笔记的可以直接放到用户空间下用KOReader来读，要做笔记的上传到rM自带阅读器里面读。</p>
+</blockquote>
+<p>除了安装Toltec后使用包管理器，可以通过别的方法安装koreader，如官方方法直接安装：<br><a href="https://github.com/koreader/koreader/wiki/Installation-on-Remarkable">Installation on ReMarkable · koreader&#x2F;koreader Wiki (github.com)</a></p>
+<p>要就是两个服务文件，一个是主进程再一个监听按键事件的进程，装好后直接长按中键几秒就可以启动了，很方便。</p>
+<p>不过它没教怎么返回原来的阅读器，这个应该需要第三方启动器了。</p>
+<p>按下中键三秒唤处koreader</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cp</span> /home/root/koreader/button-listen.service /etc/systemd/system/</span><br><span class="line">systemctl <span class="built_in">enable</span> --now button-listen</span><br></pre></td></tr></table></figure>
+
+<p>但是，这里不使用这个按键唤起koreader，因为按了就切不回去，这里安装一个启动器来切换</p>
+<p>如果你希望启动开机启动koreader而不是xochitl，那么使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl disable --now xochitl &amp;&amp; systemctl enable --now koreader</span><br></pre></td></tr></table></figure>
+<p>我觉得这个是不是要修改服务文件里面的after xochitl，因为实测这个不能阻止xochitl启动，但是remux反而不能启动了。修改remux启动文件中的After&#x3D;xochitl可以用来防止remux不能启动，但是似乎并不稳定，所以就不这样做了。</p>
+<p>koreader也可以直接阅读在rMapp中导入的书籍，但是由于位于隐藏文件夹，所以需要打开显示隐藏文件夹，目标文件夹到文件夹快捷目录中</p>
+<p>其实KOReader本身支持Linux（废话），所以你完全可以用作自己的Linux的阅读器。<br>这个开源软件发展了很久，功能十分强大，这里调几个reMarkable官方阅读器里面的痛点来说。</p>
+<p>0、文件支持<br>支持<br>而且不会生成一堆奇怪的文件来支持显示文件。<br>具有文件管理器可以直接翻阅文件系统。</p>
+<h3 id="1、字体"><a href="#1、字体" class="headerlink" title="1、字体"></a>1、字体</h3><p>更换字体是十分方便的，在路径 koreader&#x2F;fonts下放入下载的字体，点选字体设置的时候翻到第一页就会显示新导入的字体并且显示new的字样。可以迅速调整。而xochitl则需要很久重新生成一个PDF。</p>
+<p>2、对比度可调<br>KOReader本身会自动设置一个，但是如果有的扫描文件不合适，那么可以手动调整</p>
+<h2 id="REMUX"><a href="#REMUX" class="headerlink" title="REMUX"></a>REMUX</h2><p>这是一个极简GUI启动器,可以用来管理切换到其他的APP。<br>按照官网提示<a href="https://rmkit.dev/apps/remux">remux launcher (rmkit.dev)</a><br>下载remux和remux.service两个文件，然后把remux放到&#x2F;opt&#x2F;bin&#x2F;下，也就是路径是&#x2F;opt&#x2F;bin&#x2F;remux ， 这里只有两层目录。<br>然后<font color="#ff0000">chmod</font> &#x2F;opt&#x2F;bin&#x2F;remux 777, 这个是官网没说的。（其实700就行）<br>然后把remux.service放到&#x2F;etc&#x2F;systemd&#x2F;system下，<br>最后</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> --now remux</span><br></pre></td></tr></table></figure>
+
+<p>最后，可以用按住中键呼出启动器或者侧边向上滑动（幅度大点）。<br>点击应用名称可以切换，点击后面显示的使用内存大小可以关闭应用。</p>
+<p>然而，这个目录是在根目录下的，很可能由于系统更新或者救砖操作被推掉，因此稍微做一点修改。<br>移动remux这个可执行文件到~&#x2F;下，也就是&#x2F;root&#x2F;home，然后修改remux.service中的原来的路径 &#x2F;opt&#x2F;bin&#x2F;remux 到&#x2F;root&#x2F;home&#x2F;remux，其中的After修改为：<br>After&#x3D;xochitl.service home.mount</p>
+<p>如果前面已经安装过一次remux了，那么首先使用：<br>systemctl disable remux来移除服务，然后重新启用。<br>systemctl enable –now remux</p>
+<p>最后，~&#x2F;.config&#x2F;remux&#x2F;remux.conf可以编辑启用方式，例如可以使用在屏幕下方三点点击来启动remux</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">launch_gesture=gesture=tap;fingers=3</span><br></pre></td></tr></table></figure>
+<p>不过这样有时候会卡住，只需要四指滑动就可以重启remux了。不过我还是习惯直接用<br>或者点一下屏幕然后手指扫屏幕<br>有三种方式来添加应用，这里最简单的就是把应用放在&#x2F;home&#x2F;root&#x2F;apps下面<br>然后重启remux即可</p>
+<p>或者重新编译手工加入<br>或者- compatible with draft-remarkable config files</p>
+<p>预先写好在源码里面的有<br>koreader<br>fingerterm<br>keywriter<br>edit</p>
+<p>官网的readme补全，需要看源码里面的readme</p>
+<p>如何编译：<br>run <code>make remux</code> from the root dir of rmkit to build it. then run <code>make install_remux</code> to copy remux to the remarkable. Run <code>make run_remux</code> to run remux.</p>
+<p>Finally, if you want to make the installation permanent, change into the<br><code>src/remux</code> directory and run <code>make install_service</code> followed by <code>make start_service</code></p>
+<p>add <code>dialog_height</code> and <code>dialog_width</code> option to remux.conf for specifying<br>the dialog width and heigght. Default is 600x800. The rM width is 1404,<br>height is 1872.</p>
+<ul>
+<li>add <code>filter_palm_events</code> option to remux.conf to prevent spurious palm<br>touches. Enable this is you have a custom gesture (like 3 or 4 finger) and<br>keep accidentally launching remux.</li>
+</ul>
+<p>added <code>start_app=</code> option to specify the app to launch. it can be blank or an<br>app name as seen in the list of apps. if the app isn’t found or its blank, no app<br>will launch at startup and remux will require a gesture to be invoked.</p>
+<p>added <code>manage_power=</code> boolean option to configuration. setting to <code>false</code> or <code>no</code> tells remux to not enter suspend mode automatically - this lets you use xochitl solely for power management. useful if remux is messing up drawing your suspend screen</p>
+<p>As of remux 0.1.7, remux supports configuration kept in <code>/home/root/.config/remux/remux.conf</code>. The configuration is kept as key&#x3D;value lines. As of right now, the two main config options are <code>launch_gesture</code> and <code>back_gesture</code>. They can be used to configure the gestures in remux. The format is the same as genie, except semi-colons (<code>;</code>) are used to separate directives instead of newlines.</p>
+<p>For example, the below will show remux when three fingers are tapped and switch<br>to last app on a four finger tap.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">launch_gesture=gesture=tap;fingers=3</span><br><span class="line">back_gesture=gesture=tap;fingers=4</span><br></pre></td></tr></table></figure>
+
+<p>You can repeat a key in order to setup multiple gestures for the same action, like so:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">launch_gesture=gesture=tap;fingers=3</span><br><span class="line">launch_gesture=gesture=tap;fingers=4</span><br></pre></td></tr></table></figure>
+<p>如果找不到应用，一定记得chmod</p>
+<h2 id="rmkit"><a href="#rmkit" class="headerlink" title="rmkit"></a>rmkit</h2><p>下面的软件都是rmkit中的，编译或者自己编写都可以参考他的源码中附带的文档。<br>下载已经编译好的也可以直接从这里下载：<br><a href="https://build.rmkit.dev/master/latest/rm/">Index of &#x2F;master&#x2F;latest&#x2F;rm&#x2F; (rmkit.dev)</a><br>里面的<a href="https://build.rmkit.dev/master/latest/rm/release.tar.gz">release.tar.gz</a>包含了所有编译好的可执行文件。<br>注意每个可执行文件放到~&#x2F;apps下的时候都要使用chmod +x来给予执行权限。<br>可以全部放进入之后再apps目录下使用chmod +x * 来全部基于权限，使用ls -l来检查是否到伪。<br>安装之后如果重新唤出remux没有显示安装的软件，那么使用systemctl restart remux来刷新启动器列表</p>
+<h3 id="harmony"><a href="#harmony" class="headerlink" title="harmony"></a>harmony</h3><p>这是一个绘画软件 他是说是低延迟<br>直接在ssh中启动会存在问题，会触发下层当前正在使用的app，所以需要加入到remux的apps中来防止下层应用被触发。<br>编译参考rmkit&#x2F;doc下的指南</p>
+<p>如果你乐意你可以为他写一个harmony.service:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Harmony</span><br><span class="line">After=xochitl.service home.mount</span><br><span class="line">Conflicts=xochitl.service</span><br><span class="line">OnFailure=xochitl.service</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">ExecStart=/root/home/apps/harmony</span><br><span class="line">Restart=no</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<p>iago</p>
+<ul>
+<li>then configure ddvk’s touch injector or genie to launch iago when a gesture is performed.</li>
+</ul>
+<p>这个软件可以插入图形，例如笔记中，可以使用贝塞尔曲线，但是不能使用remux来启动，因为remux会禁用其他应用。所以这里只是记录一下，懒得折腾手势。</p>
+<h3 id="计算器"><a href="#计算器" class="headerlink" title="计算器"></a>计算器</h3><h3 id="小游戏"><a href="#小游戏" class="headerlink" title="小游戏"></a>小游戏</h3><p>有三个。<br>扫雷<br>：都懂<br>填词<br>：Wordle游戏的规则非常简单，它要求玩家在6次之内猜出一个由5个字母组成的单词。每次输入单词时，如果输入的字母在目标单词中，但是位置不对，那么格子会显示成黄色（浅灰色）；如果输入的字母在目标单词中，且位置正确，那么格子会显示成绿色（深灰色）；如果都不对，则会显示成灰色（打叉）。</p>
+<p>实测LLM AI可以玩。</p>
+<p>地牢爬行纸牌游戏？<br>：Dumbskull is a dungeon crawl themed solitaire based on <a href="https://100r.co/site/donsol.html">Donsol</a> and <a href="http://stfj.net/index2.php?project=art/2011/Scoundrel.pdf">Scoundrel</a>.</p>
+<p>经典DOOM<br><a href="https://github.com/LinusCDE/doomarkable">LinusCDE&#x2F;doomarkable: DOOM on the reMarkable (github.com)</a></p>
+<p>需要下载DOOM游戏文件放在&#x2F;home&#x2F;root里面<br>doom.wad、doom2.wad、tnt.wad、plutonia.wad</p>
+<p>俄罗斯方块：<br><a href="https://github.com/LinusCDE/retris">LinusCDE&#x2F;retris: Implementation of rust tetris_core on the reMarkable using libremarkable (github.com)</a></p>
+<h3 id="其他没什么鸟用的程序"><a href="#其他没什么鸟用的程序" class="headerlink" title="其他没什么鸟用的程序"></a>其他没什么鸟用的程序</h3><p>这些大概是例程顺带编译出来的。</p>
+<p>eclear 清屏，但是并不能重绘，而且也清不干净。<br>sharenote 没看明白</p>
+<h2 id="开启其他同步方法"><a href="#开启其他同步方法" class="headerlink" title="开启其他同步方法"></a>开启其他同步方法</h2><p>✔由于原来的USB界面仍然是开启了一个以太网用来上传书籍但是每次都要插上USB线很不方便，这里有个项目不需要插USB,只需要同一个网络环境下；<br><a href="https://github.com/rM-self-serve/webinterface-wifi">rM-self-serve&#x2F;webinterface-wifi: View the web interface over wifi. For the ReMarkable Tablet. (github.com)</a></p>
+<p>如果没有toltec, 用这个安装：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wget https://raw.githubusercontent.com/rM-self-serve/webinterface-wifi/master/install-webint-wf.sh &amp;&amp; bash install-webint-wf.sh</span><br></pre></td></tr></table></figure>
+<p>用这个卸载：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ wget https://raw.githubusercontent.com/rM-self-serve/webinterface-wifi/master/remove-webint-wf.sh &amp;&amp; bash remove-webint-wf.sh</span><br></pre></td></tr></table></figure>
+
+<p>启动用：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> --now webinterface-wifi</span><br></pre></td></tr></table></figure>
+<p>停用用：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">systemctl <span class="built_in">disable</span> --now webinterface-wifi</span><br></pre></td></tr></table></figure>
+
+<p>可以用但是似乎配置了Koreader之后或者用了别的管理工具之后没啥太大必要了。</p>
+<h3 id="Syncthing的方法："><a href="#Syncthing的方法：" class="headerlink" title="Syncthing的方法："></a>Syncthing的方法：</h3><p><a href="https://github.com/evidlo/remarkable_syncthing">Evidlo&#x2F;remarkable_syncthing: Self-hosting syncing solution for reMarkable (github.com)</a><br>这个方法确实可以但是还是要自己解析pdf上传过去。</p>
+<p>还有串流，当作写字板等功能可以通过安装应用来</p>
+<p>你甚至可以安装 .NET ：<br><a href="https://www.hanselman.com/blog/how-to-install-net-core-on-your-remarkable-2-eink-tablet-with-remarkablenet">How to install .NET Core on your Remarkable 2 e-Ink tablet with Remarkable.NET - Scott Hanselman’s Blog</a></p>
+<p>更多参考：<br><a href="https://www.libhunt.com/r/awesome-reMarkable">awesome-reMarkable Alternatives and Reviews (Jun 2023) (libhunt.com)</a></p>
+<p>低层管理工具：</p>
+<p>如何自己写一个可以在reMarkable上用的应用：<br><a href="https://eeems.website/writing-a-simple-oxide-application/">Writing a Simple reMarkable application (eeems.website)</a></p>
+<p>实际上密码被记录在<br>&#x2F;home&#x2F;root&#x2F;.config&#x2F;remarkable&#x2F;xochitl.conf</p>
+<p>我不知道修改这个看起来是配置文件的东西能不能修改密码，所以我就不折腾了避免变砖。。</p>
+<p>如果不想使用官方的同步服务, 因为每次启动没网都会跳出来，而且费电，可以通过命令关掉：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">systemctl <span class="built_in">disable</span> rm-sync</span><br></pre></td></tr></table></figure>
+<p>同样，可以使用enable来打开。<br>同时，去掉&#x2F;etc&#x2F;systemd&#x2F;system&#x2F;multi-user.target.wants&#x2F;xochitl.service 中的Wants<br>Wants&#x3D;rm-sync.service 避免开机启动</p>
+<p>去掉了xochitl.service中的watchdog 防止使用别的应用的时候意外自启动。。</p>
+<h1 id="实用工具"><a href="#实用工具" class="headerlink" title="实用工具"></a>实用工具</h1><p>模拟键盘：<a href="https://github.com/Evidlo/remarkable_keyboard">Evidlo&#x2F;remarkable_keyboard: Use a reMarkable tablet as a wireless mouse and keyboard (github.com)</a></p>
+<h2 id="模拟鼠标："><a href="#模拟鼠标：" class="headerlink" title="模拟鼠标："></a>模拟鼠标：</h2><p><a href="https://github.com/Evidlo/remarkable_keyboard">Evidlo&#x2F;remarkable_keyboard: Use a reMarkable tablet as a wireless mouse and keyboard (github.com)</a><br>模拟鼠标我认为更实用，因为键盘还要先有个键盘打开程序。。模拟鼠标主要是可以当作数位板。<br>在linux上延迟远低于windows。<br>在Manjaro上使用 pipx install remarkable-mouse来安装<br>测试opensuse和fedora安装有点问题，有点折腾<br>在fedora上首先需要安装python开发环境。yum install python3.11-devel<br>opensuse一样要先安装环境: zypper install python311-devel<br>由于这俩的权限管理有点不一样，所以不要使用sudo，用普通用户级别即可，否则会提示找不到，因为没有为root用户安装。<br>最新的ubuntu也需要使用虚拟环境安装了，需要自己配置一下虚拟环境（用pipx按照提示来就行），使用正常</p>
+<h2 id="好用但是不可用的应用"><a href="#好用但是不可用的应用" class="headerlink" title="好用但是不可用的应用"></a>好用但是不可用的应用</h2><p>上位机<br><a href="https://github.com/bruot/pyrmexplorer">Releases · bruot&#x2F;pyrmexplorer (github.com)</a><br>这个现在压根打不开。</p>
+<h3 id="启动器"><a href="#启动器" class="headerlink" title="启动器"></a>启动器</h3><p><a href="https://github.com/dixonary/draft-reMarkable">dixonary&#x2F;draft-reMarkable: A launcher for the reMarkable tablet, which wraps around the standard interface. (github.com)</a><br>三年没更新了我不知道它能不能用了。<br>不过remux兼容它的配置文件加入应用到启动列表因此可以参考以下配置文件写法。</p>
+<h4 id="Oxide"><a href="#Oxide" class="headerlink" title="Oxide"></a>Oxide</h4><p><a href="https://github.com/Eeems-Org/oxide">Eeems-Org&#x2F;oxide: A desktop environment for the reMarkable tablet (github.com)</a><br>更高级的启动器，但是会修改启动文件，变砖概率变高，最重要的是，需要使用<a href="https://toltec-dev.org/#install-toltec">toltec</a>来完成安装，目前系统上toltec会让系统变砖，就算了。有人反馈会变砖。</p>
+<h4 id="draft"><a href="#draft" class="headerlink" title="draft"></a>draft</h4><p><a href="https://github.com/dixonary/draft-reMarkable">dixonary&#x2F;draft-reMarkable: A launcher for the reMarkable tablet, which wraps around the standard interface. (github.com)</a></p>
+<h2 id="Toltec"><a href="#Toltec" class="headerlink" title="Toltec"></a>Toltec</h2><p><a href="https://toltec-dev.org/">Toltec (toltec-dev.org)</a> 。<br>官网说Toltec不支持2.15以后的系统，不过网友说这是rM2才有的问题，rM1依然可以在3.XX上用，而且更稳定，但是toltec只支持最高3.2.2.1581和 3.2.3.1595.。同时，官网的Q&amp;A指出：</p>
+<pre><code>Will this brick my reMarkable?
+Probably not, but standard disclaimers apply
+</code></pre>
+<p>然而在3.5版本系统上实测会变砖。。。。安装之后会报错，不会立马变砖，仍然可以通过删除安装的文件来撤销操作，然而我好奇重启会不会变砖，只能说求仁得仁了，果然启动不了了，WiFi USB界面自然也不能用。救砖操作见本文 救砖和刷机 章节。</p>
+<p>这是一个用于reMarkable的包管理器，<br>安装很简单：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wget http://toltec-dev.org/bootstrap</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;04a28483286f88c5c7f39e352afb62adc57f6162a29fd7e124d832205bb0980e  bootstrap&quot;</span> | <span class="built_in">sha256sum</span> -c &amp;&amp; bash bootstrap</span><br></pre></td></tr></table></figure>
+<p>然后可以使用：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">opkg update</span><br><span class="line">opkg upgrade</span><br><span class="line">opkg install &lt;package&gt;</span><br><span class="line">opkg remove &lt;package&gt;</span><br><span class="line">opkg info &lt;package&gt;</span><br></pre></td></tr></table></figure>
+<p>来管理软件包。<br>安装 <strong>nao</strong> 这个软件可以图形化管理。</p>
+<p>对应的包列表：<br><a href="https://bin.entware.net/armv7sf-k3.2/Packages.html">Packages list (entware.net)</a><br><a href="https://toltec-dev.org/stable/#section-launchers">Toltec Package Listing (toltec-dev.org)</a></p>
+<p>这里面有些软件是可以手动安装的。不过有些软件也是过时的。</p>
+<p>yeft<br>一个通用的终端模拟器，但是需要toltec安装，否则你就得自己编译了<br><a href="https://github.com/uobikiemukot/yaft">uobikiemukot&#x2F;yaft: yet another framebuffer terminal (github.com)</a></p>
+<p><a href="https://github.com/ddvk/remarkable-hacks">ddvk&#x2F;remarkable-hacks: additional functionality via binary patching (github.com)</a><br>这个支持的版本太老了，不过那些手势也可以用别的软件想办法支持了。</p>
+<p>浏览器<br><a href="https://github.com/alex0809/netsurf-reMarkable/tree/main">alex0809&#x2F;netsurf-reMarkable: NetSurf is a lightweight and portable open-source web browser. This projects adapts NetSurf for the reMarkable E Ink tablet. (github.com)</a></p>
+<p>手动安装太麻烦了，还是等Toltec吧</p>
+<p><a href="https://github.com/irth/rmgem">irth&#x2F;rmgem: simple gemini browser for reMarkable (github.com)</a><br>这个只是在rmkit中指出，没有现成可执行文件，在Toltec中也没有。需要下载go后自己编译。<br>由于make在Windows下不方便用，俺就拿出了我的manjaro的笔记本编译了一下。</p>
+<p>这个工具实际上是<a href="https://gemini.circumlunar.space/">Project Gemini (circumlunar.space)</a>的rM版 没什么用，而且，命令行下有回显，但是没有GUI?</p>
+<h3 id="支持markdown的文本编辑器"><a href="#支持markdown的文本编辑器" class="headerlink" title="支持markdown的文本编辑器"></a>支持markdown的文本编辑器</h3><p>使用键盘编辑：<a href="https://github.com/dps/remarkable-keywriter/tree/master">dps&#x2F;remarkable-keywriter (github.com)</a><br>然而实测不能用，太老了。</p>
+<h2 id="不好用或者太老没测试"><a href="#不好用或者太老没测试" class="headerlink" title="不好用或者太老没测试"></a>不好用或者太老没测试</h2><p>另一个阅读器：<br><a href="https://github.com/LinusCDE/plato">LinusCDE&#x2F;plato: Document reader (github.com)</a><br>看起来没有必要使用，支持的格式不多，文档远不如KOReader</p>
+<p>whiteboard<br>除了能显示笔迹啥都没有？？而且还有bug. 作者只是用了他的git保存了一堆链接。不要用.<br>这个软件还有10.6M,大概是做了功能但是现在有bug启动不了？<br><a href="https://github.com/reHackable/Calculator">reHackable&#x2F;Calculator: A primitive calculator for the reMarkable (early alpha) (github.com)</a><br>计算器，只有简单功能，而且上次更新六年前。</p>
+<h1 id="救砖和刷机"><a href="#救砖和刷机" class="headerlink" title="救砖和刷机"></a>救砖和刷机</h1><p>救砖适用于：启动不了，密码重置以及其他一切可以通过进系统改配置来解决的问题。<br>直接刷机：上面解决不了的问题或者你就是觉得重刷更好就刷机到旧系统。</p>
+<p>下载<a href="https://github.com/ddvk/remarkable-uuuflash">ddvk&#x2F;remarkable-uuuflash: uuu scripts for recovery console and flashing (github.com)</a><br>用来救砖和刷机。<br>uuuflash是一个nxp的刷机工具。<br>关机状态下连接到USB，Win10会提示安装了新的硬件（好像是SE Blank 6ULL），不过由于是HID设备所以在设备管理器里面不容易找到，但是这个不重要。然后长按3秒进入上传模式，如果是开机下进入上传模式，这时候reMarkable会停止反复重启，如果本来就是关机的，那就没啥提示，但是总之你是可以接下来继续刷机或者救砖了。</p>
+<h2 id="救砖"><a href="#救砖" class="headerlink" title="救砖"></a>救砖</h2><p>救砖就是尝试解决问题而不是直接刷机一了百了。</p>
+<p>进入下载uuuflash的目录，执行下面的命令，由于使用HID传输，所以很慢，等着就好了。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PS ...\remarkable-uuuflash&gt; ./uuu recover.uuu</span><br><span class="line">uuu (Universal Update Utility) for nxp imx chips -- libuuu_1.3.154-0-g47ddef5</span><br><span class="line"></span><br><span class="line">Success 1    Failure 0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">2:11     5/ 5 [Done                                  ] SDP: done</span><br></pre></td></tr></table></figure>
+
+<p>传输完成之后Windows会提示安装了一个新硬件：CDC Composite Gadget，这个一看就知道是串口，但是Windows对于这种设备需要一个inf文件来安装驱动，不过没关系，也可以手动指定这个设备为串口设备。<br>在设备管理器中右键这个设备，由于有个感叹号很好找到：</p>
+<ul>
+<li>点更新驱动</li>
+<li>浏览我的电脑以更新驱动</li>
+<li>选择“端口(COM &amp; LPT)”</li>
+<li>然后在左侧的厂商列表中选Microsoft，右侧列表中选”USB串行设备“</li>
+<li>下一步就安装成串口设备了</li>
+</ul>
+<p>然后理论上说可以用Putty连接，波特率随便，因为这是一个虚拟串口。但是不知道为什么Putty连接不上，我这里就用了串口调试助手，这个不是交互式的，但是能用。</p>
+<p>首先注意调整发送接收都是ASCII模式。</p>
+<p>然后发送root即可登录，不需要密码：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">rmrestore login: root</span><br><span class="line">root@rmrestore:/<span class="comment"># ls</span></span><br><span class="line">bin             lib             proc            uboot-postinst</span><br><span class="line">boot            lost+found      run             uboot-version</span><br><span class="line">dev             media           sbin            usr</span><br><span class="line">etc             mnt             sys             var</span><br><span class="line">home            postinst        tmp</span><br></pre></td></tr></table></figure>
+
+<p>然后首先什么都看不见因为需要挂载存储设备</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mount /dev/mmcblk1p2 /mnt/</span><br><span class="line">mount /dev/mmcblk1p7 /mnt/home</span><br><span class="line">mount /dev/mmcblk1p1 /mnt/var/lib/uboot</span><br></pre></td></tr></table></figure>
+<p>然后可以通过chroot进入原来的系统，因为你现在的操作是删掉让系统变砖的配置文件：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chroot</span> /mnt</span><br></pre></td></tr></table></figure>
+<p>现在就和在系统里面的文件环境一样了。</p>
+<p>由于我这里变砖是因为安装了Toltec，所以按照它的提示，只需要执行：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">rm</span> /etc/systemd/system/xochitl.service.d/toltec-wrapper.conf</span><br></pre></td></tr></table></figure>
+<p>对于重置密码同样可以在chroot环境里面操作。</p>
+<p>然后就可以退出chroot了</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">exit</span> <span class="comment">#if you used the chroot</span></span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
+<p>执行的时候会显示：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">root@rmrestore:/<span class="comment"># exit</span></span><br><span class="line"><span class="built_in">exit</span></span><br><span class="line">root@rmrestore:/<span class="comment"># </span></span><br><span class="line">root@rmrestore:/<span class="comment"># reboot</span></span><br><span class="line">↓</span><br><span class="line">Broadcast message from root@rmrestore (ttyGS0) (Thu Jul 20 13:09:15 2023):</span><br><span class="line"></span><br><span class="line">The system is going down <span class="keyword">for</span> reboot NOW!</span><br><span class="line">root@rmrestore:/<span class="comment"># </span></span><br><span class="line">root@rmrestore:/<span class="comment"># logout</span></span><br></pre></td></tr></table></figure>
+<p>现在系统就重启了，你会发现你的配置基本都没有丢，也就是不用重置系统。但是位于自己新建的&#x2F;opt目录下的应用丢了，因为&#x2F;opt这个目录没了。同样系统更新也可能导致这个目录被删掉。</p>
+<p>这也是为什么我不太推荐用Toltec来安装，因为手动安装更容易修改安装位置。<br>然后可以根据Toltec安装日志可以删掉它建立的几个符号链接，虽然不删也行但是看着有点不爽。但是如果你十分不爽，可以使用下面的刷机的方式。</p>
+<h2 id="刷机"><a href="#刷机" class="headerlink" title="刷机"></a>刷机</h2><p>如果你压根不知道修改了什么导致起不来，也找不到原因和日志，或者你就想刷个干净的系统，可以尝试直接刷机：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">./uuu upgrade.uuu</span><br></pre></td></tr></table></figure>
+<p>这个会把系统root恢复到2.1.1.3. 理论上来说这时候已经可以开机了。</p>
+<p>如果问题还是存在或者还还是上述理由，那么继续：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./uuu reflash.uuu</span><br></pre></td></tr></table></figure>
+<p>这个命令会把什么都删掉。这下问题彻底解决了。</p>
+<h2 id="更多"><a href="#更多" class="headerlink" title="更多"></a>更多</h2><p><a href="https://github.com/torwag/remarkableflash">torwag&#x2F;remarkableflash (github.com)</a><br>上面这个工具依然可用，不过还是使用uuu更好。</p>
+<h1 id="系统"><a href="#系统" class="headerlink" title="系统"></a>系统</h1><p><a href="http://www.davisr.me/projects/parabola-rm/#:~:text=Parabola-rM%20Parabola-rM%20%28PRM%29%20turns%20a%20reMarkable%20e-paper%20tablet,may%20do%20with%20an%20ordinary%20graphical%20operating%20system.">Parabola-rM (davisr.me)</a><br>这个还是开发RCU那个老哥的操作，直接写了个系统可以用在rM1上。可以处理文档、电子表格等等操作，因为就是一个正常的系统。就是用不了WiFi</p>
+<h1 id="自己开发"><a href="#自己开发" class="headerlink" title="自己开发"></a>自己开发</h1><p><a href="https://remarkablewiki.com/devel/toolchain">remarkabletoolchain</a><br>本来是挂在remakeablewiki上的，可惜这个网站挂了。。<br>rmkit还是可以用它的例程来开发的。<br><a href="https://rmkit.dev/eink-dev-notes/">howto: e-ink dev notes (rmkit.dev)</a></p>
+<h2 id="硬件参考"><a href="#硬件参考" class="headerlink" title="硬件参考"></a>硬件参考</h2><p>使用的是i.MX6SL (SoloLite) 800 MHz ARMv7处理器，可以参考别人给的说明：<br><a href="http://www.davisr.me/projects/parabola-rm/install-guide-latest.pdf">Parabola on reMarkable: A Guide (davisr.me)</a></p>
+<h2 id="模拟器"><a href="#模拟器" class="headerlink" title="模拟器"></a>模拟器</h2><p><a href="https://stackoverflow.com/questions/57811916/emulating-the-remarkable-tablet-i-mx6-armv7-with-qemu">arm - emulating the reMarkable tablet (i.MX6 ARMv7) with Qemu - Stack Overflow</a><br>实际上rmkit里面提供了模拟器的说明。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://szclsya.me/zh-cn/posts/fonts/linux-config-guide/">https://szclsya.me/zh-cn/posts/fonts/linux-config-guide/</a><br><a href="https://wiki.archlinux.org/title/Font_configuration">Font configuration - ArchWiki (archlinux.org)</a><br><a href="https://www.bilibili.com/video/BV1Gv4y1f7ou/?vd_source=2c02778bfce8b5de28136fd3deba43ef">https://www.bilibili.com/video/BV1Gv4y1f7ou/?vd_source=2c02778bfce8b5de28136fd3deba43ef</a><br><a href="https://qzxx.com/82977.html">折腾前必看–Remarkable Paper Tablet 1代10.3寸电子书墨水屏 素描本 常见问题收集-青州小熊 (qzxx.com)</a><br>实际上以前还有一个remarkablewiki.com的网站，现在似乎已经挂了。<br>reddit频道：<a href="https://www.reddit.com/r/RemarkableTablet/">(1) reMarkable (reddit.com)</a></p>
+<p><a href="http://www.davisr.me/">Davis Remmel’s Home Page</a><br>这个人做了很多工作<br>github合集：<a href="https://github.com/topics/remarkable-tablet">remarkable-tablet · GitHub Topics</a></p>
+]]></content>
+      <categories>
+        <category>生活游玩</category>
+      </categories>
+      <tags>
+        <tag>生活</tag>
+        <tag>捡垃圾</tag>
+      </tags>
   </entry>
   <entry>
     <title>关于音响一些杂谈</title>
@@ -744,6 +910,7 @@
 <h1 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h1><p>这篇文章通篇没有分段，因为想到的太多了害怕搞忘记了。<br>本来我只是想写一下新买的MR4薄纱惠威x3，但是一写开头就离题万里，就想到了《禅与摩托车维修艺术》这本书通篇在疯狂insert自己的想法。</p>
 <pre><code>卡尔萨根的作品都值得一看，《魔鬼出没的世界》这本书有很多非常不错的观点，具体解释了如何反驳非科学的思考方式和观点，可惜当时我看的版本翻译非常烂，硬是把中文翻译出了长难句，阅读观感非常不好，不过某种程度上来说，强行延长阅读时间倒是增强了我对这本书内容的印象。
 </code></pre>
+<h1 id="附加：听音测试"><a href="#附加：听音测试" class="headerlink" title="附加：听音测试"></a>附加：听音测试</h1><p><a href="https://www.klippel.de/listeningtest/?page=instructions">Listening Test - Instructions (klippel.de)</a></p>
 ]]></content>
       <categories>
         <category>生活游玩</category>
@@ -857,149 +1024,6 @@
       <tags>
         <tag>生活</tag>
         <tag>旅游</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>RP2040配置VSCODE开发环境 —— 一劳永逸版</title>
-    <url>/2023/04/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91/RP2040%E9%85%8D%E7%BD%AEVSCODE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E2%80%94%E2%80%94%E4%B8%80%E5%8A%B3%E6%B0%B8%E9%80%B8%E7%89%88/</url>
-    <content><![CDATA[<p>上一篇文章：树莓派RP2040开发环境配置集合版(基于Raspberry Pico)。<br>前面的环境搭建基本上介绍了所有的开发环境配置，也对比了各个环境的优劣。如果是非商业开发的话，个人可能Segger Embedded Studio是最好的IDE，但是我不太习惯他的使用方式，这个会另外开一篇谈。<br>而通吃的方案则是使用VSCODE+ARMGCC+GCC，PlatformIO也是不错的，但是我个人不太习惯后者，而且经常出错。</p>
-<p>因此最后仍然选择了VSCODE作为开发工具。</p>
-<span id="more"></span>
-
-<p>由于重装了系统，所以决定找一个尽量不依赖环境变量的方法，比如有些软件可以不安装运行，重装后不需要重新安装，可以直接使用，也懒得追加环境变量。另外尽可能减少手工操作。所谓一劳永逸不是装好不管，而是下次崩坏还能迅速重建。<br>其实官方的工程生成器已经尽可能减少手工操作了，但是那个是针对Linux的，本身安装也十分简单。所以这里要做一点修改，这里的教程也是按照Windows来做。<br>再一个就是官方的方法有些方法并不好，这里也做出一些改进。</p>
-<h1 id="安装软件和免安装软件配置"><a href="#安装软件和免安装软件配置" class="headerlink" title="安装软件和免安装软件配置"></a>安装软件和免安装软件配置</h1><p>这一步是我尽量避免的，但是之前有些软件装在C盘，重装后直接没了，所以还是得走这一步，所以这一步我也没有验证如果直接使用之前下载好的可执行文件需要添加什么。</p>
-<h2 id="gcc-arm-none-eabi"><a href="#gcc-arm-none-eabi" class="headerlink" title="gcc arm none eabi"></a>gcc arm none eabi</h2><p>点安装包直接安装就好了。<br>我的安装目录改到 <code>D:\MyPrograms\InstalledProgram\10 2021.10</code><br>这里就安装的时候先把环境变量加进去，毕竟只需要打个钩。<br>然后这个就不用管了，同时他有个选项是注册这个编译器，我不知道如果不用安装包的话这一步的影响是什么。</p>
-<h2 id="CMake"><a href="#CMake" class="headerlink" title="CMake"></a>CMake</h2><p>这个不用自己加路径，所以直接重装。</p>
-<h2 id="pyocd"><a href="#pyocd" class="headerlink" title="pyocd"></a>pyocd</h2><p>由于是python安装的所以重新安装一次就行。</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line">pip install –U pyocd</span><br></pre></td></tr></table></figure>
-<p>其实这个和openocd工具二选一即可，推荐用这个。</p>
-<pre><code>pyocd这个工具配置安装极为简单，一个软件支持rp2040的所有仿真器，而且连接稍微快一点点，（同一个工程openocd 15s ,pyocd 14s，真就一点点), 自带gdb配置，不知道为啥网上很少再rp2040的教程中提到。一次只能连接一个核心。
-</code></pre>
-<h2 id="免安装软件配置"><a href="#免安装软件配置" class="headerlink" title="免安装软件配置"></a>免安装软件配置</h2><h3 id="mingw-w64"><a href="#mingw-w64" class="headerlink" title="mingw-w64"></a>mingw-w64</h3><p>之前下好的，直接找到之前部署的路径，我这里是：<br><code>D:\MyProgramData\Toolchain\mingw-w64\mingw64\bin </code><br>对应的<code>mingw32-make</code> 路径位于：<br><code>D:\MyProgramData\Toolchain\mingw-w64\mingw64\bin\mingw32-make.exe</code></p>
-<h3 id="openocd-（可选）"><a href="#openocd-（可选）" class="headerlink" title="openocd （可选）"></a>openocd （可选）</h3><p>直接添加到环境里面。虽然可以配置到cortex-debug的路径里面，但是这个工具比较有用（不如pyocd），可能有时候会在命令行里面用一用。</p>
-<h2 id="工程部署"><a href="#工程部署" class="headerlink" title="工程部署"></a>工程部署</h2><p>利用树莓派官方提供的生成工程脚本还需要提供 PICO_SDK_PATH 这个环境变量用于生成cmakelists.txt, 这里需要在环境变量中添加这个名称即可；<br>同样，用于编译生成工具的make工具链也需要增加到环境变量。<br>这里为了方便操作，直接做了一个BAT批处理来执行这个事情。</p>
-<pre><code>实际上完全可以在启动器的python脚本内部完成这个事情，但是我不太想改那个庞大的代码加上参数什么的，于是就把这些简单的东西分离出来。
-</code></pre>
-<p>由于这个生成器本身就要加上–gui参数来启动图形界面，所以一起集成到了BAT文件里面：</p>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="comment">@REM &quot;设置文字编码UTF8(不然这里中文是UFT8,在命令行中会默认不是UTF8会出现斤拷棍,但是还是可能有问题建议不要用)&quot;</span></span><br><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">chcp</span> <span class="number">65001</span>&gt;<span class="built_in">nul</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">@REM &quot;下面是要自己指定的部分(=左右不要空格)，后面都是set来设定临时环境变量，如果希望直接设置好，改成setx就行，写了检测，不会重复&quot;</span></span><br><span class="line"><span class="built_in">set</span> picosdkpath_temp=D:\MyProgramData\MCU_SDK\pico-sdk</span><br><span class="line"><span class="comment">@REM mingw32-make.exe</span></span><br><span class="line"><span class="built_in">set</span> &quot;make_bin_path=D:\MyProgramData\Toolchain\mingw-w64\mingw64\bin&quot;</span><br><span class="line"><span class="built_in">set</span> make_exe_name=mingw32-make.exe</span><br><span class="line"><span class="comment">@REM 初始化一下环境变量,获取系统的环境变量</span></span><br><span class="line"><span class="built_in">set</span> &quot;env_path=<span class="variable">%PATH%</span>&quot;</span><br><span class="line"><span class="comment">  </span></span><br><span class="line"><span class="comment">@REM &quot;起手就问工程名称，免得还要写一次,不要写空格&quot;</span></span><br><span class="line"><span class="built_in">set</span> /p projectname=your projectname:</span><br><span class="line"><span class="built_in">echo</span> your projectname is <span class="variable">%projectname%</span> </span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">@REM 检测PICO_SDK，如果不存在就添加</span></span><br><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> <span class="keyword">defined</span> PICO_SDK_PATH (</span><br><span class="line">    <span class="built_in">echo</span> Environment variable PICO_SDK_PATH is <span class="keyword">not</span> <span class="built_in">set</span></span><br><span class="line">    <span class="built_in">echo</span> now, <span class="built_in">set</span> it to <span class="variable">%picosdkpath_temp%</span></span><br><span class="line">    <span class="built_in">set</span> PICO_SDK_PATH=<span class="variable">%picosdkpath_temp%</span></span><br><span class="line">) <span class="keyword">else</span> (</span><br><span class="line">    <span class="built_in">echo</span> Environment variable PICO_SDK_PATH is <span class="built_in">set</span> to <span class="variable">%PICO_SDK_PATH%</span></span><br><span class="line">)</span><br><span class="line"><span class="comment">  </span></span><br><span class="line"><span class="comment">@REM &quot;检测PICO_SDK，如果不存在就添加（用if not exist mingw32-make.exe会一直显示不存在，只能查找字符串。或者findstr /C:%make_bin_path%&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> &quot;<span class="variable">%path%</span>&quot; | <span class="built_in">find</span> /i &quot;<span class="variable">%make_bin_path%</span>&quot; &gt;<span class="built_in">nul</span>  </span><br><span class="line"><span class="keyword">if</span> <span class="variable">%errorlevel%</span> <span class="keyword">equ</span> <span class="number">0</span> (</span><br><span class="line"><span class="comment">    @REM &quot;存在就显示一下好了&quot;</span></span><br><span class="line">    <span class="built_in">echo</span> mingw toolchain has been <span class="built_in">set</span> to <span class="variable">%make_bin_path%</span></span><br><span class="line">) <span class="keyword">else</span> (</span><br><span class="line"><span class="comment">    @REM &quot;不存在就添加一下&quot;</span></span><br><span class="line">    <span class="built_in">echo</span> mingw toolchain is <span class="keyword">not</span> <span class="built_in">set</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    @REM &quot;追加变量&quot;</span></span><br><span class="line">    @<span class="built_in">set</span> &quot;<span class="built_in">path</span>=<span class="variable">%env_path%</span>;<span class="variable">%make_bin_path%</span>&quot;</span><br><span class="line">    <span class="built_in">echo</span> mingw toolchain is <span class="built_in">set</span> to <span class="variable">%make_bin_path%</span></span><br><span class="line">)</span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">@REM &quot;调用tsv文件，虽然默认也是这个，设置名称，默认打开vscode&quot;</span></span><br><span class="line">python pico_project.py  <span class="variable">%projectname%</span>  -t pico_configs.tsv -p vscode --gui</span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">@REM &quot;完事打开code&quot;</span></span><br><span class="line">code ../<span class="variable">%projectname%</span></span><br></pre></td></tr></table></figure>
-
-<p>这里没有配置用户环境变量，因为担心出错，但是写成文件足够记住步骤了。如果要一次配置好，就把里面的 <code>set</code> 命令改成<code>setx</code>，就可以把环境变量添加到用户变量了(系统变量需要提权，没必要）。</p>
-<p>其中，调用<strong>pico_project.py</strong> 文件的时候，添加了几个参数，一个是在启动BAT文件的时候要求输入工程名称，因为我觉得这种方式最方便，没必要像原来那样：打开之后，点击名称位置，删掉原来的默认名称后修改自己的。<br>另一个是添加默认勾选配置vscode，使用配置文件从tsv文件加载预设值(用excel打开)，虽然默认也是这个，但是记下来方便修改。<br>我尝试给他添加默认特性，例如PIO,但是似乎在图形界面里面不生效，没注意看原因。</p>
-<pre><code>这个--feature 我实在是没看明白,试了一下它没啥用，写进去什么参数都不报错。。
-</code></pre>
-<p>然后就可以启动生成器了，启动之后接着用这个环境启动vscode打开工程文件夹。但是这还不够，下面是工程生成器的修改。</p>
-<h2 id="生成器修改点"><a href="#生成器修改点" class="headerlink" title="生成器修改点"></a>生成器修改点</h2><p>先说槽点：<br>1、LOGO图片太大<br>2、工程生成路径和python文件在同一层。<br>3、daplink只配置了自己的Link<br>4、vscode配置文件只配置了linux下自己的Link的配置。<br>下面一个一个修改。</p>
-<h3 id="去掉LOGO和修改显示设置"><a href="#去掉LOGO和修改显示设置" class="headerlink" title="去掉LOGO和修改显示设置"></a>去掉LOGO和修改显示设置</h3><p>不记得在哪里了，反正就是找那个图案的路径。然后是勾选python.exe，兼容性-&gt;勾选高DPI-&gt;改成应用程序，不然打开很模糊。 </p>
-<pre><code>显示设置每次换电脑或者更换python版本都要做一次，这个没办法，Windows的问题。
-</code></pre>
-<h3 id="1、工程路径修改到当前生成器的上一层"><a href="#1、工程路径修改到当前生成器的上一层" class="headerlink" title="1、工程路径修改到当前生成器的上一层"></a>1、工程路径修改到当前生成器的上一层</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">        self.locationName.<span class="built_in">set</span>(os.path.abspath(os.path.join(os.getcwd(), <span class="string">&quot;..&quot;</span>)))</span><br></pre></td></tr></table></figure>
-
-<h3 id="2、添加daplink-debugger选项"><a href="#2、添加daplink-debugger选项" class="headerlink" title="2、添加daplink debugger选项"></a>2、添加daplink debugger选项</h3><p>默认是第一个，所以直接加到第一个，对应配置文件是cmsis-dap.cfg</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">debugger_list = [<span class="string">&quot;DapLink&quot;</span>,<span class="string">&quot;SWD&quot;</span>, <span class="string">&quot;PicoProbe&quot;</span>]</span><br><span class="line"></span><br><span class="line">debugger_config_list = [<span class="string">&quot;cmsis-dap.cfg&quot;</span>,<span class="string">&quot;raspberrypi-swd.cfg&quot;</span>, <span class="string">&quot;picoprobe.cfg&quot;</span>]</span><br></pre></td></tr></table></figure>
-
-<h3 id="3、vscode生成-vscode文件部分"><a href="#3、vscode生成-vscode文件部分" class="headerlink" title="3、vscode生成.vscode文件部分"></a>3、vscode生成.vscode文件部分</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">generateProjectFiles</span>(<span class="params">projectPath, projectName, sdkPath, projects, debugger</span>):</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>它这里是直接一行一行写在python文件里面每一行都带个单引号，修改起来真是脑溢血，但是我当时改的时候脑抽了，所以最后都是按照他那个格式写的。</p>
-<h4 id="3-1-生成启动文件部分"><a href="#3-1-生成启动文件部分" class="headerlink" title="3.1 生成启动文件部分"></a>3.1 生成启动文件部分</h4><ul>
-<li>启动文件为<code>launch.json</code><br>首先，修改第一个配置为Pyocd的配置，因为pyocd兼容性最好，配置也最简单。<br>然后，添加多个Openocd的选项，分别为：<br>指定pico-debug固件作为debugger的仿真Core0;<br>另外一个据说不会过时的指定core0的命令方法;<br>以及理论上是同时连接双核的调试方法，但是实际上cortex-debug的双核调试还在路上。<br>其中Pyocd的配置如下：<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;rp2040_core0 Debug with PyOcd&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;cwd&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;workspaceFolder&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;executable&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;command:cmake.launchTargetPath&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;request&quot;</span><span class="punctuation">:</span> <span class="string">&quot;launch&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cortex-debug&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;servertype&quot;</span><span class="punctuation">:</span> <span class="string">&quot;pyocd&quot;</span><span class="punctuation">,</span></span><br><span class="line">       <span class="comment">//可以修改为rp2040_core1  </span></span><br><span class="line">      <span class="attr">&quot;targetId&quot;</span><span class="punctuation">:</span> <span class="string">&quot;rp2040_core0&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;showDevDebugOutput&quot;</span><span class="punctuation">:</span> <span class="string">&quot;none&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;svdFile&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;env:PICO_SDK_PATH&#125;/src/rp2040/hardware_regs/rp2040.svd&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;runToEntryPoint&quot;</span><span class="punctuation">:</span> <span class="string">&quot;main&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="comment">// Give restart the same functionality as runToEntryPoint - main</span></span><br><span class="line">      <span class="attr">&quot;postRestartCommands&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">          <span class="string">&quot;break main&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="string">&quot;continue&quot;</span></span><br><span class="line">      <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
-具体Pyocd的配置和cortex-debug的联合使用见我另外写的PyOCD配置。（我还没写）</li>
-</ul>
-<p>TODO: ARM也出了一个调试插件，但是要装好几个插件，而且对应rp2040还有点问题，文档太少了，我就没折腾出来，不知道这个会不会更好，以后没问题了再加上去。</p>
-<ul>
-<li><p>同时，写入文件添加指定编码utf-8,以便使用vscode默认utf-8编辑之后输出支持中文。</p>
-<p>  吐槽,他这个东西写的好挫.</p>
-</li>
-<li><p>添加自动判断对应系统应该用什么gdb server的名字</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">    <span class="keyword">if</span> isWindows:</span><br><span class="line">        gdb_path = <span class="string">&#x27;arm-none-eabi-gdb&#x27;</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        gdb_path = <span class="string">&#x27;gdb-multiarch&#x27;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改设置,默认显示build按钮</p>
-</li>
-<li><p>推荐扩展文件添加一个<code> twxs.cmake</code></p>
-</li>
-</ul>
-<p>最后，c_cpp_properites.json 中它写的也不对，只有linux的配置，而且如果是Windows写入的路径也没有转换。但是这个配置打开vscode的时候点配置会被替换掉，也不影响使用，所以无所谓，就先不改了。</p>
-<ul>
-<li>预计其他增加（以后有精力再说）<br>task.json 来实现只烧录 参考arm的Arm Embedded Debugger的方式，当然也可以用pyocd来做。<br>使用PICO TOOL，就是前面说过的PICO USB那个东西，可以实现烧录和简单的启动停止。<br>推荐扩展增加Arm Embedded Debugger以及Arm Device Manager，如果可用的话。</li>
-</ul>
-<p>完成这些之后，直接点击前面的启动脚本，就可以直接生成可用的工程并打开vscode了，总算有点IDE的样子了。</p>
-<h2 id="vscode配置点（踩坑点）"><a href="#vscode配置点（踩坑点）" class="headerlink" title="vscode配置点（踩坑点）"></a>vscode配置点（踩坑点）</h2><p>如果是从头配置起来的基本上没这些问题。</p>
-<h3 id="cmake-tools"><a href="#cmake-tools" class="headerlink" title="cmake tools"></a>cmake tools</h3><p>插件如果是之前备份的到新电脑的，需要重新安装，否则插件加载不出来。</p>
-<p>Cmake编译的时候会报错：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CMake Error: CMake was unable to find a build program corresponding to &quot;MinGW Makefiles&quot;.  CMAKE_MAKE_PROGRAM is not set.  You probably need to select a different build tool.</span><br></pre></td></tr></table></figure>
-
-<p>似乎可以通过添加 CMAKE_MAKE_PROGRAM 来解决，但是由于没有环境变量，这还需要指定编译器位置，虽然可以通过cmake tools的脚本解决，但是那还需要额外添加一个文件。设置里面的设置cmake 环境变量似乎并不能给命令用。</p>
-<p>所以最简单的办法就是<strong>添加mingw32的目录到环境变量</strong>。</p>
-<p>如果追求极致不要修改环境变量，那么就在启动vscode的时候添加临时环境变量，这个文件放在工程文件夹下面。</p>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">...  前面就和启动生成器里面添加环境变量的脚本一样</span><br><span class="line">code ../</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://www.codenong.com/6141608/">关于Makefile：找不到CMAKE_MAKE_PROGRAM | 码农家园 (codenong.com)</a><br>上面这个老哥说了，很多方法都不如加个环境变量。<br>但是这个mingw32-make确实很常用，就加到系统里面去吧。</p>
-<h3 id="cortex-debugger"><a href="#cortex-debugger" class="headerlink" title="cortex-debugger"></a>cortex-debugger</h3><p>之前备份的会启动不了。。。重新安装也不行。只好全部移除了vs配置文件。</p>
-<h3 id="Arm-Embedded-Debugger"><a href="#Arm-Embedded-Debugger" class="headerlink" title="Arm Embedded Debugger"></a>Arm Embedded Debugger</h3><p>vscode上除了cortex-debugger<br>Arm Embedded Debugger 似乎也可以：<br><a href="https://github.com/ARM-software/vscode-embedded-debug">ARM-software&#x2F;vscode-embedded-debug: Extension support for VS Code Embedded Debug Extension (github.com)</a><br>但是官方文档还不全，给的方法也有问题。。。。我试了一下还是连不上, 报错RDDI-ERROR 13 但是工具本身应该没问题。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$&#123;command:device-manager.getSerialNumber&#125;</span><br></pre></td></tr></table></figure>
-<p>上面这句命令要安装一个arm device manager扩展才行，但是还是会报错没有连接的设备，指定串号之后可以连接上（串号可以用keil中的配置看到或者使用”pyocd list”命令找到设备的uid），用的是wch-link, 自调试固件不行，不知道是不是被复位了。但是即使连接上了会进入断点进不了主程序，不知道缺什么。<br>所以暂时不搞了，估计效果不会超过pyocd。</p>
-<h3 id="由于armgcc工具链移动路径导致的原来cmakelist失效的问题需要迁移原工程"><a href="#由于armgcc工具链移动路径导致的原来cmakelist失效的问题需要迁移原工程" class="headerlink" title="由于armgcc工具链移动路径导致的原来cmakelist失效的问题需要迁移原工程"></a>由于armgcc工具链移动路径导致的原来cmakelist失效的问题需要迁移原工程</h3><p>直接编译或者选择对应的kit都会会报错找不到正确的工具链吧啦吧啦。<br>所以我的建议是不要移动工具链的位置，保持原来的路径。。。。。这样可以套用上次的设置。<br>不过迁移很简单：<br>在cmake插件的选择kit的按钮上，点选unspecified ，然后编译一下，再选对应的arm gcc就可以了。当然，不选回去也行，能用就算成功。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>通过这些配置，就可以做到同步到另一台电脑上也可以直接使用，只需要修改脚本中的环境变量的路径，如果工具本身被同步了，不用修改也可以直接使用。<br>同时ARM GCC是被自动查找的，所以路径不影响，只要之前安装过就行。</p>
-]]></content>
-      <categories>
-        <category>嵌入式与单片机</category>
-      </categories>
-      <tags>
-        <tag>rp2040</tag>
-        <tag>ARM</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>从零开始的MSP430单片机学习（二）</title>
-    <url>/2021/04/20/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84MSP430%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
-    <content><![CDATA[<p>在认识了一款单片机产品之后，了解了它的开发方式和特点，就可以考虑使用它的资源了进行开发了。</p>
-<h1 id="1-单片机的资源简介"><a href="#1-单片机的资源简介" class="headerlink" title="1 单片机的资源简介"></a>1 单片机的资源简介</h1><p>这里并不会用太多的篇幅，因为不同的单片机外设不一样，资源不一样，所以重要的是如何去了解。</p>
-<span id="more"></span>
-
-<p>烂尾了。。。430没啥意思，TI都把430办公室搬到印度去了，现在开始推M0了，最终还是走进了ARM的怀抱。转战RP2040了，顺便说一句ST也降价了，中间断更硬是把国产给撑起来了，现在都卷起来了。</p>
-]]></content>
-      <categories>
-        <category>嵌入式与单片机</category>
-      </categories>
-      <tags>
-        <tag>ARM</tag>
-        <tag>MSP430</tag>
-        <tag>8051</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用aardio写一个基于pyocd的单片机下载器</title>
-    <url>/2023/04/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/%E4%BD%BF%E7%94%A8aardio%E5%86%99%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8Epyocd%E7%9A%84%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%8B%E8%BD%BD%E5%99%A8/</url>
-    <content><![CDATA[<p>为了方便使用pyocd进行下载操作，于是写了一个下载器GUI，开发工具选择了aardio，因此只支持Windows平台。</p>
-<span id="more"></span>
-<h1 id="1-新建工程"><a href="#1-新建工程" class="headerlink" title="1 新建工程"></a>1 新建工程</h1><p>最开始本来是打算调用pyocd 的python api的，但是一方面是内嵌包一直安装出问题，另一方面是考虑到本地pack不想重复安装和管理，于是就转做pyocd的前端了，也就是直接调用pyocd，根据返回数据解析，然后执行要做的命令。</p>
-<p>所以新建一个普通工程就可以。</p>
-<h1 id="2-基本功能"><a href="#2-基本功能" class="headerlink" title="2 基本功能"></a>2 基本功能</h1><p>主要功能：</p>
-<ul>
-<li><p>下载 </p>
-</li>
-<li><p>擦除 </p>
-</li>
-<li><p>复位<br>然后要能选择对应的仿真器和单片机型号，从支持的列表从选择，就要用一下pyocd list和pyocd list -t命令查询，根据返回的结果解析已经可以支持的单片机。</p>
-<p>  p.s 其实直接用pyocd json 命令返回json会很容易解析，但是我一开始没看到这个命令，就算了，正好生成命令pyocd list的执行结果也可以给人看。</p>
-</li>
-</ul>
-<p>其中pyocd list会返回仿真器的列表，我是通过head也就是第一行的标题的位置来得到下面每行内容的分割位置，得到正确的结果。这里发现是每隔一行为一个仿真器信息。<br>而pyocd list -t 返回可用器件型号，分割方法类似，不过这里不是每隔一行而是连续的每行都是对应结果，一开始这里没看到导致少了一半。</p>
-<p>另外这里在使用aardio遇到一个bug就是结构体的值发生了变换（aardio实际上没有结构体而是表），不知道为什么，类似的方法直接赋值给数组就不会出问题。</p>
-<h1 id="3-基本实现"><a href="#3-基本实现" class="headerlink" title="3 基本实现"></a>3 基本实现</h1><p>基本就是添加几个框框，根据填入的参数生成命令然后通过调用命令行并获取执行结果显示出来，对于有进度条的执行命令我不知道怎么实时获取，没有看到aardio这样的例子，遂作罢。</p>
-<p><img src="http://c.51hei.com/d/forum/202304/25/142034iz7zt6ovv44xttoo.png" alt="基本界面"></p>
-<p>除了基本界面，调整了一下布局，让他能缩放合适，内嵌了字体（其实也就俩按键用了这个字体，得意黑，软件凭空大了1M多，本来只有几百kb，主要是好不容易调整好了不想改 ）。<br>添加了一个菜单栏，把一些生成命令的语句例如pyocd gdbserver收纳到了菜单栏，方便配合其他软件使用。<br>例如如果要开启gdb server，例如使用segger embedded studio或者其他软件的时候，启动时候执行的命令就可以用这个GUI来生成，稍微省心一点。</p>
-<p>仿真器连接后可以通过刷新来获取，当然，打开软件的时候也会自动获取一次，通过指定uid来保证一次能执行对命令，避免二次选择。</p>
-<p>基本就这样。</p>
-<p>这里有我上传的：<br><a href="http://www.51hei.com/bbs/forum.php?mod=viewthread&tid=228512">分享一个基于pyocd的单片机GUI下载器 - Cortex M3 M0 M4开发 (51hei.com)</a></p>
-<h1 id="4-总结"><a href="#4-总结" class="headerlink" title="4 总结"></a>4 总结</h1><p>aardio确实挺好用的，很能缝合，布局上也是自动缩放，要求不高的话很容易调整到还不错的效果。写起来很快，高分屏的问题也自动处理了，第一次用观感不错。不过有部分问题横竖找不到根源，倒是能换个方法解决。</p>
-<p>其实pyocd本身就有python api，但是我不想用python的gui的一些库然后打包什么的。其实用这些api有些功能会做出来更好用。</p>
-]]></content>
-      <categories>
-        <category>嵌入式与单片机</category>
-      </categories>
-      <tags>
-        <tag>ARM</tag>
-        <tag>DAP-Link</tag>
-        <tag>pyocd</tag>
       </tags>
   </entry>
   <entry>
@@ -1633,6 +1657,149 @@ target remote localhost:3333
       </tags>
   </entry>
   <entry>
+    <title>RP2040配置VSCODE开发环境 —— 一劳永逸版</title>
+    <url>/2023/04/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91/RP2040%E9%85%8D%E7%BD%AEVSCODE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E2%80%94%E2%80%94%E4%B8%80%E5%8A%B3%E6%B0%B8%E9%80%B8%E7%89%88/</url>
+    <content><![CDATA[<p>上一篇文章：树莓派RP2040开发环境配置集合版(基于Raspberry Pico)。<br>前面的环境搭建基本上介绍了所有的开发环境配置，也对比了各个环境的优劣。如果是非商业开发的话，个人可能Segger Embedded Studio是最好的IDE，但是我不太习惯他的使用方式，这个会另外开一篇谈。<br>而通吃的方案则是使用VSCODE+ARMGCC+GCC，PlatformIO也是不错的，但是我个人不太习惯后者，而且经常出错。</p>
+<p>因此最后仍然选择了VSCODE作为开发工具。</p>
+<p>更新：整合包杀死了比赛：<a href="https://www.raspberrypi.com/news/raspberry-pi-pico-windows-installer/">Raspberry Pi Pico Windows Installer - Raspberry Pi</a></p>
+<span id="more"></span>
+
+<p>由于重装了系统，所以决定找一个尽量不依赖环境变量的方法，比如有些软件可以不安装运行，重装后不需要重新安装，可以直接使用，也懒得追加环境变量。另外尽可能减少手工操作。所谓一劳永逸不是装好不管，而是下次崩坏还能迅速重建。<br>其实官方的工程生成器已经尽可能减少手工操作了，但是那个是针对Linux的，本身安装也十分简单。所以这里要做一点修改，这里的教程也是按照Windows来做。<br>再一个就是官方的方法有些方法并不好，这里也做出一些改进。</p>
+<h1 id="安装软件和免安装软件配置"><a href="#安装软件和免安装软件配置" class="headerlink" title="安装软件和免安装软件配置"></a>安装软件和免安装软件配置</h1><p>这一步是我尽量避免的，但是之前有些软件装在C盘，重装后直接没了，所以还是得走这一步，所以这一步我也没有验证如果直接使用之前下载好的可执行文件需要添加什么。</p>
+<h2 id="gcc-arm-none-eabi"><a href="#gcc-arm-none-eabi" class="headerlink" title="gcc arm none eabi"></a>gcc arm none eabi</h2><p>点安装包直接安装就好了。<br>我的安装目录改到 <code>D:\MyPrograms\InstalledProgram\10 2021.10</code><br>这里就安装的时候先把环境变量加进去，毕竟只需要打个钩。<br>然后这个就不用管了，同时他有个选项是注册这个编译器，我不知道如果不用安装包的话这一步的影响是什么。</p>
+<h2 id="CMake"><a href="#CMake" class="headerlink" title="CMake"></a>CMake</h2><p>这个不用自己加路径，所以直接用安装包安装，勾选添加到Path.</p>
+<h2 id="pyocd"><a href="#pyocd" class="headerlink" title="pyocd"></a>pyocd</h2><p>由于是python安装的所以重新安装一次就行。</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line">pip install –U pyocd</span><br></pre></td></tr></table></figure>
+<p>其实这个和openocd工具二选一即可，推荐用这个。</p>
+<pre><code>pyocd这个工具配置安装极为简单，一个软件支持rp2040的所有仿真器，而且连接稍微快一点点，（同一个工程openocd 15s ,pyocd 14s，真就一点点), 自带gdb配置，不知道为啥网上很少再rp2040的教程中提到。一次只能连接一个核心。
+</code></pre>
+<h2 id="免安装软件配置"><a href="#免安装软件配置" class="headerlink" title="免安装软件配置"></a>免安装软件配置</h2><h3 id="mingw-w64"><a href="#mingw-w64" class="headerlink" title="mingw-w64"></a>mingw-w64</h3><p>之前下好的，直接找到之前部署的路径，我这里是：<br><code>D:\MyProgramData\Toolchain\mingw-w64\mingw64\bin </code><br>对应的<code>mingw32-make</code> 路径位于：<br><code>D:\MyProgramData\Toolchain\mingw-w64\mingw64\bin\mingw32-make.exe</code></p>
+<p>如果要安装的话，安装包来源：<a href="https://sourceforge.net/projects/mingw-w64/files/">MinGW-w64 - for 32 and 64 bit Windows - Browse Files at SourceForge.net</a><br>点下面的MinGW-W64 GCC-8.1.0标题下面的包，因为如果用在线安装包压根连不上。<br>选择最新版本（8.1.0）的 x86_64-win32-seh</p>
+<h3 id="openocd-（可选）"><a href="#openocd-（可选）" class="headerlink" title="openocd （可选）"></a>openocd （可选）</h3><p>直接添加到环境里面。虽然可以配置到cortex-debug的路径里面，但是这个工具比较有用（不如pyocd），可能有时候会在命令行里面用一用。</p>
+<h2 id="工程部署"><a href="#工程部署" class="headerlink" title="工程部署"></a>工程部署</h2><p>利用树莓派官方提供的生成工程脚本（pico-project-generator）还需要提供 PICO_SDK_PATH 这个环境变量用于生成cmakelists.txt, 这里只需要在环境变量中添加这个名称和填写SDK的路径即可；<br>同样，用于编译生成工具的make工具链也需要增加到环境变量Path，前面说过一次了。</p>
+<p>这里为了方便操作，直接做了一个BAT批处理来处理环境变量并打开pico-project-generator。</p>
+<pre><code>实际上完全可以在启动器的python脚本内部完成这个事情，但是我不太想改那个庞大的代码加上参数什么的，于是就把这些简单的东西分离出来。
+</code></pre>
+<p>由于这个生成器本身就要加上–gui参数来启动图形界面，所以一起集成到了BAT文件里面：</p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="comment">@REM &quot;设置文字编码UTF8(不然这里中文是UFT8,在命令行中会默认不是UTF8会出现斤拷棍,但是还是可能有问题建议不要用)&quot;</span></span><br><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">chcp</span> <span class="number">65001</span>&gt;<span class="built_in">nul</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">@REM &quot;下面是要自己指定的部分(=左右不要空格)，后面都是set来设定临时环境变量，如果希望直接设置好，改成setx就行，写了检测，不会重复&quot;</span></span><br><span class="line"><span class="built_in">set</span> picosdkpath_temp=D:\MyProgramData\MCU_SDK\pico-sdk</span><br><span class="line"><span class="comment">@REM mingw32-make.exe</span></span><br><span class="line"><span class="built_in">set</span> &quot;make_bin_path=D:\MyProgramData\Toolchain\mingw-w64\mingw64\bin&quot;</span><br><span class="line"><span class="built_in">set</span> make_exe_name=mingw32-make.exe</span><br><span class="line"><span class="comment">@REM 初始化一下环境变量,获取系统的环境变量</span></span><br><span class="line"><span class="built_in">set</span> &quot;env_path=<span class="variable">%PATH%</span>&quot;</span><br><span class="line"><span class="comment">  </span></span><br><span class="line"><span class="comment">@REM &quot;起手就问工程名称，免得还要写一次,不要写空格&quot;</span></span><br><span class="line"><span class="built_in">set</span> /p projectname=your projectname:</span><br><span class="line"><span class="built_in">echo</span> your projectname is <span class="variable">%projectname%</span> </span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">@REM 检测PICO_SDK，如果不存在就添加</span></span><br><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> <span class="keyword">defined</span> PICO_SDK_PATH (</span><br><span class="line">    <span class="built_in">echo</span> Environment variable PICO_SDK_PATH is <span class="keyword">not</span> <span class="built_in">set</span></span><br><span class="line">    <span class="built_in">echo</span> now, <span class="built_in">set</span> it to <span class="variable">%picosdkpath_temp%</span></span><br><span class="line">    <span class="built_in">set</span> PICO_SDK_PATH=<span class="variable">%picosdkpath_temp%</span></span><br><span class="line">) <span class="keyword">else</span> (</span><br><span class="line">    <span class="built_in">echo</span> Environment variable PICO_SDK_PATH is <span class="built_in">set</span> to <span class="variable">%PICO_SDK_PATH%</span></span><br><span class="line">)</span><br><span class="line"><span class="comment">  </span></span><br><span class="line"><span class="comment">@REM &quot;检测PICO_SDK，如果不存在就添加（用if not exist mingw32-make.exe会一直显示不存在，只能查找字符串。或者findstr /C:%make_bin_path%&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> &quot;<span class="variable">%path%</span>&quot; | <span class="built_in">find</span> /i &quot;<span class="variable">%make_bin_path%</span>&quot; &gt;<span class="built_in">nul</span>  </span><br><span class="line"><span class="keyword">if</span> <span class="variable">%errorlevel%</span> <span class="keyword">equ</span> <span class="number">0</span> (</span><br><span class="line"><span class="comment">    @REM &quot;存在就显示一下好了&quot;</span></span><br><span class="line">    <span class="built_in">echo</span> mingw toolchain has been <span class="built_in">set</span> to <span class="variable">%make_bin_path%</span></span><br><span class="line">) <span class="keyword">else</span> (</span><br><span class="line"><span class="comment">    @REM &quot;不存在就添加一下&quot;</span></span><br><span class="line">    <span class="built_in">echo</span> mingw toolchain is <span class="keyword">not</span> <span class="built_in">set</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    @REM &quot;追加变量&quot;</span></span><br><span class="line">    @<span class="built_in">set</span> &quot;<span class="built_in">path</span>=<span class="variable">%env_path%</span>;<span class="variable">%make_bin_path%</span>&quot;</span><br><span class="line">    <span class="built_in">echo</span> mingw toolchain is <span class="built_in">set</span> to <span class="variable">%make_bin_path%</span></span><br><span class="line">)</span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">@REM &quot;调用tsv文件，虽然默认也是这个，设置名称，默认打开vscode&quot;</span></span><br><span class="line">python pico_project.py  <span class="variable">%projectname%</span>  -t pico_configs.tsv -p vscode --gui</span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">@REM &quot;完事打开code&quot;</span></span><br><span class="line">code ../<span class="variable">%projectname%</span></span><br></pre></td></tr></table></figure>
+
+<p>这里没有配置用户环境变量，因为担心出错，但是记在代码里面足够记住步骤了。</p>
+<p>如果要一次配置好，就把里面的 <code>set</code> 命令改成<code>setx</code>，就可以把环境变量添加到用户变量了(系统变量需要提权，没必要）。</p>
+<p>其中，调用<strong>pico_project.py</strong> 文件的时候，添加了几个参数，一个是在启动BAT文件的时候要求输入工程名称，因为我觉得这种方式最方便，没必要像原来那样打开生成器之后，点击名称位置，删掉原来的默认名称后修改自己的。那样很麻烦。</p>
+<p>另一个是添加默认勾选配置vscode，使用配置文件从tsv文件加载预设值(这个文件可以用excel打开)，虽然默认也是这个，但是记下来方便修改。</p>
+<p>我尝试给他添加默认特性，例如PIO,但是似乎在图形界面里面不生效，没注意看原因。</p>
+<pre><code>这个--feature 我实在是没看明白,试了一下它没啥用，写进去什么参数都不报错。。
+</code></pre>
+<p>然后就可以启动生成器了，启动之后接着用这个环境启动vscode打开工程文件夹。</p>
+<p>但是这还不够，下面是工程生成器（pico-project-generator）的修改。</p>
+<h2 id="生成器修改点"><a href="#生成器修改点" class="headerlink" title="生成器修改点"></a>生成器修改点</h2><p>先说槽点，也就是为什么要修改这个修改器：<br>1、LOGO图片太大，小屏幕塞不下好吧（虽然可以通过DPI兼容来解决）<br>2、工程生成路径和python文件在同一层，就离谱，一堆零散文件里面塞个工程。<br>3、daplink只配置了自己的专用Link，这TM能用？<br>4、vscode配置文件只配置了linux下自己的Link的配置，这TM能用？不然在Windows下每次都要复制vscode的配置文件。</p>
+<p>下面一个一个修改。</p>
+<h3 id="去掉LOGO和修改显示设置"><a href="#去掉LOGO和修改显示设置" class="headerlink" title="去掉LOGO和修改显示设置"></a>去掉LOGO和修改显示设置</h3><p>不记得在哪里了，反正就是找那个图案的路径。然后是勾选python.exe，兼容性-&gt;勾选高DPI-&gt;改成应用程序，不然打开很模糊。 </p>
+<pre><code>显示设置每次换电脑或者更换python版本都要做一次，这个没办法，Windows的问题。
+</code></pre>
+<h3 id="1、工程路径修改到当前生成器的上一层"><a href="#1、工程路径修改到当前生成器的上一层" class="headerlink" title="1、工程路径修改到当前生成器的上一层"></a>1、工程路径修改到当前生成器的上一层</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">        self.locationName.<span class="built_in">set</span>(os.path.abspath(os.path.join(os.getcwd(), <span class="string">&quot;..&quot;</span>)))</span><br></pre></td></tr></table></figure>
+<p>查找这个函数名找到后替换set内容即可。</p>
+<h3 id="2、添加daplink-debugger选项"><a href="#2、添加daplink-debugger选项" class="headerlink" title="2、添加daplink debugger选项"></a>2、添加daplink debugger选项</h3><p>默认是第一个可以用通用的DAPLink，所以直接加到第一个，对应配置文件是cmsis-dap.cfg</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">debugger_list = [<span class="string">&quot;DapLink&quot;</span>,<span class="string">&quot;raspSWD&quot;</span>, <span class="string">&quot;PicoProbe&quot;</span>]</span><br><span class="line"></span><br><span class="line">debugger_config_list = [<span class="string">&quot;cmsis-dap.cfg&quot;</span>,<span class="string">&quot;raspberrypi-swd.cfg&quot;</span>, <span class="string">&quot;picoprobe.cfg&quot;</span>]</span><br></pre></td></tr></table></figure>
+<p>这里这个选项其实是给Openocd的参数用的，如果是只用pyocd来调试，这个选项没啥用，因为pyocd配置没这么麻烦。。</p>
+<h3 id="3、vscode生成-vscode文件部分"><a href="#3、vscode生成-vscode文件部分" class="headerlink" title="3、vscode生成.vscode文件部分"></a>3、vscode生成.vscode文件部分</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">generateProjectFiles</span>(<span class="params">projectPath, projectName, sdkPath, projects, debugger</span>):</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>它这里是直接一行一行写在python文件里面每一行都带个单引号，修改起来真是脑溢血，但是我当时改的时候脑抽了，所以最后都是按照他那个格式写的。下面是加进去的内容。</p>
+<h4 id="3-1-生成启动文件部分"><a href="#3-1-生成启动文件部分" class="headerlink" title="3.1 生成启动文件部分"></a>3.1 生成启动文件部分</h4><ul>
+<li>启动文件为<code>launch.json</code><br>首先，修改第一个配置为Pyocd的配置，因为pyocd兼容性最好，配置也最简单。<br>然后，添加多个Openocd的选项，分别为：<br>指定pico-debug固件作为debugger的仿真Core0;<br>另外一个据说不会过时的指定core0的命令方法;<br>以及理论上是同时连接双核的调试方法，但是实际上cortex-debug的双核调试还在路上。<br>其中Pyocd的配置如下：<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;rp2040_core0 Debug with PyOcd&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;cwd&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;workspaceFolder&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;executable&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;command:cmake.launchTargetPath&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;request&quot;</span><span class="punctuation">:</span> <span class="string">&quot;launch&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cortex-debug&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;servertype&quot;</span><span class="punctuation">:</span> <span class="string">&quot;pyocd&quot;</span><span class="punctuation">,</span></span><br><span class="line">       <span class="comment">//可以修改为rp2040_core1  </span></span><br><span class="line">      <span class="attr">&quot;targetId&quot;</span><span class="punctuation">:</span> <span class="string">&quot;rp2040_core0&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;showDevDebugOutput&quot;</span><span class="punctuation">:</span> <span class="string">&quot;none&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;svdFile&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;env:PICO_SDK_PATH&#125;/src/rp2040/hardware_regs/rp2040.svd&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;runToEntryPoint&quot;</span><span class="punctuation">:</span> <span class="string">&quot;main&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="comment">// Give restart the same functionality as runToEntryPoint - main</span></span><br><span class="line">      <span class="attr">&quot;postRestartCommands&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">          <span class="string">&quot;break main&quot;</span><span class="punctuation">,</span></span><br><span class="line">          <span class="string">&quot;continue&quot;</span></span><br><span class="line">      <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+具体Pyocd的配置和cortex-debug的联合使用见我另外写的PyOCD配置。（我还没写）</li>
+</ul>
+<p>TODO: ARM也出了一个调试插件，但是要装好几个插件，而且对应rp2040还有点问题，文档太少了，我就没折腾出来，不知道这个会不会更好，以后没问题了再加上去。</p>
+<ul>
+<li><p>同时，写入文件添加指定编码utf-8,以便使用vscode默认utf-8编辑之后输出支持中文。</p>
+<p>  吐槽,他这个生成器代码写的好挫.</p>
+</li>
+<li><p>添加自动判断对应系统应该用什么gdb server的名字</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">    <span class="keyword">if</span> isWindows:</span><br><span class="line">        gdb_path = <span class="string">&#x27;arm-none-eabi-gdb&#x27;</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        gdb_path = <span class="string">&#x27;gdb-multiarch&#x27;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改设置,默认显示build按钮，方便使用</p>
+</li>
+<li><p>推荐扩展文件添加一个<code> twxs.cmake</code></p>
+</li>
+</ul>
+<p>最后，c_cpp_properites.json 中它写的也不对，只有linux的配置，而且如果是Windows写入的路径也没有转换。但是这个配置打开vscode的时候点配置会被替换掉，也不影响使用，所以无所谓，就先不改了。</p>
+<ul>
+<li>预计其他增加（以后有精力再说）<br>task.json 来实现只烧录 参考arm的Arm Embedded Debugger的方式，当然也可以用pyocd来做。<br>使用PICO TOOL，就是前面说过的PICO USB那个东西，可以实现烧录和简单的启动停止。<br>推荐扩展增加Arm Embedded Debugger以及Arm Device Manager，如果可用的话。</li>
+</ul>
+<p>完成这些之后，直接点击前面的启动脚本，就可以直接生成可用的工程并打开vscode了，总算有点IDE的样子了。</p>
+<h2 id="vscode配置点（踩坑点）"><a href="#vscode配置点（踩坑点）" class="headerlink" title="vscode配置点（踩坑点）"></a>vscode配置点（踩坑点）</h2><p>如果是从头配置起来的基本上没这些问题。</p>
+<h3 id="cmake-tools"><a href="#cmake-tools" class="headerlink" title="cmake tools"></a>cmake tools</h3><p>插件如果是之前备份的到新电脑的，需要重新安装，否则插件加载不出来。</p>
+<p>Cmake编译的时候会报错：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CMake Error: CMake was unable to find a build program corresponding to &quot;MinGW Makefiles&quot;.  CMAKE_MAKE_PROGRAM is not set.  You probably need to select a different build tool.</span><br></pre></td></tr></table></figure>
+
+<p>似乎可以通过添加 CMAKE_MAKE_PROGRAM 来解决，但是由于没有环境变量，这还需要指定编译器位置，虽然可以通过cmake tools的脚本解决，但是那还需要额外添加一个文件。设置里面的设置cmake 环境变量似乎并不能给命令用。</p>
+<p>所以最简单的办法就是<strong>添加mingw32的目录到环境变量</strong>。</p>
+<p>如果追求极致不要修改环境变量，那么就在启动vscode的时候添加临时环境变量，这个文件放在工程文件夹下面。</p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">...  前面就和启动生成器里面添加环境变量的脚本一样</span><br><span class="line">code ../</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.codenong.com/6141608/">关于Makefile：找不到CMAKE_MAKE_PROGRAM | 码农家园 (codenong.com)</a><br>上面这个老哥说了，很多方法都不如加个环境变量。<br>但是这个mingw32-make确实很常用，就加到系统里面去吧。</p>
+<h3 id="cortex-debugger"><a href="#cortex-debugger" class="headerlink" title="cortex-debugger"></a>cortex-debugger</h3><p>之前备份的会启动不了。。。重新安装也不行。只好全部移除了vs配置文件。</p>
+<h3 id="Arm-Embedded-Debugger"><a href="#Arm-Embedded-Debugger" class="headerlink" title="Arm Embedded Debugger"></a>Arm Embedded Debugger</h3><p>vscode上除了cortex-debugger<br>Arm Embedded Debugger 似乎也可以：<br><a href="https://github.com/ARM-software/vscode-embedded-debug">ARM-software&#x2F;vscode-embedded-debug: Extension support for VS Code Embedded Debug Extension (github.com)</a><br>但是官方文档还不全，给的方法也有问题。。。。我试了一下还是连不上, 报错RDDI-ERROR 13 但是工具本身应该没问题。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$&#123;command:device-manager.getSerialNumber&#125;</span><br></pre></td></tr></table></figure>
+<p>上面这句命令要安装一个arm device manager扩展才行，但是还是会报错没有连接的设备，指定串号之后可以连接上（串号可以用keil中的配置看到或者使用”pyocd list”命令找到设备的uid），用的是wch-link, 自调试固件不行，不知道是不是被复位了。但是即使连接上了会进入断点进不了主程序，不知道缺什么。<br>所以暂时不搞了，估计效果不会超过pyocd。</p>
+<h3 id="由于armgcc工具链移动路径导致的原来cmakelist失效的问题需要迁移原工程"><a href="#由于armgcc工具链移动路径导致的原来cmakelist失效的问题需要迁移原工程" class="headerlink" title="由于armgcc工具链移动路径导致的原来cmakelist失效的问题需要迁移原工程"></a>由于armgcc工具链移动路径导致的原来cmakelist失效的问题需要迁移原工程</h3><p>直接编译或者选择对应的kit都会会报错找不到正确的工具链吧啦吧啦。<br>所以我的建议是不要移动工具链的位置，保持原来的路径。。。。。这样可以套用上次的设置。<br>不过迁移很简单：<br>在cmake插件的选择kit的按钮上，点选unspecified ，然后编译一下，再选对应的arm gcc就可以了。当然，不选回去也行，能用就算成功。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>通过这些配置，就可以做到同步到另一台电脑上也可以直接使用，只需要修改脚本中的环境变量的路径，如果工具本身被同步了，不用修改也可以直接使用。<br>同时ARM GCC是被自动查找的，所以路径不影响，只要之前安装过就行。</p>
+]]></content>
+      <categories>
+        <category>嵌入式与单片机</category>
+      </categories>
+      <tags>
+        <tag>rp2040</tag>
+        <tag>ARM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>从零开始的MSP430单片机学习（二）</title>
+    <url>/2021/04/20/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84MSP430%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+    <content><![CDATA[<p>在认识了一款单片机产品之后，了解了它的开发方式和特点，就可以考虑使用它的资源了进行开发了。</p>
+<h1 id="1-单片机的资源简介"><a href="#1-单片机的资源简介" class="headerlink" title="1 单片机的资源简介"></a>1 单片机的资源简介</h1><p>这里并不会用太多的篇幅，因为不同的单片机外设不一样，资源不一样，所以重要的是如何去了解。</p>
+<span id="more"></span>
+
+<p>烂尾了。。。430没啥意思，TI都把430办公室搬到印度去了，现在开始推M0了，最终还是走进了ARM的怀抱。转战RP2040了，顺便说一句ST也降价了，中间断更硬是把国产给撑起来了，现在都卷起来了。</p>
+]]></content>
+      <categories>
+        <category>嵌入式与单片机</category>
+      </categories>
+      <tags>
+        <tag>ARM</tag>
+        <tag>MSP430</tag>
+        <tag>8051</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>WinUSB上位机的开发</title>
+    <url>/2023/06/25/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/WinUSB%E4%B8%8A%E4%BD%8D%E6%9C%BA%E7%9A%84%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[<p>这篇文章是对WinUSB上位机开发的一个具体总结日志。详细的其他知识笔记分开来写。</p>
+<span id="more"></span>
+
+<p>起因是当时脑子一热准备给抽奖中的HPI1000重新编程开发，经过一两个月的磨蹭把下位机部分软件写差不多了，需要上位机联调了，同时也准备一同开发HPI1000对应的上位机。</p>
+<p>TivaWare中附带了一个C语言写的命令行的Windows上位机，改一改也能用，但是用起来不是很方便。而且由于QT忘记差不多了，一开始我是不打算使用QT的。</p>
+<h1 id="框架选择"><a href="#框架选择" class="headerlink" title="框架选择"></a>框架选择</h1><p>HPI1000主要是具有一个虚拟示波器，由于之前用QT写虚拟示波器的时候感觉痛苦万分，这次想要舍弃这个框架，而且QT整了不少活儿，开源闭源的问题让人很不爽，所以开始寻找其他的图形框架。</p>
+<p>然后就找到了Godot。这是一个小型游戏引擎，Godot 3.5总共也才三十多M，QT打包之后还真不一定比这个小，因此完全可以考虑。但是编程的时候遇到了问题。<br>作为一个开源软件，Godot发展并不是特别好，所以很多组件是没有的。例如Windows下串口的访问，USB的访问，如果使用它自己的GDscript，这些组件都需要自己使用C&#x2F;C++来实现。</p>
+<p>起初我是不想去用C&#x2F;C++的，因为需要包含WindowsDDK才能继续开发这个驱动，我以为WinUSB有更优雅的访问方式。<br>好在Godot同时也支持使用C#来编程，这样可以任意引入其他.net的包，然而我太天真了。<br>因为虽然.net原生支持串口访问，但是我没想到.NET作为微软的儿子，WinUSB居然没有对应的包，而微软的教程都是需要使用C&#x2F;C++来创建WinUSB应用。<br>不死心的我决定找找有没有第三方包，结果是有，但是不好用。。。比如LIBUSB，然而需要额外安装libusb的驱动。。这就违背了我的初衷：希望设备是免驱的。</p>
+<p>在.net应用中使用C&#x2F;C++方法也不是没有，那就是引入DLL. DLL这不是有现成的嘛，TivaWare中的那个DLL就可以使用。然而这是个大坑，不仅有指针的问题，还有DLL编译的时候和原编译器位数有关的问题，也就是说有可能这个DLL本身我还要重新编译一次。</p>
+<p>那我还不如直接重新写。</p>
+<p>上面的问题我另外写了具体的USB框架的选择，这里不再细说，总之就是当我决心使用C#的时候，发现事情最后都指向了使用C&#x2F;C++老老实实调用WinUSB API来写。</p>
+<pre><code>一开始我以为WinUSB API的调用会很麻烦，资料找起来也费劲，微软的资料看不大明白。。。后来才发现非常简单。
+</code></pre>
+<p>当我打开TivaWare的 lmusbdll 的source code，我发现这似乎就是简单封装了一下WinUSB API….参考别人的QT的winUSB demo,我发现两者好像没有什么区别。。。</p>
+<p>所以最终决定直接使用QT来写。</p>
+<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><p>添加依赖库。<br>在.pro中添加SetupAPI 和winusb，用来给后面调用。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 手动添加库</span><br><span class="line">win32: LIBS += -lSetupAPI </span><br><span class="line">win32: LIBS += -lwinusb</span><br></pre></td></tr></table></figure>
+
+<p>复制粘贴lmusb<br>去掉用不上的部分，把函数全部复制过来，去掉原来的导出的声明，直接改成普通函数。<br>添加一个速度查询的函数。</p>
+<p>添加WinUSBdevice设备类<br>方便承载原来的全局变量。</p>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><p>添加一个线程用来循环读取USB设备，防止主界面卡死。</p>
+]]></content>
+      <categories>
+        <category>嵌入式与单片机</category>
+      </categories>
+  </entry>
+  <entry>
     <title>单片机学习入门（一）</title>
     <url>/2021/04/05/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91/%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%EF%BC%88%E4%B8%80%EF%BC%89/</url>
     <content><![CDATA[<blockquote>
@@ -1836,408 +2003,40 @@ target remote localhost:3333
       </tags>
   </entry>
   <entry>
-    <title>KiCad联合LTspice仿真 - KiCad Simulation:Export to LTspice</title>
-    <url>/2023/07/11/Work%20with%20the%20world/KiCad%E8%81%94%E5%90%88LTspice%E4%BB%BF%E7%9C%9F/</url>
-    <content><![CDATA[<p>在介绍完KiCad仿真工具后，前文还介绍了如何使用KiCad内置的ngspice进行原理图仿真的案例，但是内置仿真的功能还不够多，而ngspice的界面过于简陋基本等于没有，那么有没有更好的仿真工具可以用呢，答案是，有的。</p>
-<h1 id="LTspice简介"><a href="#LTspice简介" class="headerlink" title="LTspice简介"></a>LTspice简介</h1><p>这是一款免费的仿真工具，而且由ADI鼎力支持。 有这两点介绍就足够了。</p>
-<h1 id="联合LTspice仿真的流程"><a href="#联合LTspice仿真的流程" class="headerlink" title="联合LTspice仿真的流程"></a>联合LTspice仿真的流程</h1><p>下面简单介绍一下整个流程和方法。</p>
-<h2 id="打开KiCad工程"><a href="#打开KiCad工程" class="headerlink" title="打开KiCad工程"></a>打开KiCad工程</h2><p>这个没啥好介绍的吧，首先你得有个原理图。</p>
-<h2 id="绘制原理图"><a href="#绘制原理图" class="headerlink" title="绘制原理图"></a>绘制原理图</h2><p>绘制原理图和前文相同，只需要给器件添加正确的仿真模型（或者直接已经写好绝对路径的器件），并且有正确的源设置。</p>
-<p>相比于直接在KiCad中仿真，还需要继续设置一些东西。</p>
-<h2 id="填写仿真语句"><a href="#填写仿真语句" class="headerlink" title="填写仿真语句"></a>填写仿真语句</h2><p>当然，在KiCad中直接仿真的时候，先写好仿真语句也是完全可以的而且我是比较推荐的。</p>
-<p>如果导出的时候没有事先在原理图中写好仿真语句，那么使用LTspice打开的时候会提示没有可用的仿真类型，你也可以这时候再在LTspice中编辑，但是，提示的弹窗很烦，不是吗？</p>
-<p>需要注意的是，网表导出器只能识别它支持的语句，不支持的也不会被导出。</p>
-<h2 id="设置导出功能"><a href="#设置导出功能" class="headerlink" title="设置导出功能"></a>设置导出功能</h2><p>打开原理图后，点击：</p>
-<p>文件-&gt;导出-&gt;网表-&gt;选择spice这一栏，更换里面的默认命令为：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">LTspice.exe -big &quot;%I&quot;</span><br></pre></td></tr></table></figure>
-
-<p>这里要注意，如果LTspice.exe并没有加入环境变量，那么需要填写为绝对路径：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">C:\Users\[用户名]\AppData\Local\Programs\ADI\LTspice\LTspice.exe  -big &quot;%I&quot;</span><br></pre></td></tr></table></figure>
-
-<p>旧版的LTspice的可执行文件不叫这个名字,可以替换为：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">D:\Program Files\LTC\LTspiceXVII\XVIIx64.exe -big &quot;%I&quot;</span><br></pre></td></tr></table></figure>
-
-<p><code>-big</code> 参数表示打开的时候最大化窗口，<code>%I</code>则是当前导出网表的路径。</p>
-<p>还可以选择更多的参数，参考LTspice安装目录下的LTspiceHelp文档，<code>Command Line Switches</code>章节。</p>
-<p>然后点击导出网表并运行就可以直接打开LTspice啦。</p>
-<blockquote>
-<p>当然，直接点击导出网表后点击cir文件也可以直接用LTspice打开，但是那麻烦一些，不是吗</p>
-</blockquote>
-<h2 id="额外的功能"><a href="#额外的功能" class="headerlink" title="额外的功能"></a>额外的功能</h2><h3 id="使用LTspice的专用模型"><a href="#使用LTspice的专用模型" class="headerlink" title="使用LTspice的专用模型"></a>使用LTspice的专用模型</h3><p>LTspice的模型大多是专用的，但是除了加密模型，他们也是使用ASCII文本文件储存的，因此，虽然在KiCad的ngspice中虽然可能用不了，但是依然可以设置为器件的spice模型并且导出到LTspice使用。</p>
-<p>这种方法的好处是对于ADI没有直接提供Spice模型的器件, 可以直接借用LTspice的模型。</p>
-<blockquote>
-<p>是借用！读书人的事怎么能叫偷呢？</p>
-</blockquote>
-<p>方法如下：</p>
-<p>使用Everything找到需要器件的asy文件，这是LTspice所使用的原理图符号的文件。</p>
-<blockquote>
-<p>什么？你还没有用上Everything? 赶快下载吧！极速体验就在眼前~</p>
-</blockquote>
-<p>例如LT1009.asy ,使用文本编辑器例如VSCode打开这个文件，找到带有 <code>SpiceModel</code> 字样这一行，这个说明了这个模型在哪个库里面，这里找到的是LTC3.lib 。同时，可以关注一下下面的SpiceOrder,这个表示了spice中引脚排列顺序。这里是：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PINATTR PinName VCC</span><br><span class="line">PINATTR SpiceOrder 1</span><br><span class="line">PIN 0 32 NONE 8</span><br><span class="line">PINATTR PinName VEE</span><br><span class="line">PINATTR SpiceOrder 2</span><br><span class="line">PIN 32 0 NONE 8</span><br><span class="line">PINATTR PinName ADJ</span><br><span class="line">PINATTR SpiceOrder 3</span><br></pre></td></tr></table></figure>
-
-<p>那么在KiCad原理图元器件的仿真设置中就需要设置正确的顺序。</p>
-<p>在KiCad6中是勾选替代节点顺序，用KiCad原理图符号引脚号表示引脚，排成上面需要的顺序。</p>
-<p>在KiCad7中是在引脚分配上手动勾选就好了。（吐槽：似乎还没上面那个好用，引脚多的器件需要一个一个点好累）</p>
-<blockquote>
-<p>TIPS【1】: 可以看到LTC3.lib就包含了很多LTSpice的模型，实际上安装目录下LTspice\lib\sub的.lib文件就是Ltspice所用的spice器件模型，不过大多数模型都用了LTspice所兼容的语法，因此在ngspice可能并不能直接使用。</p>
-<p>TIPS【2】: ngspice可以调整兼容模式，在KiCad中是 检查-&gt;仿真&gt;仿真-&gt;设置 ，不过这不影响导出的网表，而且似乎没啥用。</p>
-</blockquote>
-<h1 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h1><p>1、LTspice在许多电路中更容易收敛，还能用LTspice的模型仿真。</p>
-<p>2、LTspice功能更多。</p>
-<p>3、对于LTspice本来就没有的模型还是手动导入，这里直接从KiCAD导入则干脆省掉了这一步。</p>
-<blockquote>
-<p>其实ngspice本身收敛能力不错，但是还是远不如LTspice，很多使用复杂模型的电路都会无法收敛。</p>
-</blockquote>
-<h1 id="相比直接使用LTspice的缺点"><a href="#相比直接使用LTspice的缺点" class="headerlink" title="相比直接使用LTspice的缺点"></a>相比直接使用LTspice的缺点</h1><p>1、这个方法的缺点是由于只有网表可用，因此LTspice中的部分增强使用体验的功能不能直接使用。</p>
-<p>虽然ltspice所支持的原理图文件（.asc）也是纯文本储存，而且格式非常简单，但是KiCad并没有基于原理图的插件功能，因此我认为目前不值得为其开发一个转换生成Ltspice原理图的功能。</p>
-<blockquote>
-<p>KiCad组织从KiCad5开始说下一代要加入原理图插件功能，python插件示例中也预留了库名称，但是直到KiCad7,他们依然在说下次一定！</p>
-</blockquote>
-<p>2、LTspice部分加密的二进制模型也无法使用。</p>
-<h1 id="语法注意点"><a href="#语法注意点" class="headerlink" title="语法注意点"></a>语法注意点</h1><p>有些名称需要按照LTspice的来，例如噪声仿真中，输出噪声的频谱是onoise_spectrum，而LTspice是onoise，例如需要使用.save命令的时候，当然是需要复合当前使用的仿真器。</p>
-<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>我尝试过使用别的仿真工具导入网表，但是似乎不太好用。</p>
-<p><del>好了，现在KiCad仿真的系列教程结束了，现在转入LTspice的仿真教程吧！</del></p>
-<p>我忘记我还要说什么了。。。。<br>下面放个视频教程：</p>
-]]></content>
-      <categories>
-        <category>Work with the world</category>
-      </categories>
-      <tags>
-        <tag>Spice</tag>
-        <tag>模电</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>标准I2S接收器的分立逻辑器件实现</title>
-    <url>/2023/06/22/Work%20with%20the%20world/%E6%A0%87%E5%87%86I2S%E6%8E%A5%E6%94%B6%E5%99%A8%E7%9A%84%E5%88%86%E7%AB%8B%E9%80%BB%E8%BE%91%E5%99%A8%E4%BB%B6%E5%AE%9E%E7%8E%B0/</url>
-    <content><![CDATA[<p>这个从想做到做出来拖了两年。其实单纯讲做出来的话没有任何技术难度，就是一直拖。<br>早些年看到一些神奇贩子吹嘘着什么分立R2R DAC,使用解码多么多么动听，然而只要稍微了解一下相关器件，就知道，人家R2R做的好是因为人家做了几十年芯片，而你只是没有任何测试。不过，想到这个东西从数字到模拟还是挺好玩的，就想自己实现一下，讲究一个超低成本，看看听起来感觉怎么样。</p>
+    <title>使用aardio写一个基于pyocd的单片机下载器</title>
+    <url>/2023/04/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/%E4%BD%BF%E7%94%A8aardio%E5%86%99%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8Epyocd%E7%9A%84%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%8B%E8%BD%BD%E5%99%A8/</url>
+    <content><![CDATA[<p>为了方便使用pyocd进行下载操作，于是写了一个下载器GUI，开发工具选择了aardio，因此只支持Windows平台。</p>
 <span id="more"></span>
-
-<p>其实文章名字叫做接收器的实现，既然接受了最后肯定要出效果的，所以后端就是最简单的R2R DAC来得到模拟信号。这个文章也会是整板设计说完整。</p>
-<h1 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h1><p>其实虽然说着简单，但是基本上几年毫无数字逻辑实战设计经验的我一上来是比较懵圈。总体上设计分成两部分。</p>
+<h1 id="1-新建工程"><a href="#1-新建工程" class="headerlink" title="1 新建工程"></a>1 新建工程</h1><p>最开始本来是打算调用pyocd 的python api的，但是一方面是内嵌包一直安装出问题，另一方面是考虑到本地pack不想重复安装和管理，于是就转做pyocd的前端了，也就是直接调用pyocd，根据返回数据解析，然后执行要做的命令。</p>
+<p>所以新建一个普通工程就可以。</p>
+<h1 id="2-基本功能"><a href="#2-基本功能" class="headerlink" title="2 基本功能"></a>2 基本功能</h1><p>主要功能：</p>
 <ul>
-<li>I2S信号转并行信号</li>
-<li>R2R DAC本身</li>
+<li><p>下载 </p>
+</li>
+<li><p>擦除 </p>
+</li>
+<li><p>复位<br>然后要能选择对应的仿真器和单片机型号，从支持的列表从选择，就要用一下pyocd list和pyocd list -t命令查询，根据返回的结果解析已经可以支持的单片机。</p>
+<p>  p.s 其实直接用pyocd json 命令返回json会很容易解析，但是我一开始没看到这个命令，就算了，正好生成命令pyocd list的执行结果也可以给人看。</p>
+</li>
 </ul>
-<p>其中，I2S信号飞利浦指定的信号标准，但是实际上有好几种格式都被称之为I2S信号。其中飞利浦标准可以从其标准文档获得。</p>
-<p>实际上文档中已经给了两种可行的设计逻辑图，但是当时我对着这个图不知道怎么选型器件。。。</p>
-<p>TODO:</p>
-<p>参考资料：<br>I2S bus specification.pdf Philips<br>I2S bus specification -UM11732 NXP<br>实际上NXP就是Philip出来的，新文档主要是把Master&#x2F;slave修改成了Controllter&#x2F;Target.<br>(虽然有点政治正确，但是早该改了，以前这种表达是挺离谱的)</p>
-<p>测试之后发现74HC74的CLR和PR没有拉高。。。</p>
-<p>然后发现输出的是补码，，最高位需要取反。<br>然后就发现了这个设计存在问题。</p>
-<h1 id="故障"><a href="#故障" class="headerlink" title="故障"></a>故障</h1><p>在假货宝上义胜买的AMS1117-5V用了没多久就被击穿了，本来一开始3.3V还是正常工作，奈何我没发现。。。切换到5V之后，实际输入12V把逻辑片全部带走了。</p>
-<pre><code>... 太难过了，下次设计这种电源一定要做好保护，也不要抱着侥幸买假货。。
-</code></pre>
-<p>因此就开始改板，加入之前没有考虑进去的部分。</p>
-]]></content>
-      <categories>
-        <category>Work with the world</category>
-      </categories>
-      <tags>
-        <tag>数字逻辑</tag>
-        <tag>DAC</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>WinUSB上位机的开发</title>
-    <url>/2023/06/25/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/WinUSB%E4%B8%8A%E4%BD%8D%E6%9C%BA%E7%9A%84%E5%BC%80%E5%8F%91/</url>
-    <content><![CDATA[<p>这篇文章是对WinUSB上位机开发的一个具体总结日志。详细的其他知识笔记分开来写。</p>
-<span id="more"></span>
-
-<p>起因是当时脑子一热准备给抽奖中的HPI1000重新编程开发，经过一两个月的磨蹭把下位机部分软件写差不多了，需要上位机联调了，同时也准备一同开发HPI1000对应的上位机。</p>
-<p>TivaWare中附带了一个C语言写的命令行的Windows上位机，改一改也能用，但是用起来不是很方便。而且由于QT忘记差不多了，一开始我是不打算使用QT的。</p>
-<h1 id="框架选择"><a href="#框架选择" class="headerlink" title="框架选择"></a>框架选择</h1><p>HPI1000主要是具有一个虚拟示波器，由于之前用QT写虚拟示波器的时候感觉痛苦万分，这次想要舍弃这个框架，而且QT整了不少活儿，开源闭源的问题让人很不爽，所以开始寻找其他的图形框架。</p>
-<p>然后就找到了Godot。这是一个小型游戏引擎，Godot 3.5总共也才三十多M，QT打包之后还真不一定比这个小，因此完全可以考虑。但是编程的时候遇到了问题。<br>作为一个开源软件，Godot发展并不是特别好，所以很多组件是没有的。例如Windows下串口的访问，USB的访问，如果使用它自己的GDscript，这些组件都需要自己使用C&#x2F;C++来实现。</p>
-<p>起初我是不想去用C&#x2F;C++的，因为需要包含WindowsDDK才能继续开发这个驱动，我以为WinUSB有更优雅的访问方式。<br>好在Godot同时也支持使用C#来编程，这样可以任意引入其他.net的包，然而我太天真了。<br>因为虽然.net原生支持串口访问，但是我没想到.NET作为微软的儿子，WinUSB居然没有对应的包，而微软的教程都是需要使用C&#x2F;C++来创建WinUSB应用。<br>不死心的我决定找找有没有第三方包，结果是有，但是不好用。。。比如LIBUSB，然而需要额外安装libusb的驱动。。这就违背了我的初衷：希望设备是免驱的。</p>
-<p>在.net应用中使用C&#x2F;C++方法也不是没有，那就是引入DLL. DLL这不是有现成的嘛，TivaWare中的那个DLL就可以使用。然而这是个大坑，不仅有指针的问题，还有DLL编译的时候和原编译器位数有关的问题，也就是说有可能这个DLL本身我还要重新编译一次。</p>
-<p>那我还不如直接重新写。</p>
-<p>上面的问题我另外写了具体的USB框架的选择，这里不再细说，总之就是当我决心使用C#的时候，发现事情最后都指向了使用C&#x2F;C++老老实实调用WinUSB API来写。</p>
-<pre><code>一开始我以为WinUSB API的调用会很麻烦，资料找起来也费劲，微软的资料看不大明白。。。后来才发现非常简单。
-</code></pre>
-<p>当我打开TivaWare的 lmusbdll 的source code，我发现这似乎就是简单封装了一下WinUSB API….参考别人的QT的winUSB demo,我发现两者好像没有什么区别。。。</p>
-<p>所以最终决定直接使用QT来写。</p>
-<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><p>添加依赖库。<br>在.pro中添加SetupAPI 和winusb，用来给后面调用。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 手动添加库</span><br><span class="line">win32: LIBS += -lSetupAPI </span><br><span class="line">win32: LIBS += -lwinusb</span><br></pre></td></tr></table></figure>
-
-<p>复制粘贴lmusb<br>去掉用不上的部分，把函数全部复制过来，去掉原来的导出的声明，直接改成普通函数。<br>添加一个速度查询的函数。</p>
-<p>添加WinUSBdevice设备类<br>方便承载原来的全局变量。</p>
-<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><p>添加一个线程用来循环读取USB设备，防止主界面卡死。</p>
+<p>其中pyocd list会返回仿真器的列表，我是通过head也就是第一行的标题的位置来得到下面每行内容的分割位置，得到正确的结果。这里发现是每隔一行为一个仿真器信息。<br>而pyocd list -t 返回可用器件型号，分割方法类似，不过这里不是每隔一行而是连续的每行都是对应结果，一开始这里没看到导致少了一半。</p>
+<p>另外这里在使用aardio遇到一个bug就是结构体的值发生了变换（aardio实际上没有结构体而是表），不知道为什么，类似的方法直接赋值给数组就不会出问题。</p>
+<h1 id="3-基本实现"><a href="#3-基本实现" class="headerlink" title="3 基本实现"></a>3 基本实现</h1><p>基本就是添加几个框框，根据填入的参数生成命令然后通过调用命令行并获取执行结果显示出来，对于有进度条的执行命令我不知道怎么实时获取，没有看到aardio这样的例子，遂作罢。</p>
+<p><img src="http://c.51hei.com/d/forum/202304/25/142034iz7zt6ovv44xttoo.png" alt="基本界面"></p>
+<p>除了基本界面，调整了一下布局，让他能缩放合适，内嵌了字体（其实也就俩按键用了这个字体，得意黑，软件凭空大了1M多，本来只有几百kb，主要是好不容易调整好了不想改 ）。<br>添加了一个菜单栏，把一些生成命令的语句例如pyocd gdbserver收纳到了菜单栏，方便配合其他软件使用。<br>例如如果要开启gdb server，例如使用segger embedded studio或者其他软件的时候，启动时候执行的命令就可以用这个GUI来生成，稍微省心一点。</p>
+<p>仿真器连接后可以通过刷新来获取，当然，打开软件的时候也会自动获取一次，通过指定uid来保证一次能执行对命令，避免二次选择。</p>
+<p>基本就这样。</p>
+<p>这里有我上传的：<br><a href="http://www.51hei.com/bbs/forum.php?mod=viewthread&tid=228512">分享一个基于pyocd的单片机GUI下载器 - Cortex M3 M0 M4开发 (51hei.com)</a></p>
+<h1 id="4-总结"><a href="#4-总结" class="headerlink" title="4 总结"></a>4 总结</h1><p>aardio确实挺好用的，很能缝合，布局上也是自动缩放，要求不高的话很容易调整到还不错的效果。写起来很快，高分屏的问题也自动处理了，第一次用观感不错。不过有部分问题横竖找不到根源，倒是能换个方法解决。</p>
+<p>其实pyocd本身就有python api，但是我不想用python的gui的一些库然后打包什么的。其实用这些api有些功能会做出来更好用。</p>
 ]]></content>
       <categories>
         <category>嵌入式与单片机</category>
       </categories>
-  </entry>
-  <entry>
-    <title>reMarkable 1 漫游指南</title>
-    <url>/2023/07/19/%E7%94%9F%E6%B4%BB%E6%B8%B8%E7%8E%A9/reMarkable%201%20%E6%BC%AB%E6%B8%B8%E6%8C%87%E5%8D%97/</url>
-    <content><![CDATA[<p>aka 2023 reMarkable 1代配置完全指南：从配置字体到救砖刷机</p>
-<p>reMarkable 1 是于2017年11月21日上市的第一代手写电纸书平板，众筹价379刀，至今官网仍在更新系统，在今年（2023）七月的时候刷淘宝的洋垃圾店看到了这个，简单对比了一下功能和某黄鱼上的价格后下单，到手价738。</p>
-<pre><code>据说之前更便宜，不过不知道是多少了。
-</code></pre>
-<p>其实很早就想买个电纸书了，不过上次买的时候由于疫情管控一个多月没发货消磨了我的冲动最后退掉了。这次看到这个有10inch的屏幕，重量只有350g，而且还配有低延迟的电磁笔，实在让我心动，这次忍不住手欠了。</p>
-<p>到货之后，这个是没有保护套的，淘宝上也买不到，因为这个型号实在是太老了，算起来都有6年了。而且当时这个也不便宜，对国内的支持也不是很好，普及度必然不高。</p>
-<pre><code>时间过得真快，2017年的时候我还在渴望着有一个索尼的DPT-RP1，没想到现在捡的洋垃圾就是当时同台竞争的产品。
-到去年国内的厂商都已经出了墨水屏平板了。然而，reMarkable的系统仍然默认不支持中文。
-但是它在国外的热度确实相当高的，看网上的开源项目就知道了。
-</code></pre>
-<p>首先说说使用体验。</p>
-<h1 id="手感和交互"><a href="#手感和交互" class="headerlink" title="手感和交互"></a>手感和交互</h1><p>整个平板非常轻薄，厚度控制非常好，拿在手上完全不会出现习武之人的情况。背面是金属加上防滑条，屏幕是类似于磨砂的表面，大概能减少一些直接的反光，不过在近光源下仍然需要避开点角度。226ppi的像素密度放在现在仍然不过时。</p>
-<div align="center"><img src="/2023/07/19/%E7%94%9F%E6%B4%BB%E6%B8%B8%E7%8E%A9/reMarkable%201%20%E6%BC%AB%E6%B8%B8%E6%8C%87%E5%8D%97/P1010319.png" width="600"></div>
-
-<pre><code>用自己搓的微距镜头拍了一下，可以看到磨砂处理，字体边缘不是没对焦，是就是这样的。
-</code></pre>
-<p>附带的手写笔的笔头是软的，写字手感非常好，不过也据说比较费笔头，官方送了10个笔头在套装里面，不过考虑到这个东西的笔头仍然很贵，我打算找找替代品。</p>
-<p>由于是使用的wacom的电磁屏技术，我猜测只要是同类的无源笔都可以支持，于是找到了我之前的数位板上的笔，分别是高漫M6，Wacom CTL 472，还有之前捡垃圾的时候顺手买的两块钱一支的祖国版三星note配笔，分别测试了一下，结果如下。</p>
-<ul>
-<li><p>高漫M6 可写，但是灵敏度不匹配，没接触到板面就会写上笔迹。</p>
-</li>
-<li><p>wacom CTL 472，不可用。</p>
-</li>
-<li><p>祖国版<font color="#d83931">三星note配笔，完美支持</font>，就是太小了。</p>
-<p>  反过来说，这个笔和三星笔也可以在数位板上用，就是感应距离比较短。</p>
-</li>
-</ul>
-<div align="center"><img src="/2023/07/19/%E7%94%9F%E6%B4%BB%E6%B8%B8%E7%8E%A9/reMarkable%201%20%E6%BC%AB%E6%B8%B8%E6%8C%87%E5%8D%97/P1010304.png" width="750"></div>
-
-<blockquote>
-<p>我当时买这俩垃圾笔只是看到了一个<u>把note的笔塞进笔杆里当正常尺寸笔用的操作</u>，用在三星Tab上，我寻思也许我会买Tab呢，没想到最后能在这里用上了。</p>
-</blockquote>
-<div align="center"><img src="/2023/07/19/%E7%94%9F%E6%B4%BB%E6%B8%B8%E7%8E%A9/reMarkable%201%20%E6%BC%AB%E6%B8%B8%E6%8C%87%E5%8D%97/P1010323.png" width="750"></div>
-翻书支持使用按键和在屏幕上左右滑动，虽然模式不是很多但是够用。
-
-<p>可能是考虑到是墨水屏，交互点击的时候没有视觉反馈，有时候感觉不到是不是点错了。但是在KOReader里面这个可以设置支持的。</p>
-<h1 id="软件使用"><a href="#软件使用" class="headerlink" title="软件使用"></a>软件使用</h1><p>配置软件的时候可能会需要用到工具，下面会说明。</p>
-<h2 id="前置说明"><a href="#前置说明" class="headerlink" title="前置说明"></a>前置说明</h2><p>连接的时候首先需要连接WIFI或者连接USB后打开USB Web Interface. 前者的IP在设置中Help-Copyright and licenses下可以找到，同时这里能找到SSH密码。</p>
-<pre><code>记住这个密码，防止出现问题仍然可以用这个密码登录SSH.
-</code></pre>
-<p>后者IP则保持为 10.11.99.1 ，如果不想连接WIFI或者为了避免IP变化，可以就用USB界面。配置的时候最好把睡眠关掉，否则会断开连接，无论是WIFI还是USB网络界面。</p>
-<p>需要的电脑上的工具一个是WinSCP，使用WinSCP可以方便地管理文件，而且可以保存密码免输入密码登录，也可以使用命令行窗口来管理，因为命令行工具不是很好用所以需要使用SSH来管理更方便。</p>
-<p>这个工具直接用默认配置就可以，协议选SFTP就可以了，不过需要显示隐藏文件，点击右下角的已隐藏字样点一下，可以显示隐藏文件了。</p>
-<p>另一个是SSH，很多人推荐Putty但是我觉得这个并不方便，可以直接用WindowsTerminal下powershell支持的ssh，使用命令ssh <a href="mailto:&#114;&#111;&#x6f;&#116;&#64;&#x31;&#x39;&#50;&#46;&#x31;&#54;&#56;&#x2e;&#x33;&#49;&#46;&#x33;&#x39;">&#114;&#111;&#x6f;&#116;&#64;&#x31;&#x39;&#50;&#46;&#x31;&#54;&#56;&#x2e;&#x33;&#49;&#46;&#x33;&#x39;</a> 即可，注意这个ip需要在机器内查看。</p>
-<p>由于配置一些其他软件的时候经常使用SSH，可以通过生成密钥来免密码登录。</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
-<p>如果已经生成过了（比如之前用过git必然配置过），就不要生成了。<br>会提示生成文件到 .ssh 目录下了。<br>然后把公钥id_rsa.pub放到reMarkable上的~&#x2F;.ssh下，然后这里注意这里除了用户目录不能对组有权限，.ssh以及以下的文件都不能对组有权限，否则不能登录，会报错<code>Permission denied (publickey,password)</code> 。<br>然后在.ssh目录下执行</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> id_rsa.pub &gt;&gt;authorized_keys</span><br></pre></td></tr></table></figure>
-
-<p>就可以把公钥写进去了，然后id_rsa.pub可以删掉了（因为这是主机的公钥）。</p>
-<h2 id="字体中文支持"><a href="#字体中文支持" class="headerlink" title="字体中文支持"></a>字体中文支持</h2><p>没有。</p>
-<p>需要自己安装中文到字体目录下。系统预装的中文目录位于<code>/usr/share/fonts/ttf</code> 下，可以直接使用WinSCP把字体拖到<code>/usr/share/fonts/</code> 。但是由于系统更新后，根目录并没有调整分区大小，但是内容变多了，于是，如果想使用大一点的字体包，很有可能装不下。</p>
-<pre><code>在ssh中输入df -h即可查看磁盘使用情况。-h 是指用人方便看的方式显示。
-</code></pre>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">root@reMarkable:~<span class="comment"># df -h</span></span><br><span class="line">Filesystem                Size      Used Available Use% Mounted on</span><br><span class="line">/dev/root               230.2M    221.8M         0 100% /</span><br><span class="line">devtmpfs                104.7M         0    104.7M   0% /dev</span><br><span class="line">tmpfs                   233.2M         0    233.2M   0% /dev/shm</span><br><span class="line">tmpfs                   233.2M    612.0K    232.6M   0% /run</span><br><span class="line">tmpfs                   233.2M         0    233.2M   0% /sys/fs/cgroup</span><br><span class="line">tmpfs                   233.2M     12.0K    233.1M   0% /tmp</span><br><span class="line">tmpfs                   233.2M         0    233.2M   0% /var/volatile</span><br><span class="line">/dev/mmcblk1p1           19.0M     11.0M      8.0M  58% /var/lib/uboot</span><br><span class="line">/dev/mmcblk1p7            6.5G    696.5M      5.5G  11% /home</span><br></pre></td></tr></table></figure>
-
-<p>可以看到这里系统空间只剩几个M了，只有超小的字体才能塞进去。<br>网上大多数方法都是复制字体到用户目录下建立软链接，但是实测不好使，而且同样会被系统更新推掉。实际上有更好的方法。<br>实际上本身把字体放到<code>/usr/share/fonts/</code> 下不是一个好办法，因为每次系统更新都会把字体更新掉，需要再次复制，只有放到用户目录下，系统更新才不会乱删。只需要在目录&#x2F;home&#x2F;root&#x2F;.local&#x2F;share&#x2F;下新建一个fonts文件夹，然后把自己的字体放进去就可以了。</p>
-<p>可以通过fc-list命令来检查字体安装情况。</p>
-<p>为什么这样做就可以了？可以找到&#x2F;etc&#x2F;fonts&#x2F;fonts.conf，其中，有一段为：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;!-- Font directory list --&gt;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	&lt;dir&gt;/usr/share/fonts&lt;/dir&gt;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">	&lt;dir prefix=&quot;xdg&quot;&gt;fonts&lt;/dir&gt;</span><br><span class="line">	&lt;!-- the following element will be removed in the future --&gt;</span><br><span class="line">	&lt;dir&gt;~/.fonts&lt;/dir&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>这里可以看到，官方系统中一开始就包含了&#x2F;usr&#x2F;share&#x2F;fonts 这个目录，现在这个目录已经塞不下了，而下面<code>&lt;dir prefix=&quot;xdg&quot;&gt;fonts&lt;/dir&gt;</code>中的前缀xdg表示这个目录遵循 XDG 标准命名规范。XDG(X Desktop Group)是一组开源标准,用于定义 Linux 桌面环境的基础目录和配置。<br>也就是这个的路径为 <code>~/.local/share/fonts</code> , 因此只需要在用户目录下的<code>.local/share/fonts</code>里面放字体就可以了。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">root@reMarkable:~# pwd</span><br><span class="line">/home/root</span><br><span class="line">root@reMarkable:~# cd .local/share/fonts</span><br></pre></td></tr></table></figure>
-<p>然后用WinSCP复制即可，或者全部用WinSCP操作。然后输入</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl restart xochitl</span><br></pre></td></tr></table></figure>
-<p>即可重启官方阅读器，这时候就可以看到中文已经可以正常显示了。</p>
-<pre><code>xochitl就是官方阅读器的名称
-</code></pre>
-<p>同样，在&#x2F;root&#x2F;home&#x2F;下建立文件夹 .fonts , 然后复制字体到里面也可以。虽然提示了要废弃不过这是linux给出的提示，也许下次系统更新依然可用。当然你也可以自己编辑这个配置文件写入一个路径来存放字体，但是显然下次系统更新这个文件大概率被推掉，你写的内容就会没有了。</p>
-<p>使用的字体可以是TrueType（ttf）, 也可以是OpenType（otf）, WOFF2应该也是可以的。直接放到设置的字体文件夹下就可以，也可以使用继续创建文件夹，不影响使用。</p>
-<p>实际上还有更多的字体配置可以自己定义，在&#x2F;etc&#x2F;fonts&#x2F;下还有其他的对应的配置文件，有兴趣折腾可以看一下。<br>不过在官方原来的阅读器中并不是很好配置，这里直接推进去的中文字体只会有一个被这个阅读器选用，因为官方的app只启用了五种字体而且似乎是和官方字体一一对应的，我不知道直接替换字体能不能起到作用，但是不知道这个app是按照系统字体目录来的还是写死了只能用usr目录，如所以就懒得折腾了。</p>
-<p>如果坚持要在 <code>/usr/share/fonts/</code>  下塞入字体，但是空间依然不够，可以尝试使用</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">journalctl --vacuum-size=1M</span><br></pre></td></tr></table></figure>
-<p>–vacuum-size选项可以设置日志文件的最大限制大小,当日志 grows 到这个大小时,会自动删除旧的日志。<br>然后大概可以塞进去一个小一点的字体。</p>
-<p><font color="#9bbb59">还要了解更多可以搜索linux下字体配置或者fontconfig，缩写也就是fc  。</font></p>
-<p>更多提示：<br>&#x2F;usr&#x2F;share&#x2F;fontconfig&#x2F;conf.avail&#x2F;这个路径下有更详细的字体配置<br>&#x2F;etc&#x2F;fonts&#x2F;conf.d</p>
-<h2 id="传输和同步"><a href="#传输和同步" class="headerlink" title="传输和同步"></a>传输和同步</h2><p>官方力推的方案是下载电脑的APP和手机APP, 可以实现“快速”的多端同步，甚至能在平板上画同时APP能显示投屏作为演示工具。<br>然而，然而，然而！它用的是谷歌的服务。这意味着，你必须会一门轻功才能让这个平板跟着你一起越过Block，简单的方法至少有两种，也可以尝试直接给这个平板安装应用程序来完成这个目标，不过似乎网上没有直接适配的，你带自己看一下如何在linux里面使用代理，例如CLASH。毕竟，国外哥们基本都用不着。</p>
-<pre><code>如果你需要使用官方同步服务，只需要在官网[reMarkable • Home](https://my.remarkable.com/)生成pin，填写到reMarkable里面就好了，保持网络畅通。
-</code></pre>
-<p>好在除了这一种方法，官方另外提供了一种方法，通过USB来建立一个局域网来传输。</p>
-<p>也可以在本地电脑使用命令：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">curl --form file=@file.pdf http://10.11.99.1/upload</span><br></pre></td></tr></table></figure>
-<p>代替使用WEB网页传书。 不过这仍然需要开启USB的网络界面服务。<br>但是这个方法有个缺陷，超过70M的PDF文件传输不上去，只能使用官方的同步软件来同步。</p>
-<pre><code>在国内首先要调整系统时间对应才能用，不过我买的时候店家已经弄好了。
-</code></pre>
-<p>之前有个哥们在知乎上发布了一个他自用的工具harecoffee，然而这哥们没开源而且他的网页也失效了，现在就找不到了。。。</p>
-<p>目前找到一个现成的开源软件<a href="http://www.davisr.me/projects/rcu/">reMarkable Connection Utility (RCU) (davisr.me)</a>，可以直接用WIFI或者USB上传转换，支持新系统，走SSH，但是要12刀，买了之后还会给你源码你可以自由分发，似乎这是符合AGPLV3的。。。</p>
-<pre><code>这是一个PyQT写的应用，用PyInstaller打包的。他的导出是直接使用自己取出目录下的文件然后渲染成PDF的，据说相比官方的导出更好。
-</code></pre>
-<p>有个项目参考了它：<br><a href="https://github.com/rschroll/rmrl">rschroll&#x2F;rmrl: Render reMarkable documents to PDF (github.com)</a><br>因此渲染这部分可以参考参考。</p>
-<p>12刀对于我还是太贵了，如果你有兴趣可以发邮件给作者付费。既然是开源软件那么可能有人买了之后发出来，可惜菩萨太少了，只找到一个网站上分发了一份2021年的源代码：<br><a href="https://directory.fsf.org/wiki/ReMarkable_Connection_Utility_(RCU)">ReMarkable Connection Utility (RCU) - Free Software Directory (fsf.org)</a> 实际上还是挂在作者的服务器上的下载来的。由于强迫症我安装了python3.11,而pyside2目前似乎不支持python 3.11，因此没有打包成功，我懒得折腾了。</p>
-<p>还有一些别的项目也做了类似的功能，然而随着系统更新可能已经挂了：<br><a href="https://github.com/bordaigorl/remy">bordaigorl&#x2F;remy: Remy, an online&amp;offline manager for the reMarkable tablet (github.com)</a><br>这个需要作为python模块安装。</p>
-<p>另外还有一些需要在reMarkable上安装软件的方法，我们后面介绍。</p>
-<p>这个工具实测可用：<br><a href="https://github.com/furesoft/Slithin">furesoft&#x2F;Slithin: A management application for the remarkable tablet (github.com)</a><br>可以管理模板，恢复自定义模板和图片设置。可以导入模板，可以导出PDF，可惜不能导入书籍。可以在微软store安装</p>
-<p>不可用：<br><a href="https://github.com/bruot/pyrmexplorer">bruot&#x2F;pyrmexplorer: GUI explorer for Remarkable tablets (github.com)</a><br>太久没更新了必然挂了。</p>
-<h2 id="笔记模板"><a href="#笔记模板" class="headerlink" title="笔记模板"></a>笔记模板</h2><p>由于官方app自带一个笔记功能，所以实际上可以导入笔记模板，它自带了不少网格，个人觉得够用，这里不折腾了，网上教程也很多。</p>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h2 id="更改睡眠图片"><a href="#更改睡眠图片" class="headerlink" title="更改睡眠图片"></a>更改睡眠图片</h2><p>官方app的睡眠功能是显示一张图片同时停止大部分功能，顺便还能显示你填写的信息。<br>新建dpi为226分辨率为1404x1872的图保存为png就可以替换。<br>这个图片在 <code>/usr/share/remarkable</code>路径下的suspended.png，直接替换即可，保持名称一致。</p>
-<h3 id="睡眠"><a href="#睡眠" class="headerlink" title="睡眠"></a>睡眠</h3><p>实际上这个睡眠只是应用停止运行，而不是linux睡眠，因此依然不耽误其他软件运行，同样，其他软件运行的时候，官方app在20分钟之后仍然会进入睡眠。</p>
-<h2 id="阅读问题解决"><a href="#阅读问题解决" class="headerlink" title="阅读问题解决"></a>阅读问题解决</h2><p>由于官方APP的传书方法实际上是在 &#x2F;home&#x2F;root&#x2F;.local&#x2F;share&#x2F;remarkable&#x2F;xochitl 下生成对应的书籍文件，如果生成失败导致打不开，可以手动删除里面的文件，具体对应是哪个需要找一找。</p>
-<h1 id="这就完了吗"><a href="#这就完了吗" class="headerlink" title="这就完了吗"></a>这就完了吗</h1><p>比较有意思的是，点开设置中的Help下的Copyrights and licenses，官方也贴出了自己的Github链接<a href="https://github.com/remarkable">reMarkable AS (github.com)</a>  他们给出了Linux内核，uboot等开源代码，同时<br>可以直接使用SSH登录，默认账户就是root. 密码则写在了Copyright and licenses页面的最下面。可以说官方是支持用户自己折腾的。</p>
-<pre><code>低情商：官方系统不完善
-</code></pre>
-<p>实际上可以安装第三方阅读器获得更好的支持。甚至是安装更多APP,以及自己开发。</p>
-<h2 id="KOReader"><a href="#KOReader" class="headerlink" title="KOReader"></a>KOReader</h2><blockquote>
-<p>由于KOReader传书方便得多，我建议不需要做笔记的可以直接放到用户空间下用KOReader来读，要做笔记的上传到rM自带阅读器里面读。</p>
-</blockquote>
-<p>除了安装Toltec后使用包管理器，可以通过别的方法安装koreader，如官方方法直接安装：<br><a href="https://github.com/koreader/koreader/wiki/Installation-on-Remarkable">Installation on ReMarkable · koreader&#x2F;koreader Wiki (github.com)</a></p>
-<p>要就是两个服务文件，一个是主进程再一个监听按键事件的进程，装好后直接长按中键几秒就可以启动了，很方便。</p>
-<p>不过它没教怎么返回原来的阅读器，这个应该需要第三方启动器了。</p>
-<p>按下中键三秒唤处koreader</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cp</span> /home/root/koreader/button-listen.service /etc/systemd/system/</span><br><span class="line">systemctl <span class="built_in">enable</span> --now button-listen</span><br></pre></td></tr></table></figure>
-
-<p>但是，这里不使用这个按键唤起koreader，因为按了就切不回去，这里安装一个启动器来切换</p>
-<p>如果你希望启动开机启动koreader而不是xochitl，那么使用：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl disable --now xochitl &amp;&amp; systemctl enable --now koreader</span><br></pre></td></tr></table></figure>
-<p>我觉得这个是不是要修改服务文件里面的after xochitl，因为实测这个不能阻止xochitl启动，但是remux反而不能启动了。修改remux启动文件中的After&#x3D;xochitl可以用来防止remux不能启动，但是似乎并不稳定，所以就不这样做了。</p>
-<p>koreader也可以直接阅读在rMapp中导入的书籍，但是由于位于隐藏文件夹，所以需要打开显示隐藏文件夹，目标文件夹到文件夹快捷目录中</p>
-<p>其实KOReader本身支持Linux（废话），所以你完全可以用作自己的Linux的阅读器。<br>这个开源软件发展了很久，功能十分强大，这里调几个reMarkable官方阅读器里面的痛点来说。</p>
-<p>0、文件支持<br>支持<br>而且不会生成一堆奇怪的文件来支持显示文件。<br>具有文件管理器可以直接翻阅文件系统。</p>
-<h3 id="1、字体"><a href="#1、字体" class="headerlink" title="1、字体"></a>1、字体</h3><p>更换字体是十分方便的，在路径 koreader&#x2F;fonts下放入下载的字体，点选字体设置的时候翻到第一页就会显示新导入的字体并且显示new的字样。可以迅速调整。而xochitl则需要很久重新生成一个PDF。</p>
-<p>2、对比度可调<br>KOReader本身会自动设置一个，但是如果有的扫描文件不合适，那么可以手动调整</p>
-<h2 id="REMUX"><a href="#REMUX" class="headerlink" title="REMUX"></a>REMUX</h2><p>这是一个极简GUI启动器,可以用来管理切换到其他的APP。<br>按照官网提示<a href="https://rmkit.dev/apps/remux">remux launcher (rmkit.dev)</a><br>下载remux和remux.service两个文件，然后把remux放到&#x2F;opt&#x2F;bin&#x2F;下，也就是路径是&#x2F;opt&#x2F;bin&#x2F;remux ， 这里只有两层目录。<br>然后<font color="#ff0000">chmod</font> &#x2F;opt&#x2F;bin&#x2F;remux 777, 这个是官网没说的。（其实700就行）<br>然后把remux.service放到&#x2F;etc&#x2F;systemd&#x2F;system下，<br>最后</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> --now remux</span><br></pre></td></tr></table></figure>
-
-<p>最后，可以用按住中键呼出启动器或者侧边向上滑动（幅度大点）。<br>点击应用名称可以切换，点击后面显示的使用内存大小可以关闭应用。</p>
-<p>然而，这个目录是在根目录下的，很可能由于系统更新或者救砖操作被推掉，因此稍微做一点修改。<br>移动remux这个可执行文件到~&#x2F;下，也就是&#x2F;root&#x2F;home，然后修改remux.service中的原来的路径 &#x2F;opt&#x2F;bin&#x2F;remux 到&#x2F;root&#x2F;home&#x2F;remux，其中的After修改为：<br>After&#x3D;xochitl.service home.mount</p>
-<p>如果前面已经安装过一次remux了，那么首先使用：<br>systemctl disable remux来移除服务，然后重新启用。<br>systemctl enable –now remux</p>
-<p>最后，~&#x2F;.config&#x2F;remux&#x2F;remux.conf可以编辑启用方式，例如可以使用在屏幕下方三点点击来启动remux</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">launch_gesture=gesture=tap;fingers=3</span><br></pre></td></tr></table></figure>
-<p>不过这样有时候会卡住，只需要四指滑动就可以重启remux了。不过我还是习惯直接用<br>或者点一下屏幕然后手指扫屏幕<br>有三种方式来添加应用，这里最简单的就是把应用放在&#x2F;home&#x2F;root&#x2F;apps下面<br>然后重启remux即可</p>
-<p>或者重新编译手工加入<br>或者- compatible with draft-remarkable config files</p>
-<p>预先写好在源码里面的有<br>koreader<br>fingerterm<br>keywriter<br>edit</p>
-<p>官网的readme补全，需要看源码里面的readme</p>
-<p>如何编译：<br>run <code>make remux</code> from the root dir of rmkit to build it. then run <code>make install_remux</code> to copy remux to the remarkable. Run <code>make run_remux</code> to run remux.</p>
-<p>Finally, if you want to make the installation permanent, change into the<br><code>src/remux</code> directory and run <code>make install_service</code> followed by <code>make start_service</code></p>
-<p>add <code>dialog_height</code> and <code>dialog_width</code> option to remux.conf for specifying<br>the dialog width and heigght. Default is 600x800. The rM width is 1404,<br>height is 1872.</p>
-<ul>
-<li>add <code>filter_palm_events</code> option to remux.conf to prevent spurious palm<br>touches. Enable this is you have a custom gesture (like 3 or 4 finger) and<br>keep accidentally launching remux.</li>
-</ul>
-<p>added <code>start_app=</code> option to specify the app to launch. it can be blank or an<br>app name as seen in the list of apps. if the app isn’t found or its blank, no app<br>will launch at startup and remux will require a gesture to be invoked.</p>
-<p>added <code>manage_power=</code> boolean option to configuration. setting to <code>false</code> or <code>no</code> tells remux to not enter suspend mode automatically - this lets you use xochitl solely for power management. useful if remux is messing up drawing your suspend screen</p>
-<p>As of remux 0.1.7, remux supports configuration kept in <code>/home/root/.config/remux/remux.conf</code>. The configuration is kept as key&#x3D;value lines. As of right now, the two main config options are <code>launch_gesture</code> and <code>back_gesture</code>. They can be used to configure the gestures in remux. The format is the same as genie, except semi-colons (<code>;</code>) are used to separate directives instead of newlines.</p>
-<p>For example, the below will show remux when three fingers are tapped and switch<br>to last app on a four finger tap.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">launch_gesture=gesture=tap;fingers=3</span><br><span class="line">back_gesture=gesture=tap;fingers=4</span><br></pre></td></tr></table></figure>
-
-<p>You can repeat a key in order to setup multiple gestures for the same action, like so:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">launch_gesture=gesture=tap;fingers=3</span><br><span class="line">launch_gesture=gesture=tap;fingers=4</span><br></pre></td></tr></table></figure>
-<p>如果找不到应用，一定记得chmod</p>
-<h2 id="rmkit"><a href="#rmkit" class="headerlink" title="rmkit"></a>rmkit</h2><p>下面的软件都是rmkit中的，编译或者自己编写都可以参考他的源码中附带的文档。<br>下载已经编译好的也可以直接从这里下载：<br><a href="https://build.rmkit.dev/master/latest/rm/">Index of &#x2F;master&#x2F;latest&#x2F;rm&#x2F; (rmkit.dev)</a><br>里面的<a href="https://build.rmkit.dev/master/latest/rm/release.tar.gz">release.tar.gz</a>包含了所有编译好的可执行文件。<br>注意每个可执行文件放到~&#x2F;apps下的时候都要使用chmod +x来给予执行权限。<br>可以全部放进入之后再apps目录下使用chmod +x * 来全部基于权限，使用ls -l来检查是否到伪。<br>安装之后如果重新唤出remux没有显示安装的软件，那么使用systemctl restart remux来刷新启动器列表</p>
-<h3 id="harmony"><a href="#harmony" class="headerlink" title="harmony"></a>harmony</h3><p>这是一个绘画软件 他是说是低延迟<br>直接在ssh中启动会存在问题，会触发下层当前正在使用的app，所以需要加入到remux的apps中来防止下层应用被触发。<br>编译参考rmkit&#x2F;doc下的指南</p>
-<p>如果你乐意你可以为他写一个harmony.service:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Harmony</span><br><span class="line">After=xochitl.service home.mount</span><br><span class="line">Conflicts=xochitl.service</span><br><span class="line">OnFailure=xochitl.service</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">ExecStart=/root/home/apps/harmony</span><br><span class="line">Restart=no</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
-
-<p>iago</p>
-<ul>
-<li>then configure ddvk’s touch injector or genie to launch iago when a gesture is performed.</li>
-</ul>
-<p>这个软件可以插入图形，例如笔记中，可以使用贝塞尔曲线，但是不能使用remux来启动，因为remux会禁用其他应用。所以这里只是记录一下，懒得折腾手势。</p>
-<h3 id="计算器"><a href="#计算器" class="headerlink" title="计算器"></a>计算器</h3><h3 id="小游戏"><a href="#小游戏" class="headerlink" title="小游戏"></a>小游戏</h3><p>有三个。<br>扫雷<br>：都懂<br>填词<br>：Wordle游戏的规则非常简单，它要求玩家在6次之内猜出一个由5个字母组成的单词。每次输入单词时，如果输入的字母在目标单词中，但是位置不对，那么格子会显示成黄色（浅灰色）；如果输入的字母在目标单词中，且位置正确，那么格子会显示成绿色（深灰色）；如果都不对，则会显示成灰色（打叉）。</p>
-<p>实测LLM AI可以玩。</p>
-<p>地牢爬行纸牌游戏？<br>：Dumbskull is a dungeon crawl themed solitaire based on <a href="https://100r.co/site/donsol.html">Donsol</a> and <a href="http://stfj.net/index2.php?project=art/2011/Scoundrel.pdf">Scoundrel</a>.</p>
-<p>经典DOOM<br><a href="https://github.com/LinusCDE/doomarkable">LinusCDE&#x2F;doomarkable: DOOM on the reMarkable (github.com)</a></p>
-<p>需要下载DOOM游戏文件放在&#x2F;home&#x2F;root里面<br>doom.wad、doom2.wad、tnt.wad、plutonia.wad</p>
-<p>俄罗斯方块：<br><a href="https://github.com/LinusCDE/retris">LinusCDE&#x2F;retris: Implementation of rust tetris_core on the reMarkable using libremarkable (github.com)</a></p>
-<h3 id="其他没什么鸟用的程序"><a href="#其他没什么鸟用的程序" class="headerlink" title="其他没什么鸟用的程序"></a>其他没什么鸟用的程序</h3><p>这些大概是例程顺带编译出来的。</p>
-<p>eclear 清屏，但是并不能重绘，而且也清不干净。<br>sharenote 没看明白</p>
-<h2 id="开启其他同步方法"><a href="#开启其他同步方法" class="headerlink" title="开启其他同步方法"></a>开启其他同步方法</h2><p>✔由于原来的USB界面仍然是开启了一个以太网用来上传书籍但是每次都要插上USB线很不方便，这里有个项目不需要插USB,只需要同一个网络环境下；<br><a href="https://github.com/rM-self-serve/webinterface-wifi">rM-self-serve&#x2F;webinterface-wifi: View the web interface over wifi. For the ReMarkable Tablet. (github.com)</a></p>
-<p>如果没有toltec, 用这个安装：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wget https://raw.githubusercontent.com/rM-self-serve/webinterface-wifi/master/install-webint-wf.sh &amp;&amp; bash install-webint-wf.sh</span><br></pre></td></tr></table></figure>
-<p>用这个卸载：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ wget https://raw.githubusercontent.com/rM-self-serve/webinterface-wifi/master/remove-webint-wf.sh &amp;&amp; bash remove-webint-wf.sh</span><br></pre></td></tr></table></figure>
-
-<p>启动用：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> --now webinterface-wifi</span><br></pre></td></tr></table></figure>
-<p>停用用：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">systemctl <span class="built_in">disable</span> --now webinterface-wifi</span><br></pre></td></tr></table></figure>
-
-<p>可以用但是似乎配置了Koreader之后或者用了别的管理工具之后没啥太大必要了。</p>
-<h3 id="Syncthing的方法："><a href="#Syncthing的方法：" class="headerlink" title="Syncthing的方法："></a>Syncthing的方法：</h3><p><a href="https://github.com/evidlo/remarkable_syncthing">Evidlo&#x2F;remarkable_syncthing: Self-hosting syncing solution for reMarkable (github.com)</a><br>这个方法确实可以但是还是要自己解析pdf上传过去。</p>
-<p>还有串流，当作写字板等功能可以通过安装应用来</p>
-<p>你甚至可以安装 .NET ：<br><a href="https://www.hanselman.com/blog/how-to-install-net-core-on-your-remarkable-2-eink-tablet-with-remarkablenet">How to install .NET Core on your Remarkable 2 e-Ink tablet with Remarkable.NET - Scott Hanselman’s Blog</a></p>
-<p>更多参考：<br><a href="https://www.libhunt.com/r/awesome-reMarkable">awesome-reMarkable Alternatives and Reviews (Jun 2023) (libhunt.com)</a></p>
-<p>低层管理工具：</p>
-<p>如何自己写一个可以在reMarkable上用的应用：<br><a href="https://eeems.website/writing-a-simple-oxide-application/">Writing a Simple reMarkable application (eeems.website)</a></p>
-<p>实际上密码被记录在<br>&#x2F;home&#x2F;root&#x2F;.config&#x2F;remarkable&#x2F;xochitl.conf</p>
-<p>我不知道修改这个看起来是配置文件的东西能不能修改密码，所以我就不折腾了避免变砖。。</p>
-<p>如果不想使用官方的同步服务, 因为每次启动没网都会跳出来，而且费电，可以通过命令关掉：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">systemctl <span class="built_in">disable</span> rm-sync</span><br></pre></td></tr></table></figure>
-<p>同样，可以使用enable来打开。<br>同时，去掉&#x2F;etc&#x2F;systemd&#x2F;system&#x2F;multi-user.target.wants&#x2F;xochitl.service 中的Wants<br>Wants&#x3D;rm-sync.service 避免开机启动</p>
-<p>去掉了xochitl.service中的watchdog 防止使用别的应用的时候意外自启动。。</p>
-<h2 id="好用但是不可用的应用"><a href="#好用但是不可用的应用" class="headerlink" title="好用但是不可用的应用"></a>好用但是不可用的应用</h2><h3 id="启动器"><a href="#启动器" class="headerlink" title="启动器"></a>启动器</h3><p><a href="https://github.com/dixonary/draft-reMarkable">dixonary&#x2F;draft-reMarkable: A launcher for the reMarkable tablet, which wraps around the standard interface. (github.com)</a><br>三年没更新了我不知道它能不能用了。<br>不过remux兼容它的配置文件加入应用到启动列表因此可以参考以下配置文件写法。</p>
-<h4 id="Oxide"><a href="#Oxide" class="headerlink" title="Oxide"></a>Oxide</h4><p><a href="https://github.com/Eeems-Org/oxide">Eeems-Org&#x2F;oxide: A desktop environment for the reMarkable tablet (github.com)</a><br>更高级的启动器，但是会修改启动文件，变砖概率变高，最重要的是，需要使用<a href="https://toltec-dev.org/#install-toltec">toltec</a>来完成安装，目前系统上toltec会让系统变砖，就算了。有人反馈会变砖。</p>
-<h4 id="draft"><a href="#draft" class="headerlink" title="draft"></a>draft</h4><p><a href="https://github.com/dixonary/draft-reMarkable">dixonary&#x2F;draft-reMarkable: A launcher for the reMarkable tablet, which wraps around the standard interface. (github.com)</a></p>
-<h2 id="Toltec"><a href="#Toltec" class="headerlink" title="Toltec"></a>Toltec</h2><p><a href="https://toltec-dev.org/">Toltec (toltec-dev.org)</a> 。<br>官网说Toltec不支持2.15以后的系统，不过网友说这是rM2才有的问题，rM1依然可以在3.XX上用，而且更稳定，但是toltec只支持最高3.2.2.1581和 3.2.3.1595.。同时，官网的Q&amp;A指出：</p>
-<pre><code>Will this brick my reMarkable?
-Probably not, but standard disclaimers apply
-</code></pre>
-<p>然而在3.5版本系统上实测会变砖。。。。安装之后会报错，不会立马变砖，仍然可以通过删除安装的文件来撤销操作，然而我好奇重启会不会变砖，只能说求仁得仁了，果然启动不了了，WiFi USB界面自然也不能用。救砖操作见本文 救砖和刷机 章节。</p>
-<p>这是一个用于reMarkable的包管理器，<br>安装很简单：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wget http://toltec-dev.org/bootstrap</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;04a28483286f88c5c7f39e352afb62adc57f6162a29fd7e124d832205bb0980e  bootstrap&quot;</span> | <span class="built_in">sha256sum</span> -c &amp;&amp; bash bootstrap</span><br></pre></td></tr></table></figure>
-<p>然后可以使用：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">opkg update</span><br><span class="line">opkg upgrade</span><br><span class="line">opkg install &lt;package&gt;</span><br><span class="line">opkg remove &lt;package&gt;</span><br><span class="line">opkg info &lt;package&gt;</span><br></pre></td></tr></table></figure>
-<p>来管理软件包。<br>安装 <strong>nao</strong> 这个软件可以图形化管理。</p>
-<p>对应的包列表：<br><a href="https://bin.entware.net/armv7sf-k3.2/Packages.html">Packages list (entware.net)</a><br><a href="https://toltec-dev.org/stable/#section-launchers">Toltec Package Listing (toltec-dev.org)</a></p>
-<p>这里面有些软件是可以手动安装的。不过有些软件也是过时的。</p>
-<p>yeft<br>一个通用的终端模拟器，但是需要toltec安装，否则你就得自己编译了<br><a href="https://github.com/uobikiemukot/yaft">uobikiemukot&#x2F;yaft: yet another framebuffer terminal (github.com)</a></p>
-<p><a href="https://github.com/ddvk/remarkable-hacks">ddvk&#x2F;remarkable-hacks: additional functionality via binary patching (github.com)</a><br>这个支持的版本太老了，不过那些手势也可以用别的软件想办法支持了。</p>
-<p>浏览器<br><a href="https://github.com/alex0809/netsurf-reMarkable/tree/main">alex0809&#x2F;netsurf-reMarkable: NetSurf is a lightweight and portable open-source web browser. This projects adapts NetSurf for the reMarkable E Ink tablet. (github.com)</a></p>
-<p>手动安装太麻烦了，还是等Toltec吧</p>
-<p><a href="https://github.com/irth/rmgem">irth&#x2F;rmgem: simple gemini browser for reMarkable (github.com)</a><br>这个只是在rmkit中指出，没有现成可执行文件，在Toltec中也没有。需要下载go后自己编译。<br>由于make在Windows下不方便用，俺就拿出了我的manjaro的笔记本编译了一下。</p>
-<p>这个工具实际上是<a href="https://gemini.circumlunar.space/">Project Gemini (circumlunar.space)</a>的rM版 没什么用，而且，命令行下有回显，但是没有GUI?</p>
-<h3 id="支持markdown的文本编辑器"><a href="#支持markdown的文本编辑器" class="headerlink" title="支持markdown的文本编辑器"></a>支持markdown的文本编辑器</h3><p>使用键盘编辑：<a href="https://github.com/dps/remarkable-keywriter/tree/master">dps&#x2F;remarkable-keywriter (github.com)</a><br>然而实测不能用，太老了。</p>
-<h2 id="不好用或者太老没测试"><a href="#不好用或者太老没测试" class="headerlink" title="不好用或者太老没测试"></a>不好用或者太老没测试</h2><p>另一个阅读器：<br><a href="https://github.com/LinusCDE/plato">LinusCDE&#x2F;plato: Document reader (github.com)</a><br>看起来没有必要使用，支持的格式不多，文档远不如KOReader</p>
-<p>whiteboard<br>除了能显示笔迹啥都没有？？而且还有bug. 作者只是用了他的git保存了一堆链接。不要用.<br>这个软件还有10.6M,大概是做了功能但是现在有bug启动不了？<br><a href="https://github.com/reHackable/Calculator">reHackable&#x2F;Calculator: A primitive calculator for the reMarkable (early alpha) (github.com)</a><br>计算器，只有简单功能，而且上次更新六年前。</p>
-<h1 id="救砖和刷机"><a href="#救砖和刷机" class="headerlink" title="救砖和刷机"></a>救砖和刷机</h1><p>救砖适用于：启动不了，密码重置以及其他一切可以通过进系统改配置来解决的问题。<br>直接刷机：上面解决不了的问题或者你就是觉得重刷更好就刷机到旧系统。</p>
-<p>下载<a href="https://github.com/ddvk/remarkable-uuuflash">ddvk&#x2F;remarkable-uuuflash: uuu scripts for recovery console and flashing (github.com)</a><br>用来救砖和刷机。<br>uuuflash是一个nxp的刷机工具。<br>关机状态下连接到USB，Win10会提示安装了新的硬件（好像是SE Blank 6ULL），不过由于是HID设备所以在设备管理器里面不容易找到，但是这个不重要。然后长按3秒进入上传模式，如果是开机下进入上传模式，这时候reMarkable会停止反复重启，如果本来就是关机的，那就没啥提示，但是总之你是可以接下来继续刷机或者救砖了。</p>
-<h2 id="救砖"><a href="#救砖" class="headerlink" title="救砖"></a>救砖</h2><p>救砖就是尝试解决问题而不是直接刷机一了百了。</p>
-<p>进入下载uuuflash的目录，执行下面的命令，由于使用HID传输，所以很慢，等着就好了。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PS ...\remarkable-uuuflash&gt; ./uuu recover.uuu</span><br><span class="line">uuu (Universal Update Utility) for nxp imx chips -- libuuu_1.3.154-0-g47ddef5</span><br><span class="line"></span><br><span class="line">Success 1    Failure 0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">2:11     5/ 5 [Done                                  ] SDP: done</span><br></pre></td></tr></table></figure>
-
-<p>传输完成之后Windows会提示安装了一个新硬件：CDC Composite Gadget，这个一看就知道是串口，但是Windows对于这种设备需要一个inf文件来安装驱动，不过没关系，也可以手动指定这个设备为串口设备。<br>在设备管理器中右键这个设备，由于有个感叹号很好找到：</p>
-<ul>
-<li>点更新驱动</li>
-<li>浏览我的电脑以更新驱动</li>
-<li>选择“端口(COM &amp; LPT)”</li>
-<li>然后在左侧的厂商列表中选Microsoft，右侧列表中选”USB串行设备“</li>
-<li>下一步就安装成串口设备了</li>
-</ul>
-<p>然后理论上说可以用Putty连接，波特率随便，因为这是一个虚拟串口。但是不知道为什么Putty连接不上，我这里就用了串口调试助手，这个不是交互式的，但是能用。</p>
-<p>首先注意调整发送接收都是ASCII模式。</p>
-<p>然后发送root即可登录，不需要密码：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">rmrestore login: root</span><br><span class="line">root@rmrestore:/<span class="comment"># ls</span></span><br><span class="line">bin             lib             proc            uboot-postinst</span><br><span class="line">boot            lost+found      run             uboot-version</span><br><span class="line">dev             media           sbin            usr</span><br><span class="line">etc             mnt             sys             var</span><br><span class="line">home            postinst        tmp</span><br></pre></td></tr></table></figure>
-
-<p>然后首先什么都看不见因为需要挂载存储设备</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mount /dev/mmcblk1p2 /mnt/</span><br><span class="line">mount /dev/mmcblk1p7 /mnt/home</span><br><span class="line">mount /dev/mmcblk1p1 /mnt/var/lib/uboot</span><br></pre></td></tr></table></figure>
-<p>然后可以通过chroot进入原来的系统，因为你现在的操作是删掉让系统变砖的配置文件：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chroot</span> /mnt</span><br></pre></td></tr></table></figure>
-<p>现在就和在系统里面的文件环境一样了。</p>
-<p>由于我这里变砖是因为安装了Toltec，所以按照它的提示，只需要执行：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">rm</span> /etc/systemd/system/xochitl.service.d/toltec-wrapper.conf</span><br></pre></td></tr></table></figure>
-<p>对于重置密码同样可以在chroot环境里面操作。</p>
-<p>然后就可以退出chroot了</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">exit</span> <span class="comment">#if you used the chroot</span></span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
-<p>执行的时候会显示：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">root@rmrestore:/<span class="comment"># exit</span></span><br><span class="line"><span class="built_in">exit</span></span><br><span class="line">root@rmrestore:/<span class="comment"># </span></span><br><span class="line">root@rmrestore:/<span class="comment"># reboot</span></span><br><span class="line">↓</span><br><span class="line">Broadcast message from root@rmrestore (ttyGS0) (Thu Jul 20 13:09:15 2023):</span><br><span class="line"></span><br><span class="line">The system is going down <span class="keyword">for</span> reboot NOW!</span><br><span class="line">root@rmrestore:/<span class="comment"># </span></span><br><span class="line">root@rmrestore:/<span class="comment"># logout</span></span><br></pre></td></tr></table></figure>
-<p>现在系统就重启了，你会发现你的配置基本都没有丢，也就是不用重置系统。但是位于自己新建的&#x2F;opt目录下的应用丢了，因为&#x2F;opt这个目录没了。同样系统更新也可能导致这个目录被删掉。</p>
-<p>这也是为什么我不太推荐用Toltec来安装，因为手动安装更容易修改安装位置。<br>然后可以根据Toltec安装日志可以删掉它建立的几个符号链接，虽然不删也行但是看着有点不爽。但是如果你十分不爽，可以使用下面的刷机的方式。</p>
-<h2 id="刷机"><a href="#刷机" class="headerlink" title="刷机"></a>刷机</h2><p>如果你压根不知道修改了什么导致起不来，也找不到原因和日志，或者你就想刷个干净的系统，可以尝试直接刷机：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">./uuu upgrade.uuu</span><br></pre></td></tr></table></figure>
-<p>这个会把系统root恢复到2.1.1.3. 理论上来说这时候已经可以开机了。</p>
-<p>如果问题还是存在或者还还是上述理由，那么继续：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./uuu reflash.uuu</span><br></pre></td></tr></table></figure>
-<p>这个命令会把什么都删掉。这下问题彻底解决了。</p>
-<h2 id="更多"><a href="#更多" class="headerlink" title="更多"></a>更多</h2><p><a href="https://github.com/torwag/remarkableflash">torwag&#x2F;remarkableflash (github.com)</a><br>上面这个工具依然可用，不过还是使用uuu更好。</p>
-<h1 id="系统"><a href="#系统" class="headerlink" title="系统"></a>系统</h1><p><a href="http://www.davisr.me/projects/parabola-rm/#:~:text=Parabola-rM%20Parabola-rM%20%28PRM%29%20turns%20a%20reMarkable%20e-paper%20tablet,may%20do%20with%20an%20ordinary%20graphical%20operating%20system.">Parabola-rM (davisr.me)</a><br>这个还是开发RCU那个老哥的操作，直接写了个系统可以用在rM1上。可以处理文档、电子表格等等操作，因为就是一个正常的系统。就是用不了WiFi</p>
-<h1 id="自己开发"><a href="#自己开发" class="headerlink" title="自己开发"></a>自己开发</h1><p><a href="https://remarkablewiki.com/devel/toolchain">remarkabletoolchain</a><br>本来是挂在remakeablewiki上的，可惜这个网站挂了。。<br>rmkit还是可以用它的例程来开发的。<br><a href="https://rmkit.dev/eink-dev-notes/">howto: e-ink dev notes (rmkit.dev)</a></p>
-<h2 id="硬件参考"><a href="#硬件参考" class="headerlink" title="硬件参考"></a>硬件参考</h2><p>使用的是i.MX6SL (SoloLite) 800 MHz ARMv7处理器，可以参考别人给的说明：<br><a href="http://www.davisr.me/projects/parabola-rm/install-guide-latest.pdf">Parabola on reMarkable: A Guide (davisr.me)</a></p>
-<h2 id="模拟器"><a href="#模拟器" class="headerlink" title="模拟器"></a>模拟器</h2><p><a href="https://stackoverflow.com/questions/57811916/emulating-the-remarkable-tablet-i-mx6-armv7-with-qemu">arm - emulating the reMarkable tablet (i.MX6 ARMv7) with Qemu - Stack Overflow</a><br>实际上rmkit里面提供了模拟器的说明。</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://szclsya.me/zh-cn/posts/fonts/linux-config-guide/">https://szclsya.me/zh-cn/posts/fonts/linux-config-guide/</a><br><a href="https://wiki.archlinux.org/title/Font_configuration">Font configuration - ArchWiki (archlinux.org)</a><br><a href="https://www.bilibili.com/video/BV1Gv4y1f7ou/?vd_source=2c02778bfce8b5de28136fd3deba43ef">https://www.bilibili.com/video/BV1Gv4y1f7ou/?vd_source=2c02778bfce8b5de28136fd3deba43ef</a><br><a href="https://qzxx.com/82977.html">折腾前必看–Remarkable Paper Tablet 1代10.3寸电子书墨水屏 素描本 常见问题收集-青州小熊 (qzxx.com)</a><br>实际上以前还有一个remarkablewiki.com的网站，现在似乎已经挂了。<br>reddit频道：<a href="https://www.reddit.com/r/RemarkableTablet/">(1) reMarkable (reddit.com)</a></p>
-<p><a href="http://www.davisr.me/">Davis Remmel’s Home Page</a><br>这个人做了很多工作<br>github合集：<a href="https://github.com/topics/remarkable-tablet">remarkable-tablet · GitHub Topics</a></p>
-]]></content>
-      <categories>
-        <category>生活游玩</category>
-      </categories>
       <tags>
-        <tag>生活</tag>
-        <tag>捡垃圾</tag>
+        <tag>ARM</tag>
+        <tag>DAP-Link</tag>
+        <tag>pyocd</tag>
       </tags>
   </entry>
 </search>
