@@ -217,7 +217,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-07-22 03:52:30" itemprop="dateModified" datetime="2023-07-22T03:52:30+08:00">2023-07-22</time>
+                <time title="修改时间：2023-08-21 13:36:50" itemprop="dateModified" datetime="2023-08-21T13:36:50+08:00">2023-08-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -297,7 +297,7 @@
 <p>后者IP则保持为 10.11.99.1 ，如果不想连接WIFI或者为了避免IP变化，可以就用USB界面。配置的时候最好把睡眠关掉，否则会断开连接，无论是WIFI还是USB网络界面。</p>
 <p>需要的电脑上的工具一个是WinSCP，使用WinSCP可以方便地管理文件，而且可以保存密码免输入密码登录，也可以使用命令行窗口来管理，因为命令行工具不是很好用所以需要使用SSH来管理更方便。</p>
 <p>这个工具直接用默认配置就可以，协议选SFTP就可以了，不过需要显示隐藏文件，点击右下角的已隐藏字样点一下，可以显示隐藏文件了。</p>
-<p>另一个是SSH，很多人推荐Putty但是我觉得这个并不方便，可以直接用WindowsTerminal下powershell支持的ssh，使用命令ssh <a href="mailto:&#114;&#111;&#x6f;&#116;&#x40;&#49;&#57;&#50;&#x2e;&#49;&#54;&#x38;&#x2e;&#51;&#x31;&#x2e;&#51;&#57;">&#114;&#111;&#x6f;&#116;&#x40;&#49;&#57;&#50;&#x2e;&#49;&#54;&#x38;&#x2e;&#51;&#x31;&#x2e;&#51;&#57;</a> 即可，注意这个ip需要在机器内查看。</p>
+<p>另一个是SSH，很多人推荐Putty但是我觉得这个并不方便，可以直接用WindowsTerminal下powershell支持的ssh，使用命令ssh <a href="mailto:&#x72;&#111;&#111;&#116;&#x40;&#49;&#x39;&#x32;&#46;&#49;&#x36;&#x38;&#46;&#51;&#x31;&#46;&#51;&#57;">&#x72;&#111;&#111;&#116;&#x40;&#49;&#x39;&#x32;&#46;&#49;&#x36;&#x38;&#46;&#51;&#x31;&#46;&#51;&#57;</a> 即可，注意这个ip需要在机器内查看。</p>
 <p>由于配置一些其他软件的时候经常使用SSH，可以通过生成密钥来免密码登录。</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
 <p>如果已经生成过了（比如之前用过git必然配置过），就不要生成了。<br>会提示生成文件到 .ssh 目录下了。<br>然后把公钥id_rsa.pub放到reMarkable上的~&#x2F;.ssh下，然后这里注意这里除了用户目录不能对组有权限，.ssh以及以下的文件都不能对组有权限，否则不能登录，会报错<code>Permission denied (publickey,password)</code> 。<br>然后在.ssh目录下执行</p>
@@ -379,7 +379,7 @@
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> --now remux</span><br></pre></td></tr></table></figure>
 
 <p>最后，可以用按住中键呼出启动器或者侧边向上滑动（幅度大点）。<br>点击应用名称可以切换，点击后面显示的使用内存大小可以关闭应用。</p>
-<p>然而，这个目录是在根目录下的，很可能由于系统更新或者救砖操作被推掉，因此稍微做一点修改。<br>移动remux这个可执行文件到~&#x2F;下，也就是&#x2F;root&#x2F;home，然后修改remux.service中的原来的路径 &#x2F;opt&#x2F;bin&#x2F;remux 到&#x2F;root&#x2F;home&#x2F;remux，其中的After修改为：<br>After&#x3D;xochitl.service home.mount</p>
+<p>然而，&#x2F;opt&#x2F;这个目录是在根目录下的，很可能由于系统更新或者救砖操作被推掉，因此稍微做一点修改。<br>移动remux这个可执行文件到~&#x2F;下，也就是&#x2F;home&#x2F;root，然后修改remux.service中的原来的路径 &#x2F;opt&#x2F;bin&#x2F;remux 到&#x2F;home&#x2F;root&#x2F;remux，其中的After修改为：<br>After&#x3D;xochitl.service home.mount</p>
 <p>如果前面已经安装过一次remux了，那么首先使用：<br>systemctl disable remux来移除服务，然后重新启用。<br>systemctl enable –now remux</p>
 <p>最后，~&#x2F;.config&#x2F;remux&#x2F;remux.conf可以编辑启用方式，例如可以使用在屏幕下方三点点击来启动remux</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">launch_gesture=gesture=tap;fingers=3</span><br></pre></td></tr></table></figure>
@@ -1279,7 +1279,7 @@ Probably not, but standard disclaimers apply
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-08-20 18:11:49" itemprop="dateModified" datetime="2023-08-20T18:11:49+08:00">2023-08-20</time>
+                <time title="修改时间：2023-08-27 19:52:30" itemprop="dateModified" datetime="2023-08-27T19:52:30+08:00">2023-08-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1297,7 +1297,7 @@ Probably not, but standard disclaimers apply
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.6k</span>
+              <span>3.7k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -1317,8 +1317,8 @@ Probably not, but standard disclaimers apply
 
       
           <p>上一篇文章：树莓派RP2040开发环境配置集合版(基于Raspberry Pico)。<br>前面的环境搭建基本上介绍了所有的开发环境配置，也对比了各个环境的优劣。如果是非商业开发的话，个人可能Segger Embedded Studio是最好的IDE，但是我不太习惯他的使用方式，这个会另外开一篇谈。<br>而通吃的方案则是使用VSCODE+ARMGCC+GCC，PlatformIO也是不错的，但是我个人不太习惯后者，而且经常出错。</p>
-<p>因此最后仍然选择了VSCODE作为开发工具。</p>
-<p>更新：整合包杀死了比赛：<a target="_blank" rel="noopener" href="https://www.raspberrypi.com/news/raspberry-pi-pico-windows-installer/">Raspberry Pi Pico Windows Installer - Raspberry Pi</a></p>
+<p>因此最后仍然选择了VSCODE作为开发工具。由于上一篇写的太杂了所以单独写一篇只负责配置环境的。</p>
+<p>更新：整合包杀死了比赛：<a target="_blank" rel="noopener" href="https://www.raspberrypi.com/news/raspberry-pi-pico-windows-installer/">Raspberry Pi Pico Windows Installer - Raspberry Pi</a><br>（未测试，但是肯定能用）</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2023/04/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91/RP2040%E9%85%8D%E7%BD%AEVSCODE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E2%80%94%E2%80%94%E4%B8%80%E5%8A%B3%E6%B0%B8%E9%80%B8%E7%89%88/#more" rel="contents">
@@ -1569,7 +1569,7 @@ Probably not, but standard disclaimers apply
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:04</span>
+    <span title="站点阅读时长">2:05</span>
 </div>
 
         
