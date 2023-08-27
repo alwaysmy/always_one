@@ -1,15 +1,205 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>个人博客文章的管理</title>
+    <url>/2023/02/01/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/0%E3%80%81%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E7%9A%84%E7%AE%A1%E7%90%86/</url>
+    <content><![CDATA[<p>这篇是一篇随记，其实很简单：</p>
+<p><strong>用OBSIDIAN来管理博客的文章就好了</strong>。</p>
+<span id="more"></span>
+<p>起因是用了obsidian之后就懒得写博客了，加上Typeroa收费，新的markdown编辑器不太好用，至少没有之前那么好用，因此就转移笔记到了obsidian。本来是打算ob编辑结束之后转移回来，但是发现同步这个太痛苦了，突然想到直接在博客源文件这里建立一个ob的库就好了，这样实际上还可以分开管理一些想要发布的东西。</p>
+<p>另外，文件夹不影响文章的识别，因此可以在<code>_post</code>文件夹下面用文件夹分类，这个逻辑和obsidian是一样的。</p>
+<p>缺点是，另外一个ob库同步到了手机，可以很方便随处编辑，这个库再同步过去感觉多少有点别扭，当然也不是不行，只是感觉手机上的文件很乱不想继续往里面塞东西。</p>
+<h1 id="多个公开平台同步"><a href="#多个公开平台同步" class="headerlink" title="多个公开平台同步"></a>多个公开平台同步</h1><p>还没想好除了复制粘贴还有啥方法。<br>知乎可以直接上传mardown文档，但是图片要重新上传，而且那个图片上传对于批量很不友好。<br>CSDN真的不行。<br>b站更是啥都没有。。markdown都不能识别。</p>
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>静态博客的搭建</title>
+    <url>/2023/03/13/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/1%E3%80%81%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<p>出于方便的目的，加上可以维护自己的MD文档，这里当然是首先选择一个框架来构建自己的博客。</p>
+<span id="more"></span>
+<h2 id="博客框架的选择"><a href="#博客框架的选择" class="headerlink" title="博客框架的选择"></a>博客框架的选择</h2><p>框架有<strong>Hexo、WordPress、VuePress、Hugo、Solo、Halo 、Jekyll</strong>,<br>但是Gitee pages 支持的服务有Jekyll、Hugo、Hexo。（或者github的）<br>其中Hexo使用比较多，教程也比较多，据说基于Go的Hugo的构建速度比较快，不过目前教程不多，因此这里还是选择了基于node.js的hexo。</p>
+<h2 id="Hexo框架的初始化"><a href="#Hexo框架的初始化" class="headerlink" title="Hexo框架的初始化"></a>Hexo框架的初始化</h2><h3 id="1、安装node-js"><a href="#1、安装node-js" class="headerlink" title="1、安装node.js"></a>1、安装node.js</h3><p>Windows 直接用安装包安装就行，选LTS版本,里面的npm工具要安装上。<br>linux下 就比较简单，直接install nodejs和install npm.</p>
+<h3 id="2、安装hexo"><a href="#2、安装hexo" class="headerlink" title="2、安装hexo"></a>2、安装hexo</h3><p>在需要存放自己博客文件的文件夹下面打开命令行(not powershell,可以安装但是不能执行)，</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>然后试试执行命令<code>hexo -v</code>看看安装成功没有（Windows需要在cmd下执行，powershell不行）。</p>
+<p>然后初始化hexo：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<p>也可以新建一个文件夹的方式</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init myblog</span><br><span class="line"><span class="built_in">cd</span> myblog</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<p>这时候这个文件夹下面有：</p>
+<ul>
+<li>node_modules: 依赖包</li>
+<li>public：存放生成的页面</li>
+<li>scaffolds：生成文章的一些模板</li>
+<li>source：用来存放你的文章</li>
+<li>themes：主题</li>
+<li><strong>_config.yml: 博客的配置文件</strong></li>
+</ul>
+<p>测试一下功能正常</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p>然后点开生成的本地服务 localhost:4000可以看到一个自带的页面。</p>
+<h3 id="3-连接Github仓库"><a href="#3-连接Github仓库" class="headerlink" title="3 连接Github仓库"></a>3 连接Github仓库</h3><p>新建一个仓库名为   用户名.github.io  ，这样pages的根目录就是这个仓库名，否则是 用户名.github.io&#x2F;仓库名，也不是不能用但是一来不好看，而来后面还要加配置。<br>如果使用Gitee,这里需要新建一个名为用户名的仓库，达到和Github 一样的效果。</p>
+<p>然后就是配置Git的那一套，用户名，SSH,这都是全局配置，配过了就不用再配置了。见[[GIT的初始使用方法]]。</p>
+<p>在博客文件夹下有配置文件，里面包含了deploy这个项目<br>在文件内文本配置自己的仓库链接：</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># repo: https://gitee.com/always_one/always_one.git</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:alwaysmy/alwaysmy.github.io.git</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p> 注意了，这里GitHub不要使用https链接了，现在不支持，gitee倒是没注意过，要用git链接。<br> 同时<br> 还有配置博客对应的根目录</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="string">url:</span> <span class="string">https://alwaysmy.github.io</span></span><br><span class="line"></span><br><span class="line"><span class="string">root:</span> <span class="string">/</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p> 安装deploy-git，通过hexo命令来部署到Github.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>然后再hexo所在的文件夹下面执行</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean&amp;&amp; hexo g&amp;&amp;hexo d</span><br></pre></td></tr></table></figure>
+
+<p>分别是清空，生成和部署。有时候直接生成部署就行，如果修改了Hexo主题相关的东西需要清空。</p>
+<p>这时候你直接在生成的.deploy_git文件夹内使用git push当然也可以，但是那样搞复杂了。</p>
+<h2 id="配置Hexo"><a href="#配置Hexo" class="headerlink" title="配置Hexo"></a>配置Hexo</h2><h3 id="配置主题"><a href="#配置主题" class="headerlink" title="配置主题"></a>配置主题</h3><p>主题的配置需要在主题下对应主题内的_config.yml下修改<br>更换hexo NEXT的主题配置之后必须要先hexo clean才能生成对应的主题</p>
+<h3 id="图片的URL问题"><a href="#图片的URL问题" class="headerlink" title="图片的URL问题"></a>图片的URL问题</h3><p>前面已经配置好了,所以我不记得了,下面说点小问题.<br>如果图片在本地预览正确,但是hexo生成的带了绝对路径,那么大概是图片的路径前面多了个&#x2F;,虽然在(Windows)本地&#x2F;不影响这个图片的路径的查找,但是hexo为图片不会生成一个带日期的路径,</p>
+<ol>
+<li><p>安装插件 asset-image 但是这个插件好像需要一点修改</p>
+</li>
+<li><p>npm install <a href="https://github.com/CodeFalling/hexo-asset-image">https://github.com/CodeFalling/hexo-asset-image</a></p>
+</li>
+<li><p>设置图片为相对路径</p>
+</li>
+<li><p>hexo clean &amp;&amp; hexo generate &amp;&amp; hexo s 运行查看<br>hexo配置需要启用post_asset_folder: true<br>关闭动画<br><strong>motion</strong> 修改为false</p>
+<h1 id="拓展问题"><a href="#拓展问题" class="headerlink" title="拓展问题"></a>拓展问题</h1><h2 id="评论区如何解决"><a href="#评论区如何解决" class="headerlink" title="评论区如何解决"></a>评论区如何解决</h2><p>博客有评论的功能是最好不过的,不能老让人家发邮件,也不方便整理.</p>
+<h2 id="迁移博客到别的平台"><a href="#迁移博客到别的平台" class="headerlink" title="迁移博客到别的平台"></a>迁移博客到别的平台</h2><p>这里需要从gitee迁移到github.<br>首先可以在github中<a href="https://github.com/new/import">Import a Repository (github.com)</a>  复制原来仓库链接进行迁移.<br>修改.deploy_git 下.git中的config文件内包含的远程仓库的地址.或者用命令修改.</p>
+</li>
+</ol>
+<p>本地重新安装node后安装npm,然后这里是hexo博客,就</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>然后这里不需要hexo init了,直接在原来的博客文件夹下,我这里是myweb,hexo s测试一下结果.<br>使用hexo n “博客标题”来创建博客文章</p>
+<p>github相比gitee的pages,仓库名需要alwaysmy.github.io加上后面的github.io才行</p>
+<p>修改hexo中_config.yml下的url为github page给出的url,仓库改成git协议的仓库</p>
+<p>文章中开头的描述后面需要有空格</p>
+<h1 id="添加附加信息"><a href="#添加附加信息" class="headerlink" title="添加附加信息"></a>添加附加信息</h1><h2 id="添加github和邮箱"><a href="#添加github和邮箱" class="headerlink" title="添加github和邮箱"></a>添加github和邮箱</h2><p>打开 <code>~\themes\next\_config.yml</code> 文件，找到 <code>social</code> 相关的设置，取消掉需要的菜单项的注释。</p>
+<p>打赏<br>reward:</p>
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>博客写文提纲</title>
+    <url>/2023/06/20/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/%E5%8D%9A%E5%AE%A2%E5%86%99%E6%96%87%E6%8F%90%E7%BA%B2/</url>
+    <content><![CDATA[<p>1、这里是第一段。不要写标题，因为要留着当作前言，并放在主页预览，写了标题就不好看了。。。</p>
+<span id="more"></span>
+
+<p>2、上面添加一个阅读更多的折叠。</p>
+<p>3、参考链接可以放在最前面，如果很可能是为了提示自己。</p>
+<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><p>一级标题不要和文章标题重合。</p>
+<p>5、正文内容</p>
+<p>后面的就根据正文随意发挥了</p>
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于博客发布插入图片的几种方法</title>
+    <url>/2023/02/11/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2%E5%8F%91%E5%B8%83%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<p>这里说的情况都是markdown的文件。</p>
+<span id="more"></span>
+<p><strong>1、图床外链</strong><br>这需要上传图片，多少有些不方便，还取决于图床稳定。<br><strong>2、上传图片到仓库</strong><br>能解决自建博客的问题，但是复制到别的平台发布的时候有些不方便，不能自动上传图片。不过可以通过<br>复制博客可以obsidian的复制自动转成markdown功能，再发布到别的平台上。<br><strong>3、图片转base64直接嵌入md文档</strong><br>这个图片会跟着文件走，基本上是最稳妥的方式，但是在本地端不太好保存回去成图片。（快捷方法？）而且由于里面字符太多，搜索英文的时候会有很多误判断的结果。<br>可以使用小米笔记编辑博客文档，图片会自动转成base64。<br><strong>4、<a href="../%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/OneNote%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/OneNote%E5%A4%8D%E5%88%B6%E5%9B%BE%E7%89%87.md">OneNote复制图片</a></strong><br>OneNote用Ctrl+C复制图片粘贴到Obsidian里面的时候会附带图片的Base64和图片的OCR文字内容</p>
+<h1 id="具体语法"><a href="#具体语法" class="headerlink" title="具体语法"></a>具体语法</h1><p>1 最常见的markdown语法<br>2 HTML</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">center</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;双路混音器制作记录/image-20211113034220481.png&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;image-20211113034220481&quot;</span> <span class="attr">style</span>=<span class="string">&quot;zoom: 67%;&quot;</span> /&gt;</span><span class="tag">&lt;/<span class="name">center</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>或者：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">align</span>=<span class="string">center</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;./长白山行简记/IMG_20230606_195217-01.jpeg&quot;</span> <span class="attr">width</span>=<span class="string">&quot;600&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="部署之后的显示"><a href="#部署之后的显示" class="headerlink" title="部署之后的显示"></a>部署之后的显示</h1><p>Hexo默认的图片显示方法和md语法不兼容。。。<br>1、如果使用默认md语法：</p>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">{% asset_img "span>" "<span class="string">name</span>" %}</span><br></pre></td></tr></table></figure>
+<p>这时候渲染就会出问题。</p>
+<p>网上说法很多，我分不太清，实测有效：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-image-link --save</span><br><span class="line">npm install hexo-asset-image -- save</span><br></pre></td></tr></table></figure>
+<p>然后打开hexo config中的：<br><code>post_asset_folder: true #是否启用资源文件夹（用来存放相对路径图片或文件）</code></p>
+<p>这两个似乎不是一个效果，但是考虑到有效我就不折腾了。。。</p>
+<p>2、使用HTML插入图片</p>
+<p>这个方法和typero一样，也就是上面的方法，这种方法能直接显示的。一般不会遇到问题。缺点是在obsidian里面显示不出来。。。不过TypeDown也可以显示。</p>
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>已有博客仓库的重建和配置</title>
+    <url>/2023/03/13/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/%E5%B7%B2%E6%9C%89%E5%8D%9A%E5%AE%A2%E4%BB%93%E5%BA%93%E7%9A%84%E9%87%8D%E5%BB%BA%E5%92%8C%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p>每次重装系统什么的，虽然仓库我做了备份，但是还是要重新配置一下环境，为了以后都能无脑配置，这里集中记录一下过程。</p>
+<span id="more"></span>
+
+<p>···</p>
+<h2 id="博客源文件重新加入备份"><a href="#博客源文件重新加入备份" class="headerlink" title="博客源文件重新加入备份"></a>博客源文件重新加入备份</h2><p>1、从NAS上打开MyWeb的Syncthing同步项目，勾选共享到这台电脑，设置一下路径就行，还有启用排除列表。</p>
+<p>不过上面这一项不是必须的，因为如果之前做好了备份，只需要复制AppData下的文件，Syncthing的配置文件就在里面不用自己去修改了，下次重装的时候设置会保持不变。</p>
+<p>2、重新安装nodejs, 不用勾选安装其他模块，尤其是自己已经安装了python。<br>如果之前备份了appdata，模块应该还在。<br>尝试在博客存放文件夹下面cmd里面执行hexo -v看看能不能用，如果不能就重新安装hexo. (我没试)<br>npm install -g hexo-cli</p>
+<p>然后后面的步骤就不用操作了，可以直接使用hexo命令了。</p>
+<p>3、由于之前已经修改过git配置了，这里直接使用hexo d，可能会提示git仓库用户不一致，按照提示把git仓库加入安全目录即可发布。</p>
+<p>4、能用就不要尝试更新组件了。</p>
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>博客的Tags和分类</title>
+    <url>/2021/11/01/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/%E5%8D%9A%E5%AE%A2%E7%9A%84Tags%E5%92%8C%E5%88%86%E7%B1%BB/</url>
+    <content><![CDATA[<span id="more"></span>
+
+<p>上面是个示例，一篇文章的categories不能多个，写两个代表嵌套。</p>
+<p>在next主题配置内：<br>打开 <code>~\themes\next\_config.yml</code> 文件，找到 <code>menu</code> 相关的设置，取消掉需要的菜单项的注释。</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">categories: </span><br><span class="line"><span class="bullet">-</span> [学习,html] </span><br><span class="line"><span class="bullet">-</span> [学习,http] </span><br></pre></td></tr></table></figure>
+<p>这样也可以代表嵌套.</p>
+<h2 id="本地分类管理"><a href="#本地分类管理" class="headerlink" title="本地分类管理"></a>本地分类管理</h2><p>通过该命令 <code>hexo new post -p /后端/test.md</code> 执行后，会在post文件夹下创建子文件夹 “后端”，并创建一篇test.md博文。<br>可以直接在<code>D:\MyWeb\source\_posts</code>下新建需要的文件夹进行分类，hexo可以识别文件夹下的内容。<br>这样就可以直接对接在obsidian里面写的文章。</p>
+<p>参考：<br><a href="https://zhuanlan.zhihu.com/p/50787870#:~:text=Hexo%2BGithub%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B%EF%BC%9A03%E6%B7%BB%E5%8A%A0%E5%88%86%E7%B1%BB%201%201%E3%80%81%E5%88%9B%E5%BB%BA%E2%80%9C%E5%88%86%E7%B1%BB%E2%80%9D%E9%80%89%E9%A1%B9%202%201.1%20%E7%94%9F%E6%88%90%E2%80%9C%E5%88%86%E7%B1%BB%E2%80%9D%E9%A1%B5%E5%B9%B6%E6%B7%BB%E5%8A%A0tpye%E5%B1%9E%E6%80%A7%20%E6%89%93%E5%BC%80%E5%91%BD%E4%BB%A4%E8%A1%8C%EF%BC%8C%E8%BF%9B%E5%85%A5%E5%8D%9A%E5%AE%A2%E6%89%80%E5%9C%A8%E6%96%87%E4%BB%B6%E5%A4%B9%E3%80%82%20%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4,-%20jQuery%20-%20%E8%A1%A8%E6%A0%BC%20-%20%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81%20%E5%B0%B1%E6%98%AF%E8%BF%99%E7%AF%87%E6%96%87%E7%AB%A0%E7%9A%84%E6%A0%87%E7%AD%BE%E4%BA%86%20">Hexo+Github博客教程：03添加分类 - 知乎 (zhihu.com)</a></p>
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>慧荣SM2246EN主控山寨固态硬盘修复</title>
-    <url>/2022/12/17/Fix%20&amp;%20Crack/SSD%E4%BF%AE%E5%A4%8D/</url>
+    <url>/2022/11/23/Fix%20&amp;%20Crack/SSD%E4%BF%AE%E5%A4%8D/</url>
     <content><![CDATA[<p><em>在某鱼收了一个120G的所谓金士顿v300固态硬盘，也是受到了一些颗粒玩家的影响想要收来做个U盘，便有了下文…</em></p>
 <span id="more"></span>
 
 <hr>
 <h4 id="初印象"><a href="#初印象" class="headerlink" title="初印象"></a>初印象</h4><p>当时到手后拆开发现内部主控为慧荣SM2246EN，这可不好。。。</p>
 <p>实际上在网上查询得知这款金士顿应该为SF2281的主控。<br>固态上的颗粒印字为Toshiba的TH58TEG7DDLTA00。如下图。</p>
-<img src="/2022/12/17/Fix%20&%20Crack/SSD%E4%BF%AE%E5%A4%8D/%E5%A4%96%E8%A7%82.png" class title="整体外观">
+<img src="/2022/11/23/Fix%20&%20Crack/SSD%E4%BF%AE%E5%A4%8D/%E5%A4%96%E8%A7%82.png" class title="整体外观">
 
 <p>基本上认定这是一个山寨产品。</p>
 <p>首先还是试一试读写，买了斐讯的Sata转USB3.0转接板，上机发现问题是偶尔能读取，但是无法删除原有文件，也无法新建（重新拔插后全部恢复原样），顺序写入大概70M&#x2F;s，很快掉盘。</p>
@@ -17,7 +207,7 @@
 <p>图片上可以看到左边丝印有标注ROM，用镊子短接然后插USB就可以进入ROM模式，被慧荣SM2246EN的量产工具识别就可以开卡。</p>
 <p>但是在慧荣的各个版本量产工具中都找不到这个颗粒型号。<br>关于颗粒类型与命名规则，这里可以参考一些别的文献。<br>这个颗粒按照丝印，应该是15nm制程的MLC，但是在SSD-z中读取为Toshiba 19nm MLC，主控读取为SF2281，但主控固件读取为P0614，这个型号可以看出来很明显是慧荣的一款固件版本。所以说具体颗粒究竟是什么从颗粒丝印不一定是正确的，也可能是重新打字。之前一直尝试使用东芝其他型号颗粒开卡不能开出。</p>
 <p>然后用慧荣开卡工具进行Dram Test（下图）</p>
-<img src="/2022/12/17/Fix%20&%20Crack/SSD%E4%BF%AE%E5%A4%8D/%E9%87%8F%E4%BA%A7%E5%B7%A5%E5%85%B7.png" class title="测试">
+<img src="/2022/11/23/Fix%20&%20Crack/SSD%E4%BF%AE%E5%A4%8D/%E9%87%8F%E4%BA%A7%E5%B7%A5%E5%85%B7.png" class title="测试">
 <p>发现Dram Test过不了，最开始的思路是找能不用缓存的固件开卡，但是实在找不到这样的。顺便提一嘴，这个慧荣的量产工具界面要拖动边框有些内容才会显示出来。<br>这时候去翻了翻论坛，了解到：</p>
 <blockquote>
 <ul>
@@ -28,13 +218,13 @@
 </blockquote>
 <p>这些不同的观点对我修复这个硬盘的过程造成一些困扰。</p>
 <p>图中是南亚的颗粒，Nanya的内存丝印可以看到64M16，<br>意思是64M Bytes16位，这里这个大小按照8Bit算，就是128M，有些颗粒如三星（SEC，Samsung）海力士（SKhynix）会标1G16那种就是1G bits，就是128M Bytes。<br>SM2246主控只支持16位内存。进入参数设置页面设置正确（下图）</p>
-<img src="/2022/12/17/Fix%20&%20Crack/SSD%E4%BF%AE%E5%A4%8D/%E9%87%8F%E4%BA%A7%E5%B7%A5%E5%85%B72.png" class title="量产">
+<img src="/2022/11/23/Fix%20&%20Crack/SSD%E4%BF%AE%E5%A4%8D/%E9%87%8F%E4%BA%A7%E5%B7%A5%E5%85%B72.png" class title="量产">
 
 <p>但是依然不能开卡。</p>
 <hr>
 <h4 id="切换思路"><a href="#切换思路" class="headerlink" title="切换思路"></a>切换思路</h4><p>这时候我已经想放弃了，但是考虑到还是有可能是内存颗粒虚焊，当时手头没有热风枪，先用力按住内存和PCB,发现DRAM Test 可以通过，果然是虚焊。用热风枪重新加焊之后，SSD可以直接使用了，不需要量产。<br>但是在跑随机读写的时候还是容易掉盘，而且顺序读写速度很低。本来不想接着折腾了，就装到壳子里面了。然后发现更容易掉盘了，需要重新加焊，这里为什么后面解释。<br>继续可以使用了之后，尝试在固态里面装一个<a href="https://markdown.com.cn/">Deepin</a>，但是每次都会最后掉盘，第三次的时候直接拔掉电源，发现再不能识别硬盘，当时心里一凉，完了。</p>
 <h4 id="收尾工作"><a href="#收尾工作" class="headerlink" title="收尾工作"></a>收尾工作</h4><p>这时候已经不可避免要进行量产了，最开始提示Flash没有sync，后来再参数设置里面关掉了sync mode，至于选择颗粒选择了自动匹配ID的Sandisk的128Gb颗粒进行开卡，发现这样子可以通过开卡。<br>速度也有所提升。然是发现装进外壳之后又不能识别，这时候用手轻轻扳动缓存颗粒旁边的PCB边缘，发现不能通过DRAM test,就明白了外壳上螺丝的时候会压到这个pcb使其虚焊。重新加焊之后不再上这个螺丝。<br>另外，这只是这个固态的一部分毛病，之前再固态信息里面看到这个固态的数据量是<strong>120T</strong>…也就说，颗粒很可能已经接近报废，所以这就导致后面的的问题，写入到一部分的时候会掉盘。也就说坏块过多也不能映射备用块。这里说一下，固态和机械有很大的不同，所以diskgenius的扫描坏块是不合适的，比如需要读写，对于固态寿命是有影响的，读出来的结果也并不是真的物理块，但是我这里死马当做活马医，本身只想看个参考，所以跑了测试发现确实有读写错误的部分。</p>
-<p>为了解决这个问题，可以通过跑RDT来解决这个问题，量产的时候勾选RDT,这个PCBA在跑的时候会闪灯，所以可以看到跑完结束。跑完RDT之后量产需要直接插上电脑，<strong>不要短接ROM，不要短接不要短接</strong>，那样就失去了RDT信息(如下）<img src="/2022/12/17/Fix%20&%20Crack/SSD%E4%BF%AE%E5%A4%8D/RDT.png" class title="RDT"></p>
+<p>为了解决这个问题，可以通过跑RDT来解决这个问题，量产的时候勾选RDT,这个PCBA在跑的时候会闪灯，所以可以看到跑完结束。跑完RDT之后量产需要直接插上电脑，<strong>不要短接ROM，不要短接不要短接</strong>，那样就失去了RDT信息(如下）<img src="/2022/11/23/Fix%20&%20Crack/SSD%E4%BF%AE%E5%A4%8D/RDT.png" class title="RDT"></p>
 <p>而是直接插上硬盘就应该能在量产工具里面检测到。  最开始我的斐讯的JMS576我发现不行，还准备去买别的转接卡，后来发现只要插在USB2.0端口上就可以识别了，然后换了0819A的固件，发现速度也有提升，测试两天后发现没有掉盘，结束。</p>
 <hr>
 <p>补充：NAND的ID可以复制读出来的第一行数据在这个上面找试试<a href="http://www.flashinfo.top/">www.flashinfo.top</a></p>
@@ -48,6 +238,55 @@
         <tag>SSD</tag>
         <tag>Flash</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Design an Arbitrary Waveform Generator Using the RP2040 MCU and a Digital-to-Analog Converter</title>
+    <url>/2023/06/18/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/Design-an-Arbitrary-Waveform-Generator-Using-the-RP2040-MCU-and-a-Digital-to-Analog-Converter-DAC/</url>
+    <content><![CDATA[<p>    标题是AI写的，本来我想写的是<code>用RP2040实现AWG</code> ，AI说我这个标题不够专业，给我改了一大串，我感觉确实挺🐂🍺，就直接贴上来了。</p>
+<span id="more"></span>
+
+<h1 id="为什么要写这个"><a href="#为什么要写这个" class="headerlink" title="为什么要写这个"></a>为什么要写这个</h1><p>网上有一堆RP2040实现的AWG的设计，其中有一个传播比较广泛的是一个用python写的<a href="https://www.instructables.com/Poor-Mans-Waveform-Generator-Based-on-RP2040-Raspb/">配合一个10bit R2R DAC实现的AWG设计</a>。然而，我认为它有错误:基本上所有的帖子认为连续的DMA传输直接使用例程中给出的控制传输的方法就可以了，然而这种传输方法会损失一个时钟周期用来搬运DMA配置。这意味着信号周期没有被严格控制。对于主频轻轻松松就可以达到270MHz的RP2040来说这个Bug很难看出来，但是如果生成信号波形周期较短就可以看到。B站有一个对于原开源项目的<a href="https://www.bilibili.com/video/BV1Xq4y1Y7eF">复刻</a>，在输出高频的时候就能看出来了。</p>
+<pre><code>这个复刻的视频不够详细，后面我会给出具体测试结果。
+
+不知道为什么RP2040作为树莓派一个很不错的产品，有相当多的讨论和开源环境，但是有些教程却始终是抄来抄去，甚至英文环境也是，可能确实是没啥人用这个做产品就是这样吧。。。包括下载配置，有更好的方法，但是容易找到的教程都是最开始手册上给出的方法。
+</code></pre>
+<p>一个原因是手册上没有直接给出DMA乒乓传输的例子和说明，而是通过一个称作“控制传输（2.5.6.2. DMA Control Blocks .RP2040-Datasheet）” 来说明如何连续传输数据到外设或者指定地址。我在反复怀疑自己了几天之后，决定直接写代码验证一下。</p>
+<blockquote>
+<p>Talk is cheap. Show me the code</p>
+</blockquote>
+<p>    我最开始不甚了解乒乓传输这个概念，说来惭愧，写了几年单片机，就用过一次DMA, 最后还因为操作逻辑不好处理舍弃了，其他时候要么是用垃圾单片机压根没有DMA，要么是没这需求。这里还是第一次正儿八经看看DMA怎么做。</p>
+<p>代码验证想法是正确的，分别验证了原来的控制传输确实会出错，测试了信号波形，以及验证了使用PingPong传输能得到想要的结果。</p>
+<pre><code>手册中给出的例子确实实现了连续传输不需要CPU介入，但是它从来没说过时序是严格的，单独为DMA循环传输做了功能的有STM32,配置循环就会自动从地址段环回取数据。RP2040的DMA IP核似乎是买的公版IP，不过用下来还是比较好用的。
+</code></pre>
+<p>下面正文里面详细说设计和测试。</p>
+<h1 id="RP2040-DMA"><a href="#RP2040-DMA" class="headerlink" title="RP2040 DMA"></a>RP2040 DMA</h1><p>DMA，顾名思义，直接内存访问，无需使用CPU搬运数据。</p>
+<p>有一个触发其他通道的概念比较有意思，可以配置为每个通道传输结束后会自动触发另外一个DMA通道启动，很明显，这样就可以实现一个PingPong传输了，甚至可以多个通道接力最后转回来。遗憾的是它并不能自己触发自己，所以实现连续传输至少需要两个DMA通道.</p>
+<p>由于没有自动的循环模式，想要严格控制传输时序，就需要DMA通道在下一次传输前准备好，  </p>
+<p>由于DMA通道配置的传输地址并不会自己回到最初的地址，因此每次传输结束后至少要重新配置传输起始地址才能在下一次传输中传输正确的数据。因此，这种方法保证了时间间隔的严格，但是作为牺牲是CPU必然要耗费一定时间参与传输任务。这可能对于其他任务是有影响的。</p>
+<pre><code>然而RP2040是双核的，实在优化不出来完全可以扔到另一个核心跑（
+</code></pre>
+<h1 id="R2R-DAC"><a href="#R2R-DAC" class="headerlink" title="R2R DAC"></a>R2R DAC</h1><p>为什么使用这个DAC? 由于是电阻结构所以很容易做而且能达到不错的输出速度。当然了很多成品并行DAC也是使用的R2R结构，而且拆机件也不贵，这里首选选用手工使用电阻搭建这个DAC，为了好玩，其后再测试成品集成芯片。</p>
+<p>关于DAC，可以看我这篇博客：<a href="https://blog.csdn.net/always_one/article/details/104560604?spm=1001.2014.3001.5501">(36条消息) 关于DAC的原理_dac工作原理_你要写卓的博客-CSDN博客</a>（TODO:改天找到原文迁移到自己的博客上）</p>
+<h1 id="硬件设计"><a href="#硬件设计" class="headerlink" title="硬件设计"></a>硬件设计</h1><p>其实最开始的测试版本充其量只能叫做硬件连接不能叫做硬件设计，因为测试过程中只是用到了一个开发板连接了一堆电阻而已。</p>
+]]></content>
+      <categories>
+        <category>嵌入式与单片机</category>
+      </categories>
+      <tags>
+        <tag>rp2040</tag>
+        <tag>ARM</tag>
+        <tag>模电</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SD知识树</title>
+    <url>/2022/11/23/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/SD%E7%9F%A5%E8%AF%86%E6%A0%91/</url>
+    <content><![CDATA[<p>还没想好怎么写因为一直都没用上要写sd卡的东西了。。。</p>
+<span id="more"></span>
+]]></content>
+      <categories>
+        <category>嵌入式与单片机</category>
+      </categories>
   </entry>
   <entry>
     <title>ADS1263性能测试</title>
@@ -303,245 +542,6 @@
       </tags>
   </entry>
   <entry>
-    <title>个人博客文章的管理</title>
-    <url>/2023/02/01/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/0%E3%80%81%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E7%9A%84%E7%AE%A1%E7%90%86/</url>
-    <content><![CDATA[<p>这篇是一篇随记，其实很简单：</p>
-<p><strong>用OBSIDIAN来管理博客的文章就好了</strong>。</p>
-<span id="more"></span>
-<p>起因是用了obsidian之后就懒得写博客了，加上Typeroa收费，新的markdown编辑器不太好用，至少没有之前那么好用，因此就转移笔记到了obsidian。本来是打算ob编辑结束之后转移回来，但是发现同步这个太痛苦了，突然想到直接在博客源文件这里建立一个ob的库就好了，这样实际上还可以分开管理一些想要发布的东西。</p>
-<p>另外，文件夹不影响文章的识别，因此可以在<code>_post</code>文件夹下面用文件夹分类，这个逻辑和obsidian是一样的。</p>
-<p>缺点是，另外一个ob库同步到了手机，可以很方便随处编辑，这个库再同步过去感觉多少有点别扭，当然也不是不行，只是感觉手机上的文件很乱不想继续往里面塞东西。</p>
-<h1 id="多个公开平台同步"><a href="#多个公开平台同步" class="headerlink" title="多个公开平台同步"></a>多个公开平台同步</h1><p>还没想好除了复制粘贴还有啥方法。<br>知乎可以直接上传mardown文档，但是图片要重新上传，而且那个图片上传对于批量很不友好。<br>CSDN真的不行。<br>b站更是啥都没有。。markdown都不能识别。</p>
-]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>博客写文提纲</title>
-    <url>/2023/06/20/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/%E5%8D%9A%E5%AE%A2%E5%86%99%E6%96%87%E6%8F%90%E7%BA%B2/</url>
-    <content><![CDATA[<p>1、这里是第一段。不要写标题，因为要留着当作前言，并放在主页预览，写了标题就不好看了。。。</p>
-<span id="more"></span>
-
-<p>2、上面添加一个阅读更多的折叠。</p>
-<p>3、参考链接可以放在最前面，如果很可能是为了提示自己。</p>
-<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><p>一级标题不要和文章标题重合。</p>
-<p>5、正文内容</p>
-<p>后面的就根据正文随意发挥了</p>
-]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>静态博客的搭建</title>
-    <url>/2023/03/13/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/1%E3%80%81%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA/</url>
-    <content><![CDATA[<p>出于方便的目的，加上可以维护自己的MD文档，这里当然是首先选择一个框架来构建自己的博客。</p>
-<span id="more"></span>
-<h2 id="博客框架的选择"><a href="#博客框架的选择" class="headerlink" title="博客框架的选择"></a>博客框架的选择</h2><p>框架有<strong>Hexo、WordPress、VuePress、Hugo、Solo、Halo 、Jekyll</strong>,<br>但是Gitee pages 支持的服务有Jekyll、Hugo、Hexo。（或者github的）<br>其中Hexo使用比较多，教程也比较多，据说基于Go的Hugo的构建速度比较快，不过目前教程不多，因此这里还是选择了基于node.js的hexo。</p>
-<h2 id="Hexo框架的初始化"><a href="#Hexo框架的初始化" class="headerlink" title="Hexo框架的初始化"></a>Hexo框架的初始化</h2><h3 id="1、安装node-js"><a href="#1、安装node-js" class="headerlink" title="1、安装node.js"></a>1、安装node.js</h3><p>Windows 直接用安装包安装就行，选LTS版本,里面的npm工具要安装上。<br>linux下 就比较简单，直接install nodejs和install npm.</p>
-<h3 id="2、安装hexo"><a href="#2、安装hexo" class="headerlink" title="2、安装hexo"></a>2、安装hexo</h3><p>在需要存放自己博客文件的文件夹下面打开命令行(not powershell,可以安装但是不能执行)，</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-
-<p>然后试试执行命令<code>hexo -v</code>看看安装成功没有（Windows需要在cmd下执行，powershell不行）。</p>
-<p>然后初始化hexo：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
-
-<p>也可以新建一个文件夹的方式</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init myblog</span><br><span class="line"><span class="built_in">cd</span> myblog</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
-
-<p>这时候这个文件夹下面有：</p>
-<ul>
-<li>node_modules: 依赖包</li>
-<li>public：存放生成的页面</li>
-<li>scaffolds：生成文章的一些模板</li>
-<li>source：用来存放你的文章</li>
-<li>themes：主题</li>
-<li><strong>_config.yml: 博客的配置文件</strong></li>
-</ul>
-<p>测试一下功能正常</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
-<p>然后点开生成的本地服务 localhost:4000可以看到一个自带的页面。</p>
-<h3 id="3-连接Github仓库"><a href="#3-连接Github仓库" class="headerlink" title="3 连接Github仓库"></a>3 连接Github仓库</h3><p>新建一个仓库名为   用户名.github.io  ，这样pages的根目录就是这个仓库名，否则是 用户名.github.io&#x2F;仓库名，也不是不能用但是一来不好看，而来后面还要加配置。<br>如果使用Gitee,这里需要新建一个名为用户名的仓库，达到和Github 一样的效果。</p>
-<p>然后就是配置Git的那一套，用户名，SSH,这都是全局配置，配过了就不用再配置了。见[[GIT的初始使用方法]]。</p>
-<p>在博客文件夹下有配置文件，里面包含了deploy这个项目<br>在文件内文本配置自己的仓库链接：</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># repo: https://gitee.com/always_one/always_one.git</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:alwaysmy/alwaysmy.github.io.git</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p> 注意了，这里GitHub不要使用https链接了，现在不支持，gitee倒是没注意过，要用git链接。<br> 同时<br> 还有配置博客对应的根目录</p>
-<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="string">url:</span> <span class="string">https://alwaysmy.github.io</span></span><br><span class="line"></span><br><span class="line"><span class="string">root:</span> <span class="string">/</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p> 安装deploy-git，通过hexo命令来部署到Github.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-
-<p>然后再hexo所在的文件夹下面执行</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean&amp;&amp; hexo g&amp;&amp;hexo d</span><br></pre></td></tr></table></figure>
-
-<p>分别是清空，生成和部署。有时候直接生成部署就行，如果修改了Hexo主题相关的东西需要清空。</p>
-<p>这时候你直接在生成的.deploy_git文件夹内使用git push当然也可以，但是那样搞复杂了。</p>
-<h2 id="配置Hexo"><a href="#配置Hexo" class="headerlink" title="配置Hexo"></a>配置Hexo</h2><h3 id="配置主题"><a href="#配置主题" class="headerlink" title="配置主题"></a>配置主题</h3><p>主题的配置需要在主题下对应主题内的_config.yml下修改<br>更换hexo NEXT的主题配置之后必须要先hexo clean才能生成对应的主题</p>
-<h3 id="图片的URL问题"><a href="#图片的URL问题" class="headerlink" title="图片的URL问题"></a>图片的URL问题</h3><p>前面已经配置好了,所以我不记得了,下面说点小问题.<br>如果图片在本地预览正确,但是hexo生成的带了绝对路径,那么大概是图片的路径前面多了个&#x2F;,虽然在(Windows)本地&#x2F;不影响这个图片的路径的查找,但是hexo为图片不会生成一个带日期的路径,</p>
-<ol>
-<li><p>安装插件 asset-image 但是这个插件好像需要一点修改</p>
-</li>
-<li><p>npm install <a href="https://github.com/CodeFalling/hexo-asset-image">https://github.com/CodeFalling/hexo-asset-image</a></p>
-</li>
-<li><p>设置图片为相对路径</p>
-</li>
-<li><p>hexo clean &amp;&amp; hexo generate &amp;&amp; hexo s 运行查看<br>hexo配置需要启用post_asset_folder: true<br>关闭动画<br><strong>motion</strong> 修改为false</p>
-<h1 id="拓展问题"><a href="#拓展问题" class="headerlink" title="拓展问题"></a>拓展问题</h1><h2 id="评论区如何解决"><a href="#评论区如何解决" class="headerlink" title="评论区如何解决"></a>评论区如何解决</h2><p>博客有评论的功能是最好不过的,不能老让人家发邮件,也不方便整理.</p>
-<h2 id="迁移博客到别的平台"><a href="#迁移博客到别的平台" class="headerlink" title="迁移博客到别的平台"></a>迁移博客到别的平台</h2><p>这里需要从gitee迁移到github.<br>首先可以在github中<a href="https://github.com/new/import">Import a Repository (github.com)</a>  复制原来仓库链接进行迁移.<br>修改.deploy_git 下.git中的config文件内包含的远程仓库的地址.或者用命令修改.</p>
-</li>
-</ol>
-<p>本地重新安装node后安装npm,然后这里是hexo博客,就</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-
-<p>然后这里不需要hexo init了,直接在原来的博客文件夹下,我这里是myweb,hexo s测试一下结果.<br>使用hexo n “博客标题”来创建博客文章</p>
-<p>github相比gitee的pages,仓库名需要alwaysmy.github.io加上后面的github.io才行</p>
-<p>修改hexo中_config.yml下的url为github page给出的url,仓库改成git协议的仓库</p>
-<p>文章中开头的描述后面需要有空格</p>
-<h1 id="添加附加信息"><a href="#添加附加信息" class="headerlink" title="添加附加信息"></a>添加附加信息</h1><h2 id="添加github和邮箱"><a href="#添加github和邮箱" class="headerlink" title="添加github和邮箱"></a>添加github和邮箱</h2><p>打开 <code>~\themes\next\_config.yml</code> 文件，找到 <code>social</code> 相关的设置，取消掉需要的菜单项的注释。</p>
-<p>打赏<br>reward:</p>
-]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>关于博客发布插入图片的几种方法</title>
-    <url>/2023/02/11/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2%E5%8F%91%E5%B8%83%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<p>这里说的情况都是markdown的文件。</p>
-<span id="more"></span>
-<p><strong>1、图床外链</strong><br>这需要上传图片，多少有些不方便，还取决于图床稳定。<br><strong>2、上传图片到仓库</strong><br>能解决自建博客的问题，但是复制到别的平台发布的时候有些不方便，不能自动上传图片。不过可以通过<br>复制博客可以obsidian的复制自动转成markdown功能，再发布到别的平台上。<br><strong>3、图片转base64直接嵌入md文档</strong><br>这个图片会跟着文件走，基本上是最稳妥的方式，但是在本地端不太好保存回去成图片。（快捷方法？）而且由于里面字符太多，搜索英文的时候会有很多误判断的结果。<br>可以使用小米笔记编辑博客文档，图片会自动转成base64。<br><strong>4、<a href="../%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/OneNote%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/OneNote%E5%A4%8D%E5%88%B6%E5%9B%BE%E7%89%87.md">OneNote复制图片</a></strong><br>OneNote用Ctrl+C复制图片粘贴到Obsidian里面的时候会附带图片的Base64和图片的OCR文字内容</p>
-<h1 id="具体语法"><a href="#具体语法" class="headerlink" title="具体语法"></a>具体语法</h1><p>1 最常见的markdown语法<br>2 HTML</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">center</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;双路混音器制作记录/image-20211113034220481.png&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;image-20211113034220481&quot;</span> <span class="attr">style</span>=<span class="string">&quot;zoom: 67%;&quot;</span> /&gt;</span><span class="tag">&lt;/<span class="name">center</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>或者：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">align</span>=<span class="string">center</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;./长白山行简记/IMG_20230606_195217-01.jpeg&quot;</span> <span class="attr">width</span>=<span class="string">&quot;600&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-<h1 id="部署之后的显示"><a href="#部署之后的显示" class="headerlink" title="部署之后的显示"></a>部署之后的显示</h1><p>Hexo默认的图片显示方法和md语法不兼容。。。<br>1、如果使用默认md语法：</p>
-<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">{% asset_img "span>" "<span class="string">name</span>" %}</span><br></pre></td></tr></table></figure>
-<p>这时候渲染就会出问题。</p>
-<p>网上说法很多，我分不太清，实测有效：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-image-link --save</span><br><span class="line">npm install hexo-asset-image -- save</span><br></pre></td></tr></table></figure>
-<p>然后打开hexo config中的：<br><code>post_asset_folder: true #是否启用资源文件夹（用来存放相对路径图片或文件）</code></p>
-<p>这两个似乎不是一个效果，但是考虑到有效我就不折腾了。。。</p>
-<p>2、使用HTML插入图片</p>
-<p>这个方法和typero一样，也就是上面的方法，这种方法能直接显示的。一般不会遇到问题。缺点是在obsidian里面显示不出来。。。不过TypeDown也可以显示。</p>
-]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>博客的Tags和分类</title>
-    <url>/2021/11/01/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/%E5%8D%9A%E5%AE%A2%E7%9A%84Tags%E5%92%8C%E5%88%86%E7%B1%BB/</url>
-    <content><![CDATA[<span id="more"></span>
-
-<p>上面是个示例，一篇文章的categories不能多个，写两个代表嵌套。</p>
-<p>在next主题配置内：<br>打开 <code>~\themes\next\_config.yml</code> 文件，找到 <code>menu</code> 相关的设置，取消掉需要的菜单项的注释。</p>
-<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">categories: </span><br><span class="line"><span class="bullet">-</span> [学习,html] </span><br><span class="line"><span class="bullet">-</span> [学习,http] </span><br></pre></td></tr></table></figure>
-<p>这样也可以代表嵌套.</p>
-<h2 id="本地分类管理"><a href="#本地分类管理" class="headerlink" title="本地分类管理"></a>本地分类管理</h2><p>通过该命令 <code>hexo new post -p /后端/test.md</code> 执行后，会在post文件夹下创建子文件夹 “后端”，并创建一篇test.md博文。<br>可以直接在<code>D:\MyWeb\source\_posts</code>下新建需要的文件夹进行分类，hexo可以识别文件夹下的内容。<br>这样就可以直接对接在obsidian里面写的文章。</p>
-<p>参考：<br><a href="https://zhuanlan.zhihu.com/p/50787870#:~:text=Hexo%2BGithub%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B%EF%BC%9A03%E6%B7%BB%E5%8A%A0%E5%88%86%E7%B1%BB%201%201%E3%80%81%E5%88%9B%E5%BB%BA%E2%80%9C%E5%88%86%E7%B1%BB%E2%80%9D%E9%80%89%E9%A1%B9%202%201.1%20%E7%94%9F%E6%88%90%E2%80%9C%E5%88%86%E7%B1%BB%E2%80%9D%E9%A1%B5%E5%B9%B6%E6%B7%BB%E5%8A%A0tpye%E5%B1%9E%E6%80%A7%20%E6%89%93%E5%BC%80%E5%91%BD%E4%BB%A4%E8%A1%8C%EF%BC%8C%E8%BF%9B%E5%85%A5%E5%8D%9A%E5%AE%A2%E6%89%80%E5%9C%A8%E6%96%87%E4%BB%B6%E5%A4%B9%E3%80%82%20%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4,-%20jQuery%20-%20%E8%A1%A8%E6%A0%BC%20-%20%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81%20%E5%B0%B1%E6%98%AF%E8%BF%99%E7%AF%87%E6%96%87%E7%AB%A0%E7%9A%84%E6%A0%87%E7%AD%BE%E4%BA%86%20">Hexo+Github博客教程：03添加分类 - 知乎 (zhihu.com)</a></p>
-]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Design an Arbitrary Waveform Generator Using the RP2040 MCU and a Digital-to-Analog Converter</title>
-    <url>/2023/06/18/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/Design-an-Arbitrary-Waveform-Generator-Using-the-RP2040-MCU-and-a-Digital-to-Analog-Converter-DAC/</url>
-    <content><![CDATA[<p>    标题是AI写的，本来我想写的是<code>用RP2040实现AWG</code> ，AI说我这个标题不够专业，给我改了一大串，我感觉确实挺🐂🍺，就直接贴上来了。</p>
-<span id="more"></span>
-
-<h1 id="为什么要写这个"><a href="#为什么要写这个" class="headerlink" title="为什么要写这个"></a>为什么要写这个</h1><p>网上有一堆RP2040实现的AWG的设计，其中有一个传播比较广泛的是一个用python写的<a href="https://www.instructables.com/Poor-Mans-Waveform-Generator-Based-on-RP2040-Raspb/">配合一个10bit R2R DAC实现的AWG设计</a>。然而，我认为它有错误:基本上所有的帖子认为连续的DMA传输直接使用例程中给出的控制传输的方法就可以了，然而这种传输方法会损失一个时钟周期用来搬运DMA配置。这意味着信号周期没有被严格控制。对于主频轻轻松松就可以达到270MHz的RP2040来说这个Bug很难看出来，但是如果生成信号波形周期较短就可以看到。B站有一个对于原开源项目的<a href="https://www.bilibili.com/video/BV1Xq4y1Y7eF">复刻</a>，在输出高频的时候就能看出来了。</p>
-<pre><code>这个复刻的视频不够详细，后面我会给出具体测试结果。
-
-不知道为什么RP2040作为树莓派一个很不错的产品，有相当多的讨论和开源环境，但是有些教程却始终是抄来抄去，甚至英文环境也是，可能确实是没啥人用这个做产品就是这样吧。。。包括下载配置，有更好的方法，但是容易找到的教程都是最开始手册上给出的方法。
-</code></pre>
-<p>一个原因是手册上没有直接给出DMA乒乓传输的例子和说明，而是通过一个称作“控制传输（2.5.6.2. DMA Control Blocks .RP2040-Datasheet）” 来说明如何连续传输数据到外设或者指定地址。我在反复怀疑自己了几天之后，决定直接写代码验证一下。</p>
-<blockquote>
-<p>Talk is cheap. Show me the code</p>
-</blockquote>
-<p>    我最开始不甚了解乒乓传输这个概念，说来惭愧，写了几年单片机，就用过一次DMA, 最后还因为操作逻辑不好处理舍弃了，其他时候要么是用垃圾单片机压根没有DMA，要么是没这需求。这里还是第一次正儿八经看看DMA怎么做。</p>
-<p>代码验证想法是正确的，分别验证了原来的控制传输确实会出错，测试了信号波形，以及验证了使用PingPong传输能得到想要的结果。</p>
-<pre><code>手册中给出的例子确实实现了连续传输不需要CPU介入，但是它从来没说过时序是严格的，单独为DMA循环传输做了功能的有STM32,配置循环就会自动从地址段环回取数据。RP2040的DMA IP核似乎是买的公版IP，不过用下来还是比较好用的。
-</code></pre>
-<p>下面正文里面详细说设计和测试。</p>
-<h1 id="RP2040-DMA"><a href="#RP2040-DMA" class="headerlink" title="RP2040 DMA"></a>RP2040 DMA</h1><p>DMA，顾名思义，直接内存访问，无需使用CPU搬运数据。</p>
-<p>有一个触发其他通道的概念比较有意思，可以配置为每个通道传输结束后会自动触发另外一个DMA通道启动，很明显，这样就可以实现一个PingPong传输了，甚至可以多个通道接力最后转回来。遗憾的是它并不能自己触发自己，所以实现连续传输至少需要两个DMA通道.</p>
-<p>由于没有自动的循环模式，想要严格控制传输时序，就需要DMA通道在下一次传输前准备好，  </p>
-<p>由于DMA通道配置的传输地址并不会自己回到最初的地址，因此每次传输结束后至少要重新配置传输起始地址才能在下一次传输中传输正确的数据。因此，这种方法保证了时间间隔的严格，但是作为牺牲是CPU必然要耗费一定时间参与传输任务。这可能对于其他任务是有影响的。</p>
-<pre><code>然而RP2040是双核的，实在优化不出来完全可以扔到另一个核心跑（
-</code></pre>
-<h1 id="R2R-DAC"><a href="#R2R-DAC" class="headerlink" title="R2R DAC"></a>R2R DAC</h1><p>为什么使用这个DAC? 由于是电阻结构所以很容易做而且能达到不错的输出速度。当然了很多成品并行DAC也是使用的R2R结构，而且拆机件也不贵，这里首选选用手工使用电阻搭建这个DAC，为了好玩，其后再测试成品集成芯片。</p>
-<p>关于DAC，可以看我这篇博客：<a href="https://blog.csdn.net/always_one/article/details/104560604?spm=1001.2014.3001.5501">(36条消息) 关于DAC的原理_dac工作原理_你要写卓的博客-CSDN博客</a>（TODO:改天找到原文迁移到自己的博客上）</p>
-<h1 id="硬件设计"><a href="#硬件设计" class="headerlink" title="硬件设计"></a>硬件设计</h1><p>其实最开始的测试版本充其量只能叫做硬件连接不能叫做硬件设计，因为测试过程中只是用到了一个开发板连接了一堆电阻而已。</p>
-]]></content>
-      <categories>
-        <category>嵌入式与单片机</category>
-      </categories>
-      <tags>
-        <tag>模电</tag>
-        <tag>rp2040</tag>
-        <tag>ARM</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>已有博客仓库的重建和配置</title>
-    <url>/2023/03/13/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/%E5%B7%B2%E6%9C%89%E5%8D%9A%E5%AE%A2%E4%BB%93%E5%BA%93%E7%9A%84%E9%87%8D%E5%BB%BA%E5%92%8C%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<p>每次重装系统什么的，虽然仓库我做了备份，但是还是要重新配置一下环境，为了以后都能无脑配置，这里集中记录一下过程。</p>
-<span id="more"></span>
-
-<p>···</p>
-<h2 id="博客源文件重新加入备份"><a href="#博客源文件重新加入备份" class="headerlink" title="博客源文件重新加入备份"></a>博客源文件重新加入备份</h2><p>1、从NAS上打开MyWeb的Syncthing同步项目，勾选共享到这台电脑，设置一下路径就行，还有启用排除列表。</p>
-<p>不过上面这一项不是必须的，因为如果之前做好了备份，只需要复制AppData下的文件，Syncthing的配置文件就在里面不用自己去修改了，下次重装的时候设置会保持不变。</p>
-<p>2、重新安装nodejs, 不用勾选安装其他模块，尤其是自己已经安装了python。<br>如果之前备份了appdata，模块应该还在。<br>尝试在博客存放文件夹下面cmd里面执行hexo -v看看能不能用，如果不能就重新安装hexo. (我没试)<br>npm install -g hexo-cli</p>
-<p>然后后面的步骤就不用操作了，可以直接使用hexo命令了。</p>
-<p>3、由于之前已经修改过git配置了，这里直接使用hexo d，可能会提示git仓库用户不一致，按照提示把git仓库加入安全目录即可发布。</p>
-<p>4、能用就不要尝试更新组件了。</p>
-]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SD知识树</title>
-    <url>/2022/12/17/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/SD%E7%9F%A5%E8%AF%86%E6%A0%91/</url>
-    <content><![CDATA[<p>还没想好怎么写因为一直都没用上要写sd卡的东西了。。。</p>
-<span id="more"></span>
-]]></content>
-      <categories>
-        <category>嵌入式与单片机</category>
-      </categories>
-  </entry>
-  <entry>
     <title>reMarkable 1 漫游指南</title>
     <url>/2023/07/19/%E7%94%9F%E6%B4%BB%E6%B8%B8%E7%8E%A9/reMarkable%201%20%E6%BC%AB%E6%B8%B8%E6%8C%87%E5%8D%97/</url>
     <content><![CDATA[<p>aka 2023 reMarkable 1代配置完全指南：从配置字体到救砖刷机</p>
@@ -587,7 +587,7 @@
 <p>后者IP则保持为 10.11.99.1 ，如果不想连接WIFI或者为了避免IP变化，可以就用USB界面。配置的时候最好把睡眠关掉，否则会断开连接，无论是WIFI还是USB网络界面。</p>
 <p>需要的电脑上的工具一个是WinSCP，使用WinSCP可以方便地管理文件，而且可以保存密码免输入密码登录，也可以使用命令行窗口来管理，因为命令行工具不是很好用所以需要使用SSH来管理更方便。</p>
 <p>这个工具直接用默认配置就可以，协议选SFTP就可以了，不过需要显示隐藏文件，点击右下角的已隐藏字样点一下，可以显示隐藏文件了。</p>
-<p>另一个是SSH，很多人推荐Putty但是我觉得这个并不方便，可以直接用WindowsTerminal下powershell支持的ssh，使用命令ssh <a href="mailto:&#x72;&#111;&#111;&#116;&#x40;&#49;&#x39;&#x32;&#46;&#49;&#x36;&#x38;&#46;&#51;&#x31;&#46;&#51;&#57;">&#x72;&#111;&#111;&#116;&#x40;&#49;&#x39;&#x32;&#46;&#49;&#x36;&#x38;&#46;&#51;&#x31;&#46;&#51;&#57;</a> 即可，注意这个ip需要在机器内查看。</p>
+<p>另一个是SSH，很多人推荐Putty但是我觉得这个并不方便，可以直接用WindowsTerminal下powershell支持的ssh，使用命令ssh <a href="mailto:&#x72;&#x6f;&#111;&#x74;&#64;&#x31;&#x39;&#x32;&#46;&#49;&#54;&#56;&#46;&#51;&#49;&#x2e;&#51;&#x39;">&#x72;&#x6f;&#111;&#x74;&#64;&#x31;&#x39;&#x32;&#46;&#49;&#54;&#56;&#46;&#51;&#49;&#x2e;&#51;&#x39;</a> 即可，注意这个ip需要在机器内查看。</p>
 <p>由于配置一些其他软件的时候经常使用SSH，可以通过生成密钥来免密码登录。</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
 <p>如果已经生成过了（比如之前用过git必然配置过），就不要生成了。<br>会提示生成文件到 .ssh 目录下了。<br>然后把公钥id_rsa.pub放到reMarkable上的~&#x2F;.ssh下，然后这里注意这里除了用户目录不能对组有权限，.ssh以及以下的文件都不能对组有权限，否则不能登录，会报错<code>Permission denied (publickey,password)</code> 。<br>然后在.ssh目录下执行</p>
@@ -920,6 +920,35 @@ Probably not, but standard disclaimers apply
       </tags>
   </entry>
   <entry>
+    <title>WinUSB上位机的开发</title>
+    <url>/2023/06/25/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/WinUSB%E4%B8%8A%E4%BD%8D%E6%9C%BA%E7%9A%84%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[<p>这篇文章是对WinUSB上位机开发的一个具体总结日志。详细的其他知识笔记分开来写。</p>
+<span id="more"></span>
+
+<p>起因是当时脑子一热准备给抽奖中的HPI1000重新编程开发，经过一两个月的磨蹭把下位机部分软件写差不多了，需要上位机联调了，同时也准备一同开发HPI1000对应的上位机。</p>
+<p>TivaWare中附带了一个C语言写的命令行的Windows上位机，改一改也能用，但是用起来不是很方便。而且由于QT忘记差不多了，一开始我是不打算使用QT的。</p>
+<h1 id="框架选择"><a href="#框架选择" class="headerlink" title="框架选择"></a>框架选择</h1><p>HPI1000主要是具有一个虚拟示波器，由于之前用QT写虚拟示波器的时候感觉痛苦万分，这次想要舍弃这个框架，而且QT整了不少活儿，开源闭源的问题让人很不爽，所以开始寻找其他的图形框架。</p>
+<p>然后就找到了Godot。这是一个小型游戏引擎，Godot 3.5总共也才三十多M，QT打包之后还真不一定比这个小，因此完全可以考虑。但是编程的时候遇到了问题。<br>作为一个开源软件，Godot发展并不是特别好，所以很多组件是没有的。例如Windows下串口的访问，USB的访问，如果使用它自己的GDscript，这些组件都需要自己使用C&#x2F;C++来实现。</p>
+<p>起初我是不想去用C&#x2F;C++的，因为需要包含WindowsDDK才能继续开发这个驱动，我以为WinUSB有更优雅的访问方式。<br>好在Godot同时也支持使用C#来编程，这样可以任意引入其他.net的包，然而我太天真了。<br>因为虽然.net原生支持串口访问，但是我没想到.NET作为微软的儿子，WinUSB居然没有对应的包，而微软的教程都是需要使用C&#x2F;C++来创建WinUSB应用。<br>不死心的我决定找找有没有第三方包，结果是有，但是不好用。。。比如LIBUSB，然而需要额外安装libusb的驱动。。这就违背了我的初衷：希望设备是免驱的。</p>
+<p>在.net应用中使用C&#x2F;C++方法也不是没有，那就是引入DLL. DLL这不是有现成的嘛，TivaWare中的那个DLL就可以使用。然而这是个大坑，不仅有指针的问题，还有DLL编译的时候和原编译器位数有关的问题，也就是说有可能这个DLL本身我还要重新编译一次。</p>
+<p>那我还不如直接重新写。</p>
+<p>上面的问题我另外写了具体的USB框架的选择，这里不再细说，总之就是当我决心使用C#的时候，发现事情最后都指向了使用C&#x2F;C++老老实实调用WinUSB API来写。</p>
+<pre><code>一开始我以为WinUSB API的调用会很麻烦，资料找起来也费劲，微软的资料看不大明白。。。后来才发现非常简单。
+</code></pre>
+<p>当我打开TivaWare的 lmusbdll 的source code，我发现这似乎就是简单封装了一下WinUSB API….参考别人的QT的winUSB demo,我发现两者好像没有什么区别。。。</p>
+<p>所以最终决定直接使用QT来写。</p>
+<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><p>添加依赖库。<br>在.pro中添加SetupAPI 和winusb，用来给后面调用。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 手动添加库</span><br><span class="line">win32: LIBS += -lSetupAPI </span><br><span class="line">win32: LIBS += -lwinusb</span><br></pre></td></tr></table></figure>
+
+<p>复制粘贴lmusb<br>去掉用不上的部分，把函数全部复制过来，去掉原来的导出的声明，直接改成普通函数。<br>添加一个速度查询的函数。</p>
+<p>添加WinUSBdevice设备类<br>方便承载原来的全局变量。</p>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><p>添加一个线程用来循环读取USB设备，防止主界面卡死。</p>
+]]></content>
+      <categories>
+        <category>嵌入式与单片机</category>
+      </categories>
+  </entry>
+  <entry>
     <title>长白山行简记</title>
     <url>/2023/06/13/%E7%94%9F%E6%B4%BB%E6%B8%B8%E7%8E%A9/%E9%95%BF%E7%99%BD%E5%B1%B1%E8%A1%8C%E7%AE%80%E8%AE%B0/</url>
     <content><![CDATA[<p>6月初拿到驾照之后，突然想出去玩玩了，然后看了下时间，准备赶在高考结束之前完成这个计划。<br>很久之前就想去的长白山看看，不过看的攻略都感觉很模糊，早些年也感觉没有什么时间，我比较喜欢一板一眼的东西，最好是都能提取决定好的，而网上的攻略大都说不清时间地点而且大部分比较片面，于是一直没有什么动力走这个计划。<br>这一次决定直接梭哈，简单看了一下去的方式，就订了机票准备出发。</p>
@@ -1024,6 +1053,43 @@ Probably not, but standard disclaimers apply
       <tags>
         <tag>生活</tag>
         <tag>旅游</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用aardio写一个基于pyocd的单片机下载器</title>
+    <url>/2023/04/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/%E4%BD%BF%E7%94%A8aardio%E5%86%99%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8Epyocd%E7%9A%84%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%8B%E8%BD%BD%E5%99%A8/</url>
+    <content><![CDATA[<p>为了方便使用pyocd进行下载操作，于是写了一个下载器GUI，开发工具选择了aardio，因此只支持Windows平台。</p>
+<span id="more"></span>
+<h1 id="1-新建工程"><a href="#1-新建工程" class="headerlink" title="1 新建工程"></a>1 新建工程</h1><p>最开始本来是打算调用pyocd 的python api的，但是一方面是内嵌包一直安装出问题，另一方面是考虑到本地pack不想重复安装和管理，于是就转做pyocd的前端了，也就是直接调用pyocd，根据返回数据解析，然后执行要做的命令。</p>
+<p>所以新建一个普通工程就可以。</p>
+<h1 id="2-基本功能"><a href="#2-基本功能" class="headerlink" title="2 基本功能"></a>2 基本功能</h1><p>主要功能：</p>
+<ul>
+<li><p>下载 </p>
+</li>
+<li><p>擦除 </p>
+</li>
+<li><p>复位<br>然后要能选择对应的仿真器和单片机型号，从支持的列表从选择，就要用一下pyocd list和pyocd list -t命令查询，根据返回的结果解析已经可以支持的单片机。</p>
+<p>  p.s 其实直接用pyocd json 命令返回json会很容易解析，但是我一开始没看到这个命令，就算了，正好生成命令pyocd list的执行结果也可以给人看。</p>
+</li>
+</ul>
+<p>其中pyocd list会返回仿真器的列表，我是通过head也就是第一行的标题的位置来得到下面每行内容的分割位置，得到正确的结果。这里发现是每隔一行为一个仿真器信息。<br>而pyocd list -t 返回可用器件型号，分割方法类似，不过这里不是每隔一行而是连续的每行都是对应结果，一开始这里没看到导致少了一半。</p>
+<p>另外这里在使用aardio遇到一个bug就是结构体的值发生了变换（aardio实际上没有结构体而是表），不知道为什么，类似的方法直接赋值给数组就不会出问题。</p>
+<h1 id="3-基本实现"><a href="#3-基本实现" class="headerlink" title="3 基本实现"></a>3 基本实现</h1><p>基本就是添加几个框框，根据填入的参数生成命令然后通过调用命令行并获取执行结果显示出来，对于有进度条的执行命令我不知道怎么实时获取，没有看到aardio这样的例子，遂作罢。</p>
+<p><img src="http://c.51hei.com/d/forum/202304/25/142034iz7zt6ovv44xttoo.png" alt="基本界面"></p>
+<p>除了基本界面，调整了一下布局，让他能缩放合适，内嵌了字体（其实也就俩按键用了这个字体，得意黑，软件凭空大了1M多，本来只有几百kb，主要是好不容易调整好了不想改 ）。<br>添加了一个菜单栏，把一些生成命令的语句例如pyocd gdbserver收纳到了菜单栏，方便配合其他软件使用。<br>例如如果要开启gdb server，例如使用segger embedded studio或者其他软件的时候，启动时候执行的命令就可以用这个GUI来生成，稍微省心一点。</p>
+<p>仿真器连接后可以通过刷新来获取，当然，打开软件的时候也会自动获取一次，通过指定uid来保证一次能执行对命令，避免二次选择。</p>
+<p>基本就这样。</p>
+<p>这里有我上传的：<br><a href="http://www.51hei.com/bbs/forum.php?mod=viewthread&tid=228512">分享一个基于pyocd的单片机GUI下载器 - Cortex M3 M0 M4开发 (51hei.com)</a></p>
+<h1 id="4-总结"><a href="#4-总结" class="headerlink" title="4 总结"></a>4 总结</h1><p>aardio确实挺好用的，很能缝合，布局上也是自动缩放，要求不高的话很容易调整到还不错的效果。写起来很快，高分屏的问题也自动处理了，第一次用观感不错。不过有部分问题横竖找不到根源，倒是能换个方法解决。</p>
+<p>其实pyocd本身就有python api，但是我不想用python的gui的一些库然后打包什么的。其实用这些api有些功能会做出来更好用。</p>
+]]></content>
+      <categories>
+        <category>嵌入式与单片机</category>
+      </categories>
+      <tags>
+        <tag>ARM</tag>
+        <tag>DAP-Link</tag>
+        <tag>pyocd</tag>
       </tags>
   </entry>
   <entry>
@@ -1786,35 +1852,6 @@ Probably not, but standard disclaimers apply
       </tags>
   </entry>
   <entry>
-    <title>WinUSB上位机的开发</title>
-    <url>/2023/06/25/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/WinUSB%E4%B8%8A%E4%BD%8D%E6%9C%BA%E7%9A%84%E5%BC%80%E5%8F%91/</url>
-    <content><![CDATA[<p>这篇文章是对WinUSB上位机开发的一个具体总结日志。详细的其他知识笔记分开来写。</p>
-<span id="more"></span>
-
-<p>起因是当时脑子一热准备给抽奖中的HPI1000重新编程开发，经过一两个月的磨蹭把下位机部分软件写差不多了，需要上位机联调了，同时也准备一同开发HPI1000对应的上位机。</p>
-<p>TivaWare中附带了一个C语言写的命令行的Windows上位机，改一改也能用，但是用起来不是很方便。而且由于QT忘记差不多了，一开始我是不打算使用QT的。</p>
-<h1 id="框架选择"><a href="#框架选择" class="headerlink" title="框架选择"></a>框架选择</h1><p>HPI1000主要是具有一个虚拟示波器，由于之前用QT写虚拟示波器的时候感觉痛苦万分，这次想要舍弃这个框架，而且QT整了不少活儿，开源闭源的问题让人很不爽，所以开始寻找其他的图形框架。</p>
-<p>然后就找到了Godot。这是一个小型游戏引擎，Godot 3.5总共也才三十多M，QT打包之后还真不一定比这个小，因此完全可以考虑。但是编程的时候遇到了问题。<br>作为一个开源软件，Godot发展并不是特别好，所以很多组件是没有的。例如Windows下串口的访问，USB的访问，如果使用它自己的GDscript，这些组件都需要自己使用C&#x2F;C++来实现。</p>
-<p>起初我是不想去用C&#x2F;C++的，因为需要包含WindowsDDK才能继续开发这个驱动，我以为WinUSB有更优雅的访问方式。<br>好在Godot同时也支持使用C#来编程，这样可以任意引入其他.net的包，然而我太天真了。<br>因为虽然.net原生支持串口访问，但是我没想到.NET作为微软的儿子，WinUSB居然没有对应的包，而微软的教程都是需要使用C&#x2F;C++来创建WinUSB应用。<br>不死心的我决定找找有没有第三方包，结果是有，但是不好用。。。比如LIBUSB，然而需要额外安装libusb的驱动。。这就违背了我的初衷：希望设备是免驱的。</p>
-<p>在.net应用中使用C&#x2F;C++方法也不是没有，那就是引入DLL. DLL这不是有现成的嘛，TivaWare中的那个DLL就可以使用。然而这是个大坑，不仅有指针的问题，还有DLL编译的时候和原编译器位数有关的问题，也就是说有可能这个DLL本身我还要重新编译一次。</p>
-<p>那我还不如直接重新写。</p>
-<p>上面的问题我另外写了具体的USB框架的选择，这里不再细说，总之就是当我决心使用C#的时候，发现事情最后都指向了使用C&#x2F;C++老老实实调用WinUSB API来写。</p>
-<pre><code>一开始我以为WinUSB API的调用会很麻烦，资料找起来也费劲，微软的资料看不大明白。。。后来才发现非常简单。
-</code></pre>
-<p>当我打开TivaWare的 lmusbdll 的source code，我发现这似乎就是简单封装了一下WinUSB API….参考别人的QT的winUSB demo,我发现两者好像没有什么区别。。。</p>
-<p>所以最终决定直接使用QT来写。</p>
-<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><p>添加依赖库。<br>在.pro中添加SetupAPI 和winusb，用来给后面调用。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 手动添加库</span><br><span class="line">win32: LIBS += -lSetupAPI </span><br><span class="line">win32: LIBS += -lwinusb</span><br></pre></td></tr></table></figure>
-
-<p>复制粘贴lmusb<br>去掉用不上的部分，把函数全部复制过来，去掉原来的导出的声明，直接改成普通函数。<br>添加一个速度查询的函数。</p>
-<p>添加WinUSBdevice设备类<br>方便承载原来的全局变量。</p>
-<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><p>添加一个线程用来循环读取USB设备，防止主界面卡死。</p>
-]]></content>
-      <categories>
-        <category>嵌入式与单片机</category>
-      </categories>
-  </entry>
-  <entry>
     <title>单片机学习入门（一）</title>
     <url>/2021/04/05/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91/%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%EF%BC%88%E4%B8%80%EF%BC%89/</url>
     <content><![CDATA[<blockquote>
@@ -2015,43 +2052,6 @@ Probably not, but standard disclaimers apply
         <tag>ARM</tag>
         <tag>MSP430</tag>
         <tag>8051</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用aardio写一个基于pyocd的单片机下载器</title>
-    <url>/2023/04/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/%E4%BD%BF%E7%94%A8aardio%E5%86%99%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8Epyocd%E7%9A%84%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%8B%E8%BD%BD%E5%99%A8/</url>
-    <content><![CDATA[<p>为了方便使用pyocd进行下载操作，于是写了一个下载器GUI，开发工具选择了aardio，因此只支持Windows平台。</p>
-<span id="more"></span>
-<h1 id="1-新建工程"><a href="#1-新建工程" class="headerlink" title="1 新建工程"></a>1 新建工程</h1><p>最开始本来是打算调用pyocd 的python api的，但是一方面是内嵌包一直安装出问题，另一方面是考虑到本地pack不想重复安装和管理，于是就转做pyocd的前端了，也就是直接调用pyocd，根据返回数据解析，然后执行要做的命令。</p>
-<p>所以新建一个普通工程就可以。</p>
-<h1 id="2-基本功能"><a href="#2-基本功能" class="headerlink" title="2 基本功能"></a>2 基本功能</h1><p>主要功能：</p>
-<ul>
-<li><p>下载 </p>
-</li>
-<li><p>擦除 </p>
-</li>
-<li><p>复位<br>然后要能选择对应的仿真器和单片机型号，从支持的列表从选择，就要用一下pyocd list和pyocd list -t命令查询，根据返回的结果解析已经可以支持的单片机。</p>
-<p>  p.s 其实直接用pyocd json 命令返回json会很容易解析，但是我一开始没看到这个命令，就算了，正好生成命令pyocd list的执行结果也可以给人看。</p>
-</li>
-</ul>
-<p>其中pyocd list会返回仿真器的列表，我是通过head也就是第一行的标题的位置来得到下面每行内容的分割位置，得到正确的结果。这里发现是每隔一行为一个仿真器信息。<br>而pyocd list -t 返回可用器件型号，分割方法类似，不过这里不是每隔一行而是连续的每行都是对应结果，一开始这里没看到导致少了一半。</p>
-<p>另外这里在使用aardio遇到一个bug就是结构体的值发生了变换（aardio实际上没有结构体而是表），不知道为什么，类似的方法直接赋值给数组就不会出问题。</p>
-<h1 id="3-基本实现"><a href="#3-基本实现" class="headerlink" title="3 基本实现"></a>3 基本实现</h1><p>基本就是添加几个框框，根据填入的参数生成命令然后通过调用命令行并获取执行结果显示出来，对于有进度条的执行命令我不知道怎么实时获取，没有看到aardio这样的例子，遂作罢。</p>
-<p><img src="http://c.51hei.com/d/forum/202304/25/142034iz7zt6ovv44xttoo.png" alt="基本界面"></p>
-<p>除了基本界面，调整了一下布局，让他能缩放合适，内嵌了字体（其实也就俩按键用了这个字体，得意黑，软件凭空大了1M多，本来只有几百kb，主要是好不容易调整好了不想改 ）。<br>添加了一个菜单栏，把一些生成命令的语句例如pyocd gdbserver收纳到了菜单栏，方便配合其他软件使用。<br>例如如果要开启gdb server，例如使用segger embedded studio或者其他软件的时候，启动时候执行的命令就可以用这个GUI来生成，稍微省心一点。</p>
-<p>仿真器连接后可以通过刷新来获取，当然，打开软件的时候也会自动获取一次，通过指定uid来保证一次能执行对命令，避免二次选择。</p>
-<p>基本就这样。</p>
-<p>这里有我上传的：<br><a href="http://www.51hei.com/bbs/forum.php?mod=viewthread&tid=228512">分享一个基于pyocd的单片机GUI下载器 - Cortex M3 M0 M4开发 (51hei.com)</a></p>
-<h1 id="4-总结"><a href="#4-总结" class="headerlink" title="4 总结"></a>4 总结</h1><p>aardio确实挺好用的，很能缝合，布局上也是自动缩放，要求不高的话很容易调整到还不错的效果。写起来很快，高分屏的问题也自动处理了，第一次用观感不错。不过有部分问题横竖找不到根源，倒是能换个方法解决。</p>
-<p>其实pyocd本身就有python api，但是我不想用python的gui的一些库然后打包什么的。其实用这些api有些功能会做出来更好用。</p>
-]]></content>
-      <categories>
-        <category>嵌入式与单片机</category>
-      </categories>
-      <tags>
-        <tag>ARM</tag>
-        <tag>DAP-Link</tag>
-        <tag>pyocd</tag>
       </tags>
   </entry>
 </search>
