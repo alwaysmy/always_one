@@ -28,7 +28,7 @@
 <meta property="og:description" content="上一篇文章：树莓派RP2040开发环境配置集合版(基于Raspberry Pico)。前面的环境搭建基本上介绍了所有的开发环境配置，也对比了各个环境的优劣。如果是非商业开发的话，个人可能Segger Embedded Studio是最好的IDE，但是我不太习惯他的使用方式，这个会另外开一篇谈。而通吃的方案则是使用VSCODE+ARMGCC+GCC，PlatformIO也是不错的，但是我个人不太习惯">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-04-27T11:26:30.000Z">
-<meta property="article:modified_time" content="2023-08-27T11:52:30.134Z">
+<meta property="article:modified_time" content="2023-08-28T12:52:42.640Z">
 <meta property="article:author" content="Always L">
 <meta property="article:tag" content="rp2040">
 <meta property="article:tag" content="ARM">
@@ -133,7 +133,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">23</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">24</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -221,7 +221,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-08-27 19:52:30" itemprop="dateModified" datetime="2023-08-27T19:52:30+08:00">2023-08-27</time>
+                <time title="修改时间：2023-08-28 20:52:42" itemprop="dateModified" datetime="2023-08-28T20:52:42+08:00">2023-08-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -239,7 +239,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.7k</span>
+              <span>3.8k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -259,20 +259,21 @@
 
       
         <p>上一篇文章：树莓派RP2040开发环境配置集合版(基于Raspberry Pico)。<br>前面的环境搭建基本上介绍了所有的开发环境配置，也对比了各个环境的优劣。如果是非商业开发的话，个人可能Segger Embedded Studio是最好的IDE，但是我不太习惯他的使用方式，这个会另外开一篇谈。<br>而通吃的方案则是使用VSCODE+ARMGCC+GCC，PlatformIO也是不错的，但是我个人不太习惯后者，而且经常出错。</p>
-<p>因此最后仍然选择了VSCODE作为开发工具。由于上一篇写的太杂了所以单独写一篇只负责配置环境的。</p>
+<p>因此最后仍然选择了VSCODE作为开发工具。由于上一篇写的太杂了所以单独写一篇只负责在VSCODE下配置环境的。</p>
 <p>更新：整合包杀死了比赛：<a target="_blank" rel="noopener" href="https://www.raspberrypi.com/news/raspberry-pi-pico-windows-installer/">Raspberry Pi Pico Windows Installer - Raspberry Pi</a><br>（未测试，但是肯定能用）</p>
 <span id="more"></span>
 
-<p>由于重装了系统，所以决定找一个尽量不依赖环境变量的方法，比如有些软件可以不安装运行，重装后不需要重新安装，可以直接使用，也懒得追加环境变量。另外尽可能减少手工操作。所谓一劳永逸不是装好不管，而是下次崩坏还能迅速重建。<br>其实官方的工程生成器已经尽可能减少手工操作了，但是那个是针对Linux的，本身安装也十分简单。所以这里要做一点修改，这里的教程也是按照Windows来做。<br>再一个就是官方的方法有些方法并不好，这里也做出一些改进。</p>
-<h1 id="安装软件和免安装软件配置"><a href="#安装软件和免安装软件配置" class="headerlink" title="安装软件和免安装软件配置"></a>安装软件和免安装软件配置</h1><p>这一步是我尽量避免的，但是之前有些软件装在C盘，重装后直接没了，所以还是得走这一步，所以这一步我也没有验证如果直接使用之前下载好的可执行文件需要添加什么。</p>
-<h2 id="gcc-arm-none-eabi"><a href="#gcc-arm-none-eabi" class="headerlink" title="gcc arm none eabi"></a>gcc arm none eabi</h2><p>点安装包直接安装就好了。<br>我的安装目录改到 <code>D:\MyPrograms\InstalledProgram\10 2021.10</code><br>这里就安装的时候先把环境变量加进去，毕竟只需要打个钩。<br>然后这个就不用管了，同时他有个选项是注册这个编译器，我不知道如果不用安装包的话这一步的影响是什么。</p>
+<p>其实这篇文章起源是重装了系统，所以决定找一个尽量不依赖环境变量的方法，比如有些软件可以不安装运行，重装后不需要重新安装，可以直接使用，也懒得追加环境变量。另外尽可能减少手工操作。所谓一劳永逸不是装好不管，而是下次崩坏还能迅速有条理地重建。</p>
+<p>其实官方的工程生成器已经尽可能减少手工操作了，但是那个是针对Linux的，本身安装也十分简单。所以这里要做一点修改，这里的教程也是按照Windows来做。<br>再一个就是官方的方法有些方法并不好，这里也做出一些改进。</p>
+<h1 id="安装软件和免安装软件配置"><a href="#安装软件和免安装软件配置" class="headerlink" title="安装软件和免安装软件配置"></a>安装软件和免安装软件配置</h1><p>这一步是我尽量避免的，但是之前有些软件装在C盘，重装后直接没了，所以还是得走这一步，所以这一步我也没有验证如果直接使用之前下载好的可执行文件会不会踩什么坑。下面就是按照顺序安装就可以了。</p>
+<h2 id="gcc-arm-none-eabi"><a href="#gcc-arm-none-eabi" class="headerlink" title="gcc arm none eabi"></a>gcc arm none eabi</h2><p>点安装包直接安装就好了。<br>我的安装目录改到 <code>D:\MyPrograms\InstalledProgram\10 2021.10</code><br>这里就安装的时候先把环境变量加进去，毕竟只需要打个钩。<br>然后这个就不用管了，同时他有个选项是注册这个编译器，我不知道如果不用安装包的话这一步的影响是什么。  </p>
 <h2 id="CMake"><a href="#CMake" class="headerlink" title="CMake"></a>CMake</h2><p>这个不用自己加路径，所以直接用安装包安装，勾选添加到Path.</p>
 <h2 id="pyocd"><a href="#pyocd" class="headerlink" title="pyocd"></a>pyocd</h2><p>由于是python安装的所以重新安装一次就行。</p>
 <figure class="highlight text"><table><tr><td class="code"><pre><span class="line">pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line">pip install –U pyocd</span><br></pre></td></tr></table></figure>
 <p>其实这个和openocd工具二选一即可，推荐用这个。</p>
 <pre><code>pyocd这个工具配置安装极为简单，一个软件支持rp2040的所有仿真器，而且连接稍微快一点点，（同一个工程openocd 15s ,pyocd 14s，真就一点点), 自带gdb配置，不知道为啥网上很少再rp2040的教程中提到。一次只能连接一个核心。
 </code></pre>
-<h2 id="免安装软件配置"><a href="#免安装软件配置" class="headerlink" title="免安装软件配置"></a>免安装软件配置</h2><h3 id="mingw-w64"><a href="#mingw-w64" class="headerlink" title="mingw-w64"></a>mingw-w64</h3><p>之前下好的，直接找到之前部署的路径，我这里是：<br><code>D:\MyProgramData\Toolchain\mingw-w64\mingw64\bin </code><br>对应的<code>mingw32-make</code> 路径位于：<br><code>D:\MyProgramData\Toolchain\mingw-w64\mingw64\bin\mingw32-make.exe</code></p>
+<h2 id="免安装软件配置"><a href="#免安装软件配置" class="headerlink" title="免安装软件配置"></a>免安装软件配置</h2><h3 id="mingw-w64"><a href="#mingw-w64" class="headerlink" title="mingw-w64"></a>mingw-w64</h3><p>之前下好的，可以不用再次安装，直接找到之前部署的路径，我这里是：<br><code>D:\MyProgramData\Toolchain\mingw-w64\mingw64\bin </code><br>所以对应的<code>mingw32-make</code> 路径位于：<br><code>D:\MyProgramData\Toolchain\mingw-w64\mingw64\bin\mingw32-make.exe</code></p>
 <p>如果要安装的话，安装包来源：<a target="_blank" rel="noopener" href="https://sourceforge.net/projects/mingw-w64/files/">MinGW-w64 - for 32 and 64 bit Windows - Browse Files at SourceForge.net</a><br>点下面的MinGW-W64 GCC-8.1.0标题下面的包，因为如果用在线安装包压根连不上。<br>选择最新版本（8.1.0）的 x86_64-win32-seh</p>
 <h3 id="openocd-（可选）"><a href="#openocd-（可选）" class="headerlink" title="openocd （可选）"></a>openocd （可选）</h3><p>直接添加到环境里面。虽然可以配置到cortex-debug的路径里面，但是这个工具比较有用（不如pyocd），可能有时候会在命令行里面用一用。</p>
 <h2 id="工程部署"><a href="#工程部署" class="headerlink" title="工程部署"></a>工程部署</h2><p>利用树莓派官方提供的生成工程脚本（pico-project-generator）还需要提供 PICO_SDK_PATH 这个环境变量用于生成cmakelists.txt, 这里只需要在环境变量中添加这个名称和填写SDK的路径即可；<br>同样，用于编译生成工具的make工具链也需要增加到环境变量Path，前面说过一次了。</p>
@@ -282,14 +283,16 @@
 <p>由于这个生成器本身就要加上–gui参数来启动图形界面，所以一起集成到了BAT文件里面：</p>
 <figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="comment">@REM &quot;设置文字编码UTF8(不然这里中文是UFT8,在命令行中会默认不是UTF8会出现斤拷棍,但是还是可能有问题建议不要用)&quot;</span></span><br><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">chcp</span> <span class="number">65001</span>&gt;<span class="built_in">nul</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">@REM &quot;下面是要自己指定的部分(=左右不要空格)，后面都是set来设定临时环境变量，如果希望直接设置好，改成setx就行，写了检测，不会重复&quot;</span></span><br><span class="line"><span class="built_in">set</span> picosdkpath_temp=D:\MyProgramData\MCU_SDK\pico-sdk</span><br><span class="line"><span class="comment">@REM mingw32-make.exe</span></span><br><span class="line"><span class="built_in">set</span> &quot;make_bin_path=D:\MyProgramData\Toolchain\mingw-w64\mingw64\bin&quot;</span><br><span class="line"><span class="built_in">set</span> make_exe_name=mingw32-make.exe</span><br><span class="line"><span class="comment">@REM 初始化一下环境变量,获取系统的环境变量</span></span><br><span class="line"><span class="built_in">set</span> &quot;env_path=<span class="variable">%PATH%</span>&quot;</span><br><span class="line"><span class="comment">  </span></span><br><span class="line"><span class="comment">@REM &quot;起手就问工程名称，免得还要写一次,不要写空格&quot;</span></span><br><span class="line"><span class="built_in">set</span> /p projectname=your projectname:</span><br><span class="line"><span class="built_in">echo</span> your projectname is <span class="variable">%projectname%</span> </span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">@REM 检测PICO_SDK，如果不存在就添加</span></span><br><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> <span class="keyword">defined</span> PICO_SDK_PATH (</span><br><span class="line">    <span class="built_in">echo</span> Environment variable PICO_SDK_PATH is <span class="keyword">not</span> <span class="built_in">set</span></span><br><span class="line">    <span class="built_in">echo</span> now, <span class="built_in">set</span> it to <span class="variable">%picosdkpath_temp%</span></span><br><span class="line">    <span class="built_in">set</span> PICO_SDK_PATH=<span class="variable">%picosdkpath_temp%</span></span><br><span class="line">) <span class="keyword">else</span> (</span><br><span class="line">    <span class="built_in">echo</span> Environment variable PICO_SDK_PATH is <span class="built_in">set</span> to <span class="variable">%PICO_SDK_PATH%</span></span><br><span class="line">)</span><br><span class="line"><span class="comment">  </span></span><br><span class="line"><span class="comment">@REM &quot;检测PICO_SDK，如果不存在就添加（用if not exist mingw32-make.exe会一直显示不存在，只能查找字符串。或者findstr /C:%make_bin_path%&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> &quot;<span class="variable">%path%</span>&quot; | <span class="built_in">find</span> /i &quot;<span class="variable">%make_bin_path%</span>&quot; &gt;<span class="built_in">nul</span>  </span><br><span class="line"><span class="keyword">if</span> <span class="variable">%errorlevel%</span> <span class="keyword">equ</span> <span class="number">0</span> (</span><br><span class="line"><span class="comment">    @REM &quot;存在就显示一下好了&quot;</span></span><br><span class="line">    <span class="built_in">echo</span> mingw toolchain has been <span class="built_in">set</span> to <span class="variable">%make_bin_path%</span></span><br><span class="line">) <span class="keyword">else</span> (</span><br><span class="line"><span class="comment">    @REM &quot;不存在就添加一下&quot;</span></span><br><span class="line">    <span class="built_in">echo</span> mingw toolchain is <span class="keyword">not</span> <span class="built_in">set</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    @REM &quot;追加变量&quot;</span></span><br><span class="line">    @<span class="built_in">set</span> &quot;<span class="built_in">path</span>=<span class="variable">%env_path%</span>;<span class="variable">%make_bin_path%</span>&quot;</span><br><span class="line">    <span class="built_in">echo</span> mingw toolchain is <span class="built_in">set</span> to <span class="variable">%make_bin_path%</span></span><br><span class="line">)</span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">@REM &quot;调用tsv文件，虽然默认也是这个，设置名称，默认打开vscode&quot;</span></span><br><span class="line">python pico_project.py  <span class="variable">%projectname%</span>  -t pico_configs.tsv -p vscode --gui</span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">@REM &quot;完事打开code&quot;</span></span><br><span class="line">code ../<span class="variable">%projectname%</span></span><br></pre></td></tr></table></figure>
 
-<p>这里没有配置用户环境变量，因为担心出错，但是记在代码里面足够记住步骤了。</p>
-<p>如果要一次配置好，就把里面的 <code>set</code> 命令改成<code>setx</code>，就可以把环境变量添加到用户变量了(系统变量需要提权，没必要）。</p>
-<p>其中，调用<strong>pico_project.py</strong> 文件的时候，添加了几个参数，一个是在启动BAT文件的时候要求输入工程名称，因为我觉得这种方式最方便，没必要像原来那样打开生成器之后，点击名称位置，删掉原来的默认名称后修改自己的。那样很麻烦。</p>
-<p>另一个是添加默认勾选配置vscode，使用配置文件从tsv文件加载预设值(这个文件可以用excel打开)，虽然默认也是这个，但是记下来方便修改。</p>
-<p>我尝试给他添加默认特性，例如PIO,但是似乎在图形界面里面不生效，没注意看原因。</p>
-<pre><code>这个--feature 我实在是没看明白,试了一下它没啥用，写进去什么参数都不报错。。
+<p>这里没有配置用户环境变量，而是使用临时环境变量，不过我还是自己手动在Windows中配置了环境变量，这个批处理就当作记录了。</p>
+<pre><code>如果要一次配置好，就把里面的 ``set`` 命令改成``setx``，就可以把环境变量添加到用户变量了(系统变量需要提权，没必要）。
 </code></pre>
-<p>然后就可以启动生成器了，启动之后接着用这个环境启动vscode打开工程文件夹。</p>
+<p>其中，这个批处理调用<strong>pico_project.py</strong> 文件的时候，添加了几个参数，一个是在启动BAT文件的时候要求输入工程名称，因为我觉得这种方式最方便，没必要像原来那样打开生成器之后，点击名称位置，删掉原来的默认名称后修改自己的。那样很麻烦。</p>
+<p>另一个是添加默认勾选配置vscode，使用配置文件从tsv文件加载预设值(这个文件可以用excel打开)，虽然默认也是这个，但是记下来方便修改。</p>
+<pre><code>我尝试给他添加默认特性，例如PIO,但是似乎在图形界面里面不生效，没注意看原因。
+
+这个--feature 我实在是没看明白,试了一下它没啥用，写进去什么参数都不报错。。
+</code></pre>
+<p>然后就可以启动生成器了，关闭生成器后会自动在刚刚生成的项目文件夹下打开vscode。</p>
 <p>但是这还不够，下面是工程生成器（pico-project-generator）的修改。</p>
 <h2 id="生成器修改点"><a href="#生成器修改点" class="headerlink" title="生成器修改点"></a>生成器修改点</h2><p>先说槽点，也就是为什么要修改这个修改器：<br>1、LOGO图片太大，小屏幕塞不下好吧（虽然可以通过DPI兼容来解决）<br>2、工程生成路径和python文件在同一层，就离谱，一堆零散文件里面塞个工程。<br>3、daplink只配置了自己的专用Link，这TM能用？<br>4、vscode配置文件只配置了linux下自己的Link的配置，这TM能用？不然在Windows下每次都要复制vscode的配置文件。</p>
 <p>下面一个一个修改。</p>
@@ -342,7 +345,7 @@
 <p>上面这句命令要安装一个arm device manager扩展才行，但是还是会报错没有连接的设备，指定串号之后可以连接上（串号可以用keil中的配置看到或者使用”pyocd list”命令找到设备的uid），用的是wch-link, 自调试固件不行，不知道是不是被复位了。但是即使连接上了会进入断点进不了主程序，不知道缺什么。<br>所以暂时不搞了，估计效果不会超过pyocd。</p>
 <h3 id="由于armgcc工具链移动路径导致的原来cmakelist失效的问题需要迁移原工程"><a href="#由于armgcc工具链移动路径导致的原来cmakelist失效的问题需要迁移原工程" class="headerlink" title="由于armgcc工具链移动路径导致的原来cmakelist失效的问题需要迁移原工程"></a>由于armgcc工具链移动路径导致的原来cmakelist失效的问题需要迁移原工程</h3><p>直接编译或者选择对应的kit都会会报错找不到正确的工具链吧啦吧啦。<br>所以我的建议是不要移动工具链的位置，保持原来的路径。。。。。这样可以套用上次的设置。<br>不过迁移很简单：<br>在cmake插件的选择kit的按钮上，点选unspecified ，然后编译一下，再选对应的arm gcc就可以了。当然，不选回去也行，能用就算成功。</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>通过这些配置，就可以做到同步到另一台电脑上也可以直接使用，只需要修改脚本中的环境变量的路径，如果工具本身被同步了，不用修改也可以直接使用。<br>同时ARM GCC是被自动查找的，所以路径不影响，只要之前安装过就行。</p>
-<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><p>修改后的pico-project-generator:<br><a target="_blank" rel="noopener" href="https://github.com/alwaysmy/pico-project-generator_fix">alwaysmy&#x2F;pico-project-generator_fix: Tool to automatically generate a Pico C SDK Project with VSCODE also supported in Windows (github.com)</a></p>
+<h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><p>修改后的pico-project-generator:<br><a target="_blank" rel="noopener" href="https://github.com/alwaysmy/pico-project-generator_fix">alwaysmy&#x2F;pico-project-generator_fix: Tool to automatically generate a Pico C SDK Project with VSCODE also supported in Windows (github.com)</a></p>
 
     </div>
 
@@ -427,7 +430,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%E5%92%8C%E5%85%8D%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">安装软件和免安装软件配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#gcc-arm-none-eabi"><span class="nav-number">1.1.</span> <span class="nav-text">gcc arm none eabi</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CMake"><span class="nav-number">1.2.</span> <span class="nav-text">CMake</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pyocd"><span class="nav-number">1.3.</span> <span class="nav-text">pyocd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%8D%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="nav-number">1.4.</span> <span class="nav-text">免安装软件配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mingw-w64"><span class="nav-number">1.4.1.</span> <span class="nav-text">mingw-w64</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#openocd-%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="nav-number">1.4.2.</span> <span class="nav-text">openocd （可选）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E7%A8%8B%E9%83%A8%E7%BD%B2"><span class="nav-number">1.5.</span> <span class="nav-text">工程部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%99%A8%E4%BF%AE%E6%94%B9%E7%82%B9"><span class="nav-number">1.6.</span> <span class="nav-text">生成器修改点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%BB%E6%8E%89LOGO%E5%92%8C%E4%BF%AE%E6%94%B9%E6%98%BE%E7%A4%BA%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.6.1.</span> <span class="nav-text">去掉LOGO和修改显示设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E5%B7%A5%E7%A8%8B%E8%B7%AF%E5%BE%84%E4%BF%AE%E6%94%B9%E5%88%B0%E5%BD%93%E5%89%8D%E7%94%9F%E6%88%90%E5%99%A8%E7%9A%84%E4%B8%8A%E4%B8%80%E5%B1%82"><span class="nav-number">1.6.2.</span> <span class="nav-text">1、工程路径修改到当前生成器的上一层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E6%B7%BB%E5%8A%A0daplink-debugger%E9%80%89%E9%A1%B9"><span class="nav-number">1.6.3.</span> <span class="nav-text">2、添加daplink debugger选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81vscode%E7%94%9F%E6%88%90-vscode%E6%96%87%E4%BB%B6%E9%83%A8%E5%88%86"><span class="nav-number">1.6.4.</span> <span class="nav-text">3、vscode生成.vscode文件部分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-%E7%94%9F%E6%88%90%E5%90%AF%E5%8A%A8%E6%96%87%E4%BB%B6%E9%83%A8%E5%88%86"><span class="nav-number">1.6.4.1.</span> <span class="nav-text">3.1 生成启动文件部分</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vscode%E9%85%8D%E7%BD%AE%E7%82%B9%EF%BC%88%E8%B8%A9%E5%9D%91%E7%82%B9%EF%BC%89"><span class="nav-number">1.7.</span> <span class="nav-text">vscode配置点（踩坑点）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cmake-tools"><span class="nav-number">1.7.1.</span> <span class="nav-text">cmake tools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cortex-debugger"><span class="nav-number">1.7.2.</span> <span class="nav-text">cortex-debugger</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Arm-Embedded-Debugger"><span class="nav-number">1.7.3.</span> <span class="nav-text">Arm Embedded Debugger</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%B1%E4%BA%8Earmgcc%E5%B7%A5%E5%85%B7%E9%93%BE%E7%A7%BB%E5%8A%A8%E8%B7%AF%E5%BE%84%E5%AF%BC%E8%87%B4%E7%9A%84%E5%8E%9F%E6%9D%A5cmakelist%E5%A4%B1%E6%95%88%E7%9A%84%E9%97%AE%E9%A2%98%E9%9C%80%E8%A6%81%E8%BF%81%E7%A7%BB%E5%8E%9F%E5%B7%A5%E7%A8%8B"><span class="nav-number">1.7.4.</span> <span class="nav-text">由于armgcc工具链移动路径导致的原来cmakelist失效的问题需要迁移原工程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%84%E5%BD%95"><span class="nav-number">2.1.</span> <span class="nav-text">附录</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%E5%92%8C%E5%85%8D%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">安装软件和免安装软件配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#gcc-arm-none-eabi"><span class="nav-number">1.1.</span> <span class="nav-text">gcc arm none eabi</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CMake"><span class="nav-number">1.2.</span> <span class="nav-text">CMake</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pyocd"><span class="nav-number">1.3.</span> <span class="nav-text">pyocd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%8D%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="nav-number">1.4.</span> <span class="nav-text">免安装软件配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mingw-w64"><span class="nav-number">1.4.1.</span> <span class="nav-text">mingw-w64</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#openocd-%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="nav-number">1.4.2.</span> <span class="nav-text">openocd （可选）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E7%A8%8B%E9%83%A8%E7%BD%B2"><span class="nav-number">1.5.</span> <span class="nav-text">工程部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%99%A8%E4%BF%AE%E6%94%B9%E7%82%B9"><span class="nav-number">1.6.</span> <span class="nav-text">生成器修改点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%BB%E6%8E%89LOGO%E5%92%8C%E4%BF%AE%E6%94%B9%E6%98%BE%E7%A4%BA%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.6.1.</span> <span class="nav-text">去掉LOGO和修改显示设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E5%B7%A5%E7%A8%8B%E8%B7%AF%E5%BE%84%E4%BF%AE%E6%94%B9%E5%88%B0%E5%BD%93%E5%89%8D%E7%94%9F%E6%88%90%E5%99%A8%E7%9A%84%E4%B8%8A%E4%B8%80%E5%B1%82"><span class="nav-number">1.6.2.</span> <span class="nav-text">1、工程路径修改到当前生成器的上一层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E6%B7%BB%E5%8A%A0daplink-debugger%E9%80%89%E9%A1%B9"><span class="nav-number">1.6.3.</span> <span class="nav-text">2、添加daplink debugger选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81vscode%E7%94%9F%E6%88%90-vscode%E6%96%87%E4%BB%B6%E9%83%A8%E5%88%86"><span class="nav-number">1.6.4.</span> <span class="nav-text">3、vscode生成.vscode文件部分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-%E7%94%9F%E6%88%90%E5%90%AF%E5%8A%A8%E6%96%87%E4%BB%B6%E9%83%A8%E5%88%86"><span class="nav-number">1.6.4.1.</span> <span class="nav-text">3.1 生成启动文件部分</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vscode%E9%85%8D%E7%BD%AE%E7%82%B9%EF%BC%88%E8%B8%A9%E5%9D%91%E7%82%B9%EF%BC%89"><span class="nav-number">1.7.</span> <span class="nav-text">vscode配置点（踩坑点）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cmake-tools"><span class="nav-number">1.7.1.</span> <span class="nav-text">cmake tools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cortex-debugger"><span class="nav-number">1.7.2.</span> <span class="nav-text">cortex-debugger</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Arm-Embedded-Debugger"><span class="nav-number">1.7.3.</span> <span class="nav-text">Arm Embedded Debugger</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%B1%E4%BA%8Earmgcc%E5%B7%A5%E5%85%B7%E9%93%BE%E7%A7%BB%E5%8A%A8%E8%B7%AF%E5%BE%84%E5%AF%BC%E8%87%B4%E7%9A%84%E5%8E%9F%E6%9D%A5cmakelist%E5%A4%B1%E6%95%88%E7%9A%84%E9%97%AE%E9%A2%98%E9%9C%80%E8%A6%81%E8%BF%81%E7%A7%BB%E5%8E%9F%E5%B7%A5%E7%A8%8B"><span class="nav-number">1.7.4.</span> <span class="nav-text">由于armgcc工具链移动路径导致的原来cmakelist失效的问题需要迁移原工程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%99%84%E5%BD%95"><span class="nav-number">3.</span> <span class="nav-text">附录</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -443,7 +446,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -500,12 +503,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="本站总字数">56k</span>
+    <span title="本站总字数">58k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:05</span>
+    <span title="站点阅读时长">2:09</span>
 </div>
 
         
