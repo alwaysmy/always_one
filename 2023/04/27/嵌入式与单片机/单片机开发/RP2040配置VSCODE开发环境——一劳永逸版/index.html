@@ -28,7 +28,7 @@
 <meta property="og:description" content="上一篇文章：树莓派RP2040开发环境配置集合版(基于Raspberry Pico)。前面的环境搭建基本上介绍了所有的开发环境配置，也对比了各个环境的优劣。如果是非商业开发的话，个人可能Segger Embedded Studio是最好的IDE，但是我不太习惯他的使用方式，这个会另外开一篇谈。而通吃的方案则是使用VSCODE+ARMGCC+GCC，PlatformIO也是不错的，但是我个人不太习惯">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-04-27T11:26:30.000Z">
-<meta property="article:modified_time" content="2023-08-28T12:52:42.640Z">
+<meta property="article:modified_time" content="2023-08-29T08:56:50.439Z">
 <meta property="article:author" content="Always L">
 <meta property="article:tag" content="rp2040">
 <meta property="article:tag" content="ARM">
@@ -123,7 +123,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">21</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">22</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -133,7 +133,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">24</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">25</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -221,7 +221,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-08-28 20:52:42" itemprop="dateModified" datetime="2023-08-28T20:52:42+08:00">2023-08-28</time>
+                <time title="修改时间：2023-08-29 16:56:50" itemprop="dateModified" datetime="2023-08-29T16:56:50+08:00">2023-08-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -294,7 +294,7 @@
 </code></pre>
 <p>然后就可以启动生成器了，关闭生成器后会自动在刚刚生成的项目文件夹下打开vscode。</p>
 <p>但是这还不够，下面是工程生成器（pico-project-generator）的修改。</p>
-<h2 id="生成器修改点"><a href="#生成器修改点" class="headerlink" title="生成器修改点"></a>生成器修改点</h2><p>先说槽点，也就是为什么要修改这个修改器：<br>1、LOGO图片太大，小屏幕塞不下好吧（虽然可以通过DPI兼容来解决）<br>2、工程生成路径和python文件在同一层，就离谱，一堆零散文件里面塞个工程。<br>3、daplink只配置了自己的专用Link，这TM能用？<br>4、vscode配置文件只配置了linux下自己的Link的配置，这TM能用？不然在Windows下每次都要复制vscode的配置文件。</p>
+<h2 id="生成器修改点"><a href="#生成器修改点" class="headerlink" title="生成器修改点"></a>生成器修改点</h2><p>先说槽点，也就是为什么要修改这个修改器：<br>1、LOGO图片太大，小屏幕塞不下好吧（虽然可以通过DPI兼容来解决）<br>2、工程生成路径和python文件在同一层，就离谱，一堆零散文件里面塞个工程。<br>3、daplink只配置了自己的专用Link，这TM能用？<br>4、vscode配置文件只配置了linux下自己的Link的配置，这TM能用？不然在Windows下每次都要复制vscode的配置文件。<br>5、个人爱好，包含主函数的文件就叫main.c而不是工程名</p>
 <p>下面一个一个修改。</p>
 <h3 id="去掉LOGO和修改显示设置"><a href="#去掉LOGO和修改显示设置" class="headerlink" title="去掉LOGO和修改显示设置"></a>去掉LOGO和修改显示设置</h3><p>不记得在哪里了，反正就是找那个图案的路径。然后是勾选python.exe，兼容性-&gt;勾选高DPI-&gt;改成应用程序，不然打开很模糊。 </p>
 <pre><code>显示设置每次换电脑或者更换python版本都要做一次，这个没办法，Windows的问题。
@@ -446,7 +446,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -459,7 +459,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

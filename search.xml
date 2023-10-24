@@ -1677,7 +1677,7 @@ Probably not, but standard disclaimers apply
 </code></pre>
 <p>然后就可以启动生成器了，关闭生成器后会自动在刚刚生成的项目文件夹下打开vscode。</p>
 <p>但是这还不够，下面是工程生成器（pico-project-generator）的修改。</p>
-<h2 id="生成器修改点"><a href="#生成器修改点" class="headerlink" title="生成器修改点"></a>生成器修改点</h2><p>先说槽点，也就是为什么要修改这个修改器：<br>1、LOGO图片太大，小屏幕塞不下好吧（虽然可以通过DPI兼容来解决）<br>2、工程生成路径和python文件在同一层，就离谱，一堆零散文件里面塞个工程。<br>3、daplink只配置了自己的专用Link，这TM能用？<br>4、vscode配置文件只配置了linux下自己的Link的配置，这TM能用？不然在Windows下每次都要复制vscode的配置文件。</p>
+<h2 id="生成器修改点"><a href="#生成器修改点" class="headerlink" title="生成器修改点"></a>生成器修改点</h2><p>先说槽点，也就是为什么要修改这个修改器：<br>1、LOGO图片太大，小屏幕塞不下好吧（虽然可以通过DPI兼容来解决）<br>2、工程生成路径和python文件在同一层，就离谱，一堆零散文件里面塞个工程。<br>3、daplink只配置了自己的专用Link，这TM能用？<br>4、vscode配置文件只配置了linux下自己的Link的配置，这TM能用？不然在Windows下每次都要复制vscode的配置文件。<br>5、个人爱好，包含主函数的文件就叫main.c而不是工程名</p>
 <p>下面一个一个修改。</p>
 <h3 id="去掉LOGO和修改显示设置"><a href="#去掉LOGO和修改显示设置" class="headerlink" title="去掉LOGO和修改显示设置"></a>去掉LOGO和修改显示设置</h3><p>不记得在哪里了，反正就是找那个图案的路径。然后是勾选python.exe，兼容性-&gt;勾选高DPI-&gt;改成应用程序，不然打开很模糊。 </p>
 <pre><code>显示设置每次换电脑或者更换python版本都要做一次，这个没办法，Windows的问题。
@@ -2108,6 +2108,21 @@ RP2040的启动顺序见Datasheet. 片上16k rom位于0x00000000地址，不过�
       <tags>
         <tag>rp2040</tag>
         <tag>ARM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SEPIC+Ćuk正负电源设计制作和测试（1）</title>
+    <url>/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/</url>
+    <content><![CDATA[<p>在模拟信号链中经常用到负电源以处理负信号，但是从直流单电源得到正负双电源是不如交流电得到双电源容易的，在小功率电源中有几种方法来实现，见另一篇文章【正负电源拓扑简介】。这篇文章则详细介绍一个SEPIC+Ćuk组合拓扑来实现的正负电源的设计和制作测试。</p>
+<span id="more"></span>
+
+<h1 id="拓扑简介"><a href="#拓扑简介" class="headerlink" title="拓扑简介"></a>拓扑简介</h1><h1 id="选型和参数计算"><a href="#选型和参数计算" class="headerlink" title="选型和参数计算"></a>选型和参数计算</h1><h2 id="DC-DC芯片选型"><a href="#DC-DC芯片选型" class="headerlink" title="DC-DC芯片选型"></a>DC-DC芯片选型</h2><p>这里使用SEPIC作为主输出，因此可以选用BUCK控制器或者BUCK转换器来完成这个要求，为了设计简单，同时这里设计模板要求不高，因此选用的DCDC芯片为MT3608或者SX1308，两者虽然厂家不同但是丝印一致，手册几乎一致。</p>
+<h1 id="Π滤波器设计"><a href="#Π滤波器设计" class="headerlink" title="Π滤波器设计"></a>Π滤波器设计</h1><h1 id="纹波测试"><a href="#纹波测试" class="headerlink" title="纹波测试"></a>纹波测试</h1><h1 id="效率测试"><a href="#效率测试" class="headerlink" title="效率测试"></a>效率测试</h1><h1 id="还需要测试但是我没设备了"><a href="#还需要测试但是我没设备了" class="headerlink" title="还需要测试但是我没设备了"></a>还需要测试但是我没设备了</h1>]]></content>
+      <categories>
+        <category>Work with the world</category>
+      </categories>
+      <tags>
+        <tag>SMPS</tag>
       </tags>
   </entry>
 </search>
