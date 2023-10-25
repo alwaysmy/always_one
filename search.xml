@@ -272,7 +272,8 @@
   <entry>
     <title>KiCad联合LTspice仿真 - KiCad Simulation:Export to LTspice</title>
     <url>/2023/07/11/Work%20with%20the%20world/KiCad%E8%81%94%E5%90%88LTspice%E4%BB%BF%E7%9C%9F/</url>
-    <content><![CDATA[<p>在介绍完KiCad仿真工具后，前文还介绍了如何使用KiCad内置的ngspice进行原理图仿真的案例，但是内置仿真的功能还不够多，而ngspice的界面过于简陋基本等于没有，那么有没有更好的仿真工具可以用呢，答案是，有的。</p>
+    <content><![CDATA[<p>在介绍完KiCad仿真工具后，前文还介绍了如何使用KiCad内置的ngspice进行原理图仿真的案例，但是内置仿真的功能还不够多，而ngspice的界面过于简陋基本等于没有，那么在KiCad中有没有更好的仿真工具可以用呢，答案是，有的。</p>
+<span id="more"></span>
 <h1 id="LTspice简介"><a href="#LTspice简介" class="headerlink" title="LTspice简介"></a>LTspice简介</h1><p>这是一款免费的仿真工具，而且由ADI鼎力支持。 有这两点介绍就足够了。</p>
 <h1 id="联合LTspice仿真的流程"><a href="#联合LTspice仿真的流程" class="headerlink" title="联合LTspice仿真的流程"></a>联合LTspice仿真的流程</h1><p>下面简单介绍一下整个流程和方法。</p>
 <h2 id="打开KiCad工程"><a href="#打开KiCad工程" class="headerlink" title="打开KiCad工程"></a>打开KiCad工程</h2><p>这个没啥好介绍的吧，首先你得有个原理图。</p>
