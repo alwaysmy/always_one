@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>关于博客发布插入图片的几种方法</title>
+    <url>/2023/02/11/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2%E5%8F%91%E5%B8%83%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<p>这里说的情况都是markdown的文件。</p>
+<span id="more"></span>
+<p><strong>1、图床外链</strong><br>这需要上传图片，多少有些不方便，还取决于图床稳定。<br><strong>2、上传图片到仓库</strong><br>能解决自建博客的问题，但是复制到别的平台发布的时候有些不方便，不能自动上传图片。不过可以通过<br>复制博客可以obsidian的复制自动转成markdown功能，再发布到别的平台上。<br><strong>3、图片转base64直接嵌入md文档</strong><br>这个图片会跟着文件走，基本上是最稳妥的方式，但是在本地端不太好保存回去成图片。（快捷方法？）而且由于里面字符太多，搜索英文的时候会有很多误判断的结果。<br>可以使用小米笔记编辑博客文档，图片会自动转成base64。<br><strong>4、<a href="../%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/OneNote%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/OneNote%E5%A4%8D%E5%88%B6%E5%9B%BE%E7%89%87.md">OneNote复制图片</a></strong><br>OneNote用Ctrl+C复制图片粘贴到Obsidian里面的时候会附带图片的Base64和图片的OCR文字内容</p>
+<h1 id="具体语法"><a href="#具体语法" class="headerlink" title="具体语法"></a>具体语法</h1><p>1 最常见的markdown语法<br>2 HTML</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">center</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;双路混音器制作记录/image-20211113034220481.png&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;image-20211113034220481&quot;</span> <span class="attr">style</span>=<span class="string">&quot;zoom: 67%;&quot;</span> /&gt;</span><span class="tag">&lt;/<span class="name">center</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>或者：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">align</span>=<span class="string">center</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;./长白山行简记/IMG_20230606_195217-01.jpeg&quot;</span> <span class="attr">width</span>=<span class="string">&quot;600&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="部署之后的显示"><a href="#部署之后的显示" class="headerlink" title="部署之后的显示"></a>部署之后的显示</h1><p>Hexo默认的图片显示方法和md语法不兼容。。。<br>1、如果使用默认md语法：</p>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">{% asset_img "span>" "<span class="string">name</span>" %}</span><br></pre></td></tr></table></figure>
+<p>这时候渲染就会出问题。</p>
+<p>网上说法很多，我分不太清，实测有效：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-image-link --save</span><br><span class="line">npm install hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+<p>然后打开hexo config中的：<br><code>post_asset_folder: true #是否启用资源文件夹（用来存放相对路径图片或文件）</code></p>
+<p>这两个似乎不是一个效果，但是考虑到有效我就不折腾了。。。</p>
+<p>2、使用HTML插入图片</p>
+<p>这个方法和typero一样，也就是上面的方法，这种方法能直接显示的。一般不会遇到问题。缺点是在obsidian里面显示不出来。。。不过TypeDown也可以显示。</p>
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>个人博客文章的管理</title>
     <url>/2023/02/01/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/0%E3%80%81%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E7%9A%84%E7%AE%A1%E7%90%86/</url>
     <content><![CDATA[<p>这篇是一篇随记，其实很简单：</p>
@@ -16,6 +46,25 @@
       </categories>
       <tags>
         <tag>hexo</tag>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>博客写文提纲</title>
+    <url>/2023/06/20/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/%E5%8D%9A%E5%AE%A2%E5%86%99%E6%96%87%E6%8F%90%E7%BA%B2/</url>
+    <content><![CDATA[<p>1、这里是第一段。不要写标题，因为要留着当作前言，并放在主页预览，写了标题就不好看了。。。</p>
+<span id="more"></span>
+
+<p>2、上面添加一个阅读更多的折叠。</p>
+<p>3、参考链接可以放在最前面，如果很可能是为了提示自己。</p>
+<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><p>一级标题不要和文章标题重合。</p>
+<p>5、正文内容</p>
+<p>后面的就根据正文随意发挥了</p>
+]]></content>
+      <categories>
+        <category>博客搭建</category>
+      </categories>
+      <tags>
         <tag>博客</tag>
       </tags>
   </entry>
@@ -100,45 +149,16 @@
       </tags>
   </entry>
   <entry>
-    <title>博客写文提纲</title>
-    <url>/2023/06/20/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/%E5%8D%9A%E5%AE%A2%E5%86%99%E6%96%87%E6%8F%90%E7%BA%B2/</url>
-    <content><![CDATA[<p>1、这里是第一段。不要写标题，因为要留着当作前言，并放在主页预览，写了标题就不好看了。。。</p>
-<span id="more"></span>
+    <title>博客的Tags和分类</title>
+    <url>/2021/11/01/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/%E5%8D%9A%E5%AE%A2%E7%9A%84Tags%E5%92%8C%E5%88%86%E7%B1%BB/</url>
+    <content><![CDATA[<span id="more"></span>
 
-<p>2、上面添加一个阅读更多的折叠。</p>
-<p>3、参考链接可以放在最前面，如果很可能是为了提示自己。</p>
-<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><p>一级标题不要和文章标题重合。</p>
-<p>5、正文内容</p>
-<p>后面的就根据正文随意发挥了</p>
-]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>关于博客发布插入图片的几种方法</title>
-    <url>/2023/02/11/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2%E5%8F%91%E5%B8%83%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<p>这里说的情况都是markdown的文件。</p>
-<span id="more"></span>
-<p><strong>1、图床外链</strong><br>这需要上传图片，多少有些不方便，还取决于图床稳定。<br><strong>2、上传图片到仓库</strong><br>能解决自建博客的问题，但是复制到别的平台发布的时候有些不方便，不能自动上传图片。不过可以通过<br>复制博客可以obsidian的复制自动转成markdown功能，再发布到别的平台上。<br><strong>3、图片转base64直接嵌入md文档</strong><br>这个图片会跟着文件走，基本上是最稳妥的方式，但是在本地端不太好保存回去成图片。（快捷方法？）而且由于里面字符太多，搜索英文的时候会有很多误判断的结果。<br>可以使用小米笔记编辑博客文档，图片会自动转成base64。<br><strong>4、<a href="../%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/OneNote%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/OneNote%E5%A4%8D%E5%88%B6%E5%9B%BE%E7%89%87.md">OneNote复制图片</a></strong><br>OneNote用Ctrl+C复制图片粘贴到Obsidian里面的时候会附带图片的Base64和图片的OCR文字内容</p>
-<h1 id="具体语法"><a href="#具体语法" class="headerlink" title="具体语法"></a>具体语法</h1><p>1 最常见的markdown语法<br>2 HTML</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">center</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;双路混音器制作记录/image-20211113034220481.png&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;image-20211113034220481&quot;</span> <span class="attr">style</span>=<span class="string">&quot;zoom: 67%;&quot;</span> /&gt;</span><span class="tag">&lt;/<span class="name">center</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>或者：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">align</span>=<span class="string">center</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;./长白山行简记/IMG_20230606_195217-01.jpeg&quot;</span> <span class="attr">width</span>=<span class="string">&quot;600&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-<h1 id="部署之后的显示"><a href="#部署之后的显示" class="headerlink" title="部署之后的显示"></a>部署之后的显示</h1><p>Hexo默认的图片显示方法和md语法不兼容。。。<br>1、如果使用默认md语法：</p>
-<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">{% asset_img "span>" "<span class="string">name</span>" %}</span><br></pre></td></tr></table></figure>
-<p>这时候渲染就会出问题。</p>
-<p>网上说法很多，我分不太清，实测有效：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-image-link --save</span><br><span class="line">npm install hexo-asset-image --save</span><br></pre></td></tr></table></figure>
-<p>然后打开hexo config中的：<br><code>post_asset_folder: true #是否启用资源文件夹（用来存放相对路径图片或文件）</code></p>
-<p>这两个似乎不是一个效果，但是考虑到有效我就不折腾了。。。</p>
-<p>2、使用HTML插入图片</p>
-<p>这个方法和typero一样，也就是上面的方法，这种方法能直接显示的。一般不会遇到问题。缺点是在obsidian里面显示不出来。。。不过TypeDown也可以显示。</p>
+<p>上面是个示例，一篇文章的categories不能多个，写两个代表嵌套。</p>
+<p>在next主题配置内：<br>打开 <code>~\themes\next\_config.yml</code> 文件，找到 <code>menu</code> 相关的设置，取消掉需要的菜单项的注释。</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">categories: </span><br><span class="line"><span class="bullet">-</span> [学习,html] </span><br><span class="line"><span class="bullet">-</span> [学习,http] </span><br></pre></td></tr></table></figure>
+<p>这样也可以代表嵌套.</p>
+<h2 id="本地分类管理"><a href="#本地分类管理" class="headerlink" title="本地分类管理"></a>本地分类管理</h2><p>通过该命令 <code>hexo new post -p /后端/test.md</code> 执行后，会在post文件夹下创建子文件夹 “后端”，并创建一篇test.md博文。<br>可以直接在<code>D:\MyWeb\source\_posts</code>下新建需要的文件夹进行分类，hexo可以识别文件夹下的内容。<br>这样就可以直接对接在obsidian里面写的文章。</p>
+<p>参考：<br><a href="https://zhuanlan.zhihu.com/p/50787870#:~:text=Hexo%2BGithub%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B%EF%BC%9A03%E6%B7%BB%E5%8A%A0%E5%88%86%E7%B1%BB%201%201%E3%80%81%E5%88%9B%E5%BB%BA%E2%80%9C%E5%88%86%E7%B1%BB%E2%80%9D%E9%80%89%E9%A1%B9%202%201.1%20%E7%94%9F%E6%88%90%E2%80%9C%E5%88%86%E7%B1%BB%E2%80%9D%E9%A1%B5%E5%B9%B6%E6%B7%BB%E5%8A%A0tpye%E5%B1%9E%E6%80%A7%20%E6%89%93%E5%BC%80%E5%91%BD%E4%BB%A4%E8%A1%8C%EF%BC%8C%E8%BF%9B%E5%85%A5%E5%8D%9A%E5%AE%A2%E6%89%80%E5%9C%A8%E6%96%87%E4%BB%B6%E5%A4%B9%E3%80%82%20%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4,-%20jQuery%20-%20%E8%A1%A8%E6%A0%BC%20-%20%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81%20%E5%B0%B1%E6%98%AF%E8%BF%99%E7%AF%87%E6%96%87%E7%AB%A0%E7%9A%84%E6%A0%87%E7%AD%BE%E4%BA%86%20">Hexo+Github博客教程：03添加分类 - 知乎 (zhihu.com)</a></p>
 ]]></content>
       <categories>
         <category>博客搭建</category>
@@ -171,35 +191,15 @@
       </tags>
   </entry>
   <entry>
-    <title>博客的Tags和分类</title>
-    <url>/2021/11/01/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/%E5%8D%9A%E5%AE%A2%E7%9A%84Tags%E5%92%8C%E5%88%86%E7%B1%BB/</url>
-    <content><![CDATA[<span id="more"></span>
-
-<p>上面是个示例，一篇文章的categories不能多个，写两个代表嵌套。</p>
-<p>在next主题配置内：<br>打开 <code>~\themes\next\_config.yml</code> 文件，找到 <code>menu</code> 相关的设置，取消掉需要的菜单项的注释。</p>
-<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">categories: </span><br><span class="line"><span class="bullet">-</span> [学习,html] </span><br><span class="line"><span class="bullet">-</span> [学习,http] </span><br></pre></td></tr></table></figure>
-<p>这样也可以代表嵌套.</p>
-<h2 id="本地分类管理"><a href="#本地分类管理" class="headerlink" title="本地分类管理"></a>本地分类管理</h2><p>通过该命令 <code>hexo new post -p /后端/test.md</code> 执行后，会在post文件夹下创建子文件夹 “后端”，并创建一篇test.md博文。<br>可以直接在<code>D:\MyWeb\source\_posts</code>下新建需要的文件夹进行分类，hexo可以识别文件夹下的内容。<br>这样就可以直接对接在obsidian里面写的文章。</p>
-<p>参考：<br><a href="https://zhuanlan.zhihu.com/p/50787870#:~:text=Hexo%2BGithub%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B%EF%BC%9A03%E6%B7%BB%E5%8A%A0%E5%88%86%E7%B1%BB%201%201%E3%80%81%E5%88%9B%E5%BB%BA%E2%80%9C%E5%88%86%E7%B1%BB%E2%80%9D%E9%80%89%E9%A1%B9%202%201.1%20%E7%94%9F%E6%88%90%E2%80%9C%E5%88%86%E7%B1%BB%E2%80%9D%E9%A1%B5%E5%B9%B6%E6%B7%BB%E5%8A%A0tpye%E5%B1%9E%E6%80%A7%20%E6%89%93%E5%BC%80%E5%91%BD%E4%BB%A4%E8%A1%8C%EF%BC%8C%E8%BF%9B%E5%85%A5%E5%8D%9A%E5%AE%A2%E6%89%80%E5%9C%A8%E6%96%87%E4%BB%B6%E5%A4%B9%E3%80%82%20%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4,-%20jQuery%20-%20%E8%A1%A8%E6%A0%BC%20-%20%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81%20%E5%B0%B1%E6%98%AF%E8%BF%99%E7%AF%87%E6%96%87%E7%AB%A0%E7%9A%84%E6%A0%87%E7%AD%BE%E4%BA%86%20">Hexo+Github博客教程：03添加分类 - 知乎 (zhihu.com)</a></p>
-]]></content>
-      <categories>
-        <category>博客搭建</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>慧荣SM2246EN主控山寨固态硬盘修复</title>
-    <url>/2022/11/23/Fix%20&amp;%20Crack/SSD%E4%BF%AE%E5%A4%8D/</url>
+    <url>/2022/12/17/Fix%20&amp;%20Crack/SSD%E4%BF%AE%E5%A4%8D/</url>
     <content><![CDATA[<p><em>在某鱼收了一个120G的所谓金士顿v300固态硬盘，也是受到了一些颗粒玩家的影响想要收来做个U盘，便有了下文…</em></p>
 <span id="more"></span>
 
 <hr>
 <h4 id="初印象"><a href="#初印象" class="headerlink" title="初印象"></a>初印象</h4><p>当时到手后拆开发现内部主控为慧荣SM2246EN，这可不好。。。</p>
 <p>实际上在网上查询得知这款金士顿应该为SF2281的主控。<br>固态上的颗粒印字为Toshiba的TH58TEG7DDLTA00。如下图。</p>
-<img src="/2022/11/23/Fix%20&%20Crack/SSD%E4%BF%AE%E5%A4%8D/%E5%A4%96%E8%A7%82.png" class title="整体外观">
+<img src="/2022/12/17/Fix%20&%20Crack/SSD%E4%BF%AE%E5%A4%8D/%E5%A4%96%E8%A7%82.png" class title="整体外观">
 
 <p>基本上认定这是一个山寨产品。</p>
 <p>首先还是试一试读写，买了斐讯的Sata转USB3.0转接板，上机发现问题是偶尔能读取，但是无法删除原有文件，也无法新建（重新拔插后全部恢复原样），顺序写入大概70M&#x2F;s，很快掉盘。</p>
@@ -207,7 +207,7 @@
 <p>图片上可以看到左边丝印有标注ROM，用镊子短接然后插USB就可以进入ROM模式，被慧荣SM2246EN的量产工具识别就可以开卡。</p>
 <p>但是在慧荣的各个版本量产工具中都找不到这个颗粒型号。<br>关于颗粒类型与命名规则，这里可以参考一些别的文献。<br>这个颗粒按照丝印，应该是15nm制程的MLC，但是在SSD-z中读取为Toshiba 19nm MLC，主控读取为SF2281，但主控固件读取为P0614，这个型号可以看出来很明显是慧荣的一款固件版本。所以说具体颗粒究竟是什么从颗粒丝印不一定是正确的，也可能是重新打字。之前一直尝试使用东芝其他型号颗粒开卡不能开出。</p>
 <p>然后用慧荣开卡工具进行Dram Test（下图）</p>
-<img src="/2022/11/23/Fix%20&%20Crack/SSD%E4%BF%AE%E5%A4%8D/%E9%87%8F%E4%BA%A7%E5%B7%A5%E5%85%B7.png" class title="测试">
+<img src="/2022/12/17/Fix%20&%20Crack/SSD%E4%BF%AE%E5%A4%8D/%E9%87%8F%E4%BA%A7%E5%B7%A5%E5%85%B7.png" class title="测试">
 <p>发现Dram Test过不了，最开始的思路是找能不用缓存的固件开卡，但是实在找不到这样的。顺便提一嘴，这个慧荣的量产工具界面要拖动边框有些内容才会显示出来。<br>这时候去翻了翻论坛，了解到：</p>
 <blockquote>
 <ul>
@@ -218,13 +218,13 @@
 </blockquote>
 <p>这些不同的观点对我修复这个硬盘的过程造成一些困扰。</p>
 <p>图中是南亚的颗粒，Nanya的内存丝印可以看到64M16，<br>意思是64M Bytes16位，这里这个大小按照8Bit算，就是128M，有些颗粒如三星（SEC，Samsung）海力士（SKhynix）会标1G16那种就是1G bits，就是128M Bytes。<br>SM2246主控只支持16位内存。进入参数设置页面设置正确（下图）</p>
-<img src="/2022/11/23/Fix%20&%20Crack/SSD%E4%BF%AE%E5%A4%8D/%E9%87%8F%E4%BA%A7%E5%B7%A5%E5%85%B72.png" class title="量产">
+<img src="/2022/12/17/Fix%20&%20Crack/SSD%E4%BF%AE%E5%A4%8D/%E9%87%8F%E4%BA%A7%E5%B7%A5%E5%85%B72.png" class title="量产">
 
 <p>但是依然不能开卡。</p>
 <hr>
 <h4 id="切换思路"><a href="#切换思路" class="headerlink" title="切换思路"></a>切换思路</h4><p>这时候我已经想放弃了，但是考虑到还是有可能是内存颗粒虚焊，当时手头没有热风枪，先用力按住内存和PCB,发现DRAM Test 可以通过，果然是虚焊。用热风枪重新加焊之后，SSD可以直接使用了，不需要量产。<br>但是在跑随机读写的时候还是容易掉盘，而且顺序读写速度很低。本来不想接着折腾了，就装到壳子里面了。然后发现更容易掉盘了，需要重新加焊，这里为什么后面解释。<br>继续可以使用了之后，尝试在固态里面装一个<a href="https://markdown.com.cn/">Deepin</a>，但是每次都会最后掉盘，第三次的时候直接拔掉电源，发现再不能识别硬盘，当时心里一凉，完了。</p>
 <h4 id="收尾工作"><a href="#收尾工作" class="headerlink" title="收尾工作"></a>收尾工作</h4><p>这时候已经不可避免要进行量产了，最开始提示Flash没有sync，后来再参数设置里面关掉了sync mode，至于选择颗粒选择了自动匹配ID的Sandisk的128Gb颗粒进行开卡，发现这样子可以通过开卡。<br>速度也有所提升。然是发现装进外壳之后又不能识别，这时候用手轻轻扳动缓存颗粒旁边的PCB边缘，发现不能通过DRAM test,就明白了外壳上螺丝的时候会压到这个pcb使其虚焊。重新加焊之后不再上这个螺丝。<br>另外，这只是这个固态的一部分毛病，之前再固态信息里面看到这个固态的数据量是<strong>120T</strong>…也就说，颗粒很可能已经接近报废，所以这就导致后面的的问题，写入到一部分的时候会掉盘。也就说坏块过多也不能映射备用块。这里说一下，固态和机械有很大的不同，所以diskgenius的扫描坏块是不合适的，比如需要读写，对于固态寿命是有影响的，读出来的结果也并不是真的物理块，但是我这里死马当做活马医，本身只想看个参考，所以跑了测试发现确实有读写错误的部分。</p>
-<p>为了解决这个问题，可以通过跑RDT来解决这个问题，量产的时候勾选RDT,这个PCBA在跑的时候会闪灯，所以可以看到跑完结束。跑完RDT之后量产需要直接插上电脑，<strong>不要短接ROM，不要短接不要短接</strong>，那样就失去了RDT信息(如下）<img src="/2022/11/23/Fix%20&%20Crack/SSD%E4%BF%AE%E5%A4%8D/RDT.png" class title="RDT"></p>
+<p>为了解决这个问题，可以通过跑RDT来解决这个问题，量产的时候勾选RDT,这个PCBA在跑的时候会闪灯，所以可以看到跑完结束。跑完RDT之后量产需要直接插上电脑，<strong>不要短接ROM，不要短接不要短接</strong>，那样就失去了RDT信息(如下）<img src="/2022/12/17/Fix%20&%20Crack/SSD%E4%BF%AE%E5%A4%8D/RDT.png" class title="RDT"></p>
 <p>而是直接插上硬盘就应该能在量产工具里面检测到。  最开始我的斐讯的JMS576我发现不行，还准备去买别的转接卡，后来发现只要插在USB2.0端口上就可以识别了，然后换了0819A的固件，发现速度也有提升，测试两天后发现没有掉盘，结束。</p>
 <hr>
 <p>补充：NAND的ID可以复制读出来的第一行数据在这个上面找试试<a href="http://www.flashinfo.top/">www.flashinfo.top</a></p>
@@ -238,55 +238,6 @@
         <tag>SSD</tag>
         <tag>Flash</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Design an Arbitrary Waveform Generator Using the RP2040 MCU and a Digital-to-Analog Converter</title>
-    <url>/2023/06/18/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/Design-an-Arbitrary-Waveform-Generator-Using-the-RP2040-MCU-and-a-Digital-to-Analog-Converter-DAC/</url>
-    <content><![CDATA[<p>    标题是AI写的，本来我想写的是<code>用RP2040实现AWG</code> ，AI说我这个标题不够专业，给我改了一大串，我感觉确实挺🐂🍺，就直接贴上来了。</p>
-<span id="more"></span>
-
-<h1 id="为什么要写这个"><a href="#为什么要写这个" class="headerlink" title="为什么要写这个"></a>为什么要写这个</h1><p>网上有一堆RP2040实现的AWG的设计，其中有一个传播比较广泛的是一个用python写的<a href="https://www.instructables.com/Poor-Mans-Waveform-Generator-Based-on-RP2040-Raspb/">配合一个10bit R2R DAC实现的AWG设计</a>。然而，我认为它有错误:基本上所有的帖子认为连续的DMA传输直接使用例程中给出的控制传输的方法就可以了，然而这种传输方法会损失一个时钟周期用来搬运DMA配置。这意味着信号周期没有被严格控制。对于主频轻轻松松就可以达到270MHz的RP2040来说这个Bug很难看出来，但是如果生成信号波形周期较短就可以看到。B站有一个对于原开源项目的<a href="https://www.bilibili.com/video/BV1Xq4y1Y7eF">复刻</a>，在输出高频的时候就能看出来了。</p>
-<pre><code>这个复刻的视频不够详细，后面我会给出具体测试结果。
-
-不知道为什么RP2040作为树莓派一个很不错的产品，有相当多的讨论和开源环境，但是有些教程却始终是抄来抄去，甚至英文环境也是，可能确实是没啥人用这个做产品就是这样吧。。。包括下载配置，有更好的方法，但是容易找到的教程都是最开始手册上给出的方法。
-</code></pre>
-<p>一个原因是手册上没有直接给出DMA乒乓传输的例子和说明，而是通过一个称作“控制传输（2.5.6.2. DMA Control Blocks .RP2040-Datasheet）” 来说明如何连续传输数据到外设或者指定地址。我在反复怀疑自己了几天之后，决定直接写代码验证一下。</p>
-<blockquote>
-<p>Talk is cheap. Show me the code</p>
-</blockquote>
-<p>    我最开始不甚了解乒乓传输这个概念，说来惭愧，写了几年单片机，就用过一次DMA, 最后还因为操作逻辑不好处理舍弃了，其他时候要么是用垃圾单片机压根没有DMA，要么是没这需求。这里还是第一次正儿八经看看DMA怎么做。</p>
-<p>代码验证想法是正确的，分别验证了原来的控制传输确实会出错，测试了信号波形，以及验证了使用PingPong传输能得到想要的结果。</p>
-<pre><code>手册中给出的例子确实实现了连续传输不需要CPU介入，但是它从来没说过时序是严格的，单独为DMA循环传输做了功能的有STM32,配置循环就会自动从地址段环回取数据。RP2040的DMA IP核似乎是买的公版IP，不过用下来还是比较好用的。
-</code></pre>
-<p>下面正文里面详细说设计和测试。</p>
-<h1 id="RP2040-DMA"><a href="#RP2040-DMA" class="headerlink" title="RP2040 DMA"></a>RP2040 DMA</h1><p>DMA，顾名思义，直接内存访问，无需使用CPU搬运数据。</p>
-<p>有一个触发其他通道的概念比较有意思，可以配置为每个通道传输结束后会自动触发另外一个DMA通道启动，很明显，这样就可以实现一个PingPong传输了，甚至可以多个通道接力最后转回来。遗憾的是它并不能自己触发自己，所以实现连续传输至少需要两个DMA通道.</p>
-<p>由于没有自动的循环模式，想要严格控制传输时序，就需要DMA通道在下一次传输前准备好，  </p>
-<p>由于DMA通道配置的传输地址并不会自己回到最初的地址，因此每次传输结束后至少要重新配置传输起始地址才能在下一次传输中传输正确的数据。因此，这种方法保证了时间间隔的严格，但是作为牺牲是CPU必然要耗费一定时间参与传输任务。这可能对于其他任务是有影响的。</p>
-<pre><code>然而RP2040是双核的，实在优化不出来完全可以扔到另一个核心跑（
-</code></pre>
-<h1 id="R2R-DAC"><a href="#R2R-DAC" class="headerlink" title="R2R DAC"></a>R2R DAC</h1><p>为什么使用这个DAC? 由于是电阻结构所以很容易做而且能达到不错的输出速度。当然了很多成品并行DAC也是使用的R2R结构，而且拆机件也不贵，这里首选选用手工使用电阻搭建这个DAC，为了好玩，其后再测试成品集成芯片。</p>
-<p>关于DAC，可以看我这篇博客：<a href="https://blog.csdn.net/always_one/article/details/104560604?spm=1001.2014.3001.5501">(36条消息) 关于DAC的原理_dac工作原理_你要写卓的博客-CSDN博客</a>（TODO:改天找到原文迁移到自己的博客上）</p>
-<h1 id="硬件设计"><a href="#硬件设计" class="headerlink" title="硬件设计"></a>硬件设计</h1><p>其实最开始的测试版本充其量只能叫做硬件连接不能叫做硬件设计，因为测试过程中只是用到了一个开发板连接了一堆电阻而已。</p>
-]]></content>
-      <categories>
-        <category>嵌入式与单片机</category>
-      </categories>
-      <tags>
-        <tag>rp2040</tag>
-        <tag>ARM</tag>
-        <tag>模电</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SD知识树</title>
-    <url>/2022/11/23/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/SD%E7%9F%A5%E8%AF%86%E6%A0%91/</url>
-    <content><![CDATA[<p>还没想好怎么写因为一直都没用上要写sd卡的东西了。。。</p>
-<span id="more"></span>
-]]></content>
-      <categories>
-        <category>嵌入式与单片机</category>
-      </categories>
   </entry>
   <entry>
     <title>ADS1263性能测试</title>
@@ -463,6 +414,88 @@
       </tags>
   </entry>
   <entry>
+    <title>SEPIC+Ćuk正负电源设计制作和测试（1）</title>
+    <url>/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/</url>
+    <content><![CDATA[<p>在模拟信号链中经常用到负电源以处理负信号，同时也有正电源轨。但是从直流单电源得到正负双电源是不如使用交流电得到双电源那般容易的。TODO:这句话也挪到下面这篇文章里面开头。得到正负双电源在小功率电源中有几种方法来实现，见另一篇文章【正负电源方案简介】。这篇文章则详细介绍一个SEPIC+Ćuk组合拓扑来实现的正负电源的设计和制作测试。</p>
+<span id="more"></span>
+
+<h1 id="拓扑简介"><a href="#拓扑简介" class="headerlink" title="拓扑简介"></a>拓扑简介</h1><h2 id="SEPIC"><a href="#SEPIC" class="headerlink" title="SEPIC"></a>SEPIC</h2><h2 id="Cuk"><a href="#Cuk" class="headerlink" title="Ćuk"></a>Ćuk</h2><h1 id="选型和参数计算"><a href="#选型和参数计算" class="headerlink" title="选型和参数计算"></a>选型和参数计算</h1><h2 id="DC-DC芯片选型"><a href="#DC-DC芯片选型" class="headerlink" title="DC-DC芯片选型"></a>DC-DC芯片选型</h2><p>这里使用SEPIC作为主输出，因此可以选用Boost控制器或者Boost转换器来完成这个要求，可以直接使用非同步整流Boost芯片。</p>
+<p>MOS<br>耐压 输入+输出+余量</p>
+<p>电流 输入+输出+纹波电流</p>
+<p>输入耐压</p>
+<p>输出</p>
+<p>占空比要求</p>
+<p>为了设计简单，同时这里设计要求不高，因此选用的DCDC芯片为MT3608或者SX1308，两者虽然厂家不同但是丝印一致，手册几乎一致。选用这个主要是因为便宜，只要三毛。</p>
+<p>这个芯片的开关限流标称为设计上4A，不过按照国产IC的尿性，这个大概是达不到，而且SOT23-6的热阻太大。SW最大电压30V.</p>
+<p>实际第一版测试中选用的是MT3608L，开关限流为2.5A，手册上标注为经过测试保证而非前面的理论值。SW最大电压22V.</p>
+<h2 id="电感"><a href="#电感" class="headerlink" title="电感"></a>电感</h2><h2 id="二极管"><a href="#二极管" class="headerlink" title="二极管"></a>二极管</h2><h2 id="输入电容"><a href="#输入电容" class="headerlink" title="输入电容"></a>输入电容</h2><p>SEPIC Ćuk输入端并不是连续的，因此使用这个电源会对前级造成较大的纹波，适当提高输入电容来减小对前级的影响。</p>
+<p>电容的耐压考虑一定余量即可</p>
+<h2 id="输出电容"><a href="#输出电容" class="headerlink" title="输出电容"></a>输出电容</h2><p>输出反馈电阻</p>
+<p>FB Input Bias Current 50nA-10nA</p>
+<h1 id="仿真设计"><a href="#仿真设计" class="headerlink" title="仿真设计"></a>仿真设计</h1><p>其实上面的选型没有仿真模型，我做的时候也没提前仿真，不过为了完整性这里还是找一个接近的芯片来仿真一下。</p>
+<h1 id="输出Π型滤波器设计"><a href="#输出Π型滤波器设计" class="headerlink" title="输出Π型滤波器设计"></a>输出Π型滤波器设计</h1><p>如果我们想获得一个更为干净的电源，那么开关电源的输出可以进一步处理。<br>开关电源输出存在开关频率的噪声，以及由于开关和输入信号混频导致的低频噪声。SEPIC输出是不连续的，存在大量开关谐波分量，Ćuk虽然输出连续但是依然要考虑尽量减小输出开关噪声。</p>
+<p>当然， 也不要过度设计（过于HIFI），如果后级器件本身的PSRR够用， 那么这里可以减配。例如TL072的PSRR大约80-100dB，对于一般的应用可能已经足够。</p>
+<h2 id="情况分析"><a href="#情况分析" class="headerlink" title="情况分析"></a>情况分析</h2><p>DCDC转换器的工作频率往往比较高，其开关噪声包含了对应的工作频率和其高次谐波，此次设计中使用的MT3608L标称1.2Mhz，实测1.05Mhz左右。</p>
+<p>一般的线性稳压器对于较高频率噪声的抑制能力往往会大幅低于低频端。</p>
+<p>例如TPS7A4901，在$C_{NR}&#x3D;10nF$，$C_{FF}&#x3D;10nF$, Cout&#x3D;10uF的情况下，对于100-1Khz的PSRR大约有70dB,而其PSRR@1Mhz只有35dB,也就是大约为0.0178，下图为手册截图。</p>
+<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/TPS7A4901_PSRRvsFre.png" class title="TPS7A49_Figure">
+<p>负压的LDO TPS7A3001也差不多，在$C_{NR}&#x3D;10nF$，$C_{FF}&#x3D;10nF$, Cout&#x3D;10uF的情况下，对于100-1Khz的PSRR大约有70dB,而其PSRR@1Mhz只有40dB</p>
+<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/TPS7A3001_PSRRvsFre.png" class title="TPS7A30_Figure">
+<p>传统的三端稳压器78xx系列只标注了PSRR@120Hz,其值通常在60-70dB左右。而79xx系列的负压线性稳压器的PSRR则稍微低一些，一般为54dB-60dB.</p>
+<pre><code>只有120Hz点因为美国电网是60Hz，传统三端稳压器早期主要用于工频变压器输入整流后稳压。
+</code></pre>
+<p>只有ST的手册对于78xx给出了PSRR随着频率变化的图，但是似乎完全和他手册里面的写出来的指标对不上，不算保守。而且低频PSRR也太高了，感觉是以前测试方法有些不同出现的。</p>
+<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/L7805_PSRRvsFre.png" class title="L7805_Figure">
+
+<p>国产的78L05系列则PSRR更低，只有49dB@120Hz.(你国产的也只标120Hz就离谱)</p>
+<p>TI的LM317新手册中给出的PSRR则看起来比较正常，</p>
+<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/LM317_TI_PSRRvsFre.png" class title="LM317_Figure">
+
+<p>而LM337的PSRR则给出为</p>
+<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/LM337_TI_PSRRvsFre.png" class title="LM317_Figure">
+
+
+
+<p>整体上可以看见，这种传统的三端稳压器，<strong>基本上最好情况是正压稳压器到1Mhz依然有20dB抑制，而负压可能更低只能到10dB@1Mhz</strong>。</p>
+<p>不过,地表最强LDO-LT3045的PSRR在1Mhz达到了76dB(对应的负压LDO-LT3094则是74dB@1Mhz).在低频段更是超过100dB. 不过一般应用中，这种超级LDO还是稍微有点贵了。</p>
+<p>所以，对于一般应用，不要太指望通过线性稳压器来抑制开关噪声。</p>
+<h2 id="Then-How-to-Do"><a href="#Then-How-to-Do" class="headerlink" title="Then How to Do ?"></a>Then How to Do ?</h2><p>不过好消息是，对于PCB路径上的高频噪声，无源滤波器很容易就能实现较好的抑制效果。（这里暂不考虑通过空间辐射耦合到输出端的情况）</p>
+<p>考虑一个理想的RC低通滤波器，R&#x3D;0.23Ω，C&#x3D;10uF,计算得到的-3dB截止频率为69.23Khz，在1Mhz处的衰减为<br>$$<br>Gain &#x3D; \frac{1}{\sqrt{(\frac{f}{fp})^2+1}}<br>$$<br>计算得到为0.064，即-23.86dB。加上一个传统线性稳压器L7805的抑制效果-20dB，好消息，这已经差不多赶上单个TPS7A49的效果了。</p>
+<p>但是仅仅使用RC滤波器，只有一个极点，衰减下降还是不够快，而且电阻也不能加太大否则会有压降，电容增加则会影响瞬态响应，而且成本也会增高。</p>
+<p>对于一个10uF 50V耐压的1206封装电容，实际使用中在12V偏压下，只有3uF左右（使用村田仿真工具数据），因此这里电容在体积限制的应用里面也不方便加入太多。</p>
+<p>那么如何改善呢？加入电感。<br>不过，使用单一电感来设计考虑较多（主要是我不会），直接使用磁珠产品更为简单。<br>下面是使用村田的仿真模型来设计一个Π滤波器，电容为GRM188R61E106MA73，磁珠为BLM18AG601SN1</p>
+<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/%CE%A0FIlter1.png" class title="LM317_Figure">
+
+<p>仿真得到的传递特性为</p>
+<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/%CE%A0FIlter1_mag_freq.png" class title="LM317_Figure">
+<p>可以看到，使用磁珠的Π滤波器在1Mhz的时候衰减达到了-60dB，不过在30Khz的地方存在尖峰，主要是LC存在谐振点，一般考虑把这个谐振点推到不影响应用的频率处即可，也可以通过增加电容或者换更大阻抗的磁珠来减小谐振峰增益，不过这种方法同时也会改变谐振点，需要权衡考虑不影响工作。如下图增加10uF电容为5个。</p>
+<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/%CE%A0FIlter2_mag_freq.png" class title="LM317_Figure">
+
+<p>当然了，把谐振点推到更低频可以更容易通过LDO来消除这个频率的噪声，也就是如果后级使用现代LDO,对于10Khz级别的噪声已经可以很好抑制了。</p>
+<p>不过，顺便一提，在仿真中，Spice模型并没有考虑直流偏压对电容的容量影响，而是取偏压为0V的容量，因此这里实际使用中需要考虑电容的实际容量。</p>
+<p>这里下面测试中输出Π型滤波器的磁珠选型为BLM18PG121SN1D，输出电容为10uFx2.</p>
+<pre><code>为什么前面仿真中RC滤波的R取值0.23Ω？因为这是上面仿真用到的磁珠的直流阻抗。
+</code></pre>
+<h1 id="PSRR"><a href="#PSRR" class="headerlink" title="PSRR"></a>PSRR</h1><p>虽然感觉上，开关电源的输出不怎么干净，但是不要忘了他依然是一个稳压器，他具有一定的输入电源纹波抑制能力，只要设计合理，开关电源完全可以让更垃圾的输入电源转换为更符合预期的输出。</p>
+<p>这里测不了，只能单独拉一个较差的输入信号和对应的输出信号来展示一下。</p>
+<p>一个应用场合是USB VBUS输入，由于各个厂商在PC上整板处理各有不同，USB VBUS的质量一言难尽，对于部分音频应用，就需要改善USB电源质量。</p>
+<pre><code>当然，很多情况不需要高于5V的电压，直接使用磁珠滤波加上LDO已经足够使用。
+</code></pre>
+<h1 id="纹波测试"><a href="#纹波测试" class="headerlink" title="纹波测试"></a>纹波测试</h1><h2 id="无Π型滤波器输出"><a href="#无Π型滤波器输出" class="headerlink" title="无Π型滤波器输出"></a>无Π型滤波器输出</h2><h2 id="有Π型滤波器输出"><a href="#有Π型滤波器输出" class="headerlink" title="有Π型滤波器输出"></a>有Π型滤波器输出</h2><h2 id="有Π型滤波器输出（减配电容）"><a href="#有Π型滤波器输出（减配电容）" class="headerlink" title="有Π型滤波器输出（减配电容）"></a>有Π型滤波器输出（减配电容）</h2><h2 id="添加线性稳压器输出"><a href="#添加线性稳压器输出" class="headerlink" title="添加线性稳压器输出"></a>添加线性稳压器输出</h2><h2 id="减少输出电容-线性稳压器输出"><a href="#减少输出电容-线性稳压器输出" class="headerlink" title="减少输出电容+线性稳压器输出"></a>减少输出电容+线性稳压器输出</h2><h1 id="效率测试"><a href="#效率测试" class="headerlink" title="效率测试"></a>效率测试</h1><h1 id="负载不对称测试"><a href="#负载不对称测试" class="headerlink" title="负载不对称测试"></a>负载不对称测试</h1><p>实际上，负压输出依赖于正压的反馈，因此负压其实是开环输出。</p>
+<p>不过对于使用耦合电感的SEPIC+Ćuk电源，由于正负两路的电感耦合在一起，在负载不对称的情况下表现则会更好。</p>
+<h1 id="还需要测试但是我没设备了"><a href="#还需要测试但是我没设备了" class="headerlink" title="还需要测试但是我没设备了"></a>还需要测试但是我没设备了</h1><h1 id="开关节点波形和电感上的电压波形"><a href="#开关节点波形和电感上的电压波形" class="headerlink" title="开关节点波形和电感上的电压波形"></a>开关节点波形和电感上的电压波形</h1><p>电流波形我测不了，没有电流探头。</p>
+]]></content>
+      <categories>
+        <category>Work with the world</category>
+      </categories>
+      <tags>
+        <tag>SMPS</tag>
+        <tag>SEPIC</tag>
+        <tag>Ćuk</tag>
+        <tag>正负电源</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用KiCad内置的ngSpice进行电路仿真（0）</title>
     <url>/2022/09/22/Work%20with%20the%20world/%E4%BD%BF%E7%94%A8KiCad%E5%86%85%E7%BD%AE%E7%9A%84NgSpice%E8%BF%9B%E8%A1%8C%E7%94%B5%E8%B7%AF%E4%BB%BF%E7%9C%9F%EF%BC%880%EF%BC%89/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>其实几乎所有的EDA工具（这里只是指板级设计工具），都提供了仿真的功能，功能的完善程度取决于这个公司来头多大，例如cadence中的原理图工具，它收购了pspice之后进行了改进并集成到其中，可以进行仿真，同时有巨量的仿真库。</p>
@@ -542,6 +575,158 @@
       </tags>
   </entry>
   <entry>
+    <title>Design an Arbitrary Waveform Generator Using the RP2040 MCU and a Digital-to-Analog Converter</title>
+    <url>/2023/06/18/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/Design-an-Arbitrary-Waveform-Generator-Using-the-RP2040-MCU-and-a-Digital-to-Analog-Converter-DAC/</url>
+    <content><![CDATA[<p>    标题是AI写的，本来我想写的是<code>用RP2040实现AWG</code> ，AI说我这个标题不够专业，给我改了一大串，我感觉确实挺🐂🍺，就直接贴上来了。</p>
+<span id="more"></span>
+
+<h1 id="为什么要写这个"><a href="#为什么要写这个" class="headerlink" title="为什么要写这个"></a>为什么要写这个</h1><p>网上有一堆RP2040实现的AWG的设计，其中有一个传播比较广泛的是一个用python写的<a href="https://www.instructables.com/Poor-Mans-Waveform-Generator-Based-on-RP2040-Raspb/">配合一个10bit R2R DAC实现的AWG设计</a>。然而，我认为它有错误:基本上所有的帖子认为连续的DMA传输直接使用例程中给出的控制传输的方法就可以了，然而这种传输方法会损失一个时钟周期用来搬运DMA配置。这意味着信号周期没有被严格控制。对于主频轻轻松松就可以达到270MHz的RP2040来说这个Bug很难看出来，但是如果生成信号波形周期较短就可以看到。B站有一个对于原开源项目的<a href="https://www.bilibili.com/video/BV1Xq4y1Y7eF">复刻</a>，在输出高频的时候就能看出来了。</p>
+<pre><code>这个复刻的视频不够详细，后面我会给出具体测试结果。
+
+不知道为什么RP2040作为树莓派一个很不错的产品，有相当多的讨论和开源环境，但是有些教程却始终是抄来抄去，甚至英文环境也是，可能确实是没啥人用这个做产品就是这样吧。。。包括下载配置，有更好的方法，但是容易找到的教程都是最开始手册上给出的方法。
+</code></pre>
+<p>一个原因是手册上没有直接给出DMA乒乓传输的例子和说明，而是通过一个称作“控制传输（2.5.6.2. DMA Control Blocks .RP2040-Datasheet）” 来说明如何连续传输数据到外设或者指定地址。我在反复怀疑自己了几天之后，决定直接写代码验证一下。</p>
+<blockquote>
+<p>Talk is cheap. Show me the code</p>
+</blockquote>
+<p>    我最开始不甚了解乒乓传输这个概念，说来惭愧，写了几年单片机，就用过一次DMA, 最后还因为操作逻辑不好处理舍弃了，其他时候要么是用垃圾单片机压根没有DMA，要么是没这需求。这里还是第一次正儿八经看看DMA怎么做。</p>
+<p>代码验证想法是正确的，分别验证了原来的控制传输确实会出错，测试了信号波形，以及验证了使用PingPong传输能得到想要的结果。</p>
+<pre><code>手册中给出的例子确实实现了连续传输不需要CPU介入，但是它从来没说过时序是严格的，单独为DMA循环传输做了功能的有STM32,配置循环就会自动从地址段环回取数据。RP2040的DMA IP核似乎是买的公版IP，不过用下来还是比较好用的。
+</code></pre>
+<p>下面正文里面详细说设计和测试。</p>
+<h1 id="RP2040-DMA"><a href="#RP2040-DMA" class="headerlink" title="RP2040 DMA"></a>RP2040 DMA</h1><p>DMA，顾名思义，直接内存访问，无需使用CPU搬运数据。</p>
+<p>有一个触发其他通道的概念比较有意思，可以配置为每个通道传输结束后会自动触发另外一个DMA通道启动，很明显，这样就可以实现一个PingPong传输了，甚至可以多个通道接力最后转回来。遗憾的是它并不能自己触发自己，所以实现连续传输至少需要两个DMA通道.</p>
+<p>由于没有自动的循环模式，想要严格控制传输时序，就需要DMA通道在下一次传输前准备好，  </p>
+<p>由于DMA通道配置的传输地址并不会自己回到最初的地址，因此每次传输结束后至少要重新配置传输起始地址才能在下一次传输中传输正确的数据。因此，这种方法保证了时间间隔的严格，但是作为牺牲是CPU必然要耗费一定时间参与传输任务。这可能对于其他任务是有影响的。</p>
+<pre><code>然而RP2040是双核的，实在优化不出来完全可以扔到另一个核心跑（
+</code></pre>
+<h1 id="R2R-DAC"><a href="#R2R-DAC" class="headerlink" title="R2R DAC"></a>R2R DAC</h1><p>为什么使用这个DAC? 由于是电阻结构所以很容易做而且能达到不错的输出速度。当然了很多成品并行DAC也是使用的R2R结构，而且拆机件也不贵，这里首选选用手工使用电阻搭建这个DAC，为了好玩，其后再测试成品集成芯片。</p>
+<p>关于DAC，可以看我这篇博客：<a href="https://blog.csdn.net/always_one/article/details/104560604?spm=1001.2014.3001.5501">(36条消息) 关于DAC的原理_dac工作原理_你要写卓的博客-CSDN博客</a>（TODO:改天找到原文迁移到自己的博客上）</p>
+<h1 id="硬件设计"><a href="#硬件设计" class="headerlink" title="硬件设计"></a>硬件设计</h1><p>其实最开始的测试版本充其量只能叫做硬件连接不能叫做硬件设计，因为测试过程中只是用到了一个开发板连接了一堆电阻而已。</p>
+]]></content>
+      <categories>
+        <category>嵌入式与单片机</category>
+      </categories>
+      <tags>
+        <tag>模电</tag>
+        <tag>rp2040</tag>
+        <tag>ARM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SD知识树</title>
+    <url>/2022/12/17/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/SD%E7%9F%A5%E8%AF%86%E6%A0%91/</url>
+    <content><![CDATA[<p>还没想好怎么写因为一直都没用上要写sd卡的东西了。。。</p>
+<span id="more"></span>
+]]></content>
+      <categories>
+        <category>嵌入式与单片机</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>关于音响想到的一些杂谈</title>
+    <url>/2023/06/20/%E7%94%9F%E6%B4%BB%E6%B8%B8%E7%8E%A9/%E5%85%B3%E4%BA%8E%E9%9F%B3%E5%93%8D%E6%83%B3%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E6%9D%82%E8%B0%88/</url>
+    <content><![CDATA[<p>我不是一个什么特别有主见的人，所以对于铺天盖地而来的观点往往会首先逼迫自己认同，然后慢慢考虑到底发生了什么。所以，对于音响的营销，我是完全没有抵抗力的，唯一阻碍我购物的就是我的钱包（以及我的购买习惯）。</p>
+<span id="more"></span>
+
+<p>小时候课文（《长城砖》.人教版.四年级.上，旧版）上说宇航员在太空能看到长城，这是非常骄傲的–我就寻思这长城虽然长但是他似乎不宽啊，我也没有去过长城，最直观的了解是一本思想品德书（人教版.七年级.上，旧版）的封面是可以看到长城的，但是我百思不得其解，图中似乎宽度也只能看到五六个人并排，看到这幅图的我就更难受了，思考着：那么这是为什么呢。<br>有一天做梦，梦见，原来长城的城墙特别厚，虽然在图上只能看见城墙之间只能容纳五六个人宽，实际上旁边城墙还有好几米咧–难怪太空能看见。</p>
+<div align="center"><img src="/2023/06/20/%E7%94%9F%E6%B4%BB%E6%B8%B8%E7%8E%A9/%E5%85%B3%E4%BA%8E%E9%9F%B3%E5%93%8D%E6%83%B3%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E6%9D%82%E8%B0%88/coverbig.jpg" width="180"></div>
+
+<pre><code>我一直以为这本思想品德书是小学的，没想到是初一的教材，我没想到我会纠结这个问题纠结三年，我反复去确认了小学的思想品德的封面插画都是漫画而不是照片才能确定，同时也高估了我小学时期的认知能力，见识少能想到长城没有很宽也挺不错了（摆手。
+</code></pre>
+<p>在梦中了悟得了这么个解释，似乎一切就合理起来了，犹如醍醐灌顶般，吃饭香了，睡觉也安稳了，从此不再纠结这个问题。</p>
+<p>然后到了互联网时代，可能是2018年前后？（太惨了蒙在鼓里这么多年,虽然后面主要是没有心思去追究了），有人发文指出小学课文的错误，我一下子回想起来当时我考虑过的问题，淦！还是吃了没见识的亏。</p>
+<pre><code>真正去回想时间线才发现，自己的认知水平到了大学才大幅提高。就像阳关灿烂的日子中的马小军，他的记忆是主观拼凑的，我的记忆也都是随便压缩时间的，一直以为自己以前见识也不少，现在才发现有时间获取信息了才有自己的想法。小时候可能时间最丰富的时期是初中三年，不过当时班主任不允许看闲书和新闻，只能偷偷带些儿童文学青年文摘一类书籍传阅。
+</code></pre>
+<p>瞎掰扯扯远了，这和音响有什么关系呢？我想说的是，我是不是那个会被最容易获取到的数据推着走的人。</p>
+<p>最早接触听音设备应该是当时爸爸在我六年级的时候两千块钱配的AMD速龙CPU的台式机送的音响，这对音响我在高中还用过。其后接触专用听音设备应该是初中的时候借用同学的一个带有一个2inch电阻屏的纽曼mp3，连歌曲也是白嫖的，然后是后来有一个酷派手机，用着手机送的耳机，当时还是酷狗的时代，音乐也没有版权概念，都可以随便下载，再后来借由想要听歌线下买了一个纽曼的MP3，为什么还是纽曼呢，因为我只认识这一个牌子，觉得还不错。99元，记不起来型号了，不过我发现那个和飞利浦SA2208长得非常像。。。它声称是入门HiFi，这可能是我第一次见识到HiFi这个词。</p>
+<p>在这个MP3上，我开始下载歌曲，我了解了有不同的格式，mp3，ape，flac，wav，由于在音乐软件上对于无损格式会专门标注出来，所以逐渐的我下载的歌曲从mp3变成了flac以及ape格式，为什么没有wav呢，这个后面解释。我相信，这个有着特殊标记的歌曲一定会听起来更能传达作曲者的意思，从此开始逐渐替换mp3格式的歌曲从各路音乐网站收集无损格式的歌曲。</p>
+<p>但是我当时发现一个问题，这个标着HiFi的mp3，似乎听起来没有手机上放的好听。<br>“也许这是真正的声音？但是这么便宜也不至于真特别好吧，可是它说了它是HiFi诶”<br>到了高中，班级流行着买一个mp3听英语听力，也偷偷听听歌还有听听广播，但是校外的小卖店会进什么样的货呢，就是那种拼多多上十块钱包邮的类型，可能有贵一点有一个屏幕，总而言之，不会带有HiFi标志。这种通常杂音较大（信噪比不足），让我相信我的MP3是足够HiFi的。这时候当然就有人想要追求更好的设备了，但是不是我，因为我没有钱。一日一同学氪金500大洋买了一个看起来很牛比的学林xxx, 不记得型号–虽然我们当时感觉似乎索尼更好，但是五百大洋只能买到二手索尼– 我试听了一下，嗨，感觉和手机没有区别啊，我寻思，也许是下载的歌曲不够好。</p>
+<blockquote>
+<p>什么，你说耳机？十元包邮的耳机，我不知道耳机为啥贵啊，我自然买便宜的。</p>
+</blockquote>
+<p>又扯远了，本来是想说音响的，但是说着说着说到耳机上了。现在回到音响上。</p>
+<p>初中的时候还有用过的就是妈妈的运动音响，骑车的时候放车上，声音特别大，我特别喜欢，说实在我记不起来到底感觉好不好听了，因为骑车确实很累。后来，电脑旁边添置了一组漫步者R101V，我的感受是，我去，原来的音响是什么垃圾，这个新音响这低音，这清晰度，简直了打开了新世界。原来音响也可以接近耳机的效果。<br>很长一段时间内，我看到低音足的标语我就觉得，这个耳机或者喇叭非常好。</p>
+<p>而高音部分呢，实际上我不在乎，都是动次打次怎么会在乎，去看高音部分的资料是我在制作等离子扬声器的时候，大家都说他的特点是高音好，这时候我才去看看高音部分有什么音响。当时我认为我做的等离子扬声器非常好，可能是因为自己亲手制作的，有不少主观滤镜在里面，幸好保留了视频让我可以重新审视。</p>
+<p>这里又扯到DIY上了，哦正是这些DIY让我瞎填志愿专业的时候把电子信息这个专业放到了第一位。</p>
+<p>再后来，我觉得我可以自己做音响了，大概是高二的时候吧，看了贴吧别人用三合板加TDA2030的功放，我买了手锯，但是拿来的木板是实木，不知道是什么树，非常难锯，最后在开孔上放弃了，那时候我才意识到，我需要趁手的工具。但是看书的时候，我的认知是，做一个箱子装上喇叭就好了。不过，由于实施难度太高，我直接放弃了，一个多年的大坑至今没有填。</p>
+<p>最后高考结束了，我寻思首先我要买个耳机，还要降噪耳机，无奈囊中羞涩，挑选来挑选去最后选中了亚马逊洋垃圾，90元送一盒小米彩虹电池。当时降噪耳机没有太多选择，基本上就是bose和sony之间选择，四位数的价格当时对于我来说想都不敢想。<br>买来之后，戴上这个头戴式耳机，我发现听觉的世界清晰多了，尤其是打开降噪开关，噪声降低的同时，耳机中的声音也清晰了不少，层次分明。</p>
+<p>这个耳机随着我到了大学。当时还有一个一直想买的耳机，就是圈铁耳机，据说它分开处理高频和低频，感觉应该会更加HiFi。但是这类产品都很贵，当时没有低价的选择，最后我试了试同学的唐麦F3, 我发现这又是入耳式的全新体验，遂买了F1，发现听感不一样，然后还是买了同款F3，这个耳机陪伴我到了大二，是我当时最贵的一手耳机，我觉得这就是说明，提升几十块钱就有这么大提升了，不过可惜这个耳机再一次去硬件部之后不见了，这时候小米圈铁pro降价了，一百一十就可以买到，我就买了一条，这个耳机现在还在用，当时对这款耳机的批评很多，主要是说齿音，我很不理解，齿音究竟是什么，简直如同行业内的黑话，我听起来很好啊。</p>
+<pre><code>后来才知道，小米的品控不怎么样，可能买三条，每条听起来都不一样。其中就有高音过重的类型的。
+</code></pre>
+<p>同期购买的还有一款号称HiFi性价比入门的耳机，造型很不错，听起来似乎也就高频比小米圈铁pro弱一点。</p>
+<p>但是，似乎可以通过音效调节来解决这个问题，当时有一个插件叫做蝰蛇，基本能很好解决这个问题。我这时候开始考虑，那么，能软件调整的话，这些细微的区别影响大吗。</p>
+<p>不能老说耳机了，还是回到音响。<br>尽管我已经买了好几条耳机了，总算认识到太便宜的耳机确实不想，但是我还是对音箱有好奇之心，大家都说音响的效果是耳机不能比拟的，在大一的生日，胁迫室友送了我一对我在淘宝上看中的迷宫音响，99元没有功放。然后自己买了一个功放，使用D类功放芯片。<br>买来之后的第一想法是，这个产品真的不错，这个价格就有这么好的效果，就是低音有点闷，怎么办呢，想到了之前高中准备做音响时候买的高音单元，直接按照淘宝评论区所说添加一个4.7uf电容串联扬声器后并联到原来的音响上，这时候再一次体验到世界清晰的感觉。<br>这时候我在想，这是真的HiFi吗，还是只是我自己听着舒服？</p>
+<p>HiFi这个概念是不是并不是如其名，高保真，而是让人听起来更好？</p>
+<p>一个小转折是到了大二的暑假，电赛培训做了一个麦克风放大器，测试的时候使用手机播放音频，测试不同的频率，当时播放到17khz的时候我已经听不见声音了，这时候我同学说，听得见，我愣住了，联想到初中物理中降噪的三个途径，我就明白了，我这是接收端出了问题。<br>每个人的体验都不一样，高保真真的能保证每个人的体验吗。</p>
+<p>说到电赛，那就必须要说信号了，我的专业多少要和电信号打交道，我理解的高保真也就是更低的失真，但是如果说保证低失真，似乎是仪器就能测试的，为什么那么多厂家能说那么多结果出来还有不同的音频曲线呢，这个曲线如果不是平直的是不是说明这不是高保真的放送呢。我对声学一窍不通，对主观声学更是不理解，不理解人耳对声音的主观评估。</p>
+<p>那么更换线材有用吗，有多大用处呢？</p>
+<p>说来惭愧，虽然我自己是电子的学生，但是在早期我对这些玄学深信有疑，但是我有疑有很大一部分来源于我没有钱购买而不是因为我有什么知识储备。但是我又有些叛逆，我故意用着最普通的线材来连接，来证明我最叛逆的想法是正确的，但是我不确定。</p>
+<p>不过，总而言之，大学时期室友赠送的音响陪过我过了整个大学期间，小米圈铁pro也没有换过，顶多是添置了蓝牙耳机，在蓝牙耳机使用SBC还是AAC抑或是AptX中间纠结对音质的影响，它们都让我感觉良好，我也逐渐能认识到这个玄学怪圈一部分来自于商家的营销，但是我还是止不住相信我总能通过微操获得更高的听音体验。</p>
+<p>大学毕业之后，拿到工资的时候，我开始想我要买什么我之前想买的东西。首先我买了一个开放式头戴式耳机，飞利浦x1s，二手，常年的购物习惯还是让我不舍得花费太多钱购买一个不知道效果如何的东西。好在实际体验还不错，开放式耳机确实有其他耳机没有的优点。<br>然后我开始琢磨音响了，毕竟有了自己的房间和一个比较大的台面。挑选了好久，在各类营销文章里面反复选择，最后我选择了一个看起来比较好看的惠威x3，没错，我就是这么想的，同时也考虑了惠威也出了一些不错的产品，当时购买全新需要1800左右，最后我在闲鱼上购买了二手。</p>
+<p>这时候又有新的概念了，监听，所谓监听就是要还原音乐的音色，我又想到了之前并非HiFi的HiFi这个词语。</p>
+<p>到手之后，发现音响除了使用铸铁箱体，似乎没有什么特别的设计，连接好之后开始试听，哎，怎么回事儿，听起来和我大学区别不大啊，可是我价格加了个0啊。</p>
+<pre><code>这时候会有人蹦出来说，你的驱动不够，你要独立解码。不好意思，解码和DAC我都写过文章了，这里总算不用再在这里继续添加废话了。
+</code></pre>
+<p>感觉两千有一大半用在这个铸铁箱体上。</p>
+<pre><code>我一直习惯于按照BOM成本来衡量购买的商品，我知道要设计，但是积累了这么多年，也没听说国内谁有自己的comsol或者是ansys。
+当然了，最开始我确实不知道设计音响是什么概念，以为就是加个箱子就好了。这也是后来累积了设计经验才反应过来这些东西是可以仿真的。
+</code></pre>
+<p>要是说以前做功放还免不了调试和不错的分立元件设计能力（也可能是抄袭日本的能力），现在大约都是面向FAE的设计了，我当时就觉得我是大冤种。</p>
+<p>这时候我开始认真审视自己记忆中杂糅的概念了，正确的量化和理论应该认真考虑而不是凭着以前学来的二手知识和营销文章来感觉。</p>
+<pre><code>前面说了为什么最开始我没下wav，因为没有人吹这个啊，这个概念很好理解，flac和ape都是无损算法，为什么要费更大的空间来储存同样无损的wav文件呢，但是有这么一段时间，我隐约相信，wav格式能获得更好的音质，因为虾米给了它金标。
+</code></pre>
+<p>不过，总体来说，也没有明显的缺点，也就这么用下去了。</p>
+<p>下一个转折点正如第一次发现听力不同于人一样，是我自己制作设备的时候发现的问题。在使用4.5V电源给TL072供电的时候，用于混音器提供给耳机，当我接上示波器测试动态范围的时候，我发现，当波形出现明显上下截止失真的时候，我听不出来区别。</p>
+<blockquote>
+<p>实际上人耳能分辨的THD大约在2%左右，对于动辄0.1%甚至更低的现代芯片来说，这个值已经非常高了。</p>
+</blockquote>
+<p>另外说一句，测试这些，首先你得有个示波器。<br>这时候，我开始删除电脑上的wav格式的文件了。</p>
+<p>买了没有多久，漫步者出了一款设备，也叫做监听音响，我一直考虑我已经有设备了，不要再想有的没的了，一直拖到现在（两年后），我考虑卖掉惠威x3似乎还能回收几百块钱，于是领券下单一气呵成，350元，基本四分之一于惠威的价格。</p>
+<p>买来后第一反应是，真大，做工真廉价，果然是用最普通的物料来做到能发挥的最佳效果。测试后的反应是，薄纱惠威x3. </p>
+<pre><code>一开始是能听出来有那些地方不足的，不过习惯了之后就不明显了，这大概就是煲耳朵吧。
+人脑确实是适应能力很强的，我记得我配这副眼镜的时候，我能明显发现透过眼镜存在边缘畸变，物体看起来不是直的，看起来非常晕，但是一段时间后就适应了。不过话不能说绝了，超出一定范围的自然是能发现的，现在我有意去观察物体边缘并和不戴眼镜对比也是能看出镜片带来的畸变的。
+</code></pre>
+<p>其实这其中很多玄学说法是不能自圆其说的，只要稍微有些了解，这些谎言便能不攻自破。例如，精密设备上使用什么线材来保证信号不失真？例如万用表，六位半可能还是用的普通接头，对于部分nv表和高位表，接头使用低热电势金属接头来减小热电势的影响，但是在音频玄学中，无非是镀金镀银单晶铜几个词翻来覆去，不排除在某些方面具有效果，但是可以回想，这样我们能识别出来吗，还是我们一厢情愿？去钻牛角尖觉得人的能力是无限的？或者说，影响因素是唯一的吗，到底量化标准在哪里呢。</p>
+<p>有些东西写着写着就忘记了，回头想起来再说吧。</p>
+<p>但是个人的认知水平如果不提高，是很难认识到自己又不知道的东西的，也就是，可能有的人以为什么东西是自己不了解的是可以分辨的，但是真实情况是，有的东西如果压根不懂，可能压根不知道自己的错误，甚至按照自己的一些了解去强行凑。</p>
+<p>我之前听到别人说版图的时候，我第一反应就是PCB，我就马上说我也会，然后认真bing之后发现，这特么是画芯片的。就像我之前从来不知道声学的概念和声学器材设计的方法，直到找了公司内部的文档看了看才了解到大致概念，同时认识到，这个东西要学还是得费精力而不是想当然的。</p>
+<p>但是如果我再把这么一篇拿出来，放到以前的我面前，我大概还是会好奇这些事情究竟对不对，我想如果要真正去了解这些东西背后能刻画他们本质的特征，还是得用更好的工具去测试解释，而不是一厢情愿说服自己。</p>
+<pre><code>卡尔·萨根的《魔鬼出没的世界THE DEMON-HAUNTED WORLD》中描绘了一个车库中的飞龙(The Dragon in My Garage)，他不能被任何方法探测到，但是&quot;我&quot;坚称飞龙是存在的，那这么说不存在的空车库和有飞龙的区别是什么呢。
+</code></pre>
+<p>当然我没有实际专门去做声学设备，这类资料通常不是很好找，被淹没在垃圾营销信息之中，如果不知道如何开头会被阻碍一段时间，但是我后来大致能了解，不只是看了一些文档，也是自己设计了电路，了解了更多的设计方法之后才联想到，声学设计同样有他对应的方法，如同机械，电子、光，这才按照如此理解去查找资料才能找到正确的资料。当然了，后来我发现都很麻烦，例如仿真，正如前面所说，仿真工具都是国外长期积累的产品。</p>
+<pre><code>当然了，很多人不要仿真也能设计，很早的时候电子电路仿真也非常困难但是不耽误人们完成任务，不过后者通常测试指标更容易，毕竟很多不是面向主观的人而是客观标准。而前者据我所知还有很多人甚至没有正确的测试环境，这似乎不是说明这个东西好做，而是人耳标准宽泛----不必严格设计也能拼出来不错的听感觉。那么设计的作用是是什么呢，流程标准化，效率的提高，能用电脑就能修改的设计自然比实物生产容易，能得到量化的指标来对比，分离了主观的部分留给其他职能部门。
+</code></pre>
+<p>但是不管怎么样，可能归结为一句话：</p>
+<blockquote>
+<p>人的正确思想是从哪里来的?是从天上掉下来的吗?不是。是自己头脑里固有的吗?不是。人的正确思想，只能从社会实践中来，只能从社会的生产斗争、阶级斗争和科学实验这三项实践中来。 – 《中共中央关于目前农村工作中若干问题的决定（草案）》</p>
+</blockquote>
+<p>不过一个错误认知可能就是，有些时候理解为这种认知只能被动获取，例如只会去买不同的产品，听了之后仍然是主观的，没有考虑过产品是如何生产的，即使退一步，没有考虑如何有效地对比—-拒绝盲测依然有很大地生存空间—-。</p>
+<p>当然我并不是想说各种产品就不是没有区别没有好坏之分的，但是这是一个主观的评估，我觉得更重要的是人的大脑的适应能力是很强的，而且对于音频信息很多之后我们关注的是其中的信息（虽然高保真可能也确实有更多的音乐信息），如果信息内容本身足够吸引人，其实有的东西也没那么重要。</p>
+<h1 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h1><p>这篇文本意是记录一下买的MR4和原来的惠威x3的参数对比和实际感觉，不过现在给说忘了，这里补一下。<br>MR4的背板RCA输入和前面板的AUX 3.5mm输入都是-10dBV标准，也就是0.316Vrms，TRS输入的6.35mm（1&#x2F;4 inch）接口的平衡输入标称输入电平则是+4dBu(1.228Vrms)。<br>功率21Wx2. 频响60-20k hz，信噪比85dBA. 失真低于0.2%. 共4.5Kg<br>来源：<a href="https://zh-cn.manuals.plus/edifier/mr4-studio-monitor-speaker-manual">EDIFIER MR4 监听音箱用户手册 (manuals.plus)</a></p>
+<blockquote>
+<p>dbA：通过A计权特性测得的分贝读数，由于人耳对不同频率的声音敏感程度不同，表现为相同 dB值的声音，2kHz 比100Hz听起来更响一些。为了使测量得到的值更符合人的主管感觉，在此引入A率加权。A计权针对人耳分辨声音的特点进行了修正，这样得出的dBA值更容易贴近人耳的感受。</p>
+</blockquote>
+<p>惠威X3:<br>输入最大峰值：3V<br>单个功率28W,失真度330Hz-20kHz≤1%( 80dB&#x2F;1m)，输入阻抗为12kΩ，信噪比＞96dB<br>频响：75Hz-20kHz(±2.5dB，freespace)<br>输入灵敏度 350mV<br>来源：<a href="https://www.hivi.com/product/view?id=78">Swan惠威X3 (hivi.com)</a></p>
+<pre><code>80dB/1m指在距离音箱1米的地方，得到了80dB的声压级。
+</code></pre>
+<p>关于X3还有MR4，还有8010A，具体的测试参考这个：<a href="https://www.zhihu.com/question/453887667">(8 条消息) 国产音响真的不如国外品牌的音响吗？如惠威X系列和真力比较？ - 知乎 (zhihu.com)</a></p>
+<p>结论是水太深。</p>
+<pre><code>有太多的信息不对称，有的东西自己把握不住的。
+</code></pre>
+<h1 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h1><p>这篇文章通篇没有分段，因为想到的太多了害怕搞忘记了。<br>本来我只是想写一下新买的MR4薄纱惠威x3，但是一写开头就离题万里，就想到了《禅与摩托车维修艺术》这本书通篇在疯狂insert自己的想法。</p>
+<pre><code>卡尔萨根的作品都值得一看，《魔鬼出没的世界》这本书有很多非常不错的观点，具体解释了如何反驳非科学的思考方式和观点，可惜当时我看的版本翻译非常烂，硬是把中文翻译出了长难句，阅读观感非常不好，不过某种程度上来说，强行延长阅读时间倒是增强了我对这本书内容的印象。
+</code></pre>
+<h1 id="附加：听音测试"><a href="#附加：听音测试" class="headerlink" title="附加：听音测试"></a>附加：听音测试</h1><p><a href="https://www.klippel.de/listeningtest/?page=instructions">Listening Test - Instructions (klippel.de)</a></p>
+]]></content>
+      <categories>
+        <category>生活游玩</category>
+      </categories>
+      <tags>
+        <tag>生活</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>reMarkable 1 漫游指南</title>
     <url>/2023/07/19/%E7%94%9F%E6%B4%BB%E6%B8%B8%E7%8E%A9/reMarkable%201%20%E6%BC%AB%E6%B8%B8%E6%8C%87%E5%8D%97/</url>
     <content><![CDATA[<p>aka 2023 reMarkable 1代配置完全指南：从配置字体到救砖刷机</p>
@@ -588,7 +773,7 @@
 <p>后者IP则保持为 10.11.99.1 ，如果不想连接WIFI或者为了避免IP变化，可以就用USB界面。配置的时候最好把睡眠关掉，否则会断开连接，无论是WIFI还是USB网络界面。</p>
 <p>需要的电脑上的工具一个是WinSCP，使用WinSCP可以方便地管理文件，而且可以保存密码免输入密码登录，也可以使用命令行窗口来管理，因为命令行工具不是很好用所以需要使用SSH来管理更方便。</p>
 <p>这个工具直接用默认配置就可以，协议选SFTP就可以了，不过需要显示隐藏文件，点击右下角的已隐藏字样点一下，可以显示隐藏文件了。</p>
-<p>另一个是SSH，很多人推荐Putty但是我觉得这个并不方便，可以直接用WindowsTerminal下powershell支持的ssh，使用命令ssh <a href="mailto:&#114;&#111;&#111;&#x74;&#64;&#x31;&#57;&#50;&#46;&#x31;&#x36;&#x38;&#x2e;&#x33;&#49;&#46;&#x33;&#x39;">&#114;&#111;&#111;&#x74;&#64;&#x31;&#57;&#50;&#46;&#x31;&#x36;&#x38;&#x2e;&#x33;&#49;&#46;&#x33;&#x39;</a> 即可，注意这个ip需要在机器内查看。</p>
+<p>另一个是SSH，很多人推荐Putty但是我觉得这个并不方便，可以直接用WindowsTerminal下powershell支持的ssh，使用命令ssh <a href="mailto:&#114;&#x6f;&#111;&#116;&#64;&#49;&#x39;&#x32;&#46;&#49;&#x36;&#56;&#46;&#51;&#x31;&#x2e;&#x33;&#57;">&#114;&#x6f;&#111;&#116;&#64;&#49;&#x39;&#x32;&#46;&#49;&#x36;&#56;&#46;&#51;&#x31;&#x2e;&#x33;&#57;</a> 即可，注意这个ip需要在机器内查看。</p>
 <p>由于配置一些其他软件的时候经常使用SSH，可以通过生成密钥来免密码登录。</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
 <p>如果已经生成过了（比如之前用过git必然配置过），就不要生成了。<br>会提示生成文件到 .ssh 目录下了。<br>然后把公钥id_rsa.pub放到reMarkable上的~&#x2F;.ssh下，然后这里注意这里除了用户目录不能对组有权限，.ssh以及以下的文件都不能对组有权限，否则不能登录，会报错<code>Permission denied (publickey,password)</code> 。<br>然后在.ssh目录下执行</p>
@@ -1639,6 +1824,54 @@ Probably not, but standard disclaimers apply
       </tags>
   </entry>
   <entry>
+    <title>【RP2040】跳转Bootloader实现IAP</title>
+    <url>/2023/08/29/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91/RP2040-JumpIntoBootloader-IAP/</url>
+    <content><![CDATA[<p>对于单片机来说，跳转BOOTLOADER一般可以通过自己实现一个BOOTLOADER来实现，同样，RP2040也可以这样来做，不过，如果没有特别的要求，也可以使用更简单的方法。</p>
+<span id="more"></span>
+<h1 id="1、利用bootrom跳转USB-boot"><a href="#1、利用bootrom跳转USB-boot" class="headerlink" title="1、利用bootrom跳转USB boot"></a>1、利用bootrom跳转USB boot</h1><p>RP2040的片上ROM固化了一个Bootloader，这个bootloader可以通过实现一个USB大容量设备来在电脑上加载UF2格式的固件，这个Bootloader是默认上电的时候检查Flash不可用或者Flash中没有可启动的程序的时候会自动跳转。</p>
+<p>如果希望在程序中跳转进入Bootloader，可以借用这个自带的Bootloader，对于一些简单应用可以省去很多事情，或者用于用于免下电免调试器下载固件。</p>
+<p>为了不用操作RUN这个引脚或者下电之后按住BOOT引脚（FLASH的CS）重新进Bootloader，而是直接在程序内根据触发条件运行，通过代码来实现内部跳转显然是有必要的，实际上官方手册已经给出了详细方法，能够让RP2040可以直接跳转到Bootrom直接进入USB大容量模式来下载UF2固件。</p>
+<pre><code>WCH或者STC的单片机，他们默认支持串口下载或者USB下载，跳转到USB或者串口下载模式只需要跳转到ROM指定地址，只需要在代码中添加跳转地址并调用即可。同样，RP2040也是类似。
+
+RP2040的启动顺序见Datasheet. 片上16k rom位于0x00000000地址，不过库函数提供了方法，不需要自己找对应的执行位置。
+</code></pre>
+<h2 id="1-0-实现方法"><a href="#1-0-实现方法" class="headerlink" title="1.0 实现方法"></a>1.0 实现方法</h2><p>这个方法在官方例程中没有单独列出，实际上这个功能已经在bootrom.h内实现，而是在数据手册中解释了，可能是实现这个太简单了因此没有单独拿出来说。</p>
+<p>只需要在代码中加入下面这部分内容即可，然后每次调用enter_usb_dfu_bootloader()即可进入RP2040自带的Bootloader.</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;pico/stdlib.h&quot;</span> </span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;pico/bootrom.h&quot;</span> </span></span><br><span class="line"><span class="type">void</span> <span class="title function_">enter_usb_dfu_bootloader</span><span class="params">()</span> </span><br><span class="line">&#123; </span><br><span class="line">    reset_usb_boot(<span class="number">0</span>, <span class="number">0</span>); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>reset_usb_boot这一句实际上是实现了重启到指定位置。<br>这里函数可以传入两个参数。<br>第一个是IO设置，0是表示禁用，其他数字表示设置单个bit的IO,在USB大容量模式下主机活动的时候，IO会被拉高，说白了进入Bootloader之后可以选用一个下载指示灯，这个可以指定GPIO。<br>第二个参数是要使用的接口：</p>
+<ul>
+<li>选0：同时开启了USB大容量模式和USB PICOBOOT接口（与正常的冷启动相同）</li>
+<li>参数为1：只使用USB PICOBOOT接口</li>
+<li>参数为2：只使用USB大容量模式。<br>例如，如果只需要启用USB 大容量储存模式，换成下面这个参数即可：<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">reset_usb_boot(<span class="number">0</span>, <span class="number">2</span>);<span class="comment">//禁用PICOBOOT模式 </span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>实际上这个函数就是类似于下面这种方法，跳转地址执行，但是SDK中已经配置好了准确的地址，并能根据参数选择不同配置：<br>（未验证）：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> (*bootrom)(<span class="type">void</span>) = (<span class="type">void</span> (*)(<span class="type">void</span>))(<span class="number">0x00000000</span> + <span class="number">4</span>); </span><br><span class="line">bootrom();<span class="comment">//</span></span><br></pre></td></tr></table></figure>
+<p>这段代码定义了一个指针<code>bootrom</code>，指向0x00000004的地址，即bootrom的入口地址。然后调用该指针即可跳转到bootrom。需要注意的是，为了确保正确的跳转，必须将指针类型强制转换为<code>void (*)(void)</code>，但是跳转到BOOTROM并不会直接进入USBBOOT.</p>
+<pre><code>tips：如果启用PICOBOOT，Windows下会显示RP2 BOOT的USB设备，显示没有驱动，因为没有WinUSB的MSOS支持，不过依然可以手动加载WINUSB驱动或者使用LIBUSB.
+这种方法也就是和RP2040的Arduino框架中使用的相似的方法（arudino大概是基于PICOBOOT传输固件）。
+</code></pre>
+<h2 id="1-1-实际使用"><a href="#1-1-实际使用" class="headerlink" title="1.1 实际使用"></a>1.1 实际使用</h2><p>有了这个方法，对于有按键的开发板，可以设置一键进入Bootrom。<br>例如我买的这个板子上24号引脚用作了用户按键，因此加入引脚配置为输入并上拉：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> BUTTON_GPIO 24</span></span><br><span class="line"><span class="type">static</span> <span class="type">void</span> <span class="title function_">usr_btn_init</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//这个板子上的按键有个问题，因为设计了阻容，导致上电需要一段时间才能充满，如果用电平判断的话，这个处理器太快了电容还没充够就开始判断了。。。因此如果不是检测边沿，初始化必须延时，</span></span><br><span class="line">    gpio_init(BUTTON_GPIO);</span><br><span class="line">    <span class="comment">//gpio_set_dir(BUTTON_GPIO, GPIO_IN);</span></span><br><span class="line">    gpio_pull_up(BUTTON_GPIO);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//检查按键下降沿</span></span><br><span class="line"><span class="type">static</span> <span class="type">void</span> <span class="title function_">check_btn_task</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">static</span> <span class="type">uint16_t</span> lastLevel=<span class="number">0</span>;<span class="comment">//初始认为是低电平，按键上拉建立之后才是高电平</span></span><br><span class="line">  <span class="comment">//检测到按键按下就跳转</span></span><br><span class="line">  <span class="keyword">if</span>(gpio_get(BUTTON_GPIO)==<span class="number">0</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span>(lastLevel==<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">      enter_usb_dfu_bootloader();<span class="comment">//检测电平下降沿</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">      lastLevel=<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">  &#123;</span><br><span class="line">    lastLevel = <span class="number">1</span>;<span class="comment">//更新电平状态</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//主程序循环中添加</span></span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">&#123;</span><br><span class="line">···</span><br><span class="line">    check_btn_task();</span><br><span class="line">···</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>或者使用中断来完成这个功能，可能更方便：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">usr_btn_callback</span><span class="params">(uint gpio, <span class="type">uint32_t</span> events)</span> &#123;</span><br><span class="line">    <span class="comment">// Put the GPIO event(s) that just happened into event_str</span></span><br><span class="line">        <span class="comment">//     &quot;LEVEL_LOW&quot;,  // 0x1</span></span><br><span class="line">        <span class="comment">// &quot;LEVEL_HIGH&quot;, // 0x2</span></span><br><span class="line">        <span class="comment">// &quot;EDGE_FALL&quot;,  // 0x4</span></span><br><span class="line">        <span class="comment">// &quot;EDGE_RISE&quot;   // 0x8</span></span><br><span class="line">    <span class="comment">// sleep_ms(20); //不要尝试在回调函数里面使用这个函数，会造成错误退出</span></span><br><span class="line">    <span class="keyword">if</span>(gpio_get(BUTTON_GPIO)==<span class="number">0</span>)</span><br><span class="line">        enter_usb_dfu_bootloader();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">... 主函数中添加：</span><br><span class="line"></span><br><span class="line">usr_btn_init(); <span class="comment">//用户按键初始化</span></span><br><span class="line">gpio_set_irq_enabled_with_callback(BUTTON_GPIO, GPIO_IRQ_EDGE_FALL, <span class="literal">true</span>, &amp;usr_btn_callback);<span class="comment">//配置IO中断</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="1-2-参考来源"><a href="#1-2-参考来源" class="headerlink" title="1.2 参考来源"></a>1.2 参考来源</h2><ol>
+<li>RP2040 Datasheet:<br>2.8章节说明了bootrom，其中包括有关USB PICOBOOT模式的详细说明和电气特性。（简单来说这是一个基本接口，提供了一些读写擦除RAM、FLASH、重启等简单的调试功能，除了手册上详细的描述，还可以看<strong>picoboot.h</strong>）</li>
+<li>Raspberry Pi Pico C&#x2F;C++ SDK:<br>这里面也对USB PICOBOOT的部分场合做了解释，不过不多，直接搜索即可。</li>
+</ol>
+<h1 id="2、实现自己的Bootloader"><a href="#2、实现自己的Bootloader" class="headerlink" title="2、实现自己的Bootloader"></a>2、实现自己的Bootloader</h1><p>见 文章 RP2040的自定义Bootloader</p>
+]]></content>
+      <categories>
+        <category>嵌入式与单片机</category>
+      </categories>
+      <tags>
+        <tag>rp2040</tag>
+        <tag>ARM</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>RP2040配置VSCODE开发环境 —— 一劳永逸版</title>
     <url>/2023/04/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91/RP2040%E9%85%8D%E7%BD%AEVSCODE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E2%80%94%E2%80%94%E4%B8%80%E5%8A%B3%E6%B0%B8%E9%80%B8%E7%89%88/</url>
     <content><![CDATA[<p>上一篇文章：树莓派RP2040开发环境配置集合版(基于Raspberry Pico)。<br>前面的环境搭建基本上介绍了所有的开发环境配置，也对比了各个环境的优劣。如果是非商业开发的话，个人可能Segger Embedded Studio是最好的IDE，但是我不太习惯他的使用方式，这个会另外开一篇谈。<br>而通吃的方案则是使用VSCODE+ARMGCC+GCC，PlatformIO也是不错的，但是我个人不太习惯后者，而且经常出错。</p>
@@ -1957,239 +2190,6 @@ Probably not, but standard disclaimers apply
         <tag>ARM</tag>
         <tag>MSP430</tag>
         <tag>8051</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>关于音响想到的一些杂谈</title>
-    <url>/2023/06/20/%E7%94%9F%E6%B4%BB%E6%B8%B8%E7%8E%A9/%E5%85%B3%E4%BA%8E%E9%9F%B3%E5%93%8D%E6%83%B3%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E6%9D%82%E8%B0%88/</url>
-    <content><![CDATA[<p>我不是一个什么特别有主见的人，所以对于铺天盖地而来的观点往往会首先逼迫自己认同，然后慢慢考虑到底发生了什么。所以，对于音响的营销，我是完全没有抵抗力的，唯一阻碍我购物的就是我的钱包（以及我的购买习惯）。</p>
-<span id="more"></span>
-
-<p>小时候课文（《长城砖》.人教版.四年级.上，旧版）上说宇航员在太空能看到长城，这是非常骄傲的–我就寻思这长城虽然长但是他似乎不宽啊，我也没有去过长城，最直观的了解是一本思想品德书（人教版.七年级.上，旧版）的封面是可以看到长城的，但是我百思不得其解，图中似乎宽度也只能看到五六个人并排，看到这幅图的我就更难受了，思考着：那么这是为什么呢。<br>有一天做梦，梦见，原来长城的城墙特别厚，虽然在图上只能看见城墙之间只能容纳五六个人宽，实际上旁边城墙还有好几米咧–难怪太空能看见。</p>
-<div align="center"><img src="/2023/06/20/%E7%94%9F%E6%B4%BB%E6%B8%B8%E7%8E%A9/%E5%85%B3%E4%BA%8E%E9%9F%B3%E5%93%8D%E6%83%B3%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E6%9D%82%E8%B0%88/coverbig.jpg" width="180"></div>
-
-<pre><code>我一直以为这本思想品德书是小学的，没想到是初一的教材，我没想到我会纠结这个问题纠结三年，我反复去确认了小学的思想品德的封面插画都是漫画而不是照片才能确定，同时也高估了我小学时期的认知能力，见识少能想到长城没有很宽也挺不错了（摆手。
-</code></pre>
-<p>在梦中了悟得了这么个解释，似乎一切就合理起来了，犹如醍醐灌顶般，吃饭香了，睡觉也安稳了，从此不再纠结这个问题。</p>
-<p>然后到了互联网时代，可能是2018年前后？（太惨了蒙在鼓里这么多年,虽然后面主要是没有心思去追究了），有人发文指出小学课文的错误，我一下子回想起来当时我考虑过的问题，淦！还是吃了没见识的亏。</p>
-<pre><code>真正去回想时间线才发现，自己的认知水平到了大学才大幅提高。就像阳关灿烂的日子中的马小军，他的记忆是主观拼凑的，我的记忆也都是随便压缩时间的，一直以为自己以前见识也不少，现在才发现有时间获取信息了才有自己的想法。小时候可能时间最丰富的时期是初中三年，不过当时班主任不允许看闲书和新闻，只能偷偷带些儿童文学青年文摘一类书籍传阅。
-</code></pre>
-<p>瞎掰扯扯远了，这和音响有什么关系呢？我想说的是，我是不是那个会被最容易获取到的数据推着走的人。</p>
-<p>最早接触听音设备应该是当时爸爸在我六年级的时候两千块钱配的AMD速龙CPU的台式机送的音响，这对音响我在高中还用过。其后接触专用听音设备应该是初中的时候借用同学的一个带有一个2inch电阻屏的纽曼mp3，连歌曲也是白嫖的，然后是后来有一个酷派手机，用着手机送的耳机，当时还是酷狗的时代，音乐也没有版权概念，都可以随便下载，再后来借由想要听歌线下买了一个纽曼的MP3，为什么还是纽曼呢，因为我只认识这一个牌子，觉得还不错。99元，记不起来型号了，不过我发现那个和飞利浦SA2208长得非常像。。。它声称是入门HiFi，这可能是我第一次见识到HiFi这个词。</p>
-<p>在这个MP3上，我开始下载歌曲，我了解了有不同的格式，mp3，ape，flac，wav，由于在音乐软件上对于无损格式会专门标注出来，所以逐渐的我下载的歌曲从mp3变成了flac以及ape格式，为什么没有wav呢，这个后面解释。我相信，这个有着特殊标记的歌曲一定会听起来更能传达作曲者的意思，从此开始逐渐替换mp3格式的歌曲从各路音乐网站收集无损格式的歌曲。</p>
-<p>但是我当时发现一个问题，这个标着HiFi的mp3，似乎听起来没有手机上放的好听。<br>“也许这是真正的声音？但是这么便宜也不至于真特别好吧，可是它说了它是HiFi诶”<br>到了高中，班级流行着买一个mp3听英语听力，也偷偷听听歌还有听听广播，但是校外的小卖店会进什么样的货呢，就是那种拼多多上十块钱包邮的类型，可能有贵一点有一个屏幕，总而言之，不会带有HiFi标志。这种通常杂音较大（信噪比不足），让我相信我的MP3是足够HiFi的。这时候当然就有人想要追求更好的设备了，但是不是我，因为我没有钱。一日一同学氪金500大洋买了一个看起来很牛比的学林xxx, 不记得型号–虽然我们当时感觉似乎索尼更好，但是五百大洋只能买到二手索尼– 我试听了一下，嗨，感觉和手机没有区别啊，我寻思，也许是下载的歌曲不够好。</p>
-<blockquote>
-<p>什么，你说耳机？十元包邮的耳机，我不知道耳机为啥贵啊，我自然买便宜的。</p>
-</blockquote>
-<p>又扯远了，本来是想说音响的，但是说着说着说到耳机上了。现在回到音响上。</p>
-<p>初中的时候还有用过的就是妈妈的运动音响，骑车的时候放车上，声音特别大，我特别喜欢，说实在我记不起来到底感觉好不好听了，因为骑车确实很累。后来，电脑旁边添置了一组漫步者R101V，我的感受是，我去，原来的音响是什么垃圾，这个新音响这低音，这清晰度，简直了打开了新世界。原来音响也可以接近耳机的效果。<br>很长一段时间内，我看到低音足的标语我就觉得，这个耳机或者喇叭非常好。</p>
-<p>而高音部分呢，实际上我不在乎，都是动次打次怎么会在乎，去看高音部分的资料是我在制作等离子扬声器的时候，大家都说他的特点是高音好，这时候我才去看看高音部分有什么音响。当时我认为我做的等离子扬声器非常好，可能是因为自己亲手制作的，有不少主观滤镜在里面，幸好保留了视频让我可以重新审视。</p>
-<p>这里又扯到DIY上了，哦正是这些DIY让我瞎填志愿专业的时候把电子信息这个专业放到了第一位。</p>
-<p>再后来，我觉得我可以自己做音响了，大概是高二的时候吧，看了贴吧别人用三合板加TDA2030的功放，我买了手锯，但是拿来的木板是实木，不知道是什么树，非常难锯，最后在开孔上放弃了，那时候我才意识到，我需要趁手的工具。但是看书的时候，我的认知是，做一个箱子装上喇叭就好了。不过，由于实施难度太高，我直接放弃了，一个多年的大坑至今没有填。</p>
-<p>最后高考结束了，我寻思首先我要买个耳机，还要降噪耳机，无奈囊中羞涩，挑选来挑选去最后选中了亚马逊洋垃圾，90元送一盒小米彩虹电池。当时降噪耳机没有太多选择，基本上就是bose和sony之间选择，四位数的价格当时对于我来说想都不敢想。<br>买来之后，戴上这个头戴式耳机，我发现听觉的世界清晰多了，尤其是打开降噪开关，噪声降低的同时，耳机中的声音也清晰了不少，层次分明。</p>
-<p>这个耳机随着我到了大学。当时还有一个一直想买的耳机，就是圈铁耳机，据说它分开处理高频和低频，感觉应该会更加HiFi。但是这类产品都很贵，当时没有低价的选择，最后我试了试同学的唐麦F3, 我发现这又是入耳式的全新体验，遂买了F1，发现听感不一样，然后还是买了同款F3，这个耳机陪伴我到了大二，是我当时最贵的一手耳机，我觉得这就是说明，提升几十块钱就有这么大提升了，不过可惜这个耳机再一次去硬件部之后不见了，这时候小米圈铁pro降价了，一百一十就可以买到，我就买了一条，这个耳机现在还在用，当时对这款耳机的批评很多，主要是说齿音，我很不理解，齿音究竟是什么，简直如同行业内的黑话，我听起来很好啊。</p>
-<pre><code>后来才知道，小米的品控不怎么样，可能买三条，每条听起来都不一样。其中就有高音过重的类型的。
-</code></pre>
-<p>同期购买的还有一款号称HiFi性价比入门的耳机，造型很不错，听起来似乎也就高频比小米圈铁pro弱一点。</p>
-<p>但是，似乎可以通过音效调节来解决这个问题，当时有一个插件叫做蝰蛇，基本能很好解决这个问题。我这时候开始考虑，那么，能软件调整的话，这些细微的区别影响大吗。</p>
-<p>不能老说耳机了，还是回到音响。<br>尽管我已经买了好几条耳机了，总算认识到太便宜的耳机确实不想，但是我还是对音箱有好奇之心，大家都说音响的效果是耳机不能比拟的，在大一的生日，胁迫室友送了我一对我在淘宝上看中的迷宫音响，99元没有功放。然后自己买了一个功放，使用D类功放芯片。<br>买来之后的第一想法是，这个产品真的不错，这个价格就有这么好的效果，就是低音有点闷，怎么办呢，想到了之前高中准备做音响时候买的高音单元，直接按照淘宝评论区所说添加一个4.7uf电容串联扬声器后并联到原来的音响上，这时候再一次体验到世界清晰的感觉。<br>这时候我在想，这是真的HiFi吗，还是只是我自己听着舒服？</p>
-<p>HiFi这个概念是不是并不是如其名，高保真，而是让人听起来更好？</p>
-<p>一个小转折是到了大二的暑假，电赛培训做了一个麦克风放大器，测试的时候使用手机播放音频，测试不同的频率，当时播放到17khz的时候我已经听不见声音了，这时候我同学说，听得见，我愣住了，联想到初中物理中降噪的三个途径，我就明白了，我这是接收端出了问题。<br>每个人的体验都不一样，高保真真的能保证每个人的体验吗。</p>
-<p>说到电赛，那就必须要说信号了，我的专业多少要和电信号打交道，我理解的高保真也就是更低的失真，但是如果说保证低失真，似乎是仪器就能测试的，为什么那么多厂家能说那么多结果出来还有不同的音频曲线呢，这个曲线如果不是平直的是不是说明这不是高保真的放送呢。我对声学一窍不通，对主观声学更是不理解，不理解人耳对声音的主观评估。</p>
-<p>那么更换线材有用吗，有多大用处呢？</p>
-<p>说来惭愧，虽然我自己是电子的学生，但是在早期我对这些玄学深信有疑，但是我有疑有很大一部分来源于我没有钱购买而不是因为我有什么知识储备。但是我又有些叛逆，我故意用着最普通的线材来连接，来证明我最叛逆的想法是正确的，但是我不确定。</p>
-<p>不过，总而言之，大学时期室友赠送的音响陪过我过了整个大学期间，小米圈铁pro也没有换过，顶多是添置了蓝牙耳机，在蓝牙耳机使用SBC还是AAC抑或是AptX中间纠结对音质的影响，它们都让我感觉良好，我也逐渐能认识到这个玄学怪圈一部分来自于商家的营销，但是我还是止不住相信我总能通过微操获得更高的听音体验。</p>
-<p>大学毕业之后，拿到工资的时候，我开始想我要买什么我之前想买的东西。首先我买了一个开放式头戴式耳机，飞利浦x1s，二手，常年的购物习惯还是让我不舍得花费太多钱购买一个不知道效果如何的东西。好在实际体验还不错，开放式耳机确实有其他耳机没有的优点。<br>然后我开始琢磨音响了，毕竟有了自己的房间和一个比较大的台面。挑选了好久，在各类营销文章里面反复选择，最后我选择了一个看起来比较好看的惠威x3，没错，我就是这么想的，同时也考虑了惠威也出了一些不错的产品，当时购买全新需要1800左右，最后我在闲鱼上购买了二手。</p>
-<p>这时候又有新的概念了，监听，所谓监听就是要还原音乐的音色，我又想到了之前并非HiFi的HiFi这个词语。</p>
-<p>到手之后，发现音响除了使用铸铁箱体，似乎没有什么特别的设计，连接好之后开始试听，哎，怎么回事儿，听起来和我大学区别不大啊，可是我价格加了个0啊。</p>
-<pre><code>这时候会有人蹦出来说，你的驱动不够，你要独立解码。不好意思，解码和DAC我都写过文章了，这里总算不用再在这里继续添加废话了。
-</code></pre>
-<p>感觉两千有一大半用在这个铸铁箱体上。</p>
-<pre><code>我一直习惯于按照BOM成本来衡量购买的商品，我知道要设计，但是积累了这么多年，也没听说国内谁有自己的comsol或者是ansys。
-当然了，最开始我确实不知道设计音响是什么概念，以为就是加个箱子就好了。这也是后来累积了设计经验才反应过来这些东西是可以仿真的。
-</code></pre>
-<p>要是说以前做功放还免不了调试和不错的分立元件设计能力（也可能是抄袭日本的能力），现在大约都是面向FAE的设计了，我当时就觉得我是大冤种。</p>
-<p>这时候我开始认真审视自己记忆中杂糅的概念了，正确的量化和理论应该认真考虑而不是凭着以前学来的二手知识和营销文章来感觉。</p>
-<pre><code>前面说了为什么最开始我没下wav，因为没有人吹这个啊，这个概念很好理解，flac和ape都是无损算法，为什么要费更大的空间来储存同样无损的wav文件呢，但是有这么一段时间，我隐约相信，wav格式能获得更好的音质，因为虾米给了它金标。
-</code></pre>
-<p>不过，总体来说，也没有明显的缺点，也就这么用下去了。</p>
-<p>下一个转折点正如第一次发现听力不同于人一样，是我自己制作设备的时候发现的问题。在使用4.5V电源给TL072供电的时候，用于混音器提供给耳机，当我接上示波器测试动态范围的时候，我发现，当波形出现明显上下截止失真的时候，我听不出来区别。</p>
-<blockquote>
-<p>实际上人耳能分辨的THD大约在2%左右，对于动辄0.1%甚至更低的现代芯片来说，这个值已经非常高了。</p>
-</blockquote>
-<p>另外说一句，测试这些，首先你得有个示波器。<br>这时候，我开始删除电脑上的wav格式的文件了。</p>
-<p>买了没有多久，漫步者出了一款设备，也叫做监听音响，我一直考虑我已经有设备了，不要再想有的没的了，一直拖到现在（两年后），我考虑卖掉惠威x3似乎还能回收几百块钱，于是领券下单一气呵成，350元，基本四分之一于惠威的价格。</p>
-<p>买来后第一反应是，真大，做工真廉价，果然是用最普通的物料来做到能发挥的最佳效果。测试后的反应是，薄纱惠威x3. </p>
-<pre><code>一开始是能听出来有那些地方不足的，不过习惯了之后就不明显了，这大概就是煲耳朵吧。
-人脑确实是适应能力很强的，我记得我配这副眼镜的时候，我能明显发现透过眼镜存在边缘畸变，物体看起来不是直的，看起来非常晕，但是一段时间后就适应了。不过话不能说绝了，超出一定范围的自然是能发现的，现在我有意去观察物体边缘并和不戴眼镜对比也是能看出镜片带来的畸变的。
-</code></pre>
-<p>其实这其中很多玄学说法是不能自圆其说的，只要稍微有些了解，这些谎言便能不攻自破。例如，精密设备上使用什么线材来保证信号不失真？例如万用表，六位半可能还是用的普通接头，对于部分nv表和高位表，接头使用低热电势金属接头来减小热电势的影响，但是在音频玄学中，无非是镀金镀银单晶铜几个词翻来覆去，不排除在某些方面具有效果，但是可以回想，这样我们能识别出来吗，还是我们一厢情愿？去钻牛角尖觉得人的能力是无限的？或者说，影响因素是唯一的吗，到底量化标准在哪里呢。</p>
-<p>有些东西写着写着就忘记了，回头想起来再说吧。</p>
-<p>但是个人的认知水平如果不提高，是很难认识到自己又不知道的东西的，也就是，可能有的人以为什么东西是自己不了解的是可以分辨的，但是真实情况是，有的东西如果压根不懂，可能压根不知道自己的错误，甚至按照自己的一些了解去强行凑。</p>
-<p>我之前听到别人说版图的时候，我第一反应就是PCB，我就马上说我也会，然后认真bing之后发现，这特么是画芯片的。就像我之前从来不知道声学的概念和声学器材设计的方法，直到找了公司内部的文档看了看才了解到大致概念，同时认识到，这个东西要学还是得费精力而不是想当然的。</p>
-<p>但是如果我再把这么一篇拿出来，放到以前的我面前，我大概还是会好奇这些事情究竟对不对，我想如果要真正去了解这些东西背后能刻画他们本质的特征，还是得用更好的工具去测试解释，而不是一厢情愿说服自己。</p>
-<pre><code>卡尔·萨根的《魔鬼出没的世界THE DEMON-HAUNTED WORLD》中描绘了一个车库中的飞龙(The Dragon in My Garage)，他不能被任何方法探测到，但是&quot;我&quot;坚称飞龙是存在的，那这么说不存在的空车库和有飞龙的区别是什么呢。
-</code></pre>
-<p>当然我没有实际专门去做声学设备，这类资料通常不是很好找，被淹没在垃圾营销信息之中，如果不知道如何开头会被阻碍一段时间，但是我后来大致能了解，不只是看了一些文档，也是自己设计了电路，了解了更多的设计方法之后才联想到，声学设计同样有他对应的方法，如同机械，电子、光，这才按照如此理解去查找资料才能找到正确的资料。当然了，后来我发现都很麻烦，例如仿真，正如前面所说，仿真工具都是国外长期积累的产品。</p>
-<pre><code>当然了，很多人不要仿真也能设计，很早的时候电子电路仿真也非常困难但是不耽误人们完成任务，不过后者通常测试指标更容易，毕竟很多不是面向主观的人而是客观标准。而前者据我所知还有很多人甚至没有正确的测试环境，这似乎不是说明这个东西好做，而是人耳标准宽泛----不必严格设计也能拼出来不错的听感觉。那么设计的作用是是什么呢，流程标准化，效率的提高，能用电脑就能修改的设计自然比实物生产容易，能得到量化的指标来对比，分离了主观的部分留给其他职能部门。
-</code></pre>
-<p>但是不管怎么样，可能归结为一句话：</p>
-<blockquote>
-<p>人的正确思想是从哪里来的?是从天上掉下来的吗?不是。是自己头脑里固有的吗?不是。人的正确思想，只能从社会实践中来，只能从社会的生产斗争、阶级斗争和科学实验这三项实践中来。 – 《中共中央关于目前农村工作中若干问题的决定（草案）》</p>
-</blockquote>
-<p>不过一个错误认知可能就是，有些时候理解为这种认知只能被动获取，例如只会去买不同的产品，听了之后仍然是主观的，没有考虑过产品是如何生产的，即使退一步，没有考虑如何有效地对比—-拒绝盲测依然有很大地生存空间—-。</p>
-<p>当然我并不是想说各种产品就不是没有区别没有好坏之分的，但是这是一个主观的评估，我觉得更重要的是人的大脑的适应能力是很强的，而且对于音频信息很多之后我们关注的是其中的信息（虽然高保真可能也确实有更多的音乐信息），如果信息内容本身足够吸引人，其实有的东西也没那么重要。</p>
-<h1 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h1><p>这篇文本意是记录一下买的MR4和原来的惠威x3的参数对比和实际感觉，不过现在给说忘了，这里补一下。<br>MR4的背板RCA输入和前面板的AUX 3.5mm输入都是-10dBV标准，也就是0.316Vrms，TRS输入的6.35mm（1&#x2F;4 inch）接口的平衡输入标称输入电平则是+4dBu(1.228Vrms)。<br>功率21Wx2. 频响60-20k hz，信噪比85dBA. 失真低于0.2%. 共4.5Kg<br>来源：<a href="https://zh-cn.manuals.plus/edifier/mr4-studio-monitor-speaker-manual">EDIFIER MR4 监听音箱用户手册 (manuals.plus)</a></p>
-<blockquote>
-<p>dbA：通过A计权特性测得的分贝读数，由于人耳对不同频率的声音敏感程度不同，表现为相同 dB值的声音，2kHz 比100Hz听起来更响一些。为了使测量得到的值更符合人的主管感觉，在此引入A率加权。A计权针对人耳分辨声音的特点进行了修正，这样得出的dBA值更容易贴近人耳的感受。</p>
-</blockquote>
-<p>惠威X3:<br>输入最大峰值：3V<br>单个功率28W,失真度330Hz-20kHz≤1%( 80dB&#x2F;1m)，输入阻抗为12kΩ，信噪比＞96dB<br>频响：75Hz-20kHz(±2.5dB，freespace)<br>输入灵敏度 350mV<br>来源：<a href="https://www.hivi.com/product/view?id=78">Swan惠威X3 (hivi.com)</a></p>
-<pre><code>80dB/1m指在距离音箱1米的地方，得到了80dB的声压级。
-</code></pre>
-<p>关于X3还有MR4，还有8010A，具体的测试参考这个：<a href="https://www.zhihu.com/question/453887667">(8 条消息) 国产音响真的不如国外品牌的音响吗？如惠威X系列和真力比较？ - 知乎 (zhihu.com)</a></p>
-<p>结论是水太深。</p>
-<pre><code>有太多的信息不对称，有的东西自己把握不住的。
-</code></pre>
-<h1 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h1><p>这篇文章通篇没有分段，因为想到的太多了害怕搞忘记了。<br>本来我只是想写一下新买的MR4薄纱惠威x3，但是一写开头就离题万里，就想到了《禅与摩托车维修艺术》这本书通篇在疯狂insert自己的想法。</p>
-<pre><code>卡尔萨根的作品都值得一看，《魔鬼出没的世界》这本书有很多非常不错的观点，具体解释了如何反驳非科学的思考方式和观点，可惜当时我看的版本翻译非常烂，硬是把中文翻译出了长难句，阅读观感非常不好，不过某种程度上来说，强行延长阅读时间倒是增强了我对这本书内容的印象。
-</code></pre>
-<h1 id="附加：听音测试"><a href="#附加：听音测试" class="headerlink" title="附加：听音测试"></a>附加：听音测试</h1><p><a href="https://www.klippel.de/listeningtest/?page=instructions">Listening Test - Instructions (klippel.de)</a></p>
-]]></content>
-      <categories>
-        <category>生活游玩</category>
-      </categories>
-      <tags>
-        <tag>生活</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【RP2040】跳转Bootloader实现IAP</title>
-    <url>/2023/08/29/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91/RP2040-JumpIntoBootloader-IAP/</url>
-    <content><![CDATA[<p>对于单片机来说，跳转BOOTLOADER一般可以通过自己实现一个BOOTLOADER来实现，同样，RP2040也可以这样来做，不过，如果没有特别的要求，也可以使用更简单的方法。</p>
-<span id="more"></span>
-<h1 id="1、利用bootrom跳转USB-boot"><a href="#1、利用bootrom跳转USB-boot" class="headerlink" title="1、利用bootrom跳转USB boot"></a>1、利用bootrom跳转USB boot</h1><p>RP2040的片上ROM固化了一个Bootloader，这个bootloader可以通过实现一个USB大容量设备来在电脑上加载UF2格式的固件，这个Bootloader是默认上电的时候检查Flash不可用或者Flash中没有可启动的程序的时候会自动跳转。</p>
-<p>如果希望在程序中跳转进入Bootloader，可以借用这个自带的Bootloader，对于一些简单应用可以省去很多事情，或者用于用于免下电免调试器下载固件。</p>
-<p>为了不用操作RUN这个引脚或者下电之后按住BOOT引脚（FLASH的CS）重新进Bootloader，而是直接在程序内根据触发条件运行，通过代码来实现内部跳转显然是有必要的，实际上官方手册已经给出了详细方法，能够让RP2040可以直接跳转到Bootrom直接进入USB大容量模式来下载UF2固件。</p>
-<pre><code>WCH或者STC的单片机，他们默认支持串口下载或者USB下载，跳转到USB或者串口下载模式只需要跳转到ROM指定地址，只需要在代码中添加跳转地址并调用即可。同样，RP2040也是类似。
-
-RP2040的启动顺序见Datasheet. 片上16k rom位于0x00000000地址，不过库函数提供了方法，不需要自己找对应的执行位置。
-</code></pre>
-<h2 id="1-0-实现方法"><a href="#1-0-实现方法" class="headerlink" title="1.0 实现方法"></a>1.0 实现方法</h2><p>这个方法在官方例程中没有单独列出，实际上这个功能已经在bootrom.h内实现，而是在数据手册中解释了，可能是实现这个太简单了因此没有单独拿出来说。</p>
-<p>只需要在代码中加入下面这部分内容即可，然后每次调用enter_usb_dfu_bootloader()即可进入RP2040自带的Bootloader.</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;pico/stdlib.h&quot;</span> </span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;pico/bootrom.h&quot;</span> </span></span><br><span class="line"><span class="type">void</span> <span class="title function_">enter_usb_dfu_bootloader</span><span class="params">()</span> </span><br><span class="line">&#123; </span><br><span class="line">    reset_usb_boot(<span class="number">0</span>, <span class="number">0</span>); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>reset_usb_boot这一句实际上是实现了重启到指定位置。<br>这里函数可以传入两个参数。<br>第一个是IO设置，0是表示禁用，其他数字表示设置单个bit的IO,在USB大容量模式下主机活动的时候，IO会被拉高，说白了进入Bootloader之后可以选用一个下载指示灯，这个可以指定GPIO。<br>第二个参数是要使用的接口：</p>
-<ul>
-<li>选0：同时开启了USB大容量模式和USB PICOBOOT接口（与正常的冷启动相同）</li>
-<li>参数为1：只使用USB PICOBOOT接口</li>
-<li>参数为2：只使用USB大容量模式。<br>例如，如果只需要启用USB 大容量储存模式，换成下面这个参数即可：<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">reset_usb_boot(<span class="number">0</span>, <span class="number">2</span>);<span class="comment">//禁用PICOBOOT模式 </span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>实际上这个函数就是类似于下面这种方法，跳转地址执行，但是SDK中已经配置好了准确的地址，并能根据参数选择不同配置：<br>（未验证）：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> (*bootrom)(<span class="type">void</span>) = (<span class="type">void</span> (*)(<span class="type">void</span>))(<span class="number">0x00000000</span> + <span class="number">4</span>); </span><br><span class="line">bootrom();<span class="comment">//</span></span><br></pre></td></tr></table></figure>
-<p>这段代码定义了一个指针<code>bootrom</code>，指向0x00000004的地址，即bootrom的入口地址。然后调用该指针即可跳转到bootrom。需要注意的是，为了确保正确的跳转，必须将指针类型强制转换为<code>void (*)(void)</code>，但是跳转到BOOTROM并不会直接进入USBBOOT.</p>
-<pre><code>tips：如果启用PICOBOOT，Windows下会显示RP2 BOOT的USB设备，显示没有驱动，因为没有WinUSB的MSOS支持，不过依然可以手动加载WINUSB驱动或者使用LIBUSB.
-这种方法也就是和RP2040的Arduino框架中使用的相似的方法（arudino大概是基于PICOBOOT传输固件）。
-</code></pre>
-<h2 id="1-1-实际使用"><a href="#1-1-实际使用" class="headerlink" title="1.1 实际使用"></a>1.1 实际使用</h2><p>有了这个方法，对于有按键的开发板，可以设置一键进入Bootrom。<br>例如我买的这个板子上24号引脚用作了用户按键，因此加入引脚配置为输入并上拉：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> BUTTON_GPIO 24</span></span><br><span class="line"><span class="type">static</span> <span class="type">void</span> <span class="title function_">usr_btn_init</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//这个板子上的按键有个问题，因为设计了阻容，导致上电需要一段时间才能充满，如果用电平判断的话，这个处理器太快了电容还没充够就开始判断了。。。因此如果不是检测边沿，初始化必须延时，</span></span><br><span class="line">    gpio_init(BUTTON_GPIO);</span><br><span class="line">    <span class="comment">//gpio_set_dir(BUTTON_GPIO, GPIO_IN);</span></span><br><span class="line">    gpio_pull_up(BUTTON_GPIO);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//检查按键下降沿</span></span><br><span class="line"><span class="type">static</span> <span class="type">void</span> <span class="title function_">check_btn_task</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="type">static</span> <span class="type">uint16_t</span> lastLevel=<span class="number">0</span>;<span class="comment">//初始认为是低电平，按键上拉建立之后才是高电平</span></span><br><span class="line">  <span class="comment">//检测到按键按下就跳转</span></span><br><span class="line">  <span class="keyword">if</span>(gpio_get(BUTTON_GPIO)==<span class="number">0</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span>(lastLevel==<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">      enter_usb_dfu_bootloader();<span class="comment">//检测电平下降沿</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">      lastLevel=<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">  &#123;</span><br><span class="line">    lastLevel = <span class="number">1</span>;<span class="comment">//更新电平状态</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//主程序循环中添加</span></span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">&#123;</span><br><span class="line">···</span><br><span class="line">    check_btn_task();</span><br><span class="line">···</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>或者使用中断来完成这个功能，可能更方便：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">usr_btn_callback</span><span class="params">(uint gpio, <span class="type">uint32_t</span> events)</span> &#123;</span><br><span class="line">    <span class="comment">// Put the GPIO event(s) that just happened into event_str</span></span><br><span class="line">        <span class="comment">//     &quot;LEVEL_LOW&quot;,  // 0x1</span></span><br><span class="line">        <span class="comment">// &quot;LEVEL_HIGH&quot;, // 0x2</span></span><br><span class="line">        <span class="comment">// &quot;EDGE_FALL&quot;,  // 0x4</span></span><br><span class="line">        <span class="comment">// &quot;EDGE_RISE&quot;   // 0x8</span></span><br><span class="line">    <span class="comment">// sleep_ms(20); //不要尝试在回调函数里面使用这个函数，会造成错误退出</span></span><br><span class="line">    <span class="keyword">if</span>(gpio_get(BUTTON_GPIO)==<span class="number">0</span>)</span><br><span class="line">        enter_usb_dfu_bootloader();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">... 主函数中添加：</span><br><span class="line"></span><br><span class="line">usr_btn_init(); <span class="comment">//用户按键初始化</span></span><br><span class="line">gpio_set_irq_enabled_with_callback(BUTTON_GPIO, GPIO_IRQ_EDGE_FALL, <span class="literal">true</span>, &amp;usr_btn_callback);<span class="comment">//配置IO中断</span></span><br></pre></td></tr></table></figure>
-
-
-<h2 id="1-2-参考来源"><a href="#1-2-参考来源" class="headerlink" title="1.2 参考来源"></a>1.2 参考来源</h2><ol>
-<li>RP2040 Datasheet:<br>2.8章节说明了bootrom，其中包括有关USB PICOBOOT模式的详细说明和电气特性。（简单来说这是一个基本接口，提供了一些读写擦除RAM、FLASH、重启等简单的调试功能，除了手册上详细的描述，还可以看<strong>picoboot.h</strong>）</li>
-<li>Raspberry Pi Pico C&#x2F;C++ SDK:<br>这里面也对USB PICOBOOT的部分场合做了解释，不过不多，直接搜索即可。</li>
-</ol>
-<h1 id="2、实现自己的Bootloader"><a href="#2、实现自己的Bootloader" class="headerlink" title="2、实现自己的Bootloader"></a>2、实现自己的Bootloader</h1><p>见 文章 RP2040的自定义Bootloader</p>
-]]></content>
-      <categories>
-        <category>嵌入式与单片机</category>
-      </categories>
-      <tags>
-        <tag>rp2040</tag>
-        <tag>ARM</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SEPIC+Ćuk正负电源设计制作和测试（1）</title>
-    <url>/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/</url>
-    <content><![CDATA[<p>在模拟信号链中经常用到负电源以处理负信号，同时也有正电源轨。但是从直流单电源得到正负双电源是不如使用交流电得到双电源那般容易的。TODO:这句话也挪到下面这篇文章里面开头。得到正负双电源在小功率电源中有几种方法来实现，见另一篇文章【正负电源方案简介】。这篇文章则详细介绍一个SEPIC+Ćuk组合拓扑来实现的正负电源的设计和制作测试。</p>
-<span id="more"></span>
-
-<h1 id="拓扑简介"><a href="#拓扑简介" class="headerlink" title="拓扑简介"></a>拓扑简介</h1><h2 id="SEPIC"><a href="#SEPIC" class="headerlink" title="SEPIC"></a>SEPIC</h2><h2 id="Cuk"><a href="#Cuk" class="headerlink" title="Ćuk"></a>Ćuk</h2><h1 id="选型和参数计算"><a href="#选型和参数计算" class="headerlink" title="选型和参数计算"></a>选型和参数计算</h1><h2 id="DC-DC芯片选型"><a href="#DC-DC芯片选型" class="headerlink" title="DC-DC芯片选型"></a>DC-DC芯片选型</h2><p>这里使用SEPIC作为主输出，因此可以选用Boost控制器或者Boost转换器来完成这个要求，可以直接使用非同步整流Boost芯片。</p>
-<p>MOS<br>耐压 输入+输出+余量</p>
-<p>电流 输入+输出+纹波电流</p>
-<p>输入耐压</p>
-<p>输出</p>
-<p>占空比要求</p>
-<p>为了设计简单，同时这里设计要求不高，因此选用的DCDC芯片为MT3608或者SX1308，两者虽然厂家不同但是丝印一致，手册几乎一致。选用这个主要是因为便宜，只要三毛。</p>
-<p>这个芯片的开关限流标称为设计上4A，不过按照国产IC的尿性，这个大概是达不到，而且SOT23-6的热阻太大。SW最大电压30V.</p>
-<p>实际第一版测试中选用的是MT3608L，开关限流为2.5A，手册上标注为经过测试保证而非前面的理论值。SW最大电压22V.</p>
-<h2 id="电感"><a href="#电感" class="headerlink" title="电感"></a>电感</h2><h2 id="二极管"><a href="#二极管" class="headerlink" title="二极管"></a>二极管</h2><h2 id="输入电容"><a href="#输入电容" class="headerlink" title="输入电容"></a>输入电容</h2><p>SEPIC Ćuk输入端并不是连续的，因此使用这个电源会对前级造成较大的纹波，适当提高输入电容来减小对前级的影响。</p>
-<p>电容的耐压考虑一定余量即可</p>
-<h2 id="输出电容"><a href="#输出电容" class="headerlink" title="输出电容"></a>输出电容</h2><p>输出反馈电阻</p>
-<p>FB Input Bias Current 50nA-10nA</p>
-<h1 id="仿真设计"><a href="#仿真设计" class="headerlink" title="仿真设计"></a>仿真设计</h1><p>其实上面的选型没有仿真模型，我做的时候也没提前仿真，不过为了完整性这里还是找一个接近的芯片来仿真一下。</p>
-<h1 id="输出Π型滤波器设计"><a href="#输出Π型滤波器设计" class="headerlink" title="输出Π型滤波器设计"></a>输出Π型滤波器设计</h1><p>如果我们想获得一个更为干净的电源，那么开关电源的输出可以进一步处理。<br>开关电源输出存在开关频率的噪声，以及由于开关和输入信号混频导致的低频噪声。SEPIC输出是不连续的，存在大量开关谐波分量，Ćuk虽然输出连续但是依然要考虑尽量减小输出开关噪声。</p>
-<p>当然， 也不要过度设计（过于HIFI），如果后级器件本身的PSRR够用， 那么这里可以减配。例如TL072的PSRR大约80-100dB，对于一般的应用可能已经足够。</p>
-<h2 id="情况分析"><a href="#情况分析" class="headerlink" title="情况分析"></a>情况分析</h2><p>DCDC转换器的工作频率往往比较高，其开关噪声包含了对应的工作频率和其高次谐波，此次设计中使用的MT3608L标称1.2Mhz，实测1.05Mhz左右。</p>
-<p>一般的线性稳压器对于较高频率噪声的抑制能力往往会大幅低于低频端。</p>
-<p>例如TPS7A4901，在$C_{NR}&#x3D;10nF$，$C_{FF}&#x3D;10nF$, Cout&#x3D;10uF的情况下，对于100-1Khz的PSRR大约有70dB,而其PSRR@1Mhz只有35dB,也就是大约为0.0178，下图为手册截图。</p>
-<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/TPS7A4901_PSRRvsFre.png" class title="TPS7A49_Figure">
-<p>负压的LDO TPS7A3001也差不多，在$C_{NR}&#x3D;10nF$，$C_{FF}&#x3D;10nF$, Cout&#x3D;10uF的情况下，对于100-1Khz的PSRR大约有70dB,而其PSRR@1Mhz只有40dB</p>
-<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/TPS7A3001_PSRRvsFre.png" class title="TPS7A30_Figure">
-<p>传统的三端稳压器78xx系列只标注了PSRR@120Hz,其值通常在60-70dB左右。而79xx系列的负压线性稳压器的PSRR则稍微低一些，一般为54dB-60dB.</p>
-<pre><code>只有120Hz点因为美国电网是60Hz，传统三端稳压器早期主要用于工频变压器输入整流后稳压。
-</code></pre>
-<p>只有ST的手册对于78xx给出了PSRR随着频率变化的图，但是似乎完全和他手册里面的写出来的指标对不上，不算保守。而且低频PSRR也太高了，感觉是以前测试方法有些不同出现的。</p>
-<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/L7805_PSRRvsFre.png" class title="L7805_Figure">
-
-<p>国产的78L05系列则PSRR更低，只有49dB@120Hz.(你国产的也只标120Hz就离谱)</p>
-<p>TI的LM317新手册中给出的PSRR则看起来比较正常，</p>
-<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/LM317_TI_PSRRvsFre.png" class title="LM317_Figure">
-
-<p>而LM337的PSRR则给出为</p>
-<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/LM337_TI_PSRRvsFre.png" class title="LM317_Figure">
-
-
-
-<p>整体上可以看见，这种传统的三端稳压器，<strong>基本上最好情况是正压稳压器到1Mhz依然有20dB抑制，而负压可能更低只能到10dB@1Mhz</strong>。</p>
-<p>不过,地表最强LDO-LT3045的PSRR在1Mhz达到了76dB(对应的负压LDO-LT3094则是74dB@1Mhz).在低频段更是超过100dB. 不过一般应用中，这种超级LDO还是稍微有点贵了。</p>
-<p>所以，对于一般应用，不要太指望通过线性稳压器来抑制开关噪声。</p>
-<h2 id="Then-How-to-Do"><a href="#Then-How-to-Do" class="headerlink" title="Then How to Do ?"></a>Then How to Do ?</h2><p>不过好消息是，对于PCB路径上的高频噪声，无源滤波器很容易就能实现较好的抑制效果。（这里暂不考虑通过空间辐射耦合到输出端的情况）</p>
-<p>考虑一个理想的RC低通滤波器，R&#x3D;0.23Ω，C&#x3D;10uF,计算得到的-3dB截止频率为69.23Khz，在1Mhz处的衰减为<br>$$<br>Gain &#x3D; \frac{1}{\sqrt{(\frac{f}{fp})^2+1}}<br>$$<br>计算得到为0.064，即-23.86dB。加上一个传统线性稳压器L7805的抑制效果-20dB，好消息，这已经差不多赶上单个TPS7A49的效果了。</p>
-<p>但是仅仅使用RC滤波器，只有一个极点，衰减下降还是不够快，而且电阻也不能加太大否则会有压降，电容增加则会影响瞬态响应，而且成本也会增高。</p>
-<p>对于一个10uF 50V耐压的1206封装电容，实际使用中在12V偏压下，只有3uF左右（使用村田仿真工具数据），因此这里电容在体积限制的应用里面也不方便加入太多。</p>
-<p>那么如何改善呢？加入电感。<br>不过，使用单一电感来设计考虑较多（主要是我不会），直接使用磁珠产品更为简单。<br>下面是使用村田的仿真模型来设计一个Π滤波器，电容为GRM188R61E106MA73，磁珠为BLM18AG601SN1</p>
-<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/%CE%A0FIlter1.png" class title="LM317_Figure">
-
-<p>仿真得到的传递特性为</p>
-<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/%CE%A0FIlter1_mag_freq.png" class title="LM317_Figure">
-<p>可以看到，使用磁珠的Π滤波器在1Mhz的时候衰减达到了-60dB，不过在30Khz的地方存在尖峰，主要是LC存在谐振点，一般考虑把这个谐振点推到不影响应用的频率处即可，也可以通过增加电容或者换更大阻抗的磁珠来减小谐振峰增益，不过这种方法同时也会改变谐振点，需要权衡考虑不影响工作。如下图增加10uF电容为5个。</p>
-<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/%CE%A0FIlter2_mag_freq.png" class title="LM317_Figure">
-
-<p>当然了，把谐振点推到更低频可以更容易通过LDO来消除这个频率的噪声，也就是如果后级使用现代LDO,对于10Khz级别的噪声已经可以很好抑制了。</p>
-<p>不过，顺便一提，在仿真中，Spice模型并没有考虑直流偏压对电容的容量影响，而是取偏压为0V的容量，因此这里实际使用中需要考虑电容的实际容量。</p>
-<p>这里下面测试中输出Π型滤波器的磁珠选型为BLM18PG121SN1D，输出电容为10uFx2.</p>
-<pre><code>为什么前面仿真中RC滤波的R取值0.23Ω？因为这是上面仿真用到的磁珠的直流阻抗。
-</code></pre>
-<h1 id="PSRR"><a href="#PSRR" class="headerlink" title="PSRR"></a>PSRR</h1><p>虽然感觉上，开关电源的输出不怎么干净，但是不要忘了他依然是一个稳压器，他具有一定的输入电源纹波抑制能力，只要设计合理，开关电源完全可以让更垃圾的输入电源转换为更符合预期的输出。</p>
-<p>这里测不了，只能单独拉一个较差的输入信号和对应的输出信号来展示一下。</p>
-<p>一个应用场合是USB VBUS输入，由于各个厂商在PC上整板处理各有不同，USB VBUS的质量一言难尽，对于部分音频应用，就需要改善USB电源质量。</p>
-<pre><code>当然，很多情况不需要高于5V的电压，直接使用磁珠滤波加上LDO已经足够使用。
-</code></pre>
-<h1 id="纹波测试"><a href="#纹波测试" class="headerlink" title="纹波测试"></a>纹波测试</h1><h2 id="无Π型滤波器输出"><a href="#无Π型滤波器输出" class="headerlink" title="无Π型滤波器输出"></a>无Π型滤波器输出</h2><h2 id="有Π型滤波器输出"><a href="#有Π型滤波器输出" class="headerlink" title="有Π型滤波器输出"></a>有Π型滤波器输出</h2><h2 id="有Π型滤波器输出（减配电容）"><a href="#有Π型滤波器输出（减配电容）" class="headerlink" title="有Π型滤波器输出（减配电容）"></a>有Π型滤波器输出（减配电容）</h2><h2 id="添加线性稳压器输出"><a href="#添加线性稳压器输出" class="headerlink" title="添加线性稳压器输出"></a>添加线性稳压器输出</h2><h2 id="减少输出电容-线性稳压器输出"><a href="#减少输出电容-线性稳压器输出" class="headerlink" title="减少输出电容+线性稳压器输出"></a>减少输出电容+线性稳压器输出</h2><h1 id="效率测试"><a href="#效率测试" class="headerlink" title="效率测试"></a>效率测试</h1><h1 id="负载不对称测试"><a href="#负载不对称测试" class="headerlink" title="负载不对称测试"></a>负载不对称测试</h1><p>实际上，负压输出依赖于正压的反馈，因此负压其实是开环输出。</p>
-<p>不过对于使用耦合电感的SEPIC+Ćuk电源，由于正负两路的电感耦合在一起，在负载不对称的情况下表现则会更好。</p>
-<h1 id="还需要测试但是我没设备了"><a href="#还需要测试但是我没设备了" class="headerlink" title="还需要测试但是我没设备了"></a>还需要测试但是我没设备了</h1><h1 id="开关节点波形和电感上的电压波形"><a href="#开关节点波形和电感上的电压波形" class="headerlink" title="开关节点波形和电感上的电压波形"></a>开关节点波形和电感上的电压波形</h1><p>电流波形我测不了，没有电流探头。</p>
-]]></content>
-      <categories>
-        <category>Work with the world</category>
-      </categories>
-      <tags>
-        <tag>SMPS</tag>
-        <tag>SEPIC</tag>
-        <tag>Ćuk</tag>
-        <tag>正负电源</tag>
       </tags>
   </entry>
 </search>

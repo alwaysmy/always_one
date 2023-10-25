@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>https://alwaysmy.github.io/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/</loc>
+    
+    <lastmod>2023-10-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/2023/04/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91/RP2040%E9%85%8D%E7%BD%AEVSCODE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E2%80%94%E2%80%94%E4%B8%80%E5%8A%B3%E6%B0%B8%E9%80%B8%E7%89%88/</loc>
+    
+    <lastmod>2023-08-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/2023/07/19/%E7%94%9F%E6%B4%BB%E6%B8%B8%E7%8E%A9/reMarkable%201%20%E6%BC%AB%E6%B8%B8%E6%8C%87%E5%8D%97/</loc>
+    
+    <lastmod>2023-08-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/2023/08/29/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91/RP2040-JumpIntoBootloader-IAP/</loc>
+    
+    <lastmod>2023-08-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/2023/06/25/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/WinUSB%E4%B8%8A%E4%BD%8D%E6%9C%BA%E7%9A%84%E5%BC%80%E5%8F%91/</loc>
+    
+    <lastmod>2023-08-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/2023/06/20/%E7%94%9F%E6%B4%BB%E6%B8%B8%E7%8E%A9/%E5%85%B3%E4%BA%8E%E9%9F%B3%E5%93%8D%E6%83%B3%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E6%9D%82%E8%B0%88/</loc>
+    
+    <lastmod>2023-08-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/2023/02/11/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2%E5%8F%91%E5%B8%83%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/</loc>
+    
+    <lastmod>2023-08-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/2023/03/13/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/1%E3%80%81%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA/</loc>
+    
+    <lastmod>2023-08-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/2023/03/13/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/%E5%B7%B2%E6%9C%89%E5%8D%9A%E5%AE%A2%E4%BB%93%E5%BA%93%E7%9A%84%E9%87%8D%E5%BB%BA%E5%92%8C%E9%85%8D%E7%BD%AE/</loc>
+    
+    <lastmod>2023-08-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/2022/12/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91/0_RP2040%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</loc>
+    
+    <lastmod>2023-08-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/2023/07/11/Work%20with%20the%20world/KiCad%E8%81%94%E5%90%88LTspice%E4%BB%BF%E7%9C%9F/</loc>
+    
+    <lastmod>2023-07-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/2023/06/18/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/Design-an-Arbitrary-Waveform-Generator-Using-the-RP2040-MCU-and-a-Digital-to-Analog-Converter-DAC/</loc>
+    
+    <lastmod>2023-06-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/2023/06/22/Work%20with%20the%20world/%E6%A0%87%E5%87%86I2S%E6%8E%A5%E6%94%B6%E5%99%A8%E7%9A%84%E5%88%86%E7%AB%8B%E9%80%BB%E8%BE%91%E5%99%A8%E4%BB%B6%E5%AE%9E%E7%8E%B0/</loc>
+    
+    <lastmod>2023-06-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/2022/09/25/Work%20with%20the%20world/ADS1263%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/</loc>
+    
+    <lastmod>2023-06-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/2021/04/20/Work%20with%20the%20world/Multisim%E4%BB%BF%E7%9C%9F%E5%90%8E%E5%BF%AB%E9%80%9F%E5%B8%83%E5%B1%80/</loc>
+    
+    <lastmod>2023-06-21</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/2023/06/20/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/%E5%8D%9A%E5%AE%A2%E5%86%99%E6%96%87%E6%8F%90%E7%BA%B2/</loc>
+    
+    <lastmod>2023-06-21</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/2021/11/01/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/%E5%8D%9A%E5%AE%A2%E7%9A%84Tags%E5%92%8C%E5%88%86%E7%B1%BB/</loc>
+    
+    <lastmod>2023-06-21</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/2022/09/22/Work%20with%20the%20world/%E4%BD%BF%E7%94%A8KiCad%E5%86%85%E7%BD%AE%E7%9A%84NgSpice%E8%BF%9B%E8%A1%8C%E7%94%B5%E8%B7%AF%E4%BB%BF%E7%9C%9F%EF%BC%880%EF%BC%89/</loc>
+    
+    <lastmod>2023-06-21</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/2023/06/13/%E7%94%9F%E6%B4%BB%E6%B8%B8%E7%8E%A9/%E9%95%BF%E7%99%BD%E5%B1%B1%E8%A1%8C%E7%AE%80%E8%AE%B0/</loc>
+    
+    <lastmod>2023-06-21</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/2021/04/20/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84MSP430%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/</loc>
+    
+    <lastmod>2023-06-21</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/2021/04/05/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91/%E5%8D%95%E7%89%87%E6%9C%BA%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%EF%BC%88%E4%B8%80%EF%BC%89/</loc>
+    
+    <lastmod>2023-06-21</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/2023/04/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/%E4%BD%BF%E7%94%A8aardio%E5%86%99%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8Epyocd%E7%9A%84%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%8B%E8%BD%BD%E5%99%A8/</loc>
+    
+    <lastmod>2023-06-21</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/2022/12/17/Fix%20&%20Crack/SSD%E4%BF%AE%E5%A4%8D/</loc>
+    
+    <lastmod>2023-06-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/2023/02/01/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/0%E3%80%81%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E7%9A%84%E7%AE%A1%E7%90%86/</loc>
+    
+    <lastmod>2023-06-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/2022/12/17/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/SD%E7%9F%A5%E8%AF%86%E6%A0%91/</loc>
+    
+    <lastmod>2023-06-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/tags/index.html</loc>
+    
+    <lastmod>2022-12-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/categories/index.html</loc>
+    
+    <lastmod>2022-12-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+
+  <url>
+    <loc>https://alwaysmy.github.io/</loc>
+    <lastmod>2023-10-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  
+  <url>
+    <loc>https://alwaysmy.github.io/tags/hexo/</loc>
+    <lastmod>2023-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/tags/%E5%8D%9A%E5%AE%A2/</loc>
+    <lastmod>2023-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/tags/%E4%BF%AE%E7%90%86/</loc>
+    <lastmod>2023-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/tags/SSD/</loc>
+    <lastmod>2023-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/tags/Flash/</loc>
+    <lastmod>2023-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/tags/ADC/</loc>
+    <lastmod>2023-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/tags/%E6%A8%A1%E7%94%B5/</loc>
+    <lastmod>2023-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/tags/Spice/</loc>
+    <lastmod>2023-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/tags/Mulstisim/</loc>
+    <lastmod>2023-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/tags/PCB/</loc>
+    <lastmod>2023-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/tags/SMPS/</loc>
+    <lastmod>2023-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/tags/SEPIC/</loc>
+    <lastmod>2023-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/tags/Cuk/</loc>
+    <lastmod>2023-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/tags/%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90/</loc>
+    <lastmod>2023-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/tags/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91/</loc>
+    <lastmod>2023-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/tags/DAC/</loc>
+    <lastmod>2023-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/tags/rp2040/</loc>
+    <lastmod>2023-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/tags/ARM/</loc>
+    <lastmod>2023-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/tags/%E7%94%9F%E6%B4%BB/</loc>
+    <lastmod>2023-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/tags/%E6%8D%A1%E5%9E%83%E5%9C%BE/</loc>
+    <lastmod>2023-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/tags/%E6%97%85%E6%B8%B8/</loc>
+    <lastmod>2023-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/tags/DAP-Link/</loc>
+    <lastmod>2023-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/tags/pyocd/</loc>
+    <lastmod>2023-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/tags/MSP430/</loc>
+    <lastmod>2023-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/tags/8051/</loc>
+    <lastmod>2023-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+
+  
+  <url>
+    <loc>https://alwaysmy.github.io/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</loc>
+    <lastmod>2023-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/categories/Fix-Crack/</loc>
+    <lastmod>2023-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/categories/Work-with-the-world/</loc>
+    <lastmod>2023-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/</loc>
+    <lastmod>2023-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://alwaysmy.github.io/categories/%E7%94%9F%E6%B4%BB%E6%B8%B8%E7%8E%A9/</loc>
+    <lastmod>2023-10-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+</urlset>
