@@ -20,18 +20,30 @@
     var CONFIG = {"hostname":"alwaysmy.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="在模拟信号链中经常用到负电源以处理负信号，但是从直流单电源得到正负双电源是不如交流电得到双电源容易的，在小功率电源中有几种方法来实现，见另一篇文章【正负电源拓扑简介】。这篇文章则详细介绍一个SEPIC+Ćuk组合拓扑来实现的正负电源的设计和制作测试。">
+  <meta name="description" content="在模拟信号链中经常用到负电源以处理负信号，同时也有正电源轨。但是从直流单电源得到正负双电源是不如使用交流电得到双电源那般容易的。TODO:这句话也挪到下面这篇文章里面开头。得到正负双电源在小功率电源中有几种方法来实现，见另一篇文章【正负电源方案简介】。这篇文章则详细介绍一个SEPIC+Ćuk组合拓扑来实现的正负电源的设计和制作测试。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SEPIC+Ćuk正负电源设计制作和测试（1）">
 <meta property="og:url" content="https://alwaysmy.github.io/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/index.html">
 <meta property="og:site_name" content="加载中...">
-<meta property="og:description" content="在模拟信号链中经常用到负电源以处理负信号，但是从直流单电源得到正负双电源是不如交流电得到双电源容易的，在小功率电源中有几种方法来实现，见另一篇文章【正负电源拓扑简介】。这篇文章则详细介绍一个SEPIC+Ćuk组合拓扑来实现的正负电源的设计和制作测试。">
+<meta property="og:description" content="在模拟信号链中经常用到负电源以处理负信号，同时也有正电源轨。但是从直流单电源得到正负双电源是不如使用交流电得到双电源那般容易的。TODO:这句话也挪到下面这篇文章里面开头。得到正负双电源在小功率电源中有几种方法来实现，见另一篇文章【正负电源方案简介】。这篇文章则详细介绍一个SEPIC+Ćuk组合拓扑来实现的正负电源的设计和制作测试。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://alwaysmy.github.io/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/TPS7A4901_PSRRvsFre.png">
+<meta property="og:image" content="https://alwaysmy.github.io/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/TPS7A3001_PSRRvsFre.png">
+<meta property="og:image" content="https://alwaysmy.github.io/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/L7805_PSRRvsFre.png">
+<meta property="og:image" content="https://alwaysmy.github.io/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/LM317_TI_PSRRvsFre.png">
+<meta property="og:image" content="https://alwaysmy.github.io/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/LM337_TI_PSRRvsFre.png">
+<meta property="og:image" content="https://alwaysmy.github.io/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/%CE%A0FIlter1.png">
+<meta property="og:image" content="https://alwaysmy.github.io/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/%CE%A0FIlter1_mag_freq.png">
+<meta property="og:image" content="https://alwaysmy.github.io/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/%CE%A0FIlter2_mag_freq.png">
 <meta property="article:published_time" content="2023-10-24T17:25:28.000Z">
-<meta property="article:modified_time" content="2023-10-24T17:42:22.348Z">
+<meta property="article:modified_time" content="2023-10-25T07:47:15.424Z">
 <meta property="article:author" content="Always L">
 <meta property="article:tag" content="SMPS">
+<meta property="article:tag" content="SEPIC">
+<meta property="article:tag" content="Ćuk">
+<meta property="article:tag" content="正负电源">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://alwaysmy.github.io/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/TPS7A4901_PSRRvsFre.png">
 
 <link rel="canonical" href="https://alwaysmy.github.io/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/">
 
@@ -122,7 +134,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">22</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">25</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -214,7 +226,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-10-25 01:25:28 / 修改时间：01:42:22" itemprop="dateCreated datePublished" datetime="2023-10-25T01:25:28+08:00">2023-10-25</time>
+              <time title="创建时间：2023-10-25 01:25:28 / 修改时间：15:47:15" itemprop="dateCreated datePublished" datetime="2023-10-25T01:25:28+08:00">2023-10-25</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -232,14 +244,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>239</span>
+              <span>2.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>5 分钟</span>
             </span>
 
         </div>
@@ -251,11 +263,75 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>在模拟信号链中经常用到负电源以处理负信号，但是从直流单电源得到正负双电源是不如交流电得到双电源容易的，在小功率电源中有几种方法来实现，见另一篇文章【正负电源拓扑简介】。这篇文章则详细介绍一个SEPIC+Ćuk组合拓扑来实现的正负电源的设计和制作测试。</p>
+        <p>在模拟信号链中经常用到负电源以处理负信号，同时也有正电源轨。但是从直流单电源得到正负双电源是不如使用交流电得到双电源那般容易的。TODO:这句话也挪到下面这篇文章里面开头。得到正负双电源在小功率电源中有几种方法来实现，见另一篇文章【正负电源方案简介】。这篇文章则详细介绍一个SEPIC+Ćuk组合拓扑来实现的正负电源的设计和制作测试。</p>
 <span id="more"></span>
 
-<h1 id="拓扑简介"><a href="#拓扑简介" class="headerlink" title="拓扑简介"></a>拓扑简介</h1><h1 id="选型和参数计算"><a href="#选型和参数计算" class="headerlink" title="选型和参数计算"></a>选型和参数计算</h1><h2 id="DC-DC芯片选型"><a href="#DC-DC芯片选型" class="headerlink" title="DC-DC芯片选型"></a>DC-DC芯片选型</h2><p>这里使用SEPIC作为主输出，因此可以选用BUCK控制器或者BUCK转换器来完成这个要求，为了设计简单，同时这里设计模板要求不高，因此选用的DCDC芯片为MT3608或者SX1308，两者虽然厂家不同但是丝印一致，手册几乎一致。</p>
-<h1 id="Π滤波器设计"><a href="#Π滤波器设计" class="headerlink" title="Π滤波器设计"></a>Π滤波器设计</h1><h1 id="纹波测试"><a href="#纹波测试" class="headerlink" title="纹波测试"></a>纹波测试</h1><h1 id="效率测试"><a href="#效率测试" class="headerlink" title="效率测试"></a>效率测试</h1><h1 id="还需要测试但是我没设备了"><a href="#还需要测试但是我没设备了" class="headerlink" title="还需要测试但是我没设备了"></a>还需要测试但是我没设备了</h1>
+<h1 id="拓扑简介"><a href="#拓扑简介" class="headerlink" title="拓扑简介"></a>拓扑简介</h1><h2 id="SEPIC"><a href="#SEPIC" class="headerlink" title="SEPIC"></a>SEPIC</h2><h2 id="Cuk"><a href="#Cuk" class="headerlink" title="Ćuk"></a>Ćuk</h2><h1 id="选型和参数计算"><a href="#选型和参数计算" class="headerlink" title="选型和参数计算"></a>选型和参数计算</h1><h2 id="DC-DC芯片选型"><a href="#DC-DC芯片选型" class="headerlink" title="DC-DC芯片选型"></a>DC-DC芯片选型</h2><p>这里使用SEPIC作为主输出，因此可以选用Boost控制器或者Boost转换器来完成这个要求，可以直接使用非同步整流Boost芯片。</p>
+<p>MOS<br>耐压 输入+输出+余量</p>
+<p>电流 输入+输出+纹波电流</p>
+<p>输入耐压</p>
+<p>输出</p>
+<p>占空比要求</p>
+<p>为了设计简单，同时这里设计要求不高，因此选用的DCDC芯片为MT3608或者SX1308，两者虽然厂家不同但是丝印一致，手册几乎一致。选用这个主要是因为便宜，只要三毛。</p>
+<p>这个芯片的开关限流标称为设计上4A，不过按照国产IC的尿性，这个大概是达不到，而且SOT23-6的热阻太大。SW最大电压30V.</p>
+<p>实际第一版测试中选用的是MT3608L，开关限流为2.5A，手册上标注为经过测试保证而非前面的理论值。SW最大电压22V.</p>
+<h2 id="电感"><a href="#电感" class="headerlink" title="电感"></a>电感</h2><h2 id="二极管"><a href="#二极管" class="headerlink" title="二极管"></a>二极管</h2><h2 id="输入电容"><a href="#输入电容" class="headerlink" title="输入电容"></a>输入电容</h2><p>SEPIC Ćuk输入端并不是连续的，因此使用这个电源会对前级造成较大的纹波，适当提高输入电容来减小对前级的影响。</p>
+<p>电容的耐压考虑一定余量即可</p>
+<h2 id="输出电容"><a href="#输出电容" class="headerlink" title="输出电容"></a>输出电容</h2><p>输出反馈电阻</p>
+<p>FB Input Bias Current 50nA-10nA</p>
+<h1 id="仿真设计"><a href="#仿真设计" class="headerlink" title="仿真设计"></a>仿真设计</h1><p>其实上面的选型没有仿真模型，我做的时候也没提前仿真，不过为了完整性这里还是找一个接近的芯片来仿真一下。</p>
+<h1 id="输出Π型滤波器设计"><a href="#输出Π型滤波器设计" class="headerlink" title="输出Π型滤波器设计"></a>输出Π型滤波器设计</h1><p>如果我们想获得一个更为干净的电源，那么开关电源的输出可以进一步处理。<br>开关电源输出存在开关频率的噪声，以及由于开关和输入信号混频导致的低频噪声。SEPIC输出是不连续的，存在大量开关谐波分量，Ćuk虽然输出连续但是依然要考虑尽量减小输出开关噪声。</p>
+<p>当然， 也不要过度设计（过于HIFI），如果后级器件本身的PSRR够用， 那么这里可以减配。例如TL072的PSRR大约80-100dB，对于一般的应用可能已经足够。</p>
+<h2 id="情况分析"><a href="#情况分析" class="headerlink" title="情况分析"></a>情况分析</h2><p>DCDC转换器的工作频率往往比较高，其开关噪声包含了对应的工作频率和其高次谐波，此次设计中使用的MT3608L标称1.2Mhz，实测1.05Mhz左右。</p>
+<p>一般的线性稳压器对于较高频率噪声的抑制能力往往会大幅低于低频端。</p>
+<p>例如TPS7A4901，在$C_{NR}&#x3D;10nF$，$C_{FF}&#x3D;10nF$, Cout&#x3D;10uF的情况下，对于100-1Khz的PSRR大约有70dB,而其PSRR@1Mhz只有35dB,也就是大约为0.0178，下图为手册截图。</p>
+<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/TPS7A4901_PSRRvsFre.png" class title="TPS7A49_Figure">
+<p>负压的LDO TPS7A3001也差不多，在$C_{NR}&#x3D;10nF$，$C_{FF}&#x3D;10nF$, Cout&#x3D;10uF的情况下，对于100-1Khz的PSRR大约有70dB,而其PSRR@1Mhz只有40dB</p>
+<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/TPS7A3001_PSRRvsFre.png" class title="TPS7A30_Figure">
+<p>传统的三端稳压器78xx系列只标注了PSRR@120Hz,其值通常在60-70dB左右。而79xx系列的负压线性稳压器的PSRR则稍微低一些，一般为54dB-60dB.</p>
+<pre><code>只有120Hz点因为美国电网是60Hz，传统三端稳压器早期主要用于工频变压器输入整流后稳压。
+</code></pre>
+<p>只有ST的手册对于78xx给出了PSRR随着频率变化的图，但是似乎完全和他手册里面的写出来的指标对不上，不算保守。而且低频PSRR也太高了，感觉是以前测试方法有些不同出现的。</p>
+<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/L7805_PSRRvsFre.png" class title="L7805_Figure">
+
+<p>国产的78L05系列则PSRR更低，只有49dB@120Hz.(你国产的也只标120Hz就离谱)</p>
+<p>TI的LM317新手册中给出的PSRR则看起来比较正常，</p>
+<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/LM317_TI_PSRRvsFre.png" class title="LM317_Figure">
+
+<p>而LM337的PSRR则给出为</p>
+<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/LM337_TI_PSRRvsFre.png" class title="LM317_Figure">
+
+
+
+<p>整体上可以看见，这种传统的三端稳压器，<strong>基本上最好情况是正压稳压器到1Mhz依然有20dB抑制，而负压可能更低只能到10dB@1Mhz</strong>。</p>
+<p>不过,地表最强LDO-LT3045的PSRR在1Mhz达到了76dB(对应的负压LDO-LT3094则是74dB@1Mhz).在低频段更是超过100dB. 不过一般应用中，这种超级LDO还是稍微有点贵了。</p>
+<p>所以，对于一般应用，不要太指望通过线性稳压器来抑制开关噪声。</p>
+<h2 id="Then-How-to-Do"><a href="#Then-How-to-Do" class="headerlink" title="Then How to Do ?"></a>Then How to Do ?</h2><p>不过好消息是，对于PCB路径上的高频噪声，无源滤波器很容易就能实现较好的抑制效果。（这里暂不考虑通过空间辐射耦合到输出端的情况）</p>
+<p>考虑一个理想的RC低通滤波器，R&#x3D;0.23Ω，C&#x3D;10uF,计算得到的-3dB截止频率为69.23Khz，在1Mhz处的衰减为<br>$$<br>Gain &#x3D; \frac{1}{\sqrt{(\frac{f}{fp})^2+1}}<br>$$<br>计算得到为0.064，即-23.86dB。加上一个传统线性稳压器L7805的抑制效果-20dB，好消息，这已经差不多赶上单个TPS7A49的效果了。</p>
+<p>但是仅仅使用RC滤波器，只有一个极点，衰减下降还是不够快，而且电阻也不能加太大否则会有压降，电容增加则会影响瞬态响应，而且成本也会增高。</p>
+<p>对于一个10uF 50V耐压的1206封装电容，实际使用中在12V偏压下，只有3uF左右（使用村田仿真工具数据），因此这里电容在体积限制的应用里面也不方便加入太多。</p>
+<p>那么如何改善呢？加入电感。<br>不过，使用单一电感来设计考虑较多（主要是我不会），直接使用磁珠产品更为简单。<br>下面是使用村田的仿真模型来设计一个Π滤波器，电容为GRM188R61E106MA73，磁珠为BLM18AG601SN1</p>
+<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/%CE%A0FIlter1.png" class title="LM317_Figure">
+
+<p>仿真得到的传递特性为</p>
+<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/%CE%A0FIlter1_mag_freq.png" class title="LM317_Figure">
+<p>可以看到，使用磁珠的Π滤波器在1Mhz的时候衰减达到了-60dB，不过在30Khz的地方存在尖峰，主要是LC存在谐振点，一般考虑把这个谐振点推到不影响应用的频率处即可，也可以通过增加电容或者换更大阻抗的磁珠来减小谐振峰增益，不过这种方法同时也会改变谐振点，需要权衡考虑不影响工作。如下图增加10uF电容为5个。</p>
+<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/%CE%A0FIlter2_mag_freq.png" class title="LM317_Figure">
+
+<p>当然了，把谐振点推到更低频可以更容易通过LDO来消除这个频率的噪声，也就是如果后级使用现代LDO,对于10Khz级别的噪声已经可以很好抑制了。</p>
+<p>不过，顺便一提，在仿真中，Spice模型并没有考虑直流偏压对电容的容量影响，而是取偏压为0V的容量，因此这里实际使用中需要考虑电容的实际容量。</p>
+<p>这里下面测试中输出Π型滤波器的磁珠选型为BLM18PG121SN1D，输出电容为10uFx2.</p>
+<pre><code>为什么前面仿真中RC滤波的R取值0.23Ω？因为这是上面仿真用到的磁珠的直流阻抗。
+</code></pre>
+<h1 id="PSRR"><a href="#PSRR" class="headerlink" title="PSRR"></a>PSRR</h1><p>虽然感觉上，开关电源的输出不怎么干净，但是不要忘了他依然是一个稳压器，他具有一定的输入电源纹波抑制能力，只要设计合理，开关电源完全可以让更垃圾的输入电源转换为更符合预期的输出。</p>
+<p>这里测不了，只能单独拉一个较差的输入信号和对应的输出信号来展示一下。</p>
+<p>一个应用场合是USB VBUS输入，由于各个厂商在PC上整板处理各有不同，USB VBUS的质量一言难尽，对于部分音频应用，就需要改善USB电源质量。</p>
+<pre><code>当然，很多情况不需要高于5V的电压，直接使用磁珠滤波加上LDO已经足够使用。
+</code></pre>
+<h1 id="纹波测试"><a href="#纹波测试" class="headerlink" title="纹波测试"></a>纹波测试</h1><h2 id="无Π型滤波器输出"><a href="#无Π型滤波器输出" class="headerlink" title="无Π型滤波器输出"></a>无Π型滤波器输出</h2><h2 id="有Π型滤波器输出"><a href="#有Π型滤波器输出" class="headerlink" title="有Π型滤波器输出"></a>有Π型滤波器输出</h2><h2 id="有Π型滤波器输出（减配电容）"><a href="#有Π型滤波器输出（减配电容）" class="headerlink" title="有Π型滤波器输出（减配电容）"></a>有Π型滤波器输出（减配电容）</h2><h2 id="添加线性稳压器输出"><a href="#添加线性稳压器输出" class="headerlink" title="添加线性稳压器输出"></a>添加线性稳压器输出</h2><h2 id="减少输出电容-线性稳压器输出"><a href="#减少输出电容-线性稳压器输出" class="headerlink" title="减少输出电容+线性稳压器输出"></a>减少输出电容+线性稳压器输出</h2><h1 id="效率测试"><a href="#效率测试" class="headerlink" title="效率测试"></a>效率测试</h1><h1 id="负载不对称测试"><a href="#负载不对称测试" class="headerlink" title="负载不对称测试"></a>负载不对称测试</h1><p>实际上，负压输出依赖于正压的反馈，因此负压其实是开环输出。</p>
+<p>不过对于使用耦合电感的SEPIC+Ćuk电源，由于正负两路的电感耦合在一起，在负载不对称的情况下表现则会更好。</p>
+<h1 id="还需要测试但是我没设备了"><a href="#还需要测试但是我没设备了" class="headerlink" title="还需要测试但是我没设备了"></a>还需要测试但是我没设备了</h1><h1 id="开关节点波形和电感上的电压波形"><a href="#开关节点波形和电感上的电压波形" class="headerlink" title="开关节点波形和电感上的电压波形"></a>开关节点波形和电感上的电压波形</h1><p>电流波形我测不了，没有电流探头。</p>
+
     </div>
 
     
@@ -265,6 +341,9 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/SMPS/" rel="tag"><i class="fa fa-tag"></i> SMPS</a>
+              <a href="/tags/SEPIC/" rel="tag"><i class="fa fa-tag"></i> SEPIC</a>
+              <a href="/tags/Cuk/" rel="tag"><i class="fa fa-tag"></i> Ćuk</a>
+              <a href="/tags/%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90/" rel="tag"><i class="fa fa-tag"></i> 正负电源</a>
           </div>
 
         
@@ -335,7 +414,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8B%93%E6%89%91%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">拓扑简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%89%E5%9E%8B%E5%92%8C%E5%8F%82%E6%95%B0%E8%AE%A1%E7%AE%97"><span class="nav-number">2.</span> <span class="nav-text">选型和参数计算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DC-DC%E8%8A%AF%E7%89%87%E9%80%89%E5%9E%8B"><span class="nav-number">2.1.</span> <span class="nav-text">DC-DC芯片选型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%CE%A0%E6%BB%A4%E6%B3%A2%E5%99%A8%E8%AE%BE%E8%AE%A1"><span class="nav-number">3.</span> <span class="nav-text">Π滤波器设计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%B9%E6%B3%A2%E6%B5%8B%E8%AF%95"><span class="nav-number">4.</span> <span class="nav-text">纹波测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%88%E7%8E%87%E6%B5%8B%E8%AF%95"><span class="nav-number">5.</span> <span class="nav-text">效率测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%98%E9%9C%80%E8%A6%81%E6%B5%8B%E8%AF%95%E4%BD%86%E6%98%AF%E6%88%91%E6%B2%A1%E8%AE%BE%E5%A4%87%E4%BA%86"><span class="nav-number">6.</span> <span class="nav-text">还需要测试但是我没设备了</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8B%93%E6%89%91%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">拓扑简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SEPIC"><span class="nav-number">1.1.</span> <span class="nav-text">SEPIC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cuk"><span class="nav-number">1.2.</span> <span class="nav-text">Ćuk</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%89%E5%9E%8B%E5%92%8C%E5%8F%82%E6%95%B0%E8%AE%A1%E7%AE%97"><span class="nav-number">2.</span> <span class="nav-text">选型和参数计算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DC-DC%E8%8A%AF%E7%89%87%E9%80%89%E5%9E%8B"><span class="nav-number">2.1.</span> <span class="nav-text">DC-DC芯片选型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%B5%E6%84%9F"><span class="nav-number">2.2.</span> <span class="nav-text">电感</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E6%9E%81%E7%AE%A1"><span class="nav-number">2.3.</span> <span class="nav-text">二极管</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E7%94%B5%E5%AE%B9"><span class="nav-number">2.4.</span> <span class="nav-text">输入电容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E7%94%B5%E5%AE%B9"><span class="nav-number">2.5.</span> <span class="nav-text">输出电容</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%BF%E7%9C%9F%E8%AE%BE%E8%AE%A1"><span class="nav-number">3.</span> <span class="nav-text">仿真设计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%CE%A0%E5%9E%8B%E6%BB%A4%E6%B3%A2%E5%99%A8%E8%AE%BE%E8%AE%A1"><span class="nav-number">4.</span> <span class="nav-text">输出Π型滤波器设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%83%85%E5%86%B5%E5%88%86%E6%9E%90"><span class="nav-number">4.1.</span> <span class="nav-text">情况分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Then-How-to-Do"><span class="nav-number">4.2.</span> <span class="nav-text">Then How to Do ?</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PSRR"><span class="nav-number">5.</span> <span class="nav-text">PSRR</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%B9%E6%B3%A2%E6%B5%8B%E8%AF%95"><span class="nav-number">6.</span> <span class="nav-text">纹波测试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%CE%A0%E5%9E%8B%E6%BB%A4%E6%B3%A2%E5%99%A8%E8%BE%93%E5%87%BA"><span class="nav-number">6.1.</span> <span class="nav-text">无Π型滤波器输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%CE%A0%E5%9E%8B%E6%BB%A4%E6%B3%A2%E5%99%A8%E8%BE%93%E5%87%BA"><span class="nav-number">6.2.</span> <span class="nav-text">有Π型滤波器输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%CE%A0%E5%9E%8B%E6%BB%A4%E6%B3%A2%E5%99%A8%E8%BE%93%E5%87%BA%EF%BC%88%E5%87%8F%E9%85%8D%E7%94%B5%E5%AE%B9%EF%BC%89"><span class="nav-number">6.3.</span> <span class="nav-text">有Π型滤波器输出（减配电容）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%BA%BF%E6%80%A7%E7%A8%B3%E5%8E%8B%E5%99%A8%E8%BE%93%E5%87%BA"><span class="nav-number">6.4.</span> <span class="nav-text">添加线性稳压器输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%8F%E5%B0%91%E8%BE%93%E5%87%BA%E7%94%B5%E5%AE%B9-%E7%BA%BF%E6%80%A7%E7%A8%B3%E5%8E%8B%E5%99%A8%E8%BE%93%E5%87%BA"><span class="nav-number">6.5.</span> <span class="nav-text">减少输出电容+线性稳压器输出</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%88%E7%8E%87%E6%B5%8B%E8%AF%95"><span class="nav-number">7.</span> <span class="nav-text">效率测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B4%9F%E8%BD%BD%E4%B8%8D%E5%AF%B9%E7%A7%B0%E6%B5%8B%E8%AF%95"><span class="nav-number">8.</span> <span class="nav-text">负载不对称测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%98%E9%9C%80%E8%A6%81%E6%B5%8B%E8%AF%95%E4%BD%86%E6%98%AF%E6%88%91%E6%B2%A1%E8%AE%BE%E5%A4%87%E4%BA%86"><span class="nav-number">9.</span> <span class="nav-text">还需要测试但是我没设备了</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%80%E5%85%B3%E8%8A%82%E7%82%B9%E6%B3%A2%E5%BD%A2%E5%92%8C%E7%94%B5%E6%84%9F%E4%B8%8A%E7%9A%84%E7%94%B5%E5%8E%8B%E6%B3%A2%E5%BD%A2"><span class="nav-number">10.</span> <span class="nav-text">开关节点波形和电感上的电压波形</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -364,7 +443,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-count">25</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -408,12 +487,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="本站总字数">58k</span>
+    <span title="本站总字数">60k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:09</span>
+    <span title="站点阅读时长">2:14</span>
 </div>
 
         
