@@ -333,7 +333,7 @@
 <h1 id="语法注意点"><a href="#语法注意点" class="headerlink" title="语法注意点"></a>语法注意点</h1><p>有些名称需要按照LTspice的来，例如噪声仿真中，输出噪声的频谱是onoise_spectrum，而LTspice是onoise，例如需要使用.save命令的时候，当然是需要复合当前使用的仿真器。</p>
 <h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>我尝试过使用别的仿真工具导入网表，但是似乎不太好用。</p>
 <p><del>好了，现在KiCad仿真的系列教程结束了，现在转入LTspice的仿真教程吧！</del></p>
-<p>我忘记我还要说什么了。。。。<br>下面放个视频教程：</p>
+<p>我忘记我还要说什么了。。。。<br>下面放个视频教程：<br><a href="https://www.bilibili.com/video/BV1Sj411Z7xK">【电路】KiCad仿真教程#2：KiCad联合LTspice仿真</a></p>
 ]]></content>
       <categories>
         <category>Work with the world</category>
