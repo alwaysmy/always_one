@@ -2586,6 +2586,7 @@ RP2040的启动顺序见Datasheet. 片上16k rom位于0x00000000地址，不过�
     <url>/2023/10/26/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/I2S_DAC-TM8211-Drived_by_GD32F350-MCU/</url>
     <content><![CDATA[<p>这个也是一个拖了很久的事情，大概两三年前看到一个很便宜的DAC TM8211，当时还不太清楚音频DAC和通用DAC的区别，就想着测试一下这个。不过当时没有找到合适的单片机测试，用adruino UNO模拟了个时序之后结果似乎不对就一直搁置了，这个焊接到直插转接板上的DAC就辗转了很多个地方一直没有测试。</p>
 <p>由于之前屯了一批GD32F350，正好这个MCU带有一路I2S，因此就选用这个来做。</p>
+<span id="more"></span>
 <p>GD32F350上这一路I2S是和SPI0复用的。</p>
 <h1 id="TM8211-I2S传输格式"><a href="#TM8211-I2S传输格式" class="headerlink" title="TM8211 I2S传输格式"></a>TM8211 I2S传输格式</h1><p>国产这个版本的描述很生草 “输入采用LSBJ (Least Significant Bit Justified ) 格式, 数字编码格式采用MSB在前的补码格式”，也没有给出时序图。实际上可以看PT8211的手册上的时序图，可以看到其实就是右对齐格式，也叫日本格式，在GD32的库中对应 <code>I2S_STD_LSB</code> 。</p>
 <p>其数据为16bit，对于I2S传输中更长的数据则直接丢弃，所以可以兼容一般的16bit数据32bit长度的格式。</p>
@@ -2642,6 +2643,7 @@ RP2040的启动顺序见Datasheet. 片上16k rom位于0x00000000地址，不过�
     <title>theZeta-and-IBB-postive-negative-power正负双电源</title>
     <url>/2023/10/27/Work%20with%20the%20world/theZeta-and-IBB-postive-negative-power/</url>
     <content><![CDATA[<p>实际上对于多个电感的电源，可以有很多种多轨同时输出的方法。<br>除了前面所说的SEPIC+Ćuk，还有某种程度上与之对应的ZETA+IBB结构的正负双电源。</p>
+<span id="more"></span>
 <p>只需要使用一个耦合电感就可以完成正负两路输出，反馈则是使用正负压的电压差。<br>可以看到图中除了一路完全空载的情况，表现还是可以接受的。<br>图源ADI-优化多路输出电源转换器。</p>
 <h1 id="LTspice仿真"><a href="#LTspice仿真" class="headerlink" title="LTspice仿真"></a>LTspice仿真</h1><p>zeta在TinaTI中仿真容易不收敛，因此这里就只用了LTSPICE来测试。不过幸运的是这次仿真使用的芯片比较便宜（ADI竟然有两块钱的芯片），完全可以买来制作实物对比。</p>
 <h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><p><a href="https://www.ti.com/lit/an/slva369a/slva369a.pdf">Create a Split-Rail Power Supply with a Wide Input Voltage Buck Regulator (Rev. A) (ti.com)</a></p>
