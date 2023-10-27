@@ -270,7 +270,7 @@
       </tags>
   </entry>
   <entry>
-    <title>KiCad联合LTspice仿真 - KiCad Simulation:Export to LTspice</title>
+    <title>SEPIC+Ćuk正负电源设计制作和测试（1）</title>
     <url>/2023/07/11/Work%20with%20the%20world/KiCad%E8%81%94%E5%90%88LTspice%E4%BB%BF%E7%9C%9F/</url>
     <content><![CDATA[<p>在介绍完KiCad仿真工具后，前文还介绍了如何使用KiCad内置的ngspice进行原理图仿真的案例，但是内置仿真的功能还不够多，而ngspice的界面过于简陋基本等于没有，那么在KiCad中有没有更好的仿真工具可以用呢，答案是，有的。</p>
 <span id="more"></span>
@@ -420,22 +420,56 @@
     <content><![CDATA[<p>在模拟信号链中经常用到负电源以处理负信号，同时也有正电源轨。但是从直流单电源得到正负双电源是不如使用交流电得到双电源那般容易的。TODO:这句话也挪到下面这篇文章里面开头。得到正负双电源在小功率电源中有几种方法来实现，见另一篇文章【正负电源方案简介】。这篇文章则详细介绍一个SEPIC+Ćuk组合拓扑来实现的正负电源的设计和制作测试。</p>
 <span id="more"></span>
 
-<h1 id="拓扑简介"><a href="#拓扑简介" class="headerlink" title="拓扑简介"></a>拓扑简介</h1><h2 id="SEPIC"><a href="#SEPIC" class="headerlink" title="SEPIC"></a>SEPIC</h2><h2 id="Cuk"><a href="#Cuk" class="headerlink" title="Ćuk"></a>Ćuk</h2><h1 id="选型和参数计算"><a href="#选型和参数计算" class="headerlink" title="选型和参数计算"></a>选型和参数计算</h1><h2 id="DC-DC芯片选型"><a href="#DC-DC芯片选型" class="headerlink" title="DC-DC芯片选型"></a>DC-DC芯片选型</h2><p>这里使用SEPIC作为主输出，因此可以选用Boost控制器或者Boost转换器来完成这个要求，可以直接使用非同步整流Boost芯片。</p>
+<h1 id="拓扑简介"><a href="#拓扑简介" class="headerlink" title="拓扑简介"></a>拓扑简介</h1><h2 id="SEPIC"><a href="#SEPIC" class="headerlink" title="SEPIC"></a>SEPIC</h2><h2 id="Cuk"><a href="#Cuk" class="headerlink" title="Ćuk"></a>Ćuk</h2><p>有空再说吧。看参考资料</p>
+<h1 id="选型和参数计算"><a href="#选型和参数计算" class="headerlink" title="选型和参数计算"></a>选型和参数计算</h1><h2 id="DC-DC芯片选型"><a href="#DC-DC芯片选型" class="headerlink" title="DC-DC芯片选型"></a>DC-DC芯片选型</h2><p>这里使用SEPIC作为主输出，因此可以选用Boost控制器或者Boost转换器来完成这个要求，可以直接使用非同步整流Boost芯片。</p>
 <p>MOS<br>耐压 输入+输出+余量</p>
 <p>电流 输入+输出+纹波电流</p>
 <p>输入耐压</p>
 <p>输出</p>
 <p>占空比要求</p>
 <p>为了设计简单，同时这里设计要求不高，因此选用的DCDC芯片为MT3608或者SX1308，两者虽然厂家不同但是丝印一致，手册几乎一致。选用这个主要是因为便宜，只要三毛。</p>
-<p>这个芯片的开关限流标称为设计上4A，不过按照国产IC的尿性，这个大概是达不到，而且SOT23-6的热阻太大。SW最大电压30V.</p>
+<p>这个芯片的开关限流标称为设计上4A，不过按照国产IC的尿性，这个大概是达不到，而且SOT23-6的热阻太大，同类封装很少又标称大电流的。SW最大电压30V.</p>
 <p>实际第一版测试中选用的是MT3608L，开关限流为2.5A，手册上标注为经过测试保证而非前面的理论值。SW最大电压22V.</p>
 <h2 id="电感"><a href="#电感" class="headerlink" title="电感"></a>电感</h2><h2 id="二极管"><a href="#二极管" class="headerlink" title="二极管"></a>二极管</h2><h2 id="输入电容"><a href="#输入电容" class="headerlink" title="输入电容"></a>输入电容</h2><p>SEPIC Ćuk输入端并不是连续的，因此使用这个电源会对前级造成较大的纹波，适当提高输入电容来减小对前级的影响。</p>
 <p>电容的耐压考虑一定余量即可</p>
 <h2 id="输出电容"><a href="#输出电容" class="headerlink" title="输出电容"></a>输出电容</h2><p>输出反馈电阻</p>
 <p>FB Input Bias Current 50nA-10nA</p>
-<h1 id="仿真设计"><a href="#仿真设计" class="headerlink" title="仿真设计"></a>仿真设计</h1><p>其实上面的选型没有仿真模型，我做的时候也没提前仿真，不过为了完整性这里还是找一个接近的芯片来仿真一下。</p>
-<h1 id="输出Π型滤波器设计"><a href="#输出Π型滤波器设计" class="headerlink" title="输出Π型滤波器设计"></a>输出Π型滤波器设计</h1><p>如果我们想获得一个更为干净的电源，那么开关电源的输出可以进一步处理。<br>开关电源输出存在开关频率的噪声，以及由于开关和输入信号混频导致的低频噪声。SEPIC输出是不连续的，存在大量开关谐波分量，Ćuk虽然输出连续但是依然要考虑尽量减小输出开关噪声。</p>
-<p>当然， 也不要过度设计（过于HIFI），如果后级器件本身的PSRR够用， 那么这里可以减配。例如TL072的PSRR大约80-100dB，对于一般的应用可能已经足够。</p>
+<h1 id="仿真设计"><a href="#仿真设计" class="headerlink" title="仿真设计"></a>仿真设计</h1><p>其实上面的选型大多是国产器件，没有仿真模型，我做的时候也没提前仿真，不过为了完整性这里还是找一个接近的芯片来仿真一下，同时也为了验证一些实际电路我这里不方便做的内容。</p>
+<p>由于是先测试了实物后做的仿真，这里预告一下，仿真结果非常接近实测结果，所以拿来验证未测试的项目是有一定可信度的。下面也会和测试波形对比。</p>
+<p>仿真直接用LTspice来做，因为有很完整的电源芯片模型支持，而且容易收敛。这里由于没有MT3608的仿真模型，因此直接找一个类似的BOOST芯片即可。<br>在ADI选型筛选器中找到小封装的BOOST芯片，这种只有6pin或者5pin的芯片没有补偿引脚，设计结构差不多（我觉得吧），找到两款1.2Mhz，开关限流2A的型号分别为LTC3426(低压)、LT1935.</p>
+<p>MT3608中的结构图为，手册中指出为peak current mode boost regulator。</p>
+<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/MT3608%E7%BB%93%E6%9E%84%E5%9B%BE.png" class title="TPS7A49_Figure">
+
+<p>LT1935手册中给出的结构图为，手册中指出为constant frequency, current mode control。</p>
+<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/LT1935_Block_Diagram.png" class title="TPS7A49_Figure">
+
+<p>这里直接选用LT1935来进行仿真。<br>直接上仿真图：</p>
+<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/LT1935_sepic_cuk_sch.png" class title="TPS7A49_Figure">
+<p>这里为L1 L2添加耦合系数，目前和实物保持一致为两个分立的电感，也可以换成耦合电感。<br>图中的器件选择LTspice中可选的实际器件的参数，电容包含了ESL和ESR,电感同样包含寄生参数。电阻则选用了理想器件（非理想也没标注其他寄生参数），电源则标记了串联电阻等效内阻。<br>当前每路输出电流大小为24mA,实际上电感电流这时候还是有不连续的时候，不过为了和实测对上，这里首先展示这种情况下的仿真结果。<br>首先看一下输出电压的整体波形。</p>
+<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/LT1935_sepic_cuk_output.png" class title="TPS7A49_Figure">
+<p>然后看一下正压的细节波形（可以看到开关噪声）</p>
+<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/LT1935_sepic_output_time.png" class title="TPS7A49_Figure">
+<p>可以看到主要尖峰和开关频率一致，实际上这些尖峰大小和器件的寄生参数以及工作模式有关，如果使用理想器件会看到尖峰更小，或者进入CCM则会看到由于开关电感电流连续这个尖峰也不存在。由于SEPIC输出电流不连续，因此输出具有较大的高次开关谐波分量。</p>
+<p>而Ćuk侧输出电流连续，可以看到负压侧细节波形：</p>
+<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/LT1935_cuk_output_time.png" class title="TPS7A49_Figure">
+<p>同样，由于电感电流不连续导致的尖峰，而其中较为平滑的波形则对应开关纹波。<br>可以看一下频谱</p>
+<p>在输出波形这块，最后可以看一下正压输出和负压输出的频谱的对比。(FFT,勾选输出建立后的时间段)</p>
+<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/LT1935_sepic_cuk_outp_outn_FFT.png" class title="TPS7A49_Figure">
+<p>这里可以看到，SEPIC拓扑明显具有更高的高频谐波，而Ćuk侧则相对较为干净，几个开关频点的峰主要来源于电流不连续导致的输出尖峰。</p>
+<h2 id="开关节点波形"><a href="#开关节点波形" class="headerlink" title="开关节点波形"></a>开关节点波形</h2><p>还是继续上面的测试，这个尖峰很是烦人，在仿真中达到了正压侧100mVpp,负压侧10mVpp，现在看看开关波形。</p>
+<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/LT1935_sepic_cuk_sw_node_probe.png" class title="TPS7A49_Figure">
+
+<p>作为对比可以看一下实测板子上开关节点的波形</p>
+<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/TestBoard2_SW_node_probe.png" class title="TPS7A49_Figure">
+
+<p>和预期中的一个完整普通的方波不一样，这个开关节点的电压在完成一个高电平之后，随之而来出现了振荡的波形随后被强制关断到0V. 很明显这里会出现高斜率变化。那么测量输入和开关节点之间的电感上的电流以及SW节点的电流</p>
+<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/LT1935_sepic_cuk_sw_Inductor_current-sw_volt.png" class title="TPS7A49_Figure">
+
+<p>很明显，占空比比较低，开关控制释放后电感电流一直下降到0，出现了电流不连续点，（是这样吗）和外部的电容一起产生了反方向的电流。</p>
+<p>对于这一点，只需要增加负载或者更换具有强制CCM的DCDC芯片，还可以在开关节点增加RC吸收电路（串联RC后并联到开关节点和GND之间），不过后者实际上会增加开关的损耗。这一点会比较难权衡，很难说这种固定模式的简单DCDC芯片能不能瞎折腾。（我不会，仿真下输出优化确实有效但是效率爆炸）。</p>
+<p>如果需要优化EMI,减小高频尖峰是一个必选项，不过如果本身够用，那么就凑合这么用吧。</p>
+<h1 id="输出Π型滤波器设计"><a href="#输出Π型滤波器设计" class="headerlink" title="输出Π型滤波器设计"></a>输出Π型滤波器设计</h1><p>如果我们想获得一个更为干净的电源，那么开关电源的输出可以进一步处理。<br>开关电源输出存在开关频率的噪声，以及由于开关和输入信号混频导致的低频噪声，还有器件本身的内部设计导致的低频噪声。SEPIC输出是不连续的，存在大量开关谐波分量，Ćuk虽然输出连续但是依然要考虑尽量减小输出开关噪声。</p>
+<p>当然， 也不要过度设计（过于HIFI），如果后级器件本身的PSRR够用， 那么这里可以减配。例如TL072的PSRR大约80-100dB，对于一般的大信号应用可能已经足够。</p>
 <h2 id="情况分析"><a href="#情况分析" class="headerlink" title="情况分析"></a>情况分析</h2><p>DCDC转换器的工作频率往往比较高，其开关噪声包含了对应的工作频率和其高次谐波，此次设计中使用的MT3608L标称1.2Mhz，实测1.05Mhz左右。</p>
 <p>一般的线性稳压器对于较高频率噪声的抑制能力往往会大幅低于低频端。</p>
 <p>例如TPS7A4901，在$C_{NR}&#x3D;10nF$，$C_{FF}&#x3D;10nF$, Cout&#x3D;10uF的情况下，对于100-1Khz的PSRR大约有70dB,而其PSRR@1Mhz只有35dB,也就是大约为0.0178，下图为手册截图。</p>
@@ -469,7 +503,7 @@
 
 <p>仿真得到的传递特性为</p>
 <img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/%CE%A0FIlter1_mag_freq.png" class title="LM317_Figure">
-<p>可以看到，使用磁珠的Π滤波器在1Mhz的时候衰减达到了-60dB，不过在30Khz的地方存在尖峰，主要是LC存在谐振点，一般考虑把这个谐振点推到不影响应用的频率处即可，也可以通过增加电容或者换更大阻抗的磁珠来减小谐振峰增益，不过这种方法同时也会改变谐振点，需要权衡考虑不影响工作。如下图增加10uF电容为5个。</p>
+<p>可以看到，使用磁珠的Π滤波器在1Mhz的时候衰减达到了-60dB，不过在30Khz的地方存在尖峰，主要是LC存在谐振点，一般考虑把这个谐振点推到不影响应用的频率处即可，也可以通过增加电容或者换更大阻抗的磁珠来减小谐振峰增益，不过这种方法同时也会改变谐振点，需要权衡考虑是否影响正常工作。如下图增加10uF电容为5个。</p>
 <img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/%CE%A0FIlter2_mag_freq.png" class title="LM317_Figure">
 
 <p>当然了，把谐振点推到更低频可以更容易通过LDO来消除这个频率的噪声，也就是如果后级使用现代LDO,对于10Khz级别的噪声已经可以很好抑制了。</p>
@@ -477,11 +511,25 @@
 <p>这里下面测试中输出Π型滤波器的磁珠选型为BLM18PG121SN1D，输出电容为10uFx2.</p>
 <pre><code>为什么前面仿真中RC滤波的R取值0.23Ω？因为这是上面仿真用到的磁珠的直流阻抗。
 </code></pre>
+<h2 id="仿真"><a href="#仿真" class="headerlink" title="仿真"></a>仿真</h2><p>接上面的仿真，每路添加添加一个Π型滤波器</p>
+<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/ltspice_pi_filter.png" class title="LM317_Figure">
+<p>测试结果</p>
+<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/LT1935_sepic_cuk_outn_outp_pi_filter_FFT.png" class title="LM317_Figure">
+
+<p>可以看到，100khz以上的噪声均被抑制，开关噪声已经不再明显。</p>
+<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/LT1935_sepic_out_and_filterout.png" class title="LM317_Figure">
+
 <h1 id="PSRR"><a href="#PSRR" class="headerlink" title="PSRR"></a>PSRR</h1><p>虽然感觉上，开关电源的输出不怎么干净，但是不要忘了他依然是一个稳压器，他具有一定的输入电源纹波抑制能力，只要设计合理，开关电源完全可以让更垃圾的输入电源转换为更符合预期的输出。</p>
 <p>这里测不了，只能单独拉一个较差的输入信号和对应的输出信号来展示一下。</p>
 <p>一个应用场合是USB VBUS输入，由于各个厂商在PC上整板处理各有不同，USB VBUS的质量一言难尽，对于部分音频应用，就需要改善USB电源质量。</p>
 <pre><code>当然，很多情况不需要高于5V的电压，直接使用磁珠滤波加上LDO已经足够使用。
 </code></pre>
+<h1 id="实物拍照"><a href="#实物拍照" class="headerlink" title="实物拍照"></a>实物拍照</h1><p>这里仅仅做板子展示，各个测试项的连接也都会拍照指出。</p>
+<p>测试板1<br>这个板子贴全了输出电容，为了能看看这一个板子能做到的效果。</p>
+<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/Testboard1.jpg" class title="LM317_Figure">
+
+<p>测试板2<br>这个板子没有输出电容只贴了11uF，磁珠后没有电容，为了验证减配磁珠后电容的效果以及配合LDO是否能做到差不多的效果，同时更换了更小的电感量。不过输入电容量翻倍。</p>
+<img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/Testboard2.jpg" class title="LM317_Figure">
 <h1 id="纹波测试"><a href="#纹波测试" class="headerlink" title="纹波测试"></a>纹波测试</h1><h2 id="无Π型滤波器输出"><a href="#无Π型滤波器输出" class="headerlink" title="无Π型滤波器输出"></a>无Π型滤波器输出</h2><h2 id="有Π型滤波器输出"><a href="#有Π型滤波器输出" class="headerlink" title="有Π型滤波器输出"></a>有Π型滤波器输出</h2><h2 id="有Π型滤波器输出（减配电容）"><a href="#有Π型滤波器输出（减配电容）" class="headerlink" title="有Π型滤波器输出（减配电容）"></a>有Π型滤波器输出（减配电容）</h2><h2 id="添加线性稳压器输出"><a href="#添加线性稳压器输出" class="headerlink" title="添加线性稳压器输出"></a>添加线性稳压器输出</h2><h2 id="减少输出电容-线性稳压器输出"><a href="#减少输出电容-线性稳压器输出" class="headerlink" title="减少输出电容+线性稳压器输出"></a>减少输出电容+线性稳压器输出</h2><h1 id="效率测试"><a href="#效率测试" class="headerlink" title="效率测试"></a>效率测试</h1><h1 id="负载不对称测试"><a href="#负载不对称测试" class="headerlink" title="负载不对称测试"></a>负载不对称测试</h1><p>实际上，负压输出依赖于正压的反馈，因此负压其实是开环输出。</p>
 <p>不过对于使用耦合电感的SEPIC+Ćuk电源，由于正负两路的电感耦合在一起，在负载不对称的情况下表现则会更好。</p>
 <h1 id="还需要测试但是我没设备了"><a href="#还需要测试但是我没设备了" class="headerlink" title="还需要测试但是我没设备了"></a>还需要测试但是我没设备了</h1><h1 id="开关节点波形和电感上的电压波形"><a href="#开关节点波形和电感上的电压波形" class="headerlink" title="开关节点波形和电感上的电压波形"></a>开关节点波形和电感上的电压波形</h1><p>电流波形我测不了，没有电流探头。</p>
