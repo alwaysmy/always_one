@@ -306,7 +306,7 @@
 <p>后者IP则保持为 10.11.99.1 ，如果不想连接WIFI或者为了避免IP变化，可以就用USB界面。配置的时候最好把睡眠关掉，否则会断开连接，无论是WIFI还是USB网络界面。</p>
 <p>需要的电脑上的工具一个是WinSCP，使用WinSCP可以方便地管理文件，而且可以保存密码免输入密码登录，也可以使用命令行窗口来管理，因为命令行工具不是很好用所以需要使用SSH来管理更方便。</p>
 <p>这个工具直接用默认配置就可以，协议选SFTP就可以了，不过需要显示隐藏文件，点击右下角的已隐藏字样点一下，可以显示隐藏文件了。</p>
-<p>另一个是SSH，很多人推荐Putty但是我觉得这个并不方便，可以直接用WindowsTerminal下powershell支持的ssh，使用命令ssh <a href="mailto:&#114;&#x6f;&#111;&#116;&#64;&#49;&#x39;&#x32;&#46;&#49;&#x36;&#56;&#46;&#51;&#x31;&#x2e;&#x33;&#57;">&#114;&#x6f;&#111;&#116;&#64;&#49;&#x39;&#x32;&#46;&#49;&#x36;&#56;&#46;&#51;&#x31;&#x2e;&#x33;&#57;</a> 即可，注意这个ip需要在机器内查看。</p>
+<p>另一个是SSH，很多人推荐Putty但是我觉得这个并不方便，可以直接用WindowsTerminal下powershell支持的ssh，使用命令ssh <a href="mailto:&#114;&#x6f;&#111;&#x74;&#x40;&#49;&#57;&#50;&#x2e;&#x31;&#54;&#x38;&#x2e;&#x33;&#x31;&#46;&#x33;&#x39;">&#114;&#x6f;&#111;&#x74;&#x40;&#49;&#57;&#50;&#x2e;&#x31;&#54;&#x38;&#x2e;&#x33;&#x31;&#46;&#x33;&#x39;</a> 即可，注意这个ip需要在机器内查看。</p>
 <p>由于配置一些其他软件的时候经常使用SSH，可以通过生成密钥来免密码登录。</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
 <p>如果已经生成过了（比如之前用过git必然配置过），就不要生成了。<br>会提示生成文件到 .ssh 目录下了。<br>然后把公钥id_rsa.pub放到reMarkable上的~&#x2F;.ssh下，然后这里注意这里除了用户目录不能对组有权限，.ssh以及以下的文件都不能对组有权限，否则不能登录，会报错<code>Permission denied (publickey,password)</code> 。<br>然后在.ssh目录下执行</p>
@@ -547,8 +547,8 @@ Probably not, but standard disclaimers apply
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2023/07/11/Work%20with%20the%20world/KiCad%E8%81%94%E5%90%88LTspice%E4%BB%BF%E7%9C%9F/" rel="prev" title="SEPIC+Ćuk正负电源设计制作和测试（1）">
-      <i class="fa fa-chevron-left"></i> SEPIC+Ćuk正负电源设计制作和测试（1）
+    <a href="/2023/07/11/Work%20with%20the%20world/KiCad%E8%81%94%E5%90%88LTspice%E4%BB%BF%E7%9C%9F/" rel="prev" title="KiCad联合LTspice仿真 - KiCad Simulation:Export to LTspice">
+      <i class="fa fa-chevron-left"></i> KiCad联合LTspice仿真 - KiCad Simulation:Export to LTspice
     </a></div>
       <div class="post-nav-item">
     <a href="/2023/08/29/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91/RP2040-JumpIntoBootloader-IAP/" rel="next" title="【RP2040】跳转Bootloader实现IAP">
@@ -685,12 +685,12 @@ Probably not, but standard disclaimers apply
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="本站总字数">69k</span>
+    <span title="本站总字数">70k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:33</span>
+    <span title="站点阅读时长">2:35</span>
 </div>
 
         
@@ -805,6 +805,8 @@ window.addEventListener('pjax:success', () => {
 
 
     <div id="pjax">
+  
+
   
 
   

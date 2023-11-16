@@ -51,7 +51,7 @@
 <meta property="og:image" content="https://alwaysmy.github.io/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/Testboard1.jpg">
 <meta property="og:image" content="https://alwaysmy.github.io/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/Testboard2.jpg">
 <meta property="article:published_time" content="2023-10-24T17:25:28.000Z">
-<meta property="article:modified_time" content="2023-10-27T12:03:54.553Z">
+<meta property="article:modified_time" content="2023-11-04T10:35:06.467Z">
 <meta property="article:author" content="Always L">
 <meta property="article:tag" content="SMPS">
 <meta property="article:tag" content="SEPIC">
@@ -247,7 +247,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-10-27 20:03:54" itemprop="dateModified" datetime="2023-10-27T20:03:54+08:00">2023-10-27</time>
+                <time title="修改时间：2023-11-04 18:35:06" itemprop="dateModified" datetime="2023-11-04T18:35:06+08:00">2023-11-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -265,14 +265,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.8k</span>
+              <span>4.1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>8 分钟</span>
+              <span>9 分钟</span>
             </span>
 
         </div>
@@ -313,7 +313,8 @@
 
 <p>这里直接选用LT1935来进行仿真。<br>直接上仿真图：</p>
 <img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/LT1935_sepic_cuk_sch.png" class title="TPS7A49_Figure">
-<p>这里为L1 L2添加耦合系数，目前和实物保持一致为两个分立的电感，也可以换成耦合电感。<br>图中的器件选择LTspice中可选的实际器件的参数，电容包含了ESL和ESR,电感同样包含寄生参数。电阻则选用了理想器件（非理想也没标注其他寄生参数），电源则标记了串联电阻等效内阻。<br>当前每路输出电流大小为24mA,实际上电感电流这时候还是有不连续的时候，不过为了和实测对上，这里首先展示这种情况下的仿真结果。<br>首先看一下输出电压的整体波形。</p>
+<p>这里为L1 L2添加耦合系数，目前和实物保持一致为两个分立的电感，也可以换成耦合电感。<br>图中的器件选择LTspice中可选的实际器件的参数，电容包含了ESL和ESR,电感同样包含寄生参数。电阻则选用了理想器件（非理想也没标注其他寄生参数），电源则标记了串联电阻等效内阻。<br>当前每路输出电流大小为24mA,实际上电感电流这时候还是有不连续的时候，不过为了和实测对上，这里首先展示这种情况下的仿真结果。</p>
+<h2 id="输出波形"><a href="#输出波形" class="headerlink" title="输出波形"></a>输出波形</h2><p>首先看一下输出电压的整体波形。</p>
 <img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/LT1935_sepic_cuk_output.png" class title="TPS7A49_Figure">
 <p>然后看一下正压的细节波形（可以看到开关噪声）</p>
 <img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/LT1935_sepic_output_time.png" class title="TPS7A49_Figure">
@@ -323,7 +324,7 @@
 <p>同样，由于电感电流不连续导致的尖峰，而其中较为平滑的波形则对应开关纹波。<br>可以看一下频谱</p>
 <p>在输出波形这块，最后可以看一下正压输出和负压输出的频谱的对比。(FFT,勾选输出建立后的时间段)</p>
 <img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/LT1935_sepic_cuk_outp_outn_FFT.png" class title="TPS7A49_Figure">
-<p>这里可以看到，SEPIC拓扑明显具有更高的高频谐波，而Ćuk侧则相对较为干净，几个开关频点的峰主要来源于电流不连续导致的输出尖峰。</p>
+<p>这里可以看到，SEPIC拓扑明显具有更高的高频谐波，而Ćuk侧则相对较为干净，几个开关频点的峰主要来源于电流不连续出现反相电流<br>感觉是电感的寄生参数的谐振点（我不知道 ）<br>看adi的 AN 1141中的这个尖峰噪声也不小 达到了150mV 50mV级别 不过可以靠二级滤波来解决</p>
 <h2 id="开关节点波形"><a href="#开关节点波形" class="headerlink" title="开关节点波形"></a>开关节点波形</h2><p>还是继续上面的测试，这个尖峰很是烦人，在仿真中达到了正压侧100mVpp,负压侧10mVpp，现在看看开关波形。</p>
 <img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/LT1935_sepic_cuk_sw_node_probe.png" class title="TPS7A49_Figure">
 
@@ -335,8 +336,9 @@
 
 <p>很明显，占空比比较低，开关控制释放后电感电流一直下降到0，出现了电流不连续点，（是这样吗）和外部的电容一起产生了反方向的电流。</p>
 <p>对于这一点，只需要增加负载或者更换具有强制CCM的DCDC芯片，还可以在开关节点增加RC吸收电路（串联RC后并联到开关节点和GND之间），不过后者实际上会增加开关的损耗。这一点会比较难权衡，很难说这种固定模式的简单DCDC芯片能不能瞎折腾。（我不会，仿真下输出优化确实有效但是效率爆炸）。</p>
-<p>如果需要优化EMI,减小高频尖峰是一个必选项，不过如果本身够用，那么就凑合这么用吧。</p>
+<p>如果需要优化EMI,减小高频尖峰是一个方法，不过如果本身够用，那么就凑合这么用吧。</p>
 <p>而且这种震荡主要和寄生参数有关，如果用理想器件仿真就会发现只有干净的开关纹波而没有尖峰。</p>
+<p>而另外，由于电感和电感的寄生并联电容形成高频震荡，输出也就会有高频较高尖峰，可以使用更低寄生参数的器件，可以适当减小电感的值。</p>
 <h1 id="输出Π型滤波器设计"><a href="#输出Π型滤波器设计" class="headerlink" title="输出Π型滤波器设计"></a>输出Π型滤波器设计</h1><p>如果我们想获得一个更为干净的电源，那么开关电源的输出可以进一步处理。<br>开关电源输出存在开关频率的噪声，以及由于开关和输入信号混频导致的低频噪声，还有器件本身的内部设计导致的低频噪声。SEPIC输出是不连续的，存在大量开关谐波分量，Ćuk虽然输出连续但是依然要考虑尽量减小输出开关噪声。</p>
 <p>当然， 也不要过度设计（过于HIFI），如果后级器件本身的PSRR够用， 那么这里可以减配。例如TL072的PSRR大约80-100dB，对于一般的大信号应用可能已经足够。</p>
 <h2 id="情况分析"><a href="#情况分析" class="headerlink" title="情况分析"></a>情况分析</h2><p>DCDC转换器的工作频率往往比较高，其开关噪声包含了对应的工作频率和其高次谐波，此次设计中使用的MT3608L标称1.2Mhz，实测1.05Mhz左右。</p>
@@ -392,6 +394,7 @@
 <p>可以看到，100khz以上的噪声均被抑制，开关噪声已经不再明显。</p>
 <img src="/2023/10/25/Work%20with%20the%20world/SEPIC+%C4%86uk%E6%AD%A3%E8%B4%9F%E7%94%B5%E6%BA%90%E8%AE%BE%E8%AE%A1%E5%88%B6%E4%BD%9C%E5%92%8C%E6%B5%8B%E8%AF%95%EF%BC%881%EF%BC%89/LT1935_sepic_out_and_filterout.png" class title="LM317_Figure">
 
+<h2 id="输出滤波器是否应该放置在环路以内？"><a href="#输出滤波器是否应该放置在环路以内？" class="headerlink" title="输出滤波器是否应该放置在环路以内？"></a>输出滤波器是否应该放置在环路以内？</h2><p><a target="_blank" rel="noopener" href="https://www.analog.com/cn/technical-articles/designing-second-stage-output-filters-for-switching-power-supplies.html">https://www.analog.com/cn/technical-articles/designing-second-stage-output-filters-for-switching-power-supplies.html</a> 设计开关电源中使用的二级输出滤波器<br>这篇文章指出滤波器应该放在环路之中，好处大家都懂，原因是反正就算放在环外也会对环路有影响 ，但是这合理吗？</p>
 <h1 id="PSRR"><a href="#PSRR" class="headerlink" title="PSRR"></a>PSRR</h1><p>虽然感觉上，开关电源的输出不怎么干净，但是不要忘了他依然是一个稳压器，他具有一定的输入电源纹波抑制能力，只要设计合理，开关电源完全可以让更垃圾的输入电源转换为更符合预期的输出。</p>
 <p>这里测不了，只能单独拉一个较差的输入信号和对应的输出信号来展示一下。</p>
 <p>一个应用场合是USB VBUS输入，由于各个厂商在PC上整板处理各有不同，USB VBUS的质量一言难尽，对于部分音频应用，就需要改善USB电源质量。</p>
@@ -406,6 +409,8 @@
 <h1 id="纹波测试"><a href="#纹波测试" class="headerlink" title="纹波测试"></a>纹波测试</h1><h2 id="无Π型滤波器输出"><a href="#无Π型滤波器输出" class="headerlink" title="无Π型滤波器输出"></a>无Π型滤波器输出</h2><h2 id="有Π型滤波器输出"><a href="#有Π型滤波器输出" class="headerlink" title="有Π型滤波器输出"></a>有Π型滤波器输出</h2><h2 id="有Π型滤波器输出（减配电容）"><a href="#有Π型滤波器输出（减配电容）" class="headerlink" title="有Π型滤波器输出（减配电容）"></a>有Π型滤波器输出（减配电容）</h2><h2 id="添加线性稳压器输出"><a href="#添加线性稳压器输出" class="headerlink" title="添加线性稳压器输出"></a>添加线性稳压器输出</h2><h2 id="减少输出电容-线性稳压器输出"><a href="#减少输出电容-线性稳压器输出" class="headerlink" title="减少输出电容+线性稳压器输出"></a>减少输出电容+线性稳压器输出</h2><h1 id="效率测试"><a href="#效率测试" class="headerlink" title="效率测试"></a>效率测试</h1><h1 id="负载不对称测试"><a href="#负载不对称测试" class="headerlink" title="负载不对称测试"></a>负载不对称测试</h1><p>实际上，负压输出依赖于正压的反馈，因此负压其实是开环输出。</p>
 <p>不过对于使用耦合电感的SEPIC+Ćuk电源，由于正负两路的电感耦合在一起，在负载不对称的情况下表现则会更好。</p>
 <h1 id="还需要测试但是我没设备了"><a href="#还需要测试但是我没设备了" class="headerlink" title="还需要测试但是我没设备了"></a>还需要测试但是我没设备了</h1><h1 id="开关节点波形和电感上的电压波形"><a href="#开关节点波形和电感上的电压波形" class="headerlink" title="开关节点波形和电感上的电压波形"></a>开关节点波形和电感上的电压波形</h1><p>电流波形我测不了，没有电流探头。</p>
+<h1 id="输出LDO"><a href="#输出LDO" class="headerlink" title="输出LDO"></a>输出LDO</h1><p>大多数DCDC芯片的没有使用优化的低频噪声设计，可以很明显看到输出中有低频噪声，这些来源于内部器件 基准的漂移，还有部分来自于输入信号</p>
+<p>不过好在这些低频信号通常频率很低，从几百到几K,LDO甚至是传统线性稳压器都可以很轻易消除。</p>
 
     </div>
 
@@ -492,7 +497,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8B%93%E6%89%91%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">拓扑简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SEPIC"><span class="nav-number">1.1.</span> <span class="nav-text">SEPIC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cuk"><span class="nav-number">1.2.</span> <span class="nav-text">Ćuk</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%89%E5%9E%8B%E5%92%8C%E5%8F%82%E6%95%B0%E8%AE%A1%E7%AE%97"><span class="nav-number">2.</span> <span class="nav-text">选型和参数计算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DC-DC%E8%8A%AF%E7%89%87%E9%80%89%E5%9E%8B"><span class="nav-number">2.1.</span> <span class="nav-text">DC-DC芯片选型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%B5%E6%84%9F"><span class="nav-number">2.2.</span> <span class="nav-text">电感</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E6%9E%81%E7%AE%A1"><span class="nav-number">2.3.</span> <span class="nav-text">二极管</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%80%A6%E5%90%88%E7%94%B5%E5%AE%B9"><span class="nav-number">2.4.</span> <span class="nav-text">耦合电容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E7%94%B5%E5%AE%B9"><span class="nav-number">2.5.</span> <span class="nav-text">输入电容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E7%94%B5%E5%AE%B9"><span class="nav-number">2.6.</span> <span class="nav-text">输出电容</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%BF%E7%9C%9F%E8%AE%BE%E8%AE%A1"><span class="nav-number">3.</span> <span class="nav-text">仿真设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%85%B3%E8%8A%82%E7%82%B9%E6%B3%A2%E5%BD%A2"><span class="nav-number">3.1.</span> <span class="nav-text">开关节点波形</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%CE%A0%E5%9E%8B%E6%BB%A4%E6%B3%A2%E5%99%A8%E8%AE%BE%E8%AE%A1"><span class="nav-number">4.</span> <span class="nav-text">输出Π型滤波器设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%83%85%E5%86%B5%E5%88%86%E6%9E%90"><span class="nav-number">4.1.</span> <span class="nav-text">情况分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Then-How-to-Do"><span class="nav-number">4.2.</span> <span class="nav-text">Then How to Do ?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%BF%E7%9C%9F"><span class="nav-number">4.3.</span> <span class="nav-text">仿真</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PSRR"><span class="nav-number">5.</span> <span class="nav-text">PSRR</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E7%89%A9%E6%8B%8D%E7%85%A7"><span class="nav-number">6.</span> <span class="nav-text">实物拍照</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%B9%E6%B3%A2%E6%B5%8B%E8%AF%95"><span class="nav-number">7.</span> <span class="nav-text">纹波测试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%CE%A0%E5%9E%8B%E6%BB%A4%E6%B3%A2%E5%99%A8%E8%BE%93%E5%87%BA"><span class="nav-number">7.1.</span> <span class="nav-text">无Π型滤波器输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%CE%A0%E5%9E%8B%E6%BB%A4%E6%B3%A2%E5%99%A8%E8%BE%93%E5%87%BA"><span class="nav-number">7.2.</span> <span class="nav-text">有Π型滤波器输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%CE%A0%E5%9E%8B%E6%BB%A4%E6%B3%A2%E5%99%A8%E8%BE%93%E5%87%BA%EF%BC%88%E5%87%8F%E9%85%8D%E7%94%B5%E5%AE%B9%EF%BC%89"><span class="nav-number">7.3.</span> <span class="nav-text">有Π型滤波器输出（减配电容）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%BA%BF%E6%80%A7%E7%A8%B3%E5%8E%8B%E5%99%A8%E8%BE%93%E5%87%BA"><span class="nav-number">7.4.</span> <span class="nav-text">添加线性稳压器输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%8F%E5%B0%91%E8%BE%93%E5%87%BA%E7%94%B5%E5%AE%B9-%E7%BA%BF%E6%80%A7%E7%A8%B3%E5%8E%8B%E5%99%A8%E8%BE%93%E5%87%BA"><span class="nav-number">7.5.</span> <span class="nav-text">减少输出电容+线性稳压器输出</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%88%E7%8E%87%E6%B5%8B%E8%AF%95"><span class="nav-number">8.</span> <span class="nav-text">效率测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B4%9F%E8%BD%BD%E4%B8%8D%E5%AF%B9%E7%A7%B0%E6%B5%8B%E8%AF%95"><span class="nav-number">9.</span> <span class="nav-text">负载不对称测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%98%E9%9C%80%E8%A6%81%E6%B5%8B%E8%AF%95%E4%BD%86%E6%98%AF%E6%88%91%E6%B2%A1%E8%AE%BE%E5%A4%87%E4%BA%86"><span class="nav-number">10.</span> <span class="nav-text">还需要测试但是我没设备了</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%80%E5%85%B3%E8%8A%82%E7%82%B9%E6%B3%A2%E5%BD%A2%E5%92%8C%E7%94%B5%E6%84%9F%E4%B8%8A%E7%9A%84%E7%94%B5%E5%8E%8B%E6%B3%A2%E5%BD%A2"><span class="nav-number">11.</span> <span class="nav-text">开关节点波形和电感上的电压波形</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8B%93%E6%89%91%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">拓扑简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SEPIC"><span class="nav-number">1.1.</span> <span class="nav-text">SEPIC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cuk"><span class="nav-number">1.2.</span> <span class="nav-text">Ćuk</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%89%E5%9E%8B%E5%92%8C%E5%8F%82%E6%95%B0%E8%AE%A1%E7%AE%97"><span class="nav-number">2.</span> <span class="nav-text">选型和参数计算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DC-DC%E8%8A%AF%E7%89%87%E9%80%89%E5%9E%8B"><span class="nav-number">2.1.</span> <span class="nav-text">DC-DC芯片选型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%B5%E6%84%9F"><span class="nav-number">2.2.</span> <span class="nav-text">电感</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E6%9E%81%E7%AE%A1"><span class="nav-number">2.3.</span> <span class="nav-text">二极管</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%80%A6%E5%90%88%E7%94%B5%E5%AE%B9"><span class="nav-number">2.4.</span> <span class="nav-text">耦合电容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E7%94%B5%E5%AE%B9"><span class="nav-number">2.5.</span> <span class="nav-text">输入电容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E7%94%B5%E5%AE%B9"><span class="nav-number">2.6.</span> <span class="nav-text">输出电容</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%BF%E7%9C%9F%E8%AE%BE%E8%AE%A1"><span class="nav-number">3.</span> <span class="nav-text">仿真设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%B3%A2%E5%BD%A2"><span class="nav-number">3.1.</span> <span class="nav-text">输出波形</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%85%B3%E8%8A%82%E7%82%B9%E6%B3%A2%E5%BD%A2"><span class="nav-number">3.2.</span> <span class="nav-text">开关节点波形</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%CE%A0%E5%9E%8B%E6%BB%A4%E6%B3%A2%E5%99%A8%E8%AE%BE%E8%AE%A1"><span class="nav-number">4.</span> <span class="nav-text">输出Π型滤波器设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%83%85%E5%86%B5%E5%88%86%E6%9E%90"><span class="nav-number">4.1.</span> <span class="nav-text">情况分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Then-How-to-Do"><span class="nav-number">4.2.</span> <span class="nav-text">Then How to Do ?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%BF%E7%9C%9F"><span class="nav-number">4.3.</span> <span class="nav-text">仿真</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%BB%A4%E6%B3%A2%E5%99%A8%E6%98%AF%E5%90%A6%E5%BA%94%E8%AF%A5%E6%94%BE%E7%BD%AE%E5%9C%A8%E7%8E%AF%E8%B7%AF%E4%BB%A5%E5%86%85%EF%BC%9F"><span class="nav-number">4.4.</span> <span class="nav-text">输出滤波器是否应该放置在环路以内？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PSRR"><span class="nav-number">5.</span> <span class="nav-text">PSRR</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E7%89%A9%E6%8B%8D%E7%85%A7"><span class="nav-number">6.</span> <span class="nav-text">实物拍照</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%B9%E6%B3%A2%E6%B5%8B%E8%AF%95"><span class="nav-number">7.</span> <span class="nav-text">纹波测试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%CE%A0%E5%9E%8B%E6%BB%A4%E6%B3%A2%E5%99%A8%E8%BE%93%E5%87%BA"><span class="nav-number">7.1.</span> <span class="nav-text">无Π型滤波器输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%CE%A0%E5%9E%8B%E6%BB%A4%E6%B3%A2%E5%99%A8%E8%BE%93%E5%87%BA"><span class="nav-number">7.2.</span> <span class="nav-text">有Π型滤波器输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%CE%A0%E5%9E%8B%E6%BB%A4%E6%B3%A2%E5%99%A8%E8%BE%93%E5%87%BA%EF%BC%88%E5%87%8F%E9%85%8D%E7%94%B5%E5%AE%B9%EF%BC%89"><span class="nav-number">7.3.</span> <span class="nav-text">有Π型滤波器输出（减配电容）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%BA%BF%E6%80%A7%E7%A8%B3%E5%8E%8B%E5%99%A8%E8%BE%93%E5%87%BA"><span class="nav-number">7.4.</span> <span class="nav-text">添加线性稳压器输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%8F%E5%B0%91%E8%BE%93%E5%87%BA%E7%94%B5%E5%AE%B9-%E7%BA%BF%E6%80%A7%E7%A8%B3%E5%8E%8B%E5%99%A8%E8%BE%93%E5%87%BA"><span class="nav-number">7.5.</span> <span class="nav-text">减少输出电容+线性稳压器输出</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%88%E7%8E%87%E6%B5%8B%E8%AF%95"><span class="nav-number">8.</span> <span class="nav-text">效率测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B4%9F%E8%BD%BD%E4%B8%8D%E5%AF%B9%E7%A7%B0%E6%B5%8B%E8%AF%95"><span class="nav-number">9.</span> <span class="nav-text">负载不对称测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%98%E9%9C%80%E8%A6%81%E6%B5%8B%E8%AF%95%E4%BD%86%E6%98%AF%E6%88%91%E6%B2%A1%E8%AE%BE%E5%A4%87%E4%BA%86"><span class="nav-number">10.</span> <span class="nav-text">还需要测试但是我没设备了</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%80%E5%85%B3%E8%8A%82%E7%82%B9%E6%B3%A2%E5%BD%A2%E5%92%8C%E7%94%B5%E6%84%9F%E4%B8%8A%E7%9A%84%E7%94%B5%E5%8E%8B%E6%B3%A2%E5%BD%A2"><span class="nav-number">11.</span> <span class="nav-text">开关节点波形和电感上的电压波形</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BE%93%E5%87%BALDO"><span class="nav-number">12.</span> <span class="nav-text">输出LDO</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -565,12 +570,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="本站总字数">69k</span>
+    <span title="本站总字数">70k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:33</span>
+    <span title="站点阅读时长">2:35</span>
 </div>
 
         
@@ -685,6 +690,8 @@ window.addEventListener('pjax:success', () => {
 
 
     <div id="pjax">
+  
+
   
 
   
