@@ -259,26 +259,38 @@
       
         <p>严格来说，应该是功能测试，因为我手上只有6.5位DMM, 我甚至买不起好的基准芯片（心痛价格），对于一个32bit ADC来说可能我测试的条件有点太丐了。</p>
 <span id="more"></span>
-
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最初想测试这个完全是因为在TB上看见这个正儿八经的ADC片子只需要18块钱（拆机），而ADS1262只少一个24bit 辅助ADC , 价格是8元。 我直接心动。</p>
-<p>买来之后，我首先找有没有现成的资料，在电脑上用everything搜索，发现有我写的工程。。。。我发现这玩意儿竟然是我大一的时候参加比赛调过的ADC ,当时做的是组合秤，现在想起来当时好像是说超过200yuan&#x2F;pcs……</p>
+<h1 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h1>
+<p>最初想测试这个完全是因为在TB上看见这个正儿八经的ADC片子只需要18块钱（拆机），而ADS1262只少一个24bit 辅助ADC , 价格是8元。 我直接心动。</p>
+<p>买来之后，我首先找有没有现成的资料，在电脑上用everything搜索，发现有我写的工程。。。。我发现这玩意儿竟然是我大一的时候参加比赛调过的ADC ,当时做的是组合秤，现在想起来当时好像是说超过200yuan/pcs…</p>
 <pre><code>拆机片真是个好东西。
 </code></pre>
 <p>于是大致理了一下之前出现的问题。</p>
 <p>当时硬件不是我做的，不过我倒是比较清楚问题，因为最后的输出转换结果实在是太拉了，记得好像是有效位数大概只有12bit，按照手册上最高25bit的无噪分辨率来看这实在是差到没边了。</p>
-<p>另外，当时项目所使用的供电是AMS1117-5.0 ,虽然比直接用开关电源强一点，但是这个1117承担了从外部开关电源转换的重任。。。也就是说很可能对于纹波抑制基本上没啥效果。<br>另外当时还遇到了ADC转换发热较严重的情况，不知道是设计原因还是实际存在。</p>
+<p>另外，当时项目所使用的供电是AMS1117-5.0 ,虽然比直接用开关电源强一点，但是这个1117承担了从外部开关电源转换的重任。。。也就是说很可能对于纹波抑制基本上没啥效果。<br>
+另外当时还遇到了ADC转换发热较严重的情况，不知道是设计原因还是实际存在。</p>
 <p>最后重新看了一下手册和代码，发现当时的代码寄存器配置能让这个ADC跑起来就是个奇迹。。。。当时使用的祖传代码，还有不知道谁说的这个adc只有俩通道，但是代码里面实际开了三个通道，真的难绷。（实际上有一堆通道可以配置为单端或者差分）</p>
-<p>所以基本上需要解决的问题是：<br>1、基准源<br>2、供电<br>3、修（重写）代码</p>
+<p>所以基本上需要解决的问题是：<br>
+1、基准源<br>
+2、供电<br>
+3、修（重写）代码</p>
 <pre><code>顺便吐槽一下TI的ADC的寄存器配置，真的难顶，一大堆寄存器，例程也不给，用起来极为麻烦。
 </code></pre>
 <p>写这篇文之前我已经开始画板了，当时考虑的是能完整测试功能，包括不同供电的影响，时钟的影响和基准的影响。</p>
 <p>其实在手册上我感觉内部基准的参数是很不错的，但是大家表示存在水分，所以仍然需要测试外部基准（实际上不用测试，直接氪金就行了），实际上我挂了一个LT1009, 很可能是远不能达标的。</p>
-<p>供电设计则选择了可选的LP2985 LP2951 LT3042的组合选择，其中LT3042作为地表最强LDO,没有组合，直接输出5V供电给ADS1263 , 而其他的设计存在级联或者单独出电压的选择，使用跳线帽切换。外部供电则选择之前做的线性电源，虽然可能不咋好但是比开关电源强多了，后期测试则使用18650串联。<br>（但是实际上这里有些过度设计在里面，后面会解释）</p>
+<p>供电设计则选择了可选的LP2985 LP2951 LT3042的组合选择，其中LT3042作为地表最强LDO,没有组合，直接输出5V供电给ADS1263 , 而其他的设计存在级联或者单独出电压的选择，使用跳线帽切换。外部供电则选择之前做的线性电源，虽然可能不咋好但是比开关电源强多了，后期测试则使用18650串联。<br>
+（但是实际上这里有些过度设计在里面，后面会解释）</p>
 <p>时钟则预留了外部有源晶振和无源晶振以及SMA输入口，在设计这个板子的时候还没有意识到内部RC振荡器有多么不稳定，以及没有了解到时钟对Σ-Δ ADC转化的影响（TODO:这里写上参考文章号），幸好多个心眼都给预留了。</p>
 <p>当时预留的单片机是CH549, 预留了ADC的SPI接口排针，现在看来，幸好留了排针。。。CH549对于我来说还是太难用了，毕竟51没有仿真功能。所以使用手上有的GD32F350G8单片机。–GD32还是太难用了，于是换成了手上的RP2040开发板。</p>
-<h1 id="附：拆机片检查流程"><a href="#附：拆机片检查流程" class="headerlink" title="附：拆机片检查流程"></a>附：拆机片检查流程</h1><p>检查REFOUT,这个默认是输出的2.5V,能输出大概电路没问题，大概芯片也没问题。<br>检查时钟，这里我搁置太久了被自己坑了一把。我原来打算上外部时钟，焊接了一半结果搞忘记了，没有时钟调试了半天不知道为什么。在原理图标记了也没提前看。。。<br>使用内部时钟必须把XTAL1接地才能启用。<br>然后可以直接发送一个SPI命令关闭POWER（直接设置为0），看到REFOUT关了就不用检查通信了，说明通信OK.</p>
-<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><p>Fundamentals of Precision ADC Noise Analysis-slyy192.TI</p>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a target="_blank" rel="noopener" href="https://xdevs.com/review/ti_ads1262_p1/">xDevs.com | Texas Instruments ADS1262 32-bit ADC evaluation, intro (part 1)</a><br><a target="_blank" rel="noopener" href="https://xdevs.com/review/ti_ads1262_p2/">xDevs.com | Texas Instruments ADS1262 32-bit ADC evaluation, testing (part 2)</a></p>
+<h1 id="附拆机片检查流程"><a class="markdownIt-Anchor" href="#附拆机片检查流程"></a> 附：拆机片检查流程</h1>
+<p>检查REFOUT,这个默认是输出的2.5V,能输出大概电路没问题，大概芯片也没问题。<br>
+检查时钟，这里我搁置太久了被自己坑了一把。我原来打算上外部时钟，焊接了一半结果搞忘记了，没有时钟调试了半天不知道为什么。在原理图标记了也没提前看。。。<br>
+使用内部时钟必须把XTAL1接地才能启用。<br>
+然后可以直接发送一个SPI命令关闭POWER（直接设置为0），看到REFOUT关了就不用检查通信了，说明通信OK.</p>
+<h1 id="参考文档"><a class="markdownIt-Anchor" href="#参考文档"></a> 参考文档</h1>
+<p>Fundamentals of Precision ADC Noise Analysis-slyy192.TI</p>
+<h1 id="参考链接"><a class="markdownIt-Anchor" href="#参考链接"></a> 参考链接</h1>
+<p><a target="_blank" rel="noopener" href="https://xdevs.com/review/ti_ads1262_p1/">xDevs.com | Texas Instruments ADS1262 32-bit ADC evaluation, intro (part 1)</a><br>
+<a target="_blank" rel="noopener" href="https://xdevs.com/review/ti_ads1262_p2/">xDevs.com | Texas Instruments ADS1262 32-bit ADC evaluation, testing (part 2)</a></p>
 
     </div>
 
@@ -362,7 +374,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%99%84%EF%BC%9A%E6%8B%86%E6%9C%BA%E7%89%87%E6%A3%80%E6%9F%A5%E6%B5%81%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">附：拆机片检查流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3"><span class="nav-number">3.</span> <span class="nav-text">参考文档</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-number">4.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text"> 前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%99%84%E6%8B%86%E6%9C%BA%E7%89%87%E6%A3%80%E6%9F%A5%E6%B5%81%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text"> 附：拆机片检查流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3"><span class="nav-number">3.</span> <span class="nav-text"> 参考文档</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-number">4.</span> <span class="nav-text"> 参考链接</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

@@ -259,10 +259,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>    标题是AI写的，本来我想写的是<code>用RP2040实现AWG</code> ，AI说我这个标题不够专业，给我改了一大串，我感觉确实挺🐂🍺，就直接贴上来了。</p>
+        <p>标题是AI写的，本来我想写的是<code>用RP2040实现AWG</code> ，AI说我这个标题不够专业，给我改了一大串，我感觉确实挺🐂🍺，就直接贴上来了。</p>
 <span id="more"></span>
-
-<h1 id="为什么要写这个"><a href="#为什么要写这个" class="headerlink" title="为什么要写这个"></a>为什么要写这个</h1><p>网上有一堆RP2040实现的AWG的设计，其中有一个传播比较广泛的是一个用python写的<a target="_blank" rel="noopener" href="https://www.instructables.com/Poor-Mans-Waveform-Generator-Based-on-RP2040-Raspb/">配合一个10bit R2R DAC实现的AWG设计</a>。然而，我认为它有错误:基本上所有的帖子认为连续的DMA传输直接使用例程中给出的控制传输的方法就可以了，然而这种传输方法会损失一个时钟周期用来搬运DMA配置。这意味着信号周期没有被严格控制。对于主频轻轻松松就可以达到270MHz的RP2040来说这个Bug很难看出来，但是如果生成信号波形周期较短就可以看到。B站有一个对于原开源项目的<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Xq4y1Y7eF">复刻</a>，在输出高频的时候就能看出来了。</p>
+<h1 id="为什么要写这个"><a class="markdownIt-Anchor" href="#为什么要写这个"></a> 为什么要写这个</h1>
+<p>网上有一堆RP2040实现的AWG的设计，其中有一个传播比较广泛的是一个用python写的<a target="_blank" rel="noopener" href="https://www.instructables.com/Poor-Mans-Waveform-Generator-Based-on-RP2040-Raspb/">配合一个10bit R2R DAC实现的AWG设计</a>。然而，我认为它有错误:基本上所有的帖子认为连续的DMA传输直接使用例程中给出的控制传输的方法就可以了，然而这种传输方法会损失一个时钟周期用来搬运DMA配置。这意味着信号周期没有被严格控制。对于主频轻轻松松就可以达到270MHz的RP2040来说这个Bug很难看出来，但是如果生成信号波形周期较短就可以看到。B站有一个对于原开源项目的<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Xq4y1Y7eF">复刻</a>，在输出高频的时候就能看出来了。</p>
 <pre><code>这个复刻的视频不够详细，后面我会给出具体测试结果。
 
 不知道为什么RP2040作为树莓派一个很不错的产品，有相当多的讨论和开源环境，但是有些教程却始终是抄来抄去，甚至英文环境也是，可能确实是没啥人用这个做产品就是这样吧。。。包括下载配置，有更好的方法，但是容易找到的教程都是最开始手册上给出的方法。
@@ -271,20 +271,23 @@
 <blockquote>
 <p>Talk is cheap. Show me the code</p>
 </blockquote>
-<p>    我最开始不甚了解乒乓传输这个概念，说来惭愧，写了几年单片机，就用过一次DMA, 最后还因为操作逻辑不好处理舍弃了，其他时候要么是用垃圾单片机压根没有DMA，要么是没这需求。这里还是第一次正儿八经看看DMA怎么做。</p>
+<p>我最开始不甚了解乒乓传输这个概念，说来惭愧，写了几年单片机，就用过一次DMA, 最后还因为操作逻辑不好处理舍弃了，其他时候要么是用垃圾单片机压根没有DMA，要么是没这需求。这里还是第一次正儿八经看看DMA怎么做。</p>
 <p>代码验证想法是正确的，分别验证了原来的控制传输确实会出错，测试了信号波形，以及验证了使用PingPong传输能得到想要的结果。</p>
 <pre><code>手册中给出的例子确实实现了连续传输不需要CPU介入，但是它从来没说过时序是严格的，单独为DMA循环传输做了功能的有STM32,配置循环就会自动从地址段环回取数据。RP2040的DMA IP核似乎是买的公版IP，不过用下来还是比较好用的。
 </code></pre>
 <p>下面正文里面详细说设计和测试。</p>
-<h1 id="RP2040-DMA"><a href="#RP2040-DMA" class="headerlink" title="RP2040 DMA"></a>RP2040 DMA</h1><p>DMA，顾名思义，直接内存访问，无需使用CPU搬运数据。</p>
+<h1 id="rp2040-dma"><a class="markdownIt-Anchor" href="#rp2040-dma"></a> RP2040 DMA</h1>
+<p>DMA，顾名思义，直接内存访问，无需使用CPU搬运数据。</p>
 <p>有一个触发其他通道的概念比较有意思，可以配置为每个通道传输结束后会自动触发另外一个DMA通道启动，很明显，这样就可以实现一个PingPong传输了，甚至可以多个通道接力最后转回来。遗憾的是它并不能自己触发自己，所以实现连续传输至少需要两个DMA通道.</p>
-<p>由于没有自动的循环模式，想要严格控制传输时序，就需要DMA通道在下一次传输前准备好，  </p>
+<p>由于没有自动的循环模式，想要严格控制传输时序，就需要DMA通道在下一次传输前准备好，</p>
 <p>由于DMA通道配置的传输地址并不会自己回到最初的地址，因此每次传输结束后至少要重新配置传输起始地址才能在下一次传输中传输正确的数据。因此，这种方法保证了时间间隔的严格，但是作为牺牲是CPU必然要耗费一定时间参与传输任务。这可能对于其他任务是有影响的。</p>
 <pre><code>然而RP2040是双核的，实在优化不出来完全可以扔到另一个核心跑（
 </code></pre>
-<h1 id="R2R-DAC"><a href="#R2R-DAC" class="headerlink" title="R2R DAC"></a>R2R DAC</h1><p>为什么使用这个DAC? 由于是电阻结构所以很容易做而且能达到不错的输出速度。当然了很多成品并行DAC也是使用的R2R结构，而且拆机件也不贵，这里首选选用手工使用电阻搭建这个DAC，为了好玩，其后再测试成品集成芯片。</p>
+<h1 id="r2r-dac"><a class="markdownIt-Anchor" href="#r2r-dac"></a> R2R DAC</h1>
+<p>为什么使用这个DAC? 由于是电阻结构所以很容易做而且能达到不错的输出速度。当然了很多成品并行DAC也是使用的R2R结构，而且拆机件也不贵，这里首选选用手工使用电阻搭建这个DAC，为了好玩，其后再测试成品集成芯片。</p>
 <p>关于DAC，可以看我这篇博客：<a target="_blank" rel="noopener" href="https://blog.csdn.net/always_one/article/details/104560604?spm=1001.2014.3001.5501">(36条消息) 关于DAC的原理_dac工作原理_你要写卓的博客-CSDN博客</a>（TODO:改天找到原文迁移到自己的博客上）</p>
-<h1 id="硬件设计"><a href="#硬件设计" class="headerlink" title="硬件设计"></a>硬件设计</h1><p>其实最开始的测试版本充其量只能叫做硬件连接不能叫做硬件设计，因为测试过程中只是用到了一个开发板连接了一堆电阻而已。</p>
+<h1 id="硬件设计"><a class="markdownIt-Anchor" href="#硬件设计"></a> 硬件设计</h1>
+<p>其实最开始的测试版本充其量只能叫做硬件连接不能叫做硬件设计，因为测试过程中只是用到了一个开发板连接了一堆电阻而已。</p>
 
     </div>
 
@@ -370,7 +373,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%86%99%E8%BF%99%E4%B8%AA"><span class="nav-number">1.</span> <span class="nav-text">为什么要写这个</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RP2040-DMA"><span class="nav-number">2.</span> <span class="nav-text">RP2040 DMA</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#R2R-DAC"><span class="nav-number">3.</span> <span class="nav-text">R2R DAC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1"><span class="nav-number">4.</span> <span class="nav-text">硬件设计</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%86%99%E8%BF%99%E4%B8%AA"><span class="nav-number">1.</span> <span class="nav-text"> 为什么要写这个</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rp2040-dma"><span class="nav-number">2.</span> <span class="nav-text"> RP2040 DMA</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#r2r-dac"><span class="nav-number">3.</span> <span class="nav-text"> R2R DAC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1"><span class="nav-number">4.</span> <span class="nav-text"> 硬件设计</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

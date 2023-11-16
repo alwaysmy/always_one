@@ -258,25 +258,34 @@
       
         <p>这篇文章是对WinUSB上位机开发的一个具体总结日志。详细的其他知识笔记分开来写。</p>
 <span id="more"></span>
-
 <p>起因是当时脑子一热准备给抽奖中的HPI1000重新编程开发，经过一两个月的磨蹭把下位机部分软件写差不多了，需要上位机联调了，同时也准备一同开发HPI1000对应的上位机。</p>
 <p>TivaWare中附带了一个C语言写的命令行的Windows上位机，改一改也能用，但是用起来不是很方便。而且由于QT忘记差不多了，一开始我是不打算使用QT的。所以下面会先说说我挑选开发工具的过程。</p>
-<h1 id="框架选择"><a href="#框架选择" class="headerlink" title="框架选择"></a>框架选择</h1><p>HPI1000主要是具有一个虚拟示波器，由于之前用QT写虚拟示波器的时候感觉痛苦万分，这次想要舍弃这个框架，而且QT整了不少活儿，开源闭源的问题让人很不爽，所以开始寻找其他的图形框架。</p>
-<p>然后就找到了Godot。这是一个小型游戏引擎，Godot 3.5总共也才三十多M，QT打包之后还真不一定比这个小，因此完全可以考虑。但是编程的时候遇到了问题。<br>作为一个开源软件，Godot发展并不是特别好，所以很多组件是没有的。例如Windows下串口的访问，USB的访问，如果使用它自己的GDscript，这些组件都需要自己使用C&#x2F;C++来实现。</p>
-<p>起初我是不想去用C&#x2F;C++的，因为需要包含WindowsDDK才能继续开发这个驱动，我以为WinUSB有更优雅的访问方式（而且我以为很难）。<br>好在Godot同时也支持使用C#来编程，这样可以任意引入其他.net的包，然而我太天真了。<br>因为虽然.net原生支持串口访问，但是我没想到.NET作为微软的儿子，WinUSB在.NET中的使用仍然不简单（一开始我以为根本就没有.NET的支持）<br>不死心的我决定找找有没有第三方包，结果是有，但是不好用。。。比如LIBUSB，然而需要额外安装libusb的驱动。。这就违背了我的初衷：希望设备是免驱的。</p>
-<p>在.net应用中使用C&#x2F;C++方法也不是没有，那就是引入DLL. DLL这不是有现成的嘛，TivaWare中的那个DLL就可以使用。然而这是个大坑，不仅有指针的问题，还有DLL编译的时候和原编译器位数有关的问题，也就是说有可能这个DLL本身我还要重新编译一次。</p>
+<h1 id="框架选择"><a class="markdownIt-Anchor" href="#框架选择"></a> 框架选择</h1>
+<p>HPI1000主要是具有一个虚拟示波器，由于之前用QT写虚拟示波器的时候感觉痛苦万分，这次想要舍弃这个框架，而且QT整了不少活儿，开源闭源的问题让人很不爽，所以开始寻找其他的图形框架。</p>
+<p>然后就找到了Godot。这是一个小型游戏引擎，Godot 3.5总共也才三十多M，QT打包之后还真不一定比这个小，因此完全可以考虑。但是编程的时候遇到了问题。<br>
+作为一个开源软件，Godot发展并不是特别好，所以很多组件是没有的。例如Windows下串口的访问，USB的访问，如果使用它自己的GDscript，这些组件都需要自己使用C/C++来实现。</p>
+<p>起初我是不想去用C/C++的，因为需要包含WindowsDDK才能继续开发这个驱动，我以为WinUSB有更优雅的访问方式（而且我以为很难）。<br>
+好在Godot同时也支持使用C#来编程，这样可以任意引入其他.net的包，然而我太天真了。<br>
+因为虽然.net原生支持串口访问，但是我没想到.NET作为微软的儿子，WinUSB在.NET中的使用仍然不简单（一开始我以为根本就没有.NET的支持）<br>
+不死心的我决定找找有没有第三方包，结果是有，但是不好用。。。比如LIBUSB，然而需要额外安装libusb的驱动。。这就违背了我的初衷：希望设备是免驱的。</p>
+<p>在.net应用中使用C/C++方法也不是没有，那就是引入DLL. DLL这不是有现成的嘛，TivaWare中的那个DLL就可以使用。然而这是个大坑，不仅有指针的问题，还有DLL编译的时候和原编译器位数有关的问题，也就是说有可能这个DLL本身我还要重新编译一次。</p>
 <p>那我还不如直接重新写。</p>
-<p>上面的问题我另外写了具体的USB框架的选择，这里不再细说，总之就是当我决心使用C#的时候，发现事情最后都指向了使用C&#x2F;C++老老实实调用WinUSB API来写。</p>
+<p>上面的问题我另外写了具体的USB框架的选择，这里不再细说，总之就是当我决心使用C#的时候，发现事情最后都指向了使用C/C++老老实实调用WinUSB API来写。</p>
 <pre><code>一开始我以为WinUSB API的调用会很麻烦，资料找起来也费劲，微软的资料看不大明白。。。后来才发现非常简单。
 </code></pre>
-<p>当我打开TivaWare的 lmusbdll 的source code，我发现这似乎就是简单封装了一下WinUSB API….参考别人的QT的winUSB demo,我发现两者好像没有什么区别。。。</p>
+<p>当我打开TivaWare的 lmusbdll 的source code，我发现这似乎就是简单封装了一下WinUSB API…参考别人的QT的winUSB demo,我发现两者好像没有什么区别。。。</p>
 <p>所以最终决定直接使用QT来写。</p>
-<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><p>添加依赖库。<br>在.pro中添加SetupAPI 和winusb，用来给后面调用。</p>
+<h1 id="步骤"><a class="markdownIt-Anchor" href="#步骤"></a> 步骤</h1>
+<p>添加依赖库。<br>
+在.pro中添加SetupAPI 和winusb，用来给后面调用。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 手动添加库</span><br><span class="line">win32: LIBS += -lSetupAPI </span><br><span class="line">win32: LIBS += -lwinusb</span><br></pre></td></tr></table></figure>
-
-<p>复制粘贴lmusb<br>去掉用不上的部分，把函数全部复制过来，去掉原来的导出的声明，直接改成普通函数。<br>添加一个速度查询的函数。</p>
-<p>添加WinUSBdevice设备类<br>方便承载原来的全局变量。</p>
-<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><p>添加一个线程用来循环读取USB设备，防止主界面卡死。</p>
+<p>复制粘贴lmusb<br>
+去掉用不上的部分，把函数全部复制过来，去掉原来的导出的声明，直接改成普通函数。<br>
+添加一个速度查询的函数。</p>
+<p>添加WinUSBdevice设备类<br>
+方便承载原来的全局变量。</p>
+<h2 id="功能"><a class="markdownIt-Anchor" href="#功能"></a> 功能</h2>
+<p>添加一个线程用来循环读取USB设备，防止主界面卡死。</p>
 <p>TODO</p>
 <p>目前的结果是写的还是有些问题，数据量稍微大一点界面就会卡住，虽然如果不刷新界面只是保留数据没有问题。</p>
 
@@ -359,7 +368,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A1%86%E6%9E%B6%E9%80%89%E6%8B%A9"><span class="nav-number">1.</span> <span class="nav-text">框架选择</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4"><span class="nav-number">2.</span> <span class="nav-text">步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD"><span class="nav-number">2.1.</span> <span class="nav-text">功能</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A1%86%E6%9E%B6%E9%80%89%E6%8B%A9"><span class="nav-number">1.</span> <span class="nav-text"> 框架选择</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4"><span class="nav-number">2.</span> <span class="nav-text"> 步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD"><span class="nav-number">2.1.</span> <span class="nav-text"> 功能</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

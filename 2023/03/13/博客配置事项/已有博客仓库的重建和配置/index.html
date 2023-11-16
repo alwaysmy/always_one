@@ -260,11 +260,14 @@
       
         <p>每次重装系统什么的，虽然仓库我做了备份，但是还是要重新配置一下环境，为了以后都能无脑配置，这里集中记录一下过程。</p>
 <span id="more"></span>
-
 <p>···</p>
-<h2 id="博客源文件重新加入备份"><a href="#博客源文件重新加入备份" class="headerlink" title="博客源文件重新加入备份"></a>博客源文件重新加入备份</h2><p>1、从NAS上打开MyWeb的Syncthing同步项目，勾选共享到这台电脑，设置一下路径就行，还有启用排除列表。</p>
+<h2 id="博客源文件重新加入备份"><a class="markdownIt-Anchor" href="#博客源文件重新加入备份"></a> 博客源文件重新加入备份</h2>
+<p>1、从NAS上打开MyWeb的Syncthing同步项目，勾选共享到这台电脑，设置一下路径就行，还有启用排除列表。</p>
 <p>不过上面这一项不是必须的，因为如果之前做好了备份，只需要复制AppData下的文件，Syncthing的配置文件就在里面不用自己去修改了，下次重装的时候设置会保持不变。</p>
-<p>2、重新安装nodejs, 不用勾选安装其他模块，尤其是自己已经安装了python。<br>如果之前备份了appdata，模块应该还在。<br>尝试在博客存放文件夹下面cmd里面执行hexo -v看看能不能用，如果不能就重新安装hexo. (我没试)<br>npm install -g hexo-cli</p>
+<p>2、重新安装nodejs, 不用勾选安装其他模块，尤其是自己已经安装了python。<br>
+如果之前备份了appdata，模块应该还在。<br>
+尝试在博客存放文件夹下面cmd里面执行hexo -v看看能不能用，如果不能就重新安装hexo. (我没试)<br>
+npm install -g hexo-cli</p>
 <p>然后后面的步骤就不用操作了，可以直接使用hexo命令了。</p>
 <p>3、由于之前已经修改过git配置了，这里直接使用hexo d，可能会提示git仓库用户不一致，按照提示把git仓库加入安全目录即可发布。</p>
 <p>4、能用就不要尝试更新组件了。</p>
@@ -352,7 +355,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%9A%E5%AE%A2%E6%BA%90%E6%96%87%E4%BB%B6%E9%87%8D%E6%96%B0%E5%8A%A0%E5%85%A5%E5%A4%87%E4%BB%BD"><span class="nav-number">1.</span> <span class="nav-text">博客源文件重新加入备份</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%9A%E5%AE%A2%E6%BA%90%E6%96%87%E4%BB%B6%E9%87%8D%E6%96%B0%E5%8A%A0%E5%85%A5%E5%A4%87%E4%BB%BD"><span class="nav-number">1.</span> <span class="nav-text"> 博客源文件重新加入备份</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

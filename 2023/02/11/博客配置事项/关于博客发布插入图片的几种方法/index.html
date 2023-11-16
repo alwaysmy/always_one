@@ -260,19 +260,31 @@
       
         <p>这里说的情况都是markdown的文件。</p>
 <span id="more"></span>
-<p><strong>1、图床外链</strong><br>这需要上传图片，多少有些不方便，还取决于图床稳定。不过也可以自己买oss，当然 ，就是费钱。<br><strong>2、上传图片到仓库</strong><br>能解决自建博客的问题，但是复制到别的平台发布的时候有些不方便，不能自动上传图片。不过可以通过<br>复制博客可以obsidian的复制自动转成markdown功能，再发布到别的平台上。<br><strong>3、图片转base64直接嵌入md文档</strong><br>这个图片会跟着文件走，基本上是最稳妥的方式，但是在本地端不太好保存回去成图片。（快捷方法？）而且由于里面字符太多，搜索英文的时候会有很多误判断的结果。<br>可以使用小米笔记编辑博客文档，图片会自动转成base64。<br><strong>4、<a href="../%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/OneNote%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/OneNote%E5%A4%8D%E5%88%B6%E5%9B%BE%E7%89%87.md">OneNote复制图片</a></strong><br>OneNote用Ctrl+C复制图片粘贴到Obsidian里面的时候会附带图片的Base64和图片的OCR文字内容</p>
-<h1 id="具体插入图片语法"><a href="#具体插入图片语法" class="headerlink" title="具体插入图片语法"></a>具体插入图片语法</h1><p>1 最常见的markdown语法<br>2 HTML</p>
+<p><strong>1、图床外链</strong><br>
+这需要上传图片，多少有些不方便，还取决于图床稳定。不过也可以自己买oss，当然 ，就是费钱。<br>
+<strong>2、上传图片到仓库</strong><br>
+能解决自建博客的问题，但是复制到别的平台发布的时候有些不方便，不能自动上传图片。不过可以通过<br>
+复制博客可以obsidian的复制自动转成markdown功能，再发布到别的平台上。<br>
+<strong>3、图片转base64直接嵌入md文档</strong><br>
+这个图片会跟着文件走，基本上是最稳妥的方式，但是在本地端不太好保存回去成图片。（快捷方法？）而且由于里面字符太多，搜索英文的时候会有很多误判断的结果。<br>
+可以使用小米笔记编辑博客文档，图片会自动转成base64。<br>
+<strong>4、<a href="../%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/OneNote%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/OneNote%E5%A4%8D%E5%88%B6%E5%9B%BE%E7%89%87.md">OneNote复制图片</a></strong><br>
+OneNote用Ctrl+C复制图片粘贴到Obsidian里面的时候会附带图片的Base64和图片的OCR文字内容</p>
+<h1 id="具体插入图片语法"><a class="markdownIt-Anchor" href="#具体插入图片语法"></a> 具体插入图片语法</h1>
+<p>1 最常见的markdown语法<br>
+2 HTML</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">center</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;双路混音器制作记录/image-20211113034220481.png&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;image-20211113034220481&quot;</span> <span class="attr">style</span>=<span class="string">&quot;zoom: 67%;&quot;</span> /&gt;</span><span class="tag">&lt;/<span class="name">center</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>或者：</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">align</span>=<span class="string">center</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;./长白山行简记/IMG_20230606_195217-01.jpeg&quot;</span> <span class="attr">width</span>=<span class="string">&quot;600&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-<h1 id="部署之后的显示"><a href="#部署之后的显示" class="headerlink" title="部署之后的显示"></a>部署之后的显示</h1><p>Hexo默认的图片显示方法和md语法不兼容。。。<br>1、如果使用默认md语法：</p>
+<h1 id="部署之后的显示"><a class="markdownIt-Anchor" href="#部署之后的显示"></a> 部署之后的显示</h1>
+<p>Hexo默认的图片显示方法和md语法不兼容。。。<br>
+1、如果使用默认md语法：</p>
 <figure class="highlight md"><table><tr><td class="code"><pre><span class="line">{% asset_img "span>" "<span class="string">name</span>" %}</span><br></pre></td></tr></table></figure>
 <p>这时候渲染就会出问题。</p>
 <p>网上说法很多，我分不太清，实测有效：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-image-link --save</span><br><span class="line">npm install hexo-asset-image --save</span><br></pre></td></tr></table></figure>
-<p>然后打开hexo config中的：<br><code>post_asset_folder: true #是否启用资源文件夹（用来存放相对路径图片或文件）</code></p>
+<p>然后打开hexo config中的：<br>
+<code>post_asset_folder: true #是否启用资源文件夹（用来存放相对路径图片或文件）</code></p>
 <p>这两个似乎不是一个效果，但是考虑到有效我就不折腾了。。。</p>
 <p>网上有些要修改代码，这个应该是不用修改的</p>
 <p>2、使用HTML插入图片</p>
@@ -361,7 +373,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E8%AF%AD%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">具体插入图片语法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E4%B9%8B%E5%90%8E%E7%9A%84%E6%98%BE%E7%A4%BA"><span class="nav-number">2.</span> <span class="nav-text">部署之后的显示</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87%E8%AF%AD%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text"> 具体插入图片语法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E4%B9%8B%E5%90%8E%E7%9A%84%E6%98%BE%E7%A4%BA"><span class="nav-number">2.</span> <span class="nav-text"> 部署之后的显示</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
