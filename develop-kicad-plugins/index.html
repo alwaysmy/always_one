@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-con-sand.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon32.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"alwaysmy.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="当时JLC还没限定只有LCEDA免费打板，我决定使用KiCad完成后续大部分工程。一个痛点是我找了很久想要一个边框生成的插件也没找到，只有倒角插件，不知道外国人思路怎么这么怪。于是痛定思痛决定自己开发。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="KiCAD插件开发流程">
+<meta property="og:url" content="https://alwaysmy.github.io/develop-kicad-plugins/index.html">
+<meta property="og:site_name" content="加载中...">
+<meta property="og:description" content="当时JLC还没限定只有LCEDA免费打板，我决定使用KiCad完成后续大部分工程。一个痛点是我找了很久想要一个边框生成的插件也没找到，只有倒角插件，不知道外国人思路怎么这么怪。于是痛定思痛决定自己开发。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-08-15T03:40:36.000Z">
+<meta property="article:modified_time" content="2023-11-18T12:44:38.764Z">
+<meta property="article:author" content="Always L">
+<meta property="article:tag" content="KiCad">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://alwaysmy.github.io/develop-kicad-plugins/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>KiCAD插件开发流程 | 加载中...</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style><style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.8}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">加载中...</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">博客记录</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">32</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">31</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://alwaysmy.github.io/develop-kicad-plugins/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/misterchief.png">
+      <meta itemprop="name" content="Always L">
+      <meta itemprop="description" content="硬件，杂项，爱好">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="加载中...">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          KiCAD插件开发流程
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-08-15 11:40:36" itemprop="dateCreated datePublished" datetime="2022-08-15T11:40:36+08:00">2022-08-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-11-18 20:44:38" itemprop="dateModified" datetime="2023-11-18T20:44:38+08:00">2023-11-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Work-with-the-world/" itemprop="url" rel="index"><span itemprop="name">Work with the world</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>11 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>当时JLC还没限定只有LCEDA免费打板，我决定使用KiCad完成后续大部分工程。一个痛点是我找了很久想要一个边框生成的插件也没找到，只有倒角插件，不知道外国人思路怎么这么怪。于是痛定思痛决定自己开发。</p>
+<span id="more"></span>
+
+<p>python本来就不咋样的我，现在基本忘光光了，而KiCad插件开发的文档基本没有，根据我对其他插件的代码审阅，我觉得他们基本也是猜的，所以这里记下流程备用。</p>
+<h1 id="参考内容">参考内容</h1>
+<p>这里有一点要注意，虽然插件目录叫做plugins，插件叫做action
+plugins但是在官方文档中通常称之Scripting（脚本），搜索资料的时候可以考虑更换关键词</p>
+<h2 id="官方资源">官方资源</h2>
+<p>1、官方文档： <a target="_blank" rel="noopener" href="https://dev-docs.kicad.org/zh-cn/python/pcbnew/">PcbNew 插件 |
+开发者文档 | KiCad</a> 2、pcbnew python api手册 <a target="_blank" rel="noopener" href="https://docs.kicad.org/doxygen-python-6.0/namespaces.html">KiCad
+Pcbnew Python Scripting: Namespace List</a> <a target="_blank" rel="noopener" href="https://docs.kicad.org/doxygen-python-6.0/namespacepcbnew.html">KiCad
+Pcbnew Python Scripting: pcbnew Namespace Reference</a></p>
+<p>然而这些手册没啥鸟用，都是注释生成的，注释写的也很简约，有的api根本看不出来作用是什么，后面会说怎么办。</p>
+<p>3、官方例程 安装目录下，例如我的安装目录：
+<code>C:\Program Files\KiCad\7.0\share\kicad\scripting</code>
+这里面是官方用python实现的功能</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_47452807/article/details/122971529">(5条消息)
+如何使用wxPython
+GUI平台插件，快速实现开发python简单Application桌面应用程序_唤醒手腕的博客-CSDN博客_wxpython
+镜像</a></p>
+<p>安装wxFormBuilder，用来辅助GUI设计，不然手搓太累了 。他支持导出python和c++等语言。<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/711886d75aa0">可视化wxPython
+GUI构建工具wxFormBuilder介绍 - 简书 (jianshu.com)</a></p>
+<p>        （还有一个辅助工具wxglade，没试过，上次更新两年前了。<a target="_blank" rel="noopener" href="https://blog.csdn.net/soslinken/article/details/78967918">(5条消息)
+wxPython GUI 编辑器 - wxglade_迦蓝叶的博客-CSDN博客_wxglade</a></p>
+<p><a target="_blank" rel="noopener" href="https://wxglade.sourceforge.net/">wxGlade: a GUI builder for
+wxWidgets/wxPython (sourceforge.net)</a>）</p>
+<p>还有一个“wxpython可视化编辑器“ 看起来挺好用,国内做的.</p>
+<p>先点form添加一个窗体</p>
+<p>然后layout添加一个sizer</p>
+<p>F8调试</p>
+<p>layout-wxstaticBoxsizer可以添加一个带线条的框（类似lceda的那个框分块）</p>
+<h1 id="开发环境">开发环境</h1>
+<p>vscode. python
+在vscode的解释器选择中添加kicad中的python，这样可以解析对应的包，或者可以从kicad
+6.0 command prompt打开命令行，这样就配置了kicad内置python的环境。</p>
+<h1 id="kicad下python脚本的调试">Kicad下Python脚本的调试</h1>
+<p>首先我不知道kicad是怎么启动脚本的，blender调试脚本的方法挺多的，一般都是安装一个调试插件，这里我也不会写这个插件。。但是还是有别的方法可以来完成调试。</p>
+<p>ps.有时候横竖调不出来就是kicad的bug，等他更新wx组件也许就好了。</p>
+<h2 id="1直接外部调试">1、直接外部调试</h2>
+<p>由于插件的功能是提供了一个Dialog供kicad打开，也可以直接写一个tester.py，其中包含：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> wx</span><br><span class="line"><span class="keyword">import</span> shape_para_set<span class="comment">#这个是我的插件脚本</span></span><br><span class="line"><span class="keyword">import</span> pcbnew</span><br><span class="line">app = wx.App()</span><br><span class="line"><span class="comment"># frame = MyFrame()</span></span><br><span class="line">dialog = shape_para_set.Add_Shapes()<span class="comment">#add shapes是我的脚本的入口函数</span></span><br><span class="line">dialog.Run()</span><br></pre></td></tr></table></figure>
+
+<p>然后把Kicad的python的bin文件加入环境变量，或者打开kicad 6.0 command
+prompt打开命令行，然后就可以打开Vsode，选择使用的python环境为kicad
+的python，就可以调试了。不过涉及到板子的操作，因为原来的pcbnew.GetBoard()是直接从c++导入的_pcbnew.GetBoard()这个函数。</p>
+<p>所以需要使用pcbnew.LoadBoard这个函数来打开一个pcb文件，这样才能获取到一个对象在编写的启动器中加入下面代码：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">boardobj = pcbnew.GetBoard()被替换为</span><br><span class="line"><span class="comment">#------调试加载板子用------------</span></span><br><span class="line">pcbfile = <span class="string">r'C:\Users\Always\Desktop\dd\dd.kicad_pcb'</span><span class="comment">#没有特殊需求可以随便找一个pcb，直接放工程目录下也行</span></span><br><span class="line">boardobj=pcbnew.LoadBoard(pcbfile)</span><br></pre></td></tr></table></figure>
+
+<p>这样可以在vscode里面调试界面和函数，不用打开Kicad，不用刷新插件来打开新的插件或者使用kicad那个并不好用的命令行。</p>
+<p>可以加入调试信息print().</p>
+<p>具体见tester.py的内容和主函数的todo debug处</p>
+<p>能不能直接传参打开？GetCopperLayerCountGetCopperLayerCount</p>
+<h2 id="2使用kicad内置的python控制台使用pdb运行脚本">2、使用Kicad内置的Python控制台使用pdb运行脚本</h2>
+<p>但是涉及到板子操作时候的bug，还是用kicad内置的环境加入断点或者调试信息来看。</p>
+<p>2.1在脚本文件中加入断点。例如：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pcbnew</span><br><span class="line"><span class="keyword">import</span> pdb<span class="comment">#导入断点调试器 pdb类似于c的gdb</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">my_function</span>(<span class="params">board</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"board:"</span>, board)</span><br><span class="line">    <span class="comment"># 设置断点</span></span><br><span class="line">    pdb.set_trace()</span><br><span class="line">    <span class="comment"># 其他代码...</span></span><br></pre></td></tr></table></figure>
+
+<p>2.2 在插件图标左边那个<code> 运行Python脚本控制台</code>
+，点击之后会运行内置的Kicad python。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">C:\\Users\\Always\\Documents\\KiCad\\6.0\\3rdparty\\plugins\\KicadShapeEditor</span><br></pre></td></tr></table></figure>
+
+<p>或者：在KiCad中，打开“工具”菜单，选择“Python控制台”，在弹出的Python控制台窗口中输入以下命令：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> pcbnew</span><br><span class="line">sys.path.append(<span class="string">r"C:\Users\Always\Documents\KiCad\6.0\3rdparty\plugins\KicadShapeEditor"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> my_script <span class="comment">#包含插件入口的那个python脚本</span></span><br><span class="line"></span><br><span class="line">board = pcbnew.GetBoard()</span><br><span class="line">my_script.my_function(board)</span><br><span class="line"><span class="comment">#我的应该是</span></span><br><span class="line">shape_para_set.Add_Shapes.Run(pcbnew.ActionPlugin)</span><br><span class="line"><span class="comment">#或者</span></span><br><span class="line">dialog=shape_para_set.Dialog(<span class="literal">None</span>)</span><br><span class="line">dialog.Show()</span><br></pre></td></tr></table></figure>
+
+<p>这几行也可以写成一个脚本保存下来，比如叫做tester.py，不过最好是不要启动dialog为showmodal()，否则会阻塞后面的程序，而是使用上面那样，这样报错信息可以正常输出而不是阻塞后面的语句</p>
+<p>在kipython命令行中输入：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cd C:\\Users\\Always\\Documents\\KiCad\\<span class="number">6.0</span>\\3rdparty\\plugins\\KicadShapeEditor</span><br><span class="line"><span class="built_in">exec</span>(<span class="built_in">open</span>(<span class="string">'tester.py'</span>).read())</span><br></pre></td></tr></table></figure>
+
+<p>然后，在Python控制台窗口中，你可以看到运行脚本时，执行到断点时会暂停执行。此时，你可以在Python控制台窗口中输入指令，来查看脚本的执行过程。</p>
+<p>例如，你可以输入<code>n</code>命令，执行下一条语句；你也可以输入<code>s</code>命令，进入函数内部进行操作,这里就是pdb的调试方法。见[[PDB的使用]]。</p>
+<blockquote>
+<p>断点相关命令：<br>
+设置断点： (Pdb) b 8
+        #断点设置该文件的第8行（b即break的首字母）<br>
+显示所有断点：(Pdb) b     #b命令，没有参数，显示所有断点<br>
+删除断点：(Pdb) cl 2         #删除第2个断点 （clear的首字母）</p>
+<p>Step Over：(Pdb) n           #单步执行，next的首字母<br>
+Step Into：(Pdb) s             #step的首字母<br>
+Setp Return：(Pdb) r         #return的首字母<br>
+Resume：(Pdb) c               #continue的首字母<br>
+Run to Line：(Pdb) j 10     #运行到地10行，jump的首字母</p>
+<p>(Pdb) p param                     #查看当前param变量值<br>
+(Pdb) l                                 #查看运行到某处代码<br>
+(Pdb) a                                 #查看全部栈内变量</p>
+<p>(Pdb) h                                 #帮助，help的首字母<br>
+(Pdb) q                                 #退出，quit的首字母</p>
+</blockquote>
+<p>当然，之类也可以像第一步那样写一个启动器然后在kipython下启动调试：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">exec</span>(<span class="built_in">open</span>(<span class="string">'tester2.py'</span>).read())</span><br></pre></td></tr></table></figure>
+
+<p>不过，在kicad里面调试很容易出bug卡死。。另外更改代码之后要刷新import
+自己的插件（使用剪切板的时候win10，稳定卡死）</p>
+<p>2.3</p>
+<p>除此之外如果不想写pdb也可以直接在kipython内用上述方法打开自己的函数，输出错误信息或者print的结果。</p>
+<p>如果一定要用kicad的直接打开来测试，最好给外部插件刷新分配一个快捷键。</p>
+<p>参考信息：</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhumengke/articles/12291747.html">Linux下使用命令行调试Python程序
+- 逐梦客！ - 博客园</a></p>
+<p>还有问ChatGPT：kicad如何调试插件脚本。。。他的回答比我想到的还完善，直接搜网上不容易找到答案。</p>
+<h3 id="更改pyshell配置">更改pyshell配置</h3>
+<p>实际上Kicad内置的PyShell是可以修改的，因为它本身就是一个python插件的实现，当然KiCad也提供了接口。
+在<code>C:\Users\Always\AppData\Roaming\kicad\6.0</code>
+中，有一个PyShell_pcbnew_startup.py
+，用于配置打开pcbnew的时候首先执行哪些脚本，例如import
+pcbnew,省的自己再输入一次。</p>
+<h2 id="3使用kicad-60-command-prompt">3、使用Kicad 6.0 Command
+prompt</h2>
+<p>可选：配置这个加入到Windows Terminal，就可以方便的在Windows
+Terminal打开</p>
+<p>打开之后，自动进入到kicad 6.0
+的python环境，在这个环境下，可以进行如下操作来测试命令或者执行python脚本</p>
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">************************************</span><br><span class="line">* KiCad <span class="number">6</span>.<span class="number">0</span> Command Prompt</span><br><span class="line">************************************</span><br><span class="line">You may now invoke python or pip targeting kicad's install</span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">C:\<span class="title">Users</span>\<span class="title">AlwaysTS</span>\<span class="title">Documents</span>\<span class="title">KiCad</span>\6.0&gt;<span class="title">python</span></span></span><br><span class="line"><span class="function"><span class="title">Python</span> 3.9.14 (<span class="title">main</span>, <span class="title">Sep</span> 19 2022, 05:11:57) [<span class="title">MSC</span> <span class="title">v</span>.1932 64 <span class="title">bit</span> (<span class="title">AMD64</span>)] <span class="title">on</span> <span class="title">win32</span></span></span><br><span class="line"><span class="function"><span class="title">Type</span> "<span class="title">help</span>", "<span class="title">copyright</span>", "<span class="title">credits</span>" <span class="title">or</span> "<span class="title">license</span>" <span class="title">for</span> <span class="title">more</span> <span class="title">information</span>.</span></span><br><span class="line"><span class="function">&gt;&gt;&gt; <span class="title">import</span> <span class="title">pcbnew</span></span></span><br><span class="line"><span class="function">&gt;&gt;&gt; <span class="title">boardfile</span> = <span class="title">r</span>'<span class="title">D</span>:\<span class="title">MyProjects</span>\2<span class="title">_MyDesigns</span>\<span class="title">SoftwareCodes</span>\1<span class="title">_PluginsCodes</span>\<span class="title">KiCadPlugins</span>\<span class="title">TestKicadPrj</span>\<span class="title">TestKicadPrj.kicad_pcb</span>'</span></span><br><span class="line"><span class="function">&gt;&gt;&gt; <span class="title">board</span> = <span class="title">pcbnew.LoadBoard</span>(<span class="title">boardfile</span>)</span></span><br></pre></td></tr></table></figure>
+
+<p>这样就可以加载一个板子用来测试功能，也可以在这个命令行里面运行python脚本来直接进行测试。不过这里就没有python的方法的自动补全了。</p>
+<h2 id="4调试总结">4、调试总结</h2>
+<p>最好的办法是使用vscode对插件脚本进行调试，把kicad的python加入环境变量或者在kicad
+prompt里面启动code，就可以方便的使用kicad的python环境调试。</p>
+<p>通过编写一个启动器，可以是另外一个文件也可以是直接放在原来的插件入口脚本内，使用是否处于调试模式（见上面）来区分要不要运行单独的app入口，然后在调试模式里面使用pcbnew.LoadBoard(filename)来替代pcbnew.GetBoard()函数来获取一个板子的对象方便后面调试（如果这里不需要调试操作pcb的逻辑就可以先不改这一部分代码）。这样可以做到不用打开KiCad刷新就能调试，当然了，看效果还是得打开PCB.</p>
+<p>而如果Kicad本身崩溃。。。需要构建debug版的kicad，可能是命令加–debug？</p>
+<p>dd</p>
+<p>python -m &lt;package_name&gt;
+作为模块调试是文档说的，不知道怎么用。</p>
+<p>新问题：有些需要交互的操作获取当前板子的信息有效吗</p>
+<h2 id="关于wxdialog">关于wx.Dialog</h2>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45587822/article/details/105205538">(5条消息)
+【Python】wx.Dialog详解_猫兮ぃCatci的博客-CSDN博客_wx.dialog</a></p>
+<p>ui设计部分强烈推荐直接使用wxformbuilder生成，不容易掉进坑里（还是有坑，比如下面这个）。</p>
+<p>#–combobox如果加载panel之上的容器里面就会阻塞panel加载。</p>
+<h2 id="关于如何让kicad插件运行后还能点击后面">关于如何让KiCad插件运行后还能点击后面</h2>
+<p>使用模式对话框和无模式对话框来区分：</p>
+<p>模式对话框会阻止其他窗口上的程序流和用户输入，直到被关闭为止，而无模式对话框的行为更像是程序流中的框架，并且仍然可以在其他窗口中输入</p>
+<p> ShowModal 方法，显示模式对话框</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">dialog.ShowModal()<span class="comment">#使用模式显示会导致kicad回显已经删除的边框的bug</span></span><br><span class="line">dialog.Destroy()</span><br></pre></td></tr></table></figure>
+
+<p>无模式地显示对话框，您只需使用 Show，就像使用框架一样。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">dialog.Show() <span class="comment">#不要紧跟着写destroy，不然无模式显示会被关掉的</span></span><br></pre></td></tr></table></figure>
+
+<p>同时，使用无模式对话框修复了Kicad在使用插件添加后的边框删除后会重新显示的bug。</p>
+<p>combobox</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq744746842/article/details/48277433">(5条消息)
+wxpython comboBox 自动完成提示功能_saii的博客-CSDN博客_wxpython
+自动提示</a></p>
+<p><strong>wx. EVT_TEXT</strong>↳</p>
+<p>当组合框的文本发生变化</p>
+<h2 id="关于bug">关于bug</h2>
+<p>之前那个showmodal（）之后回显不正常的bug，在kipython的shell里面调用却不会有bug。</p>
+<p>注释不会自动显示。</p>
+<h1 id="关于kicad-python-api-插件">关于kicad python api 插件</h1>
+<p>官方文档：<a target="_blank" rel="noopener" href="https://docs.kicad.org/doxygen-python/namespacepcbnew.html">KiCad
+Pcbnew Python Scripting: pcbnew Namespace Reference</a></p>
+<p>官方文档是用doxgen生成的，啥都没有，就是一坨shit，还不如问chatgpt让他解释作用和参数。</p>
+<h2 id="pcbnew相关">pcbnew相关</h2>
+<p>TRACK只能在铜皮层 排序从0-最后分别是F in0—in30 B
+然后是其他层，这里层可以直接用pcbnew.F_Cu这样的元素表示。
+KiCad6的API和KiCAD5的API不一样，走线以外的元素称之为Shape,有对应的操作函数。
+不同层分别对应的数字是：</p>
+<p>0-59，分别是</p>
+<p><code>F.Cu In1-30.Cu B.Cu B.Adhesive F.Adhesive B.Paste F.Paste B.Silkscreen F.Silkscreen B.Mask F.Mask User.Drawings User.Comments User.Eco1 User.Eco2 Edge.Cuts Margin B.Courtyard F.Courtyard B.Fab F.Fab User.1-9 Rescue</code></p>
+<p>使用pcbnew.LayerName(idnum)来通过数字索引出来层名称或BOARD_GetStandardLayerName</p>
+<p>使用pcbnew.ToLAYER_ID可以得到id？？？但是这个函数输入就是一个int</p>
+<p>共有60层，0-59，可以通过 pcbnew.PCB_LAYER_ID_COUNT 输出层数</p>
+<p>print(pcbnew.PCB_LAYER_ID_COUNT)</p>
+<p>ToLAYER_ID(idnum)切换层</p>
+<p>对不知道的数据的内建函数，可以使用vscode的自动补全，也可以在python环境下dir(对象)，或者直接去问chatgpt。。。kipython里面也有代码提示。</p>
+<p>比如：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">board = pcbnew.GetBoard()</span><br><span class="line"><span class="built_in">dir</span>(board)</span><br><span class="line">[<span class="string">'Add'</span>, <span class="string">'AddArea'</span>, <span class="string">'AddListener'</span>, <span class="string">'AddNative'</span>, <span class="string">'AllConnectedItems'</span>, <span class="string">'BuildConnectivity'</span>, <span class="string">'BuildListOfNets'</span>, <span class="string">'Cast'</span>, <span class="string">'ClassOf'</span>, <span class="string">'ClearAllNetCodes'</span>, <span class="string">'ClearBrightened'</span>, <span class="string">'ClearEditFlags'</span>, <span class="string">'ClearFlags'</span>, <span class="string">'ClearProject'</span>, <span class="string">'ClearSelected'</span>, <span class="string">'ClearTempFlags'</span>, <span class="string">'Clone'</span>, <span class="string">'ComputeBoundingBox'</span>, <span class="string">'ConvertBrdLayerToPolygonalContours'</span>, <span class="string">'ConvertCrossReferencesToKIIDs'</span>, <span class="string">'ConvertKIIDsToCrossReferences'</span>, <span class="string">'Delete'</span>, <span class="string">'DeleteAllFootprints'</span>, <span class="string">'DeleteMARKERs'</span>, <span class="string">'DeleteNative'</span>, <span class="string">'DeleteStructure'</span>, <span class="string">'Drawings'</span>, <span class="string">'Duplicate'</span>, <span class="string">'FillItemMap'</span>, <span class="string">'FinalizeBulkAdd'</span>, <span class="string">'FinalizeBulkRemove'</span>, <span class="string">'FindFootprintByPath'</span>, <span class="string">'FindFootprintByReference'</span>, <span class="string">'FindNet'</span>, <span class="string">'Flip'</span>, <span class="string">'Footprints'</span>, <span class="string">'GetAllNetClasses'</span>, <span class="string">'GetArea'</span>, <span class="string">'GetAreaCount'</span>, <span class="string">'GetBoard'</span>, <span class="string">'GetBoardEdgesBoundingBox'</span>, <span class="string">'GetBoardPolygonOutlines'</span>, <span class="string">'GetBoardUse'</span>, <span class="string">'GetBoundingBox'</span>, <span class="string">'GetCenter'</span>, <span class="string">'GetClass'</span>, <span class="string">'GetConnectivity'</span>, <span class="string">'GetCopperLayerCount'</span>, <span class="string">'GetCurrentNetClassName'</span>, <span class="string">'GetDesignSettings'</span>, <span class="string">'GetDrawings'</span>, <span class="string">'GetEditFlags'</span>, <span class="string">'GetEffectiveShape'</span>, <span class="string">'GetEnabledLayers'</span>, <span class="string">'GetFileFormatVersionAtLoad'</span>, <span class="string">'GetFileName'</span>, <span class="string">'GetFirstFootprint'</span>, <span class="string">'GetFlags'</span>, <span class="string">'GetFocusPosition'</span>, <span class="string">'GetFootprint'</span>, <span class="string">'GetFootprints'</span>, <span class="string">'GetGenerator'</span>, <span class="string">'GetHighLightNetCodes'</span>, <span class="string">'GetItem'</span>, <span class="string">'GetLayer'</span>, <span class="string">'GetLayerID'</span>, <span class="string">'GetLayerName'</span>, <span class="string">'GetLayerSet'</span>, <span class="string">'GetLayerType'</span>, <span class="string">'GetMenuImage'</span>, <span class="string">'GetMsgPanelInfo'</span>, <span class="string">'GetNetClassAssignmentCandidates'</span>, <span class="string">'GetNetClasses'</span>, <span class="string">'GetNetCount'</span>, <span class="string">'GetNetInfo'</span>, <span class="string">'GetNetcodeFromNetname'</span>, <span class="string">'GetNetsByName'</span>, <span class="string">'GetNetsByNetcode'</span>, <span class="string">'GetNodesCount'</span>, <span class="string">'GetPad'</span>, <span class="string">'GetPadFast'</span>, <span class="string">'GetPads'</span>, <span class="string">'GetPageSettings'</span>, <span class="string">'GetParent'</span>, <span class="string">'GetParentFootprint'</span>, <span class="string">'GetParentGroup'</span>, <span class="string">'GetPlotOptions'</span>, <span class="string">'GetPosition'</span>, <span class="string">'GetProject'</span>, <span class="string">'GetProperties'</span>, <span class="string">'GetSelectMenuText'</span>, <span class="string">'GetSortedPadListByXthenYCoord'</span>, <span class="string">'GetStandardLayerName'</span>, <span class="string">'GetState'</span>, <span class="string">'GetStatus'</span>, <span class="string">'GetTimeStamp'</span>, <span class="string">'GetTitleBlock'</span>, <span class="string">'GetTrackLength'</span>, <span class="string">'GetTrackWidthList'</span>, <span class="string">'GetTracks'</span>, <span class="string">'GetUnconnectedNetCount'</span>, <span class="string">'GetViasDimensionsList'</span>, <span class="string">'GetVisibleElements'</span>, <span class="string">'GetVisibleLayers'</span>, <span class="string">'GetX'</span>, <span class="string">'GetY'</span>, <span class="string">'GetZoneList'</span>, <span class="string">'GetZoneSettings'</span>, <span class="string">'GroupLegalOps'</span>, <span class="string">'Groups'</span>, <span class="string">'GroupsSanityCheck'</span>, <span class="string">'GroupsSanityCheckInternal'</span>, <span class="string">'HasFlag'</span>, <span class="string">'HighLightOFF'</span>, <span class="string">'HighLightON'</span>, <span class="string">'HitTest'</span>, <span class="string">'IncrementTimeStamp'</span>, <span class="string">'IsBrightened'</span>, <span class="string">'IsConnected'</span>, <span class="string">'IsDragging'</span>, <span class="string">'IsElementVisible'</span>, <span class="string">'IsEmpty'</span>, <span class="string">'IsEntered'</span>, <span class="string">'IsFootprintHolder'</span>, <span class="string">'IsFootprintLayerVisible'</span>, <span class="string">'IsForceVisible'</span>, <span class="string">'IsHighLightNetON'</span>, <span class="string">'IsLayerEnabled'</span>, <span class="string">'IsLayerVisible'</span>, <span class="string">'IsLocked'</span>, <span class="string">'IsModified'</span>, <span class="string">'IsMoving'</span>, <span class="string">'IsNew'</span>, <span class="string">'IsOnCopperLayer'</span>, <span class="string">'IsOnLayer'</span>, <span class="string">'IsReplaceable'</span>, <span class="string">'IsResized'</span>, <span class="string">'IsSelected'</span>, <span class="string">'IsTrack'</span>, <span class="string">'IsType'</span>, <span class="string">'IsWireImage'</span>, <span class="string">'MapNets'</span>, <span class="string">'Markers'</span>, <span class="string">'Matches'</span>, <span class="string">'Move'</span>, <span class="string">'OnItemChanged'</span>, <span class="string">'OnItemsChanged'</span>, <span class="string">'PadDelete'</span>, <span class="string">'Remove'</span>, <span class="string">'RemoveListener'</span>, <span class="string">'RemoveNative'</span>, <span class="string">'Replace'</span>, <span class="string">'ResetNetHighLight'</span>, <span class="string">'ResolveDRCExclusions'</span>, <span class="string">'ResolveTextVar'</span>, <span class="string">'Rotate'</span>, <span class="string">'SanitizeNetcodes'</span>, <span class="string">'Save'</span>, <span class="string">'SetAreasNetCodesFromNetNames'</span>, <span class="string">'SetBoardUse'</span>, <span class="string">'SetBrightened'</span>, <span class="string">'SetCopperLayerCount'</span>, <span class="string">'SetElementVisibility'</span>, <span class="string">'SetEnabledLayers'</span>, <span class="string">'SetFileFormatVersionAtLoad'</span>, <span class="string">'SetFileName'</span>, <span class="string">'SetFlags'</span>, <span class="string">'SetForceVisible'</span>, <span class="string">'SetGenerator'</span>, <span class="string">'SetHighLightNet'</span>, <span class="string">'SetLayer'</span>, <span class="string">'SetLayerDescr'</span>, <span class="string">'SetLayerName'</span>, <span class="string">'SetLayerSet'</span>, <span class="string">'SetLayerType'</span>, <span class="string">'SetLocked'</span>, <span class="string">'SetModified'</span>, <span class="string">'SetPageSettings'</span>, <span class="string">'SetParent'</span>, <span class="string">'SetParentGroup'</span>, <span class="string">'SetPlotOptions'</span>, <span class="string">'SetPos'</span>, <span class="string">'SetPosition'</span>, <span class="string">'SetProject'</span>, <span class="string">'SetProperties'</span>, <span class="string">'SetSelected'</span>, <span class="string">'SetStartEnd'</span>, <span class="string">'SetState'</span>, <span class="string">'SetStatus'</span>, <span class="string">'SetTitleBlock'</span>, <span class="string">'SetVisibleAlls'</span>, <span class="string">'SetVisibleElements'</span>, <span class="string">'SetVisibleLayers'</span>, <span class="string">'SetWireImage'</span>, <span class="string">'SetX'</span>, <span class="string">'SetY'</span>, <span class="string">'SetZoneSettings'</span>, <span class="string">'Sort'</span>, <span class="string">'SwapData'</span>, <span class="string">'SynchronizeNetsAndNetClasses'</span>, <span class="string">'SynchronizeProperties'</span>, <span class="string">'TestZoneIntersection'</span>, <span class="string">'Tracks'</span>, <span class="string">'TracksInNet'</span>, <span class="string">'TransformShapeWithClearanceToPolygon'</span>, <span class="string">'Type'</span>, <span class="string">'ViewBBox'</span>, <span class="string">'ViewGetLayers'</span>, <span class="string">'Visit'</span>, <span class="string">'Zones'</span>, <span class="string">'__class__'</span>, <span class="string">'__delattr__'</span>, <span class="string">'__dict__'</span>, <span class="string">'__dir__'</span>, <span class="string">'__doc__'</span>, <span class="string">'__eq__'</span>, <span class="string">'__format__'</span>, <span class="string">'__ge__'</span>, <span class="string">'__getattribute__'</span>, <span class="string">'__gt__'</span>, <span class="string">'__hash__'</span>, <span class="string">'__init__'</span>, <span class="string">'__init_subclass__'</span>, <span class="string">'__le__'</span>, <span class="string">'__lt__'</span>, <span class="string">'__module__'</span>, <span class="string">'__ne__'</span>, <span class="string">'__new__'</span>, <span class="string">'__reduce__'</span>, <span class="string">'__reduce_ex__'</span>, <span class="string">'__repr__'</span>, <span class="string">'__setattr__'</span>, <span class="string">'__sizeof__'</span>, <span class="string">'__str__'</span>, <span class="string">'__subclasshook__'</span>, <span class="string">'__swig_destroy__'</span>, <span class="string">'__weakref__'</span>, <span class="string">'m_InsideBCourtyardCache'</span>, <span class="string">'m_InsideFCourtyardCache'</span>, <span class="string">'m_LayerExpressionCache'</span>, <span class="string">'m_LegacyCopperEdgeClearanceLoaded'</span>, <span class="string">'m_LegacyDesignSettingsLoaded'</span>, <span class="string">'m_LegacyNetclassesLoaded'</span>, <span class="string">'m_LegacyVisibleItems'</span>, <span class="string">'m_LegacyVisibleLayers'</span>, <span class="string">'m_Uuid'</span>, <span class="string">'this'</span>, <span class="string">'thisown'</span>]</span><br></pre></td></tr></table></figure>
+
+<p>使用GetLayer可以获取当前layer，使用GetEnabledLayers获取使能的layer集合，类型是LSET,具有如下特性，他不能直接使用迭代特性，所以不能直接使用使用for循环</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">dir</span>(layers1)</span><br><span class="line">[<span class="string">'AddLayer'</span>, <span class="string">'AddLayerSet'</span>, <span class="string">'AllBoardTechMask'</span>, <span class="string">'AllCuMask'</span>, <span class="string">'AllLayersMask'</span>, <span class="string">'AllNonCuMask'</span>, <span class="string">'AllTechMask'</span>, <span class="string">'BackAssembly'</span>, <span class="string">'BackBoardTechMask'</span>, <span class="string">'BackMask'</span>, <span class="string">'BackTechMask'</span>, <span class="string">'Contains'</span>, <span class="string">'CuStack'</span>, <span class="string">'ExternalCuMask'</span>, <span class="string">'ExtractLayer'</span>, <span class="string">'FmtBin'</span>, <span class="string">'FmtHex'</span>, <span class="string">'ForbiddenFootprintLayers'</span>, <span class="string">'FrontAssembly'</span>, <span class="string">'FrontBoardTechMask'</span>, <span class="string">'FrontMask'</span>, <span class="string">'FrontTechMask'</span>, <span class="string">'InternalCuMask'</span>, <span class="string">'Name'</span>, <span class="string">'ParseHex'</span>, <span class="string">'PhysicalLayersMask'</span>, <span class="string">'RemoveLayer'</span>, <span class="string">'RemoveLayerSet'</span>, <span class="string">'Seq'</span>, <span class="string">'SeqStackupBottom2Top'</span>, <span class="string">'TechAndUserUIOrder'</span>, <span class="string">'Technicals'</span>, <span class="string">'UIOrder'</span>, <span class="string">'UserDefinedLayers'</span>, <span class="string">'UserMask'</span>, <span class="string">'Users'</span>, <span class="string">'__class__'</span>, <span class="string">'__delattr__'</span>, <span class="string">'__dict__'</span>, <span class="string">'__dir__'</span>, <span class="string">'__doc__'</span>, <span class="string">'__eq__'</span>, <span class="string">'__format__'</span>, <span class="string">'__ge__'</span>, <span class="string">'__getattribute__'</span>, <span class="string">'__gt__'</span>, <span class="string">'__hash__'</span>, <span class="string">'__init__'</span>, <span class="string">'__init_subclass__'</span>, <span class="string">'__le__'</span>, <span class="string">'__lt__'</span>, <span class="string">'__module__'</span>, <span class="string">'__ne__'</span>, <span class="string">'__new__'</span>, <span class="string">'__reduce__'</span>, <span class="string">'__reduce_ex__'</span>, <span class="string">'__repr__'</span>, <span class="string">'__setattr__'</span>, <span class="string">'__sizeof__'</span>, <span class="string">'__str__'</span>, <span class="string">'__subclasshook__'</span>, <span class="string">'__swig_destroy__'</span>, <span class="string">'__weakref__'</span>, <span class="string">'addLayer'</span>, <span class="string">'addLayerSet'</span>, <span class="string">'removeLayer'</span>, <span class="string">'removeLayerSet'</span>, <span class="string">'this'</span>, <span class="string">'thisown'</span>]</span><br></pre></td></tr></table></figure>
+
+<p>然后使用</p>
+<p>enabled_layers =
+layers1.SeqStackupBottom2Top()可以获取一个数组，数组内是整数，通过for迭代pcbnew.LayerName(i)可以得到当前pcb的各层名称。但是要按顺序的话，应该使用Seq(),比如：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">for</span> layer <span class="keyword">in</span> enabled_layers:</span><br><span class="line">    <span class="comment"># Print the layer name</span></span><br><span class="line">    <span class="built_in">print</span>(layer)</span><br><span class="line">得到：</span><br><span class="line"><span class="number">58</span></span><br><span class="line"><span class="number">57</span></span><br><span class="line"><span class="number">56</span></span><br><span class="line"><span class="number">55</span></span><br><span class="line"><span class="number">54</span></span><br><span class="line"><span class="number">53</span></span><br><span class="line"><span class="number">52</span></span><br><span class="line"><span class="number">51</span></span><br><span class="line"><span class="number">50</span></span><br><span class="line"><span class="number">48</span></span><br><span class="line"><span class="number">46</span></span><br><span class="line"><span class="number">32</span></span><br><span class="line"><span class="number">36</span></span><br><span class="line"><span class="number">34</span></span><br><span class="line"><span class="number">38</span></span><br><span class="line"><span class="number">31</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">39</span></span><br><span class="line"><span class="number">35</span></span><br><span class="line"><span class="number">37</span></span><br><span class="line"><span class="number">33</span></span><br><span class="line"><span class="number">47</span></span><br><span class="line"><span class="number">49</span></span><br><span class="line"><span class="number">40</span></span><br><span class="line"><span class="number">41</span></span><br><span class="line"><span class="number">42</span></span><br><span class="line"><span class="number">43</span></span><br><span class="line"><span class="number">45</span></span><br><span class="line"><span class="number">44</span></span><br><span class="line"><span class="keyword">for</span> layer <span class="keyword">in</span> enabled_layers:</span><br><span class="line">    <span class="comment"># Print the layer name</span></span><br><span class="line">    <span class="built_in">print</span>(pcbnew.LayerName(layer))</span><br><span class="line">得到：    </span><br><span class="line">User<span class="number">.9</span></span><br><span class="line">User<span class="number">.8</span></span><br><span class="line">User<span class="number">.7</span></span><br><span class="line">User<span class="number">.6</span></span><br><span class="line">User<span class="number">.5</span></span><br><span class="line">User<span class="number">.4</span></span><br><span class="line">User<span class="number">.3</span></span><br><span class="line">User<span class="number">.2</span></span><br><span class="line">User<span class="number">.1</span></span><br><span class="line">B.Fab</span><br><span class="line">B.Courtyard</span><br><span class="line">B.Adhesive</span><br><span class="line">B.Silkscreen</span><br><span class="line">B.Paste</span><br><span class="line">B.Mask</span><br><span class="line">B.Cu</span><br><span class="line">F.Cu</span><br><span class="line">F.Mask</span><br><span class="line">F.Paste</span><br><span class="line">F.Silkscreen</span><br><span class="line">F.Adhesive</span><br><span class="line">F.Courtyard</span><br><span class="line">F.Fab</span><br><span class="line">User.Drawings</span><br><span class="line">User.Comments</span><br><span class="line">User.Eco1</span><br><span class="line">User.Eco2</span><br><span class="line">Margin</span><br><span class="line">Edge.Cuts</span><br><span class="line"></span><br><span class="line">对于使用</span><br><span class="line">enabled_layers = layers1.Seq()</span><br><span class="line"><span class="keyword">for</span> layer <span class="keyword">in</span> enabled_layers:</span><br><span class="line">    <span class="comment"># Print the layer name</span></span><br><span class="line">    <span class="built_in">print</span>(pcbnew.LayerName(layer))</span><br><span class="line"></span><br><span class="line">F.Cu</span><br><span class="line">B.Cu</span><br><span class="line">B.Adhesive</span><br><span class="line">F.Adhesive</span><br><span class="line">B.Paste</span><br><span class="line">F.Paste</span><br><span class="line">B.Silkscreen</span><br><span class="line">F.Silkscreen</span><br><span class="line">B.Mask</span><br><span class="line">F.Mask</span><br><span class="line">User.Drawings</span><br><span class="line">User.Comments</span><br><span class="line">User.Eco1</span><br><span class="line">User.Eco2</span><br><span class="line">Edge.Cuts</span><br><span class="line">Margin</span><br><span class="line">B.Courtyard</span><br><span class="line">F.Courtyard</span><br><span class="line">B.Fab</span><br><span class="line">F.Fab</span><br><span class="line">User<span class="number">.1</span></span><br><span class="line">User<span class="number">.2</span></span><br><span class="line">User<span class="number">.3</span></span><br><span class="line">User<span class="number">.4</span></span><br><span class="line">User<span class="number">.5</span></span><br><span class="line">User<span class="number">.6</span></span><br><span class="line">User<span class="number">.7</span></span><br><span class="line">User<span class="number">.8</span></span><br><span class="line">User<span class="number">.9</span></span><br></pre></td></tr></table></figure>
+
+<p>而<code>GetLayerSet()</code>是一个在KiCad中定义的函数，它可以用来获取当前画板上使用的层集。在KiCad中，层集表示一组层的集合，可以用来指定在哪些层上放置元件。</p>
+<p>例如，您可以使用<code>GetLayerSet()</code>函数来获取当前画板上使用的层集，然后使用它来指定要在哪些层上放置某个元件：</p>
+<p>Copy code</p>
+<p><code># Import the necessary libraries import pcbnew  # Get the PCB board = pcbnew.GetBoard()  # Get the current layer set layer_set = board.GetLayerSet()  # Add some layers to the layer set layer_set.AddLayer(pcbnew.F_Cu) layer_set.AddLayer(pcbnew.B_Cu)</code></p>
+<p>只是获取了一个板子上的层集合，是可以自己自定义的。</p>
+<p>GetCopperLayerCount可以用来获取板子的铜皮层。</p>
+<p>而wxpoint的坐标和实际mm坐标的转换可以通过pcbnew.ToMM()来转换，当然也可以直接计算10^-6来计算</p>
+<p>        boardobj = pcbnew.GetBoard()</p>
+<p>        board_X,board_Y = boardobj.GetCenter()</p>
+<p>        xmm = pcbnew.ToMM(board_X)</p>
+<p>        ymm = pcbnew.ToMM()</p>
+<p>而获取板子上元素的信息不算难。</p>
+<p>修改属性的时候，可以在pcb中绘制一个要生成的东西，按e查看一下有哪些属性就知道缺什么l</p>
+<p>pcb标注为dimension</p>
+<p>(dimension (type aligned) (layer “Cmts.User”) (tstamp
+40db000a-2685-415b-b6e4-eba530284df3) (pts (xy 111.125 52.07) (xy
+111.125 78.74)) (height -25.4) (gr_text “26.6700 mm” (at 136.525 65.405
+90) (layer “Cmts.User”) (tstamp 2c592233-bd69-4594-a2ec-6e3e42bd308e)
+(effects (font (size 1 1) (thickness 0.15))) ) (format (units 3)
+(units_format 1) (precision 4)) (style (thickness 0.15) (arrow_length
+1.27) (text_position_mode 1) (extension_height 0.58642)
+(extension_offset 0.5) keep_text_aligned) )</p>
+<p>text_position_mode 1为内联模式，0是外部，2是手动</p>
+<p>SetOverrideTextEnabled()方法用于启用或禁用尺寸线的文本重写，例如：</p>
+<p>dimensionObj.SetOverrideTextEnabled(True)</p>
+<p>在添加尺寸线时，可以使用SetUnits()方法设置尺寸线的单位，例如：</p>
+<p>dimensionObj.SetUnits(pcbnew.EDA_UNITS_MILLIMETRES)</p>
+<p>这样就可以在尺寸线中显示毫米单位了。</p>
+<p><code>SetBrightened</code>是一个用来设置尺寸符号颜色是否变亮的方法。通常来说，当尺寸符号的颜色被设置为变亮时，它们会显得更加突出，便于观察。</p>
+<p>此方法不接受任何参数，它的作用是将尺寸符号的颜色设置为变亮。例如：、</p>
+<p>如果不知道setxxx的参数怎么写，就调用getxxx打印出来看一下。但是基本上可以直接对应pcb文件中的数字来做。</p>
+<p>标注具有的属性：</p>
+<p>dir(dimensionObj) [‘Cast’, ‘ClassOf’, ‘ClearBrightened’,
+‘ClearEditFlags’, ‘ClearFlags’, ‘ClearSelected’, ‘ClearTempFlags’,
+‘Clone’, ‘DeleteStructure’, ‘Duplicate’, ‘Flip’, ‘GetAngle’,
+‘GetArrowLength’, ‘GetBoard’, ‘GetBoundingBox’, ‘GetCenter’, ‘GetClass’,
+‘GetCrossbarEnd’, ‘GetCrossbarStart’, ‘GetEditFlags’,
+‘GetEffectiveShape’, ‘GetEnd’, ‘GetExtensionHeight’,
+‘GetExtensionOffset’, ‘GetFlags’, ‘GetFocusPosition’, ‘GetHeight’,
+‘GetKeepTextAligned’, ‘GetLayer’, ‘GetLayerName’, ‘GetLayerSet’,
+‘GetLineThickness’, ‘GetMeasuredValue’, ‘GetMenuImage’,
+‘GetMsgPanelInfo’, ‘GetOverrideText’, ‘GetOverrideTextEnabled’,
+‘GetParent’, ‘GetParentFootprint’, ‘GetParentGroup’, ‘GetPosition’,
+‘GetPrecision’, ‘GetPrefix’, ‘GetSelectMenuText’, ‘GetShapes’,
+‘GetStart’, ‘GetState’, ‘GetStatus’, ‘GetSuffix’, ‘GetSuppressZeroes’,
+‘GetText’, ‘GetTextPositionMode’, ‘GetUnits’, ‘GetUnitsFormat’,
+‘GetUnitsMode’, ‘GetValueText’, ‘GetX’, ‘GetY’, ‘HasFlag’, ‘HitTest’,
+‘IsBrightened’, ‘IsConnected’, ‘IsDragging’, ‘IsEntered’,
+‘IsForceVisible’, ‘IsLocked’, ‘IsModified’, ‘IsMoving’, ‘IsNew’,
+‘IsOnCopperLayer’, ‘IsOnLayer’, ‘IsReplaceable’, ‘IsResized’,
+‘IsSelected’, ‘IsTrack’, ‘IsType’, ‘IsWireImage’, ‘Matches’, ‘Mirror’,
+‘Move’, ‘Replace’, ‘Rotate’, ‘SetArrowLength’, ‘SetAutoUnits’,
+‘SetBrightened’, ‘SetEnd’, ‘SetExtensionHeight’, ‘SetExtensionOffset’,
+‘SetFlags’, ‘SetForceVisible’, ‘SetHeight’, ‘SetKeepTextAligned’,
+‘SetLayer’, ‘SetLayerSet’, ‘SetLineThickness’, ‘SetLocked’,
+‘SetMeasuredValue’, ‘SetModified’, ‘SetOverrideText’,
+‘SetOverrideTextEnabled’, ‘SetParent’, ‘SetParentGroup’, ‘SetPos’,
+‘SetPosition’, ‘SetPrecision’, ‘SetPrefix’, ‘SetSelected’, ‘SetStart’,
+‘SetStartEnd’, ‘SetState’, ‘SetStatus’, ‘SetSuffix’,
+‘SetSuppressZeroes’, ‘SetText’, ‘SetTextPositionMode’, ‘SetTextSize’,
+‘SetUnits’, ‘SetUnitsFormat’, ‘SetUnitsMode’, ‘SetWireImage’, ‘SetX’,
+‘SetY’, ‘Sort’, ‘SwapData’, ‘Text’,
+‘TransformShapeWithClearanceToPolygon’, ‘Type’, ‘Update’,
+‘UpdateHeight’, ‘ViewBBox’, ‘ViewGetLayers’, ‘Visit’,
+‘<strong>class</strong>’, ‘<strong>delattr</strong>’,
+‘<strong>dict</strong>’, ‘<strong>dir</strong>’, ‘<strong>doc</strong>’,
+‘<strong>eq</strong>’, ‘<strong>format</strong>’, ‘<strong>ge</strong>’,
+‘<strong>getattribute</strong>’, ‘<strong>gt</strong>’,
+‘<strong>hash</strong>’, ‘<strong>init</strong>’,
+‘<strong>init_subclass</strong>’, ‘<strong>le</strong>’,
+‘<strong>lt</strong>’, ‘<strong>module</strong>’, ‘<strong>ne</strong>’,
+‘<strong>new</strong>’, ‘<strong>reduce</strong>’,
+‘<strong>reduce_ex</strong>’, ‘<strong>repr</strong>’,
+‘<strong>setattr</strong>’, ‘<strong>sizeof</strong>’,
+‘<strong>str</strong>’, ‘<strong>subclasshook</strong>’,
+‘<strong>swig_destroy</strong>’, ‘<strong>weakref</strong>’, ‘m_Uuid’,
+‘this’, ‘thisown’]</p>
+<p>对其中的部分进行解释：</p>
+<p>下面是这些函数的具体作用和输入参数：</p>
+<ul>
+<li>SetArrowLength(self, aLength: int):
+该函数的作用是设置dimension对象的箭头长度。输入参数aLength是一个整数，表示箭头的长度。</li>
+<li>SetAutoUnits(self, aAutoUnits: bool):
+该函数的作用是设置dimension对象的自动单位。输入参数aAutoUnits是一个布尔值，表示是否使用自动单位。</li>
+<li>SetBrightened(self, aBrightened: bool):
+该函数的作用是设置dimension对象的亮度。输入参数aBrightened是一个布尔值，表示是否使用高亮显示。</li>
+<li>SetEnd(self, aEnd: wx.Point):
+该函数的作用是设置dimension对象的终点坐标。输入参数aEnd是一个wx.Point对象，表示终</li>
+</ul>
+<p>TransformShapeWithClearanceToPolygon有什么用</p>
+<p>SetSelect有什么用</p>
+<p>dd–</p>
+<h2 id="关于翻译">关于翻译：</h2>
+<p>在 Python 中，可以使用 gettext
+模块来实现不同语言的支持。首先，你需要创建一个 .pot
+文件，这是一个用来存储语言翻译的模板文件。然后，你可以使用 xgettext
+工具将这个文件生成不同语言的 .po
+文件，这些文件里面包含了各种语言的翻译。</p>
+<p>接下来，你可以在程序中使用 gettext.install()
+方法来加载语言翻译文件，并使用 _() 函数来获取相应语言的翻译。例如：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Import the gettext module</span></span><br><span class="line"><span class="keyword">import</span> gettext</span><br><span class="line"></span><br><span class="line"><span class="comment"># Set the language to use</span></span><br><span class="line">gettext.install(<span class="string">"myprogram"</span>, <span class="string">"locale"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Translate a string</span></span><br><span class="line">translated_string = _(<span class="string">"Hello World"</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>gettext是python默认自带的</p>
+<h2 id="关于chatgpt提问">关于chatgpt提问：</h2>
+<p>kicad 中 使用python pcbnew获取所有pcb的层</p>
+<p>这样问基本可以得到看起来靠谱但是不一定对的答案,然后指出不对的地方，比如</p>
+<p>GetLayers()在kicad6.0中已经失效</p>
+<h1 id="关于版本兼容">关于版本兼容</h1>
+<p>拖了半年，kicad7来了，这次改动点不算很大，但是还是有些不兼容，原来的坐标使用wxpoint，现在改成了vector，部分功能可以通过修改调用函数来兼容，部分只能单独写判断。（我不明白开发组原来怎么就不写个重载来兼容一下。。）</p>
+<h1 id="参考内容-1">参考内容</h1>
+<p><a target="_blank" rel="noopener" href="https://docs.kicad.org/5.1/zh/plugins/plugins.pdf">Kicad
+插件</a> - 这个帮助不大 ，还不如直接看源码</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/358479069">KiCad Python
+操作插件 - 知乎 (zhihu.com)</a>
+这里是TaotieRen收集的别人写的插件，可以当作参考用</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/KiCad/" rel="tag"><i class="fa fa-tag"></i> KiCad</a>
+              <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/bo-ke-pei-zhi-shi-xiang/bo-ke-de-tags-he-fen-lei/" rel="prev" title="博客的Tags和分类">
+      <i class="fa fa-chevron-left"></i> 博客的Tags和分类
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/kicad-simulation-with-internal-ngspice-0/" rel="next" title="使用KiCad内置的ngSpice进行电路仿真（0）">
+      使用KiCad内置的ngSpice进行电路仿真（0） <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E5%86%85%E5%AE%B9"><span class="nav-number">1.</span> <span class="nav-text">参考内容</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%98%E6%96%B9%E8%B5%84%E6%BA%90"><span class="nav-number">1.1.</span> <span class="nav-text">官方资源</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="nav-number">2.</span> <span class="nav-text">开发环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#kicad%E4%B8%8Bpython%E8%84%9A%E6%9C%AC%E7%9A%84%E8%B0%83%E8%AF%95"><span class="nav-number">3.</span> <span class="nav-text">Kicad下Python脚本的调试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E7%9B%B4%E6%8E%A5%E5%A4%96%E9%83%A8%E8%B0%83%E8%AF%95"><span class="nav-number">3.1.</span> <span class="nav-text">1、直接外部调试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E4%BD%BF%E7%94%A8kicad%E5%86%85%E7%BD%AE%E7%9A%84python%E6%8E%A7%E5%88%B6%E5%8F%B0%E4%BD%BF%E7%94%A8pdb%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC"><span class="nav-number">3.2.</span> <span class="nav-text">2、使用Kicad内置的Python控制台使用pdb运行脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%94%B9pyshell%E9%85%8D%E7%BD%AE"><span class="nav-number">3.2.1.</span> <span class="nav-text">更改pyshell配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E4%BD%BF%E7%94%A8kicad-60-command-prompt"><span class="nav-number">3.3.</span> <span class="nav-text">3、使用Kicad 6.0 Command
+prompt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E8%B0%83%E8%AF%95%E6%80%BB%E7%BB%93"><span class="nav-number">3.4.</span> <span class="nav-text">4、调试总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8Ewxdialog"><span class="nav-number">3.5.</span> <span class="nav-text">关于wx.Dialog</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E8%AE%A9kicad%E6%8F%92%E4%BB%B6%E8%BF%90%E8%A1%8C%E5%90%8E%E8%BF%98%E8%83%BD%E7%82%B9%E5%87%BB%E5%90%8E%E9%9D%A2"><span class="nav-number">3.6.</span> <span class="nav-text">关于如何让KiCad插件运行后还能点击后面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8Ebug"><span class="nav-number">3.7.</span> <span class="nav-text">关于bug</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B3%E4%BA%8Ekicad-python-api-%E6%8F%92%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">关于kicad python api 插件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#pcbnew%E7%9B%B8%E5%85%B3"><span class="nav-number">4.1.</span> <span class="nav-text">pcbnew相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E7%BF%BB%E8%AF%91"><span class="nav-number">4.2.</span> <span class="nav-text">关于翻译：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8Echatgpt%E6%8F%90%E9%97%AE"><span class="nav-number">4.3.</span> <span class="nav-text">关于chatgpt提问：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9"><span class="nav-number">5.</span> <span class="nav-text">关于版本兼容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E5%86%85%E5%AE%B9-1"><span class="nav-number">6.</span> <span class="nav-text">参考内容</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Always L"
+      src="/images/misterchief.png">
+  <p class="site-author-name" itemprop="name">Always L</p>
+  <div class="site-description" itemprop="description">硬件，杂项，爱好</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/alwaysmy" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;alwaysmy" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:always_one@foxmail.com" title="E-Mail → mailto:always_one@foxmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Always L</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="本站总字数">71k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:37</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+  
+<script src="https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '48px',
+  right: 'unset',
+  left: '48px',
+  time: '0.3s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+
+    </div>
+</body>
+</html>

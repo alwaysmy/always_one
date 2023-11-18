@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-con-sand.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon32.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"alwaysmy.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="准备工作 1.电池充满电 2.CF卡 3.CF卡读卡器（必备，数据线不行） 4.相机更新到固件1.0.3 http:&#x2F;&#x2F;web.canon.jp&#x2F;imaging&#x2F;eosdigital2&#x2F;e3kr2_firmware-e.html(步骤略) 5.软件包，包含AUTOEXEC.BIN scanled.fir cardtricks.exe（下图） 6.HxD软件或者其他二进制磁盘编辑工具如">
+<meta property="og:type" content="article">
+<meta property="og:title" content="佳能EOS350D破解">
+<meta property="og:url" content="https://alwaysmy.github.io/fix-crack/jia-neng-eos350d-po-jie/index.html">
+<meta property="og:site_name" content="加载中...">
+<meta property="og:description" content="准备工作 1.电池充满电 2.CF卡 3.CF卡读卡器（必备，数据线不行） 4.相机更新到固件1.0.3 http:&#x2F;&#x2F;web.canon.jp&#x2F;imaging&#x2F;eosdigital2&#x2F;e3kr2_firmware-e.html(步骤略) 5.软件包，包含AUTOEXEC.BIN scanled.fir cardtricks.exe（下图） 6.HxD软件或者其他二进制磁盘编辑工具如">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://alwaysmy.github.io/fix-crack/jia-neng-eos350d-po-jie/image-20210223155419837.png">
+<meta property="og:image" content="https://alwaysmy.github.io/fix-crack/jia-neng-eos350d-po-jie/image-20210223155506019.png">
+<meta property="og:image" content="https://alwaysmy.github.io/fix-crack/jia-neng-eos350d-po-jie/image-20210223155601573.png">
+<meta property="og:image" content="https://alwaysmy.github.io/fix-crack/jia-neng-eos350d-po-jie/image-20210223155622050.png">
+<meta property="og:image" content="https://alwaysmy.github.io/fix-crack/jia-neng-eos350d-po-jie/image-20210223155928781.png">
+<meta property="og:image" content="https://alwaysmy.github.io/fix-crack/jia-neng-eos350d-po-jie/jpeg;base64,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">
+<meta property="og:image" content="https://alwaysmy.github.io/fix-crack/jia-neng-eos350d-po-jie/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAMCAgICAgMCAgIDAwMDBAYEBAQEBAgGBgUGCQgKCgkICQkKDA8MCgsOCwkJDRENDg8QEBEQCgwSExIQEw8QEBD/2wBDAQMDAwQDBAgEBAgQCwkLEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBD/wAARCAA+AF4DASIAAhEBAxEB/8QAHAAAAgIDAQEAAAAAAAAAAAAABQYEBwIDCAAB/8QASBAAAQIEAwMEChAFBQAAAAAAAwQFAAIGEwEHIxIUMwhDU9MVFiIlMjRRY5OzERchJDFBRFJUVmJkc3SCgxhhkqPDhJGxstL/xAAZAQADAQEBAAAAAAAAAAAAAAACAwQABQH/xAAgEQACAQQDAQEBAAAAAAAAAAAAAwIBBBMiBRIyIxEU/9oADAMBAAIRAxEAPwDjQFHVJVU53dHVCsEihWotyXyaeoSHh55OdSIaYkeyZiH27fD1OshOpnMKm6fTTtrguIM6dWo4YCdISGd5z7YFyADaR2VkAPm93JB/QkmwQJ8q6t+uSv05Osj0mVdU/XJX6QnWQenzbo7h7yr1PukFHKuKfQppFNxX5zTH1kBuH3FT2p6k2NStlfpCdZE3k+1H2s5xsK6oHt23Jrfh73YOS4QY7nD1ImgzKp9d4uJX+sYx/wCSNPJ6dSsGcyVyIuQIJ1Csls6ogyJx7wMnEJqW4y8gxY5ZtvDkqzsqtc1732BeHbfEA3VQokXoBkIMnDGS3cIMdvUuaZIRlbq7SKTpiOSvTIQfjBIN5tqyEzjq9SMbS7IiL+9jq3HIAYBjt6gx85pjIO3w9QkK74Tvw4/jkgxhrVurueScfZZf6ckK7VU9QUrUgHsa45509zTVHIQZNO3qQYnJEFUBMqk1PD+fAAYx8Y80ageF8i5OUCee4TQ1LY7nN8Thxc766qk7CEJ1RZTzlCSchid3Po4/DHIJGNaA1xvWkB5yQkW9Rb/V1RMkwqocCOMyQ9lObndjAcmPd/1x2OIf9a5BF0jTQpt1k79uP5tR6yIRomvJO/bh+bUesiFPHPPCDPJG8B1IJ5CJy25x8OeM7e3GFuFD1m9U4uSoNpYtIeToyRZ/J0ky87fm/wBtMjyOm7/v/sP42T3uS3b/AHLcVTbhvy5OpSPaUqcVw41ae3JbuXCc3pxdZOXbz71AnDJAcauXMgKndxM7a9JG4asm6dlfGBp+buD6ThwbPSu/Ur27bsTYJxASAPc4lu50fnIwXU49us9Q1a8X2lbT+7kACdJbuE07emT8QcG0OYef3YqfMhrTJCNDfxLdu4MfSW7m8W4TfPpcT7rHoXjhuVccHcXR6kkD54tNDTgnGmGGvxrjvSqoHMiN6bZEmoO5cJcHb/DJ+5FcnSbCk6a5ctkIO5Ehgft/yhlppxmGgIkk8HBROTD+gcLpx255IIMBbSnY8khP8cOtfYE/AtuqEpHtxIP6Wo9ZGgEgti2QUEVy4QHh0ufSFHrIFpXK+pkRJ0xDnIS2OQfOQEDyayKQFuePbGEHiMDufbttKsk4+jHcgerQuSQO8rGhWAFy3cnHbjHoOn8CGSgFalC8AXJyWzpzjIMlvnIA3xk07UPmTtM9tVSTto1w0lsG8XCeb/cgGMxl9gj+lmMsD221q6StU1YNp6hdKsGNOknHbBbW3B2yf2/3LhImky8zoStXaSjbUAESweoeRzSaifo7lz+3buQS5R+SVK5To2JTTubVP1cqdU+JVQG32PeeGFvup/YKT3Mbnx9HFQEzGch0lPTe5L96J8uI9KOk6Ph8PTiFLqzr+HW5DjKWVKVpMNrq/cqYpJuolrEraXFrVqN/OM+oQnDtjIPm+JchQkPck+3AEd3buKC8PhjicNXF1DgMCCondyRmyF2XHCTyBn/5HAw6rwI20o4XH2eXyJy/9xwcPYlgMeTk7MOPe0njajnPORCQupUK+RSjQkGdPqDIMnDi/lvJqcV6pQ4YVUjkwOQk+Mm6E6yBxeS88iWezJVyDZnGT3NzJ1kAGVakzNqRLt7vc2CanEjQ5Vo9vAd2WNt+S5ctkJFqY8lJ4l8GtUmH+jJ1kZfw01Bs2e3tLseTsdj/AO4xilSEU7E5SNFuQfOXImtU72Oe43tvd+b1IuGbktPeIiBNWySeWf7oTrIPU9kRX1NTGNT2YiNDMpHsTlGhn2/WQDCi3fjKKVuTsee04Lhjn+ZqRCJ4Fwi0Y5Ok3QkXpNyZqkcTYqiVqhxVTEJOUhEZJ9v/AHJH0fJfqciOdCetm3AdwngICdZClo6Dn37Ln2UulY1qvYLvxBgJwzkQEt+kjBUzLUqkibfhk85ICOhWvIauU7YlaF2YqdQyopr0jfuhLe35eJE3Hk+OrgckxKlQbU/x7oTrIoWshZM5mnalx/lJP0J4IMKOZnqbdZcVFyVCTbvJ9jHiSfFHRuPJwexSzkkqhtwxk+5k6yMq/wAj3lbViWslj82SzqGhOkIISMmGE0+Hwz8T7EULhoTn/9k=">
+<meta property="article:published_time" content="2021-02-22T16:52:50.000Z">
+<meta property="article:modified_time" content="2023-10-25T08:01:27.612Z">
+<meta property="article:author" content="Always L">
+<meta property="article:tag" content="修理">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://alwaysmy.github.io/fix-crack/jia-neng-eos350d-po-jie/image-20210223155419837.png">
+
+<link rel="canonical" href="https://alwaysmy.github.io/fix-crack/jia-neng-eos350d-po-jie/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>佳能EOS350D破解 | 加载中...</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style><style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.8}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">加载中...</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">博客记录</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">32</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">31</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://alwaysmy.github.io/fix-crack/jia-neng-eos350d-po-jie/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/misterchief.png">
+      <meta itemprop="name" content="Always L">
+      <meta itemprop="description" content="硬件，杂项，爱好">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="加载中...">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          佳能EOS350D破解
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-02-23 00:52:50" itemprop="dateCreated datePublished" datetime="2021-02-23T00:52:50+08:00">2021-02-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-10-25 16:01:27" itemprop="dateModified" datetime="2023-10-25T16:01:27+08:00">2023-10-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Fix-Crack/" itemprop="url" rel="index"><span itemprop="name">Fix & Crack</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>501</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="准备工作">准备工作</h1>
+<p>1.电池充满电</p>
+<p>2.CF卡</p>
+<p>3.CF卡读卡器（必备，数据线不行）</p>
+<p>4.相机更新到固件1.0.3
+http://web.canon.jp/imaging/eosdigital2/e3kr2_firmware-e.html(步骤略)</p>
+<p>5.软件包，包含AUTOEXEC.BIN scanled.fir cardtricks.exe（下图）</p>
+<p>6.HxD软件或者其他二进制磁盘编辑工具如WinHex（可选）</p>
+<img src="/fix-crack/jia-neng-eos350d-po-jie/image-20210223155419837.png" class title="image-20210223155419837">
+
+<span id="more"></span>
+
+<h1 id="开始固件更换">开始固件更换</h1>
+<p>1.格式化CF卡，在电脑上快速格式化即可。</p>
+<p>2.复制软件包内的scanled.fir到CF卡根目录，插入相机后在相机内选择更新固件。</p>
+<p>（Menu-最后一栏-固件版本-确定），会显示下图。</p>
+<img src="/fix-crack/jia-neng-eos350d-po-jie/image-20210223155506019.png" class title="image-20210223155506019">
+
+<p>3.这时候应该是蓝色的灯常亮，这时候先拔掉电池，然后拔掉CF卡。</p>
+<h1 id="开始制作可启动cf卡">开始制作可启动CF卡</h1>
+<p>破解的方法是从CF卡启动固件，需要修改卡内磁盘数据。</p>
+<p>1.插入CF卡，打开软件包内的CardTricks</p>
+<p>2.按照下图操作</p>
+<img src="/fix-crack/jia-neng-eos350d-po-jie/image-20210223155601573.png" class title="image-20210223155601573">
+
+<p>3.会提示结果，实际上这个工具就是自动对于FAT16文件系统在0x24处和0x40处写入对应字符。FAT32文件系统同理。所以用磁盘编辑工具也可以手动修改。</p>
+<img src="/fix-crack/jia-neng-eos350d-po-jie/image-20210223155622050.png" class title="image-20210223155622050">
+
+<h1 id="从cf卡启动">从CF卡启动</h1>
+<p>这一步是放入自动执行固件。</p>
+<p>1.拷贝AUTOEXEC.BIN到CF卡根目录。</p>
+<p>2.插卡，插电池，开机看到蓝灯闪一下。</p>
+<h1 id="验证功能">验证功能</h1>
+<p>新功能都在Info键内。</p>
+<p>按一下INFO键，然后按上下键可以翻动条目，按左右键可以修改每一条对应的可选项。（破解前不行）</p>
+<img src="/fix-crack/jia-neng-eos350d-po-jie/image-20210223155928781.png" class title="image-20210223155928781">
+
+<p>最后，这个卡不要格式化，不然就要重新破解一次了。</p>
+<h1 id="附录">附录</h1>
+<p>收集的一些网站：</p>
+<p>关键词 EOS DSLR Hack</p>
+<table>
+<tbody>
+<tr class="odd">
+<td>#### <a target="_blank" rel="noopener" href="http://bbs.astron.ac.cn/thread-61226-1-1.html">bbs.astron.ac.cn</a></td>
+</tr>
+<tr class="even">
+<td><a target="_blank" rel="noopener" href="http://bbs.astron.ac.cn/thread-61226-1-1.html">bbs.astron.ac.cn</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<tbody>
+<tr class="odd">
+<td>#### <a target="_blank" rel="noopener" href="https://ssl.xitek.com/mip/thread/tid/674573">https://ssl.xitek.com/mip/thread/tid/674573</a></td>
+</tr>
+<tr class="even">
+<td><a target="_blank" rel="noopener" href="https://ssl.xitek.com/mip/thread/tid/674573">ssl.xitek.com</a></td>
+</tr>
+</tbody>
+</table>
+<p><a target="_blank" rel="noopener" href="https://ssl.xitek.com/mip/thread/tid/674573"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAMCAgICAgMCAgIDAwMDBAYEBAQEBAgGBgUGCQgKCgkICQkKDA8MCgsOCwkJDRENDg8QEBEQCgwSExIQEw8QEBD/2wBDAQMDAwQDBAgEBAgQCwkLEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBD/wAARCAA+AF4DASIAAhEBAxEB/8QAGAABAQADAAAAAAAAAAAAAAAAAAIDBAn/xAAfEAEAAgEDBQAAAAAAAAAAAAAAAgMEAQWxBhITIWL/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A6b29K7Nk1+O6GTrD4y74cTZ8HZsPbbbrcSucbL/dndfOfLfAAAAAAAAAFwQuAIAAAAAAAAAAXBC4AgAAAAAAAAABcELgCAAAAAAAAAAFwQuAP//Z"></a></p>
+<table>
+<tbody>
+<tr class="odd">
+<td>#### <a target="_blank" rel="noopener" href="https://chdk.setepontos.com/index.php/board,33.0.html">DSLR Hack
+development - CHDK Forum</a></td>
+</tr>
+<tr class="even">
+<td><a target="_blank" rel="noopener" href="https://chdk.setepontos.com/index.php/board,33.0.html">chdk.setepontos.com</a></td>
+</tr>
+</tbody>
+</table>
+<p><a target="_blank" rel="noopener" href="https://chdk.setepontos.com/index.php/board,33.0.html"><img src="/fix-crack/jia-neng-eos350d-po-jie/jpeg;base64,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"></a></p>
+<table>
+<tbody>
+<tr class="odd">
+<td>#### <a target="_blank" rel="noopener" href="http://bbs.astron.ac.cn/thread-61226-2-1.html">bbs.astron.ac.cn</a></td>
+</tr>
+<tr class="even">
+<td><a target="_blank" rel="noopener" href="http://bbs.astron.ac.cn/thread-61226-2-1.html">bbs.astron.ac.cn</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<tbody>
+<tr class="odd">
+<td>#### <a target="_blank" rel="noopener" href="https://forum.xitek.com/forum-viewthread-tid-674573-highlight-350d.html">350D固件破解:ISO3200+点测+查看快门数
+- Canon SLR/DSLM论坛</a></td>
+</tr>
+<tr class="even">
+<td><a target="_blank" rel="noopener" href="https://forum.xitek.com/forum-viewthread-tid-674573-highlight-350d.html">forum.xitek.com</a></td>
+</tr>
+</tbody>
+</table>
+<p><a target="_blank" rel="noopener" href="https://forum.xitek.com/forum-viewthread-tid-674573-highlight-350d.html"><img src="data:image/jpeg;base64,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"></a></p>
+<table>
+<tbody>
+<tr class="odd">
+<td>#### <a target="_blank" rel="noopener" href="https://chdk.fandom.com/wiki/EOScard">EOScard | CHDK
+Wiki | Fandom</a></td>
+</tr>
+<tr class="even">
+<td><a target="_blank" rel="noopener" href="https://chdk.fandom.com/wiki/EOScard">chdk.fandom.com</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<tbody>
+<tr class="odd">
+<td>#### <a target="_blank" rel="noopener" href="https://elektrotanya.com/canon_eos-350d.pdf/download.html#dl">CANON
+EOS-350D Service Manual download, schematics, eeprom, repair info for
+electronics experts</a></td>
+</tr>
+<tr class="even">
+<td><a target="_blank" rel="noopener" href="https://elektrotanya.com/canon_eos-350d.pdf/download.html#dl">elektrotanya.com</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<tbody>
+<tr class="odd">
+<td>#### <a target="_blank" rel="noopener" href="https://chdk.setepontos.com/index.php?topic=354.0">Decryption of
+20D and 30D firmware updates is possible. - Firmware Dumping - CHDK
+Forum</a></td>
+</tr>
+<tr class="even">
+<td><a target="_blank" rel="noopener" href="https://chdk.setepontos.com/index.php?topic=354.0">chdk.setepontos.com</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<tbody>
+<tr class="odd">
+<td>#### <a target="_blank" rel="noopener" href="https://blog.max-fun.de/2010/02/23/chdk-firmware-hack-eos-350d/">CHDK
+– Firmware-Hack EOS 350D – Max-Fun.de</a></td>
+</tr>
+<tr class="even">
+<td><a target="_blank" rel="noopener" href="https://blog.max-fun.de/2010/02/23/chdk-firmware-hack-eos-350d/">blog.max-fun.de</a></td>
+</tr>
+</tbody>
+</table>
+<p><a target="_blank" rel="noopener" href="https://blog.max-fun.de/2010/02/23/chdk-firmware-hack-eos-350d/"><img src="/fix-crack/jia-neng-eos350d-po-jie/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAMCAgICAgMCAgIDAwMDBAYEBAQEBAgGBgUGCQgKCgkICQkKDA8MCgsOCwkJDRENDg8QEBEQCgwSExIQEw8QEBD/2wBDAQMDAwQDBAgEBAgQCwkLEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBD/wAARCAA+AF4DASIAAhEBAxEB/8QAHAAAAgIDAQEAAAAAAAAAAAAABQYEBwIDCAAB/8QASBAAAQIEAwMEChAFBQAAAAAAAwQFAAIGEwEHIxIUMwhDU9MVFiIlMjRRY5OzERchJDFBRFJUVmJkc3SCgxhhkqPDhJGxstL/xAAZAQADAQEBAAAAAAAAAAAAAAACAwQABQH/xAAgEQACAQQDAQEBAAAAAAAAAAAAAwIBBBMiBRIyIxEU/9oADAMBAAIRAxEAPwDjQFHVJVU53dHVCsEihWotyXyaeoSHh55OdSIaYkeyZiH27fD1OshOpnMKm6fTTtrguIM6dWo4YCdISGd5z7YFyADaR2VkAPm93JB/QkmwQJ8q6t+uSv05Osj0mVdU/XJX6QnWQenzbo7h7yr1PukFHKuKfQppFNxX5zTH1kBuH3FT2p6k2NStlfpCdZE3k+1H2s5xsK6oHt23Jrfh73YOS4QY7nD1ImgzKp9d4uJX+sYx/wCSNPJ6dSsGcyVyIuQIJ1Csls6ogyJx7wMnEJqW4y8gxY5ZtvDkqzsqtc1732BeHbfEA3VQokXoBkIMnDGS3cIMdvUuaZIRlbq7SKTpiOSvTIQfjBIN5tqyEzjq9SMbS7IiL+9jq3HIAYBjt6gx85pjIO3w9QkK74Tvw4/jkgxhrVurueScfZZf6ckK7VU9QUrUgHsa45509zTVHIQZNO3qQYnJEFUBMqk1PD+fAAYx8Y80ageF8i5OUCee4TQ1LY7nN8Thxc766qk7CEJ1RZTzlCSchid3Po4/DHIJGNaA1xvWkB5yQkW9Rb/V1RMkwqocCOMyQ9lObndjAcmPd/1x2OIf9a5BF0jTQpt1k79uP5tR6yIRomvJO/bh+bUesiFPHPPCDPJG8B1IJ5CJy25x8OeM7e3GFuFD1m9U4uSoNpYtIeToyRZ/J0ky87fm/wBtMjyOm7/v/sP42T3uS3b/AHLcVTbhvy5OpSPaUqcVw41ae3JbuXCc3pxdZOXbz71AnDJAcauXMgKndxM7a9JG4asm6dlfGBp+buD6ThwbPSu/Ur27bsTYJxASAPc4lu50fnIwXU49us9Q1a8X2lbT+7kACdJbuE07emT8QcG0OYef3YqfMhrTJCNDfxLdu4MfSW7m8W4TfPpcT7rHoXjhuVccHcXR6kkD54tNDTgnGmGGvxrjvSqoHMiN6bZEmoO5cJcHb/DJ+5FcnSbCk6a5ctkIO5Ehgft/yhlppxmGgIkk8HBROTD+gcLpx255IIMBbSnY8khP8cOtfYE/AtuqEpHtxIP6Wo9ZGgEgti2QUEVy4QHh0ufSFHrIFpXK+pkRJ0xDnIS2OQfOQEDyayKQFuePbGEHiMDufbttKsk4+jHcgerQuSQO8rGhWAFy3cnHbjHoOn8CGSgFalC8AXJyWzpzjIMlvnIA3xk07UPmTtM9tVSTto1w0lsG8XCeb/cgGMxl9gj+lmMsD221q6StU1YNp6hdKsGNOknHbBbW3B2yf2/3LhImky8zoStXaSjbUAESweoeRzSaifo7lz+3buQS5R+SVK5To2JTTubVP1cqdU+JVQG32PeeGFvup/YKT3Mbnx9HFQEzGch0lPTe5L96J8uI9KOk6Ph8PTiFLqzr+HW5DjKWVKVpMNrq/cqYpJuolrEraXFrVqN/OM+oQnDtjIPm+JchQkPck+3AEd3buKC8PhjicNXF1DgMCCondyRmyF2XHCTyBn/5HAw6rwI20o4XH2eXyJy/9xwcPYlgMeTk7MOPe0njajnPORCQupUK+RSjQkGdPqDIMnDi/lvJqcV6pQ4YVUjkwOQk+Mm6E6yBxeS88iWezJVyDZnGT3NzJ1kAGVakzNqRLt7vc2CanEjQ5Vo9vAd2WNt+S5ctkJFqY8lJ4l8GtUmH+jJ1kZfw01Bs2e3tLseTsdj/AO4xilSEU7E5SNFuQfOXImtU72Oe43tvd+b1IuGbktPeIiBNWySeWf7oTrIPU9kRX1NTGNT2YiNDMpHsTlGhn2/WQDCi3fjKKVuTsee04Lhjn+ZqRCJ4Fwi0Y5Ok3QkXpNyZqkcTYqiVqhxVTEJOUhEZJ9v/AHJH0fJfqciOdCetm3AdwngICdZClo6Dn37Ln2UulY1qvYLvxBgJwzkQEt+kjBUzLUqkibfhk85ICOhWvIauU7YlaF2YqdQyopr0jfuhLe35eJE3Hk+OrgckxKlQbU/x7oTrIoWshZM5mnalx/lJP0J4IMKOZnqbdZcVFyVCTbvJ9jHiSfFHRuPJwexSzkkqhtwxk+5k6yMq/wAj3lbViWslj82SzqGhOkIISMmGE0+Hwz8T7EULhoTn/9k="></a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%BF%AE%E7%90%86/" rel="tag"><i class="fa fa-tag"></i> 修理</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/qian-ru-shi-yu-dan-pian-ji/dan-pian-ji-kai-fa/dan-pian-ji-xue-xi-ru-men-yi/" rel="next" title="单片机学习入门（一）">
+      单片机学习入门（一） <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B%E5%9B%BA%E4%BB%B6%E6%9B%B4%E6%8D%A2"><span class="nav-number">2.</span> <span class="nav-text">开始固件更换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B%E5%88%B6%E4%BD%9C%E5%8F%AF%E5%90%AF%E5%8A%A8cf%E5%8D%A1"><span class="nav-number">3.</span> <span class="nav-text">开始制作可启动CF卡</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8Ecf%E5%8D%A1%E5%90%AF%E5%8A%A8"><span class="nav-number">4.</span> <span class="nav-text">从CF卡启动</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81%E5%8A%9F%E8%83%BD"><span class="nav-number">5.</span> <span class="nav-text">验证功能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%99%84%E5%BD%95"><span class="nav-number">6.</span> <span class="nav-text">附录</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Always L"
+      src="/images/misterchief.png">
+  <p class="site-author-name" itemprop="name">Always L</p>
+  <div class="site-description" itemprop="description">硬件，杂项，爱好</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/alwaysmy" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;alwaysmy" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:always_one@foxmail.com" title="E-Mail → mailto:always_one@foxmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Always L</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="本站总字数">71k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:37</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+  
+<script src="https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '48px',
+  right: 'unset',
+  left: '48px',
+  time: '0.3s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+
+    </div>
+</body>
+</html>

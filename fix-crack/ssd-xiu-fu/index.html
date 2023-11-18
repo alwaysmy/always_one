@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-con-sand.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon32.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"alwaysmy.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="在某鱼收了一个120G的所谓金士顿v300固态硬盘，也是受到了一些颗粒玩家的影响想要收来做个U盘，便有了下文…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="慧荣SM2246EN主控山寨固态硬盘修复">
+<meta property="og:url" content="https://alwaysmy.github.io/fix-crack/ssd-xiu-fu/index.html">
+<meta property="og:site_name" content="加载中...">
+<meta property="og:description" content="在某鱼收了一个120G的所谓金士顿v300固态硬盘，也是受到了一些颗粒玩家的影响想要收来做个U盘，便有了下文…">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://alwaysmy.github.io/fix-crack/ssd-xiu-fu/%E5%A4%96%E8%A7%82.png">
+<meta property="og:image" content="https://alwaysmy.github.io/fix-crack/ssd-xiu-fu/%E9%87%8F%E4%BA%A7%E5%B7%A5%E5%85%B7.png">
+<meta property="og:image" content="https://alwaysmy.github.io/fix-crack/ssd-xiu-fu/%E9%87%8F%E4%BA%A7%E5%B7%A5%E5%85%B72.png">
+<meta property="og:image" content="https://alwaysmy.github.io/fix-crack/ssd-xiu-fu/RDT.png">
+<meta property="article:published_time" content="2022-12-17T07:55:39.131Z">
+<meta property="article:modified_time" content="2023-06-19T23:03:30.226Z">
+<meta property="article:author" content="Always L">
+<meta property="article:tag" content="修理">
+<meta property="article:tag" content="SSD">
+<meta property="article:tag" content="Flash">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://alwaysmy.github.io/fix-crack/ssd-xiu-fu/%E5%A4%96%E8%A7%82.png">
+
+<link rel="canonical" href="https://alwaysmy.github.io/fix-crack/ssd-xiu-fu/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>慧荣SM2246EN主控山寨固态硬盘修复 | 加载中...</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style><style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.8}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">加载中...</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">博客记录</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">32</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">31</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://alwaysmy.github.io/fix-crack/ssd-xiu-fu/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/misterchief.png">
+      <meta itemprop="name" content="Always L">
+      <meta itemprop="description" content="硬件，杂项，爱好">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="加载中...">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          慧荣SM2246EN主控山寨固态硬盘修复
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-12-17 15:55:39" itemprop="dateCreated datePublished" datetime="2022-12-17T15:55:39+08:00">2022-12-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-06-20 07:03:30" itemprop="dateModified" datetime="2023-06-20T07:03:30+08:00">2023-06-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Fix-Crack/" itemprop="url" rel="index"><span itemprop="name">Fix & Crack</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><em>在某鱼收了一个120G的所谓金士顿v300固态硬盘，也是受到了一些颗粒玩家的影响想要收来做个U盘，便有了下文…</em></p>
+<span id="more"></span>
+
+<hr>
+<h4 id="初印象">初印象</h4>
+<p>当时到手后拆开发现内部主控为慧荣SM2246EN，这可不好。。。</p>
+<p>实际上在网上查询得知这款金士顿应该为SF2281的主控。
+固态上的颗粒印字为Toshiba的TH58TEG7DDLTA00。如下图。</p>
+<img src="/fix-crack/ssd-xiu-fu/%E5%A4%96%E8%A7%82.png" class title="整体外观">
+
+<p>基本上认定这是一个山寨产品。</p>
+<p>首先还是试一试读写，买了斐讯的Sata转USB3.0转接板，上机发现问题是偶尔能读取，但是无法删除原有文件，也无法新建（重新拔插后全部恢复原样），顺序写入大概70M/s，很快掉盘。</p>
+<h4 id="尝试修复">尝试修复</h4>
+<p>直接考虑进行量产操作。</p>
+<p>图片上可以看到左边丝印有标注ROM，用镊子短接然后插USB就可以进入ROM模式，被慧荣SM2246EN的量产工具识别就可以开卡。</p>
+<p>但是在慧荣的各个版本量产工具中都找不到这个颗粒型号。
+关于颗粒类型与命名规则，这里可以参考一些别的文献。
+这个颗粒按照丝印，应该是15nm制程的MLC，但是在SSD-z中读取为Toshiba 19nm
+MLC，主控读取为SF2281，但主控固件读取为P0614，这个型号可以看出来很明显是慧荣的一款固件版本。所以说具体颗粒究竟是什么从颗粒丝印不一定是正确的，也可能是重新打字。之前一直尝试使用东芝其他型号颗粒开卡不能开出。</p>
+<p>然后用慧荣开卡工具进行Dram Test（下图）</p>
+<img src="/fix-crack/ssd-xiu-fu/%E9%87%8F%E4%BA%A7%E5%B7%A5%E5%85%B7.png" class title="测试">
+
+<p>发现Dram
+Test过不了，最开始的思路是找能不用缓存的固件开卡，但是实在找不到这样的。顺便提一嘴，这个慧荣的量产工具界面要拖动边框有些内容才会显示出来。
+这时候去翻了翻论坛，了解到：</p>
+<blockquote>
+<ul>
+<li>首先内存型号要选对</li>
+<li>过不了可能是虚焊</li>
+<li>maybe选别的颗粒就好了</li>
+</ul>
+</blockquote>
+<p>这些不同的观点对我修复这个硬盘的过程造成一些困扰。</p>
+<p>图中是南亚的颗粒，Nanya的内存丝印可以看到64M16， 意思是64M
+Bytes16位，这里这个大小按照8Bit算，就是128M，有些颗粒如三星（SEC，Samsung）海力士（SKhynix）会标1G16那种就是1G
+bits，就是128M Bytes。
+SM2246主控只支持16位内存。进入参数设置页面设置正确（下图）</p>
+<img src="/fix-crack/ssd-xiu-fu/%E9%87%8F%E4%BA%A7%E5%B7%A5%E5%85%B72.png" class title="量产">
+
+<p>但是依然不能开卡。</p>
+<hr>
+<h4 id="切换思路">切换思路</h4>
+<p>这时候我已经想放弃了，但是考虑到还是有可能是内存颗粒虚焊，当时手头没有热风枪，先用力按住内存和PCB,发现DRAM
+Test
+可以通过，果然是虚焊。用热风枪重新加焊之后，SSD可以直接使用了，不需要量产。
+但是在跑随机读写的时候还是容易掉盘，而且顺序读写速度很低。本来不想接着折腾了，就装到壳子里面了。然后发现更容易掉盘了，需要重新加焊，这里为什么后面解释。
+继续可以使用了之后，尝试在固态里面装一个<a target="_blank" rel="noopener" href="https://markdown.com.cn">Deepin</a>，但是每次都会最后掉盘，第三次的时候直接拔掉电源，发现再不能识别硬盘，当时心里一凉，完了。</p>
+<h4 id="收尾工作">收尾工作</h4>
+<p>这时候已经不可避免要进行量产了，最开始提示Flash没有sync，后来再参数设置里面关掉了sync
+mode，至于选择颗粒选择了自动匹配ID的Sandisk的128Gb颗粒进行开卡，发现这样子可以通过开卡。
+速度也有所提升。然是发现装进外壳之后又不能识别，这时候用手轻轻扳动缓存颗粒旁边的PCB边缘，发现不能通过DRAM
+test,就明白了外壳上螺丝的时候会压到这个pcb使其虚焊。重新加焊之后不再上这个螺丝。
+另外，这只是这个固态的一部分毛病，之前再固态信息里面看到这个固态的数据量是<strong>120T</strong>…也就说，颗粒很可能已经接近报废，所以这就导致后面的的问题，写入到一部分的时候会掉盘。也就说坏块过多也不能映射备用块。这里说一下，固态和机械有很大的不同，所以diskgenius的扫描坏块是不合适的，比如需要读写，对于固态寿命是有影响的，读出来的结果也并不是真的物理块，但是我这里死马当做活马医，本身只想看个参考，所以跑了测试发现确实有读写错误的部分。</p>
+<p>为了解决这个问题，可以通过跑RDT来解决这个问题，量产的时候勾选RDT,这个PCBA在跑的时候会闪灯，所以可以看到跑完结束。跑完RDT之后量产需要直接插上电脑，<strong>不要短接ROM，不要短接不要短接</strong>，那样就失去了RDT信息(如下）<img src="/fix-crack/ssd-xiu-fu/RDT.png" class title="RDT"></p>
+<p>而是直接插上硬盘就应该能在量产工具里面检测到。
+最开始我的斐讯的JMS576我发现不行，还准备去买别的转接卡，后来发现只要插在USB2.0端口上就可以识别了，然后换了0819A的固件，发现速度也有提升，测试两天后发现没有掉盘，结束。</p>
+<hr>
+<p>补充：NAND的ID可以复制读出来的第一行数据在这个上面找试试www.flashinfo.top</p>
+<h3 id="尾声">尾声</h3>
+<p>折腾有风险，修理费时间，目前稳定使用一年多，不过权当一段经历吧。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%BF%AE%E7%90%86/" rel="tag"><i class="fa fa-tag"></i> 修理</a>
+              <a href="/tags/SSD/" rel="tag"><i class="fa fa-tag"></i> SSD</a>
+              <a href="/tags/Flash/" rel="tag"><i class="fa fa-tag"></i> Flash</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/qian-ru-shi-yu-dan-pian-ji/sd-zhi-shi-shu/" rel="prev" title="SD知识树">
+      <i class="fa fa-chevron-left"></i> SD知识树
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/qian-ru-shi-yu-dan-pian-ji/dan-pian-ji-kai-fa/0-rp2040-kai-fa-huan-jing-da-jian/" rel="next" title="树莓派RP2040开发环境配置集合版(基于Raspberry Pico)">
+      树莓派RP2040开发环境配置集合版(基于Raspberry Pico) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9D%E5%8D%B0%E8%B1%A1"><span class="nav-number">1.</span> <span class="nav-text">初印象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%9D%E8%AF%95%E4%BF%AE%E5%A4%8D"><span class="nav-number">2.</span> <span class="nav-text">尝试修复</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%87%E6%8D%A2%E6%80%9D%E8%B7%AF"><span class="nav-number">3.</span> <span class="nav-text">切换思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%94%B6%E5%B0%BE%E5%B7%A5%E4%BD%9C"><span class="nav-number">4.</span> <span class="nav-text">收尾工作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%BE%E5%A3%B0"><span class="nav-number"></span> <span class="nav-text">尾声</span></a></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Always L"
+      src="/images/misterchief.png">
+  <p class="site-author-name" itemprop="name">Always L</p>
+  <div class="site-description" itemprop="description">硬件，杂项，爱好</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/alwaysmy" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;alwaysmy" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:always_one@foxmail.com" title="E-Mail → mailto:always_one@foxmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Always L</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="本站总字数">71k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:37</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+  
+<script src="https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '48px',
+  right: 'unset',
+  left: '48px',
+  time: '0.3s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+
+    </div>
+</body>
+</html>

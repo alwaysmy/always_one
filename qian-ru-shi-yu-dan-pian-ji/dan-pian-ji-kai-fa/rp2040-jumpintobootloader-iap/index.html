@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-con-sand.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon32.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"alwaysmy.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="对于单片机来说，跳转BOOTLOADER一般可以通过自己实现一个BOOTLOADER来实现，同样，RP2040也可以这样来做，不过，如果没有特别的要求，也可以使用更简单的方法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【RP2040】跳转Bootloader实现IAP">
+<meta property="og:url" content="https://alwaysmy.github.io/qian-ru-shi-yu-dan-pian-ji/dan-pian-ji-kai-fa/rp2040-jumpintobootloader-iap/index.html">
+<meta property="og:site_name" content="加载中...">
+<meta property="og:description" content="对于单片机来说，跳转BOOTLOADER一般可以通过自己实现一个BOOTLOADER来实现，同样，RP2040也可以这样来做，不过，如果没有特别的要求，也可以使用更简单的方法。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-08-29T07:24:35.000Z">
+<meta property="article:modified_time" content="2023-08-29T07:26:32.227Z">
+<meta property="article:author" content="Always L">
+<meta property="article:tag" content="rp2040">
+<meta property="article:tag" content="ARM">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://alwaysmy.github.io/qian-ru-shi-yu-dan-pian-ji/dan-pian-ji-kai-fa/rp2040-jumpintobootloader-iap/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>【RP2040】跳转Bootloader实现IAP | 加载中...</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style><style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.8}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">加载中...</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">博客记录</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">32</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">31</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://alwaysmy.github.io/qian-ru-shi-yu-dan-pian-ji/dan-pian-ji-kai-fa/rp2040-jumpintobootloader-iap/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/misterchief.png">
+      <meta itemprop="name" content="Always L">
+      <meta itemprop="description" content="硬件，杂项，爱好">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="加载中...">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【RP2040】跳转Bootloader实现IAP
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-08-29 15:24:35 / 修改时间：15:26:32" itemprop="dateCreated datePublished" datetime="2023-08-29T15:24:35+08:00">2023-08-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/" itemprop="url" rel="index"><span itemprop="name">嵌入式与单片机</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>对于单片机来说，跳转BOOTLOADER一般可以通过自己实现一个BOOTLOADER来实现，同样，RP2040也可以这样来做，不过，如果没有特别的要求，也可以使用更简单的方法。</p>
+<span id="more"></span>
+
+<h1 id="1利用bootrom跳转usb-boot">1、利用bootrom跳转USB boot</h1>
+<p>RP2040的片上ROM固化了一个Bootloader，这个bootloader可以通过实现一个USB大容量设备来在电脑上加载UF2格式的固件，这个Bootloader是默认上电的时候检查Flash不可用或者Flash中没有可启动的程序的时候会自动跳转。</p>
+<p>如果希望在程序中跳转进入Bootloader，可以借用这个自带的Bootloader，对于一些简单应用可以省去很多事情，或者用于用于免下电免调试器下载固件。</p>
+<p>为了不用操作RUN这个引脚或者下电之后按住BOOT引脚（FLASH的CS）重新进Bootloader，而是直接在程序内根据触发条件运行，通过代码来实现内部跳转显然是有必要的，实际上官方手册已经给出了详细方法，能够让RP2040可以直接跳转到Bootrom直接进入USB大容量模式来下载UF2固件。</p>
+<pre><code>WCH或者STC的单片机，他们默认支持串口下载或者USB下载，跳转到USB或者串口下载模式只需要跳转到ROM指定地址，只需要在代码中添加跳转地址并调用即可。同样，RP2040也是类似。
+
+RP2040的启动顺序见Datasheet. 片上16k rom位于0x00000000地址，不过库函数提供了方法，不需要自己找对应的执行位置。</code></pre>
+<h2 id="10-实现方法">1.0 实现方法</h2>
+<p>这个方法在官方例程中没有单独列出，实际上这个功能已经在bootrom.h内实现，而是在数据手册中解释了，可能是实现这个太简单了因此没有单独拿出来说。</p>
+<p>只需要在代码中加入下面这部分内容即可，然后每次调用enter_usb_dfu_bootloader()即可进入RP2040自带的Bootloader.</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">"pico/stdlib.h"</span> </span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">"pico/bootrom.h"</span> </span></span><br><span class="line"><span class="type">void</span> <span class="title function_">enter_usb_dfu_bootloader</span><span class="params">()</span> </span><br><span class="line">{ </span><br><span class="line">    reset_usb_boot(<span class="number">0</span>, <span class="number">0</span>); </span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<p>reset_usb_boot这一句实际上是实现了重启到指定位置。
+这里函数可以传入两个参数。
+第一个是IO设置，0是表示禁用，其他数字表示设置单个bit的IO,在USB大容量模式下主机活动的时候，IO会被拉高，说白了进入Bootloader之后可以选用一个下载指示灯，这个可以指定GPIO。
+第二个参数是要使用的接口：</p>
+<ul>
+<li>选0：同时开启了USB大容量模式和USB
+PICOBOOT接口（与正常的冷启动相同）</li>
+<li>参数为1：只使用USB PICOBOOT接口</li>
+<li>参数为2：只使用USB大容量模式。 例如，如果只需要启用USB
+大容量储存模式，换成下面这个参数即可：</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">reset_usb_boot(<span class="number">0</span>, <span class="number">2</span>);<span class="comment">//禁用PICOBOOT模式 </span></span><br></pre></td></tr></table></figure>
+
+<p>实际上这个函数就是类似于下面这种方法，跳转地址执行，但是SDK中已经配置好了准确的地址，并能根据参数选择不同配置：
+（未验证）：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> (*bootrom)(<span class="type">void</span>) = (<span class="type">void</span> (*)(<span class="type">void</span>))(<span class="number">0x00000000</span> + <span class="number">4</span>); </span><br><span class="line">bootrom();<span class="comment">//</span></span><br></pre></td></tr></table></figure>
+
+<p>这段代码定义了一个指针<code>bootrom</code>，指向0x00000004的地址，即bootrom的入口地址。然后调用该指针即可跳转到bootrom。需要注意的是，为了确保正确的跳转，必须将指针类型强制转换为<code>void (*)(void)</code>，但是跳转到BOOTROM并不会直接进入USBBOOT.</p>
+<pre><code>tips：如果启用PICOBOOT，Windows下会显示RP2 BOOT的USB设备，显示没有驱动，因为没有WinUSB的MSOS支持，不过依然可以手动加载WINUSB驱动或者使用LIBUSB.
+这种方法也就是和RP2040的Arduino框架中使用的相似的方法（arudino大概是基于PICOBOOT传输固件）。</code></pre>
+<h2 id="11-实际使用">1.1 实际使用</h2>
+<p>有了这个方法，对于有按键的开发板，可以设置一键进入Bootrom。
+例如我买的这个板子上24号引脚用作了用户按键，因此加入引脚配置为输入并上拉：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> BUTTON_GPIO 24</span></span><br><span class="line"><span class="type">static</span> <span class="type">void</span> <span class="title function_">usr_btn_init</span><span class="params">()</span></span><br><span class="line">{</span><br><span class="line">    <span class="comment">//这个板子上的按键有个问题，因为设计了阻容，导致上电需要一段时间才能充满，如果用电平判断的话，这个处理器太快了电容还没充够就开始判断了。。。因此如果不是检测边沿，初始化必须延时，</span></span><br><span class="line">    gpio_init(BUTTON_GPIO);</span><br><span class="line">    <span class="comment">//gpio_set_dir(BUTTON_GPIO, GPIO_IN);</span></span><br><span class="line">    gpio_pull_up(BUTTON_GPIO);</span><br><span class="line">}</span><br><span class="line"><span class="comment">//检查按键下降沿</span></span><br><span class="line"><span class="type">static</span> <span class="type">void</span> <span class="title function_">check_btn_task</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">{</span><br><span class="line">  <span class="type">static</span> <span class="type">uint16_t</span> lastLevel=<span class="number">0</span>;<span class="comment">//初始认为是低电平，按键上拉建立之后才是高电平</span></span><br><span class="line">  <span class="comment">//检测到按键按下就跳转</span></span><br><span class="line">  <span class="keyword">if</span>(gpio_get(BUTTON_GPIO)==<span class="number">0</span>)</span><br><span class="line">  {</span><br><span class="line">    <span class="keyword">if</span>(lastLevel==<span class="number">1</span>)</span><br><span class="line">    {</span><br><span class="line">      enter_usb_dfu_bootloader();<span class="comment">//检测电平下降沿</span></span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">else</span>{</span><br><span class="line">      lastLevel=<span class="number">0</span>;</span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">  {</span><br><span class="line">    lastLevel = <span class="number">1</span>;<span class="comment">//更新电平状态</span></span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line"><span class="comment">//主程序循环中添加</span></span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">{</span><br><span class="line">···</span><br><span class="line">    check_btn_task();</span><br><span class="line">···</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<p>或者使用中断来完成这个功能，可能更方便：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">usr_btn_callback</span><span class="params">(uint gpio, <span class="type">uint32_t</span> events)</span> {</span><br><span class="line">    <span class="comment">// Put the GPIO event(s) that just happened into event_str</span></span><br><span class="line">        <span class="comment">//     "LEVEL_LOW",  // 0x1</span></span><br><span class="line">        <span class="comment">// "LEVEL_HIGH", // 0x2</span></span><br><span class="line">        <span class="comment">// "EDGE_FALL",  // 0x4</span></span><br><span class="line">        <span class="comment">// "EDGE_RISE"   // 0x8</span></span><br><span class="line">    <span class="comment">// sleep_ms(20); //不要尝试在回调函数里面使用这个函数，会造成错误退出</span></span><br><span class="line">    <span class="keyword">if</span>(gpio_get(BUTTON_GPIO)==<span class="number">0</span>)</span><br><span class="line">        enter_usb_dfu_bootloader();</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">... 主函数中添加：</span><br><span class="line"></span><br><span class="line">usr_btn_init(); <span class="comment">//用户按键初始化</span></span><br><span class="line">gpio_set_irq_enabled_with_callback(BUTTON_GPIO, GPIO_IRQ_EDGE_FALL, <span class="literal">true</span>, &amp;usr_btn_callback);<span class="comment">//配置IO中断</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="12-参考来源">1.2 参考来源</h2>
+<ol type="1">
+<li>RP2040 Datasheet: 2.8章节说明了bootrom，其中包括有关USB
+PICOBOOT模式的详细说明和电气特性。（简单来说这是一个基本接口，提供了一些读写擦除RAM、FLASH、重启等简单的调试功能，除了手册上详细的描述，还可以看<strong>picoboot.h</strong>）</li>
+<li>Raspberry Pi Pico C/C++ SDK: 这里面也对USB
+PICOBOOT的部分场合做了解释，不过不多，直接搜索即可。</li>
+</ol>
+<h1 id="2实现自己的bootloader">2、实现自己的Bootloader</h1>
+<p>见 文章 RP2040的自定义Bootloader</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/rp2040/" rel="tag"><i class="fa fa-tag"></i> rp2040</a>
+              <a href="/tags/ARM/" rel="tag"><i class="fa fa-tag"></i> ARM</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/sheng-huo-you-wan/remarkable-1-man-you-zhi-nan/" rel="prev" title="reMarkable 1 漫游指南">
+      <i class="fa fa-chevron-left"></i> reMarkable 1 漫游指南
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/sepic-cuk-power-design-test/" rel="next" title="SEPIC+Ćuk正负电源设计制作和测试（1）">
+      SEPIC+Ćuk正负电源设计制作和测试（1） <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1%E5%88%A9%E7%94%A8bootrom%E8%B7%B3%E8%BD%ACusb-boot"><span class="nav-number">1.</span> <span class="nav-text">1、利用bootrom跳转USB boot</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#10-%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">1.0 实现方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8"><span class="nav-number">1.2.</span> <span class="nav-text">1.1 实际使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-%E5%8F%82%E8%80%83%E6%9D%A5%E6%BA%90"><span class="nav-number">1.3.</span> <span class="nav-text">1.2 参考来源</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%B7%B1%E7%9A%84bootloader"><span class="nav-number">2.</span> <span class="nav-text">2、实现自己的Bootloader</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Always L"
+      src="/images/misterchief.png">
+  <p class="site-author-name" itemprop="name">Always L</p>
+  <div class="site-description" itemprop="description">硬件，杂项，爱好</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/alwaysmy" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;alwaysmy" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:always_one@foxmail.com" title="E-Mail → mailto:always_one@foxmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Always L</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="本站总字数">71k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:37</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+  
+<script src="https://unpkg.com/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '48px',
+  right: 'unset',
+  left: '48px',
+  time: '0.3s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: true,
+  label: '🌓',
+  autoMatchOsTheme: true
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+
+    </div>
+</body>
+</html>
