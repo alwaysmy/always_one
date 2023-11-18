@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"alwaysmy.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="这篇文章是一个测试了多种方法开发RP2040并总结的集合，如果只关心一种方法，我推荐阅读：[RP2040配置VSCODE开发环境 —— 一劳永逸版](RP2040配置VSCODE开发环境 —— 一劳永逸版 | 加载中… (alwaysmy.github.io))。 起初我以为RP2040作为一款树莓派出品的单片机会有很成熟的开发方案，等到我过了两年才开始决定找一下的时候，发现网上的配置方法大多数是">
+  <meta name="description" content="这篇文章是一个测试了多种方法开发RP2040并总结的集合，如果只关心一种方法，我推荐阅读：[RP2040配置VSCODE开发环境 —— 一劳永逸版](RP2040配置VSCODE开发环境 —— 一劳永逸版 | 加载中… (alwaysmy.github.io))。 起初我以为RP2040作为一款树莓派出品的单片机会有很成熟的开发方案，等到我过了两年才开始决定找一下的时候，发现网上的配置方法大">
 <meta property="og:type" content="article">
 <meta property="og:title" content="树莓派RP2040开发环境配置集合版(基于Raspberry Pico)">
 <meta property="og:url" content="https://alwaysmy.github.io/2022/12/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91/0_RP2040%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/index.html">
 <meta property="og:site_name" content="加载中...">
-<meta property="og:description" content="这篇文章是一个测试了多种方法开发RP2040并总结的集合，如果只关心一种方法，我推荐阅读：[RP2040配置VSCODE开发环境 —— 一劳永逸版](RP2040配置VSCODE开发环境 —— 一劳永逸版 | 加载中… (alwaysmy.github.io))。 起初我以为RP2040作为一款树莓派出品的单片机会有很成熟的开发方案，等到我过了两年才开始决定找一下的时候，发现网上的配置方法大多数是">
+<meta property="og:description" content="这篇文章是一个测试了多种方法开发RP2040并总结的集合，如果只关心一种方法，我推荐阅读：[RP2040配置VSCODE开发环境 —— 一劳永逸版](RP2040配置VSCODE开发环境 —— 一劳永逸版 | 加载中… (alwaysmy.github.io))。 起初我以为RP2040作为一款树莓派出品的单片机会有很成熟的开发方案，等到我过了两年才开始决定找一下的时候，发现网上的配置方法大">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://alwaysmy.github.io/2022/12/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91/0_RP2040%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/arduino%E6%A1%86%E6%9E%B6%E5%8F%AF%E4%BB%A5%E8%B0%83%E8%AF%95%E5%8F%8C%E6%A0%B8-wchLink.png">
 <meta property="og:image" content="https://alwaysmy.github.io/2022/12/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91/0_RP2040%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/pico-project-generator1.png">
@@ -82,7 +82,119 @@
   </style>
 </noscript>
 
-<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.8}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style><style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.8}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -137,7 +249,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">29</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">30</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -262,65 +374,72 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>这篇文章是一个测试了多种方法开发RP2040并总结的集合，如果只关心一种方法，我推荐阅读：[RP2040配置VSCODE开发环境 —— 一劳永逸版](<a href="https://alwaysmy.github.io/2023/04/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91/RP2040%E9%85%8D%E7%BD%AEVSCODE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E2%80%94%E2%80%94%E4%B8%80%E5%8A%B3%E6%B0%B8%E9%80%B8%E7%89%88/">RP2040配置VSCODE开发环境 —— 一劳永逸版 | 加载中… (alwaysmy.github.io)</a>)。</p>
-<p>起初我以为RP2040作为一款树莓派出品的单片机会有很成熟的开发方案，等到我过了两年才开始决定找一下的时候，发现网上的配置方法大多数是照着官方给的方法一抄，完全没有解释里面各个部分需要做什么的原因，以及有什么过程需要了解学习，甚至没有说这个配置方案就是<a target="_blank" rel="noopener" href="https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf">官方入门手册.Chapter 7</a>中给出的方法。</p>
+        <p>这篇文章是一个测试了多种方法开发RP2040并总结的集合，如果只关心一种方法，我推荐阅读：[RP2040配置VSCODE开发环境
+—— 一劳永逸版](<a href="https://alwaysmy.github.io/2023/04/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91/RP2040%E9%85%8D%E7%BD%AEVSCODE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E2%80%94%E2%80%94%E4%B8%80%E5%8A%B3%E6%B0%B8%E9%80%B8%E7%89%88/">RP2040配置VSCODE开发环境
+—— 一劳永逸版 | 加载中… (alwaysmy.github.io)</a>)。</p>
+<p>起初我以为RP2040作为一款树莓派出品的单片机会有很成熟的开发方案，等到我过了两年才开始决定找一下的时候，发现网上的配置方法大多数是照着官方给的方法一抄，完全没有解释里面各个部分需要做什么的原因，以及有什么过程需要了解学习，甚至没有说这个配置方案就是<a target="_blank" rel="noopener" href="https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf">官方入门手册.Chapter
+7</a>中给出的方法。</p>
 <span id="more"></span>
+
 <figure class="highlight text"><table><tr><td class="code"><pre><span class="line">（我最开始看的手册还没更新树莓派以外平台的写法，所以蒙圈了好久，以为这些环境配置方法是他们经验丰富才能总结出来的）。</span><br></pre></td></tr></table></figure>
+
 <p>这些网上的博客基本上都是照着文档来配置，好点的会给几个填坑的说明，然后到了调试配置阶段都是直接默认使用官方给出的picoprobe调试器的配置方法或者压根不走调试，实在是让人看了捉急，难道你们开发单片机都不用开Debug吗？</p>
 <p>因此就有了这篇文章。</p>
-<h1 id="一些基础前置内容"><a class="markdownIt-Anchor" href="#一些基础前置内容"></a> 一些基础前置内容</h1>
+<h1 id="一些基础前置内容">一些基础前置内容</h1>
 <p>pico指的是搭载了rp2040单片机的官方出品的PCBA，不过市面上卖的核心开发板基本上兼容官方设计，因此下面文章中不区分pico字样和rp2040字样。</p>
-<h2 id="调试使用的debugger"><a class="markdownIt-Anchor" href="#调试使用的debugger"></a> 调试使用的Debugger</h2>
+<h2 id="调试使用的debugger">调试使用的Debugger</h2>
 <ul>
-<li>
-<p>官方版本<br>
-他们做了一个特殊的daplink，叫做picoprobe, 就是直接用pico实现了一个swd的功能，相比ARM开源的DAP更简陋。在大部分博客中以及现在的官方入门文档中，都指出这个picoprobe所使用的openOCD需要raspberry分支下的openocd才能用，同样，配置文件也是专用的。</p>
-<p>在Windows下如果用picoprobe需要使用Zadig为其安装驱动为libusb-win32。（不知道现在还是不是这样，网上有的教程还提到了需要复制一个dll文件，但是我看现在的openocd.exe目录下已经包含了这个dll）</p>
-</li>
+<li><p>官方版本 他们做了一个特殊的daplink，叫做picoprobe,
+就是直接用pico实现了一个swd的功能，相比ARM开源的DAP更简陋。在大部分博客中以及现在的官方入门文档中，都指出这个picoprobe所使用的openOCD需要raspberry分支下的openocd才能用，同样，配置文件也是专用的。</p>
+<p>在Windows下如果用picoprobe需要使用Zadig为其安装驱动为libusb-win32。（不知道现在还是不是这样，网上有的教程还提到了需要复制一个dll文件，但是我看现在的openocd.exe目录下已经包含了这个dll）</p></li>
 </ul>
 <blockquote>
 <p>这意味这个版本picoprobe的通用性比较差，因此一般来说没有必要使用这个。</p>
 </blockquote>
 <ul>
-<li>标准CMSIS-DAP<br>
-标准的cmsis-dap v2是部分可用的，实测v1的似乎都不能连接上多核，单核似乎也不行。<br>
+<li>标准CMSIS-DAP 标准的cmsis-dap
+v2是部分可用的，实测v1的似乎都不能连接上多核，单核似乎也不行。
 手上有一个WCH-Link实测是可用的。</li>
 </ul>
-<p>另外也可以使用pico-debug这个固件加载自调试，这个固件同样移植自ARM开源的CMSIS-DAP.</p>
+<p>        另外也可以使用pico-debug这个固件加载自调试，这个固件同样移植自ARM开源的CMSIS-DAP.</p>
 <ul>
-<li>Jlink<br>
-有官方支持，但是需要氪金购买新版，我没有，所以下面不会说。</li>
+<li>Jlink 有官方支持，但是需要氪金购买新版，我没有，所以下面不会说。
+        </li>
 </ul>
-<h3 id="配合debugger使用的上位机"><a class="markdownIt-Anchor" href="#配合debugger使用的上位机"></a> 配合Debugger使用的上位机</h3>
+<h3 id="配合debugger使用的上位机">配合Debugger使用的上位机</h3>
 <p>除了Jlink有官方上位机，PicoProbe和CMSIS-DAP都需要有上位机支持。</p>
 <p>PicoProbe使用的是raspberry官方修改的openocd分支，需要单独下载编译。CMSIS-DAP可以使用通用版OpenOCD，也可以使用Pyocd.</p>
-<pre><code>尽管PicoProbe和OpenOCD是官方文档提到的方法，但是openocd的bug较多，我不推荐使用，如果使用了发现存在bug，最好办法是更新版本，一般问题会解决。0.12 rc1以及之前版本存在bug。
-</code></pre>
+<pre><code>尽管PicoProbe和OpenOCD是官方文档提到的方法，但是openocd的bug较多，我不推荐使用，如果使用了发现存在bug，最好办法是更新版本，一般问题会解决。0.12 rc1以及之前版本存在bug。</code></pre>
 <p>Openocd下载来源两个：</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/openocd-org/openocd/releases">Releases · openocd-org/openocd (github.com)</a></li>
-<li><a target="_blank" rel="noopener" href="https://gnutoolchains.com/arm-eabi/openocd/">Download OpenOCD for Windows (gnutoolchains.com)</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/openocd-org/openocd/releases">Releases ·
+openocd-org/openocd (github.com)</a></li>
+<li><a target="_blank" rel="noopener" href="https://gnutoolchains.com/arm-eabi/openocd/">Download
+OpenOCD for Windows (gnutoolchains.com)</a></li>
 </ul>
 <p>但是第二个通常版本相比较旧，我在写这篇文章的时候使用是存在bug的。</p>
 <p>而pyocd只需要使用pip安装即可。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install pyocd</span><br></pre></td></tr></table></figure>
+
 <p>就这么简单，相比来说pyocd的文档也更全面。具体使用放到后面介绍。</p>
-<h2 id="下载固件的方法"><a class="markdownIt-Anchor" href="#下载固件的方法"></a> 下载固件的方法</h2>
-<h3 id="uf2固件加载"><a class="markdownIt-Anchor" href="#uf2固件加载"></a> UF2固件加载</h3>
+<h2 id="下载固件的方法">下载固件的方法</h2>
+<h3 id="uf2固件加载">UF2固件加载</h3>
 <p>RP2040内建Bootloader支持插上电脑USB拖入固件烧录。</p>
 <p>在RP2040运行前按住boot按键然后运行就会让rp2040进入Boot模式。</p>
-<p>最简单的方法是按住按键然后上电就进入boot模式了，然后电脑上就会出现一个叫做RP2-PI的硬盘驱动器，右键UF2文件，点发送到树莓派对应的驱动器。<br>
+<p>最简单的方法是按住按键然后上电就进入boot模式了，然后电脑上就会出现一个叫做RP2-PI的硬盘驱动器，右键UF2文件，点发送到树莓派对应的驱动器。
 （btw.如果是win11强烈建议改成win10右键菜单）。</p>
 <p>如果不希望重新拔插上电，可以拉低Run引脚后按Boot，然后释放Run引脚，不过官方Pico板并没有给Run引脚添加一个按键。</p>
-<p>除此之外，也可以通过代码实现实现跳转bootrom进入bootloader模式，在文章(TODO)中解释。<br>
-UF2（USB Flashing Format (UF2)）格式参考：<br>
-<a target="_blank" rel="noopener" href="https://github.com/microsoft/uf2">microsoft/uf2: UF2 file format specification (github.com)</a></p>
-<h3 id="加载elf或bin文件"><a class="markdownIt-Anchor" href="#加载elf或bin文件"></a> 加载ELF或BIN文件</h3>
-<p>除了通过UF2下载固件，还有传统的SWD烧录的方法，将在环境配置介绍之后的第四章介绍。<br>
-后文中可能会提前说到自调试固件这个词，这里提前说一下，是一个用RP2040的一个核作为仿真器来调试另外一个核心的项目。来源：<a target="_blank" rel="noopener" href="https://github.com/majbthrd/pico-debug">majbthrd/pico-debug: virtual debug pod for RP2040 “Raspberry Pi Pico” with no added hardware (github.com)</a></p>
-<h2 id="环境配置的解释"><a class="markdownIt-Anchor" href="#环境配置的解释"></a> 环境配置的解释</h2>
+<p>除此之外，也可以通过代码实现实现跳转bootrom进入bootloader模式，在文章(TODO)中解释。
+UF2（USB Flashing Format (UF2)）格式参考： <a target="_blank" rel="noopener" href="https://github.com/microsoft/uf2">microsoft/uf2: UF2 file format
+specification (github.com)</a></p>
+<h3 id="加载elf或bin文件">加载ELF或BIN文件</h3>
+<p>除了通过UF2下载固件，还有传统的SWD烧录的方法，将在环境配置介绍之后的第四章介绍。
+后文中可能会提前说到自调试固件这个词，这里提前说一下，是一个用RP2040的一个核作为仿真器来调试另外一个核心的项目。来源：<a target="_blank" rel="noopener" href="https://github.com/majbthrd/pico-debug">majbthrd/pico-debug:
+virtual debug pod for RP2040 “Raspberry Pi Pico” with no added hardware
+(github.com)</a></p>
+<h2 id="环境配置的解释">环境配置的解释</h2>
 <p>本文都是默认我们配置了环境变量来说的，如果有的地方没有提到什么程序加入了环境变量就用了，那就是忘了说，除了说了可以不加。当然这个也很好理解，遇到需要用到某个程序但是没有写绝对路径，那么基本上就加环境变量就好了。</p>
-<h2 id="这篇文章说了些什么"><a class="markdownIt-Anchor" href="#这篇文章说了些什么"></a> 这篇文章说了些什么</h2>
+<h2 id="这篇文章说了些什么">这篇文章说了些什么</h2>
 <p>写这篇文章的时候，我很想知道用什么环境开发RP2040更加顺手，为了具体试一试，所以我找了好几个方案全都列举出来了。</p>
 <p>本文主要包含下面几种发开方案：</p>
 <ul>
@@ -330,59 +449,58 @@ UF2（USB Flashing Format (UF2)）格式参考：<br>
 <li>基于官方C-SDk给出的cmake的配置方法和后续的导入IDE的配置方法。</li>
 </ul>
 <p>除了最后一种，前面三种基本算是算是开箱即用。</p>
-<p>不过如果对于cmake不熟悉，了解一下官方给出的方法还是不错的，已经熟悉的话就很容易明白了。<br>
+<p>不过如果对于cmake不熟悉，了解一下官方给出的方法还是不错的，已经熟悉的话就很容易明白了。
 其中，最后一个方法也就是基于官方给出的C-SDK自行配置，本文中的使用的其中的一种方法是配置VSCODE作为IDE，但是也写了其他的IDE用来作为开发环境的方法。</p>
 <p>下面就开始一个一个来说了。</p>
-<h1 id="micropython环境使用"><a class="markdownIt-Anchor" href="#micropython环境使用"></a> MicroPython环境使用</h1>
+<h1 id="micropython环境使用">MicroPython环境使用</h1>
 <p>这个方法是最简单的，初始配置对于Windows和Linux都很友好，而且使用Python来开发。</p>
-<p>优势是：<br>
-开发相对容易，导入包很简单，基本功能都能用，PIO一样可以支持。<br>
-缺点是：<br>
-micropython不能支持多核操作。<br>
-很多函数功能没有适配，例如DMA和PIO还需要手搓寄存器，这个工具是门槛低上限也低。<br>
+<p>优势是：
+开发相对容易，导入包很简单，基本功能都能用，PIO一样可以支持。 缺点是：
+micropython不能支持多核操作。
+很多函数功能没有适配，例如DMA和PIO还需要手搓寄存器，这个工具是门槛低上限也低。
 所以这里仅仅简单说一下使用方法作为记录：</p>
-<ol>
-<li>
-<p><a target="_blank" rel="noopener" href="https://www.raspberrypi.org/documentation/pico/getting-started/">Raspberry Pi Documentation - Microcontrollers</a>，选择<strong>Getting Start with MicroPython</strong>，<a target="_blank" rel="noopener" href="https://micropython.org/download/rp2-pico/rp2-pico-latest.uf2">下载uf2固件</a>后烧录到rp2040上，打开设备管理器会发现多了一个COM端口（就是串口）。</p>
-</li>
-<li>
-<p>下载<a target="_blank" rel="noopener" href="https://thonny.org/">Thonny IDE</a>, 打开Thonny，右上角点击切换至一般模式，然后点击视图，勾选上这三个：Shell、变量、文件，当然还有别的，这几个最常用。</p>
-</li>
-<li>
-<p>配置Thonny：工具-设置-解释器-选择Raspberry Pi Pico的解释器，然后选择串口端口，这个端口可以看刚刚设备管理器多出来的那个端口就是的。也可另外用别的工具直接连板子上的串口，波特率是115200。</p>
-</li>
-<li>
-<p>进入shell直接依次执行python语句测试</p>
-</li>
+<ol type="1">
+<li><p><a target="_blank" rel="noopener" href="https://www.raspberrypi.org/documentation/pico/getting-started/">Raspberry
+Pi Documentation - Microcontrollers</a>，选择<strong>Getting Start with
+MicroPython</strong>，<a target="_blank" rel="noopener" href="https://micropython.org/download/rp2-pico/rp2-pico-latest.uf2">下载uf2固件</a>后烧录到rp2040上，打开设备管理器会发现多了一个COM端口（就是串口）。</p></li>
+<li><p>下载<a target="_blank" rel="noopener" href="https://thonny.org/">Thonny IDE</a>,
+打开Thonny，右上角点击切换至一般模式，然后点击视图，勾选上这三个：Shell、变量、文件，当然还有别的，这几个最常用。</p></li>
+<li><p>配置Thonny：工具-设置-解释器-选择Raspberry Pi
+Pico的解释器，然后选择串口端口，这个端口可以看刚刚设备管理器多出来的那个端口就是的。也可另外用别的工具直接连板子上的串口，波特率是115200。</p></li>
+<li><p>进入shell直接依次执行python语句测试</p></li>
 </ol>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> machine <span class="keyword">import</span> Pin</span><br><span class="line">led = Pin(<span class="number">25</span>, Pin.OUT)</span><br><span class="line">led.value(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<ol start="5">
+
+<ol start="5" type="1">
 <li>写python文件</li>
 </ol>
-<p>在Thonny里面编辑文本后保存的时候选择保存到pico就行了，<a target="_blank" rel="noopener" href="http://xn--main-ue6fi2q75yn7o3u0d5ln6uij4met1c.py">开机默认会自动运行main.py</a> ，也就是刚刚保存的文件。</p>
-<ol start="6">
-<li>至于开发，随便找个帖子吧：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/359823300">目前全网最详细的树莓派 Pico入门指南！ - 知乎 (zhihu.com)</a><br>
-资料：<br>
-<a target="_blank" rel="noopener" href="https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-python-sdk.pdf">Raspberry Pi Pico Python SDK</a>    <a target="_blank" rel="noopener" href="https://www.raspberrypi.com/documentation/microcontrollers/micropython.html">Raspberry Pi Documentation - MicroPython</a></li>
+<p>在Thonny里面编辑文本后保存的时候选择保存到pico就行了，开机默认会自动运行main.py
+，也就是刚刚保存的文件。</p>
+<ol start="6" type="1">
+<li>至于开发，随便找个帖子吧：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/359823300">目前全网最详细的树莓派
+Pico入门指南！ - 知乎 (zhihu.com)</a> 资料： <a target="_blank" rel="noopener" href="https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-python-sdk.pdf">Raspberry
+Pi Pico Python SDK</a> <a target="_blank" rel="noopener" href="https://www.raspberrypi.com/documentation/microcontrollers/micropython.html">Raspberry
+Pi Documentation - MicroPython</a></li>
 </ol>
-<p>还有一个VSCODE插件可以用在这个上面：<br>
-<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=paulober.pico-w-go">Pico-W-Go - Visual Studio Marketplace</a></p>
-<h1 id="platformio环境开发"><a class="markdownIt-Anchor" href="#platformio环境开发"></a> PlatformIO环境开发</h1>
+<p>还有一个VSCODE插件可以用在这个上面： <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=paulober.pico-w-go">Pico-W-Go
+- Visual Studio Marketplace</a></p>
+<h1 id="platformio环境开发">PlatformIO环境开发</h1>
 <p>我感觉这个东西出bug的问题比较大，不过考虑到配置比较简单我还是写一下。</p>
-<pre><code>它经常不显示出来主页，不知道为啥给我的感觉就是有点卡。
-</code></pre>
-<h2 id="arduino框架环境"><a class="markdownIt-Anchor" href="#arduino框架环境"></a> Arduino框架环境</h2>
+<pre><code>它经常不显示出来主页，不知道为啥给我的感觉就是有点卡。</code></pre>
+<h2 id="arduino框架环境">Arduino框架环境</h2>
 <p>个人认为，如果不在乎那个arduino框架的资源占用，其实还是这个一个很好的开发平台，对仿真器的支持也还可以。</p>
 <p><strong>安装方式：</strong></p>
 <p>在PlatformIO的board里面搜rp2040或者rasp，安装对应的平台。</p>
-<p><strong>文档：</strong><br>
-<a target="_blank" rel="noopener" href="https://arduino-pico.readthedocs.io/en/latest/sdk.html">Using the Raspberry Pi Pico SDK (PICO-SDK) — Arduino-Pico 2.6.2 documentation</a></p>
-<p><strong>功能：</strong><br>
-支持arudino框架，配置有arduino风格的函数。<br>
-因为本身就是基于C-SDK的 , 因此自然也支持在arduino框架下直接使用pico-sdk的函数。</p>
-<p><strong>下载调试方法：</strong><br>
+<p><strong>文档：</strong> <a target="_blank" rel="noopener" href="https://arduino-pico.readthedocs.io/en/latest/sdk.html">Using the
+Raspberry Pi Pico SDK (PICO-SDK) — Arduino-Pico 2.6.2
+documentation</a></p>
+<p><strong>功能：</strong> 支持arudino框架，配置有arduino风格的函数。
+因为本身就是基于C-SDK的 ,
+因此自然也支持在arduino框架下直接使用pico-sdk的函数。</p>
+<p><strong>下载调试方法：</strong>
 这个框架一般会自动选择调试工具，如果要更改就在工程下的ini文件里面添加两行，例如：</p>
 <figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="attr">upload_protocol</span> = picotool</span><br><span class="line"><span class="attr">debug_tool</span> = cmsis-dap</span><br></pre></td></tr></table></figure>
+
 <p>上面的上传和debug参数可以分别改成：</p>
 <ul>
 <li>cmsis-dap, 这个就是一般的cmsis-dap调试器（现在应该叫做daplink）</li>
@@ -392,51 +510,68 @@ micropython不能支持多核操作。<br>
 </ul>
 <p>注释：</p>
 <ul>
-<li>
-<p>[ ] 如果手上没有调试器或者不在意使用调试功能，那么点编译后在工程目录下.pio/build下有uf2文件，首次需要手动上传arduino框架的uf2固件，之后后面就可以直接用platformio的上传功能，不用拔电上传了，arduino框架固件内置了进入bootrom的代码，会启动到USB PICOBOOT和大容量储存设备模式。观察到确实运行时候点上传会进入大容量设备状态，但是实测接着上传不成功。。。我不知道为什么（别的帖子说是可以的).</p>
-</li>
-<li>
-<p>[ ] 如果用openocd调试，点击侧边的调试，有一个pio debug的选项。如上所说支持三种外部debugger，不过我用dap v1的时候也不好使 ，自调试固件也不好使，别人说用官方的picoprobe是可以正常调试的（见参考链接）。实测使用WCH-link可以调试，能正常显示双核。点上传似乎不太好使，要点左边的调试，显示为PIO debug。下图为arduino框架下的调试。</p>
-</li>
+<li><p>[ ]
+如果手上没有调试器或者不在意使用调试功能，那么点编译后在工程目录下.pio/build下有uf2文件，首次需要手动上传arduino框架的uf2固件，之后后面就可以直接用platformio的上传功能，不用拔电上传了，arduino框架固件内置了进入bootrom的代码，会启动到USB
+PICOBOOT和大容量储存设备模式。观察到确实运行时候点上传会进入大容量设备状态，但是实测接着上传不成功。。。我不知道为什么（别的帖子说是可以的).</p></li>
+<li><p>[ ] 如果用openocd调试，点击侧边的调试，有一个pio
+debug的选项。如上所说支持三种外部debugger，不过我用dap v1的时候也不好使
+，自调试固件也不好使，别人说用官方的picoprobe是可以正常调试的（见参考链接）。实测使用WCH-link可以调试，能正常显示双核。点上传似乎不太好使，要点左边的调试，显示为PIO
+debug。下图为arduino框架下的调试。</p></li>
 </ul>
 <img src="/2022/12/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91/0_RP2040%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/arduino%E6%A1%86%E6%9E%B6%E5%8F%AF%E4%BB%A5%E8%B0%83%E8%AF%95%E5%8F%8C%E6%A0%B8-wchLink.png" class title="arduino框架可以调试双核">
-<p>参考链接：<a target="_blank" rel="noopener" href="https://community.platformio.org/t/cannot-debug-pi-pico-with-cmsis-dap-cmsis-dap-command-cmd-dap-swj-clock-failed/21300/8">Cannot debug Pi Pico with CMSIS-DAP - “CMSIS-DAP command CMD_DAP_SWJ_CLOCK failed” - PlatformIO IDE - PlatformIO Community</a></p>
-<h2 id="基于pico-sdk的裸环境wiz-io"><a class="markdownIt-Anchor" href="#基于pico-sdk的裸环境wiz-io"></a> 基于pico-sdk的裸环境Wiz-IO</h2>
-<p><a target="_blank" rel="noopener" href="https://github.com/Wiz-IO/wizio-pico">Wiz-IO/wizio-pico: Raspberry Pi Pico development platform for PlatformIO (github.com)</a></p>
+
+<p>参考链接：<a target="_blank" rel="noopener" href="https://community.platformio.org/t/cannot-debug-pi-pico-with-cmsis-dap-cmsis-dap-command-cmd-dap-swj-clock-failed/21300/8">Cannot
+debug Pi Pico with CMSIS-DAP - “CMSIS-DAP command CMD_DAP_SWJ_CLOCK
+failed” - PlatformIO IDE - PlatformIO Community</a></p>
+<h2 id="基于pico-sdk的裸环境wiz-io">基于pico-sdk的裸环境Wiz-IO</h2>
+<p><a target="_blank" rel="noopener" href="https://github.com/Wiz-IO/wizio-pico">Wiz-IO/wizio-pico:
+Raspberry Pi Pico development platform for PlatformIO
+(github.com)</a></p>
 <p>个人认为，如果这个方法不是存在一点调试的bug的话，应该是最快最完整的C-SDK的方法。目前调试只支持Windows。</p>
 <p><strong>安装方式</strong></p>
 <ul>
 <li>PIO Home &gt; Platforms &gt; Advanced Installation</li>
-<li>粘贴： <a target="_blank" rel="noopener" href="https://github.com/Wiz-IO/wizio-pico">https://github.com/Wiz-IO/wizio-pico</a></li>
+<li>粘贴： https://github.com/Wiz-IO/wizio-pico</li>
 <li>点击INSTALL</li>
 </ul>
 <p><strong>功能</strong></p>
 <p>支持原生C-SDK编写方式，所以功能都能支持，没有arduino框架当然也就不能支持UF2文件的自动上传了。</p>
-<p>文章当中写着写着下载支持cmsisdap picoprobe uf2三种方式，目前只支持Windows。</p>
+<p>文章当中写着写着下载支持cmsisdap picoprobe
+uf2三种方式，目前只支持Windows。</p>
 <p><strong>下载调试：</strong></p>
 <p>下载默认是uf2下载，需要rp2040先手工进入BOOT模式，稍微有点麻烦，可以参考后面的调试方法里面的一键进入BOOT.</p>
-<p>如果要调试，在<code>platformio.ini</code>  里面添加对应的方式，比如</p>
+<p>如果要调试，在<code>platformio.ini</code>
+里面添加对应的方式，比如</p>
 <figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="attr">upload_protocol</span> = picoprobe</span><br><span class="line"><span class="attr">debug_tool</span> = picoprobe</span><br></pre></td></tr></table></figure>
+
 <p>上面的值可以改成：cmsis-dap，picoprobe, uf2</p>
 <p>不过我测试的时候感觉我的wch-link就没被调用过，，可能实际上这个框架里面估计也就picoprobe好使，不清楚是不是我的问题。</p>
-<p>这个框架附带了picoprobe的固件，<code>picoprobe.uf2</code> have in <code>tool-pico-openocd</code> folder，看起来作者可能也就写了这么多。</p>
-<h1 id="基于第三方ide配置"><a class="markdownIt-Anchor" href="#基于第三方ide配置"></a> 基于第三方IDE配置</h1>
+<p>这个框架附带了picoprobe的固件，<code>picoprobe.uf2</code> have
+in <code>tool-pico-openocd</code> folder，看起来作者可能也就写了这么多。</p>
+<h1 id="基于第三方ide配置">基于第三方IDE配置</h1>
 <p>下面这几个都很方便，因为他们都提供了集成的SDK下载和模板工程的创建，不需要官方那一套配置，也就是说开箱即用类型，类似于STM32CUBEIDE,CCS这种，当然，肯定不如别的官方对自己产品优化好。</p>
-<h2 id="基于visualgdb的visual-studio创建工程"><a class="markdownIt-Anchor" href="#基于visualgdb的visual-studio创建工程"></a> 基于VisualGDB的Visual Studio创建工程</h2>
+<h2 id="基于visualgdb的visual-studio创建工程">基于VisualGDB的Visual
+Studio创建工程</h2>
 <p>先安装visualGDB,这是一个给VS提供的跨平台包，关键词：VisualGDB的基本使用。</p>
 <p>然后按照下面的方法，新建工程选模板，下sdk就好。</p>
-<p><a target="_blank" rel="noopener" href="https://visualgdb.com/tutorials/raspberry/pico/">Developing Raspberry Pi Pico Projects with Visual Studio – VisualGDB Tutorials</a><br>
+<p><a target="_blank" rel="noopener" href="https://visualgdb.com/tutorials/raspberry/pico/">Developing
+Raspberry Pi Pico Projects with Visual Studio – VisualGDB Tutorials</a>
 但是VisualGDB是收费的，所以告辞，看起来很简单，我没试过，也有人说用起来有Bug.</p>
-<h2 id="基于-segger-embedded-studio"><a class="markdownIt-Anchor" href="#基于-segger-embedded-studio"></a> 基于 Segger Embedded Studio</h2>
-<p>这个软件社区版本免费，支持Jlink, GDB server，其中gdb server可以选 <code>jlink openocd pyocd st-link</code>这几种。实际上有几个版本中自带的Jlink能使用CMSIS-DAP V1（HID) 。</p>
+<h2 id="基于-segger-embedded-studio">基于 Segger Embedded Studio</h2>
+<p>这个软件社区版本免费，支持Jlink, GDB server，其中gdb server可以选
+<code>jlink openocd pyocd st-link</code>这几种。实际上有几个版本中自带的Jlink能使用CMSIS-DAP
+V1（HID) 。</p>
 <p>这个软件支持多平台，工程配置很方便。</p>
-<p>自带软件芯片仿真，自带少数几个rp2040例程，不过他的例程都是干寄存器，没有引用官方的pico-sdk，pico-sdk的文件是被包含在内的，只是有一些路径没有被包含，示例程序还是没用上SDK的内容。<br>
-编译和加载可能是Segger自家技术，速度较快，默认支持printf输出到RTT在窗口上显示。（也可以选semihost，设置-首选项，Code &gt; Library &gt; Library I/O）</p>
+<p>自带软件芯片仿真，自带少数几个rp2040例程，不过他的例程都是干寄存器，没有引用官方的pico-sdk，pico-sdk的文件是被包含在内的，只是有一些路径没有被包含，示例程序还是没用上SDK的内容。
+编译和加载可能是Segger自家技术，速度较快，默认支持printf输出到RTT在窗口上显示。（也可以选semihost，设置-首选项，Code
+&gt; Library &gt; Library I/O）</p>
 <p>对于指定的工程，打开之后按F1会给出一些手册和提示。下面是具体的步骤。</p>
-<h3 id="安装sdk"><a class="markdownIt-Anchor" href="#安装sdk"></a> 安装SDK</h3>
-<p>点Tools - Package manager,搜pico，点一下，然后点next，就可以安装好sdk了，不过SDK路径并不会被包含进去。</p>
-<h3 id="新建工程"><a class="markdownIt-Anchor" href="#新建工程"></a> 新建工程</h3>
-<p>点Project-Add project，选树莓派的第一个pico是官方的板子的，不带pico就是裸片的工程，区别不大。</p>
+<h3 id="安装sdk">安装SDK</h3>
+<p>点Tools - Package
+manager,搜pico，点一下，然后点next，就可以安装好sdk了，不过SDK路径并不会被包含进去。</p>
+<h3 id="新建工程">新建工程</h3>
+<p>点Project-Add
+project，选树莓派的第一个pico是官方的板子的，不带pico就是裸片的工程，区别不大。</p>
 <p>然后是工程配置：</p>
 <blockquote>
 <p><em>目标处理器选0或者1，对应核心，</em></p>
@@ -445,619 +580,676 @@ micropython不能支持多核操作。<br>
 </blockquote>
 <p>然后编译，debug。</p>
 <p>默认没有生成uf2文件，因为需要调用外部工具生成。</p>
-<p>工程配置可以修改C/C++的包含路径，工程本身包含了部分pico-sdk的include路径，但是没有完全包含----不知道具体原因是为啥----没有被默认配置到包含路径的的包括hardware_xxx下的外设的库，这个路径对应</p>
+<p>工程配置可以修改C/C++的包含路径，工程本身包含了部分pico-sdk的include路径，但是没有完全包含––不知道具体原因是为啥––没有被默认配置到包含路径的的包括hardware_xxx下的外设的库，这个路径对应</p>
 <figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">....\SEGGER Embedded Studio\v3\packagesRP2040_Pico_BSP\pico-sdk\src\rp2_common</span><br></pre></td></tr></table></figure>
-<p>而且这个pico-sdk是不包含第三方库的。可以自己加上去的，没有仔细试过（不知道会不会出现stdlib不兼容的情况，因为pico的c-sdk里面自己定义了个stdlib.h)，在对应的solution中添加后，后来新建的工程就会默认继承solution的设置。<br>
+
+<p>而且这个pico-sdk是不包含第三方库的。可以自己加上去的，没有仔细试过（不知道会不会出现stdlib不兼容的情况，因为pico的c-sdk里面自己定义了个stdlib.h)，在对应的solution中添加后，后来新建的工程就会默认继承solution的设置。
 不过按照和前面的Cmakelist的路径添加，应该是可以做到这个工程和官方方法的工程代码兼容的方法的）</p>
-<h3 id="仿真下载调试"><a class="markdownIt-Anchor" href="#仿真下载调试"></a> 仿真下载调试</h3>
-<h4 id="j-link"><a class="markdownIt-Anchor" href="#j-link"></a> J-link</h4>
-<p>不支持V10以下的Jlink。。。也有的说能支持，但是反正我的Jlink Lite V9显示不支持multi-drop，也有人说需要Jlink v11才行。</p>
-<p>参考链接：<br>
-<a target="_blank" rel="noopener" href="https://forum.segger.com/index.php/Thread/7762-SOLVED-RP2040-Support/?s=e9995ac861bb4d522b6c8a0165f8c96f24726aec">[SOLVED] RP2040 Support - J-Link/Flasher related - SEGGER - Forum</a><br>
+<h3 id="仿真下载调试">仿真下载调试</h3>
+<h4 id="j-link">J-link</h4>
+<p>不支持V10以下的Jlink。。。也有的说能支持，但是反正我的Jlink Lite
+V9显示不支持multi-drop，也有人说需要Jlink v11才行。</p>
+<p>参考链接： <a target="_blank" rel="noopener" href="https://forum.segger.com/index.php/Thread/7762-SOLVED-RP2040-Support/?s=e9995ac861bb4d522b6c8a0165f8c96f24726aec">[SOLVED]
+RP2040 Support - J-Link/Flasher related - SEGGER - Forum</a>
 官方文档指出至少需要v11:</p>
 <ul>
-<li>J-Link HW revision 11 or later (J-Link EDU Mini and J-Trace PRO V1 or later also supported)</li>
-<li><a target="_blank" rel="noopener" href="https://wiki.segger.com/Raspberry_Pi_RP2040">Raspberry Pi RP2040 - SEGGER Wiki</a></li>
+<li>J-Link HW revision 11 or later (J-Link EDU Mini and J-Trace PRO V1
+or later also supported)</li>
+<li><a target="_blank" rel="noopener" href="https://wiki.segger.com/Raspberry_Pi_RP2040">Raspberry Pi
+RP2040 - SEGGER Wiki</a></li>
 </ul>
 <p>合着来卖配件了，4块钱的单片机配不上这个尊贵的JLink.</p>
 <p>但是可以使用具有HID通信的DAPLink，尽管官方表示支持daplink是个错误，但是有几个版本确实能支持。。。</p>
-<h4 id="daplink"><a class="markdownIt-Anchor" href="#daplink"></a> Daplink</h4>
-<p>1、在Shell或命令行里面开一个openocd server等待连接(这一步实际上可选，下面解释)，如：</p>
+<h4 id="daplink">Daplink</h4>
+<p>1、在Shell或命令行里面开一个openocd
+server等待连接(这一步实际上可选，下面解释)，如：</p>
 <figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">openocd -f board/pico-debug.cfg</span><br></pre></td></tr></table></figure>
+
 <p>这里这个配置文件是openocd自带的，其配置实际上调试的是rp2040的core0，也就是调试的是单个核心。</p>
 <p>2、配置工程调试选项</p>
-<p>工程上右键 - option - debug - debugger- 选gdb server，然后点gdb server选项，选openocd。<br>
-点Debug就会启动gdb连接到刚刚开的openocd这个gdb server。</p>
-<p>实际上第一步中手动开一个openocd的gdbserver等待的过程可以省掉：<br>
-可以勾选工程选项里面debug下面的 <code>GDB Server-auto start gdb server</code> 为yes</p>
+<p>工程上右键 - option - debug - debugger- 选gdb server，然后点gdb
+server选项，选openocd。 点Debug就会启动gdb连接到刚刚开的openocd这个gdb
+server。</p>
+<p>实际上第一步中手动开一个openocd的gdbserver等待的过程可以省掉：
+可以勾选工程选项里面debug下面的
+<code>GDB Server-auto start gdb server</code> 为yes</p>
 <p>然后填写<code>Debug &gt; GDB Server &gt; GDB Server Command Line</code>：</p>
 <figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">openocd.exe -f board/pico-debug.cfg</span><br></pre></td></tr></table></figure>
+
 <p>这个openocd要加入环境变量，或者使用绝对路径。</p>
 <p>实测中，单核调试使用自调试固件的单核配置（也就是pico-debug.cfg这个配置），多核使用WCH-link使用标准的配置，都可以正常调试、查看变量寄存器。</p>
 <p>如果想调试多核，标准多核的配置为：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">openocd -f interface/cmsis-dap.cfg -f target/rp2040.cfg</span><br></pre></td></tr></table></figure>
-<p>只是如果使用单核的配置的情况下使用外部daplink的时候就不要让它自己启动openocd, 也就是说需要手动启动，不然连接不上，可能是openocd的bug。</p>
+
+<p>只是如果使用单核的配置的情况下使用外部daplink的时候就不要让它自己启动openocd,
+也就是说需要手动启动，不然连接不上，可能是openocd的bug。</p>
 <p><font color="#bcaadd">同样，命令可以更换为pyocd的命令，命令更为简单，目前没有遇到bug。</font></p>
 <p>只需要使用pip安装好pyocd之后，更换 GDB Server Command Line：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyocd gdbserver -t RP2040 -f 10000k</span><br></pre></td></tr></table></figure>
-<p>注意，这里没有指定调试器UID, 因此需要保持电脑上就只插了一个仿真器，否则可能不能正确打开pyocd的gdbserver</p>
+
+<p>注意，这里没有指定调试器UID,
+因此需要保持电脑上就只插了一个仿真器，否则可能不能正确打开pyocd的gdbserver</p>
 <blockquote>
-<p>使用pyocd生成调试命令可以参考我写的工具：<a href="https://alwaysmy.github.io/2023/04/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/%E4%BD%BF%E7%94%A8aardio%E5%86%99%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8Epyocd%E7%9A%84%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%8B%E8%BD%BD%E5%99%A8/">使用aardio写一个基于pyocd的单片机下载器 | 加载中… (alwaysmy.github.io)</a></p>
+<p>使用pyocd生成调试命令可以参考我写的工具：<a href="https://alwaysmy.github.io/2023/04/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/%E4%BD%BF%E7%94%A8aardio%E5%86%99%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8Epyocd%E7%9A%84%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%8B%E8%BD%BD%E5%99%A8/">使用aardio写一个基于pyocd的单片机下载器
+| 加载中… (alwaysmy.github.io)</a></p>
 </blockquote>
-<h3 id="参考"><a class="markdownIt-Anchor" href="#参考"></a> 参考</h3>
+<h3 id="参考">参考</h3>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://discuss.em-ide.com/d/199-openocddap">在烧入配置中选择OpenOCD，用DAP仿真器进行下载。 - Embedded IDE Forum (em-ide.com)</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/majbthrd/pico-demos/tree/master/pico-ses">pico-demos/pico-ses at master · majbthrd/pico-demos (github.com)</a> ，一个工程模板，不过没必要用，这个模板很老了，估计是还不支持rp2040 sdk的时候的时候做的，也是全都是干寄存器，配置的处理器类型也是一个通用M0+。所以按照最上面那样配置就可以了。</li>
+<li><a target="_blank" rel="noopener" href="https://discuss.em-ide.com/d/199-openocddap">在烧入配置中选择OpenOCD，用DAP仿真器进行下载。
+- Embedded IDE Forum (em-ide.com)</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/majbthrd/pico-demos/tree/master/pico-ses">pico-demos/pico-ses
+at master · majbthrd/pico-demos (github.com)</a>
+，一个工程模板，不过没必要用，这个模板很老了，估计是还不支持rp2040
+sdk的时候的时候做的，也是全都是干寄存器，配置的处理器类型也是一个通用M0+。所以按照最上面那样配置就可以了。</li>
 </ul>
-<p>下载链接：<a target="_blank" rel="noopener" href="https://www.segger.com/downloads/embedded-studio/">SEGGER - The Embedded Experts - Downloads - Embedded Studio</a></p>
-<h2 id="基于rt-thread-studio"><a class="markdownIt-Anchor" href="#基于rt-thread-studio"></a> 基于RT-Thread Studio</h2>
+<p>下载链接：<a target="_blank" rel="noopener" href="https://www.segger.com/downloads/embedded-studio/">SEGGER - The
+Embedded Experts - Downloads - Embedded Studio</a></p>
+<h2 id="基于rt-thread-studio">基于RT-Thread Studio</h2>
 <p>国产软件，评价很高，社区版免费。<a target="_blank" rel="noopener" href="https://www.rt-thread.org/download.html#download-rt-thread-studio">下载链接</a></p>
-<p>如果不介意用rt-thread的话，那么可以去使用rt-thread studio（因为目前他仅仅支持rtt的工程使用官方给sdk模板）</p>
+<p>如果不介意用rt-thread的话，那么可以去使用rt-thread
+studio（因为目前他仅仅支持rtt的工程使用官方给sdk模板）</p>
 <p>支持jlink daplink，不过好像都不怎么好使。。</p>
 <p>使用要登陆。。。有点蠢，bug也还不少。。安装的时候会出现超长路径导致不能放到比较长的路径里面（我已经关了路径长度限制）</p>
-<h3 id="使用方法"><a class="markdownIt-Anchor" href="#使用方法"></a> 使用方法</h3>
-<ol>
-<li>下载SDK, 随便开个窗口或者新建工程点进下载SDK的界面。<br>
-对于Pico,只能创建rtt工程，显示三种调试工具可选，点下载程序的小箭头可以改调试下载方式。<br>
-gdbserver调用的是pyocd，实测我手上的这个daplink v1不支持，已经测过ok的自dap是v2的也不好使，所以不知道好不好使，，，<br>
-jlink也是需要jlink支持，我的版本不够。<br>
+<h3 id="使用方法">使用方法</h3>
+<ol type="1">
+<li>下载SDK, 随便开个窗口或者新建工程点进下载SDK的界面。
+对于Pico,只能创建rtt工程，显示三种调试工具可选，点下载程序的小箭头可以改调试下载方式。
+gdbserver调用的是pyocd，实测我手上的这个daplink
+v1不支持，已经测过ok的自dap是v2的也不好使，所以不知道好不好使，，，
+jlink也是需要jlink支持，我的版本不够。
 stlink不可能支持的。。只是显示出来了。</li>
 </ol>
 <p>要先点一下调试配置，改一下可执行程序的位置和名称，默认的位置不对。。。点一下搜索项目按钮，选elf那个文件。（目前的版本是这样）</p>
-<p>有人使用picoprobe替换驱动为libusb后用来调试（没看见他发调试成功的图啊）<br>
+<p>有人使用picoprobe替换驱动为libusb后用来调试（没看见他发调试成功的图啊）
 我也没成功过，所以不知道调试行不行。但是考虑到有人用这个写，应该是可以的，但是我自己实属体验不好，所以就只能写这么多了。</p>
-<p>参考链接：<a target="_blank" rel="noopener" href="https://club.rt-thread.org/ask/article/5b94f05666f693db.html">RT-Thread-在 RT-Thread Studio 中使用树莓派 Pico 开发板RT-Thread问答社区 - RT-Thread</a></p>
-<h2 id="使用keil-mdk"><a class="markdownIt-Anchor" href="#使用keil-mdk"></a> 使用Keil MDK</h2>
-<p><a target="_blank" rel="noopener" href="https://github.com/GorgonMeducer/Pico_Template">GorgonMeducer/Pico_Template: An MDK template for Raspberry Pi Pico (github.com)</a><br>
+<p>参考链接：<a target="_blank" rel="noopener" href="https://club.rt-thread.org/ask/article/5b94f05666f693db.html">RT-Thread-在
+RT-Thread Studio 中使用树莓派 Pico 开发板RT-Thread问答社区 -
+RT-Thread</a></p>
+<h2 id="使用keil-mdk">使用Keil MDK</h2>
+<p><a target="_blank" rel="noopener" href="https://github.com/GorgonMeducer/Pico_Template">GorgonMeducer/Pico_Template:
+An MDK template for Raspberry Pi Pico (github.com)</a>
 用这个模板，看起来还行，我就不测试了，不喜欢Keil。</p>
-<p>使用方法：<br>
-git clone <a target="_blank" rel="noopener" href="https://github.com/GorgonMeducer/Pico_Template">https://github.com/GorgonMeducer/Pico_Template</a> .<br>
-git submodule update --init</p>
-<h2 id="更多第三方ide"><a class="markdownIt-Anchor" href="#更多第三方ide"></a> 更多第三方IDE</h2>
+<p>使用方法： git clone https://github.com/GorgonMeducer/Pico_Template .
+git submodule update –init</p>
+<h2 id="更多第三方ide">更多第三方IDE</h2>
 <p>基本上就是使用CortexM0+的对应文件并正确包含pico-sdk库的文件就可以了，其实后面CMakelist同理。</p>
 <p>我看还有人用CrossWorks for ARM,很贵，不多说了。</p>
 <p>上面介绍的方法都是基于工程模板的，下面介绍的就是对应pico官方给出的基于Cmakelist的构建方法。</p>
-<h1 id="基于官方c-sdk的开发环境搭建"><a class="markdownIt-Anchor" href="#基于官方c-sdk的开发环境搭建"></a> 基于官方C-SDK的开发环境搭建</h1>
+<h1 id="基于官方c-sdk的开发环境搭建">基于官方C-SDK的开发环境搭建</h1>
 <p>关于CMake和CMakelist这里不再赘述，网上内容很多，先了解一下比较好。</p>
-<h2 id="官方文档的方法总结"><a class="markdownIt-Anchor" href="#官方文档的方法总结"></a> 官方文档的方法总结</h2>
+<h2 id="官方文档的方法总结">官方文档的方法总结</h2>
 <p>网上找的方法绝大多数都是基于getting-started-with-pico.pdf这个手册上的方法，最开始这个手册只更新了基于树莓派系统的配置，他是说直接执行setup脚本就行了，后来才更新了其他平台的配置方法。</p>
-<p>官方的配置里面很多配置文件有很多问题，比如上面的setup脚本，很可能自己的环境用不了。另外，配置中如果遇到问题，重新git pull或者直接覆盖更新自己之前下载的文件是最有可能能解决问题的方法。</p>
+<p>官方的配置里面很多配置文件有很多问题，比如上面的setup脚本，很可能自己的环境用不了。另外，配置中如果遇到问题，重新git
+pull或者直接覆盖更新自己之前下载的文件是最有可能能解决问题的方法。</p>
 <p>总的来说，建立一个工程需要下载pico-sdk和pico-example（也就是官方例程），还有工程模板生成器(pico-project-generator)来避免自己来配置一个工程重复的部分。</p>
-<p>最后需要CMake构建生成对应的makefile并构建，这其中需要对应的c编译器和arm c编译器完成上述过程。</p>
+<p>最后需要CMake构建生成对应的makefile并构建，这其中需要对应的c编译器和arm
+c编译器完成上述过程。</p>
 <p>具体过程如下文。</p>
-<h2 id="下载必要软件"><a class="markdownIt-Anchor" href="#下载必要软件"></a> 下载必要软件</h2>
+<h2 id="下载必要软件">下载必要软件</h2>
 <p>这里主要是Windows上的方法，Linux上同理，但是安装软件要更简单，只在有配置区别的地方单独指出。目前我的环境是Windows11,不过Win10同理了。</p>
 <ul>
-<li><strong>CMAKE</strong><br>
-pico-project-generator生成的工程是基于cmake构建的，因此这里选择安装CMAKE。<br>
+<li><strong>CMAKE</strong>
+pico-project-generator生成的工程是基于cmake构建的，因此这里选择安装CMAKE。
 安装的时候要勾选添加环境变量for all users。实际上就是系统环境变量。</li>
 </ul>
 <ul>
-<li>
-<p><strong>gcc-arm-none-eabi</strong><br>
-<a target="_blank" rel="noopener" href="https://developer.arm.com/Tools%20and%20Software/GNU%20Toolchain">Arm GNU Toolchain</a>  ,用于编译ARM可执行文件。这里没啥特殊要求，可以下最新的。安装完了之后需要手动勾选添加到路径，还要检查一下能不能直接在cmd里面使用arm-none-eabi-gcc命令，否则说明他添加的路径有问题，就需要手工改一下（现在的版本应该不存在这个问题）</p>
-</li>
-<li>
-<p><strong>python</strong>：<br>
-pico-project-generator是用python写的，因此需要python，后面pyocd也会用到，所以这里装上最好。<br>
-勾选环境变量，解除长路径限制。</p>
-</li>
-<li>
-<p>Git<br>
-需要这个工具来从Github下载，虽然不用也可，但是用了更方便。<br>
-上面软件的直接到官网下载最新版安装就行了，不用纠结版本要不要旧一点。<br>
-当然，用别的Git工具也可以 。</p>
-</li>
-<li>
-<p><strong>编译工具</strong><br>
-对于windows平台，这里有两种选择，一个是安装visual studio，一个是安装其他的编译器实现比如MinGW。<br>
-其中，前者的工具为NMake，使用的时候需要先启动vs的工作环境，得到配置好的环境变量（或者直接加载环境变量也可以），<br>
-后者的工具为Mingw32-make，配置更简单，只需要把bin目录加到环境变量就行，至于其他没有对比。后面就可以用mingw的mingw32-make来替代vs的Nmake，不需要额外加载环境变量。</p>
-</li>
+<li><p><strong>gcc-arm-none-eabi</strong> <a target="_blank" rel="noopener" href="https://developer.arm.com/Tools%20and%20Software/GNU%20Toolchain">Arm
+GNU Toolchain</a>
+,用于编译ARM可执行文件。这里没啥特殊要求，可以下最新的。安装完了之后需要手动勾选添加到路径，还要检查一下能不能直接在cmd里面使用arm-none-eabi-gcc命令，否则说明他添加的路径有问题，就需要手工改一下（现在的版本应该不存在这个问题）</p></li>
+<li><p><strong>python</strong>：
+pico-project-generator是用python写的，因此需要python，后面pyocd也会用到，所以这里装上最好。
+勾选环境变量，解除长路径限制。</p></li>
+<li><p>Git 需要这个工具来从Github下载，虽然不用也可，但是用了更方便。
+上面软件的直接到官网下载最新版安装就行了，不用纠结版本要不要旧一点。
+当然，用别的Git工具也可以 。</p></li>
+<li><p><strong>编译工具</strong>
+对于windows平台，这里有两种选择，一个是安装visual
+studio，一个是安装其他的编译器实现比如MinGW。
+其中，前者的工具为NMake，使用的时候需要先启动vs的工作环境，得到配置好的环境变量（或者直接加载环境变量也可以），
+后者的工具为Mingw32-make，配置更简单，只需要把bin目录加到环境变量就行，至于其他没有对比。后面就可以用mingw的mingw32-make来替代vs的Nmake，不需要额外加载环境变量。</p></li>
 </ul>
 <p>下面详细说说编译工具的安装：</p>
 <p>前者从微软安装vs的社区版就好了，如果本来就有vs同时没有mingw又懒得再装一个，可以就用VS，不然<font color="#9bbb59">还是建议使用MinGW</font>。</p>
-<pre><code>因为如果使用vs的nmake工具的话，后面的很多操作都需要从Visual Studio 2022 Developer Command Prompt这里打开其他的应用程序，使其具有内置的环境环境变量，这样会出现很多麻烦。官方手册里面提供的方法是VS,就感觉他们很随便。。。
-</code></pre>
+<pre><code>因为如果使用vs的nmake工具的话，后面的很多操作都需要从Visual Studio 2022 Developer Command Prompt这里打开其他的应用程序，使其具有内置的环境环境变量，这样会出现很多麻烦。官方手册里面提供的方法是VS,就感觉他们很随便。。。</code></pre>
 <p>VS的安装很简单，勾选C/C++工具一路确定就好了，这里不再赘述。</p>
 <p>MinGW的安装如下：</p>
-<ol>
+<ol type="1">
 <li>下载MinGW后安装</li>
-<li>把其安装目录下的bin目录加入环境变量, 需要手工添加，添加到用户变量或者系统变量都行。</li>
+<li>把其安装目录下的bin目录加入环境变量,
+需要手工添加，添加到用户变量或者系统变量都行。</li>
 </ol>
-<p><font color="#00b050">下载来源：</font><br>
-目前mingw新的是mingw-w64,下载网址： <a target="_blank" rel="noopener" href="https://sourceforge.net/projects/mingw-w64/files/">MinGW-w64 - for 32 and 64 bit Windows - Browse Files at SourceForge.net</a></p>
-<p>点下面的MinGW-W64 GCC-8.1.0标题下面的包，因为如果用在线安装包，压根连不上网，和墙没关系。</p>
-<pre><code>选择最新版本（目前是8.1.0）的 x86_64-win32-seh
-</code></pre>
-<p><a target="_blank" rel="noopener" href="https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/8.1.0/threads-win32/seh/x86_64-8.1.0-release-win32-seh-rt_v6-rev0.7z">x86_64-win32-seh</a>这个表示64位pc windows系统 seh错误处理的包（具体怎么选可以搜一下mingw-w64的安装，这里贴个别人的链接，当作记录吧：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/0be6d9684a81">mingw-w64 threads: posix vs win32 - 简书 (jianshu.com)</a>)。</p>
+<p><font color="#00b050">下载来源：</font>
+目前mingw新的是mingw-w64,下载网址： <a target="_blank" rel="noopener" href="https://sourceforge.net/projects/mingw-w64/files/">MinGW-w64 - for
+32 and 64 bit Windows - Browse Files at SourceForge.net</a></p>
+<p>点下面的MinGW-W64
+GCC-8.1.0标题下面的包，因为如果用在线安装包，压根连不上网，和墙没关系。</p>
+<pre><code>选择最新版本（目前是8.1.0）的 x86_64-win32-seh</code></pre>
+<p><a target="_blank" rel="noopener" href="https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/8.1.0/threads-win32/seh/x86_64-8.1.0-release-win32-seh-rt_v6-rev0.7z">x86_64-win32-seh</a>这个表示64位pc
+windows系统
+seh错误处理的包（具体怎么选可以搜一下mingw-w64的安装，这里贴个别人的链接，当作记录吧：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/0be6d9684a81">mingw-w64 threads: posix
+vs win32 - 简书 (jianshu.com)</a>)。</p>
 <p><font color="#00b050">注释：</font></p>
 <p>我尝试直接用电脑上安装的devc++自带的mingw64，发现会编译报错，编译的时候可能会出现类似于<code>'C:/Program' 不是内部或外部命令，也不是可运行的程序</code>这样的问题，似乎并不是路径问题，总之我不太记得了，就不要偷懒还是安装一个最新版吧，这里最终用刚刚下载的新版的mingw-w64，测试OK.</p>
-<p>（mingw32下载链接：<a target="_blank" rel="noopener" href="https://osdn.net/projects/mingw/#">https://osdn.net/projects/mingw/#</a> 上面是旧版mingw32，2017年就停更了，可能也能用，没试过，放在这里提示不要下错了）</p>
+<p>（mingw32下载链接：https://osdn.net/projects/mingw/#
+上面是旧版mingw32，2017年就停更了，可能也能用，没试过，放在这里提示不要下错了）</p>
 <ul>
-<li>
-<p>其他构建工具<br>
-例如Ninja，我没试过，但是实际应该可行，Cmake是可以生成对应的文件的。</p>
-</li>
-<li>
-<p><strong>调试或者下载工具</strong></p>
-</li>
+<li><p>其他构建工具
+例如Ninja，我没试过，但是实际应该可行，Cmake是可以生成对应的文件的。</p></li>
+<li><p><strong>调试或者下载工具</strong></p></li>
 </ul>
-<ol>
+<ol type="1">
 <li>openocd</li>
 <li>pyocd</li>
 </ol>
 <p>上述二选一即可，推荐pyocd，本文开头已经说明了如何下载安装。</p>
-<h2 id="下载例程-sdk-模板生成工具"><a class="markdownIt-Anchor" href="#下载例程-sdk-模板生成工具"></a> <strong>下载例程、SDK、模板生成工具</strong></h2>
+<h2 id="下载例程sdk模板生成工具"><strong>下载例程、SDK、模板生成工具</strong></h2>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1、下载工程模板生成器</span></span><br><span class="line">    git clone https://github.com/raspberrypi/pico-project-generator.git</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2、下载pico-sdk</span></span><br><span class="line">    git clone -b master https://github.com/raspberrypi/pico-sdk.git</span><br><span class="line">    cd pico-sdk/</span><br><span class="line">    # 更新子模块</span><br><span class="line">    git submodule update --init </span><br><span class="line">    cd ..</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3、下载官方例程</span></span><br><span class="line">    git clone -b master https://github.com/raspberrypi/pico-examples.git</span><br></pre></td></tr></table></figure>
+
 <p>这里配置更新子模块的时候如果报错，就更新到最新的SDK，因为有的子模块上游更改了。</p>
-<h3 id="配置sdk路径"><a class="markdownIt-Anchor" href="#配置sdk路径"></a> 配置SDK路径</h3>
+<h3 id="配置sdk路径">配置SDK路径</h3>
 <p>上一步中，下好了pico-sdk,examples,还有generator，把pico-sdk放到自己想要放的位置，然后把其目录加到环境变量里面，名称是<strong>PICO_SDK_PATH</strong>.</p>
 <p>这个环境变量的路径是给配置出来的CMakelist引用的，还有后面的模板生成器也需要配置这个环境变量，配置方法如下：</p>
-<ol>
-<li>
-<p>Windows下面直接搜path，就能找到编辑系统环境变量的选项。</p>
-<p>(其实这里没加也没关系，有别的方法，但是最好加上，因为generator默认用的是环境变量配置)。</p>
-</li>
-<li>
-<p>可以使用使用powershell</p>
-</li>
+<ol type="1">
+<li><p>Windows下面直接搜path，就能找到编辑系统环境变量的选项。</p>
+<p>(其实这里没加也没关系，有别的方法，但是最好加上，因为generator默认用的是环境变量配置)。</p></li>
+<li><p>可以使用使用powershell</p></li>
 </ol>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">setx PICO_SDK_PATH <span class="string">&quot;yourpath\pico-sdk&quot;</span> </span><br></pre></td></tr></table></figure>
-<pre><code>yourpath指的是你pico-sdk所在文件夹的路径
-</code></pre>
-<ol start="3">
-<li>当然也可以临时配置环境变量，但是没必要这样做, 不然每次都要重新导入环境变量：<br>
-临时配置的方法：在powershell内执行</li>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">setx PICO_SDK_PATH <span class="string">"yourpath\pico-sdk"</span> </span><br></pre></td></tr></table></figure>
+
+<pre><code>yourpath指的是你pico-sdk所在文件夹的路径</code></pre>
+<ol start="3" type="1">
+<li>当然也可以临时配置环境变量，但是没必要这样做,
+不然每次都要重新导入环境变量： 临时配置的方法：在powershell内执行</li>
 </ol>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="variable">$env:PICO_SDK_PATH</span>=pico<span class="literal">-sdk</span>的路径</span><br></pre></td></tr></table></figure>
+
 <p><font color="#9bbb59">上面这些步骤配置完了之后就可以找个例程编译测试一下了。</font></p>
 <p>Linux下：</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> PICO_SDK_PATH=yourpath/pico-sdk</span><br></pre></td></tr></table></figure>
-<p>添加这一行到<code>/etc/profile</code> 即可永久保存，不过也可以在后面CMAKE之前添加到shell即可。</p>
-<h2 id="编译例程测试"><a class="markdownIt-Anchor" href="#编译例程测试"></a> 编译例程测试</h2>
+
+<p>添加这一行到<code> /etc/profile</code>
+即可永久保存，不过也可以在后面CMAKE之前添加到shell即可。</p>
+<h2 id="编译例程测试">编译例程测试</h2>
 <p>前面环境配置好了，例程里面的CMakeLists.txt也是已经写好的，所以这里简单来说就是两步：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 在example的上级目录生成makefile，当然这个命令具体下来有些变化</span></span><br><span class="line">cmake ..</span><br><span class="line"><span class="comment"># 然后对于linux来说执行make即可，Windows则有一点不同</span></span><br><span class="line"><span class="comment"># 执行构建</span></span><br><span class="line">make </span><br></pre></td></tr></table></figure>
+
 <p>其实编译Example这个步骤不是必须的，但是最好测试一次，同时也演示了不配置IDE怎么编译。</p>
 <p>下面详细说一下具体步骤和有什么变化。</p>
-<h3 id="使用visual-studio的工具链"><a class="markdownIt-Anchor" href="#使用visual-studio的工具链"></a> 使用visual studio的工具链</h3>
-<p>虽然前面推荐了使用MinGW, 但是如果一定坚持使用visual studio 的工具链，也就是官方手册指出的方法，那么具体步骤如下：</p>
-<ol>
-<li>
-<p>打开Visual Studio 2022 Developer Command Prompt：</p>
-<p>搜索快捷方式或者WindowsTerminal打开（Windows Terminal点加号旁边的下拉，里面有选项），打开之后会提示：</p>
-</li>
+<h3 id="使用visual-studio的工具链">使用visual studio的工具链</h3>
+<p>虽然前面推荐了使用MinGW, 但是如果一定坚持使用visual studio
+的工具链，也就是官方手册指出的方法，那么具体步骤如下：</p>
+<ol type="1">
+<li><p>打开Visual Studio 2022 Developer Command Prompt：</p>
+<p>搜索快捷方式或者WindowsTerminal打开（Windows
+Terminal点加号旁边的下拉，里面有选项），打开之后会提示：</p></li>
 </ol>
- <figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">**********************************************************************</span><br><span class="line"></span><br><span class="line">** Visual Studio <span class="number">2019</span> Developer Command Prompt v16.<span class="number">7</span>.<span class="number">2</span></span><br><span class="line">** Copyright (c) <span class="number">2020</span> Microsoft Corporation</span><br><span class="line"></span><br><span class="line">**********************************************************************</span><br><span class="line"></span><br><span class="line">[vcvarsall.bat] Environment initialized <span class="keyword">for</span>: &#x27;x86_x64&#x27;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line">**********************************************************************</span><br><span class="line"></span><br><span class="line">** Visual Studio <span class="number">2019</span> Developer Command Prompt v16.<span class="number">7</span>.<span class="number">2</span></span><br><span class="line">** Copyright (c) <span class="number">2020</span> Microsoft Corporation</span><br><span class="line"></span><br><span class="line">**********************************************************************</span><br><span class="line"></span><br><span class="line">[vcvarsall.bat] Environment initialized <span class="keyword">for</span>: 'x86_x64'</span><br></pre></td></tr></table></figure>
+
 <p>那么这个环境就是正确打开了。✔</p>
-<pre><code>这个表示加载了vs的环境，实际上也可以直接打开命令行之后通过执行`` vcvars64.bat ``这个文件来加载环境，也会给出一样的提示。
-</code></pre>
+<pre><code>这个表示加载了vs的环境，实际上也可以直接打开命令行之后通过执行`` vcvars64.bat ``这个文件来加载环境，也会给出一样的提示。</code></pre>
 <p>总而言是，现在打开了一个命令行或者powershell，继续使用这个加载过环境的命令行界面，然后切换到自己下载的pico-example目录。</p>
-<pre><code>如果用cmd，工程切换到别的盘先要换盘符，然后cd进去；powershell可以直接cd带盘符的路径进去.
-</code></pre>
-<ol start="2">
+<pre><code>如果用cmd，工程切换到别的盘先要换盘符，然后cd进去；powershell可以直接cd带盘符的路径进去.</code></pre>
+<ol start="2" type="1">
 <li>然后执行下面命令：</li>
 </ol>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 现在打开这个shell的位置是pico-example这个文件下下面</span></span><br><span class="line">mkdir build</span><br><span class="line"><span class="built_in">cd</span> build</span><br><span class="line">cmake .. <span class="literal">-G</span> <span class="string">&quot;NMake Makefiles&quot;</span> </span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 现在打开这个shell的位置是pico-example这个文件下下面</span></span><br><span class="line">mkdir build</span><br><span class="line"><span class="built_in">cd</span> build</span><br><span class="line">cmake .. <span class="literal">-G</span> <span class="string">"NMake Makefiles"</span> </span><br></pre></td></tr></table></figure>
+
 <p>这表示：</p>
 <ul>
 <li>新建一个build文件夹用于存放等会构建出来的内容。</li>
-<li>进入build目录并在build目录内从pico-example(也就是相对build的上层目录)执行cmake，参数<code>-G &quot;NMake Makefiles&quot;</code>用于生成适用于Nmake的makefile.</li>
+<li>进入build目录并在build目录内从pico-example(也就是相对build的上层目录)执行cmake，参数<code>-G "NMake Makefiles"</code>用于生成适用于Nmake的makefile.</li>
 </ul>
 <p>这一步，如果前面正确配置了PICO_SDK_PATH这个环境变量，或者已经导入这个环境变量，并安装了arm-none-eabi-gcc.exe且已经加入到PATH，这一步就能正确执行不会报错。</p>
-<ol start="3">
-<li>上面这一步在build目录中生成了所有工程的makefile，不用全部编译，进入build目录，找到一个例程例如blink 进入目录继续执行（目前命令行执行位置已经在build文件夹下了）：</li>
+<ol start="3" type="1">
+<li>上面这一步在build目录中生成了所有工程的makefile，不用全部编译，进入build目录，找到一个例程例如blink
+进入目录继续执行（目前命令行执行位置已经在build文件夹下了）：</li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd blink</span><br><span class="line">nmake</span><br></pre></td></tr></table></figure>
+
 <p>这时候看编译信息，可以看到正常生成的信息。</p>
-<p>现在进入build/blink，可以找到一个blink.uf2的文件，拿出开发板，按住BOOT按键插到电脑的USB上，右键xxx.uf2, 选择发送到RPI-RP2这个驱动器，发送完会自动运行。</p>
-<pre><code>对于pico-example，也可以进入example下的build目录后执行make（对应nmake或者mingw32-make）后直接编译全部例程，但是这样耗时比较长，没有必要这样做。
-</code></pre>
+<p>现在进入build/blink，可以找到一个blink.uf2的文件，拿出开发板，按住BOOT按键插到电脑的USB上，右键xxx.uf2,
+选择发送到RPI-RP2这个驱动器，发送完会自动运行。</p>
+<pre><code>对于pico-example，也可以进入example下的build目录后执行make（对应nmake或者mingw32-make）后直接编译全部例程，但是这样耗时比较长，没有必要这样做。</code></pre>
 <p>这里注意，这里的命令行操作全程没有离开最开始打开的vs的prompt。</p>
-<h3 id="使用mingw工具链"><a class="markdownIt-Anchor" href="#使用mingw工具链"></a> 使用MinGW工具链</h3>
+<h3 id="使用mingw工具链">使用MinGW工具链</h3>
 <p>现在，来到了我推荐的环节，不要管那个什么鸟VS了。直接使用MinGW来编译。</p>
 <p>现在你打开了pico-example文件夹，在此处打开命令行，然后执行</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake .. -G &quot;MinGW Makefiles&quot;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">切到blink生成的目录中</span></span><br><span class="line">cd blink </span><br><span class="line">mingw32-make</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake .. -G "MinGW Makefiles"</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">切到blink生成的目录中</span></span><br><span class="line">cd blink </span><br><span class="line">mingw32-make</span><br></pre></td></tr></table></figure>
+
 <p>有没有发现特别简单？我也不用费劲解释为什么VS必须要打开环境才能用了，更何况后面还可能需要用其他的编辑器配合。</p>
 <blockquote>
-<p>如果你不幸之前已经使用cmake生成了Nmake的makefile了，再想要换成mingw32-make，这时候直接使用 <code>cmake -G &quot;MinGW32 Makefiles&quot;</code>生成makefile的话，会报错之前使用的不符合现在的配置，与之前的cmake generator不符，需要将build下的cmakecache文件删掉，再指定MinGW Makefiles.(也可以使用cmake-gui.exe直接手动切换)。不过实际操作用generator生成模板的时候可能有好几个cmakecache.txt都要删除，不然还是会报错。所以建议一开始就搞好。</p>
+<p>如果你不幸之前已经使用cmake生成了Nmake的makefile了，再想要换成mingw32-make，这时候直接使用
+<code>cmake -G "MinGW32 Makefiles" </code>生成makefile的话，会报错之前使用的不符合现在的配置，与之前的cmake
+generator不符，需要将build下的cmakecache文件删掉，再指定MinGW
+Makefiles.(也可以使用cmake-gui.exe直接手动切换)。不过实际操作用generator生成模板的时候可能有好几个cmakecache.txt都要删除，不然还是会报错。所以建议一开始就搞好。</p>
 </blockquote>
-<h3 id="解释一下上面的语句"><a class="markdownIt-Anchor" href="#解释一下上面的语句"></a> 解释一下上面的语句</h3>
+<h3 id="解释一下上面的语句">解释一下上面的语句</h3>
 <p>这里cmake是用于生成make构建工具对应的makefile。-G后面的参数用来指定工具，也可以用来生成IDE对应的工程文件。</p>
 <p>使用<code>cmake --help</code>可以看到很多指令参数，里面有各种generator的名称，注意大小写,例如：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Borland Makefiles            = Generates Borland makefiles.</span><br><span class="line">NMake Makefiles              = Generates NMake makefiles.</span><br><span class="line">NMake Makefiles JOM          = Generates JOM makefiles.</span><br><span class="line">MSYS Makefiles               = Generates MSYS makefiles.</span><br><span class="line">MinGW Makefiles              = Generates a make file for use with</span><br><span class="line">                               mingw32-make.</span><br><span class="line">Green Hills MULTI            = Generates Green Hills MULTI files</span><br><span class="line">                               (experimental, work-in-progress).</span><br><span class="line">Unix Makefiles               = Generates standard UNIX makefiles.</span><br><span class="line">Ninja                        = Generates build.ninja files.</span><br><span class="line">Ninja Multi-Config           = Generates build-&lt;Config&gt;.ninja files.</span><br><span class="line">Watcom WMake                 = Generates Watcom WMake makefiles.</span><br></pre></td></tr></table></figure>
+
 <p>比如也有人用Ninja，但是那需要ninja的构建文件，同mingw步骤。</p>
 <p>以上就是标准的例程配置方法，现在我们可以考虑新建一个属于自己的工程了。</p>
-<h2 id="生成自己的工程并编译"><a class="markdownIt-Anchor" href="#生成自己的工程并编译"></a> 生成自己的工程并编译</h2>
+<h2 id="生成自己的工程并编译">生成自己的工程并编译</h2>
 <p>你完全可以自己写cmakelists.txt，但是既然官方提供了模板生成器，这里就不去深究了。</p>
 <p>所以这一步就是使用pico-project-generator生成工程模板，下文中把pico-project-generator称作生成器。</p>
-<p><strong>p.s.</strong>  这里提前说一下，如果生成器启动有问题，首先更新pico-project-generator到最新的python源文件；有的早期教程中指出是python解释器的问题，但是现在生成器在windows下面没有问题，能正常使用，不需要改动python的源码等步骤（是新版的python没有这个问题，3.10）。</p>
+<p><strong>p.s.</strong>
+这里提前说一下，如果生成器启动有问题，首先更新pico-project-generator到最新的python源文件；有的早期教程中指出是python解释器的问题，但是现在生成器在windows下面没有问题，能正常使用，不需要改动python的源码等步骤（是新版的python没有这个问题，3.10）。</p>
 <p>进入pico-project-generator目录下，右键打开shell，运行：</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">python ./pico_project.py --gui</span><br><span class="line"><span class="comment">#或者</span></span><br><span class="line">python ./pico_project.py -g</span><br></pre></td></tr></table></figure>
-<p>这样就可以通过图形界面的方式来配置自己的新建工程。这时候生成的工程会和这个py文件在同一个目录下，所以这里建议找到pico_project.py 647行的</p>
-<p><code>self.locationName.set(os.path.abspath(os.getcwd())</code>, 修改改成：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">self.locationName.<span class="built_in">set</span>(os.path.abspath(os.path.join(os.getcwd(), <span class="string">&quot;..&quot;</span>)))</span><br></pre></td></tr></table></figure>
+
+<p>这样就可以通过图形界面的方式来配置自己的新建工程。这时候生成的工程会和这个py文件在同一个目录下，所以这里建议找到pico_project.py
+647行的</p>
+<p><code>self.locationName.set(os.path.abspath(os.getcwd())</code>,
+修改改成：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">self.locationName.<span class="built_in">set</span>(os.path.abspath(os.path.join(os.getcwd(), <span class="string">".."</span>)))</span><br></pre></td></tr></table></figure>
+
 <p>这样默认路径是pico_project.py的上层目录而不是与生成器的python文件在同级目录。这样就可以避免工程的生成位置位于pico-project-generator文件夹中。。。。。</p>
 <p>然后建议去掉开头那个logo，，，因为对于高分屏幕话，python的TK-GUI会出现不合适的缩放会导致最后点不到<font color="#548dd4">确定</font>按钮。。。。。就是下面这两行。（也可以通过选择你使用的python.exe,右键更换高DPI兼容模式防止出现主界面超大的情况）</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">self.logo = tk.PhotoImage(file=GetFilePath(<span class="string">&quot;logo_alpha.gif&quot;</span>))</span><br><span class="line">logowidget = ttk.Label(mainFrame, image=self.logo, borderwidth=<span class="number">0</span>, relief=<span class="string">&quot;solid&quot;</span>).grid(row=<span class="number">0</span>,column=<span class="number">0</span>, columnspan=<span class="number">5</span>, pady=<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">self.logo = tk.PhotoImage(file=GetFilePath(<span class="string">"logo_alpha.gif"</span>))</span><br><span class="line">logowidget = ttk.Label(mainFrame, image=self.logo, borderwidth=<span class="number">0</span>, relief=<span class="string">"solid"</span>).grid(row=<span class="number">0</span>,column=<span class="number">0</span>, columnspan=<span class="number">5</span>, pady=<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
 <p>这样就打开了生成器，然后按照需要勾选内容, 如下：</p>
 <img src="/2022/12/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91/0_RP2040%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/pico-project-generator1.png" class>
+
 <p>这样生成器就会根据指定的参数和默认的参数来生成工程需要的cmakelist和其他文件，其中指定参数至少需要指定PICO_SDK_PATH和把armgcc的bin目录加入环境变量，否则生成器会报错，而其他的参数可以使用默认值。</p>
-<p>生成器的作用是复制需要的文件和生成对应的cmakelist，同时自动执行<code>cmake -G 'xxxmake Makefile'</code>. （个人认为其实这个没有必要每次都执行，后面使用ide的时候也会配置cmake的生成参数的，不过生成器没直接提供不执行cmake -G的方法）</p>
-<p>具体可以看<a target="_blank" rel="noopener" href="https://github.com/raspberrypi/pico-project-generator">raspberrypi/pico-project-generator: Tool to automatically generate a Pico C SDK Project (github.com)</a>项目的readme，或者在命令下加上 --help来查看帮助。生成器本身也可以只在命令环境下执行，看需要自由发挥了。</p>
-<p><strong>p.s.这里得注意</strong>，默认情况下，在这个生成器代码中mingw的优先级高于vs，所以配置了两者都有的话，生成器优先生成基于mingw的工程，当然了，只是cmake -G的参数不同，可以改也可以自己切换。</p>
-<p>注意，<font color="#953766">在前面配置的编译工具是使用VS的情况下</font> :</p>
+<p>生成器的作用是复制需要的文件和生成对应的cmakelist，同时自动执行<code>cmake -G 'xxxmake Makefile'</code>.
+（个人认为其实这个没有必要每次都执行，后面使用ide的时候也会配置cmake的生成参数的，不过生成器没直接提供不执行cmake
+-G的方法）</p>
+<p>具体可以看<a target="_blank" rel="noopener" href="https://github.com/raspberrypi/pico-project-generator">raspberrypi/pico-project-generator:
+Tool to automatically generate a Pico C SDK Project
+(github.com)</a>项目的readme，或者在命令下加上
+–help来查看帮助。生成器本身也可以只在命令环境下执行，看需要自由发挥了。</p>
+<p><strong>p.s.这里得注意</strong>，默认情况下，在这个生成器代码中mingw的优先级高于vs，所以配置了两者都有的话，生成器优先生成基于mingw的工程，当然了，只是cmake
+-G的参数不同，可以改也可以自己切换。</p>
+<p>注意，<font color="#953766">在前面配置的编译工具是使用VS的情况下</font>
+:</p>
 <blockquote>
-<p>这里如果在生成器中勾选Run build afer generation，那么打开生成器的步骤变化为：<br>
-先进入Visual Studio 2022 Developer Command Prompt的环境，然后在这个命令行里面执行python命令来打开打开这个生成器，不然没有对应的环境来执行build。<br>
+<p>这里如果在生成器中勾选Run build afer
+generation，那么打开生成器的步骤变化为： 先进入Visual Studio 2022
+Developer Command
+Prompt的环境，然后在这个命令行里面执行python命令来打开打开这个生成器，不然没有对应的环境来执行build。
 不过可以选择不勾选这个选项来避免这一步。</p>
 </blockquote>
 <p>现在你已经得到自己的项目模板了，下一步是编写代码并编译。</p>
-<p>为了简单一点，假设这里只有一个包含main函数的c文件，默认也是生成这个，进入工程目录下，只有一个 <code>工程名.c</code>文件，main函数就在里面。</p>
+<p>为了简单一点，假设这里只有一个包含main函数的c文件，默认也是生成这个，进入工程目录下，只有一个
+<code>工程名.c </code>文件，main函数就在里面。</p>
 <p>这时候只有这一个.c文件，也就是cmakelist不需要改动，现在进入工程目录下的build目录，如果没有就新建一个，然后手工编译验证的步骤和上面编译例程一样，下面重复一次：</p>
-<h3 id="如果是使用vs"><a class="markdownIt-Anchor" href="#如果是使用vs"></a> 如果是使用VS</h3>
-<p>那么直接从Visual Studio 2022 Developer Command Prompt进入工程下build目录，执行nmake就行了。</p>
-<p>如果添加了其他的源文件，就修改cmakelist.txt , 然后重新执行cmake -G “NMake Makefiles”，然后nmake就好.</p>
-<h3 id="是mingw的情况"><a class="markdownIt-Anchor" href="#是mingw的情况"></a> 是MinGW的情况</h3>
+<h3 id="如果是使用vs">如果是使用VS</h3>
+<p>那么直接从Visual Studio 2022 Developer Command
+Prompt进入工程下build目录，执行nmake就行了。</p>
+<p>如果添加了其他的源文件，就修改cmakelist.txt , 然后重新执行cmake -G
+“NMake Makefiles”，然后nmake就好.</p>
+<h3 id="是mingw的情况">是MinGW的情况</h3>
 <p>正如前面例程编译的情况一样简单，</p>
-<p>直接打开生成器生成工程，然后直接在工程目录内的build目录下执行<code>mingw32-make</code> 就可以编译了，需要更新makefile的话就是执行<code>cmake -G &quot;MinGW Makefiles&quot;</code></p>
+<p>直接打开生成器生成工程，然后直接在工程目录内的build目录下执行<code>mingw32-make</code>
+就可以编译了，需要更新makefile的话就是执行<code>cmake -G "MinGW Makefiles"</code></p>
 <p>这时候，由于在Cmakelists.txt中默认配置打开了生成UF2文件，除了ELF文件，编译后生成的uf2，都在工程下build目录里面。</p>
 <p>以上，就是标准的工程创建和配置流程。刚刚使用例程的时候已经知道怎么下载UF2了，所以单片机已经可以跑起来自己的程序了。</p>
 <p>现在剩下最后一个问题，如何调试？</p>
 <blockquote>
-<p>至于cmakelist.txt怎么用，参考文档<a href="%E8%BF%99%E9%87%8C%E8%BF%98%E6%B2%A1%E5%86%99">xxxxx</a>（）TODO,cmake的官方文档也很坑就是了。</p>
+<p>至于cmakelist.txt怎么用，参考文档<a href="这里还没写">xxxxx</a>（）TODO,cmake的官方文档也很坑就是了。</p>
 </blockquote>
-<p>p.s 插一句，官方的生成器有很多毛病，不过在这一步不影响，下一章中配置vscode的时候我再介绍。</p>
-<h1 id="调试方法"><a class="markdownIt-Anchor" href="#调试方法"></a> 调试方法</h1>
+<p>p.s
+插一句，官方的生成器有很多毛病，不过在这一步不影响，下一章中配置vscode的时候我再介绍。</p>
+<h1 id="调试方法">调试方法</h1>
 <p>这一部分单独拿出来做一个大标题，因为要说的内容比较基础，基本上后面能用上。</p>
-<h2 id="调试的硬件连接"><a class="markdownIt-Anchor" href="#调试的硬件连接"></a> 调试的硬件连接</h2>
-<p>正如前面所说，你需要一个具有SWD接口的ARM Debugger，在本文的开头已经说了有哪些是测试没有问题的。<br>
+<h2 id="调试的硬件连接">调试的硬件连接</h2>
+<p>正如前面所说，你需要一个具有SWD接口的ARM
+Debugger，在本文的开头已经说了有哪些是测试没有问题的。
 连线不用介绍了，由于官方Pico板子的Debug插座没有供电，因此需要自己接上Pico的供电或者接到排针上，其实不算方便。。。</p>
 <p>但是其实还有一个更简单的方法，这里介绍两种方法，这里先介绍这个简单方法。</p>
-<h3 id="自调试"><a class="markdownIt-Anchor" href="#自调试"></a> 自调试</h3>
+<h3 id="自调试">自调试</h3>
 <p>由于RP2040具有双核，有一位老哥开发了一个固件，可以让DAP-Link的固件跑在另外一个核心，程序运行于RAM中，这个核心可以调试另外一个核心，因此只需要插上开发板就可以调试了。</p>
 <p>优点：不用说，只需要一根USB线就能调试了。</p>
 <p>适用范围：单核开发，不需要调试USB的情况下可以使用，且内存没占满。</p>
 <p>缺点：</p>
 <ul>
-<li>
-<p>占用USB,占用一个核心。不过实际上，如果USB的功能最后再加进去，也可以下载进去，需要开发另外一个核心同理，只是不能调试了。同样，由于USB占用了，所以PLL_USB不能调整，（本来PLL_USB也就是固定48Mhz的吧），使用了PLL_USB的外设自然也不能调整时钟。</p>
-</li>
-<li>
-<p>GIMMECACHE only: SRAM 0x2003C000 to 0x2003FFFF must not be used by user code），代价是占用16k内存。有两个固件，如果用另外一个固件就会占用flash cache。</p>
-</li>
+<li><p>占用USB,占用一个核心。不过实际上，如果USB的功能最后再加进去，也可以下载进去，需要开发另外一个核心同理，只是不能调试了。同样，由于USB占用了，所以PLL_USB不能调整，（本来PLL_USB也就是固定48Mhz的吧），使用了PLL_USB的外设自然也不能调整时钟。</p></li>
+<li><p>GIMMECACHE only: SRAM 0x2003C000 to 0x2003FFFF must not be used
+by user
+code），代价是占用16k内存。有两个固件，如果用另外一个固件就会占用flash
+cache。</p></li>
 </ul>
-<p>步骤：<br>
-使用USB下载 pico-debug-gimmecache.uf2 固件到rp2040，不下电，然后这里就得到了一个DAPLink了。</p>
-<h3 id="外部调试器"><a class="markdownIt-Anchor" href="#外部调试器"></a> 外部调试器</h3>
-<ol>
+<p>步骤： 使用USB下载 pico-debug-gimmecache.uf2
+固件到rp2040，不下电，然后这里就得到了一个DAPLink了。</p>
+<h3 id="外部调试器">外部调试器</h3>
+<ol type="1">
 <li>买一个rp2040当做一个picoprobe</li>
 <li>其他的daplink或者jlink</li>
 </ol>
 <p>前面说过了，picoprobe需要openocd专用配置，不过pyocd似乎可以直接支持。</p>
-<p>仍然优选后者，实测pyocd速度也会更快一点。<br>
+<p>仍然优选后者，实测pyocd速度也会更快一点。
 没有什么特殊的，连上线就好了。</p>
 <p>p.s.在旧版的pico-sdk中我曾经遇到过使用外部调试器的时候出现速度奇慢无比,在sleep_ms更是直接卡死的问题,经过测试,新版的pico-sdk似乎修复了这个问题.</p>
 <p>下面介绍调试软件使用。</p>
-<h2 id="手工调试方法gdb使用"><a class="markdownIt-Anchor" href="#手工调试方法gdb使用"></a> 手工调试方法（GDB使用）</h2>
-<pre><code>参考资料：getting-started-with-pico.pdf 5.3章节 第六节
-</code></pre>
-<p>这一部分不是必要，但是如果了解了，对于这一堆东西会有更好的理解。<br>
+<h2 id="手工调试方法gdb使用">手工调试方法（GDB使用）</h2>
+<pre><code>参考资料：getting-started-with-pico.pdf 5.3章节 第六节</code></pre>
+<p>这一部分不是必要，但是如果了解了，对于这一堆东西会有更好的理解。
 在上一步中，获得了一个ELF文件，也就是可执行文件，现在要做两件事：</p>
-<ol>
+<ol type="1">
 <li>加载这个文件到单片机中</li>
 <li>加载之后还能调试</li>
 </ol>
 <p>其实如果已经有嵌入式开发的经验，这里就很好理解，我们需要一个gdb来调试，而需要有一个工具来启动一个gdbsever.</p>
 <p>好了现在回到了最开头说的，Debugger的上位机，官方教程给出的方法是使用OpenOCD来作为调试上位机，这里也先介绍一下，然后介绍pyocd的方法。</p>
-<h3 id="使用openocd打开gdb-server"><a class="markdownIt-Anchor" href="#使用openocd打开gdb-server"></a> 使用openocd打开GDB server</h3>
-<ol>
-<li>
-<p>添加openocd.exe到环境变量</p>
-</li>
-<li>
-<p>执行下述命令：</p>
+<h3 id="使用openocd打开gdb-server">使用openocd打开GDB server</h3>
+<ol type="1">
+<li><p>添加openocd.exe到环境变量</p></li>
+<li><p>执行下述命令：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">openocd -f board/pico-debug.cfg</span><br></pre></td></tr></table></figure>
-<p>这时候回显会提示：</p>
-</li>
+
+<p>这时候回显会提示：</p></li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Warn : rp2040-core0.cfg configuration file is deprecated and will be removed <span class="keyword">in</span> the next release. Use following parameters instead: -c <span class="string">&#x27;set USE_CORE 0&#x27;</span> -f target/rp2040.cfg</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Warn : rp2040-core0.cfg configuration file is deprecated and will be removed <span class="keyword">in</span> the next release. Use following parameters instead: -c <span class="string">'set USE_CORE 0'</span> -f target/rp2040.cfg</span><br></pre></td></tr></table></figure>
+
 <p>大致解释一下，这个pico-debug.cfg实际上内容就是</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">source [find interface/cmsis-dap.cfg]</span><br><span class="line">adapter speed 4000</span><br><span class="line">set CHIPNAME rp2040</span><br><span class="line">source [find target/rp2040-core0.cfg]</span><br></pre></td></tr></table></figure>
+
 <p>因此最上面这个命令等效于：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openocd -f interface/cmsis-dap.cfg -f target/rp2040-core0.cfg -c  <span class="string">&#x27;adapter speed 4000&#x27;</span> -c <span class="string">&#x27;set CHIPNAME rp2040&#x27;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openocd -f interface/cmsis-dap.cfg -f target/rp2040-core0.cfg -c  <span class="string">'adapter speed 4000'</span> -c <span class="string">'set CHIPNAME rp2040'</span></span><br></pre></td></tr></table></figure>
+
 <p>按照提示,下面的方法会得到一样效果（<code>-c 'set USE_CORE 0'</code>要放中间）：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openocd -f interface/cmsis-dap.cfg -c <span class="string">&#x27;set USE_CORE 0&#x27;</span>-f target/rp2040.cfg  -c <span class="string">&#x27;adapter speed 4000&#x27;</span> -c <span class="string">&#x27;set CHIPNAME rp2040&#x27;</span> </span><br></pre></td></tr></table></figure>
-<pre><code>不过实际上,openocd可能有bug，上面两个命令可能有时候会出现不一样的结果，一个好用一个不好用。所以继续看下面。
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openocd -f interface/cmsis-dap.cfg -c <span class="string">'set USE_CORE 0'</span>-f target/rp2040.cfg  -c <span class="string">'adapter speed 4000'</span> -c <span class="string">'set CHIPNAME rp2040'</span> </span><br></pre></td></tr></table></figure>
+
+<pre><code>不过实际上,openocd可能有bug，上面两个命令可能有时候会出现不一样的结果，一个好用一个不好用。所以继续看下面。</code></pre>
 <p>总而言之，这一步用openocd打开了一个gdbserver.</p>
-<h3 id="使用pyocd打开gdbserver"><a class="markdownIt-Anchor" href="#使用pyocd打开gdbserver"></a> 使用pyocd打开GDBserver</h3>
+<h3 id="使用pyocd打开gdbserver">使用pyocd打开GDBserver</h3>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pyocd gdbserver -t RP2040 -f 10000k</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">指定目标RP2040 ,指定速度10M,希望能加载快一些。</span></span><br></pre></td></tr></table></figure>
-<p>现在已经打开了pyocd内置的gdbserver. 相比使用openocd，这个参数<font color="#9bbb59">超级简单！！！</font>，有更多更简单的参数配置，如果有需要在命令行中调试，可以参考我写的<a href="https://alwaysmy.github.io/2023/04/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/%E4%BD%BF%E7%94%A8aardio%E5%86%99%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8Epyocd%E7%9A%84%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%8B%E8%BD%BD%E5%99%A8/">使用aardio写一个基于pyocd的单片机下载器 | 加载中… (alwaysmy.github.io)</a> 利用这个工具配置命令。</p>
+
+<p>现在已经打开了pyocd内置的gdbserver.
+相比使用openocd，这个参数<font color="#9bbb59">超级简单！！！</font>，有更多更简单的参数配置，如果有需要在命令行中调试，可以参考我写的<a href="https://alwaysmy.github.io/2023/04/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/%E4%BD%BF%E7%94%A8aardio%E5%86%99%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8Epyocd%E7%9A%84%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%8B%E8%BD%BD%E5%99%A8/">使用aardio写一个基于pyocd的单片机下载器
+| 加载中… (alwaysmy.github.io)</a> 利用这个工具配置命令。</p>
 <p>好了，现在不管怎么样，都用一个上位机工具打开了gdbserver连接了目标单片机。下面要进行调试了。</p>
-<h3 id="gdb调试使用例子"><a class="markdownIt-Anchor" href="#gdb调试使用例子"></a> GDB调试使用例子</h3>
-<p>上一步中打开了一个gdbserver, 不要关闭那个命令行界面，它会监听端口等待连接。另外开一个terminal， 然后需要attach gdb to the server.</p>
+<h3 id="gdb调试使用例子">GDB调试使用例子</h3>
+<p>上一步中打开了一个gdbserver,
+不要关闭那个命令行界面，它会监听端口等待连接。另外开一个terminal，
+然后需要attach gdb to the server.</p>
 <p>假设前面已经编译得到了picoboard_blinky.elf这个固件，在固件同级目录下打开终端，然后</p>
-<ol>
-<li>
-<p>执行</p>
+<ol type="1">
+<li><p>执行</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">linux下输入：</span></span><br><span class="line">gdb-multiarch picoboard_blinky.elf</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">在Windows下输入：</span></span><br><span class="line">arm-none-eabi-gdb.exe picoboard_blinky.elf</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <blockquote>
 <p>吐个槽，manjaro还需要借arch的包安装gdb-multiarch</p>
 </blockquote>
-<p>这时候另外一个等待的命令行就可以看到连接信息。这边连接之后，命令行会变成<br>
+<p>这时候另外一个等待的命令行就可以看到连接信息。这边连接之后，命令行会变成
 <code>(gdb)</code>开头，这是自带的开头，不用自己输入。</p>
-<ol start="2">
-<li>
-<p>然后连接gdb上去。<br>
-输入</p>
+<ol start="2" type="1">
+<li><p>然后连接gdb上去。 输入</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">target remote localhost:3333 </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">或者</span>  </span><br><span class="line">target remote :3333 </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">或者</span>  </span><br><span class="line">target extended-remote :3333</span><br></pre></td></tr></table></figure>
-<p>同理，也可以远程调试，比如 <code>target remote 192.168.31.16:3333</code> 当然，远程连接的时候要先检测对应端口有没有被防火墙拦。<br>
-观察到的效果是：</p>
-</li>
+
+<p>同理，也可以远程调试，比如
+<code>target remote 192.168.31.16:3333</code>
+当然，远程连接的时候要先检测对应端口有没有被防火墙拦。
+观察到的效果是：</p></li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">(gdb) target remote localhost:3333 </span><br></pre></td></tr></table></figure>
-<ol start="3">
+
+<ol start="3" type="1">
 <li>加载 picoboard_blinky.elf 到 flash:</li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">(gdb) load</span><br></pre></td></tr></table></figure>
-<ol start="4">
+
+<ol start="4" type="1">
 <li>执行下面命令开始运行程序：</li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">(gdb) monitor reset init</span><br><span class="line">(gdb) continue</span><br></pre></td></tr></table></figure>
-<ol start="5">
+
+<ol start="5" type="1">
 <li>如果需要下断点，提前使用命令下好然后continue，也可以在编译之前时候就下好断点，这里演示了在main函数处添加一个breakpoint：</li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">(gdb) monitor reset init</span><br><span class="line">(gdb) b main # 在main函数添加一个断点</span><br><span class="line">(gdb) continue</span><br></pre></td></tr></table></figure>
+
 <p>如果提前配置好了断点，程序会运行到断点的时候停止，然后执行continue即可。</p>
-<p>p.s.连接的时候会提示这个单片机有多少硬件断点，这个是不能超过这个断点量的，不然会出错。<br>
+<p>p.s.连接的时候会提示这个单片机有多少硬件断点，这个是不能超过这个断点量的，不然会出错。
 （JLink有自己的软件断点技术，那个另外说）。</p>
-<ol start="6">
-<li>
-<p>也可以中途使用 <code>file filename.elf</code> 来更换执行文件，更换后用<code>load</code>加载。Ctrl+c来暂停正在运行的程序。</p>
-</li>
-<li>
-<p>windows下输入<code>exit</code>或者ctrl-d退出gdb调试。</p>
-</li>
+<ol start="6" type="1">
+<li><p>也可以中途使用 <code>file filename.elf</code>
+来更换执行文件，更换后用<code>load</code>加载。Ctrl+c来暂停正在运行的程序。</p></li>
+<li><p>windows下输入<code>exit</code>或者ctrl-d退出gdb调试。</p></li>
 </ol>
-<p>注意使用自调试固件的时候下不要尝试调试带usb的程序，会出bug，因为daplink本身就用了USB, 会导致daplink失效，不过这样依然能把程序通过SWD烧录进去。</p>
-<h2 id="官方方法工程配置总结"><a class="markdownIt-Anchor" href="#官方方法工程配置总结"></a> 官方方法工程配置总结</h2>
+<p>注意使用自调试固件的时候下不要尝试调试带usb的程序，会出bug，因为daplink本身就用了USB,
+会导致daplink失效，不过这样依然能把程序通过SWD烧录进去。</p>
+<h2 id="官方方法工程配置总结">官方方法工程配置总结</h2>
 <p>其实前面说过了，姑且当他首尾呼应吧。</p>
-<ol>
+<ol type="1">
 <li>配置好环境，下好官方sdk和例程还有生成器，配置好环境变量。</li>
 <li>使用生成器生成工程（其实自己写cmakelists或者复制例程里面的cmakelist改一改然后复制必要的文件，自己做成模板是也可以）</li>
 <li>使用make（mingw32-make)或者nmake编译</li>
 <li>编译得到的uf2可以直接使用USB加载到Flash中后经过自带Bootloader启动；编译得到的elf可以使用swd烧录或调试（调试需要之前就编译参数指定为debug），bin文件可以直接烧录到flash。</li>
 <li>注意工程路径最好不要有中文。</li>
 </ol>
-<h1 id="配置自己的ide"><a class="markdownIt-Anchor" href="#配置自己的ide"></a> 配置自己的IDE</h1>
-<p>这一步基于上一步的C-SDK开发环境来完成，而不是前面说的已经集成模板配置完全的那些IDE。<br>
+<h1 id="配置自己的ide">配置自己的IDE</h1>
+<p>这一步基于上一步的C-SDK开发环境来完成，而不是前面说的已经集成模板配置完全的那些IDE。
 上一步中，直接打开文件夹里面文件编辑和编译，配置文件也不方便，编译烧录调试更不方便，这些都需要在命令行里面执行。</p>
-<ol>
-<li>
-<p><strong>首先选的可以是使用CMakelist作为配置的ide</strong>，这样直接建立工程就能用而不需要修改配置。比如：</p>
+<ol type="1">
+<li><p><strong>首先选的可以是使用CMakelist作为配置的ide</strong>，这样直接建立工程就能用而不需要修改配置。比如：</p>
 <ul>
 <li>QtCreator</li>
 <li>Netbeans</li>
-<li>KDevelop Kdevelop 使用CMake作为其主要的项目配置方式。除此之外还支持qmake、makefile</li>
+<li>KDevelop Kdevelop
+使用CMake作为其主要的项目配置方式。除此之外还支持qmake、makefile</li>
 <li>codelite</li>
 <li>Clion</li>
 </ul>
-<p>然而这里先说结论，除了CLion，其他的似乎都没有对嵌入式编程的调试有任何优化，编译很容易，但是调试很难配置，调试起来也麻烦，下面说。</p>
-</li>
-<li>
-<p><strong>其他IDE</strong><br>
-CMake能够生成一些IDE的工程配置文件（如Visual Studio、CodeBlocks、XCode，Kate，CodeLite），比如Eclipse就有MCU的插件（这也是官方文档给出的方法之一），具体生成参数还是使用cmake --help来查询。</p>
-</li>
-<li>
-<p>VSCODE这种宇宙第一(?)编辑器<br>
-这个方法后面单独说。</p>
-</li>
+<p>然而这里先说结论，除了CLion，其他的似乎都没有对嵌入式编程的调试有任何优化，编译很容易，但是调试很难配置，调试起来也麻烦，下面说。</p></li>
+<li><p><strong>其他IDE</strong>
+CMake能够生成一些IDE的工程配置文件（如Visual
+Studio、CodeBlocks、XCode，Kate，CodeLite），比如Eclipse就有MCU的插件（这也是官方文档给出的方法之一），具体生成参数还是使用cmake
+–help来查询。</p></li>
+<li><p>VSCODE这种宇宙第一(?)编辑器 这个方法后面单独说。</p></li>
 </ol>
 <p><strong>一般配置方法</strong></p>
 <p>无论哪种方法，如果前面没有配置系统环境变量，那么需要在IDE内配置环境变量，但是如果之前配置过了系统环境变量，或者比如有的IDE集成了armgcc可选，那么这一步就忽略就好了：</p>
 <p><code>PICO_SDK_PATH=D:\MyProgramData\MCU_SDK\pico-sdk</code></p>
 <p><code>PICO_TOOLCHAIN_PATH=C:\Program Files (x86)\GNU Arm Embedded Toolchain\10 2021.10\bin\arm-none-eabi-gcc.exe</code></p>
-<p>把这两条添加到IDE中对应的位置。<br>
-（其实这个arm gcc电脑上各个单片机开发的IDE内的都下了好几个了，甚至和platformio下载的共用一个都行）</p>
-<h2 id="clion"><a class="markdownIt-Anchor" href="#clion"></a> CLion</h2>
+<p>把这两条添加到IDE中对应的位置。 （其实这个arm
+gcc电脑上各个单片机开发的IDE内的都下了好几个了，甚至和platformio下载的共用一个都行）</p>
+<h2 id="clion">CLion</h2>
 <p>使用CMakelist来构建的IDE其中最有名的可能是CLion了，官方start文档也给出了怎么配置基于CLion来配置.</p>
-<p>如果需要配置环境，打开Clion后点设置，选 构建、执行、部署 ，CMake，点环境：增加用户环境变量。</p>
+<p>如果需要配置环境，打开Clion后点设置，选 构建、执行、部署
+，CMake，点环境：增加用户环境变量。</p>
 <p>在Clion中文件的路径，来源，函数来源都显示很清楚，引用的sdk也能直接显示出来，使用是比较方便的。</p>
 <p>他确实方便，直接打开前面步骤中配置好的文件夹为Clion工程，配置一下openocd就可以用了。文件编辑什么的都很方便。</p>
 <p>编译比vscode快不少。</p>
 <p>具体方法：我的文档【CLion配置rp2040工程】（TODO:未上传，总之很简单。。。）</p>
-<h3 id="参考-2"><a class="markdownIt-Anchor" href="#参考-2"></a> 参考</h3>
-<p>官方文档：getting-started-with-pico.pdf 10.2. Using CLion<br>
-<a target="_blank" rel="noopener" href="https://www.stlee.tech/2021/06/14/CLion-%E4%B8%AD%E5%BC%80%E5%8F%91-RaspberryPi-Pico/">CLion 中开发 RaspberryPi Pico | St.Lee的个人站 (stlee.tech)</a></p>
-<h2 id="vscode作为ide"><a class="markdownIt-Anchor" href="#vscode作为ide"></a> VScode作为IDE</h2>
-<p>这一部分实际上我写了个简化版：<a href="https://alwaysmy.github.io/2023/04/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91/RP2040%E9%85%8D%E7%BD%AEVSCODE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E2%80%94%E2%80%94%E4%B8%80%E5%8A%B3%E6%B0%B8%E9%80%B8%E7%89%88/">RP2040配置VSCODE开发环境 —— 一劳永逸版 | 加载中… (alwaysmy.github.io)</a></p>
-<p>通过插件支持完成对嵌入式设备的调试和对Cmake的支持。需要安装CMakeTool cortex-debug，因为配置了cmake或者cortex-debug之后就不用自己写task.json了，还算方便。下面是步骤。</p>
-<ol>
-<li>
-<p>安装CMake插件</p>
+<h3 id="参考-1">参考</h3>
+<p>官方文档：getting-started-with-pico.pdf 10.2. Using CLion <a target="_blank" rel="noopener" href="https://www.stlee.tech/2021/06/14/CLion-%E4%B8%AD%E5%BC%80%E5%8F%91-RaspberryPi-Pico/">CLion
+中开发 RaspberryPi Pico | St.Lee的个人站 (stlee.tech)</a></p>
+<h2 id="vscode作为ide">VScode作为IDE</h2>
+<p>这一部分实际上我写了个简化版：<a href="https://alwaysmy.github.io/2023/04/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91/RP2040%E9%85%8D%E7%BD%AEVSCODE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E2%80%94%E2%80%94%E4%B8%80%E5%8A%B3%E6%B0%B8%E9%80%B8%E7%89%88/">RP2040配置VSCODE开发环境
+—— 一劳永逸版 | 加载中… (alwaysmy.github.io)</a></p>
+<p>通过插件支持完成对嵌入式设备的调试和对Cmake的支持。需要安装CMakeTool
+cortex-debug，因为配置了cmake或者cortex-debug之后就不用自己写task.json了，还算方便。下面是步骤。</p>
+<ol type="1">
+<li><p>安装CMake插件</p>
 <p>打开设置，搜索 CMake Tools Configuration</p>
-<p>找到Configure Environment, 添加上面最开始说的两个环境变量（如果已经有配置好的系统或者用户环境变量就可以不用配置）</p>
-<p>找到CMake Tools Configuration - Generator，设置为NMake Makefiles或者MinGW Makefiles. 前者是对应使用VS的编译器，后者是对应使用mingw的编译器。</p>
-<p>打开项目文件夹，第一次打开的时候会提示选择工具包，点一下选择有arm-none-eabi的这一项。选错过了也没关系，就在最下面的底边栏。如下图</p>
-</li>
+<p>找到Configure Environment,
+添加上面最开始说的两个环境变量（如果已经有配置好的系统或者用户环境变量就可以不用配置）</p>
+<p>找到CMake Tools Configuration - Generator，设置为NMake
+Makefiles或者MinGW Makefiles.
+前者是对应使用VS的编译器，后者是对应使用mingw的编译器。</p>
+<p>打开项目文件夹，第一次打开的时候会提示选择工具包，点一下选择有arm-none-eabi的这一项。选错过了也没关系，就在最下面的底边栏。如下图</p></li>
 </ol>
 <img src="/2022/12/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91/0_RP2040%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/%E5%BA%95%E8%BE%B9%E6%A0%8F%E9%80%89%E6%8B%A9%E5%B7%A5%E5%85%B7%E7%AE%B1.png" class title="s">
-<ol start="2">
-<li>
-<p>安装插件：cortex-Debug</p>
-<p>打开文件夹之后，按F7是Cmake的build，F5是cortex-debug的调试，当然具体快捷键是什么得看自己vscode的配置，这两种都能编译，后者会编译后启动openocd进行调试。</p>
-</li>
-<li>
-<p>创建配置了vscode的工程</p>
-<p>前面使用生成器的时候，勾选IDE Options上的创建vscode project，会自动生成vscode的配置.vscode。不过目前这个生成器的参数是有问题的，后面自己改一下保存成模板，以后自己复制到工程文件夹就行。</p>
-</li>
+
+<ol start="2" type="1">
+<li><p>安装插件：cortex-Debug</p>
+<p>打开文件夹之后，按F7是Cmake的build，F5是cortex-debug的调试，当然具体快捷键是什么得看自己vscode的配置，这两种都能编译，后者会编译后启动openocd进行调试。</p></li>
+<li><p>创建配置了vscode的工程</p>
+<p>前面使用生成器的时候，勾选IDE Options上的创建vscode
+project，会自动生成vscode的配置.vscode。不过目前这个生成器的参数是有问题的，后面自己改一下保存成模板，以后自己复制到工程文件夹就行。</p></li>
 </ol>
 <p>p.s.关于这个生成器修改成直接可以用的版本<a target="_blank" rel="noopener" href="https://github.com/alwaysmy/pico-project-generator_fix">alwaysmy/pico-project-generator_fix</a></p>
-<p><strong>额外事项：</strong><br>
-如果前面使用的是vs的工具链而不是mingw，可以直接从Windows terminal里面加号打开Visual Studio 2022 Developer Command Prompt，这个实际上是<code>%comspec% /k &quot;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\VsDevCmd.bat</code></p>
+<p><strong>额外事项：</strong>
+如果前面使用的是vs的工具链而不是mingw，可以直接从Windows
+terminal里面加号打开Visual Studio 2022 Developer Command
+Prompt，这个实际上是<code>%comspec% /k "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\VsDevCmd.bat</code></p>
 <p>然后输入code打开vscode(vscode安装的时候默认添加到环境变量里面了,所以可以输入code来打开)</p>
 <p>说个简单点的启动方法：</p>
-<p>找到电脑上的<code>C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat</code>如果是32位机器就选后缀32的（现在应该不会还有人用32位机器吧），然后打开这个批处理，然后执行code。</p>
+<p>找到电脑上的<code>C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat </code>如果是32位机器就选后缀32的（现在应该不会还有人用32位机器吧），然后打开这个批处理，然后执行code。</p>
 <p>所以可以写成脚本：</p>
-<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="keyword">call</span> &quot;C:\Program Files\Microsoft Visual Studio\<span class="number">2022</span>\Community\VC\Auxiliary\Build\vcvars64.bat&quot;</span><br><span class="line">code</span><br></pre></td></tr></table></figure>
-<ol start="4">
+<figure class="highlight cmd"><table><tr><td class="code"><pre><span class="line"><span class="keyword">call</span> "C:\Program Files\Microsoft Visual Studio\<span class="number">2022</span>\Community\VC\Auxiliary\Build\vcvars64.bat"</span><br><span class="line">code</span><br></pre></td></tr></table></figure>
+
+<ol start="4" type="1">
 <li>配置vscode 的Debug</li>
 </ol>
-<p>这一部分依然推荐看我的文章<a href="https://alwaysmy.github.io/2023/04/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91/RP2040%E9%85%8D%E7%BD%AEVSCODE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E2%80%94%E2%80%94%E4%B8%80%E5%8A%B3%E6%B0%B8%E9%80%B8%E7%89%88/">RP2040配置VSCODE开发环境 —— 一劳永逸版</a>在附录中添加的修改后的生成器代码，下面就当作是解释了。<br>
-这里关键是配置项目文件夹内.vscode下的配置json文件, 这些文件在使用生成器的时候会自动生成，下面分每个文件说一下。<br>
-launch.json：<br>
-首先是gdb的路径没有适配系统，原来默认gdbPath是gdb-multiarch, 在Windows下要改成 arm-none-eabi-gdb.exe<br>
+<p>这一部分依然推荐看我的文章<a href="https://alwaysmy.github.io/2023/04/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E5%8D%95%E7%89%87%E6%9C%BA%E5%BC%80%E5%8F%91/RP2040%E9%85%8D%E7%BD%AEVSCODE%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E2%80%94%E2%80%94%E4%B8%80%E5%8A%B3%E6%B0%B8%E9%80%B8%E7%89%88/">RP2040配置VSCODE开发环境
+—— 一劳永逸版</a>在附录中添加的修改后的生成器代码，下面就当作是解释了。
+这里关键是配置项目文件夹内.vscode下的配置json文件,
+这些文件在使用生成器的时候会自动生成，下面分每个文件说一下。
+launch.json：
+首先是gdb的路径没有适配系统，原来默认gdbPath是gdb-multiarch,
+在Windows下要改成 arm-none-eabi-gdb.exe
 然后configFiles的内容根据自己用的仿真器修改。</p>
-<p>setting.json：<br>
+<p>setting.json：
 全局设置已经配置好的话，这里可以不修改，也可以把之前的插件设置的全局设置挪到这里来变成工程设置，比如：</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  &quot;cortex-debug.armToolchainPath&quot;: &quot;&quot;,</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//  &quot;cortex-debug.openocdPath.windows&quot;: &quot;D:\\MyPrograms\\1_DevelopTools\\MCU_Tools\\openocd-04887d3b6-i686-w64-mingw32\\bin\\openocd.exe&quot;,</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//  &quot;cortex-debug.openocdPath&quot;: &quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// &quot;cmake.generator&quot;: &quot;MinGW Makefiles&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// &quot;cmake.generator&quot;: &quot;NMake Makefiles&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="comment">//  "cortex-debug.armToolchainPath": "",</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//  "cortex-debug.openocdPath.windows": "D:\\MyPrograms\\1_DevelopTools\\MCU_Tools\\openocd-04887d3b6-i686-w64-mingw32\\bin\\openocd.exe",</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//  "cortex-debug.openocdPath": ""</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// "cmake.generator": "MinGW Makefiles"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// "cmake.generator": "NMake Makefiles"</span></span><br></pre></td></tr></table></figure>
+
 <p>同时cmaketool的几个按钮它默认候隐藏了，实际上确实没啥用，可以单独把Build按钮显示出来方便单独编译，就是改成default。</p>
-<p>extensions.json：<br>
-就是推荐的插件</p>
+<p>extensions.json： 就是推荐的插件</p>
 <p>另外，打开工程后，会提示使用Cmake的智能感知，这会在build下添加一个json用来给c_cpp的智能感知添加一个包含路径的配置，这样就能正确识别SDK的文件路径，所以c_cpp_properties.json没啥用了。</p>
-<p>总结：<br>
-使用vscode的缺点是启动相当慢,差不多要两分钟，后面每次大概半分钟，应该可以改编译配置吧，没仔细看。<br>
-启动调试快捷键是ctrl+shift+D或者F5 ,F7只能编译。<br>
+<p>总结：
+使用vscode的缺点是启动相当慢,差不多要两分钟，后面每次大概半分钟，应该可以改编译配置吧，没仔细看。
+启动调试快捷键是ctrl+shift+D或者F5 ,F7只能编译。
 不知道怎么支持RTT输出或者semihost的方法输出打印，所以还是用串口调试吧。</p>
-<h2 id="其他ide配置"><a class="markdownIt-Anchor" href="#其他ide配置"></a> 其他IDE配置</h2>
+<h2 id="其他ide配置">其他IDE配置</h2>
 <p>下面的配置都不太好用我觉得。。当作记录吧，有的根本没写完。</p>
-<h3 id="eclipse"><a class="markdownIt-Anchor" href="#eclipse"></a> Eclipse</h3>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cmake -G &quot;Eclipse CDT4 - MinGW Makefiles&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="eclipse">Eclipse</h3>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cmake -G "Eclipse CDT4 - MinGW Makefiles"</span><br></pre></td></tr></table></figure>
+
 <p>参考官方教程，很详细。如果不想单独下个eclipse的话，看看电脑上哪个基于eclipse的IDE不是阉割的可以直接拿来用,不过我没找到。。</p>
-<h3 id="kdevelop"><a class="markdownIt-Anchor" href="#kdevelop"></a> Kdevelop：</h3>
-<p><a target="_blank" rel="noopener" href="https://www.kdevelop.org/download">Download | KDevelop</a></p>
+<h3 id="kdevelop">Kdevelop：</h3>
+<p><a target="_blank" rel="noopener" href="https://www.kdevelop.org/download">Download |
+KDevelop</a></p>
 <p>结论：不好用不会用。</p>
 <p>更新有点慢，上次更新还是两年前。。怎么用Windows编译器的文档上次更新还是六年前。。。</p>
-<p>然而，这个IDE没啥用，添加文件还是要自己写cmakelist。。。。并没有方便，虽然cmakelist可以图形管理。。<br>
+<p>然而，这个IDE没啥用，添加文件还是要自己写cmakelist。。。。并没有方便，虽然cmakelist可以图形管理。。
 甚至编译后生成的文件都要重新加载才能显示。</p>
 <p>debug配置方法：</p>
 <p>运行-配置启动-然后更改gdb选项就可以用gdb调试了。</p>
-<p>for the target set it to executable and the path to <code>build/your-project-name.elf</code></p>
-<p>Click on the Debug part of the launch configuration and set the debugger executable to <code>/usr/bin/arm-none-eabi-gdb</code></p>
-<p>Set the Run gdb script to the script created in the previous step. Click apply.</p>
-<p>脚本内容：<br>
-target remote localhost:3333<br>
-# monitor arm semihosting enable<br>
-mon reset halt<br>
-# openocd must be running in the correct dir for the relative paths to work<br>
-# Flash<br>
-mon flash write_image erase unlock build/your-project-name.bin 0x08000000<br>
-mon verify_image build/your-project-name.bin 0x08000000<br>
-mon reset halt<br>
-# Not sure why but this is needed for KDevelop<br>
-file build/your-project-name.elf<br>
-load<br>
-mon reset halt<br>
-disconnect<br>
-target remote localhost:3333</p>
-<p>然后：<br>
-openocd -f interface/stlink.cfg -f board/stm32h7x3i_eval.cfg</p>
+<p>for the target set it to executable and the path
+to <code>build/your-project-name.elf</code></p>
+<p>Click on the Debug part of the launch configuration and set the
+debugger executable to <code>/usr/bin/arm-none-eabi-gdb</code></p>
+<p>Set the Run gdb script to the script created in the previous step.
+Click apply.</p>
+<p>脚本内容： target remote localhost:3333 # monitor arm semihosting
+enable mon reset halt # openocd must be running in the correct dir for
+the relative paths to work # Flash mon flash write_image erase unlock
+build/your-project-name.bin 0x08000000 mon verify_image
+build/your-project-name.bin 0x08000000 mon reset halt # Not sure why but
+this is needed for KDevelop file build/your-project-name.elf load mon
+reset halt disconnect target remote localhost:3333</p>
+<p>然后： openocd -f interface/stlink.cfg -f
+board/stm32h7x3i_eval.cfg</p>
 <p>下面是参考资料：</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/KDE/kdev-embedded">KDE/kdev-embedded: Plugin for KDevelop to support the development of embedded systems (github.com)</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.codelv.com/blog/2019/7/use-kdevelop-with-openocd-and-mbed-os">Use KDevelop with OpenOCD and mbed-os - CodeLV</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/KDE/kdev-embedded">KDE/kdev-embedded:
+Plugin for KDevelop to support the development of embedded systems
+(github.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.codelv.com/blog/2019/7/use-kdevelop-with-openocd-and-mbed-os">Use
+KDevelop with OpenOCD and mbed-os - CodeLV</a></p>
 <p>放弃，我这里会提示elf不是启动文件，上面的教程是kdevlop3.</p>
 <p>至于那个插件，是七年前的了。</p>
-<p>安装，工程-打开/导入-选择刚刚生成的工程文件夹，点构建就可以构建了。<br>
+<p>安装，工程-打开/导入-选择刚刚生成的工程文件夹，点构建就可以构建了。
 使用yay -S gdb-multiarch 安装gdb-multiarch</p>
 <p>linux下可以直接打开工程并构建，linux下的版本也更新，5.9到了。</p>
-<h3 id="kate"><a class="markdownIt-Anchor" href="#kate"></a> Kate</h3>
+<h3 id="kate">Kate</h3>
 <p>这个编辑器倒是算是正常。</p>
 <p>不过仍然是linux下比较正常，windows下有bug，而且没有默认的gdb前端插件，所以没法调试，可能可以写插件来支持。。。</p>
-<p>在linux下<br>
-使用yay -S gdb-multiarch 安装gdb-multiarch<br>
-<a target="_blank" rel="noopener" href="https://aur.archlinux.org/packages/gdb-multiarch">https://aur.archlinux.org/packages/gdb-multiarch</a><br>
+<p>在linux下 使用yay -S gdb-multiarch 安装gdb-multiarch
+https://aur.archlinux.org/packages/gdb-multiarch
 如果报错patch的话就显pamac install patch</p>
-<p>点下面的构建，然后<br>
-构建插件编写为：<br>
-cd ./build &amp;&amp; make<br>
-添加一个cmake构建命令<br>
-cmake -G “Kate - Unix Makefiles”//或者Kate - MinGW Makefiles<br>
-添加一个构建cmake并编译命令<br>
-cmake -G “Kate - Unix Makefiles”&amp;&amp;cd ./build &amp;&amp; make</p>
+<p>点下面的构建，然后 构建插件编写为： cd ./build &amp;&amp; make
+添加一个cmake构建命令 cmake -G “Kate - Unix Makefiles”//或者Kate - MinGW
+Makefiles 添加一个构建cmake并编译命令 cmake -G “Kate - Unix
+Makefiles”&amp;&amp;cd ./build &amp;&amp; make</p>
 <p>这样就可以完成编译功能了。</p>
 <p>调试功能：（只有linux下支持这个插件。。）</p>
-<p>配置GDB<br>
-点下面的调试<br>
-GDB 设置<br>
-高级设置<br>
-改成远程TCP<br>
+<p>配置GDB 点下面的调试 GDB 设置 高级设置 改成远程TCP
 自定义初始化脚本：不知道咋搞，应该和上面kdevelop的差不多。</p>
 <p>如果不需要这个gdb前端的功能只需要烧录的话，可以使用外部工具的功能执行命令来调用swd烧录elf文件。</p>
-<h3 id="codelite"><a class="markdownIt-Anchor" href="#codelite"></a> Codelite</h3>
-<p>这个IDE也是可以基于Cmake的，可以直接用cmake -G &quot;CodeLite - MinGW Makefiles&quot;来转一个工程出来。</p>
+<h3 id="codelite">Codelite</h3>
+<p>这个IDE也是可以基于Cmake的，可以直接用cmake -G “CodeLite - MinGW
+Makefiles“来转一个工程出来。</p>
 <p>实测能用，效果还不错，但是配置调试比较麻烦，而且不管调试器连接没连上，都会提示连上了。。。而且似乎压根没法调试。但是确实能连上openocd而且烧录进入了。</p>
 <p>利用外部工具执行烧录还是可以的。</p>
-<p>同理，cmake的命令配置为<br>
-CodeBlocks - MinGW Makefiles</p>
+<p>同理，cmake的命令配置为 CodeBlocks - MinGW Makefiles</p>
 <p>参考：下面这是个stm32的配置https://blog.csdn.net/u012750409/article/details/52516653</p>
-<h3 id="embedded-ide-on-vscodeeide"><a class="markdownIt-Anchor" href="#embedded-ide-on-vscodeeide"></a> Embedded IDE on  vscode（EIDE）</h3>
-<p>这个插件很强大，同时支持导入eclipse gcc的项目，所以可以通过<br>
-cmake -G &quot;Eclipse CDT4 - MinGW Makefiles&quot;来生成eclipse的GCC项目导入到vscode 的embedded IDE</p>
-<p>就是这样有点麻烦。<br>
-由于 Eclipse CDT 和 EIDE 之间的设计差异，EIDE 暂时不能兼容 Eclipse 项目中的一些项目属性和构建设置<br>
-导入完成后，将生成一个 <code>.warning.txt</code> 文件，其中记录了所有不兼容的 Eclipse 项目属性</p>
-<p>您需要根据这些属性的 <code>名称</code> 和 <code>值</code> 的含义修改 EIDE 项目的 <code>构建器选项</code>，直到可以正确编译</p>
+<h3 id="embedded-ide-on--vscodeeide">Embedded IDE on
+ vscode（EIDE）</h3>
+<p>这个插件很强大，同时支持导入eclipse gcc的项目，所以可以通过 cmake -G
+“Eclipse CDT4 - MinGW Makefiles“来生成eclipse的GCC项目导入到vscode
+的embedded IDE</p>
+<p>就是这样有点麻烦。 由于 Eclipse CDT 和 EIDE 之间的设计差异，EIDE
+暂时不能兼容 Eclipse 项目中的一些项目属性和构建设置
+导入完成后，将生成一个 <code>.warning.txt</code> 文件，其中记录了所有不兼容的
+Eclipse 项目属性</p>
+<p>您需要根据这些属性的 <code>名称</code> 和 <code>值</code> 的含义修改
+EIDE 项目的 <code>构建器选项</code>，直到可以正确编译</p>
 <p>但是，它同样需要cortex-debug插件来支持调试。所以。。。没啥意义似乎。</p>
-<p>其实作者写了一个rp2040的模板可以直接用：<br>
-<a target="_blank" rel="noopener" href="https://discuss.em-ide.com/d/180-rp2040-pico">RP2040 Pico 项目模板 - Embedded IDE Forum (em-ide.com)</a></p>
-<h1 id="其他另类方法"><a class="markdownIt-Anchor" href="#其他另类方法"></a> 其他另类方法</h1>
-<p><a target="_blank" rel="noopener" href="https://make.playpiper.com/">Piper Make (playpiper.com)</a><br>
+<p>其实作者写了一个rp2040的模板可以直接用： <a target="_blank" rel="noopener" href="https://discuss.em-ide.com/d/180-rp2040-pico">RP2040 Pico 项目模板
+- Embedded IDE Forum (em-ide.com)</a></p>
+<h1 id="其他另类方法">其他另类方法</h1>
+<p><a target="_blank" rel="noopener" href="https://make.playpiper.com/">Piper Make (playpiper.com)</a>
 拖拽式网页图形编程。</p>
-<h1 id="补充说明"><a class="markdownIt-Anchor" href="#补充说明"></a> 补充说明</h1>
-<h2 id="linux环境的配置的补充"><a class="markdownIt-Anchor" href="#linux环境的配置的补充"></a> Linux环境的配置的补充</h2>
+<h1 id="补充说明">补充说明</h1>
+<h2 id="linux环境的配置的补充">Linux环境的配置的补充</h2>
 <p>安装软件：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt install cmake gcc-arm-none-eabi libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib make</span><br></pre></td></tr></table></figure>
+
 <p>然后配置环境变量</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> pico-sdk</span><br><span class="line"><span class="built_in">export</span> PICO_SDK_PATH=`<span class="built_in">pwd</span>` </span><br></pre></td></tr></table></figure>
-<h3 id="基于wsl安装pico-c-sdk环境"><a class="markdownIt-Anchor" href="#基于wsl安装pico-c-sdk环境"></a> 基于WSL安装PICO C-SDK环境</h3>
-<p>大可不必。<br>
-但是如果遇到了，有一些额外的问题。</p>
-<ol>
-<li>
-<p>编译的时候提示cmake版本不够，我尝试编译新版的cmake, 然后发现是国内源的问题，先换回官方源了.</p>
-</li>
-<li>
-<p>如果是WSL下需要先需要手工安装tkinter来打开生成器（一般不需要）<br>
-sudo apt-get install python3-tk<br>
-打开生成器。<br>
-python3 pico_project.py --gui</p>
-</li>
+
+<h3 id="基于wsl安装pico-c-sdk环境">基于WSL安装PICO C-SDK环境</h3>
+<p>大可不必。 但是如果遇到了，有一些额外的问题。</p>
+<ol type="1">
+<li><p>编译的时候提示cmake版本不够，我尝试编译新版的cmake,
+然后发现是国内源的问题，先换回官方源了.</p></li>
+<li><p>如果是WSL下需要先需要手工安装tkinter来打开生成器（一般不需要）
+sudo apt-get install python3-tk 打开生成器。 python3 pico_project.py
+–gui</p></li>
 </ol>
-<h2 id="使用swd下载烧录方法"><a class="markdownIt-Anchor" href="#使用swd下载烧录方法"></a> 使用SWD下载烧录方法</h2>
+<h2 id="使用swd下载烧录方法">使用SWD下载烧录方法</h2>
 <p>这里是直接下载。</p>
 <p>如果使用openocd，那么</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">openocd -f interface/raspberrypi-swd.cfg -f target/rp2040.cfg -c &quot;program blink.elf verify reset exit&quot;</span><br><span class="line">openocd -f interface/cmsis-dap.cfg -f target/rp2040.cfg -c &quot;program blink.elf verify reset exit&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">openocd -f interface/raspberrypi-swd.cfg -f target/rp2040.cfg -c "program blink.elf verify reset exit"</span><br><span class="line">openocd -f interface/cmsis-dap.cfg -f target/rp2040.cfg -c "program blink.elf verify reset exit"</span><br></pre></td></tr></table></figure>
+
 <p>如果使用Pyocd，那么</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pyocd flash --erase chip --target rp2040 blink.elf</span><br></pre></td></tr></table></figure>
-<p>我依然推荐我写的GUI工具：<br>
-<a href="https://alwaysmy.github.io/2023/04/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/%E4%BD%BF%E7%94%A8aardio%E5%86%99%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8Epyocd%E7%9A%84%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%8B%E8%BD%BD%E5%99%A8/">使用aardio写一个基于pyocd的单片机下载器 | 加载中… (alwaysmy.github.io)</a><br>
-`</p>
-<h2 id="usb串口调试的问题"><a class="markdownIt-Anchor" href="#usb串口调试的问题"></a> USB串口调试的问题</h2>
+
+<p>我依然推荐我写的GUI工具： <a href="https://alwaysmy.github.io/2023/04/27/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/%E4%BD%BF%E7%94%A8aardio%E5%86%99%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8Epyocd%E7%9A%84%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%8B%E8%BD%BD%E5%99%A8/">使用aardio写一个基于pyocd的单片机下载器
+| 加载中… (alwaysmy.github.io)</a> `</p>
+<h2 id="usb串口调试的问题">USB串口调试的问题</h2>
 <p>默认的usb串口的printf需要打开上位机打开流控才能接收。自己用tinyusb来做似乎没这个问题。</p>
-<h2 id="其他说明"><a class="markdownIt-Anchor" href="#其他说明"></a> 其他说明</h2>
-<p>svd file就是CMSIS SVD(System View Description) ，相当于给编译器看的数据手册。</p>
-<h3 id="openocd问题"><a class="markdownIt-Anchor" href="#openocd问题"></a> openocd问题</h3>
+<h2 id="其他说明">其他说明</h2>
+<p>svd file就是CMSIS SVD(System View Description)
+，相当于给编译器看的数据手册。</p>
+<h3 id="openocd问题">openocd问题</h3>
 <p>这里只是记录，我强烈推荐使用pyocd。</p>
 <p>使用openocd的时候出现错误连接提示最好升级openocd，例如</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[rp2040.cpu] Could not find MEM-AP to control the core</span><br></pre></td></tr></table></figure>
-<p>说明见：<br>
-<a target="_blank" rel="noopener" href="https://github.com/Marus/cortex-debug/blob/master/debug_attributes.md">cortex-debug/debug_attributes.md at master · Marus/cortex-debug (github.com)</a></p>
+
+<p>说明见： <a target="_blank" rel="noopener" href="https://github.com/Marus/cortex-debug/blob/master/debug_attributes.md">cortex-debug/debug_attributes.md
+at master · Marus/cortex-debug (github.com)</a></p>
 <p>正常连接应显示</p>
 <p>正常的时候多核和单核的连接：</p>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">PS</span> C:\Users\AlwaysTS&gt; openocd <span class="operator">-f</span> interface/cmsis<span class="literal">-dap</span>.cfg  <span class="operator">-f</span> target/rp2040.cfg  <span class="literal">-c</span> <span class="string">&#x27;adapter speed 4000&#x27;</span> <span class="literal">-c</span> <span class="string">&#x27;set CHIPNAME rp2040&#x27;</span></span><br><span class="line">Open On<span class="literal">-Chip</span> Debugger <span class="number">0.12</span>.<span class="number">0</span><span class="literal">-rc2</span>+dev<span class="literal">-00988-g04887d3b6</span> (<span class="number">2022</span><span class="literal">-12-03-09</span>:<span class="number">30</span>)</span><br><span class="line">Licensed under GNU GPL v2</span><br><span class="line"><span class="keyword">For</span> bug reports, read</span><br><span class="line">        http://openocd.org/doc/doxygen/bugs.html</span><br><span class="line">adapter speed: <span class="number">4000</span> kHz</span><br><span class="line"></span><br><span class="line">rp2040</span><br><span class="line">Info : Listening on port <span class="number">6666</span> <span class="keyword">for</span> tcl connections</span><br><span class="line">Info : Listening on port <span class="number">4444</span> <span class="keyword">for</span> telnet connections</span><br><span class="line">Info : CMSIS<span class="literal">-DAP</span>: SWD supported</span><br><span class="line">Info : CMSIS<span class="literal">-DAP</span>: <span class="built_in">FW</span> Version = <span class="number">2.0</span>.<span class="number">0</span></span><br><span class="line">Info : CMSIS<span class="literal">-DAP</span>: Interface Initialised (SWD)</span><br><span class="line">Info : SWCLK/TCK = <span class="number">1</span> SWDIO/TMS = <span class="number">1</span> TDI = <span class="number">0</span> TDO = <span class="number">0</span> nTRST = <span class="number">0</span> nRESET = <span class="number">1</span></span><br><span class="line">Info : CMSIS<span class="literal">-DAP</span>: Interface ready</span><br><span class="line">Info : clock speed <span class="number">4000</span> kHz</span><br><span class="line">Info : SWD DPIDR <span class="number">0</span>x0bc12477, DLPIDR <span class="number">0</span>x00000001</span><br><span class="line">Info : SWD DPIDR <span class="number">0</span>x0bc12477, DLPIDR <span class="number">0</span>x10000001</span><br><span class="line">Info : [<span class="type">rp2040.core0</span>] Cortex<span class="literal">-M0</span>+ r0p1 processor detected</span><br><span class="line">Info : [<span class="type">rp2040.core0</span>] target has <span class="number">4</span> breakpoints, <span class="number">2</span> watchpoints</span><br><span class="line">Info : [<span class="type">rp2040.core1</span>] Cortex<span class="literal">-M0</span>+ r0p1 processor detected</span><br><span class="line">Info : [<span class="type">rp2040.core1</span>] target has <span class="number">4</span> breakpoints, <span class="number">2</span> watchpoints</span><br><span class="line">Info : starting gdb server <span class="keyword">for</span> rp2040.core0 on <span class="number">3333</span></span><br><span class="line">Info : Listening on port <span class="number">3333</span> <span class="keyword">for</span> gdb connections</span><br><span class="line">Info : starting gdb server <span class="keyword">for</span> rp2040.core1 on <span class="number">3334</span></span><br><span class="line">Info : Listening on port <span class="number">3334</span> <span class="keyword">for</span> gdb connections</span><br><span class="line">shutdown command invoked</span><br><span class="line"><span class="built_in">PS</span> C:\Users\AlwaysTS&gt; openocd <span class="operator">-f</span> interface/cmsis<span class="literal">-dap</span>.cfg <span class="literal">-c</span>  <span class="string">&#x27;set USE_CORE 0&#x27;</span> <span class="operator">-f</span> target/rp2040.cfg  <span class="literal">-c</span> <span class="string">&#x27;adapter speed 4000&#x27;</span> <span class="literal">-c</span> <span class="string">&#x27;set CHIPNAME rp2040&#x27;</span></span><br><span class="line">Open On<span class="literal">-Chip</span> Debugger <span class="number">0.12</span>.<span class="number">0</span><span class="literal">-rc2</span>+dev<span class="literal">-00988-g04887d3b6</span> (<span class="number">2022</span><span class="literal">-12-03-09</span>:<span class="number">30</span>)</span><br><span class="line">Licensed under GNU GPL v2</span><br><span class="line"><span class="keyword">For</span> bug reports, read</span><br><span class="line">        http://openocd.org/doc/doxygen/bugs.html</span><br><span class="line"><span class="number">0</span></span><br><span class="line">adapter speed: <span class="number">4000</span> kHz</span><br><span class="line"></span><br><span class="line">rp2040</span><br><span class="line">Info : Listening on port <span class="number">6666</span> <span class="keyword">for</span> tcl connections</span><br><span class="line">Info : Listening on port <span class="number">4444</span> <span class="keyword">for</span> telnet connections</span><br><span class="line">Info : CMSIS<span class="literal">-DAP</span>: SWD supported</span><br><span class="line">Info : CMSIS<span class="literal">-DAP</span>: <span class="built_in">FW</span> Version = <span class="number">2.0</span>.<span class="number">0</span></span><br><span class="line">Info : CMSIS<span class="literal">-DAP</span>: Interface Initialised (SWD)</span><br><span class="line">Info : SWCLK/TCK = <span class="number">1</span> SWDIO/TMS = <span class="number">1</span> TDI = <span class="number">0</span> TDO = <span class="number">0</span> nTRST = <span class="number">0</span> nRESET = <span class="number">1</span></span><br><span class="line">Info : CMSIS<span class="literal">-DAP</span>: Interface ready</span><br><span class="line">Info : clock speed <span class="number">4000</span> kHz</span><br><span class="line">Info : SWD DPIDR <span class="number">0</span>x0bc12477, DLPIDR <span class="number">0</span>x00000001</span><br><span class="line">Info : [<span class="type">rp2040.core0</span>] Cortex<span class="literal">-M0</span>+ r0p1 processor detected</span><br><span class="line">Info : [<span class="type">rp2040.core0</span>] target has <span class="number">4</span> breakpoints, <span class="number">2</span> watchpoints</span><br><span class="line">Info : starting gdb server <span class="keyword">for</span> rp2040.core0 on <span class="number">3333</span></span><br><span class="line">Info : Listening on port <span class="number">3333</span> <span class="keyword">for</span> gdb connections</span><br></pre></td></tr></table></figure>
-<h3 id="基于vscode的自调试"><a class="markdownIt-Anchor" href="#基于vscode的自调试"></a> 基于VSCode的自调试</h3>
-<p>这一步直接看我修改的模板生成器，这些配置已经写在里面了，不用自己手动改了：<br>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">PS</span> C:\Users\AlwaysTS&gt; openocd <span class="operator">-f</span> interface/cmsis<span class="literal">-dap</span>.cfg  <span class="operator">-f</span> target/rp2040.cfg  <span class="literal">-c</span> <span class="string">'adapter speed 4000'</span> <span class="literal">-c</span> <span class="string">'set CHIPNAME rp2040'</span></span><br><span class="line">Open On<span class="literal">-Chip</span> Debugger <span class="number">0.12</span>.<span class="number">0</span><span class="literal">-rc2</span>+dev<span class="literal">-00988-g04887d3b6</span> (<span class="number">2022</span><span class="literal">-12-03-09</span>:<span class="number">30</span>)</span><br><span class="line">Licensed under GNU GPL v2</span><br><span class="line"><span class="keyword">For</span> bug reports, read</span><br><span class="line">        http://openocd.org/doc/doxygen/bugs.html</span><br><span class="line">adapter speed: <span class="number">4000</span> kHz</span><br><span class="line"></span><br><span class="line">rp2040</span><br><span class="line">Info : Listening on port <span class="number">6666</span> <span class="keyword">for</span> tcl connections</span><br><span class="line">Info : Listening on port <span class="number">4444</span> <span class="keyword">for</span> telnet connections</span><br><span class="line">Info : CMSIS<span class="literal">-DAP</span>: SWD supported</span><br><span class="line">Info : CMSIS<span class="literal">-DAP</span>: <span class="built_in">FW</span> Version = <span class="number">2.0</span>.<span class="number">0</span></span><br><span class="line">Info : CMSIS<span class="literal">-DAP</span>: Interface Initialised (SWD)</span><br><span class="line">Info : SWCLK/TCK = <span class="number">1</span> SWDIO/TMS = <span class="number">1</span> TDI = <span class="number">0</span> TDO = <span class="number">0</span> nTRST = <span class="number">0</span> nRESET = <span class="number">1</span></span><br><span class="line">Info : CMSIS<span class="literal">-DAP</span>: Interface ready</span><br><span class="line">Info : clock speed <span class="number">4000</span> kHz</span><br><span class="line">Info : SWD DPIDR <span class="number">0</span>x0bc12477, DLPIDR <span class="number">0</span>x00000001</span><br><span class="line">Info : SWD DPIDR <span class="number">0</span>x0bc12477, DLPIDR <span class="number">0</span>x10000001</span><br><span class="line">Info : [<span class="type">rp2040.core0</span>] Cortex<span class="literal">-M0</span>+ r0p1 processor detected</span><br><span class="line">Info : [<span class="type">rp2040.core0</span>] target has <span class="number">4</span> breakpoints, <span class="number">2</span> watchpoints</span><br><span class="line">Info : [<span class="type">rp2040.core1</span>] Cortex<span class="literal">-M0</span>+ r0p1 processor detected</span><br><span class="line">Info : [<span class="type">rp2040.core1</span>] target has <span class="number">4</span> breakpoints, <span class="number">2</span> watchpoints</span><br><span class="line">Info : starting gdb server <span class="keyword">for</span> rp2040.core0 on <span class="number">3333</span></span><br><span class="line">Info : Listening on port <span class="number">3333</span> <span class="keyword">for</span> gdb connections</span><br><span class="line">Info : starting gdb server <span class="keyword">for</span> rp2040.core1 on <span class="number">3334</span></span><br><span class="line">Info : Listening on port <span class="number">3334</span> <span class="keyword">for</span> gdb connections</span><br><span class="line">shutdown command invoked</span><br><span class="line"><span class="built_in">PS</span> C:\Users\AlwaysTS&gt; openocd <span class="operator">-f</span> interface/cmsis<span class="literal">-dap</span>.cfg <span class="literal">-c</span>  <span class="string">'set USE_CORE 0'</span> <span class="operator">-f</span> target/rp2040.cfg  <span class="literal">-c</span> <span class="string">'adapter speed 4000'</span> <span class="literal">-c</span> <span class="string">'set CHIPNAME rp2040'</span></span><br><span class="line">Open On<span class="literal">-Chip</span> Debugger <span class="number">0.12</span>.<span class="number">0</span><span class="literal">-rc2</span>+dev<span class="literal">-00988-g04887d3b6</span> (<span class="number">2022</span><span class="literal">-12-03-09</span>:<span class="number">30</span>)</span><br><span class="line">Licensed under GNU GPL v2</span><br><span class="line"><span class="keyword">For</span> bug reports, read</span><br><span class="line">        http://openocd.org/doc/doxygen/bugs.html</span><br><span class="line"><span class="number">0</span></span><br><span class="line">adapter speed: <span class="number">4000</span> kHz</span><br><span class="line"></span><br><span class="line">rp2040</span><br><span class="line">Info : Listening on port <span class="number">6666</span> <span class="keyword">for</span> tcl connections</span><br><span class="line">Info : Listening on port <span class="number">4444</span> <span class="keyword">for</span> telnet connections</span><br><span class="line">Info : CMSIS<span class="literal">-DAP</span>: SWD supported</span><br><span class="line">Info : CMSIS<span class="literal">-DAP</span>: <span class="built_in">FW</span> Version = <span class="number">2.0</span>.<span class="number">0</span></span><br><span class="line">Info : CMSIS<span class="literal">-DAP</span>: Interface Initialised (SWD)</span><br><span class="line">Info : SWCLK/TCK = <span class="number">1</span> SWDIO/TMS = <span class="number">1</span> TDI = <span class="number">0</span> TDO = <span class="number">0</span> nTRST = <span class="number">0</span> nRESET = <span class="number">1</span></span><br><span class="line">Info : CMSIS<span class="literal">-DAP</span>: Interface ready</span><br><span class="line">Info : clock speed <span class="number">4000</span> kHz</span><br><span class="line">Info : SWD DPIDR <span class="number">0</span>x0bc12477, DLPIDR <span class="number">0</span>x00000001</span><br><span class="line">Info : [<span class="type">rp2040.core0</span>] Cortex<span class="literal">-M0</span>+ r0p1 processor detected</span><br><span class="line">Info : [<span class="type">rp2040.core0</span>] target has <span class="number">4</span> breakpoints, <span class="number">2</span> watchpoints</span><br><span class="line">Info : starting gdb server <span class="keyword">for</span> rp2040.core0 on <span class="number">3333</span></span><br><span class="line">Info : Listening on port <span class="number">3333</span> <span class="keyword">for</span> gdb connections</span><br></pre></td></tr></table></figure>
+
+<h3 id="基于vscode的自调试">基于VSCode的自调试</h3>
+<p>这一步直接看我修改的模板生成器，这些配置已经写在里面了，不用自己手动改了：
 <a target="_blank" rel="noopener" href="https://github.com/alwaysmy/pico-project-generator_fix">alwaysmy/pico-project-generator_fix</a></p>
 <p>这里当个记录。</p>
 <p>前面的配置步骤还是一样，就是哪些使用picoprobe的程序配置，后面只需要更改launch.json文件里面的：</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">configuration<span class="punctuation">:</span></span><br><span class="line"></span><br><span class="line">                <span class="attr">&quot;configFiles&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                    <span class="string">&quot;/interface/picoprobe.cfg&quot;</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="string">&quot;/target/rp2040.cfg&quot;</span></span><br><span class="line">                <span class="punctuation">]</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">configuration<span class="punctuation">:</span></span><br><span class="line"></span><br><span class="line">                <span class="attr">"configFiles"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">                    <span class="string">"/interface/picoprobe.cfg"</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="string">"/target/rp2040.cfg"</span></span><br><span class="line">                <span class="punctuation">]</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+
 <p>替换为</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;configFiles&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;interface/cmsis-dap.cfg&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;target/rp2040-core0.cfg&quot;</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;openOCDLaunchCommands&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;transport select swd&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;adapter speed 4000&quot;</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">"configFiles"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">"interface/cmsis-dap.cfg"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">"target/rp2040-core0.cfg"</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">"openOCDLaunchCommands"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">"transport select swd"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">"adapter speed 4000"</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+
 <p>或者替换为：</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;configFiles&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;interface/cmsis-dap.cfg&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;target/rp2040.cfg&quot;</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;openOCDLaunchCommands&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">   <span class="string">&quot;set USE_CORE 0&quot;</span></span><br><span class="line">    <span class="string">&quot;transport select swd&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;adapter speed 4000&quot;</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">"configFiles"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">"interface/cmsis-dap.cfg"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">"target/rp2040.cfg"</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">"openOCDLaunchCommands"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">   <span class="string">"set USE_CORE 0"</span></span><br><span class="line">    <span class="string">"transport select swd"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">"adapter speed 4000"</span></span><br><span class="line"><span class="punctuation">]</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+
 <p>然后，把configurations下面的花括号以及其内容复制一份，加个逗号后加在后面做一些修改，用来增加一份配置方便切换。目的是方便在单核自调试和外部仿真器调试多核中切换。</p>
 <p>同样的方法可以添加一份linux的配置。用来方便跨平台。</p>
 
@@ -1144,7 +1336,9 @@ python3 pico_project.py --gui</p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%9F%BA%E7%A1%80%E5%89%8D%E7%BD%AE%E5%86%85%E5%AE%B9"><span class="nav-number">1.</span> <span class="nav-text"> 一些基础前置内容</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E8%AF%95%E4%BD%BF%E7%94%A8%E7%9A%84debugger"><span class="nav-number">1.1.</span> <span class="nav-text"> 调试使用的Debugger</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E5%90%88debugger%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%8A%E4%BD%8D%E6%9C%BA"><span class="nav-number">1.1.1.</span> <span class="nav-text"> 配合Debugger使用的上位机</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%9B%BA%E4%BB%B6%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text"> 下载固件的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#uf2%E5%9B%BA%E4%BB%B6%E5%8A%A0%E8%BD%BD"><span class="nav-number">1.2.1.</span> <span class="nav-text"> UF2固件加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BDelf%E6%88%96bin%E6%96%87%E4%BB%B6"><span class="nav-number">1.2.2.</span> <span class="nav-text"> 加载ELF或BIN文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E7%9A%84%E8%A7%A3%E9%87%8A"><span class="nav-number">1.3.</span> <span class="nav-text"> 环境配置的解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%99%E7%AF%87%E6%96%87%E7%AB%A0%E8%AF%B4%E4%BA%86%E4%BA%9B%E4%BB%80%E4%B9%88"><span class="nav-number">1.4.</span> <span class="nav-text"> 这篇文章说了些什么</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#micropython%E7%8E%AF%E5%A2%83%E4%BD%BF%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text"> MicroPython环境使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#platformio%E7%8E%AF%E5%A2%83%E5%BC%80%E5%8F%91"><span class="nav-number">3.</span> <span class="nav-text"> PlatformIO环境开发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#arduino%E6%A1%86%E6%9E%B6%E7%8E%AF%E5%A2%83"><span class="nav-number">3.1.</span> <span class="nav-text"> Arduino框架环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8Epico-sdk%E7%9A%84%E8%A3%B8%E7%8E%AF%E5%A2%83wiz-io"><span class="nav-number">3.2.</span> <span class="nav-text"> 基于pico-sdk的裸环境Wiz-IO</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E7%AC%AC%E4%B8%89%E6%96%B9ide%E9%85%8D%E7%BD%AE"><span class="nav-number">4.</span> <span class="nav-text"> 基于第三方IDE配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8Evisualgdb%E7%9A%84visual-studio%E5%88%9B%E5%BB%BA%E5%B7%A5%E7%A8%8B"><span class="nav-number">4.1.</span> <span class="nav-text"> 基于VisualGDB的Visual Studio创建工程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E-segger-embedded-studio"><span class="nav-number">4.2.</span> <span class="nav-text"> 基于 Segger Embedded Studio</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85sdk"><span class="nav-number">4.2.1.</span> <span class="nav-text"> 安装SDK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E5%B7%A5%E7%A8%8B"><span class="nav-number">4.2.2.</span> <span class="nav-text"> 新建工程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%BF%E7%9C%9F%E4%B8%8B%E8%BD%BD%E8%B0%83%E8%AF%95"><span class="nav-number">4.2.3.</span> <span class="nav-text"> 仿真下载调试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#j-link"><span class="nav-number">4.2.3.1.</span> <span class="nav-text"> J-link</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#daplink"><span class="nav-number">4.2.3.2.</span> <span class="nav-text"> Daplink</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">4.2.4.</span> <span class="nav-text"> 参考</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8Ert-thread-studio"><span class="nav-number">4.3.</span> <span class="nav-text"> 基于RT-Thread Studio</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">4.3.1.</span> <span class="nav-text"> 使用方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8keil-mdk"><span class="nav-number">4.4.</span> <span class="nav-text"> 使用Keil MDK</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E5%A4%9A%E7%AC%AC%E4%B8%89%E6%96%B9ide"><span class="nav-number">4.5.</span> <span class="nav-text"> 更多第三方IDE</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%AE%98%E6%96%B9c-sdk%E7%9A%84%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="nav-number">5.</span> <span class="nav-text"> 基于官方C-SDK的开发环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3%E7%9A%84%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93"><span class="nav-number">5.1.</span> <span class="nav-text"> 官方文档的方法总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%BF%85%E8%A6%81%E8%BD%AF%E4%BB%B6"><span class="nav-number">5.2.</span> <span class="nav-text"> 下载必要软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E4%BE%8B%E7%A8%8B-sdk-%E6%A8%A1%E6%9D%BF%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7"><span class="nav-number">5.3.</span> <span class="nav-text"> 下载例程、SDK、模板生成工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEsdk%E8%B7%AF%E5%BE%84"><span class="nav-number">5.3.1.</span> <span class="nav-text"> 配置SDK路径</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E4%BE%8B%E7%A8%8B%E6%B5%8B%E8%AF%95"><span class="nav-number">5.4.</span> <span class="nav-text"> 编译例程测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8visual-studio%E7%9A%84%E5%B7%A5%E5%85%B7%E9%93%BE"><span class="nav-number">5.4.1.</span> <span class="nav-text"> 使用visual studio的工具链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8mingw%E5%B7%A5%E5%85%B7%E9%93%BE"><span class="nav-number">5.4.2.</span> <span class="nav-text"> 使用MinGW工具链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%87%8A%E4%B8%80%E4%B8%8B%E4%B8%8A%E9%9D%A2%E7%9A%84%E8%AF%AD%E5%8F%A5"><span class="nav-number">5.4.3.</span> <span class="nav-text"> 解释一下上面的语句</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84%E5%B7%A5%E7%A8%8B%E5%B9%B6%E7%BC%96%E8%AF%91"><span class="nav-number">5.5.</span> <span class="nav-text"> 生成自己的工程并编译</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E6%9E%9C%E6%98%AF%E4%BD%BF%E7%94%A8vs"><span class="nav-number">5.5.1.</span> <span class="nav-text"> 如果是使用VS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%AFmingw%E7%9A%84%E6%83%85%E5%86%B5"><span class="nav-number">5.5.2.</span> <span class="nav-text"> 是MinGW的情况</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text"> 调试方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E8%AF%95%E7%9A%84%E7%A1%AC%E4%BB%B6%E8%BF%9E%E6%8E%A5"><span class="nav-number">6.1.</span> <span class="nav-text"> 调试的硬件连接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E8%B0%83%E8%AF%95"><span class="nav-number">6.1.1.</span> <span class="nav-text"> 自调试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%96%E9%83%A8%E8%B0%83%E8%AF%95%E5%99%A8"><span class="nav-number">6.1.2.</span> <span class="nav-text"> 外部调试器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%8B%E5%B7%A5%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95gdb%E4%BD%BF%E7%94%A8"><span class="nav-number">6.2.</span> <span class="nav-text"> 手工调试方法（GDB使用）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8openocd%E6%89%93%E5%BC%80gdb-server"><span class="nav-number">6.2.1.</span> <span class="nav-text"> 使用openocd打开GDB server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8pyocd%E6%89%93%E5%BC%80gdbserver"><span class="nav-number">6.2.2.</span> <span class="nav-text"> 使用pyocd打开GDBserver</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gdb%E8%B0%83%E8%AF%95%E4%BD%BF%E7%94%A8%E4%BE%8B%E5%AD%90"><span class="nav-number">6.2.3.</span> <span class="nav-text"> GDB调试使用例子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%98%E6%96%B9%E6%96%B9%E6%B3%95%E5%B7%A5%E7%A8%8B%E9%85%8D%E7%BD%AE%E6%80%BB%E7%BB%93"><span class="nav-number">6.3.</span> <span class="nav-text"> 官方方法工程配置总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E8%87%AA%E5%B7%B1%E7%9A%84ide"><span class="nav-number">7.</span> <span class="nav-text"> 配置自己的IDE</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#clion"><span class="nav-number">7.1.</span> <span class="nav-text"> CLion</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83-2"><span class="nav-number">7.1.1.</span> <span class="nav-text"> 参考</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vscode%E4%BD%9C%E4%B8%BAide"><span class="nav-number">7.2.</span> <span class="nav-text"> VScode作为IDE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96ide%E9%85%8D%E7%BD%AE"><span class="nav-number">7.3.</span> <span class="nav-text"> 其他IDE配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#eclipse"><span class="nav-number">7.3.1.</span> <span class="nav-text"> Eclipse</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kdevelop"><span class="nav-number">7.3.2.</span> <span class="nav-text"> Kdevelop：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kate"><span class="nav-number">7.3.3.</span> <span class="nav-text"> Kate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#codelite"><span class="nav-number">7.3.4.</span> <span class="nav-text"> Codelite</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#embedded-ide-on-vscodeeide"><span class="nav-number">7.3.5.</span> <span class="nav-text"> Embedded IDE on  vscode（EIDE）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%8F%A6%E7%B1%BB%E6%96%B9%E6%B3%95"><span class="nav-number">8.</span> <span class="nav-text"> 其他另类方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E"><span class="nav-number">9.</span> <span class="nav-text"> 补充说明</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#linux%E7%8E%AF%E5%A2%83%E7%9A%84%E9%85%8D%E7%BD%AE%E7%9A%84%E8%A1%A5%E5%85%85"><span class="nav-number">9.1.</span> <span class="nav-text"> Linux环境的配置的补充</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8Ewsl%E5%AE%89%E8%A3%85pico-c-sdk%E7%8E%AF%E5%A2%83"><span class="nav-number">9.1.1.</span> <span class="nav-text"> 基于WSL安装PICO C-SDK环境</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8swd%E4%B8%8B%E8%BD%BD%E7%83%A7%E5%BD%95%E6%96%B9%E6%B3%95"><span class="nav-number">9.2.</span> <span class="nav-text"> 使用SWD下载烧录方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#usb%E4%B8%B2%E5%8F%A3%E8%B0%83%E8%AF%95%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">9.3.</span> <span class="nav-text"> USB串口调试的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E8%AF%B4%E6%98%8E"><span class="nav-number">9.4.</span> <span class="nav-text"> 其他说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#openocd%E9%97%AE%E9%A2%98"><span class="nav-number">9.4.1.</span> <span class="nav-text"> openocd问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8Evscode%E7%9A%84%E8%87%AA%E8%B0%83%E8%AF%95"><span class="nav-number">9.4.2.</span> <span class="nav-text"> 基于VSCode的自调试</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%9F%BA%E7%A1%80%E5%89%8D%E7%BD%AE%E5%86%85%E5%AE%B9"><span class="nav-number">1.</span> <span class="nav-text">一些基础前置内容</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E8%AF%95%E4%BD%BF%E7%94%A8%E7%9A%84debugger"><span class="nav-number">1.1.</span> <span class="nav-text">调试使用的Debugger</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E5%90%88debugger%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%8A%E4%BD%8D%E6%9C%BA"><span class="nav-number">1.1.1.</span> <span class="nav-text">配合Debugger使用的上位机</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%9B%BA%E4%BB%B6%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">下载固件的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#uf2%E5%9B%BA%E4%BB%B6%E5%8A%A0%E8%BD%BD"><span class="nav-number">1.2.1.</span> <span class="nav-text">UF2固件加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BDelf%E6%88%96bin%E6%96%87%E4%BB%B6"><span class="nav-number">1.2.2.</span> <span class="nav-text">加载ELF或BIN文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E7%9A%84%E8%A7%A3%E9%87%8A"><span class="nav-number">1.3.</span> <span class="nav-text">环境配置的解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%99%E7%AF%87%E6%96%87%E7%AB%A0%E8%AF%B4%E4%BA%86%E4%BA%9B%E4%BB%80%E4%B9%88"><span class="nav-number">1.4.</span> <span class="nav-text">这篇文章说了些什么</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#micropython%E7%8E%AF%E5%A2%83%E4%BD%BF%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">MicroPython环境使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#platformio%E7%8E%AF%E5%A2%83%E5%BC%80%E5%8F%91"><span class="nav-number">3.</span> <span class="nav-text">PlatformIO环境开发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#arduino%E6%A1%86%E6%9E%B6%E7%8E%AF%E5%A2%83"><span class="nav-number">3.1.</span> <span class="nav-text">Arduino框架环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8Epico-sdk%E7%9A%84%E8%A3%B8%E7%8E%AF%E5%A2%83wiz-io"><span class="nav-number">3.2.</span> <span class="nav-text">基于pico-sdk的裸环境Wiz-IO</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E7%AC%AC%E4%B8%89%E6%96%B9ide%E9%85%8D%E7%BD%AE"><span class="nav-number">4.</span> <span class="nav-text">基于第三方IDE配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8Evisualgdb%E7%9A%84visual-studio%E5%88%9B%E5%BB%BA%E5%B7%A5%E7%A8%8B"><span class="nav-number">4.1.</span> <span class="nav-text">基于VisualGDB的Visual
+Studio创建工程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E-segger-embedded-studio"><span class="nav-number">4.2.</span> <span class="nav-text">基于 Segger Embedded Studio</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85sdk"><span class="nav-number">4.2.1.</span> <span class="nav-text">安装SDK</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E5%B7%A5%E7%A8%8B"><span class="nav-number">4.2.2.</span> <span class="nav-text">新建工程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%BF%E7%9C%9F%E4%B8%8B%E8%BD%BD%E8%B0%83%E8%AF%95"><span class="nav-number">4.2.3.</span> <span class="nav-text">仿真下载调试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#j-link"><span class="nav-number">4.2.3.1.</span> <span class="nav-text">J-link</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#daplink"><span class="nav-number">4.2.3.2.</span> <span class="nav-text">Daplink</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">4.2.4.</span> <span class="nav-text">参考</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8Ert-thread-studio"><span class="nav-number">4.3.</span> <span class="nav-text">基于RT-Thread Studio</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">4.3.1.</span> <span class="nav-text">使用方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8keil-mdk"><span class="nav-number">4.4.</span> <span class="nav-text">使用Keil MDK</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E5%A4%9A%E7%AC%AC%E4%B8%89%E6%96%B9ide"><span class="nav-number">4.5.</span> <span class="nav-text">更多第三方IDE</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E5%AE%98%E6%96%B9c-sdk%E7%9A%84%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="nav-number">5.</span> <span class="nav-text">基于官方C-SDK的开发环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3%E7%9A%84%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93"><span class="nav-number">5.1.</span> <span class="nav-text">官方文档的方法总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%BF%85%E8%A6%81%E8%BD%AF%E4%BB%B6"><span class="nav-number">5.2.</span> <span class="nav-text">下载必要软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E4%BE%8B%E7%A8%8Bsdk%E6%A8%A1%E6%9D%BF%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7"><span class="nav-number">5.3.</span> <span class="nav-text">下载例程、SDK、模板生成工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEsdk%E8%B7%AF%E5%BE%84"><span class="nav-number">5.3.1.</span> <span class="nav-text">配置SDK路径</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E4%BE%8B%E7%A8%8B%E6%B5%8B%E8%AF%95"><span class="nav-number">5.4.</span> <span class="nav-text">编译例程测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8visual-studio%E7%9A%84%E5%B7%A5%E5%85%B7%E9%93%BE"><span class="nav-number">5.4.1.</span> <span class="nav-text">使用visual studio的工具链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8mingw%E5%B7%A5%E5%85%B7%E9%93%BE"><span class="nav-number">5.4.2.</span> <span class="nav-text">使用MinGW工具链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%87%8A%E4%B8%80%E4%B8%8B%E4%B8%8A%E9%9D%A2%E7%9A%84%E8%AF%AD%E5%8F%A5"><span class="nav-number">5.4.3.</span> <span class="nav-text">解释一下上面的语句</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E8%87%AA%E5%B7%B1%E7%9A%84%E5%B7%A5%E7%A8%8B%E5%B9%B6%E7%BC%96%E8%AF%91"><span class="nav-number">5.5.</span> <span class="nav-text">生成自己的工程并编译</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E6%9E%9C%E6%98%AF%E4%BD%BF%E7%94%A8vs"><span class="nav-number">5.5.1.</span> <span class="nav-text">如果是使用VS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%AFmingw%E7%9A%84%E6%83%85%E5%86%B5"><span class="nav-number">5.5.2.</span> <span class="nav-text">是MinGW的情况</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text">调试方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E8%AF%95%E7%9A%84%E7%A1%AC%E4%BB%B6%E8%BF%9E%E6%8E%A5"><span class="nav-number">6.1.</span> <span class="nav-text">调试的硬件连接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E8%B0%83%E8%AF%95"><span class="nav-number">6.1.1.</span> <span class="nav-text">自调试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%96%E9%83%A8%E8%B0%83%E8%AF%95%E5%99%A8"><span class="nav-number">6.1.2.</span> <span class="nav-text">外部调试器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%8B%E5%B7%A5%E8%B0%83%E8%AF%95%E6%96%B9%E6%B3%95gdb%E4%BD%BF%E7%94%A8"><span class="nav-number">6.2.</span> <span class="nav-text">手工调试方法（GDB使用）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8openocd%E6%89%93%E5%BC%80gdb-server"><span class="nav-number">6.2.1.</span> <span class="nav-text">使用openocd打开GDB server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8pyocd%E6%89%93%E5%BC%80gdbserver"><span class="nav-number">6.2.2.</span> <span class="nav-text">使用pyocd打开GDBserver</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gdb%E8%B0%83%E8%AF%95%E4%BD%BF%E7%94%A8%E4%BE%8B%E5%AD%90"><span class="nav-number">6.2.3.</span> <span class="nav-text">GDB调试使用例子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%98%E6%96%B9%E6%96%B9%E6%B3%95%E5%B7%A5%E7%A8%8B%E9%85%8D%E7%BD%AE%E6%80%BB%E7%BB%93"><span class="nav-number">6.3.</span> <span class="nav-text">官方方法工程配置总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E8%87%AA%E5%B7%B1%E7%9A%84ide"><span class="nav-number">7.</span> <span class="nav-text">配置自己的IDE</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#clion"><span class="nav-number">7.1.</span> <span class="nav-text">CLion</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83-1"><span class="nav-number">7.1.1.</span> <span class="nav-text">参考</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vscode%E4%BD%9C%E4%B8%BAide"><span class="nav-number">7.2.</span> <span class="nav-text">VScode作为IDE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96ide%E9%85%8D%E7%BD%AE"><span class="nav-number">7.3.</span> <span class="nav-text">其他IDE配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#eclipse"><span class="nav-number">7.3.1.</span> <span class="nav-text">Eclipse</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kdevelop"><span class="nav-number">7.3.2.</span> <span class="nav-text">Kdevelop：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kate"><span class="nav-number">7.3.3.</span> <span class="nav-text">Kate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#codelite"><span class="nav-number">7.3.4.</span> <span class="nav-text">Codelite</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#embedded-ide-on--vscodeeide"><span class="nav-number">7.3.5.</span> <span class="nav-text">Embedded IDE on
+ vscode（EIDE）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%8F%A6%E7%B1%BB%E6%96%B9%E6%B3%95"><span class="nav-number">8.</span> <span class="nav-text">其他另类方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E"><span class="nav-number">9.</span> <span class="nav-text">补充说明</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#linux%E7%8E%AF%E5%A2%83%E7%9A%84%E9%85%8D%E7%BD%AE%E7%9A%84%E8%A1%A5%E5%85%85"><span class="nav-number">9.1.</span> <span class="nav-text">Linux环境的配置的补充</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8Ewsl%E5%AE%89%E8%A3%85pico-c-sdk%E7%8E%AF%E5%A2%83"><span class="nav-number">9.1.1.</span> <span class="nav-text">基于WSL安装PICO C-SDK环境</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8swd%E4%B8%8B%E8%BD%BD%E7%83%A7%E5%BD%95%E6%96%B9%E6%B3%95"><span class="nav-number">9.2.</span> <span class="nav-text">使用SWD下载烧录方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#usb%E4%B8%B2%E5%8F%A3%E8%B0%83%E8%AF%95%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">9.3.</span> <span class="nav-text">USB串口调试的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E8%AF%B4%E6%98%8E"><span class="nav-number">9.4.</span> <span class="nav-text">其他说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#openocd%E9%97%AE%E9%A2%98"><span class="nav-number">9.4.1.</span> <span class="nav-text">openocd问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8Evscode%E7%9A%84%E8%87%AA%E8%B0%83%E8%AF%95"><span class="nav-number">9.4.2.</span> <span class="nav-text">基于VSCode的自调试</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1160,7 +1354,7 @@ python3 pico_project.py --gui</p>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1222,7 +1416,7 @@ python3 pico_project.py --gui</p>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:35</span>
+    <span title="站点阅读时长">2:36</span>
 </div>
 
         

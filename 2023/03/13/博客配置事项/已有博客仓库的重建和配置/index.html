@@ -78,7 +78,119 @@
   </style>
 </noscript>
 
-<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.8}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style><style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.8}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -133,7 +245,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">29</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">30</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -260,16 +372,19 @@
       
         <p>每次重装系统什么的，虽然仓库我做了备份，但是还是要重新配置一下环境，为了以后都能无脑配置，这里集中记录一下过程。</p>
 <span id="more"></span>
+
 <p>···</p>
-<h2 id="博客源文件重新加入备份"><a class="markdownIt-Anchor" href="#博客源文件重新加入备份"></a> 博客源文件重新加入备份</h2>
+<h2 id="博客源文件重新加入备份">博客源文件重新加入备份</h2>
 <p>1、从NAS上打开MyWeb的Syncthing同步项目，勾选共享到这台电脑，设置一下路径就行，还有启用排除列表。</p>
 <p>不过上面这一项不是必须的，因为如果之前做好了备份，只需要复制AppData下的文件，Syncthing的配置文件就在里面不用自己去修改了，下次重装的时候设置会保持不变。</p>
-<p>2、重新安装nodejs, 不用勾选安装其他模块，尤其是自己已经安装了python。<br>
-如果之前备份了appdata，模块应该还在。<br>
-尝试在博客存放文件夹下面cmd里面执行hexo -v看看能不能用，如果不能就重新安装hexo. (我没试)<br>
-npm install -g hexo-cli</p>
+<p>2、重新安装nodejs, 不用勾选安装其他模块，尤其是自己已经安装了python。
+如果之前备份了appdata，模块应该还在。
+尝试在博客存放文件夹下面cmd里面执行hexo
+-v看看能不能用，如果不能就重新安装hexo. (我没试) npm install -g
+hexo-cli</p>
 <p>然后后面的步骤就不用操作了，可以直接使用hexo命令了。</p>
-<p>3、由于之前已经修改过git配置了，这里直接使用hexo d，可能会提示git仓库用户不一致，按照提示把git仓库加入安全目录即可发布。</p>
+<p>3、由于之前已经修改过git配置了，这里直接使用hexo
+d，可能会提示git仓库用户不一致，按照提示把git仓库加入安全目录即可发布。</p>
 <p>4、能用就不要尝试更新组件了。</p>
 
     </div>
@@ -355,7 +470,7 @@ npm install -g hexo-cli</p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%9A%E5%AE%A2%E6%BA%90%E6%96%87%E4%BB%B6%E9%87%8D%E6%96%B0%E5%8A%A0%E5%85%A5%E5%A4%87%E4%BB%BD"><span class="nav-number">1.</span> <span class="nav-text"> 博客源文件重新加入备份</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%9A%E5%AE%A2%E6%BA%90%E6%96%87%E4%BB%B6%E9%87%8D%E6%96%B0%E5%8A%A0%E5%85%A5%E5%A4%87%E4%BB%BD"><span class="nav-number">1.</span> <span class="nav-text">博客源文件重新加入备份</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -371,7 +486,7 @@ npm install -g hexo-cli</p>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -433,7 +548,7 @@ npm install -g hexo-cli</p>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:35</span>
+    <span title="站点阅读时长">2:36</span>
 </div>
 
         

@@ -78,7 +78,119 @@
   </style>
 </noscript>
 
-<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.8}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style><style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.8}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -133,7 +245,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">29</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">30</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -260,37 +372,44 @@
       
         <p>在介绍完KiCad仿真工具后，前文还介绍了如何使用KiCad内置的ngspice进行原理图仿真的案例，但是内置仿真的功能还不够多，而ngspice的界面过于简陋基本等于没有，那么在KiCad中有没有更好的仿真工具可以用呢，答案是，有的。</p>
 <span id="more"></span>
-<h1 id="ltspice简介"><a class="markdownIt-Anchor" href="#ltspice简介"></a> LTspice简介</h1>
-<p>这是一款免费的仿真工具，而且由ADI鼎力支持。 有这两点介绍就足够了。</p>
-<h1 id="联合ltspice仿真的流程"><a class="markdownIt-Anchor" href="#联合ltspice仿真的流程"></a> 联合LTspice仿真的流程</h1>
+
+<h1 id="ltspice简介">LTspice简介</h1>
+<p>这是一款免费的仿真工具，而且由ADI鼎力支持。
+有这两点介绍就足够了。</p>
+<h1 id="联合ltspice仿真的流程">联合LTspice仿真的流程</h1>
 <p>下面简单介绍一下整个流程和方法。</p>
-<h2 id="打开kicad工程"><a class="markdownIt-Anchor" href="#打开kicad工程"></a> 打开KiCad工程</h2>
+<h2 id="打开kicad工程">打开KiCad工程</h2>
 <p>这个没啥好介绍的吧，首先你得有个原理图。</p>
-<h2 id="绘制原理图"><a class="markdownIt-Anchor" href="#绘制原理图"></a> 绘制原理图</h2>
+<h2 id="绘制原理图">绘制原理图</h2>
 <p>绘制原理图和前文相同，只需要给器件添加正确的仿真模型（或者直接已经写好绝对路径的器件），并且有正确的源设置。</p>
 <p>相比于直接在KiCad中仿真，还需要继续设置一些东西。</p>
-<h2 id="填写仿真语句"><a class="markdownIt-Anchor" href="#填写仿真语句"></a> 填写仿真语句</h2>
+<h2 id="填写仿真语句">填写仿真语句</h2>
 <p>当然，在KiCad中直接仿真的时候，先写好仿真语句也是完全可以的而且我是比较推荐的。</p>
 <p>如果导出的时候没有事先在原理图中写好仿真语句，那么使用LTspice打开的时候会提示没有可用的仿真类型，你也可以这时候再在LTspice中编辑，但是，提示的弹窗很烦，不是吗？</p>
 <p>需要注意的是，网表导出器只能识别它支持的语句，不支持的也不会被导出。</p>
-<h2 id="设置导出功能"><a class="markdownIt-Anchor" href="#设置导出功能"></a> 设置导出功能</h2>
+<h2 id="设置导出功能">设置导出功能</h2>
 <p>打开原理图后，点击：</p>
 <p>文件-&gt;导出-&gt;网表-&gt;选择spice这一栏，更换里面的默认命令为：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">LTspice.exe -big &quot;%I&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">LTspice.exe -big "%I"</span><br></pre></td></tr></table></figure>
+
 <p>这里要注意，如果LTspice.exe并没有加入环境变量，那么需要填写为绝对路径：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">C:\Users\[用户名]\AppData\Local\Programs\ADI\LTspice\LTspice.exe  -big &quot;%I&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">C:\Users\[用户名]\AppData\Local\Programs\ADI\LTspice\LTspice.exe  -big "%I"</span><br></pre></td></tr></table></figure>
+
 <p>旧版的LTspice的可执行文件不叫这个名字,可以替换为：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">D:\Program Files\LTC\LTspiceXVII\XVIIx64.exe -big &quot;%I&quot;</span><br></pre></td></tr></table></figure>
-<p><code>-big</code> 参数表示打开的时候最大化窗口，<code>%I</code>则是当前导出网表的路径。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">D:\Program Files\LTC\LTspiceXVII\XVIIx64.exe -big "%I"</span><br></pre></td></tr></table></figure>
+
+<p><code>-big</code>
+参数表示打开的时候最大化窗口，<code>%I</code>则是当前导出网表的路径。</p>
 <p>还可以选择更多的参数，参考LTspice安装目录下的LTspiceHelp文档，<code>Command Line Switches</code>章节。</p>
 <p>然后点击导出网表并运行就可以直接打开LTspice啦。</p>
 <blockquote>
 <p>当然，直接点击导出网表后点击cir文件也可以直接用LTspice打开，但是那麻烦一些，不是吗</p>
 </blockquote>
-<h2 id="额外的功能"><a class="markdownIt-Anchor" href="#额外的功能"></a> 额外的功能</h2>
-<h3 id="使用ltspice的专用模型"><a class="markdownIt-Anchor" href="#使用ltspice的专用模型"></a> 使用LTspice的专用模型</h3>
+<h2 id="额外的功能">额外的功能</h2>
+<h3 id="使用ltspice的专用模型">使用LTspice的专用模型</h3>
 <p>LTspice的模型大多是专用的，但是除了加密模型，他们也是使用ASCII文本文件储存的，因此，虽然在KiCad的ngspice中虽然可能用不了，但是依然可以设置为器件的spice模型并且导出到LTspice使用。</p>
-<p>这种方法的好处是对于ADI没有直接提供Spice模型的器件, 可以直接借用LTspice的模型。</p>
+<p>这种方法的好处是对于ADI没有直接提供Spice模型的器件,
+可以直接借用LTspice的模型。</p>
 <blockquote>
 <p>是借用！读书人的事怎么能叫偷呢？</p>
 </blockquote>
@@ -299,37 +418,42 @@
 <blockquote>
 <p>什么？你还没有用上Everything? 赶快下载吧！极速体验就在眼前~</p>
 </blockquote>
-<p>例如LT1009.asy ,使用文本编辑器例如VSCode打开这个文件，找到带有 <code>SpiceModel</code> 字样这一行，这个说明了这个模型在哪个库里面，这里找到的是LTC3.lib 。同时，可以关注一下下面的SpiceOrder,这个表示了spice中引脚排列顺序。这里是：</p>
+<p>例如LT1009.asy ,使用文本编辑器例如VSCode打开这个文件，找到带有
+<code>SpiceModel</code>
+字样这一行，这个说明了这个模型在哪个库里面，这里找到的是LTC3.lib
+。同时，可以关注一下下面的SpiceOrder,这个表示了spice中引脚排列顺序。这里是：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PINATTR PinName VCC</span><br><span class="line">PINATTR SpiceOrder 1</span><br><span class="line">PIN 0 32 NONE 8</span><br><span class="line">PINATTR PinName VEE</span><br><span class="line">PINATTR SpiceOrder 2</span><br><span class="line">PIN 32 0 NONE 8</span><br><span class="line">PINATTR PinName ADJ</span><br><span class="line">PINATTR SpiceOrder 3</span><br></pre></td></tr></table></figure>
+
 <p>那么在KiCad原理图元器件的仿真设置中就需要设置正确的顺序。</p>
 <p>在KiCad6中是勾选替代节点顺序，用KiCad原理图符号引脚号表示引脚，排成上面需要的顺序。</p>
 <p>在KiCad7中是在引脚分配上手动勾选就好了。（吐槽：似乎还没上面那个好用，引脚多的器件需要一个一个点好累）</p>
 <blockquote>
-<p>TIPS【1】: 可以看到LTC3.lib就包含了很多LTSpice的模型，实际上安装目录下LTspice\lib\sub的.lib文件就是Ltspice所用的spice器件模型，不过大多数模型都用了LTspice所兼容的语法，因此在ngspice可能并不能直接使用。</p>
-<p>TIPS【2】: ngspice可以调整兼容模式，在KiCad中是 检查-&gt;仿真&gt;仿真-&gt;设置 ，不过这不影响导出的网表，而且似乎没啥用。</p>
+<p>TIPS【1】:
+可以看到LTC3.lib就包含了很多LTSpice的模型，实际上安装目录下LTspice\lib\sub的.lib文件就是Ltspice所用的spice器件模型，不过大多数模型都用了LTspice所兼容的语法，因此在ngspice可能并不能直接使用。</p>
+<p>TIPS【2】: ngspice可以调整兼容模式，在KiCad中是
+检查-&gt;仿真&gt;仿真-&gt;设置
+，不过这不影响导出的网表，而且似乎没啥用。</p>
 </blockquote>
-<h1 id="优点"><a class="markdownIt-Anchor" href="#优点"></a> 优点</h1>
+<h1 id="优点">优点</h1>
 <p>1、LTspice在许多电路中更容易收敛，还能用LTspice的模型仿真。</p>
 <p>2、LTspice功能更多。</p>
 <p>3、对于LTspice本来就没有的模型还是手动导入，这里直接从KiCAD导入则干脆省掉了这一步。</p>
 <blockquote>
 <p>其实ngspice本身收敛能力不错，但是还是远不如LTspice，很多使用复杂模型的电路都会无法收敛。</p>
 </blockquote>
-<h1 id="相比直接使用ltspice的缺点"><a class="markdownIt-Anchor" href="#相比直接使用ltspice的缺点"></a> 相比直接使用LTspice的缺点</h1>
+<h1 id="相比直接使用ltspice的缺点">相比直接使用LTspice的缺点</h1>
 <p>1、这个方法的缺点是由于只有网表可用，因此LTspice中的部分增强使用体验的功能不能直接使用。</p>
 <p>虽然ltspice所支持的原理图文件（.asc）也是纯文本储存，而且格式非常简单，但是KiCad并没有基于原理图的插件功能，因此我认为目前不值得为其开发一个转换生成Ltspice原理图的功能。</p>
 <blockquote>
 <p>KiCad组织从KiCad5开始说下一代要加入原理图插件功能，python插件示例中也预留了库名称，但是直到KiCad7,他们依然在说下次一定！</p>
 </blockquote>
 <p>2、LTspice部分加密的二进制模型也无法使用。</p>
-<h1 id="语法注意点"><a class="markdownIt-Anchor" href="#语法注意点"></a> 语法注意点</h1>
+<h1 id="语法注意点">语法注意点</h1>
 <p>有些名称需要按照LTspice的来，例如噪声仿真中，输出噪声的频谱是onoise_spectrum，而LTspice是onoise，例如需要使用.save命令的时候，当然是需要复合当前使用的仿真器。</p>
-<h1 id="结语"><a class="markdownIt-Anchor" href="#结语"></a> 结语</h1>
+<h1 id="结语">结语</h1>
 <p>我尝试过使用别的仿真工具导入网表，但是似乎不太好用。</p>
-<p><s>好了，现在KiCad仿真的系列教程结束了，现在转入LTspice的仿真教程吧！</s></p>
-<p>我忘记我还要说什么了。。。。<br>
-下面放个视频教程：<br>
-<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Sj411Z7xK">【电路】KiCad仿真教程#2：KiCad联合LTspice仿真</a></p>
+<p><del>好了，现在KiCad仿真的系列教程结束了，现在转入LTspice的仿真教程吧！</del></p>
+<p>我忘记我还要说什么了。。。。 下面放个视频教程： <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Sj411Z7xK">【电路】KiCad仿真教程#2：KiCad联合LTspice仿真</a></p>
 
     </div>
 
@@ -414,7 +538,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ltspice%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text"> LTspice简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%81%94%E5%90%88ltspice%E4%BB%BF%E7%9C%9F%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text"> 联合LTspice仿真的流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%93%E5%BC%80kicad%E5%B7%A5%E7%A8%8B"><span class="nav-number">2.1.</span> <span class="nav-text"> 打开KiCad工程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%98%E5%88%B6%E5%8E%9F%E7%90%86%E5%9B%BE"><span class="nav-number">2.2.</span> <span class="nav-text"> 绘制原理图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A1%AB%E5%86%99%E4%BB%BF%E7%9C%9F%E8%AF%AD%E5%8F%A5"><span class="nav-number">2.3.</span> <span class="nav-text"> 填写仿真语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%AF%BC%E5%87%BA%E5%8A%9F%E8%83%BD"><span class="nav-number">2.4.</span> <span class="nav-text"> 设置导出功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%9D%E5%A4%96%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="nav-number">2.5.</span> <span class="nav-text"> 额外的功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8ltspice%E7%9A%84%E4%B8%93%E7%94%A8%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.5.1.</span> <span class="nav-text"> 使用LTspice的专用模型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BC%98%E7%82%B9"><span class="nav-number">3.</span> <span class="nav-text"> 优点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%B8%E6%AF%94%E7%9B%B4%E6%8E%A5%E4%BD%BF%E7%94%A8ltspice%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="nav-number">4.</span> <span class="nav-text"> 相比直接使用LTspice的缺点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="nav-number">5.</span> <span class="nav-text"> 语法注意点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">6.</span> <span class="nav-text"> 结语</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ltspice%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">LTspice简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%81%94%E5%90%88ltspice%E4%BB%BF%E7%9C%9F%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">联合LTspice仿真的流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%93%E5%BC%80kicad%E5%B7%A5%E7%A8%8B"><span class="nav-number">2.1.</span> <span class="nav-text">打开KiCad工程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%98%E5%88%B6%E5%8E%9F%E7%90%86%E5%9B%BE"><span class="nav-number">2.2.</span> <span class="nav-text">绘制原理图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A1%AB%E5%86%99%E4%BB%BF%E7%9C%9F%E8%AF%AD%E5%8F%A5"><span class="nav-number">2.3.</span> <span class="nav-text">填写仿真语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%AF%BC%E5%87%BA%E5%8A%9F%E8%83%BD"><span class="nav-number">2.4.</span> <span class="nav-text">设置导出功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%9D%E5%A4%96%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="nav-number">2.5.</span> <span class="nav-text">额外的功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8ltspice%E7%9A%84%E4%B8%93%E7%94%A8%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.5.1.</span> <span class="nav-text">使用LTspice的专用模型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BC%98%E7%82%B9"><span class="nav-number">3.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%B8%E6%AF%94%E7%9B%B4%E6%8E%A5%E4%BD%BF%E7%94%A8ltspice%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="nav-number">4.</span> <span class="nav-text">相比直接使用LTspice的缺点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="nav-number">5.</span> <span class="nav-text">语法注意点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD"><span class="nav-number">6.</span> <span class="nav-text">结语</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -430,7 +554,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -492,7 +616,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:35</span>
+    <span title="站点阅读时长">2:36</span>
 </div>
 
         

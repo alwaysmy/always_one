@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"alwaysmy.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="这个也是一个拖了很久的事情，大概两三年前看到一个很便宜的DAC TM8211，当时还不太清楚音频DAC和通用DAC的区别，就想着测试一下这个。不过当时没有找到合适的单片机测试，用adruino UNO模拟了个时序之后结果似乎不对就一直搁置了，这个焊接到直插转接板上的DAC就辗转了很多个地方一直没有测试。 由于之前屯了一批GD32F350，正好这个MCU带有一路I2S，因此就选用这个来做。">
+  <meta name="description" content="这个也是一个拖了很久的事情，大概两三年前看到一个很便宜的DAC TM8211，当时还不太清楚音频DAC和通用DAC的区别，就想着测试一下这个。不过当时没有找到合适的单片机测试，用adruino UNO模拟了个时序之后结果似乎不对就一直搁置了，这个焊接到直插转接板上的DAC就辗转了很多个地方一直没有测试。 由于之前屯了一批GD32F350，正好这个MCU带有一路I2S，因此就选用这个来做。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="I2S_DAC_TM8211_Drived_by_GD32F350_MCU">
 <meta property="og:url" content="https://alwaysmy.github.io/2023/10/26/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/I2S_DAC-TM8211-Drived_by_GD32F350-MCU/index.html">
 <meta property="og:site_name" content="加载中...">
-<meta property="og:description" content="这个也是一个拖了很久的事情，大概两三年前看到一个很便宜的DAC TM8211，当时还不太清楚音频DAC和通用DAC的区别，就想着测试一下这个。不过当时没有找到合适的单片机测试，用adruino UNO模拟了个时序之后结果似乎不对就一直搁置了，这个焊接到直插转接板上的DAC就辗转了很多个地方一直没有测试。 由于之前屯了一批GD32F350，正好这个MCU带有一路I2S，因此就选用这个来做。">
+<meta property="og:description" content="这个也是一个拖了很久的事情，大概两三年前看到一个很便宜的DAC TM8211，当时还不太清楚音频DAC和通用DAC的区别，就想着测试一下这个。不过当时没有找到合适的单片机测试，用adruino UNO模拟了个时序之后结果似乎不对就一直搁置了，这个焊接到直插转接板上的DAC就辗转了很多个地方一直没有测试。 由于之前屯了一批GD32F350，正好这个MCU带有一路I2S，因此就选用这个来做。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://alwaysmy.github.io/2023/10/26/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/I2S_DAC-TM8211-Drived_by_GD32F350-MCU/I2S_LSB_202310262013.png">
 <meta property="og:image" content="https://alwaysmy.github.io/2023/10/26/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/I2S_DAC-TM8211-Drived_by_GD32F350-MCU/ch1_yellow_ch2_blue_1Khz_202310262112.png">
@@ -84,7 +84,119 @@
   </style>
 </noscript>
 
-<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.8}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style><style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.8}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -139,7 +251,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">29</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">30</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -264,64 +376,84 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>这个也是一个拖了很久的事情，大概两三年前看到一个很便宜的DAC TM8211，当时还不太清楚音频DAC和通用DAC的区别，就想着测试一下这个。不过当时没有找到合适的单片机测试，用adruino UNO模拟了个时序之后结果似乎不对就一直搁置了，这个焊接到直插转接板上的DAC就辗转了很多个地方一直没有测试。</p>
+        <p>这个也是一个拖了很久的事情，大概两三年前看到一个很便宜的DAC
+TM8211，当时还不太清楚音频DAC和通用DAC的区别，就想着测试一下这个。不过当时没有找到合适的单片机测试，用adruino
+UNO模拟了个时序之后结果似乎不对就一直搁置了，这个焊接到直插转接板上的DAC就辗转了很多个地方一直没有测试。</p>
 <p>由于之前屯了一批GD32F350，正好这个MCU带有一路I2S，因此就选用这个来做。</p>
 <span id="more"></span>
+
 <p>GD32F350上这一路I2S是和SPI0复用的。</p>
-<h1 id="tm8211-i2s传输格式"><a class="markdownIt-Anchor" href="#tm8211-i2s传输格式"></a> TM8211 I2S传输格式</h1>
-<p>国产这个版本的描述很生草 “输入采用LSBJ (Least Significant Bit Justified ) 格式, 数字编码格式采用MSB在前的补码格式”，也没有给出时序图。实际上可以看PT8211的手册上的时序图，可以看到其实就是右对齐格式，也叫日本格式，在GD32的库中对应 <code>I2S_STD_LSB</code> 。</p>
+<h1 id="tm8211-i2s传输格式">TM8211 I2S传输格式</h1>
+<p>国产这个版本的描述很生草 “输入采用LSBJ (Least Significant Bit
+Justified ) 格式,
+数字编码格式采用MSB在前的补码格式”，也没有给出时序图。实际上可以看PT8211的手册上的时序图，可以看到其实就是右对齐格式，也叫日本格式，在GD32的库中对应
+<code>I2S_STD_LSB</code> 。</p>
 <p>其数据为16bit，对于I2S传输中更长的数据则直接丢弃，所以可以兼容一般的16bit数据32bit长度的格式。</p>
-<h1 id="编程"><a class="markdownIt-Anchor" href="#编程"></a> 编程</h1>
+<h1 id="编程">编程</h1>
 <p>在主函数中添加</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;gd32f3x0_spi.h&quot;</span></span></span><br><span class="line">···</span><br></pre></td></tr></table></figure>
-<p>然后配置I2S的IO功能。<br>
-在GD32F350中每个I2S pin都有两个IO可以选择，这里选择全部位于GPIOA上的PIN.<br>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">"gd32f3x0_spi.h"</span></span></span><br><span class="line">···</span><br></pre></td></tr></table></figure>
+
+<p>然后配置I2S的IO功能。 在GD32F350中每个I2S
+pin都有两个IO可以选择，这里选择全部位于GPIOA上的PIN.
 MCK不是必须的，这里驱动这个DAC则用不上。可以省掉。</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> I2S0_AF GPIO_AF_0</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> I2S0_WS_PORT GPIOA</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> I2S0_SCK_PORT GPIOA</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> I2S0_SD_PORT GPIOA</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> I2S0_PORT GPIOA</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> I2S0_WS_PIN GPIO_PIN_4</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> I2S0_SCK_PIN GPIO_PIN_5</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> I2S0_SD_PIN GPIO_PIN_7</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> I2S0_MCK_PIN GPIO_PIN_6</span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">io_init</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">	rcu_periph_clock_enable(RCU_GPIOA);<span class="comment">//打开外设时钟</span></span><br><span class="line">    <span class="comment">/* configure I2S0 GPIO: SCK/PB3, MOSI/PB5 CS/PA15*/</span></span><br><span class="line">    <span class="comment">//gpio_af_set(GPIOB, GPIO_AF_0, GPIO_PIN_5 | GPIO_PIN_3);</span></span><br><span class="line">    gpio_af_set(I2S0_PORT, I2S0_AF, I2S0_WS_PIN | I2S0_SCK_PIN | I2S0_SD_PIN| I2S0_MCK_PIN);</span><br><span class="line">    gpio_mode_set(I2S0_PORT, GPIO_MODE_AF, GPIO_PUPD_NONE,  I2S0_WS_PIN | I2S0_SCK_PIN | I2S0_SD_PIN | I2S0_MCK_PIN);</span><br><span class="line">    gpio_output_options_set(I2S0_PORT, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, I2S0_WS_PIN | I2S0_SCK_PIN | I2S0_SD_PIN | I2S0_MCK_PIN);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//配置GD32 I2S</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">I2S_config</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">  rcu_periph_clock_enable(RCU_SPI0);</span><br><span class="line">    <span class="comment">/* deinitilize SPI and the parameters */</span></span><br><span class="line">  spi_i2s_deinit(SPI0);</span><br><span class="line">  i2s_init(SPI0,I2S_MODE_MASTERTX,I2S_STD_LSB,I2S_CKPL_HIGH);</span><br><span class="line">  <span class="meta">#<span class="keyword">ifdef</span>  MCK_ENABLE</span></span><br><span class="line">  i2s_psc_config(SPI0,I2S_AUDIOSAMPLE_48K,I2S_FRAMEFORMAT_DT16B_CH32B,I2S_MCKOUT_ENABLE);</span><br><span class="line">  <span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">  i2s_psc_config(SPI0,I2S_AUDIOSAMPLE_48K,I2S_FRAMEFORMAT_DT16B_CH32B,I2S_MCKOUT_DISABLE);</span><br><span class="line">  <span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">  <span class="comment">/* enable the I2S0 peripheral */</span></span><br><span class="line">  i2s_enable(SPI0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> I2S0_AF GPIO_AF_0</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> I2S0_WS_PORT GPIOA</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> I2S0_SCK_PORT GPIOA</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> I2S0_SD_PORT GPIOA</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> I2S0_PORT GPIOA</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> I2S0_WS_PIN GPIO_PIN_4</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> I2S0_SCK_PIN GPIO_PIN_5</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> I2S0_SD_PIN GPIO_PIN_7</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> I2S0_MCK_PIN GPIO_PIN_6</span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">io_init</span><span class="params">()</span></span><br><span class="line">{</span><br><span class="line">	rcu_periph_clock_enable(RCU_GPIOA);<span class="comment">//打开外设时钟</span></span><br><span class="line">    <span class="comment">/* configure I2S0 GPIO: SCK/PB3, MOSI/PB5 CS/PA15*/</span></span><br><span class="line">    <span class="comment">//gpio_af_set(GPIOB, GPIO_AF_0, GPIO_PIN_5 | GPIO_PIN_3);</span></span><br><span class="line">    gpio_af_set(I2S0_PORT, I2S0_AF, I2S0_WS_PIN | I2S0_SCK_PIN | I2S0_SD_PIN| I2S0_MCK_PIN);</span><br><span class="line">    gpio_mode_set(I2S0_PORT, GPIO_MODE_AF, GPIO_PUPD_NONE,  I2S0_WS_PIN | I2S0_SCK_PIN | I2S0_SD_PIN | I2S0_MCK_PIN);</span><br><span class="line">    gpio_output_options_set(I2S0_PORT, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, I2S0_WS_PIN | I2S0_SCK_PIN | I2S0_SD_PIN | I2S0_MCK_PIN);</span><br><span class="line">}</span><br><span class="line"><span class="comment">//配置GD32 I2S</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">I2S_config</span><span class="params">()</span></span><br><span class="line">{</span><br><span class="line">  rcu_periph_clock_enable(RCU_SPI0);</span><br><span class="line">    <span class="comment">/* deinitilize SPI and the parameters */</span></span><br><span class="line">  spi_i2s_deinit(SPI0);</span><br><span class="line">  i2s_init(SPI0,I2S_MODE_MASTERTX,I2S_STD_LSB,I2S_CKPL_HIGH);</span><br><span class="line">  <span class="meta">#<span class="keyword">ifdef</span>  MCK_ENABLE</span></span><br><span class="line">  i2s_psc_config(SPI0,I2S_AUDIOSAMPLE_48K,I2S_FRAMEFORMAT_DT16B_CH32B,I2S_MCKOUT_ENABLE);</span><br><span class="line">  <span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">  i2s_psc_config(SPI0,I2S_AUDIOSAMPLE_48K,I2S_FRAMEFORMAT_DT16B_CH32B,I2S_MCKOUT_DISABLE);</span><br><span class="line">  <span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">  <span class="comment">/* enable the I2S0 peripheral */</span></span><br><span class="line">  i2s_enable(SPI0);</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
 <p>分别在主函数中调用</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line">rcu_config();<span class="comment">//开启外设时钟的函数</span></span><br><span class="line">io_init();</span><br><span class="line">I2S_config();</span><br></pre></td></tr></table></figure>
-<p>然后生成双通道的16bit补码用于测试<br>
+
+<p>然后生成双通道的16bit补码用于测试
 这里直接生成一条正弦波后减去偏移量</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">audio_data_stereo</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="type">int16_t</span> R;</span><br><span class="line">  <span class="type">int16_t</span> L;</span><br><span class="line">&#125;audio_data_stereo_Typedef;</span><br><span class="line">···</span><br><span class="line"><span class="comment">//下面的是生成无符号正弦波序列后调用的</span></span><br><span class="line">  <span class="comment">//把正值处理为正负值（补码）以及填充到双通道数组交错</span></span><br><span class="line">  audio_data_stereo_Typedef audioDatas[<span class="number">512</span>];</span><br><span class="line">  <span class="keyword">for</span>(<span class="type">int</span> c = <span class="number">0</span>;c&lt;waveLength;c++)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="comment">//i2s_data_stereo</span></span><br><span class="line">    audioDatas[c].R = dataarr[c]<span class="number">-0x8000</span>;</span><br><span class="line">    audioDatas[c].L = dataarr[c]<span class="number">-0x8000</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>I2S DAC会交替发送接收到的数据分别转化到左通道和右通道，因此可以把填充后的双通道数据直接发送到I2S外设</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">for</span>(<span class="type">int</span> c = <span class="number">0</span>;c&lt;waveLength*<span class="number">2</span>;c++)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">while</span>(RESET == spi_i2s_flag_get(SPI0, I2S_FLAG_TBE));</span><br><span class="line">      spi_i2s_data_transmit(SPI0,*(((<span class="type">int16_t</span>*)audioDatas)+c));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">audio_data_stereo</span> </span></span><br><span class="line"><span class="class">{</span></span><br><span class="line">  <span class="type">int16_t</span> R;</span><br><span class="line">  <span class="type">int16_t</span> L;</span><br><span class="line">}audio_data_stereo_Typedef;</span><br><span class="line">···</span><br><span class="line"><span class="comment">//下面的是生成无符号正弦波序列后调用的</span></span><br><span class="line">  <span class="comment">//把正值处理为正负值（补码）以及填充到双通道数组交错</span></span><br><span class="line">  audio_data_stereo_Typedef audioDatas[<span class="number">512</span>];</span><br><span class="line">  <span class="keyword">for</span>(<span class="type">int</span> c = <span class="number">0</span>;c&lt;waveLength;c++)</span><br><span class="line">  {</span><br><span class="line">    <span class="comment">//i2s_data_stereo</span></span><br><span class="line">    audioDatas[c].R = dataarr[c]<span class="number">-0x8000</span>;</span><br><span class="line">    audioDatas[c].L = dataarr[c]<span class="number">-0x8000</span>;</span><br><span class="line">  }</span><br></pre></td></tr></table></figure>
+
+<p>I2S
+DAC会交替发送接收到的数据分别转化到左通道和右通道，因此可以把填充后的双通道数据直接发送到I2S外设</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">{</span><br><span class="line">  <span class="keyword">for</span>(<span class="type">int</span> c = <span class="number">0</span>;c&lt;waveLength*<span class="number">2</span>;c++)</span><br><span class="line">  {</span><br><span class="line">    <span class="keyword">while</span>(RESET == spi_i2s_flag_get(SPI0, I2S_FLAG_TBE));</span><br><span class="line">      spi_i2s_data_transmit(SPI0,*(((<span class="type">int16_t</span>*)audioDatas)+c));</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
 <p>也可以开启发送中断，在发送完成后发送下一次数据。</p>
-<h2 id="dma"><a class="markdownIt-Anchor" href="#dma"></a> DMA</h2>
+<h2 id="dma">DMA</h2>
 <p>除了上面用的在主函数里面循环写入I2S寄存器的方法，还可以使用DMA来发送。</p>
-<p>对于GD32F350，开启DMA_CH2,SPI0的DMA通道是CH2 见用户手册.<br>
+<p>对于GD32F350，开启DMA_CH2,SPI0的DMA通道是CH2 见用户手册.
 配置DMA结构</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">dma_config</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    dma_parameter_struct  dma_init_struct;</span><br><span class="line">    dma_struct_para_init(&amp;dma_init_struct);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* configure I2S0 transmit DMA: DMA_CH2 */</span></span><br><span class="line">    dma_deinit(DMA_CH2);</span><br><span class="line">    dma_init_struct.periph_addr         = (<span class="type">uint32_t</span>)&amp;SPI_DATA(SPI0);</span><br><span class="line">    dma_init_struct.memory_addr         = (<span class="type">uint32_t</span>)audioDatas;</span><br><span class="line">    dma_init_struct.direction           = DMA_MEMORY_TO_PERIPHERAL;</span><br><span class="line">    dma_init_struct.periph_width        = DMA_PERIPHERAL_WIDTH_16BIT;</span><br><span class="line">    dma_init_struct.memory_width        = DMA_MEMORY_WIDTH_16BIT;</span><br><span class="line">    dma_init_struct.priority            = DMA_PRIORITY_LOW;</span><br><span class="line">    dma_init_struct.number              = ARRAYSIZE;</span><br><span class="line">    dma_init_struct.periph_inc          = DMA_PERIPH_INCREASE_DISABLE;</span><br><span class="line">    dma_init_struct.memory_inc          = DMA_MEMORY_INCREASE_ENABLE;</span><br><span class="line">    dma_init(DMA_CH2, &amp;dma_init_struct);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">dma_config</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">{</span><br><span class="line">    dma_parameter_struct  dma_init_struct;</span><br><span class="line">    dma_struct_para_init(&amp;dma_init_struct);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* configure I2S0 transmit DMA: DMA_CH2 */</span></span><br><span class="line">    dma_deinit(DMA_CH2);</span><br><span class="line">    dma_init_struct.periph_addr         = (<span class="type">uint32_t</span>)&amp;SPI_DATA(SPI0);</span><br><span class="line">    dma_init_struct.memory_addr         = (<span class="type">uint32_t</span>)audioDatas;</span><br><span class="line">    dma_init_struct.direction           = DMA_MEMORY_TO_PERIPHERAL;</span><br><span class="line">    dma_init_struct.periph_width        = DMA_PERIPHERAL_WIDTH_16BIT;</span><br><span class="line">    dma_init_struct.memory_width        = DMA_MEMORY_WIDTH_16BIT;</span><br><span class="line">    dma_init_struct.priority            = DMA_PRIORITY_LOW;</span><br><span class="line">    dma_init_struct.number              = ARRAYSIZE;</span><br><span class="line">    dma_init_struct.periph_inc          = DMA_PERIPH_INCREASE_DISABLE;</span><br><span class="line">    dma_init_struct.memory_inc          = DMA_MEMORY_INCREASE_ENABLE;</span><br><span class="line">    dma_init(DMA_CH2, &amp;dma_init_struct);</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
 <p>然后在I2S配置完成后配置DMA,并最后使能</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* configure DMA */</span></span><br><span class="line">  dma_config();</span><br><span class="line">  dma_transfer_number_config(DMA_CH2, waveLength*<span class="number">2</span>);</span><br><span class="line">    <span class="comment">//---开启循环传输--</span></span><br><span class="line">  dma_circulation_enable(DMA_CH2);</span><br><span class="line">  <span class="comment">/* enable DMA channel */</span></span><br><span class="line">  dma_channel_enable(DMA_CH2);<span class="comment">//SPI0的DMA通道是CH2 见用户手册</span></span><br><span class="line">  <span class="comment">/* enable SPI DMA */</span></span><br><span class="line">  spi_dma_enable(SPI0, SPI_DMA_TRANSMIT);</span><br></pre></td></tr></table></figure>
-<p>开启循环传输后会自动循环，这里测试输出信号可以启用。<br>
+
+<p>开启循环传输后会自动循环，这里测试输出信号可以启用。
 主函数循环中可以添加判断来在DMA传输完成的时候做别的事情</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">  <span class="comment">/* wait DMA transmit completed */</span></span><br><span class="line"><span class="keyword">while</span>(!dma_flag_get(DMA_CH2, DMA_FLAG_FTF)) &#123;</span><br><span class="line"><span class="comment">//</span></span><br><span class="line">__NOP();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line">  <span class="comment">/* wait DMA transmit completed */</span></span><br><span class="line"><span class="keyword">while</span>(!dma_flag_get(DMA_CH2, DMA_FLAG_FTF)) {</span><br><span class="line"><span class="comment">//</span></span><br><span class="line">__NOP();</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
 <p>同样这个也可以在中断中来做。</p>
 <p>注意点，DMA传输长度和位宽不要错。</p>
 <p>可以提前在DMA配置结构体中设置好初值，也可以调用函数来更新长度等信息，例如</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line">dma_transfer_number_config(DMA_CH2, waveLength*<span class="number">2</span>);<span class="comment">//waveLength为前面计算序列函数返回的长度值</span></span><br></pre></td></tr></table></figure>
-<h1 id="i2s在mcu上使用的时候时钟问题"><a class="markdownIt-Anchor" href="#i2s在mcu上使用的时候时钟问题"></a> I2S在MCU上使用的时候时钟问题</h1>
-<p>如果想要连续发送时钟，例如利用I2S的DMA来传送的时候，那么I2S的数据BIT时钟就需要满足<br>
-Freq = 采样率×通道数x单个数据长度，这时候假设需要48khz 2通道 32bit，则需要3.072Mhz的I2S时钟，而GD32的I2S时钟只有整数分频也没有倍频，这里主时钟如果不是需要的I2S时钟的整数倍就会出现分频不准确的情况，信号的频率就会偏移。</p>
+
+<h1 id="i2s在mcu上使用的时候时钟问题">I2S在MCU上使用的时候时钟问题</h1>
+<p>如果想要连续发送时钟，例如利用I2S的DMA来传送的时候，那么I2S的数据BIT时钟就需要满足
+Freq = 采样率×通道数x单个数据长度，这时候假设需要48khz 2通道
+32bit，则需要3.072Mhz的I2S时钟，而GD32的I2S时钟只有整数分频也没有倍频，这里主时钟如果不是需要的I2S时钟的整数倍就会出现分频不准确的情况，信号的频率就会偏移。</p>
 <p>而开发板上的时钟如果不是专门选的音频用的时钟，那么就会需要分频得到准确的时钟。例如我的这个板子上的晶振是8Mhz，不过好在GD32的主时钟PLL配置比较自由，采用8Mhz的晶振的情况下，只需要设置倍频64，分频5，就可以得到76.8Mhz的主时钟，分频系数为25就可以得到3.072Mhz的I2S_CLK.</p>
-<h1 id="测试"><a class="markdownIt-Anchor" href="#测试"></a> 测试</h1>
+<h1 id="测试">测试</h1>
 <p>首先是看数据传输格式：</p>
 <img src="/2023/10/26/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/I2S_DAC-TM8211-Drived_by_GD32F350-MCU/I2S_LSB_202310262013.png" class title="LSB对其，右对齐">
-<p>其中双色是WS(声道选择)，蓝色是数据线，可以看到是右边对齐的。<br>
+
+<p>其中双色是WS(声道选择)，蓝色是数据线，可以看到是右边对齐的。
 然后可以看一下输出：</p>
 <img src="/2023/10/26/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/I2S_DAC-TM8211-Drived_by_GD32F350-MCU/ch1_yellow_ch2_blue_1Khz_202310262112.png" class title="LSB对其，右对齐">
-<p>可以看到两个通道相位是一致的，黄色通道遮挡了蓝色通道。<br>
-直流DC量则是1.267V. 当然对于音频来说这个直流量的准确度不重要。输出滤波依然需要交流耦合。</p>
-<h1 id="是否支持直流输出"><a class="markdownIt-Anchor" href="#是否支持直流输出"></a> 是否支持直流输出？</h1>
-<p>TM8211也可以单次发送设定一个值，不过依然是交替左右通道来设置，设置之后能保留直流。<br>
-而WS线的上升沿和下降沿是必须的，不能通过单独设定高电平或者低电平来保持一个通道输出,否则没有输出。<br>
+
+<p>可以看到两个通道相位是一致的，黄色通道遮挡了蓝色通道。
+直流DC量则是1.267V.
+当然对于音频来说这个直流量的准确度不重要。输出滤波依然需要交流耦合。</p>
+<h1 id="是否支持直流输出">是否支持直流输出？</h1>
+<p>TM8211也可以单次发送设定一个值，不过依然是交替左右通道来设置，设置之后能保留直流。
+而WS线的上升沿和下降沿是必须的，不能通过单独设定高电平或者低电平来保持一个通道输出,否则没有输出。
 当然，可以通过每次发送两个一样的值来保证两个通道更新为一样的输出。</p>
 <p>而且音频DAC的直流一致性是没有保证的，因此如果是设定直流的应用还是不要使用这种。</p>
-<h1 id="测试环境"><a class="markdownIt-Anchor" href="#测试环境"></a> 测试环境</h1>
-<p>IDE: Segger Embedded IDE 7.12<br>
-Debugger: WCH-LinK(DAPlink v2)<br>
+<h1 id="测试环境">测试环境</h1>
+<p>IDE: Segger Embedded IDE 7.12 Debugger: WCH-LinK(DAPlink v2)
 实物：</p>
  <img src="/2023/10/26/%E5%B5%8C%E5%85%A5%E5%BC%8F%E4%B8%8E%E5%8D%95%E7%89%87%E6%9C%BA/I2S_DAC-TM8211-Drived_by_GD32F350-MCU/TestPhoto.jpg" class title="LSB对其，右对齐">
+
 <p>示波器：DHO804</p>
 
     </div>
@@ -409,7 +541,7 @@ Debugger: WCH-LinK(DAPlink v2)<br>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#tm8211-i2s%E4%BC%A0%E8%BE%93%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text"> TM8211 I2S传输格式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BC%96%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text"> 编程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#dma"><span class="nav-number">2.1.</span> <span class="nav-text"> DMA</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#i2s%E5%9C%A8mcu%E4%B8%8A%E4%BD%BF%E7%94%A8%E7%9A%84%E6%97%B6%E5%80%99%E6%97%B6%E9%92%9F%E9%97%AE%E9%A2%98"><span class="nav-number">3.</span> <span class="nav-text"> I2S在MCU上使用的时候时钟问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95"><span class="nav-number">4.</span> <span class="nav-text"> 测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%98%AF%E5%90%A6%E6%94%AF%E6%8C%81%E7%9B%B4%E6%B5%81%E8%BE%93%E5%87%BA"><span class="nav-number">5.</span> <span class="nav-text"> 是否支持直流输出？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83"><span class="nav-number">6.</span> <span class="nav-text"> 测试环境</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#tm8211-i2s%E4%BC%A0%E8%BE%93%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">TM8211 I2S传输格式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BC%96%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">编程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#dma"><span class="nav-number">2.1.</span> <span class="nav-text">DMA</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#i2s%E5%9C%A8mcu%E4%B8%8A%E4%BD%BF%E7%94%A8%E7%9A%84%E6%97%B6%E5%80%99%E6%97%B6%E9%92%9F%E9%97%AE%E9%A2%98"><span class="nav-number">3.</span> <span class="nav-text">I2S在MCU上使用的时候时钟问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95"><span class="nav-number">4.</span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%98%AF%E5%90%A6%E6%94%AF%E6%8C%81%E7%9B%B4%E6%B5%81%E8%BE%93%E5%87%BA"><span class="nav-number">5.</span> <span class="nav-text">是否支持直流输出？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83"><span class="nav-number">6.</span> <span class="nav-text">测试环境</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -425,7 +557,7 @@ Debugger: WCH-LinK(DAPlink v2)<br>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -487,7 +619,7 @@ Debugger: WCH-LinK(DAPlink v2)<br>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:35</span>
+    <span title="站点阅读时长">2:36</span>
 </div>
 
         

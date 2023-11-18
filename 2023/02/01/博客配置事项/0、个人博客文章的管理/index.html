@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"alwaysmy.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="这篇是一篇随记，其实很简单： 用OBSIDIAN来管理博客的文章就好了。">
+  <meta name="description" content="这篇是一篇随记，其实很简单： 用OBSIDIAN来管理博客的文章就好了。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="个人博客文章的管理">
 <meta property="og:url" content="https://alwaysmy.github.io/2023/02/01/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E4%BA%8B%E9%A1%B9/0%E3%80%81%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E7%9A%84%E7%AE%A1%E7%90%86/index.html">
 <meta property="og:site_name" content="加载中...">
-<meta property="og:description" content="这篇是一篇随记，其实很简单： 用OBSIDIAN来管理博客的文章就好了。">
+<meta property="og:description" content="这篇是一篇随记，其实很简单： 用OBSIDIAN来管理博客的文章就好了。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-02-01T06:17:46.000Z">
 <meta property="article:modified_time" content="2023-06-19T07:20:24.755Z">
@@ -78,7 +78,119 @@
   </style>
 </noscript>
 
-<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.8}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style><style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.8}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -133,7 +245,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">29</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">30</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -261,14 +373,14 @@
         <p>这篇是一篇随记，其实很简单：</p>
 <p><strong>用OBSIDIAN来管理博客的文章就好了</strong>。</p>
 <span id="more"></span>
+
 <p>起因是用了obsidian之后就懒得写博客了，加上Typeroa收费，新的markdown编辑器不太好用，至少没有之前那么好用，因此就转移笔记到了obsidian。本来是打算ob编辑结束之后转移回来，但是发现同步这个太痛苦了，突然想到直接在博客源文件这里建立一个ob的库就好了，这样实际上还可以分开管理一些想要发布的东西。</p>
 <p>另外，文件夹不影响文章的识别，因此可以在<code>_post</code>文件夹下面用文件夹分类，这个逻辑和obsidian是一样的。</p>
 <p>缺点是，另外一个ob库同步到了手机，可以很方便随处编辑，这个库再同步过去感觉多少有点别扭，当然也不是不行，只是感觉手机上的文件很乱不想继续往里面塞东西。</p>
-<h1 id="多个公开平台同步"><a class="markdownIt-Anchor" href="#多个公开平台同步"></a> 多个公开平台同步</h1>
-<p>还没想好除了复制粘贴还有啥方法。<br>
-知乎可以直接上传mardown文档，但是图片要重新上传，而且那个图片上传对于批量很不友好。<br>
-CSDN真的不行。<br>
-b站更是啥都没有。。markdown都不能识别。</p>
+<h1 id="多个公开平台同步">多个公开平台同步</h1>
+<p>还没想好除了复制粘贴还有啥方法。
+知乎可以直接上传mardown文档，但是图片要重新上传，而且那个图片上传对于批量很不友好。
+CSDN真的不行。 b站更是啥都没有。。markdown都不能识别。</p>
 
     </div>
 
@@ -353,7 +465,7 @@ b站更是啥都没有。。markdown都不能识别。</p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%9A%E4%B8%AA%E5%85%AC%E5%BC%80%E5%B9%B3%E5%8F%B0%E5%90%8C%E6%AD%A5"><span class="nav-number">1.</span> <span class="nav-text"> 多个公开平台同步</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%9A%E4%B8%AA%E5%85%AC%E5%BC%80%E5%B9%B3%E5%8F%B0%E5%90%8C%E6%AD%A5"><span class="nav-number">1.</span> <span class="nav-text">多个公开平台同步</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -369,7 +481,7 @@ b站更是啥都没有。。markdown都不能识别。</p>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -431,7 +543,7 @@ b站更是啥都没有。。markdown都不能识别。</p>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:35</span>
+    <span title="站点阅读时长">2:36</span>
 </div>
 
         

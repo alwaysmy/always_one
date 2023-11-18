@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"alwaysmy.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="前言 其实几乎所有的EDA工具（这里只是指板级设计工具），都提供了仿真的功能，功能的完善程度取决于这个公司来头多大，例如cadence中的原理图工具，它收购了pspice之后进行了改进并集成到其中，可以进行仿真，同时有巨量的仿真库。 而国内常用的仿真软件multisim和proteus，虽然在课堂上都是用来仿真，但是他们都有配套的PCB工具，还有Tina软件同样包含各种工具，从数字逻辑仿真到模拟">
+  <meta name="description" content="前言 其实几乎所有的EDA工具（这里只是指板级设计工具），都提供了仿真的功能，功能的完善程度取决于这个公司来头多大，例如cadence中的原理图工具，它收购了pspice之后进行了改进并集成到其中，可以进行仿真，同时有巨量的仿真库。 而国内常用的仿真软件multisim和proteus，虽然在课堂上都是用来仿真，但是他们都有配套的PCB工具，还有Tina软件同样包含各种工具，从数字逻辑仿真到模">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用KiCad内置的ngSpice进行电路仿真（0）">
 <meta property="og:url" content="https://alwaysmy.github.io/2022/09/22/Work%20with%20the%20world/%E4%BD%BF%E7%94%A8KiCad%E5%86%85%E7%BD%AE%E7%9A%84NgSpice%E8%BF%9B%E8%A1%8C%E7%94%B5%E8%B7%AF%E4%BB%BF%E7%9C%9F%EF%BC%880%EF%BC%89/index.html">
 <meta property="og:site_name" content="加载中...">
-<meta property="og:description" content="前言 其实几乎所有的EDA工具（这里只是指板级设计工具），都提供了仿真的功能，功能的完善程度取决于这个公司来头多大，例如cadence中的原理图工具，它收购了pspice之后进行了改进并集成到其中，可以进行仿真，同时有巨量的仿真库。 而国内常用的仿真软件multisim和proteus，虽然在课堂上都是用来仿真，但是他们都有配套的PCB工具，还有Tina软件同样包含各种工具，从数字逻辑仿真到模拟">
+<meta property="og:description" content="前言 其实几乎所有的EDA工具（这里只是指板级设计工具），都提供了仿真的功能，功能的完善程度取决于这个公司来头多大，例如cadence中的原理图工具，它收购了pspice之后进行了改进并集成到其中，可以进行仿真，同时有巨量的仿真库。 而国内常用的仿真软件multisim和proteus，虽然在课堂上都是用来仿真，但是他们都有配套的PCB工具，还有Tina软件同样包含各种工具，从数字逻辑仿真到模">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-09-21T20:22:19.000Z">
 <meta property="article:modified_time" content="2023-06-21T12:05:36.487Z">
@@ -78,7 +78,119 @@
   </style>
 </noscript>
 
-<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.8}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style><style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.8}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -133,7 +245,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">29</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">30</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -258,42 +370,46 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h1>
+        <h1 id="前言">前言</h1>
 <p>其实几乎所有的EDA工具（这里只是指板级设计工具），都提供了仿真的功能，功能的完善程度取决于这个公司来头多大，例如cadence中的原理图工具，它收购了pspice之后进行了改进并集成到其中，可以进行仿真，同时有巨量的仿真库。</p>
 <p>而国内常用的仿真软件multisim和proteus，虽然在课堂上都是用来仿真，但是他们都有配套的PCB工具，还有Tina软件同样包含各种工具，从数字逻辑仿真到模拟仿真到PCB.</p>
 <span id="more"></span>
+
 <blockquote>
-<p>免费的Tina-TI使用比较多，仿真模型比官方有些缺少，也没有其他更多的功能。<br>
+<p>免费的Tina-TI使用比较多，仿真模型比官方有些缺少，也没有其他更多的功能。
 另外，ltspice是真就只能仿真。</p>
 </blockquote>
-<p>仿真的实现方法根据仿真目的和实际需求有很多方法，但是最早诞生于伯克利大学的spice程序则是应用非常广泛的一个（TODO:找资料来），spice对于电路使用网表描述，并根据网表和器件的模型进行方程的解算得到仿真结果，spice是开源的，因此市面上有很多产品都基于类似的设计。<br>
+<p>仿真的实现方法根据仿真目的和实际需求有很多方法，但是最早诞生于伯克利大学的spice程序则是应用非常广泛的一个（TODO:找资料来），spice对于电路使用网表描述，并根据网表和器件的模型进行方程的解算得到仿真结果，spice是开源的，因此市面上有很多产品都基于类似的设计。
 下面要使用的ngspice就是基于spice3f5和其他spice仿真工具改进的开源spice仿真工具。</p>
-<pre><code>刚刚提到了网表，但是在这个计算机普及的时代，网表概念被弱化了，实际上网表就是用字符串来描述器件如何连接，毕竟一个文本文件在计算机早期时代是更容易输入到电脑上进行计算的（输入图形甚至可能做不到），当然在如今，网表依然是一个不错的描述工具，对于spice程序来说不算过时，大部分spice软件依然可以兼容老旧的器件仿真模型，可以实现导入等操作。
-</code></pre>
+<pre><code>刚刚提到了网表，但是在这个计算机普及的时代，网表概念被弱化了，实际上网表就是用字符串来描述器件如何连接，毕竟一个文本文件在计算机早期时代是更容易输入到电脑上进行计算的（输入图形甚至可能做不到），当然在如今，网表依然是一个不错的描述工具，对于spice程序来说不算过时，大部分spice软件依然可以兼容老旧的器件仿真模型，可以实现导入等操作。</code></pre>
 <p>为什么不用其他工具呢？</p>
-<ol>
-<li>
-<p>开源 NO.1</p>
-</li>
-<li>
-<p>不想学了其他的了，为了方便直接画原理图。</p>
-<p>实际上了解到KiCad的时候最开始我并不知道它可以仿真，直到听到一个国外上学的老哥说他们作业要求用这个来做我才知道这东西可以仿真，当时KiCad6还刚出，中文网都没有相关的教程。后来了解到实际上官方的教程还是比较多的（见下面参考链接）。包括ngspice的官网教程也是推荐使用KiCad.</p>
-</li>
+<ol type="1">
+<li><p>开源 NO.1</p></li>
+<li><p>不想学了其他的了，为了方便直接画原理图。</p>
+<p>实际上了解到KiCad的时候最开始我并不知道它可以仿真，直到听到一个国外上学的老哥说他们作业要求用这个来做我才知道这东西可以仿真，当时KiCad6还刚出，中文网都没有相关的教程。后来了解到实际上官方的教程还是比较多的（见下面参考链接）。包括ngspice的官网教程也是推荐使用KiCad.</p></li>
 </ol>
 <p>下面给出几个相关度最高的链接。</p>
-<h2 id="参考链接"><a class="markdownIt-Anchor" href="#参考链接"></a> 参考链接</h2>
-<ol>
-<li><a target="_blank" rel="noopener" href="https://www.kicad.org/discover/spice/">SPICE Simulation | KiCad EDA</a>    --这个是KiCad官网介绍，很简单的介绍。</li>
-<li><a target="_blank" rel="noopener" href="https://forum.kicad.info/t/simulation-examples-for-kicad-eeschema-ngspice/34443">Simulation examples for KiCad/Eeschema/ngspice - Schematic / Simulation (Ngspice) - KiCad.info Forums</a>   --这个是KiCad论坛中给出的仿真案例，包含了三十多个电路，覆盖非常全。</li>
-<li><a target="_blank" rel="noopener" href="https://ngspice.sourceforge.io/ngspice-eeschema.html">KiCad Eeschema as GUI for ngspice, tutorial for setting up the simulation (sourceforge.io)</a> – 这是nspice网站用KiCad做的入门教程，非常详细。</li>
-<li><a target="_blank" rel="noopener" href="https://ngspice.sourceforge.io/ngspice-tutorial.html">ngspice tutorial for beginners (sourceforge.io)</a> – 这是ngspice入门的第一个教程，值得看一下了解一下</li>
+<h2 id="参考链接">参考链接</h2>
+<ol type="1">
+<li><a target="_blank" rel="noopener" href="https://www.kicad.org/discover/spice/">SPICE Simulation |
+KiCad EDA</a> –这个是KiCad官网介绍，很简单的介绍。</li>
+<li><a target="_blank" rel="noopener" href="https://forum.kicad.info/t/simulation-examples-for-kicad-eeschema-ngspice/34443">Simulation
+examples for KiCad/Eeschema/ngspice - Schematic / Simulation (Ngspice) -
+KiCad.info Forums</a>
+–这个是KiCad论坛中给出的仿真案例，包含了三十多个电路，覆盖非常全。</li>
+<li><a target="_blank" rel="noopener" href="https://ngspice.sourceforge.io/ngspice-eeschema.html">KiCad
+Eeschema as GUI for ngspice, tutorial for setting up the simulation
+(sourceforge.io)</a> –
+这是nspice网站用KiCad做的入门教程，非常详细。</li>
+<li><a target="_blank" rel="noopener" href="https://ngspice.sourceforge.io/ngspice-tutorial.html">ngspice
+tutorial for beginners (sourceforge.io)</a> –
+这是ngspice入门的第一个教程，值得看一下了解一下</li>
 </ol>
-<h2 id="kicad中的仿真可以做什么"><a class="markdownIt-Anchor" href="#kicad中的仿真可以做什么"></a> Kicad中的仿真可以做什么</h2>
+<h2 id="kicad中的仿真可以做什么">Kicad中的仿真可以做什么</h2>
 <p>在KiCad中，当前的版本（6.0x）,主要是模拟电路的仿真。</p>
-<pre><code>kicad已经更新了，在KiCad得到Net的捐赠后（KiCad Project Awarded NLnet Grant），kicad 在接受捐赠之后承诺要提高仿真的易用性，实际上计划表推到8.0之后了，而个人觉得7.0的仿真bug似乎更多，因此这里还是用6.0版本
-</code></pre>
+<pre><code>kicad已经更新了，在KiCad得到Net的捐赠后（KiCad Project Awarded NLnet Grant），kicad 在接受捐赠之后承诺要提高仿真的易用性，实际上计划表推到8.0之后了，而个人觉得7.0的仿真bug似乎更多，因此这里还是用6.0版本</code></pre>
 <p>同时，当前的内置功能比较简单，只能进行瞬态仿真、交流仿真、直流转换的图形显示，其他的仿真结果则需要自己导出。</p>
-<h2 id="ngspice简述"><a class="markdownIt-Anchor" href="#ngspice简述"></a> ngspice简述</h2>
+<h2 id="ngspice简述">ngspice简述</h2>
 <!--more-->
 
     </div>
@@ -379,7 +495,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text"> 前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-number">1.1.</span> <span class="nav-text"> 参考链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kicad%E4%B8%AD%E7%9A%84%E4%BB%BF%E7%9C%9F%E5%8F%AF%E4%BB%A5%E5%81%9A%E4%BB%80%E4%B9%88"><span class="nav-number">1.2.</span> <span class="nav-text"> Kicad中的仿真可以做什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ngspice%E7%AE%80%E8%BF%B0"><span class="nav-number">1.3.</span> <span class="nav-text"> ngspice简述</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-number">1.1.</span> <span class="nav-text">参考链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kicad%E4%B8%AD%E7%9A%84%E4%BB%BF%E7%9C%9F%E5%8F%AF%E4%BB%A5%E5%81%9A%E4%BB%80%E4%B9%88"><span class="nav-number">1.2.</span> <span class="nav-text">Kicad中的仿真可以做什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ngspice%E7%AE%80%E8%BF%B0"><span class="nav-number">1.3.</span> <span class="nav-text">ngspice简述</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -395,7 +511,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -457,7 +573,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:35</span>
+    <span title="站点阅读时长">2:36</span>
 </div>
 
         
