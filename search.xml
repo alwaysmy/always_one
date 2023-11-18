@@ -1327,6 +1327,8 @@ OneNote用Ctrl+C复制图片粘贴到Obsidian里面的时候会附带图片的Ba
     <title>Hexo博客的链接优化-短链接</title>
     <url>//hexo-blog-short-url/</url>
     <content><![CDATA[<p>虽然中文链接在浏览器里面看着方便，但是分享的时候就会转义超长一串字符，人也看不懂，会很难受。</p>
+<span id="more"></span>
+
 <p>1、修改hexo根目录的__config.yml中的</p>
 <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># permalink: :year/:month/:day/:title/</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">:title/</span></span><br><span class="line"><span class="attr">permalink_defaults:</span> <span class="string">:title/</span></span><br><span class="line"><span class="attr">pretty_urls:</span></span><br><span class="line">  <span class="attr">trailing_index:</span> <span class="literal">true</span> <span class="comment"># Set to false to remove trailing 'index.html' from permalinks</span></span><br><span class="line">  <span class="attr">trailing_html:</span> <span class="literal">true</span> <span class="comment"># Set to false to remove trailing '.html' from permalinks</span></span><br></pre></td></tr></table></figure>
 
@@ -1365,7 +1367,8 @@ Hexo</a>添加 <code>permalink</code>
   <entry>
     <title>博客的Tags和分类</title>
     <url>/bo-ke-pei-zhi-shi-xiang/bo-ke-de-tags-he-fen-lei/</url>
-    <content><![CDATA[<span id="more"></span>
+    <content><![CDATA[<p>有好几种方式来标记博客的tags和分类。</p>
+<span id="more"></span>
 
 <p>上面是个示例，一篇文章的categories不能多个，写两个代表嵌套。</p>
 <p>在next主题配置内：
