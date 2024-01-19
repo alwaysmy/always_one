@@ -229,7 +229,7 @@ Forum</a></td>
   </entry>
   <entry>
     <title>ADS1263性能测试</title>
-    <url>//ads126x-evm-test</url>
+    <url>//ads126x-evm-test/</url>
     <content><![CDATA[<p>严格来说，应该是功能测试，因为我手上只有6.5位DMM,
 我甚至买不起好的基准芯片（心痛价格），对于一个32bit
 ADC来说可能我测试的条件有点太丐了。</p>
@@ -1260,9 +1260,10 @@ page给出的url,仓库改成git协议的仓库</p>
 <h2 id="2更换默认的渲染器">2、更换默认的渲染器</h2>
 <p>不管怎么样，内置的渲染器首先没啥用。
 <code>npm uninstall hexo-renderer-marked --save</code></p>
+<p>下面有两种渲染器都可以实现,我在这里都介绍一下.</p>
 <h3 id="hexo-renderer-markdown-it-plus">hexo-renderer-markdown-it-plus</h3>
-<p>这个有两个版本，实测还是原版的渲染更准确。
-写在原来的默认渲染器之后直接</p>
+<p>这个插件有两个版本，有的教程说要下载另外一个fork的版本,但是实测还是原版的渲染更准确。
+卸载原来的默认渲染器之后直接执行</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm i hexo-renderer-markdown-it-plus --save</span><br></pre></td></tr></table></figure>
 
 <p>理论上说这样就行了，我也确实渲染出来了，但是我会出现重复渲染，据说是有冲突，但是我怎么也没找出来。。。。.</p>
